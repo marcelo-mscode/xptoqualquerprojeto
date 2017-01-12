@@ -30,13 +30,13 @@ public class ContasPagarController {
 		
 		//Listas do Mes Atual
 		
-		List<Object[]> idListas = montaObjeto.pegaListasIndividuais(); 
+		List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
 		MV.addObject("idListas",idListas);
 		
 		List<Object[]> lista = montaObjeto.constroiObjeto();
 		MV.addObject("novaLista", lista);
 
-
+		
 		
 		
 		//Listas de meses anteriores

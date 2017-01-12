@@ -456,7 +456,7 @@ public ArrayList<Integer> FormataDataJodaGenerica(Date data) throws ParseExcepti
 	}
 	
 	
-	public static String getTime(String format){
+	public static String pegaDataAtualEmStringPassandoFormato(String format){
         if (format.isEmpty()) {
             throw new NullPointerException("A pattern não pode ser NULL!");
         }
