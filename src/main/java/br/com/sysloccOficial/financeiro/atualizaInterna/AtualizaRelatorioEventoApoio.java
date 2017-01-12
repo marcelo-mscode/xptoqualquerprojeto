@@ -65,13 +65,11 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 		RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdLista(idLista);
 		
 		RelatorioEventos novoRelatorio = new RelatorioEventos();
+		
+		//Verifica se Relatório existe
+		idRelatorioParaGiroTelefone = verificaSeRelatorioEventoExiste(relatorio, novoRelatorio);
 
-		if(relatorio == null){
-			idRelatorioParaGiroTelefone = novoRelatorio.getIdRelatorioEvento();
-		}else{
-			idRelatorioParaGiroTelefone = relatorio.getIdRelatorioEvento();
-		}
-
+		
 			novoRelatorio.setAnoEvento(ano);
 			novoRelatorio.setMesEvento(mes);
 			//
@@ -211,6 +209,19 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			
 		}
 		
+	}
+
+
+
+	private Integer verificaSeRelatorioEventoExiste(RelatorioEventos relatorio, RelatorioEventos novoRelatorio) {
+		Integer idRelatorioParaGiroTelefone;
+
+		if(relatorio == null){
+			idRelatorioParaGiroTelefone = novoRelatorio.getIdRelatorioEvento();
+		}else{
+			idRelatorioParaGiroTelefone = relatorio.getIdRelatorioEvento();
+		}
+		return idRelatorioParaGiroTelefone;
 	}
 	
 
