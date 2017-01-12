@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
-<div id="contasPagarAjaxMesAnterior" class="" style="width: 40%;padding-right: 0;border-right: 2px solid #ccc;">
+
 	
 	<table class="table table-striped table-hover table-condensed" >
 	  <tbody id="prospeccaoFiltro">
@@ -55,4 +55,3 @@
 	
 		</table>
 		<h1><fmt:formatNumber value="${valorTotal}" pattern="#,##0.00" /></h1>
-</div>

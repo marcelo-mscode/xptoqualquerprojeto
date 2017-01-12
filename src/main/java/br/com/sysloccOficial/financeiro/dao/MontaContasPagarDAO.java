@@ -61,8 +61,6 @@ public class MontaContasPagarDAO {
 		
 		String dataHoje =  UtilitariaDatas.pegaDataAtualEmStringPassandoFormato("yyyy-MM");
 		
-		System.out.println(dataHoje);
-		
 		String idsListasIndiv = "select distinct(lista.idLista), lista.lista from ProducaoP where lista.dataDoEvento like '%"+dataHoje+"%' order by lista.dataDoEvento desc";
 		TypedQuery<Object[]> listaIds = manager.createQuery(idsListasIndiv,Object[].class);
 		List<Object[]> idListas = listaIds.getResultList();

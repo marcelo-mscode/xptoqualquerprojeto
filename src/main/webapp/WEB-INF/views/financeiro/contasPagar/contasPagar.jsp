@@ -30,78 +30,28 @@
 
 <div id="criacaoListas" class="efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:35px 40px 70px 35px;width: 200%;">
  <div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;" class="col-md-12">
- 	<div id="contasPagarAjax" class="" style="width: 40%;padding-right: 0;border-right: 2px solid #ccc;">
+		<table class="col-md-12">
 
-	<table>
-		<tr>
-			<td></td>
-		</tr>
-	</table>
-	
-	<%-- <table class="table table-striped table-hover table-condensed" >
-	  <tbody id="prospeccaoFiltro">
-		<tr style="background: #f1f1f1 !important;text-align: center !important;">
-			<td colspan="5" style="text-align: center !important;"><h4>Fornecedores - Eventos do Mês</h4></td>
-		</tr>
-		<tr style="background: #f1f1f1 !important;" class="cabecalhoLista">
-			<td align="left">NF/ND</td>
-			<td align="left">Vencimento</td>
-			<td align="left">Descrição</td>
-			<td align="left" colspan="2">Valor</td>
-		</tr>
-	
-
-		 <c:set var="valorTotal" value="0.00" />			
-
-		 <c:forEach items="${idListas}" var="idListas">
-
-		 	<tr>
-		 		<td colspan="5" align="left"><h4><b>${idListas[1]}</b></h4></td>
-		 	</tr>
-		 
-			<c:forEach items="${novaLista}" var="novaLista" varStatus="loop">
-				<c:if test="${idListas[0] == novaLista[3]}">
-					<tr id="valor${loop.count}">
-						<td>${novaLista[7]}</td>
-						
-						<td>TemContratacao : ${novaLista[7]}</td>
-						<td>Tem Mesmo Fornecedor: ${novaLista[8]}</td>
-						<td>ValorPgto Contratacao: ${novaLista[9]}</td>
-						<td>Valor Contratacao: ${novaLista[10]}</td>
-						
-						
-						
-						<td <c:if test="${novaLista[7] == true}">class="temContratacao"</c:if>>${novaLista[2]}</td>
-
-						<td><fmt:formatDate value="${novaLista[0]}"   pattern="dd/MM/yyyy" /></td>
-						<td>${novaLista[1]}</td>
-						<td><fmt:formatNumber value="${novaLista[4]}" pattern="#,##0.00" /></td>
-						<td><a onclick="pagaContas(${idListas[0]},${novaLista[5]},${novaLista[6]},valor${loop.count});" class="btn btn-success">PAGAR</a> </td>
-						<c:set var="valorTotal" value="${valorTotal+novaLista[4]}" />			
-					</tr>
-				</c:if>
-			</c:forEach>
-		 </c:forEach>	
-		</table> 
-		<h1><fmt:formatNumber value="${valorTotal}" pattern="#,##0.00" /></h1> --%>
-		
-		<c:import url="contasPagarMesAtual.jsp" />
+			<tr>
+				<td style="width: 40%;">
+				 	<div id="contasPagarAjax" class="" style="padding-right: 0;border-right: 5px solid #ccc;">
+						<c:import url="contasPagarMesAtual.jsp" />
+					</div>	
+				</td>
+				
+				<td style="width: 0%">
+					<div id="contasPagarAjaxMesAnterior" class="" style="padding-right: 0;border-right: 2px solid #ccc;">
+						<c:import url="contasPagarMesAnterior.jsp" />
+					</div>
+				</td>
+				
+			</tr>
+		</table>
 
 	</div>
-	
-	<c:import url="contasPagarMesAnterior.jsp">
-	
-	
-	</c:import>
-	
-	
-	
-	
-	
-	
 		
   </div>		
-</div>
+
 
 
 <div class="col-md-12 alpha60 div-confirmacao" id="ConfirmaPagamento" style="position: fixed; display: none;background-color: rgba(255, 255, 255, 0.7);">
