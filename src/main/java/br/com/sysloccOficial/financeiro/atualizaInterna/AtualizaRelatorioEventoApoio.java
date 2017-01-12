@@ -107,29 +107,32 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			BigDecimal totalDiferencaSemTelefone = totalDiferencaSemTelefone(relatorioBVS,novoRelatorio.getFee(),novoRelatorio.getFeeReduzido(), novoRelatorio.getImpostoClienteDiferenca());
 			
 			
-			
+// -------- Calculo de Caches sem telefone	---- //		
+	
 			BigDecimal totalCacheFuncionariosSemTelefone = relatorioDAO.calculaTotalCachesFuncionarios(totalDiferencaSemTelefone, listaRelatorioCaches);
 			
 			BigDecimal totalCacheDiretoriaSemTelefone = relatorioDAO.caculaValorSeDiretoria(listaRelatorioCaches,totalDiferencaSemTelefone,totalCacheFuncionariosSemTelefone);
 			
 			novoRelatorio.setTotalCachesSemTelefone(totalCacheDiretoriaSemTelefone.add(totalCacheFuncionariosSemTelefone));
 			
-			
+//--------- Giro Sem Telefone ------------------ //
+		
 			BigDecimal giroSTelef = caculaGiroSemTelefone(novoRelatorio.getValorLiquido(),
-					novoRelatorio.getTotalCachesSemTelefone(),totalApagar(relatorioBVS));
+					   novoRelatorio.getTotalCachesSemTelefone(),totalApagar(relatorioBVS));
 			
 			System.out.println("Giro sem telefone: "+giroSTelef);
-			
+
+//--------- Margem Contribuição ---------------- //
 			
 			novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
 			
 //  ------  Calcula o Custo do Telefone
-			/**
-			 * Verifica se Relatório existe
-			 */
+			// --- Verifica se Relatório existe
+			 
 			Integer idRelatorioParaGiroTelefone = null;
 			idRelatorioParaGiroTelefone = verificaSeRelatorioEventoExiste(relatorio, novoRelatorio);
-
+			
+			//Custo 
 			custoTelefone = calculoValorTelefone(giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
 			
 			novoRelatorio.setCustoTelefone(custoTelefone);
