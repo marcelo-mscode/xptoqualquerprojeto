@@ -28,10 +28,17 @@
 	</div>
 </div>
 
-<div id="criacaoListas" class="col-md-12 efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:35px 40px 70px 35px;">
+<div id="criacaoListas" class="efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:35px 40px 70px 35px;width: 200%;">
  <div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;" class="col-md-12">
- 	<div id="contasPagarAjax" class="col-md-12" style="padding-right: 0;border-right: 2px solid #ccc;">
-	<table class="table table-striped table-hover table-condensed" >
+ 	<div id="contasPagarAjax" class="" style="width: 40%;padding-right: 0;border-right: 2px solid #ccc;">
+
+	<table>
+		<tr>
+			<td></td>
+		</tr>
+	</table>
+	
+	<%-- <table class="table table-striped table-hover table-condensed" >
 	  <tbody id="prospeccaoFiltro">
 		<tr style="background: #f1f1f1 !important;text-align: center !important;">
 			<td colspan="5" style="text-align: center !important;"><h4>Fornecedores - Eventos do Mês</h4></td>
@@ -55,12 +62,12 @@
 			<c:forEach items="${novaLista}" var="novaLista" varStatus="loop">
 				<c:if test="${idListas[0] == novaLista[3]}">
 					<tr id="valor${loop.count}">
-						<%-- <td>${novaLista[7]}</td> --%>
+						<td>${novaLista[7]}</td>
 						
-						<%-- <td>TemContratacao : ${novaLista[7]}</td>
+						<td>TemContratacao : ${novaLista[7]}</td>
 						<td>Tem Mesmo Fornecedor: ${novaLista[8]}</td>
 						<td>ValorPgto Contratacao: ${novaLista[9]}</td>
-						<td>Valor Contratacao: ${novaLista[10]}</td> --%>
+						<td>Valor Contratacao: ${novaLista[10]}</td>
 						
 						
 						
@@ -75,68 +82,23 @@
 				</c:if>
 			</c:forEach>
 		 </c:forEach>	
+		</table> 
+		<h1><fmt:formatNumber value="${valorTotal}" pattern="#,##0.00" /></h1> --%>
+		
+		<c:import url="contasPagarMesAtual.jsp" />
 
-		</table>
-		<h1><fmt:formatNumber value="${valorTotal}" pattern="#,##0.00" /></h1>
 	</div>
 	
+	<c:import url="contasPagarMesAnterior.jsp">
 	
 	
-	<!-- <div class="col-md-6" style="padding-left: 0;">
-	<table class="table table-striped table-hover table-condensed">
-	  <tbody id="prospeccaoFiltro">
-		<tr style="background: #f1f1f1 !important;text-align: center !important;">
-			<td colspan="5" style="text-align: center !important;">Outras Contas</td>
-		</tr>
-		<tr style="background: #f1f1f1 !important" class="cabecalhoLista">
-			<td>NF/ND</td>
-			<td>Vencimento</td>
-			<td>Descrição</td>
-			<td>Valor</td>
-			<td></td>
-		</tr>
-		
-		<tr class="cabecalhoLista">
-			<td></td>
-			<td>05/06/2016</td>
-			<td class="descricao">GIRO ITAU 36/26</td>
-			<td>900,00</td>
-			<td><a href="" class="btn btn-success">Pagar</a></td>
-		</tr>
-		
-		<tr class="cabecalhoLista">
-			<td></td>
-			<td>05/07/2016</td>
-			<td class="descricao">GIRO ITAU 37/26</td>
-			<td>900,00</td>
-			<td><a href="" class="btn btn-success">Pagar</a></td>
-		</tr>
-		
-		<tr class="cabecalhoLista">
-			<td></td>
-			<td>05/08/2016</td>
-			<td class="descricao">GIRO ITAU 38/26</td>
-			<td>900,00</td>
-			<td><a href="" class="btn btn-success">Pagar</a></td>
-		</tr>
-		<tr class="cabecalhoLista">
-			<td></td>
-			<td>05/09/2016</td>
-			<td class="descricao">GIRO ITAU 38/26</td>
-			<td>900,00</td>
-			<td><a href="" class="btn btn-success">Pagar</a></td>
-		</tr>
-		<tr class="cabecalhoLista">
-			<td></td>
-			<td>05/10/2016</td>
-			<td class="descricao">GIRO ITAU 38/26</td>
-			<td>900,00</td>
-			<td><a href="" class="btn btn-success">Pagar</a></td>
-		</tr>
-		
-	</tbody>
-	</table>
-	</div>	 -->
+	</c:import>
+	
+	
+	
+	
+	
+	
 		
   </div>		
 </div>
