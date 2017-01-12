@@ -23,13 +23,13 @@
 	
 		 <c:set var="valorTotal" value="0.00" />			
 	
-		 <c:forEach items="${idListas}" var="idListas">
+		 <c:forEach items="${idListasAnteriores}" var="idListas">
 	
 		 	<tr>
 		 		<td colspan="5" align="left"><h4><b>${idListas[1]}</b></h4></td>
 		 	</tr>
 		 
-			<c:forEach items="${novaLista}" var="novaLista" varStatus="loop">
+			<c:forEach items="${listaAnteriores}" var="novaLista" varStatus="loop">
 				<c:if test="${idListas[0] == novaLista[3]}">
 					<tr id="valor${loop.count}">
 						<%-- <td>${novaLista[7]}</td> --%>

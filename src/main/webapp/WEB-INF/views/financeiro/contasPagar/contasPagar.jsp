@@ -34,7 +34,7 @@
 
 			<tr>
 				<td style="width: 40%;">
-				 	<div id="contasPagarAjax" class="" style="padding-right: 0;border-right: 5px solid #ccc;border-left: 5px solid #ccc;">
+				 	<div id="contasPagarAjax" class="" style="padding-right: 0;border-right: 5px solid #ccc;border-left: 5px solid #ccc;margin-top: -294px;">
 						<c:import url="contasPagarMesAtual.jsp" />
 					</div>	
 				</td>
