@@ -172,7 +172,11 @@ public class MontaContasPagarDAO {
 			Object[] novo = new Object[11];
 			for (int j = 0; j < lista.size(); j++) {
 				if (lista.get(j)[0].equals(pegaDiasPagamento.get(i))) {
-					valor = valor.add((BigDecimal) lista.get(j)[3]);
+					
+					//valor = valor.add((BigDecimal) lista.get(j)[3]);
+
+					
+					valor = valor.add((BigDecimal) lista.get(j)[8]);
 					novo[0] = lista.get(j)[1]; // data pagar
 					novo[1] = lista.get(j)[2]; // nome fornecedor
 					novo[5] = lista.get(j)[4]; // idFornecedor
@@ -218,6 +222,9 @@ public class MontaContasPagarDAO {
 				+ listaUmFinanceiro+") and dtPgotFornecedor.Status = 'PENDENTE' order by diasPrazoParaPagamento");
 		TypedQuery<Object[]> listaT = manager.createQuery(consultaDiasPrazoPagamento,Object[].class);
 		List<Object[]> lista = listaT.getResultList();
+		
+		System.out.println();
+		
 		return lista;
 	}
 
