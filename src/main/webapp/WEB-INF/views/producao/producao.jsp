@@ -412,7 +412,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
   
 	 <tr>   
 	    <th class="input-160px">Linha</th>
-	    <th>Fat Locco</th>
+	    <th>Fat Loccoss Esse é um teste</th>
 	    <th>Fat Diretosssss</th>
 	    <th>Opcional</th>
 	    <th>Informações</th>
