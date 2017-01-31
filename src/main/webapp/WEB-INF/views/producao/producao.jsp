@@ -413,7 +413,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 	 <tr>   
 	    <th class="input-160px">Linha</th>
 	    <th>Fat Locco</th>
-	    <th>Fat Direto</th>
+	    <th>Fat Diretosssss</th>
 	    <th>Opcional</th>
 	    <th>Informações</th>
 	    <th>Não inclusos no custo</th>
