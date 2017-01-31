@@ -74,11 +74,38 @@ public class AuxExcelSQL {
 
 	/**
 	 * Método para retornar uma lista de Grupos de acordo com o idLista da Lista
+	 * não Opcionais
+	 */
+	public List<Grupo> retornaGruposGalderma(Integer idLista){
+		System.out.println("------------");
+		
+		try {
+			TypedQuery<Grupo> grupos = manager.createQuery(
+					"from Grupo where idLista ="+idLista+" and opcional = 0 and categoriaGalderma > 1 order by ordemGrupo", Grupo.class);
+			return grupos.getResultList();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, ""+e);
+			return null;
+		}
+	}
+
+	/**
+	 * Método para retornar uma lista de Grupos de acordo com o idLista da Lista
 	 * ------> Opcionais
 	 */
 	public List<Grupo> retornaGruposOpcionais(Integer idLista){
 		TypedQuery<Grupo> grupos = manager.createQuery(
 				"from Grupo where idLista ="+idLista+" and opcional = 1 order by ordemGrupo", Grupo.class);
+		return grupos.getResultList();
+	}
+	
+	/**
+	 * Método para retornar uma lista de Grupos de acordo com o idLista da Lista
+	 * ------> Opcionais
+	 */
+	public List<Grupo> retornaGruposOpcionaisGalderma(Integer idLista){
+		TypedQuery<Grupo> grupos = manager.createQuery(
+				"from Grupo where idLista ="+idLista+" and opcional = 1 and categoriaGalderma > 1 order by ordemGrupo", Grupo.class);
 		return grupos.getResultList();
 	}
 

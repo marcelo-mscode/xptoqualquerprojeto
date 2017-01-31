@@ -4,38 +4,45 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import br.com.sysloccOficial.ListaProducao.Excel.ChainVerificaCategoriaImposto;
-import br.com.sysloccOficial.ListaProducao.Excel.CorpoGrupoCategoriaBayer;
 import br.com.sysloccOficial.controllerExcel.AuxExcelSQL;
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.model.Grupo;
 
 
 @Component
-public class MontaGruposCategoriasGalderma {
+@Transactional
+public class MontaGruposCategoriasGalderma{
 	
-	
-	@Autowired private AuxExcelSQL sql;
-	@Autowired private ProdutoGrupoDAO produtoGrupoDAO;
 	@PersistenceContext	private EntityManager manager;
+	@Autowired private static AuxExcelSQL sql;
+	@Autowired private ProdutoGrupoDAO produtoGrupoDAO;
 	
 	
-	public List<Grupo> listaGruposNAOOpcionais(Integer idLista){
-		List<Grupo> listaGrupos = sql.retornaGrupos(idLista);
+	public static List<Grupo> listaGruposNAOOpcionais(Integer idLista){
+		List<Grupo> listaGrupos = sql.retornaGruposGalderma(idLista);
+		
+		
+		System.out.println("aqui");
+		
 		return listaGrupos;
 	}
 
-	public List<Grupo> listaGruposOpcionais(Integer idLista){
-		List<Grupo> listaGrupos = sql.retornaGruposOpcionais(idLista);
+	public static List<Grupo> listaGruposOpcionais(Integer idLista){
+		List<Grupo> listaGrupos = sql.retornaGruposOpcionaisGalderma(idLista);
 		return listaGrupos;
 	}
 	
-	public List<CorpoGrupoCategoriaBayer> montaGruposParaExcel(Integer idLista, boolean opcionais){
+	public List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel(Integer idLista, boolean opcionais){
 		
 		List<Grupo> listaGrupos = null;
 		
@@ -45,7 +52,7 @@ public class MontaGruposCategoriasGalderma {
 			listaGrupos = listaGruposOpcionais(idLista);
 		}
 		
-		List<CorpoGrupoCategoriaBayer> corpoGrupos = new ArrayList<CorpoGrupoCategoriaBayer>();
+		List<CorpoGrupoCategoriaGalderma> corpoGrupos = new ArrayList<CorpoGrupoCategoriaGalderma>();
 		
 		for (int i = 0; i < listaGrupos.size(); i++) {
 			
@@ -98,7 +105,6 @@ public class MontaGruposCategoriasGalderma {
 								qtdcomImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade()*listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade2()*listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 								diariacomImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 								preco = preco.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
-						//		comImpostoUnico = comImpostoUnico.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
 								comImpostoUnico = comImpostoUnico.add(preco.multiply(new BigDecimal(diariacomImposto)).multiply(new BigDecimal(qtdcomImposto)));
 								
 							}
@@ -113,7 +119,6 @@ public class MontaGruposCategoriasGalderma {
 									diariasemImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 									precoSemImposto = precoSemImposto.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
 									semImpostoUnico = semImpostoUnico.add(precoSemImposto.multiply(new BigDecimal(diariasemImposto)).multiply(new BigDecimal(qtdsemImposto)));
-									//semImpostoUnico = semImpostoUnico.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
 								}
 					    }
 			     }
@@ -157,7 +162,7 @@ public class MontaGruposCategoriasGalderma {
 	}
 
 	private void valoresEmCadaItem(List<Grupo> listaGrupos,
-			List<CorpoGrupoCategoriaBayer> corpoGrupos, int i, BigDecimal zero,
+			List<CorpoGrupoCategoriaGalderma> corpoGrupos, int i, BigDecimal zero,
 			BigDecimal comImposto, BigDecimal semImposto, double qtdcomImposto,
 			double diariacomImposto, double qtdsemImposto,
 			double diariasemImposto, boolean incideAdministracao, boolean feeReduzido,
@@ -166,53 +171,54 @@ public class MontaGruposCategoriasGalderma {
 		BigDecimal quantFinal = new BigDecimal(qtdUnica*diariaUnica);
 		
 		BigDecimal precoImpostoPorquantidade = comImpostoUnico; 
-//		BigDecimal precoImpostoPorquantidade = comImpostoUnico.multiply(new BigDecimal(qtdcomImposto)); 
 		BigDecimal precoImpostoFinal = precoImpostoPorquantidade.divide(quantFinal ,12,RoundingMode.UP); 
 		
 	
 		
 		BigDecimal precoSemImpostoPorquantidade = semImpostoUnico; 
-		//BigDecimal precoSemImpostoPorquantidade = semImpostoUnico.multiply(new BigDecimal(qtdsemImposto)); 
 		BigDecimal precoSemImpostoFinal = precoSemImpostoPorquantidade.divide(quantFinal ,12,RoundingMode.UP); 
 		
 	    // ---------
 			
 		if(comImpostoUnico.equals(zero)){
 		}else{
-			CorpoGrupoCategoriaBayer corpoGrupoBayer = new CorpoGrupoCategoriaBayer();
-
-			if(listaGrupos.get(i).getGrupoCategoriaBayer() == null){
-				corpoGrupoBayer.setIdCategoriaBayer(1);
+			CorpoGrupoCategoriaGalderma corpoGrupoGalderma = new CorpoGrupoCategoriaGalderma();
+			
+			/**
+			 * Setas as categorias
+			 */
+			if(listaGrupos.get(i).getGrupoCategoriaGalderma().getIdCategoriaGalderma() < 1){
+				corpoGrupoGalderma.setIdCategoriaGalderma(1);
 			}else{
-				corpoGrupoBayer.setIdCategoriaBayer(listaGrupos.get(i).getGrupoCategoriaBayer().getIdGrupoCategoria());
+				corpoGrupoGalderma.setIdCategoriaGalderma(listaGrupos.get(i).getGrupoCategoriaBayer().getIdGrupoCategoria());
 			}
 			
-			corpoGrupoBayer.setIdGrupo(listaGrupos.get(i).getIdgrupo());
-			corpoGrupoBayer.setInfoGrupo(listaGrupos.get(i).getInformacoes());
-			corpoGrupoBayer.setTemImposto(true);
+			corpoGrupoGalderma.setIdGrupo(listaGrupos.get(i).getIdgrupo());
+			corpoGrupoGalderma.setInfoGrupo(listaGrupos.get(i).getInformacoes());
+			corpoGrupoGalderma.setTemImposto(true);
 			
-			corpoGrupoBayer.setPrecoItem(precoImpostoFinal);
+			corpoGrupoGalderma.setPrecoItem(precoImpostoFinal);
 			
 			if(orcamentoComImposto.equals(zero)){
-				corpoGrupoBayer.setOrcamento(comImpostoUnico.divide(quantFinal ,12,RoundingMode.UP));
+				corpoGrupoGalderma.setOrcamento(comImpostoUnico.divide(quantFinal ,12,RoundingMode.UP));
 			}else{
-				corpoGrupoBayer.setOrcamento(orcamentoComImposto);
+				corpoGrupoGalderma.setOrcamento(orcamentoComImposto);
 			}
-			corpoGrupoBayer.setQuantidade(qtdUnica);
-			corpoGrupoBayer.setDiaria(diariaUnica);
+			corpoGrupoGalderma.setQuantidade(qtdUnica);
+			corpoGrupoGalderma.setDiaria(diariaUnica);
 			
-			corpoGrupoBayer.setTipoServico(categoriasimpostoBayer(corpoGrupoBayer.isTemImposto(),incideAdministracao,feeReduzido));
+			corpoGrupoGalderma.setTipoServico(categoriasimpostoBayer(corpoGrupoGalderma.isTemImposto(),incideAdministracao,feeReduzido));
 			
-			corpoGrupos.add(corpoGrupoBayer);
+			corpoGrupos.add(corpoGrupoGalderma);
 		}
 		if(semImpostoUnico.equals(zero)){
 		}else{	
-			CorpoGrupoCategoriaBayer corpoGrupoBayerSemImposto = new CorpoGrupoCategoriaBayer();
+			CorpoGrupoCategoriaGalderma corpoGrupoBayerSemImposto = new CorpoGrupoCategoriaGalderma();
 			
-			if(listaGrupos.get(i).getGrupoCategoriaBayer() == null){
-				corpoGrupoBayerSemImposto.setIdCategoriaBayer(1);
+			if(listaGrupos.get(i).getGrupoCategoriaGalderma() == null){
+				corpoGrupoBayerSemImposto.setIdCategoriaGalderma(1);
 			}else{
-				corpoGrupoBayerSemImposto.setIdCategoriaBayer(listaGrupos.get(i).getGrupoCategoriaBayer().getIdGrupoCategoria());
+				corpoGrupoBayerSemImposto.setIdCategoriaGalderma(listaGrupos.get(i).getGrupoCategoriaGalderma().getIdCategoriaGalderma());
 			}
 			
 			corpoGrupoBayerSemImposto.setIdGrupo(listaGrupos.get(i).getIdgrupo());
