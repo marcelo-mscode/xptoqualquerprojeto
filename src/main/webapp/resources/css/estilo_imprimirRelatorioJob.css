@@ -1,0 +1,25 @@
+* {/* background:transparent !important; */color:#000 !important;text-shadow:none !important;filter:none !important;-ms-filter:none !important;}
+
+body {margin:20px;padding:0;line-height: 1.4em;background: #ddd}
+@page {margin: 0.1cm;}
+.tira-conteudo{display: none;}
+.font-size-table{font-size: 7px !important;}
+.font-size-td{font-size: 6px !important;}
+.ajuste-th{width: 650px !important;}
+th{font-weight: bolder !important;font-family: 'OpenSansLight';background: green }
+/* td {font-size: 11px !important;font-weight: lighter !important;background-image: linear-gradient( to top, #fff, #f8f8f8);} */
+.td-categoria{width: 125px;}
+.alinha-centro{text-align: center;}
+p {widows: 3;}
+p {orphans: 3;}
+.ajusteDadosEvento{line-height: 3px !important;font-size: 12px !important}
+img{max-width: 100%;}
+.total{font-size: 10px !important;}
+.fontPrint {font-size: 11px !important;}
+.obs {font-size: 9px !important;}
+
+.table-td-ajuste > tbody > tr >td,
+.table-td-ajuste > tbody > tr >th {
+    padding: 3px !important;
+    border: 1px solid #ccc;
+    border-right: 1px solid #ccc;

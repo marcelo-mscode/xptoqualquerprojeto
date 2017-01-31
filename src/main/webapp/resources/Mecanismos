@@ -1,0 +1,10 @@
+- Aplicar Efeito blur em elementos
+	$('#efeito-blur').css("-webkit-filter","blur(2px)");
+
+
+- Desabilitar botão do formulario após o click sem javascript
+
+	<form ... onsubmit="myButton.disabled = true; return true;">
+	...
+	<input type="submit" name="myButton" value="Submit">
+	</form>

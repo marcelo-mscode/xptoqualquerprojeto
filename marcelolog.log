@@ -1,0 +1,10 @@
+15/07/16 15:32 [main]  INFO %-5p lopes:13 - Apenas outro teste
+15/07/16 15:46 [main]  INFO %-5p lopes:13 - Apenas outro testelko
+15/07/16 15:54 [main]  INFO %-5p lopes:13 - Apenas outro testelko
+15/07/16 15:54 [main] ERROR %-5p lopes:20 - This is Error message
+
+java.lang.Exception: java.lang.ArithmeticException: / by zero
+	at br.com.sysloccOficial.log4j.TesteLog4j.main(TesteLog4j.java:20)
+Caused by: java.lang.ArithmeticException: / by zero
+	at br.com.sysloccOficial.log4j.TesteLog4j.divide(TesteLog4j.java:35)
+	at br.com.sysloccOficial.log4j.TesteLog4j.main(TesteLog4j.java:18)

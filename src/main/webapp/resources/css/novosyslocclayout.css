@@ -1,0 +1,67 @@
+@CHARSET "ISO-8859-1";
+body{background-color: #f8f8f8 !important;}
+
+
+.verde{background-color: #DFF0D8;}
+.azul{background-color: #D9EDF7;}
+.amarelo{background-color: #FCF8E3;}
+.vermelho{background-color: #F2DEDE;}
+.cinzaTop{background-color: #ECECEC;}
+
+
+.verdeFlat{background-color: #2ecc71;}
+.azulFlat{background-color: #3498db;}
+.amareloFlat{background-color: #F7E967}
+.vermelhoFlat{background-color: #e74c3c;}
+.cinzaTopFlat{background-color: #bdc3c7;}
+.pretoFlat{background-color: #444645;}
+.brancoFlat{background-color: #ecf0f1;}
+.azulFlat2{background-color: #c4f1ff;}
+
+.tira-padding{padding: 0;margin: 0}
+
+
+
+
+.topXY{height: 45px;	border-radius:3px 3px 0px 0px;	border-bottom: 1px solid #CFCFCF; }
+.topText{line-height: 45px;font-size: 17px;letter-spacing: 0px;text-transform: uppercase;}
+.colorTopText{color: #333333;text-shadow: 1px 1px 0px #fff;}
+.colorTopTextWhite{color: #fff;}
+.baseTopXY{	height: 1px;	background: #ccc; box-shadow: 0px 9px 3px 0px #000;z-index: 9999;}
+.textoCentro {line-height: 45px;font-size: 17px;font-weight: bolder;text-shadow: 2px 3px 1px #ccc;text-transform: uppercase;
+																								  color: #4F4F4F !important;}
+.bodyXY{/* height: 450px; */background: #fff;padding: 0 !important;}
+.shadow{border-radius: 5px 5px 0px 0px;box-shadow: -5px 23px 30px 0px #AEAEAE;padding: 0 !important;}
+.shadow-com-padding{border-radius: 5px 5px 0px 0px;box-shadow: -1px 2px 9px 0px #AEAEAE;;} 
+/* .shadow-com-padding{border-radius: 5px 5px 0px 0px;box-shadow: -5px 23px 30px 0px #AEAEAE;}  */
+
+/* ---------------------------------- Layout para Tabelas -------------------------------- */
+
+.tableTdCategoriaAzul{font-size: 20px;border: 1px solid #3498db !important;}
+.tableTrGrupoAzul{background-color: #D6EAF8;border: 1px solid #D6EAF8 !important;}
+
+.tableTdCategoriaAmarelo{font-size: 20px;border: 1px solid #F7E967 !important;}
+.tableTrGrupoAmarelo{background-color: #FDFBE1;border: 1px solid #FDFBE1 !important;}
+
+.tableTdCategoriaVermelho{font-size: 20px;border: 1px solid #e74c3c !important;}
+.tableTrGrupoVermelho{background-color: #FDEDEC;border: 1px solid #FDEDEC !important;}
+
+.tableTdCategoriaVerde{font-size: 20px;border: 1px solid #2ecc71 !important;}
+.tableTrGrupoVerde{background-color: #EAFAF1;border: 1px solid #EAFAF1 !important;}
+
+.tableTdCategoriaPreto{font-size: 20px;border: 1px solid #444645 !important;}
+.tableTrGrupoPreto{background-color: #ECECEC;border: 1px solid #ECECEC !important;}
+
+/* --------------------------------------------------------------------------------------- */
+
+/*  Estilo para botões */
+.itemFechado{background-color: #F1F8FC;color: #ccc;}
+.buttonItemFechado{width: 129px;margin-left: -1px;}
+
+.btn-conclui-lista{ color: #f8f8f8 !important; background-color: #444645; border-color: #ccc; }
+.btn-conclui-lista:hover{background-color: #ccc;color:#f8f8f8}
+
+/* botao voltar top dos paineis  */
+.botao-voltar{color: #000;font-size: 20px;margin-left: -22px;background-color: #fff;padding: 4px;border: 1px solid #ddd;border-radius: 5px;}
+
+

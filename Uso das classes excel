@@ -1,0 +1,74 @@
+//MERGE
+
+	Usar a classe e método estático ExcelMerge.merge() passando:
+	
+		excelGalderma --> instância do workbook
+		cenario       --> instância da aba
+		cell		  --> instância da célula	
+		linha		  --> instância da linha
+		primeiraColuna -> numero da coluna de onde vai começar o merge
+		últimaColuna  --> numero da coluna de onde vai terminar o merge
+		
+	* Para colocar estilo na célula com Merge basta criar o estilo primeiro, setar na céula e depois fazer o Merge
+	Exemplo:
+		
+		Criando a linha
+		***************
+		XSSFRow linha2 = cenario.createRow(10);
+		
+		Criando a célula
+		****************
+		XSSFCell cell2 = linha2.createCell(0);
+		cell2.setCellValue("Sub total 1 (soma dos serviços do evento)");
+		
+		Criando o estilo
+		****************
+		XSSFCellStyle style = excelGalderma.createCellStyle();
+		style = ExcelBordaSimples.bordaBold(style);
+		style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		style.setFillForegroundColor(new XSSFColor(new java.awt.Color(corFundo[0],corFundo[1],corFundo[2])));
+		cell2.setCellStyle(style);
+		
+		Fazendo o Merge
+		***************
+		ExcelMerge.merge(excelGalderma, cenario, cell2, linha2, 0, 6); 
+	
+	
+//Font
+	
+	Usar classe ExcelFonts escolhendo umas das opções abaixo:
+		
+		Font Comum
+***************************
+		Usar ExcelFonts.font passando --> XSSFWorkbook excelGalderma, int tamanhoFonte,String nomeFonte
+	
+		Font Bold
+		**********
+		Usar ExcelFonts.fontBold passando --> XSSFWorkbook excelGalderma, int tamanhoFonte,String nomeFonte
+		
+		Font Italic
+		**********
+		Usar ExcelFonts.fontItalic passando --> XSSFWorkbook excelGalderma, int tamanhoFonte,String nomeFonte
+	
+		Font Italic e Bold
+		**********
+		Usar ExcelFonts.fontBoldItalic passando --> XSSFWorkbook excelGalderma, int tamanhoFonte,String nomeFonte
+		
+		
+		*Font colorida --> passar o RGB da cor em um array int[]
+*************************************************************************
+		Usar ExcelFonts.font passando --> XSSFWorkbook excelGalderma, int tamanhoFonte,String nomeFonte, int[] corDaFont
+		
+		*Font colorida Bold
+		**********
+		Usar ExcelFonts.fontBold passando --> XSSFWorkbook excelGalderma, int tamanhoFonte,String nomeFonte, int[] corDaFont
+		
+		*Font colorida Italic
+		**********
+		Usar ExcelFonts.fontItalic passando --> XSSFWorkbook excelGalderma, int tamanhoFonte,String nomeFonte, int[] corDaFont
+	
+		*Font colorida Italic e Bold
+		**********
+		Usar ExcelFonts.fontBoldItalic passando --> XSSFWorkbook excelGalderma, int tamanhoFonte,String nomeFonte, int[] corDaFont
+
+

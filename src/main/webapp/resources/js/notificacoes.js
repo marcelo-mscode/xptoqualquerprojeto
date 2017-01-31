@@ -1,0 +1,7 @@
+/**
+ * 
+ */
+
+function teste() {
+	alert('Carregada!');
+} 

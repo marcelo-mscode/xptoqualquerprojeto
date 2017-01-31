@@ -1,0 +1,46 @@
+Uso de Jquery Validator para enviar formulários e validar campos
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.js"></script>
+
+Exemplo:
+
+$(document).ready(function(){
+	$('#salvaEmpresaLista').validate({
+		
+		//Campos com o name preenchido
+		
+		rules: { 
+			empresa: { required: true, minlength: 2 },
+			RazaoSocial: { required: true, minlength: 2 },
+			cnpj: { required: true }
+		},
+		
+		//Mensagens que aparecerao abaixo dos names
+		messages: {
+			empresa: { required: 'Preencha o campo empresa', minlength: 'No mínimo 2 letras' },
+			RazaoSocial: { required: 'Preencha o campo Razão Social', minlength: 'No mínimo 2 letras' },
+			cnpj: { required: 'Preencha o CNPJ' }
+
+		},
+		submitHandler: function( form ){
+			var dados = $( form ).serialize();
+
+//envio do formulario por ajax
+
+			$.ajax({
+				type: "POST",
+				url: "salvaEmpresaLista",
+				data: dados,
+				success: function( data )
+				{   
+					
+					$("#salvaFornecedorLista").attr("disabled", true);
+					$("#salvou").fadeIn(500);
+					$("#fechaFornecedorLista").show(1000);
+					$("#empresaFornecedor").html(data);
+				}
+			});
+
+			return false;
+		}
+	});
+});

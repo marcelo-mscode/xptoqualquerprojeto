@@ -1,0 +1,71 @@
+/* @font-face {font-family: OpenSansLight;src: url(../fonts/OpenSans-Light.ttf);}
+@font-face {font-family: OpenSans;src: url(../fonts/OpenSans-Regular.ttf);} */
+
+@font-face {
+    font-family: OpenSansLight;
+    src: url('../fonts/opensans-light-webfont.eot');
+    src: url('../fonts/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-light-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-light-webfont.woff') format('woff'),
+         url('../fonts/opensans-light-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url('../fonts/opensans-regular-webfont.eot');
+    src: url('../fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-regular-webfont.woff') format('woff'),
+         url('../fonts/opensans-regular-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+body{font-family: OpenSans;color: #454246;background: #f1f1f1; /* e4eef2 */ }
+
+
+.tira-padding{padding-left: 0;}
+.tira-padding-top{padding-top: 0 !important}
+.tira-padding-bottom{padding-bottom: 0 !important}
+.tira-margim-top{margin-top: 0 !important}
+.t-p-t{padding: 0}
+.padding-bottom{padding-bottom: 15px !important;}
+.fundo{background: #EFEFEF;padding: 10px 20px;border-radius: 5px;}
+.cor{color: #797979;}	
+.painel{ background: #fff;border-radius: 0px;box-shadow: 0px 0px 0px #ccc;border: 0px solid #ccc;}
+.ajuste-left{margin-left: 15px;padding: 20px;}
+.ajuste{margin-left: 15px !important}
+.breadcrumb{margin-bottom: 5px;background: transparent;}
+.zera-top{margin-top: 0px;}
+.shadow-text{text-shadow: 1px 2px 1px #ccc;}
+.form-group{margin-bottom: 8px;}
+label{font-weight: normal;}
+.font-bold{font-weight: bolder;}
+.input-data{width:110px !important;}
+.input-hora{width:70px !important;}
+
+.input-titulo-imposto{width:325px !important;}
+.input-imposto{width:125px !important;}
+
+
+.navbar-default{background: #fff}
+.table-td-ajuste{padding:5px}
+.table-td-ajuste > tbody > tr >td, .table-td-ajuste > tbody > tr >th  {padding:5px !important;border:1px solid #ccc;border-right:1px solid #ccc; }
+.table-td-ajuste > tbody > tr >th  {font-weight:bold;}
+.table-sem-bold > tbody > tr >td {font-weight: normal;font-size: 14px !important}
+ul:hover > li{cursor:pointer;}
+.divisor{height: 15px;}
+.divisor-fino{height: 8px;}
+
+.desenvolvimento{color: red !important;}
+.glyphicon{top: 4px;}
+.disab{	color:#ccc !important;}
+.display-none{display: none;}

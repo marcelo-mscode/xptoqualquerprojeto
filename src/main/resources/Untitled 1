@@ -1,0 +1,3 @@
+Aplicar Efeito blur em elementos
+
+$('#efeito-blur').css("-webkit-filter","blur(2px)");
