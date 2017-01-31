@@ -412,8 +412,8 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
   
 	 <tr>   
 	    <th class="input-160px">Linha</th>
-	    <th>Fat Loccoss Esse é ooo um teste</th>
-	    <th>Fat Diretosssss</th>
+	    <th>Fat Locco</th>
+	    <th>Fat Direto</th>
 	    <th>Opcional</th>
 	    <th>Informações</th>
 	    <th>Não inclusos no custo</th>
@@ -456,7 +456,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
     				</c:when>
 					<c:when test="${grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer != null ||
 									grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria != 1}">
-				         			<td style="border-left: 2px solid #f1c40f;border-left: 2px solid #f1c40f;">
+				         			<td style="border-left: 2px solid #f1c40f;">
     				</c:when>
 
 					<c:when test="${grupo.incideAdministracao == false && grupo.feeReduzido == false && grupo.grupoCategoriaBayer == null ||
@@ -476,6 +476,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 									grupo.feeReduzido == true && grupo.grupoCategoriaBayer.idGrupoCategoria != 1}">
 				        			<td style="border-right: 2px solid #3498db;border-left: 2px solid #f1c40f;">
 				    </c:when>
+				    
 			    </c:choose>
 
 					   <a name="ancoraGrupo${grupo.idgrupo}"></a>
@@ -625,7 +626,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
           <div class="col-md-7 categoriaEmpresasLista">
           	<span>CATEGORIAS GALDERMA</span>
               <div class="checkbox col-md-offset-1 tira-padding" style="margin: 8px 0;">
-                <select name="idgrupoCategoriaBayerTransiente" class="form-control">
+                <select name="idCategoriaGaldermaTransiente" class="form-control">
                 	<c:forEach items="${categoriasGalderma}" var="galderma">
 	                	<option value="${galderma.idCategoriaGalderma}">${galderma.categoria}</option>
                 	</c:forEach>

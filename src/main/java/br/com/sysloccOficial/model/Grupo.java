@@ -47,36 +47,37 @@ public class Grupo {
 	
 // --------- Relacionamentos -------------- //	
 	
+
 	@ManyToOne @JoinColumn(name="idCategoria") private Categoria idCategoria;
 	@OneToMany(mappedBy="idGrupo", fetch = FetchType.EAGER) private List<ProdutoGrupo> produtoGrupo;
 	@ManyToOne @JoinColumn(name="idLista")  private Lista idLista;
 	
 	@OneToOne @JoinColumn(name="categoriaBayer")private GrupoCategoriaBayer grupoCategoriaBayer;
-	@OneToOne @JoinColumn(name="categoriaGalderma")private GrupoCategoriaBayer grupoCategoriaGalderma;
+	@OneToOne @JoinColumn(name="categoriaGalderma")private GrupoCategoriaGalderma grupoCategoriaGalderma;
 	
 	@OneToOne(mappedBy="grupo",cascade = CascadeType.REMOVE)private DeterminaQuantidades determ;
 	@OneToOne(mappedBy="grupo",cascade = CascadeType.REMOVE)private DeterQuantpadrao determPadrao;
 
 // ---------------------------------------- //
+
+	public Integer getIdCategoriaGaldermaTransiente() {
+		return idCategoriaGaldermaTransiente;
+	}
+	
+	public void setIdCategoriaGaldermaTransiente(
+			Integer idCategoriaGaldermaTransiente) {
+		this.idCategoriaGaldermaTransiente = idCategoriaGaldermaTransiente;
+	}
 	
 	public Integer getIdgrupo() {
 		return idgrupo;
 	}
 
-	public Integer getIdCategoriaGaldermaTransiente() {
-		return idCategoriaGaldermaTransiente;
-	}
-
-	public void setIdCategoriaGaldermaTransiente(
-			Integer idCategoriaGaldermaTransiente) {
-		this.idCategoriaGaldermaTransiente = idCategoriaGaldermaTransiente;
-	}
-
-	public GrupoCategoriaBayer getGrupoCategoriaGalderma() {
+	public GrupoCategoriaGalderma getGrupoCategoriaGalderma() {
 		return grupoCategoriaGalderma;
 	}
 
-	public void setGrupoCategoriaGalderma(GrupoCategoriaBayer grupoCategoriaGalderma) {
+	public void setGrupoCategoriaGalderma(GrupoCategoriaGalderma grupoCategoriaGalderma) {
 		this.grupoCategoriaGalderma = grupoCategoriaGalderma;
 	}
 

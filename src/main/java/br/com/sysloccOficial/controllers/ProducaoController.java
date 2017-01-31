@@ -37,6 +37,7 @@ import br.com.sysloccOficial.model.CriacaoLista;
 import br.com.sysloccOficial.model.DetalhesItemProducao;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.GrupoCategoriaBayer;
+import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
 import br.com.sysloccOficial.model.Imposto;
 import br.com.sysloccOficial.model.Job;
 import br.com.sysloccOficial.model.Lista;
@@ -161,6 +162,13 @@ public class ProducaoController {
 			GrupoCategoriaBayer categoriaBayer = manager.getReference(GrupoCategoriaBayer.class, grupo.getIdgrupoCategoriaBayerTransiente());
 			grupo.setGrupoCategoriaBayer(categoriaBayer);
 		}
+
+		if(grupo.getIdCategoriaGaldermaTransiente() == null){
+			
+		}else{
+			GrupoCategoriaGalderma categoriaGalderma = manager.getReference(GrupoCategoriaGalderma.class, grupo.getIdCategoriaGaldermaTransiente());
+			grupo.setGrupoCategoriaGalderma(categoriaGalderma);
+		}
 		
 		Integer idCategoria = categoria.getIdcategoria();
 		
@@ -170,7 +178,6 @@ public class ProducaoController {
 		}else{
 			grupo.setOrdemGrupo(ordem.getOrdemGrupo()+1);
 		}
-		
 		
 		if(grupo.isIncideAdministracao() == true || grupo.isFeeReduzido() == true){
 			grupo.setIncideAdministracao(true);
