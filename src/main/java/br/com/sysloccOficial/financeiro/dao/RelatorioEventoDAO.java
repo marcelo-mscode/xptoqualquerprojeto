@@ -82,19 +82,19 @@ public class RelatorioEventoDAO {
 			String consulta1 ="from Lista where idLista in("+idListas+")";
 			String consulta2 = consulta1.replace("[", "").replace("]", "");
 			
-	//		System.out.println(consulta2);
 			TypedQuery<Lista> q = manager.createQuery(consulta2, Lista.class);
 			
 			return q.getResultList();
 			
 		} catch (Exception e) {
+			System.out.println("Ocorreu um erro em RelatorioEventoDAO, linha 73\nErro: "+e);
 			return null;
 		}
 	}
 
-	public List<RelatorioEventos> relatorioEventoPorMesReferencia(Integer mes){
+	public List<RelatorioEventos> relatorioEventoPorMesReferencia(Integer mes, Integer ano){
 		try {
-			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where mesReferencia="+mes + "order by idRelatorioEvento", RelatorioEventos.class);
+			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where mesReferencia="+mes + " and anoEvento ="+ ano+"order by idRelatorioEvento", RelatorioEventos.class);
 			return q.getResultList();
 		} catch (Exception e) {
 			System.out.println("Ocorreu um erro Em RelatorioEventoDAO\nMétodo -- > relatorioEventoPorMesReferencia:" +e);

@@ -20,10 +20,10 @@ public class ResumoMesIndividualController {
 	
 
 	@RequestMapping("resumoMesIndividual")
-	public ModelAndView resumoMesIndex(){
+	public ModelAndView resumoMesIndex(Integer mes, Integer ano){
 		ModelAndView MV = new ModelAndView("financeiro/resumoMes/individual/resumoMesIndividual");
 		
-		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(5);
+		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(mes,ano);
 		List<Lista> infoLista = relatorioEventoDAO.relatorioListasIdLista(infoEvento);
 		
 		MV.addObject("infoEvento", infoEvento);
