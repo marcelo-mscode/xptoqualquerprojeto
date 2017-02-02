@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import br.com.sysloccOficial.ListaProducao.DeterminaQuantidade.dao.BuscaQualquerQuantidadeDeterminantePadrao;
 import br.com.sysloccOficial.ListaProducao.DeterminaQuantidade.dao.DeterminaQuantidadesDAO;
+import br.com.sysloccOficial.ListaProducao.Excel.Galderma.MontaGruposCategoriasGalderma;
 import br.com.sysloccOficial.calculosProducao.CalculaValoresProdutoGrupo;
 import br.com.sysloccOficial.consultas.consultasAvancadas.ConsultasPassaSql;
 import br.com.sysloccOficial.controller.notificacao.ControllerNotificao;
@@ -83,6 +84,7 @@ AbstractAnnotationConfigDispatcherServletInitializer {
 							   DeterminaQuantidadesDAO.class,
 							   RelatorioCaches.class,
 							   BuscaQualquerQuantidadeDeterminantePadrao.class,
+							   MontaGruposCategoriasGalderma.class,
 							   ConsultasPassaSql.class};
 		}
 		@Override

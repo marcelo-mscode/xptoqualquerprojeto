@@ -1,36 +1,61 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+import javax.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
-import br.com.sysloccOficial.controllerExcel.AuxExcelSQL;
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.model.Grupo;
 
 @Service
 public class AuxCarregaGrupos {
 	
-	@Autowired private static AuxExcelSQL sql;
 	@Autowired private ProdutoGrupoDAO produtoGrupoDAO;
 	@PersistenceContext	private EntityManager manager;
 	
 	
-	public static List<Grupo> listaGruposNAOOpcionais(Integer idLista){
-		List<Grupo> listaGrupos = sql.retornaGruposGalderma(idLista);
+	public List<Grupo> listaGruposNAOOpcionais(Integer idLista){
+		List<Grupo> listaGrupos = retornaGruposGalderma(idLista);
 		return listaGrupos;
 	}
-
-	public static List<Grupo> listaGruposOpcionais(Integer idLista){
-		List<Grupo> listaGrupos = sql.retornaGruposOpcionaisGalderma(idLista);
+	public List<Grupo> listaGruposOpcionais(Integer idLista){
+		List<Grupo> listaGrupos = retornaGruposOpcionais(idLista);
 		return listaGrupos;
 	}
 	
+	/**
+	 * Método para retornar uma lista de Grupos de acordo com o idLista da Lista
+	 * não Opcionais
+	 */
+	public List<Grupo> retornaGruposGalderma(Integer idLista){
+		
+		try {
+			TypedQuery<Grupo> grupos = manager.createQuery(
+					"from Grupo g where idLista ="+idLista+" and opcional = 0 and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by g.ordemGrupo", Grupo.class);
+			List<Grupo> grupo = grupos.getResultList();
+			
+			for (int i = 0; i < grupo.size(); i++) {
+				System.out.println(grupo.get(i).getCategoria());
+			}
+			
+			return grupos.getResultList();
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+	
+	/**
+	 * Método para retornar uma lista de Grupos de acordo com o idLista da Lista
+	 * ------> Opcionais
+	 */
+	public List<Grupo> retornaGruposOpcionais(Integer idLista){
+		TypedQuery<Grupo> grupos = manager.createQuery(
+				"from Grupo where idLista ="+idLista+" and opcional = 1 and categoriaGalderma > 1 order by ordemGrupo", Grupo.class);
+		return grupos.getResultList();
+	}
 	
 	
 

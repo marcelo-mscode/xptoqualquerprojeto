@@ -26,31 +26,28 @@ public class MontaGruposCategoriasGalderma{
 	@PersistenceContext	private EntityManager manager;
 	@Autowired private static AuxExcelSQL sql;
 	@Autowired private ProdutoGrupoDAO produtoGrupoDAO;
+	@Autowired private AuxCarregaGrupos montaGrupos;
 	
 	
-	public static List<Grupo> listaGruposNAOOpcionais(Integer idLista){
-		List<Grupo> listaGrupos = sql.retornaGruposGalderma(idLista);
-		
-		
-		System.out.println("aqui");
-		
+	public List<Grupo> listaGruposNAOOpcionais(Integer idLista){
+		List<Grupo> listaGrupos = montaGrupos.listaGruposNAOOpcionais(2424);;
 		return listaGrupos;
 	}
 
-	public static List<Grupo> listaGruposOpcionais(Integer idLista){
+	public List<Grupo> listaGruposOpcionais(Integer idLista){
 		List<Grupo> listaGrupos = sql.retornaGruposOpcionaisGalderma(idLista);
 		return listaGrupos;
 	}
 	
-	public List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel(Integer idLista, boolean opcionais){
+	public List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel(List<Grupo> listaGrupos){
 		
-		List<Grupo> listaGrupos = null;
+		/*List<Grupo> listaGrupos = null;
 		
 		if(opcionais == false){
 			listaGrupos = listaGruposNAOOpcionais(idLista);
 		}else{
 			listaGrupos = listaGruposOpcionais(idLista);
-		}
+		}*/
 		
 		List<CorpoGrupoCategoriaGalderma> corpoGrupos = new ArrayList<CorpoGrupoCategoriaGalderma>();
 		

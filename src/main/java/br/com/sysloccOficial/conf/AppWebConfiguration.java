@@ -26,6 +26,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import br.com.sysloccOficial.ListaProducao.DeterminaQuantidade.dao.BuscaQualquerQuantidadeDeterminantePadrao;
 import br.com.sysloccOficial.ListaProducao.DeterminaQuantidade.dao.BuscaQuantidadeDeterminante;
 import br.com.sysloccOficial.ListaProducao.Excel.ExcelNovoBayerController;
+import br.com.sysloccOficial.ListaProducao.Excel.Galderma.ExcelGaldermaController;
 import br.com.sysloccOficial.ListaProducao.calcula.grupos.AtualizaGruposController;
 import br.com.sysloccOficial.ListaProducao.calcula.grupos.dao.ListaProducaoGrupoDAO;
 import br.com.sysloccOficial.consultas.Consulta;
@@ -114,6 +115,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          RelatorioEventoIndividualApoio.class,
 								          GeraExcelListagem.class,
 								          ExcelNovoBayerController.class,
+								          ExcelGaldermaController.class,
 								          EmpresaExcelController.class,
 								          CalculaCachesSemTelefone.class,
 								          CachePadraoController.class,
