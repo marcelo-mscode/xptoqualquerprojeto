@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,7 @@ public class MontaGruposCategoriasGalderma{
 			if(listaGrupos.get(i).getProdutoGrupo().size() == 0){
 				
 			}else{
+				
 				
 				BigDecimal zero = new BigDecimal("0.00");
 				BigDecimal comImposto = new BigDecimal("0.00");
@@ -133,30 +135,71 @@ public class MontaGruposCategoriasGalderma{
 
 	private BigDecimal pegaOrcamentos(List<Grupo> listaGrupos, int i,int imposto,double qtdFinal) {
 		BigDecimal orcamento;
+		BigDecimal nulo = null; 
+
 		try {
-			String consultaComImposto = "select idProdutoGrupo FROM ProdutoGrupo where idGrupo = "+listaGrupos.get(i).getIdgrupo()+" and imposto = "+imposto;
-			String cc = consultaComImposto.replace("[", "").replace("]", "");
 			
-			TypedQuery<Integer> idProd = manager.createQuery(cc,Integer.class);
-			List<Integer> idsProdutoGrupos = idProd.getResultList();
+			List<Integer> idsProdutoGrupos = pegaidsProdutoGrupos(listaGrupos, i, imposto);
 			
-			String consultaOrcamComImposto = "select sum(valorOrcamento) FROM OrcamentoFornecedor where produto in("+idsProdutoGrupos+")";
-			String ccs = consultaOrcamComImposto.replace("[", "").replace("]", "");
-			TypedQuery<BigDecimal> vOrcComImpot = manager.createQuery(ccs, BigDecimal.class);
-			orcamento = vOrcComImpot.getSingleResult();
-			
-			orcamento = orcamento.divide(new BigDecimal(qtdFinal),12,RoundingMode.UP);
-			
-			if(orcamento.equals(null)){
-				return new BigDecimal("0");
+			if(idsProdutoGrupos == null || idsProdutoGrupos.isEmpty()){
+				return null;
 			}else{
-				return orcamento;
-				
+				BigDecimal vOrcComImpot = pegaSomaOrcamentosProdutoGrupos(idsProdutoGrupos);
+				if(vOrcComImpot == nulo){
+					return new BigDecimal("0");
+				}else{
+					orcamento = vOrcComImpot;
+					orcamento = orcamento.divide(new BigDecimal(qtdFinal),12,RoundingMode.UP);
+					return orcamento;
+				}
 			}
+		
 		} catch (Exception e) {
 			return new BigDecimal("0.00");
 		}
 	}
+	
+	private List<Integer> pegaidsProdutoGrupos(List<Grupo> listaGrupos,int i,int imposto){
+		
+		try {
+			//Pega id do produto Grupo baseado se tem imposto ou não
+			String consultaComImposto = "select idProdutoGrupo FROM ProdutoGrupo where idGrupo = "+listaGrupos.get(i).getIdgrupo()+" and imposto = "+imposto;
+			String cc = consultaComImposto.replace("[", "").replace("]", "");
+			TypedQuery<Integer> idProd = manager.createQuery(cc,Integer.class);
+			return idProd.getResultList();
+			
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
+	
+	private BigDecimal pegaSomaOrcamentosProdutoGrupos(List<Integer> idsProdutoGrupos){
+		
+		try {
+			//Pega a soma dos orçamentos dos produtos grupos desses orçamento.
+			String consultaOrcamComImposto = "select sum(valorOrcamento) FROM OrcamentoFornecedor where produto in("+idsProdutoGrupos+")";
+			String ccs = consultaOrcamComImposto.replace("[", "").replace("]", "");
+			TypedQuery<BigDecimal> vOrcComImpot = manager.createQuery(ccs, BigDecimal.class);
+			
+			System.out.println(vOrcComImpot.getSingleResult());
+			
+			
+			return vOrcComImpot.getSingleResult();
+			
+		} catch (Exception e) {
+			return null;
+		}
+		
+	
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	private void valoresEmCadaItem(List<Grupo> listaGrupos,
 			List<CorpoGrupoCategoriaGalderma> corpoGrupos, int i, BigDecimal zero,

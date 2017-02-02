@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.sysloccOficial.Excel.BaseGeraExcel;
 import br.com.sysloccOficial.model.Grupo;
+import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
 
 @Component
 public class GeraBaseExcelGalderma {
@@ -35,15 +36,16 @@ public class GeraBaseExcelGalderma {
 		String downloadExcel = base.caminhoDownloadExcel("Galderma","upload/upload/excel/"+"Galderma");
 		
 		
-		List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(2424);
+		List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(2439);
+		List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma();
 	
 		List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
 		
 		
+		GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 01",montaGruposParaExcel,categoriasGalderma);
 		
 		
-	//	GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 01");
-		
+		System.out.println("aqui");
 		
 		
 		

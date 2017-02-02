@@ -12,8 +12,8 @@ public class CorpoCenarioGalderma {
 		
 	}
 		
-	public static void corpoCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario){
-		GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, 20,"HOSPEDAGEM");
+	public static void corpoCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario,String nomeCategoria){
+		GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, 20,nomeCategoria);
 		corpoPlanilhaCenario(excelGalderma, cenario);
 	}	
 	

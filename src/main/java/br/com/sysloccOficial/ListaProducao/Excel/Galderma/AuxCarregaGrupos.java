@@ -1,13 +1,17 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.model.Grupo;
+import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
 
 @Service
 public class AuxCarregaGrupos {
@@ -37,7 +41,7 @@ public class AuxCarregaGrupos {
 			List<Grupo> grupo = grupos.getResultList();
 			
 			for (int i = 0; i < grupo.size(); i++) {
-				System.out.println(grupo.get(i).getCategoria());
+				System.out.println(grupo.get(i).getProdutoGrupo().get(0).getProduto());
 			}
 			
 			return grupos.getResultList();
@@ -54,6 +58,17 @@ public class AuxCarregaGrupos {
 	public List<Grupo> retornaGruposOpcionais(Integer idLista){
 		TypedQuery<Grupo> grupos = manager.createQuery(
 				"from Grupo where idLista ="+idLista+" and opcional = 1 and categoriaGalderma > 1 order by ordemGrupo", Grupo.class);
+		return grupos.getResultList();
+	}
+	
+	/**
+	 * Método que retorna a lista de categorias Cadastradas da Galderma
+	 * 
+	 * @return
+	 */
+	public List<GrupoCategoriaGalderma> categoriasGalderma() {
+		TypedQuery<GrupoCategoriaGalderma> grupos = manager.createQuery(
+				"from GrupoCategoriaGalderma", GrupoCategoriaGalderma.class);
 		return grupos.getResultList();
 	}
 	
