@@ -1,5 +1,7 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
+import java.util.List;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
@@ -12,21 +14,22 @@ public class CorpoCenarioGalderma {
 		
 	}
 		
-	public static void corpoCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario,String nomeCategoria){
-		GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, 20,nomeCategoria);
-		corpoPlanilhaCenario(excelGalderma, cenario);
+	public static void corpoCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario,String nomeCategoria,CorpoGrupoCategoriaGalderma gruposParaExcel){
+		GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, 20,nomeCategoria); // ok
+
+		corpoPlanilhaCenario(excelGalderma, cenario,gruposParaExcel.getInfoGrupo());
 	}	
 	
-	public static void corpoCenarioOpcionais(XSSFWorkbook excelGalderma,XSSFSheet cenario){
-		corpoPlanilhaCenario(excelGalderma, cenario);
+	public static void corpoCenarioOpcionais(XSSFWorkbook excelGalderma,XSSFSheet cenario,String infoGrupo){
+		corpoPlanilhaCenario(excelGalderma, cenario,infoGrupo);
 	}	
 	
-	public static void corpoPlanilhaCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario){
+	public static void corpoPlanilhaCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario,String infoGrupo){
 		
 		//Não precisa mexer mais
 		CorpoCenarioGaldermaTopo.geraTopoEstatico(excelGalderma, cenario, 17);
 		
-		int ultimaLinhaConteudoCategoria =  GeraConteudoCategoriasCenarios.geraConteudoCategorias(excelGalderma, cenario, 21);
+		int ultimaLinhaConteudoCategoria =  GeraConteudoCategoriasCenarios.geraConteudoCategorias(excelGalderma, cenario, 21,infoGrupo);
 		GeraSubTotalCategorias.subTotalCategorias(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1);
 		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+2,"Taxa de Serviço",0,0,ultimaLinhaConteudoCategoria+2,ultimaLinhaConteudoCategoria+3);
 		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+3,"Taxa de ISS",5,5,ultimaLinhaConteudoCategoria+2,ultimaLinhaConteudoCategoria+4);

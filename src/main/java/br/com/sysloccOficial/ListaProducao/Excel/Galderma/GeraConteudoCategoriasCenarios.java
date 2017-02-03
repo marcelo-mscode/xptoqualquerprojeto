@@ -18,7 +18,7 @@ public class GeraConteudoCategoriasCenarios {
 	
 	public static int[] corFundoCelulaPadrao = {255,255,254};
 		
-	public static int geraConteudoCategorias(XSSFWorkbook excel, XSSFSheet cenario,int linhaComeco){
+	public static int geraConteudoCategorias(XSSFWorkbook excel, XSSFSheet cenario,int linhaComeco,String infoCategoria){
 		
 		int[] cor = {255,255,25};
 		
@@ -27,7 +27,7 @@ public class GeraConteudoCategoriasCenarios {
 		XSSFRow linha2 = cenario.createRow(linhaComeco);
 		XSSFCell celulaInfoProduto = linha2.createCell(0);
 		//texto
-		ExcelFormatoCelulaComum.textWrap(excel, celulaInfoProduto, linha2, "Apartamento SGL (incluso café da manhã) - de 13/03/2017 no Hotel", linhaComeco, corFundoCelulaPadrao);
+		ExcelFormatoCelulaComum.textWrap(excel, celulaInfoProduto, linha2, infoCategoria , linhaComeco, corFundoCelulaPadrao);
 		//Diárias
 		ExcelFormatoCelulaComum.numero(excel,linha2, 4, 1, cor);
 		//Qtd

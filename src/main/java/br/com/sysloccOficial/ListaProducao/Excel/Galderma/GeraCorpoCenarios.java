@@ -33,20 +33,27 @@ public class GeraCorpoCenarios {
 		ExcelImagem.InsereImagem(excelGalderma, cenario, "C:/SYSLOC/upload/logoEmpresas/logoExcelAgencia2.png",0.35);
 		GeraCabecalhoExcelGalderma.geraCabecalho(cenario, excelGalderma, nomeAba);
 
+		passaInformacoesCorpoExcel(cenario, excelGalderma, gruposParaExcel, categoriasGalderma);
 		
-		
+		//Não mexer mais
+		GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario);
+	}
+
+	/**
+	 * Método que passa as informações para gerar o corpo do
+	 * Excel com as informações da planilha do cliente
+	 */
+	private static void passaInformacoesCorpoExcel(XSSFSheet cenario, XSSFWorkbook excelGalderma, List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma) {
 		for (int i = 0; i < categoriasGalderma.size(); i++) {
 			System.out.println(categoriasGalderma.get(i).getIdCategoriaGalderma());
 				for (int j = 0; j < gruposParaExcel.size(); j++) {
 					System.out.println(gruposParaExcel.get(j).getIdCategoriaGalderma());
 					if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
-						CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,categoriasGalderma.get(i).getCategoria());
+						CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,categoriasGalderma.get(i).getCategoria(),
+								gruposParaExcel.get(j));
 					}
 				}
 		}
-		
-		//Não mexer mais
-		GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario);
 	}
 	
 	/**
@@ -55,12 +62,12 @@ public class GeraCorpoCenarios {
 	 * @throws FileNotFoundException 
 	 * 
 	 */
-	public static void geraCorpoAbaCenariosOpcionais(XSSFSheet cenario,XSSFWorkbook excelGalderma,String nomeAba) throws FileNotFoundException, IOException{
+	public static void geraCorpoAbaCenariosOpcionais(XSSFSheet cenario,XSSFWorkbook excelGalderma,String nomeAba,String infoGrupo) throws FileNotFoundException, IOException{
 	  cenario = excelGalderma.createSheet(nomeAba); /** Cria Aba Cenarios da planilha */
 	  cenario.setZoom(80);
 	  	ExcelImagem.InsereImagem(excelGalderma, cenario, "C:/SYSLOC/upload/logoEmpresas/logoExcelAgencia2.png",0.35);
 		GeraCabecalhoExcelGalderma.geraCabecalho(cenario, excelGalderma, nomeAba);
-		CorpoCenarioGalderma.corpoCenarioOpcionais(excelGalderma, cenario);
+		CorpoCenarioGalderma.corpoCenarioOpcionais(excelGalderma, cenario,infoGrupo);
 		GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario);
 	}
 }

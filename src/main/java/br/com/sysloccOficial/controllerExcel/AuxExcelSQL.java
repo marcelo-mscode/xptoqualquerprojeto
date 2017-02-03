@@ -84,7 +84,7 @@ public class AuxExcelSQL {
 					"from Grupo where idLista ="+idLista+" and opcional = 0 and categoriaGalderma > 1 order by ordemGrupo", Grupo.class);
 			return grupos.getResultList();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, ""+e);
+			//JOptionPane.showMessageDialog(null, ""+e);
 			return null;
 		}
 	}
@@ -272,7 +272,7 @@ public class AuxExcelSQL {
 			result = bg.getSingleResult();
 			return result;
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Rsuklt: "+e);
+			//JOptionPane.showMessageDialog(null, "Rsuklt: "+e);
 			return result;
 		}
 	}

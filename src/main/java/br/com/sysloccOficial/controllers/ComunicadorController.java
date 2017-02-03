@@ -100,7 +100,7 @@ public class ComunicadorController {
 	@RequestMapping("/editaCelulaComunicadorEditar")
 	public ModelAndView editaComunicador(Integer idComunicador,	String comunicador, Integer idContato) {
 
-		JOptionPane.showMessageDialog(null, "Editando Celula");
+		//JOptionPane.showMessageDialog(null, "Editando Celula");
 		
 		Comunicador c = manager.find(Comunicador.class, idComunicador);
 		c.setComunicador(comunicador);

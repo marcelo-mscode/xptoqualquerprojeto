@@ -43,7 +43,7 @@ public class ExcelImagem {
 
 	    //auto-size picture relative to its top-left corner
 	    pict.resize(tamanhoImagem);
-	    JOptionPane.showMessageDialog(null, ""+tamanhoImagem);
+	    //JOptionPane.showMessageDialog(null, ""+tamanhoImagem);
 	   /* pict.resize(0.67);*/
 	}
 	

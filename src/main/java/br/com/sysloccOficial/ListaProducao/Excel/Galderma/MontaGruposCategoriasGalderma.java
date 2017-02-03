@@ -193,13 +193,6 @@ public class MontaGruposCategoriasGalderma{
 		
 	
 	}
-	
-	
-	
-	
-	
-	
-	
 
 	private void valoresEmCadaItem(List<Grupo> listaGrupos,
 			List<CorpoGrupoCategoriaGalderma> corpoGrupos, int i, BigDecimal zero,
@@ -230,7 +223,7 @@ public class MontaGruposCategoriasGalderma{
 			if(listaGrupos.get(i).getGrupoCategoriaGalderma().getIdCategoriaGalderma() < 1){
 				corpoGrupoGalderma.setIdCategoriaGalderma(1);
 			}else{
-				corpoGrupoGalderma.setIdCategoriaGalderma(listaGrupos.get(i).getGrupoCategoriaBayer().getIdGrupoCategoria());
+				corpoGrupoGalderma.setIdCategoriaGalderma(listaGrupos.get(i).getGrupoCategoriaGalderma().getIdCategoriaGalderma());
 			}
 			
 			corpoGrupoGalderma.setIdGrupo(listaGrupos.get(i).getIdgrupo());
