@@ -45,10 +45,6 @@ public class GeraBaseExcelGalderma {
 		GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 01",montaGruposParaExcel,categoriasGalderma);
 		
 		
-		System.out.println("aqui");
-		
-		
-		
 		
 		//GeraCorpoConsolidado.geraCorpoAbaConsolidado(consolidado, excelGalderma,"Consolidado");
 

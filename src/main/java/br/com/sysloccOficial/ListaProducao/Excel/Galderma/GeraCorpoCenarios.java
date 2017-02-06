@@ -45,9 +45,7 @@ public class GeraCorpoCenarios {
 	 */
 	private static void passaInformacoesCorpoExcel(XSSFSheet cenario, XSSFWorkbook excelGalderma, List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma) {
 		for (int i = 0; i < categoriasGalderma.size(); i++) {
-			System.out.println(categoriasGalderma.get(i).getIdCategoriaGalderma());
 				for (int j = 0; j < gruposParaExcel.size(); j++) {
-					System.out.println(gruposParaExcel.get(j).getIdCategoriaGalderma());
 					if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
 						CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,categoriasGalderma.get(i).getCategoria(),
 								gruposParaExcel.get(j));
