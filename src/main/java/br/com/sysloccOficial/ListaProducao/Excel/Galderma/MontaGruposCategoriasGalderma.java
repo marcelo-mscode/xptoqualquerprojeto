@@ -182,9 +182,6 @@ public class MontaGruposCategoriasGalderma{
 			String ccs = consultaOrcamComImposto.replace("[", "").replace("]", "");
 			TypedQuery<BigDecimal> vOrcComImpot = manager.createQuery(ccs, BigDecimal.class);
 			
-			System.out.println(vOrcComImpot.getSingleResult());
-			
-			
 			return vOrcComImpot.getSingleResult();
 			
 		} catch (Exception e) {
@@ -205,8 +202,6 @@ public class MontaGruposCategoriasGalderma{
 		
 		BigDecimal precoImpostoPorquantidade = comImpostoUnico; 
 		BigDecimal precoImpostoFinal = precoImpostoPorquantidade.divide(quantFinal ,12,RoundingMode.UP); 
-		
-	
 		
 		BigDecimal precoSemImpostoPorquantidade = semImpostoUnico; 
 		BigDecimal precoSemImpostoFinal = precoSemImpostoPorquantidade.divide(quantFinal ,12,RoundingMode.UP); 

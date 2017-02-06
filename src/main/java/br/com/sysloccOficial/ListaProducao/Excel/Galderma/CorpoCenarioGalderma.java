@@ -1,5 +1,7 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
+import java.math.BigDecimal;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
@@ -12,34 +14,39 @@ public class CorpoCenarioGalderma {
 		
 	}
 		
-	public static void corpoCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario,String nomeCategoria,CorpoGrupoCategoriaGalderma gruposParaExcel){
-		GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, 20,nomeCategoria); // ok
-
-		corpoPlanilhaCenario(excelGalderma, cenario,gruposParaExcel.getInfoGrupo());
+	public static void corpoCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario,int linhaInfoGrupos,CorpoGrupoCategoriaGalderma gruposParaExcel){
+		
+		corpoPlanilhaCenario(excelGalderma, cenario, linhaInfoGrupos ,gruposParaExcel.getInfoGrupo(),gruposParaExcel.getDiaria(),gruposParaExcel.getQuantidade(),gruposParaExcel.getPrecoItem(),gruposParaExcel.getOrcamento());
 	}	
 	
-	public static void corpoCenarioOpcionais(XSSFWorkbook excelGalderma,XSSFSheet cenario,String infoGrupo){
-		corpoPlanilhaCenario(excelGalderma, cenario,infoGrupo);
+	public static void corpoCenarioOpcionais(XSSFWorkbook excelGalderma,XSSFSheet cenario,String infoGrupo,int diarias, int quantidade,BigDecimal valorUnitInicial,BigDecimal vlorUnitNegociado){
+		corpoPlanilhaCenario(excelGalderma, cenario, 21,infoGrupo,diarias,quantidade,valorUnitInicial,vlorUnitNegociado);
 	}	
 	
-	public static void corpoPlanilhaCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario,String infoGrupo){
+	public static void corpoPlanilhaCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario,int linhaInfoGrupos ,String infoGrupo,double diarias, double quantidade,BigDecimal valorUnitInicial,BigDecimal vlorUnitNegociado){
 		
-		//Não precisa mexer mais
-		CorpoCenarioGaldermaTopo.geraTopoEstatico(excelGalderma, cenario, 17);
 		
-		int ultimaLinhaConteudoCategoria =  GeraConteudoCategoriasCenarios.geraConteudoCategorias(excelGalderma, cenario, 21,infoGrupo);
-		GeraSubTotalCategorias.subTotalCategorias(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1);
+		System.out.println(linhaInfoGrupos);
+		
+		/**
+		 * Aqui vai as quantidades e valores
+		 */
+		int ultimaLinhaConteudoCategoria =  GeraConteudoCategoriasCenarios.geraConteudoCategorias(excelGalderma, cenario, linhaInfoGrupos,infoGrupo,diarias,quantidade,valorUnitInicial,vlorUnitNegociado);
+		
+		
+		/*GeraSubTotalCategorias.subTotalCategorias(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1);
 		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+2,"Taxa de Serviço",0,0,ultimaLinhaConteudoCategoria+2,ultimaLinhaConteudoCategoria+3);
 		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+3,"Taxa de ISS",5,5,ultimaLinhaConteudoCategoria+2,ultimaLinhaConteudoCategoria+4);
 		CalculoSubtotalServico.totalDeServico(excelGalderma,cenario, ultimaLinhaConteudoCategoria+4, 0);	
 
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 24, "Subtotal Geral",new int[]{0,176,240});
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 25, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219});
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 26, "Investimento - Serviços Agência",new int[]{219,219,219});
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 27, "FEE Agência",new int[]{219,219,219},5.2);
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 28, "Impostos Emissão NF - Serviços Agência",new int[]{219,219,219},22.9);
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 29, "TOTAL PREVISTO",new int[]{0,176,240});
-//		CalculoRodapeCenario.textoRodape(excelGalderma, cenario, 31, "Observações: *Check-in a partir das 12H00 - Checkout até 12H00\nOs valores apresentados são válidos exclusivamente para o grupo e período em referência\nForma de pagamento: Faturamento para 60 dias, exceto Hotel e Bar do Alemão 30 dias.");	
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 28, "Subtotal Geral",new int[]{0,176,240});
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 29, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219});
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 30, "Investimento - Serviços Agência",new int[]{219,219,219});
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 31, "FEE Agência",new int[]{219,219,219},5.2);
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 32, "Impostos Emissão NF - Serviços Agência",new int[]{219,219,219},22.9);
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 33, "TOTAL PREVISTO",new int[]{0,176,240});*/
+		
+		
 	}
 	
 	

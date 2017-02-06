@@ -2,7 +2,10 @@ package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -33,6 +36,11 @@ public class GeraCorpoCenarios {
 		ExcelImagem.InsereImagem(excelGalderma, cenario, "C:/SYSLOC/upload/logoEmpresas/logoExcelAgencia2.png",0.35);
 		GeraCabecalhoExcelGalderma.geraCabecalho(cenario, excelGalderma, nomeAba);
 
+		
+		//Não precisa mexer mais
+		CorpoCenarioGaldermaTopo.geraTopoEstatico(excelGalderma, cenario, 17);
+		
+		
 		passaInformacoesCorpoExcel(cenario, excelGalderma, gruposParaExcel, categoriasGalderma);
 		
 		//Não mexer mais
@@ -40,18 +48,45 @@ public class GeraCorpoCenarios {
 	}
 
 	/**
+	 * Separa por Categoria 
+	 * 
 	 * Método que passa as informações para gerar o corpo do
 	 * Excel com as informações da planilha do cliente
+	 * Info de quantidade, diaria, valor unitario inicial, negociado
 	 */
 	private static void passaInformacoesCorpoExcel(XSSFSheet cenario, XSSFWorkbook excelGalderma, List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma) {
+		
+		int linhaComecoCategorias = 20;
+		int linhaComecoInfoCategorias = 20;
+		int qtdInfoGrupo = 0;
+		
 		for (int i = 0; i < categoriasGalderma.size(); i++) {
-				for (int j = 0; j < gruposParaExcel.size(); j++) {
-					if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
-						CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,categoriasGalderma.get(i).getCategoria(),
-								gruposParaExcel.get(j));
-					}
+			
+			
+			
+			
+			for (int j = 0; j < gruposParaExcel.size(); j++) {
+				if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
+					linhaComecoInfoCategorias=linhaComecoInfoCategorias+1;
+					GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, linhaComecoCategorias + qtdInfoGrupo,categoriasGalderma.get(i).getCategoria()); // ok
+					qtdInfoGrupo = 0;
 				}
+			}
+			    
+			for (int j = 0; j < gruposParaExcel.size(); j++) {
+				if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
+					//Chama método para gerar o corpo
+					CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j));
+					linhaComecoInfoCategorias=linhaComecoInfoCategorias+1;
+					
+					linhaComecoCategorias = linhaComecoCategorias+1;
+					qtdInfoGrupo = qtdInfoGrupo + 1;
+				}
+			}
+			
+			
 		}
+		System.out.println(""+linhaComecoInfoCategorias);
 	}
 	
 	/**
@@ -65,7 +100,7 @@ public class GeraCorpoCenarios {
 	  cenario.setZoom(80);
 	  	ExcelImagem.InsereImagem(excelGalderma, cenario, "C:/SYSLOC/upload/logoEmpresas/logoExcelAgencia2.png",0.35);
 		GeraCabecalhoExcelGalderma.geraCabecalho(cenario, excelGalderma, nomeAba);
-		CorpoCenarioGalderma.corpoCenarioOpcionais(excelGalderma, cenario,infoGrupo);
+		CorpoCenarioGalderma.corpoCenarioOpcionais(excelGalderma, cenario,infoGrupo,250,450, new BigDecimal("3596.00"), new BigDecimal("3596.00"));
 		GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario);
 	}
 }
