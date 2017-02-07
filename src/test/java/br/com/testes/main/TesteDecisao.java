@@ -17,13 +17,17 @@ public class TesteDecisao {
 		  public static void teste(){
 			  
 			String nome = "Calculadora";
-			int idade = 15; 
-			int idade2 = 15; 
+			int quantidade = 1; 
+			int unidade = 1; 
+			int diaria = 3; 
+			int valor = 360;
+			
+			
 			int resultado;
 			
 			System.out.println("Iniciando a "+nome);
 			
-			resultado = idade - idade2;
+			resultado = quantidade * unidade * diaria * valor;
 
 			JOptionPane.showMessageDialog(null, "O resultado é: "+resultado);
 			  
