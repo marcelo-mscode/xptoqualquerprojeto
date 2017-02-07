@@ -4,13 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
-
-import javax.swing.JOptionPane;
-
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
-
 import br.com.sysloccOficial.Excel.ExcelImagem;
 import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
 
