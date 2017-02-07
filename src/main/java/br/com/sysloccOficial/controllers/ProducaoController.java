@@ -64,10 +64,7 @@ public class ProducaoController {
 	@Autowired private CriacaoDAO criacaoDAO;
 	@Autowired private CalculaValoresProdutoGrupo calculaValores;
 	
-	
-	
 	@PersistenceContext	private EntityManager manager;
-	
 	
 // ----------------------------------------------------- Inserções --------------------------------------------------------------------------------- //
 	
@@ -120,11 +117,8 @@ public class ProducaoController {
 		return MV;
 	}
 	
-	
-	
 	@RequestMapping("/salvaCategoria")
 	public String salvaCategoria(Categoria categoria){
-		
 		
 		Lista lista = manager.find(Lista.class, categoria.getIdListaTransiente());
 		Imposto imposto = manager.find(Imposto.class, categoria.getIdImpostoTrasiente());
@@ -722,8 +716,8 @@ public class ProducaoController {
  	             }
 	}
     
-    
     @RequestMapping("/copiaLista")
+    @CacheEvict(value="listaProducao", allEntries=true)
     public ModelAndView copiaLista(Integer idListaParaCopiar,String tituloLista, Integer selectJobsEmpresa){
     	
     	ModelAndView MV = new ModelAndView();
@@ -814,9 +808,5 @@ public class ProducaoController {
 		}
 	return MV;
 	}
-    
-    
-			
-			
 	
 }
