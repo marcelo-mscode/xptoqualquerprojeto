@@ -575,7 +575,6 @@ public class ProducaoController {
         bvValorFinal = util.ConverteDolarParaReal(bvValorFinal);
         detalhes.setBvValor(bvValorFinal);
         
-        
         // Converte quantidade decimal String ( 10,2 ex ) para double 
         double testeQtd1= Double.parseDouble(utilConv.converterVirgulaParaPonto(qtd1));
         double testeQtd2= Double.parseDouble(utilConv.converterVirgulaParaPonto(qtd2));
