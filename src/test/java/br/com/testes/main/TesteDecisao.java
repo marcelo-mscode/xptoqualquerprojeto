@@ -1,5 +1,7 @@
 package br.com.testes.main;
 
+import javax.swing.JOptionPane;
+
 public class TesteDecisao {
 	
 	
@@ -14,11 +16,16 @@ public class TesteDecisao {
 		  
 		  public static void teste(){
 			  
-			  if(7 > 15  ){
-				  System.out.println("É maior");
-			  }else{
-				  System.out.println("É menor");
-			  }
+			String nome = "Calculadora";
+			int idade = 15; 
+			int idade2 = 15; 
+			int resultado;
+			
+			System.out.println("Iniciando a "+nome);
+			
+			resultado = idade - idade2;
+
+			JOptionPane.showMessageDialog(null, "O resultado é: "+resultado);
 			  
 		  }
 		  
