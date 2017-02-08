@@ -77,6 +77,11 @@ public class GeraCorpoCenarios {
 					
 					linhaComecoCategorias = linhaComecoCategorias+1;
 					qtdInfoGrupo = qtdInfoGrupo + 1;
+					
+					
+					
+					
+					
 				}
 			}
 			
