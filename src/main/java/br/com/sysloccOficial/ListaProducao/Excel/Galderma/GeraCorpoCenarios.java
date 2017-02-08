@@ -68,8 +68,23 @@ public class GeraCorpoCenarios {
 					qtdInfoGrupo = 0;
 				}
 			}
-			    
+			
+			while (categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()) {
+				CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j));
+				linhaComecoInfoCategorias=linhaComecoInfoCategorias+1;
+				linhaComecoCategorias = linhaComecoCategorias+1;
+				qtdInfoGrupo = qtdInfoGrupo + 1;
+				
+			}
+			
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
+				if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
+					//Chama método para gerar o corpo
+					
+				}
+			}
+
+			/*			for (int j = 0; j < gruposParaExcel.size(); j++) {
 				if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
 					//Chama método para gerar o corpo
 					CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j));
@@ -78,13 +93,9 @@ public class GeraCorpoCenarios {
 					linhaComecoCategorias = linhaComecoCategorias+1;
 					qtdInfoGrupo = qtdInfoGrupo + 1;
 					
-					
-					
-					
-					
 				}
 			}
-			
+*/			
 			
 		}
 		System.out.println(""+linhaComecoInfoCategorias);
