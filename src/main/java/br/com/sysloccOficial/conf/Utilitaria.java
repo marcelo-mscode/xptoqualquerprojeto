@@ -724,5 +724,10 @@ public Integer novoCodJob(){
 		return c2;
 	}
 	
+	public static String limpaSqlComListStastico(String consulta){
+		String c2 = consulta.replace("[", "").replace("]", "");
+		return c2;
+	}
+	
 	
 }

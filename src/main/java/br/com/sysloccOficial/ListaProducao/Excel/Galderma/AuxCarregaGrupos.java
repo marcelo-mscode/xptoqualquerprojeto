@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
@@ -74,18 +75,9 @@ public class AuxCarregaGrupos {
 				"SELECT distinct(g.grupoCategoriaGalderma.idCategoriaGalderma) FROM Grupo g where idlista= "+idLista+" and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by categoriaGalderma", Integer.class);
 		List<Integer> gruposIdsGalderma = gruposIds.getResultList();
 		
-		TypedQuery<GrupoCategoriaGalderma> grupos = manager.createQuery(
-				"from GrupoCategoriaGalderma where idCategoriaGalderma in ("+gruposIdsGalderma+")", GrupoCategoriaGalderma.class);
+		String consulta =  Utilitaria.limpaSqlComListStastico("from GrupoCategoriaGalderma where idCategoriaGalderma in ("+gruposIdsGalderma+")");
 		
-		
-		List<GrupoCategoriaGalderma> gruposs = grupos.getResultList();
-		
-		for (GrupoCategoriaGalderma grupoCategoriaGalderma : gruposs) {
-			System.out.println(grupoCategoriaGalderma.getCategoria());
-		}
-		
-		
-		
+		TypedQuery<GrupoCategoriaGalderma> grupos = manager.createQuery(consulta, GrupoCategoriaGalderma.class);
 		
 		return grupos.getResultList();
 	}
