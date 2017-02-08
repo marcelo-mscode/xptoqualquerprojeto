@@ -37,7 +37,7 @@ public class GeraBaseExcelGalderma {
 		
 		
 		List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(2439);
-		List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma();
+		List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(2439);
 	
 		List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
 		

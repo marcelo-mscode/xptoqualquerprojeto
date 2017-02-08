@@ -67,9 +67,26 @@ public class AuxCarregaGrupos {
 	 * 
 	 * @return
 	 */
-	public List<GrupoCategoriaGalderma> categoriasGalderma() {
+	public List<GrupoCategoriaGalderma> categoriasGalderma(Integer idLista) {
+		
+		
+		TypedQuery<Integer> gruposIds = manager.createQuery(
+				"SELECT distinct(g.grupoCategoriaGalderma.idCategoriaGalderma) FROM Grupo g where idlista= "+idLista+" and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by categoriaGalderma", Integer.class);
+		List<Integer> gruposIdsGalderma = gruposIds.getResultList();
+		
 		TypedQuery<GrupoCategoriaGalderma> grupos = manager.createQuery(
-				"from GrupoCategoriaGalderma", GrupoCategoriaGalderma.class);
+				"from GrupoCategoriaGalderma where idCategoriaGalderma in ("+gruposIdsGalderma+")", GrupoCategoriaGalderma.class);
+		
+		
+		List<GrupoCategoriaGalderma> gruposs = grupos.getResultList();
+		
+		for (GrupoCategoriaGalderma grupoCategoriaGalderma : gruposs) {
+			System.out.println(grupoCategoriaGalderma.getCategoria());
+		}
+		
+		
+		
+		
 		return grupos.getResultList();
 	}
 	
