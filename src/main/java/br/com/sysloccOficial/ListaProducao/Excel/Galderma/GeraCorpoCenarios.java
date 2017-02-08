@@ -59,7 +59,7 @@ public class GeraCorpoCenarios {
 		for (int i = 0; i < categoriasGalderma.size(); i++) {
 			
 			GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, linhaComecoCategorias + qtdInfoGrupo,categoriasGalderma.get(i).getCategoria()); // ok
-			
+			linhaComecoCategorias = linhaComecoCategorias+1;
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
 						if(categoriasGalderma.get(i).getIdCategoriaGalderma().equals(gruposParaExcel.get(j).getIdCategoriaGalderma())){
 					    //Chama método para gerar o corpo
