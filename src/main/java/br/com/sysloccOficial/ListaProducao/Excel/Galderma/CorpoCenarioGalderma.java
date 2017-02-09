@@ -26,7 +26,6 @@ public class CorpoCenarioGalderma {
 	public static void corpoPlanilhaCenario(XSSFWorkbook excelGalderma,XSSFSheet cenario,int linhaInfoGrupos ,String infoGrupo,double diarias, double quantidade,BigDecimal valorUnitInicial,BigDecimal vlorUnitNegociado){
 		
 		
-		System.out.println(linhaInfoGrupos);
 		
 		/**
 		 * Aqui vai as quantidades e valores

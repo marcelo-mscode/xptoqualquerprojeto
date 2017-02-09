@@ -52,27 +52,30 @@ public class GeraCorpoCenarios {
 	 */
 	private static void passaInformacoesCorpoExcel(XSSFSheet cenario, XSSFWorkbook excelGalderma, List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma) {
 		
-		int linhaComecoCategorias = 20;
+		int linhaComecoCategorias = 19;
 		int linhaComecoInfoCategorias = 21;
 		int qtdInfoGrupo = 0;
 		
 		for (int i = 0; i < categoriasGalderma.size(); i++) {
 			
-			GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, linhaComecoCategorias + qtdInfoGrupo,categoriasGalderma.get(i).getCategoria()); // ok
 			
 			linhaComecoCategorias = linhaComecoCategorias+1;
+
+			GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, linhaComecoCategorias + qtdInfoGrupo,categoriasGalderma.get(i).getCategoria()); // ok
+			
+			System.out.println(linhaComecoCategorias + qtdInfoGrupo);
 		
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
-						if(categoriasGalderma.get(i).getIdCategoriaGalderma().equals(gruposParaExcel.get(j).getIdCategoriaGalderma())){
+						if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
 					    //Chama método para gerar o corpo
 						CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j));
-						linhaComecoInfoCategorias=linhaComecoInfoCategorias+1;
-
+						linhaComecoInfoCategorias=qtdInfoGrupo;
+						
 						qtdInfoGrupo = qtdInfoGrupo + 1;
 					}
+						//System.out.println(""+qtdInfoGrupo);
 			}
 		}
-		//System.out.println(""+linhaComecoInfoCategorias);
 	}
 	
 	/**
