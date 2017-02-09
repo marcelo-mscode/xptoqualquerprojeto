@@ -67,6 +67,7 @@ public class GeraCorpoCenarios {
 					    //Chama método para gerar o corpo
 						CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j));
 						linhaComecoInfoCategorias=linhaComecoInfoCategorias+1;
+
 						qtdInfoGrupo = qtdInfoGrupo + 1;
 					}
 			}
