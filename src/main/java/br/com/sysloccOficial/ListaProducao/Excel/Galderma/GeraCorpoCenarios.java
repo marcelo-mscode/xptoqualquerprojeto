@@ -57,6 +57,7 @@ public class GeraCorpoCenarios {
 
 
 		int qtdInfoGrupo = 0;
+		int qtdInfoGrupo2 = 0;
 		
 		for (int i = 0; i < categoriasGalderma.size(); i++) {
 			
@@ -73,8 +74,9 @@ public class GeraCorpoCenarios {
 						linhaComecoInfoCategorias=linhaComecoInfoCategorias+qtdInfoGrupo;
 						CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j));
 						
-						qtdInfoGrupo = qtdInfoGrupo + 1;
 					}
+						qtdInfoGrupo = qtdInfoGrupo + 1;
+						qtdInfoGrupo2 = qtdInfoGrupo + 1;
 						//System.out.println(""+qtdInfoGrupo);
 			}
 		}
