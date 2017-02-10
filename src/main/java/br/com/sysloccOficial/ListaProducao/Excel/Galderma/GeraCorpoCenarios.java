@@ -52,33 +52,39 @@ public class GeraCorpoCenarios {
 	 */
 	private static void passaInformacoesCorpoExcel(XSSFSheet cenario, XSSFWorkbook excelGalderma, List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma) {
 		
-		int linhaComecoCategorias = 19;
+		int linhaComecoCategorias = 20;
 		int linhaComecoInfoCategorias = 21;
 
 
 		int qtdInfoGrupo = 0;
 		int qtdInfoGrupo2 = 0;
+		int qtdInfoGrupo3 = 0;
 		
 		for (int i = 0; i < categoriasGalderma.size(); i++) {
 			
 			
-			linhaComecoCategorias = linhaComecoCategorias+1;
-
-			GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, linhaComecoCategorias + qtdInfoGrupo,categoriasGalderma.get(i).getCategoria()); // ok
+			if(qtdInfoGrupo2 == 0){
+				qtdInfoGrupo3 = linhaComecoCategorias;
+			}else {
+				qtdInfoGrupo3 = qtdInfoGrupo2;
+				linhaComecoInfoCategorias = qtdInfoGrupo2+1;
+			}
 			
-			System.out.println(linhaComecoCategorias + qtdInfoGrupo);
-		
+//			linhaComecoCategorias = linhaComecoCategorias+1;
+			
+			GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, qtdInfoGrupo3,categoriasGalderma.get(i).getCategoria()); // ok
+			
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
 						if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
 					    //Chama método para gerar o corpo
-						linhaComecoInfoCategorias=linhaComecoInfoCategorias+qtdInfoGrupo;
 						CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j));
-						
+						qtdInfoGrupo2 = linhaComecoInfoCategorias + 1;
+						linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
 					}
-						qtdInfoGrupo = qtdInfoGrupo + 1;
-						qtdInfoGrupo2 = qtdInfoGrupo + 1;
-						//System.out.println(""+qtdInfoGrupo);
 			}
+			
+			qtdInfoGrupo2 = qtdInfoGrupo2+4;
+			
 		}
 	}
 	
