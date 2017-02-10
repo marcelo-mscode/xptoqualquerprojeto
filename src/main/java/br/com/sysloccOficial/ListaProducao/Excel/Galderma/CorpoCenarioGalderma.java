@@ -30,7 +30,7 @@ public class CorpoCenarioGalderma {
 		/**
 		 * Aqui vai as quantidades e valores
 		 */
-		int ultimaLinhaConteudoCategoria =  GeraConteudoCategoriasCenarios.geraConteudoCategorias(excelGalderma, cenario, linhaInfoGrupos,infoGrupo,diarias,quantidade,valorUnitInicial,vlorUnitNegociado);
+		GeraConteudoCategoriasCenarios.geraConteudoCategorias(excelGalderma, cenario, linhaInfoGrupos,infoGrupo,diarias,quantidade,valorUnitInicial,vlorUnitNegociado);
 		
 		
 		/*GeraSubTotalCategorias.subTotalCategorias(excelGalderma, cenario, ultimaLinhaConteudoCategoria);
@@ -55,16 +55,23 @@ public class CorpoCenarioGalderma {
 		int subTotal = ultimaLinhaConteudoCategoria+1;
 		int porcentagem = ultimaLinhaConteudoCategoria+2;
 		
-		
-		//SubTotal e ISS
-		
 		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1,"Taxa de Serviço",0,0,subTotal,porcentagem);
-		
 	    CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+2,"Taxa de ISS",5,5,subTotal,porcentagem+1);
-		CalculoSubtotalServico.totalDeServico(excelGalderma,cenario, ultimaLinhaConteudoCategoria+3, subTotal,ultimaLinhaConteudoCategoria+2 );
+		CalculoSubtotalServico.totalDeServico(excelGalderma,cenario, ultimaLinhaConteudoCategoria+3, subTotal,ultimaLinhaConteudoCategoria+3);
 		
 	}
 	
+	public static void calculosRodapePlanilha(XSSFWorkbook excelGalderma,XSSFSheet cenario,int ultimaLinhaCorpo){
+		
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240});
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+2, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219});
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+3, "Investimento - Serviços Agência",new int[]{219,219,219});
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+4, "FEE Agência",new int[]{219,219,219},5.2);
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+5, "Impostos Emissão NF - Serviços Agência",new int[]{219,219,219},22.9);
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+6, "TOTAL PREVISTO",new int[]{0,176,240});
+		
+		
+	}
 	
 	
 }

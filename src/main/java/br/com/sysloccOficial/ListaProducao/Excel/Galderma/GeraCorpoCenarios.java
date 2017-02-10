@@ -4,9 +4,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
+
 import br.com.sysloccOficial.Excel.ExcelImagem;
 import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
 
@@ -37,10 +41,10 @@ public class GeraCorpoCenarios {
 		CorpoCenarioGaldermaTopo.geraTopoEstatico(excelGalderma, cenario, 17);
 		
 		
-		passaInformacoesCorpoExcel(cenario, excelGalderma, gruposParaExcel, categoriasGalderma);
+		int linhaParainfoRodape = passaInformacoesCorpoExcel(cenario, excelGalderma, gruposParaExcel, categoriasGalderma);
 		
 		//Não mexer mais
-		GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario);
+		GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,linhaParainfoRodape+7);
 	}
 
 	/**
@@ -50,7 +54,7 @@ public class GeraCorpoCenarios {
 	 * Excel com as informações da planilha do cliente
 	 * Info de quantidade, diaria, valor unitario inicial, negociado
 	 */
-	private static void passaInformacoesCorpoExcel(XSSFSheet cenario, XSSFWorkbook excelGalderma, List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma) {
+	private static int passaInformacoesCorpoExcel(XSSFSheet cenario, XSSFWorkbook excelGalderma, List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma) {
 		
 		int linhaComecoCategorias = 20;
 		int linhaComecoInfoCategorias = 21;
@@ -93,6 +97,11 @@ public class GeraCorpoCenarios {
 			qtdInfoGrupo2 = qtdInfoGrupo2+4;
 			
 		}
+		
+		CorpoCenarioGalderma.calculosRodapePlanilha(excelGalderma, cenario, qtdInfoGrupo2);
+		
+		return qtdInfoGrupo2;
+		
 	}
 	
 	/**

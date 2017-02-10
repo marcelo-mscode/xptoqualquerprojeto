@@ -20,7 +20,7 @@ public class GeraConteudoCategoriasCenarios {
 	
 	public static int[] corFundoCelulaPadrao = {255,255,254};
 		
-	public static int geraConteudoCategorias(XSSFWorkbook excel, XSSFSheet cenario,int linhaComeco,
+	public static void geraConteudoCategorias(XSSFWorkbook excel, XSSFSheet cenario,int linhaComeco,
 											 String infoCategoria,double diarias,double quantidade,BigDecimal vlorUnitInicial,BigDecimal vlorUnitNegociado){
 		
 		int[] cor = {255,255,25};
@@ -44,10 +44,6 @@ public class GeraConteudoCategoriasCenarios {
 		ExcelCelulaEspecial.formatoEmReal(excel, estilo, linha2, 5, vlorUnitNegociado.doubleValue());
 		//Valor Total já Negociado
 		ExcelCelulaEspecial.formatoFormula(excel, estilo, linha2, 6, "F"+linhaParaFormula+"*C"+linhaParaFormula+"*B"+linhaParaFormula+"");
-		
-		return linhaParaFormula;
-		/*subTotalCategorias(excel, cenario, linhaParaFormula+1);*/
-		
 	}
 	
 	
