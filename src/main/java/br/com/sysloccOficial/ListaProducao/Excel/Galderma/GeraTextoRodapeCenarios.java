@@ -15,7 +15,7 @@ import br.com.sysloccOficial.Excel.ExcelMerge;
 public class GeraTextoRodapeCenarios {
 
 	public static void geraTextoRodape(XSSFWorkbook excelGalderma,XSSFSheet cenario){
-		textoRodape(excelGalderma, cenario, 38, "Observações: *Check-in a partir das 12H00 - Checkout até 12H00\nOs valores apresentados são válidos exclusivamente para o grupo e período em referência\nForma de pagamento: Faturamento para 60 dias, exceto Hotel e Bar do Alemão 30 dias.");
+		textoRodape(excelGalderma, cenario, 60, "Observações: *Check-in a partir das 12H00 - Checkout até 12H00\nOs valores apresentados são válidos exclusivamente para o grupo e período em referência\nForma de pagamento: Faturamento para 60 dias, exceto Hotel e Bar do Alemão 30 dias.");
 	}
 
 	public static void geraTextoRodapeOpcionais(XSSFWorkbook excelGalderma,XSSFSheet cenario){
@@ -33,7 +33,7 @@ public class GeraTextoRodapeCenarios {
 		estilo.setWrapText(true);
 		estilo.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);
 		cell.setCellStyle(estilo);
-		ExcelMerge.mergeVertical(excelGalderma, cenario, cell, 38,41, 0, 6);
+		ExcelMerge.mergeVertical(excelGalderma, cenario, cell, 60,63, 0, 6);
 	}
 
 	

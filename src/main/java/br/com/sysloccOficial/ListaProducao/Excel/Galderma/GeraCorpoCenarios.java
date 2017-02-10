@@ -56,7 +56,6 @@ public class GeraCorpoCenarios {
 		int linhaComecoInfoCategorias = 21;
 
 
-		int qtdInfoGrupo = 0;
 		int qtdInfoGrupo2 = 0;
 		int qtdInfoGrupo3 = 0;
 		
@@ -69,8 +68,6 @@ public class GeraCorpoCenarios {
 				qtdInfoGrupo3 = qtdInfoGrupo2;
 				linhaComecoInfoCategorias = qtdInfoGrupo2+1;
 			}
-			
-//			linhaComecoCategorias = linhaComecoCategorias+1;
 			
 			GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, qtdInfoGrupo3,categoriasGalderma.get(i).getCategoria()); // ok
 			
