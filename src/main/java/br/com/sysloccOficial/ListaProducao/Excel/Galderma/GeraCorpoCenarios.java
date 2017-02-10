@@ -80,7 +80,7 @@ public class GeraCorpoCenarios {
 					}
 			}
 			
-			
+			CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario, qtdInfoGrupo2);
 			
 			qtdInfoGrupo2 = qtdInfoGrupo2+4;
 			
