@@ -14,7 +14,7 @@ public class CalculoSubtotalServico {
 
 	public static int[] corFundoCelulaPadrao = {255,255,255};
 	
-	public static void totalDeServico(XSSFWorkbook excel, XSSFSheet cenario, int linhaComeco,int posicaoCelula){
+	public static void totalDeServico(XSSFWorkbook excel, XSSFSheet cenario, int linhaComeco,int linhaSubTotal, int linhaISS){
 		XSSFRow linha = cenario.createRow(linhaComeco);
 		ExcelFormatoCelulaComum.textoBold(excel,linha, "Total deste serviço", 0, corFundoCelulaPadrao);
 		
@@ -23,9 +23,9 @@ public class CalculoSubtotalServico {
 			celulaBco.setCellStyle(ExcelEstiloPadrao.estiloPadrao(excel));
 		}
 	
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha, 4, "SUM(E19:E21)");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha, 4, "SUM(E"+linhaSubTotal+":E"+linhaISS+")");
 		XSSFCell celulaBco = linha.createCell(5);celulaBco.setCellStyle(ExcelEstiloPadrao.estiloPadrao(excel));
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha, 6, "SUM(G19:G21)");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha, 6, "SUM(G"+linhaSubTotal+":G"+linhaISS+")");
 		
 	}
 	
