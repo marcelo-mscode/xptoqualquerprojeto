@@ -1,10 +1,13 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
+import javax.swing.JOptionPane;
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
+
 import br.com.sysloccOficial.Excel.ExcelCelulaEspecial;
 import br.com.sysloccOficial.Excel.ExcelEstiloPadrao;
 import br.com.sysloccOficial.Excel.ExcelFormatoCelulaComum;
@@ -17,7 +20,10 @@ public class GeraSubTotalCategorias {
 	
 	
 	
-	public static void subTotalCategorias(XSSFWorkbook excel, XSSFSheet cenario,int linhaComeco){
+	public static void subTotalCategorias(XSSFWorkbook excel, XSSFSheet cenario,int primeiraLinhaGrupoCategoria,int linhaComeco){
+		
+		
+	//	JOptionPane.showMessageDialog(null, ""+primeiraLinhaGrupoCategoria);
 		
 		XSSFRow linha2 = cenario.createRow(linhaComeco);
 		ExcelFormatoCelulaComum.textoBold(excel,linha2, "Subtotal", 0, corFundoCelulaPadrao);
@@ -28,13 +34,13 @@ public class GeraSubTotalCategorias {
 		}
 		
 		//Soma SubTotalInicial
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha2, 4, "SUM(E17:E18)");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha2, 4, "SUM(E"+linhaComeco+":E"+primeiraLinhaGrupoCategoria+")");
 
 		XSSFCell celulaBco = linha2.createCell(5);
 		celulaBco.setCellStyle(ExcelEstiloPadrao.estiloPadrao(excel));
 		
 		//Soma Valor Total já negociado
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha2, 6, "SUM(G17:G18)");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha2, 6, "SUM(G"+linhaComeco+":G"+primeiraLinhaGrupoCategoria+")");
 		
 		
 	}

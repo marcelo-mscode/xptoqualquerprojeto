@@ -1,5 +1,9 @@
 //MERGE
-
+	
+	
+	10/02/2017
+	14:55
+	
 	Usar a classe e método estático ExcelMerge.merge() passando:
 	
 		excelGalderma --> instância do workbook
