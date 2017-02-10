@@ -22,7 +22,7 @@ public class GeraSubTotalCategorias {
 	
 	public static void subTotalCategorias(XSSFWorkbook excel, XSSFSheet cenario,int primeiraLinhaGrupoCategoria,int linhaComeco){
 		
-		
+		linhaComeco = linhaComeco +1;
 	//	JOptionPane.showMessageDialog(null, ""+primeiraLinhaGrupoCategoria);
 		
 		XSSFRow linha2 = cenario.createRow(linhaComeco);
