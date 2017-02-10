@@ -53,10 +53,7 @@ public class CorpoCenarioGalderma {
 		GeraSubTotalCategorias.subTotalCategorias(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaConteudoCategoria);
 		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1,"Taxa de Serviço",0,0,ultimaLinhaConteudoCategoria+2,ultimaLinhaConteudoCategoria+3);
 		
-		System.out.println("Linha começo: "+(ultimaLinhaConteudoCategoria+2));
-		System.out.println("Linha subTotal: "+(ultimaLinhaConteudoCategoria+1));
-		
-		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1,"Taxa de ISS",5,5,ultimaLinhaConteudoCategoria+1,ultimaLinhaConteudoCategoria+4);
+		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+2,"Taxa de ISS",5,5,ultimaLinhaConteudoCategoria,ultimaLinhaConteudoCategoria+4);
 		/*CalculoSubtotalServico.totalDeServico(excelGalderma,cenario, ultimaLinhaConteudoCategoria+3, 0);*/
 		
 	}

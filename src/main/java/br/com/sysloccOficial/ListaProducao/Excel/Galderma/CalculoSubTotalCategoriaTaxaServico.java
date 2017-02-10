@@ -1,10 +1,13 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
+import javax.swing.JOptionPane;
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
+
 import br.com.sysloccOficial.Excel.ExcelCelulaEspecial;
 import br.com.sysloccOficial.Excel.ExcelEstiloPadrao;
 import br.com.sysloccOficial.Excel.ExcelFonts;
@@ -28,10 +31,16 @@ public static int[] corFundoCelulaPadrao = {255,255,255};
 			celulaBco.setCellStyle(ExcelEstiloPadrao.estiloPadrao(excel));
 		}
 		
+		
+		if(tipoServico.equals("Taxa de ISS")){
+			JOptionPane.showMessageDialog(null, "linha começo:"+linhaComeco+"\nlinha SubTotal: "+linhaSubTotal);
+		}
+		
+		
 		ExcelCelulaEspecial.formatoPorcentagem(excel, ExcelEstiloPadrao.estiloPadrao(excel, ExcelFonts.font(excel, 12, "Tahoma")), porc1 ,linha2,3);
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadrao(excel), linha2, 4, "E"+linhaComeco+"*D"+linhaSubTotal+"");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadrao(excel), linha2, 4, "E"+linhaPorc+"*D"+linhaSubTotal+"");
 		ExcelCelulaEspecial.formatoPorcentagem(excel, ExcelEstiloPadrao.estiloPadrao(excel, ExcelFonts.font(excel, 12, "Tahoma")), porc2 ,linha2,5);
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadrao(excel), linha2, 6, "G"+linhaComeco+"*F"+linhaSubTotal+"");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadrao(excel), linha2, 6, "G"+linhaPorc+"*F"+linhaSubTotal+"");
 		
 	}
 	
