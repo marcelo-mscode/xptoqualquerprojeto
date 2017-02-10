@@ -80,6 +80,8 @@ public class GeraCorpoCenarios {
 					}
 			}
 			
+			
+			
 			qtdInfoGrupo2 = qtdInfoGrupo2+4;
 			
 		}

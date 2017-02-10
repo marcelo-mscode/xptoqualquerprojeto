@@ -33,12 +33,12 @@ public class CorpoCenarioGalderma {
 		int ultimaLinhaConteudoCategoria =  GeraConteudoCategoriasCenarios.geraConteudoCategorias(excelGalderma, cenario, linhaInfoGrupos,infoGrupo,diarias,quantidade,valorUnitInicial,vlorUnitNegociado);
 		
 		
-		/*GeraSubTotalCategorias.subTotalCategorias(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1);
-		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+2,"Taxa de Serviço",0,0,ultimaLinhaConteudoCategoria+2,ultimaLinhaConteudoCategoria+3);
-		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+3,"Taxa de ISS",5,5,ultimaLinhaConteudoCategoria+2,ultimaLinhaConteudoCategoria+4);
-		CalculoSubtotalServico.totalDeServico(excelGalderma,cenario, ultimaLinhaConteudoCategoria+4, 0);	
+		GeraSubTotalCategorias.subTotalCategorias(excelGalderma, cenario, ultimaLinhaConteudoCategoria);
+		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1,"Taxa de Serviço",0,0,ultimaLinhaConteudoCategoria+2,ultimaLinhaConteudoCategoria+3);
+		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+2,"Taxa de ISS",5,5,ultimaLinhaConteudoCategoria+2,ultimaLinhaConteudoCategoria+4);
+		CalculoSubtotalServico.totalDeServico(excelGalderma,cenario, ultimaLinhaConteudoCategoria+3, 0);	
 
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 28, "Subtotal Geral",new int[]{0,176,240});
+		/*CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 28, "Subtotal Geral",new int[]{0,176,240});
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 29, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219});
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 30, "Investimento - Serviços Agência",new int[]{219,219,219});
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, 31, "FEE Agência",new int[]{219,219,219},5.2);
@@ -47,6 +47,8 @@ public class CorpoCenarioGalderma {
 		
 		
 	}
+	
+	
 	
 	
 	
