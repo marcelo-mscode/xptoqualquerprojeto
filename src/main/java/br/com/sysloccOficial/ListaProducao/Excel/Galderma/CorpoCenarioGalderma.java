@@ -51,10 +51,15 @@ public class CorpoCenarioGalderma {
 	public static void geraSubTotalCadaCategoria(XSSFWorkbook excelGalderma,XSSFSheet cenario,int primeiraLinhaGrupoCategoria,int ultimaLinhaConteudoCategoria){
 		
 		GeraSubTotalCategorias.subTotalCategorias(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaConteudoCategoria);
-		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1,"Taxa de Serviço",0,0,ultimaLinhaConteudoCategoria+2,ultimaLinhaConteudoCategoria+3);
 		
-		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+2,"Taxa de ISS",5,5,ultimaLinhaConteudoCategoria,ultimaLinhaConteudoCategoria+4);
-		/*CalculoSubtotalServico.totalDeServico(excelGalderma,cenario, ultimaLinhaConteudoCategoria+3, 0);*/
+		int subTotal = ultimaLinhaConteudoCategoria+1;
+		int porcentagem = ultimaLinhaConteudoCategoria+2;
+		
+		
+		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1,"Taxa de Serviço",0,0,subTotal,porcentagem);
+		
+	    CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+2,"Taxa de ISS",5,5,subTotal,porcentagem+1);
+		CalculoSubtotalServico.totalDeServico(excelGalderma,cenario, ultimaLinhaConteudoCategoria+3, 0);*/
 		
 	}
 	
