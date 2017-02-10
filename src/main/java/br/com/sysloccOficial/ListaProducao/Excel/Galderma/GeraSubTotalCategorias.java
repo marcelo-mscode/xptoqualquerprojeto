@@ -20,12 +20,11 @@ public class GeraSubTotalCategorias {
 	
 	
 	
-	public static void subTotalCategorias(XSSFWorkbook excel, XSSFSheet cenario,int primeiraLinhaGrupoCategoria,int linhaComeco){
+	public static void subTotalCategorias(XSSFWorkbook excel, XSSFSheet cenario,int primeiraLinhaGrupoCategoria,int ultimaLinhaConteudoCategoria){
 		
-		linhaComeco = linhaComeco +1;
-	//	JOptionPane.showMessageDialog(null, ""+primeiraLinhaGrupoCategoria);
+		//	JOptionPane.showMessageDialog(null, ""+primeiraLinhaGrupoCategoria);
 		
-		XSSFRow linha2 = cenario.createRow(linhaComeco);
+		XSSFRow linha2 = cenario.createRow(ultimaLinhaConteudoCategoria);
 		ExcelFormatoCelulaComum.textoBold(excel,linha2, "Subtotal", 0, corFundoCelulaPadrao);
 		
 		for (int i = 1; i < 4; i++) {
@@ -34,13 +33,13 @@ public class GeraSubTotalCategorias {
 		}
 		
 		//Soma SubTotalInicial
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha2, 4, "SUM(E"+linhaComeco+":E"+primeiraLinhaGrupoCategoria+")");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha2, 4, "SUM(E"+primeiraLinhaGrupoCategoria+":E"+ultimaLinhaConteudoCategoria+")");
 
 		XSSFCell celulaBco = linha2.createCell(5);
 		celulaBco.setCellStyle(ExcelEstiloPadrao.estiloPadrao(excel));
 		
 		//Soma Valor Total já negociado
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha2, 6, "SUM(G"+linhaComeco+":G"+primeiraLinhaGrupoCategoria+")");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha2, 6, "SUM(G"+primeiraLinhaGrupoCategoria+":G"+ultimaLinhaConteudoCategoria+")");
 		
 		
 	}
