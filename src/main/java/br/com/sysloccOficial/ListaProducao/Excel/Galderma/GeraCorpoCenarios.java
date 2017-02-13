@@ -3,6 +3,7 @@ package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -58,13 +59,14 @@ public class GeraCorpoCenarios {
 		
 		int linhaComecoCategorias = 20;
 		int linhaComecoInfoCategorias = 21;
-
-
+		
 		int qtdInfoGrupo2 = 0;
 		int qtdInfoGrupo3 = 0;
 		int ultimaLinhaGrupoCategoria = 0;
 		int primeiraLinhaGrupoCategoria = 0;
 		
+		int[] linhasSubtotais = null;
+		int linhaArray = 0;
 		
 		for (int i = 0; i < categoriasGalderma.size(); i++) {
 			
@@ -90,15 +92,19 @@ public class GeraCorpoCenarios {
 					}
 			}
 			
-			ultimaLinhaGrupoCategoria = qtdInfoGrupo2;
 			
 			CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
+
+			ultimaLinhaGrupoCategoria = qtdInfoGrupo2;
+			linhasSubtotais = new int[qtdInfoGrupo2];
+			linhasSubtotais[linhaArray] =   ultimaLinhaGrupoCategoria+3;
 			
 			qtdInfoGrupo2 = qtdInfoGrupo2+4;
 			
+			linhaArray++;
 		}
 		
-		CorpoCenarioGalderma.calculosRodapePlanilha(excelGalderma, cenario, qtdInfoGrupo2);
+		CalculoRodapeCenario.calculosRodapePlanilha(excelGalderma, cenario, qtdInfoGrupo2,linhasSubtotais);
 		
 		return qtdInfoGrupo2;
 		
