@@ -25,15 +25,10 @@ public class CalculoRodapeCenario {
 	
 	
 	
-	public static void calculosRodapePlanilha(XSSFWorkbook excelGalderma,XSSFSheet cenario,int ultimaLinhaCorpo,int[] linhasSubtotais){
+	public static void calculosRodapePlanilha(XSSFWorkbook excelGalderma,XSSFSheet cenario,int ultimaLinhaCorpo,List<Integer> linhasSubtotais){
 		
-		
-		for (int i : linhasSubtotais) {
-			System.out.println(i);
-		}		
-		
-		String formulaInicial = "E26+E32+E38+E46+E52";
-		String formulaNegociado = "G26+G32+G38+G46+G52";
+		String formulaInicial = montaFormulaParaCalculo(linhasSubtotais, "E");
+		String formulaNegociado = montaFormulaParaCalculo(linhasSubtotais, "G");
 		
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicial,formulaNegociado);
 		
@@ -47,6 +42,26 @@ public class CalculoRodapeCenario {
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+6, "TOTAL PREVISTO",new int[]{0,176,240});
 		*/
 		
+	}
+
+
+
+
+
+
+
+	private static String montaFormulaParaCalculo(List<Integer> linhasSubtotais,String letra) {
+		String formulaInicial = "";
+		for (int j = 0; j < linhasSubtotais.size(); j++) {
+			if(j <= linhasSubtotais.size()){
+				formulaInicial = formulaInicial+letra+linhasSubtotais.get(j)+"+";
+			}
+			
+		}		
+		
+		int tamanho = formulaInicial.length();
+		formulaInicial = formulaInicial.substring(0, tamanho-1);
+		return formulaInicial;
 	}
 	
 	

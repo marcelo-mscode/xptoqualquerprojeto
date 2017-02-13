@@ -60,13 +60,15 @@ public class GeraCorpoCenarios {
 		int linhaComecoCategorias = 20;
 		int linhaComecoInfoCategorias = 21;
 		
+		List<Integer> linhasSubtotais = new ArrayList<Integer>();
+		
+		
+
 		int qtdInfoGrupo2 = 0;
 		int qtdInfoGrupo3 = 0;
 		int ultimaLinhaGrupoCategoria = 0;
 		int primeiraLinhaGrupoCategoria = 0;
 		
-		int[] linhasSubtotais = null;
-		int linhaArray = 0;
 		
 		for (int i = 0; i < categoriasGalderma.size(); i++) {
 			
@@ -92,16 +94,15 @@ public class GeraCorpoCenarios {
 					}
 			}
 			
+			ultimaLinhaGrupoCategoria = qtdInfoGrupo2;
+			if(categoriasGalderma.get(i).getIdCategoriaGalderma() != 8){
+				linhasSubtotais.add(ultimaLinhaGrupoCategoria+4);
+			}
 			
 			CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
-
-			ultimaLinhaGrupoCategoria = qtdInfoGrupo2;
-			linhasSubtotais = new int[qtdInfoGrupo2];
-			linhasSubtotais[linhaArray] =   ultimaLinhaGrupoCategoria+3;
 			
 			qtdInfoGrupo2 = qtdInfoGrupo2+4;
 			
-			linhaArray++;
 		}
 		
 		CalculoRodapeCenario.calculosRodapePlanilha(excelGalderma, cenario, qtdInfoGrupo2,linhasSubtotais);
