@@ -98,6 +98,8 @@ public class GeraCorpoCenarios {
 			if(categoriasGalderma.get(i).getIdCategoriaGalderma() != 8){
 				linhasSubtotais.add(ultimaLinhaGrupoCategoria+4);
 				linhasSubtotais.add(-1);
+			}else{
+				linhasSubtotais.add(ultimaLinhaGrupoCategoria+4);
 			}
 			
 			CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);

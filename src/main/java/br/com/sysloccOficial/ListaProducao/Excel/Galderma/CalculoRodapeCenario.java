@@ -35,6 +35,9 @@ public class CalculoRodapeCenario {
 		
 		String NTformulaInicial = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "E");
 		String NTformulaNegociado = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "G");
+	
+		System.out.println();
+		
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+2, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219},NTformulaInicial,NTformulaNegociado);
 		
 		
@@ -49,8 +52,14 @@ public class CalculoRodapeCenario {
 
 	private static String montaFormulaParaPGTOVIANTDebito(List<Integer> linhasSubtotais,String letra) {
 		String formulaInicial = "";
-	
-		for (int j = 0; j < linhasSubtotais.size(); j++) {
+		
+		for(int j = 0; j < linhasSubtotais.size(); j++){
+			if(linhasSubtotais.get(j) == -1){
+				linhasSubtotais.remove(j);
+			}
+		}
+		
+		for (int j = 0; j < linhasSubtotais.size() -1; j++) {
 			if(j <= linhasSubtotais.size()){
 				formulaInicial = formulaInicial+letra+linhasSubtotais.get(j)+"+";
 			}
@@ -59,6 +68,7 @@ public class CalculoRodapeCenario {
 		formulaInicial = formulaInicial.substring(0, tamanho-1);
 		return formulaInicial;
 	}
+	
 	
 	private static String montaFormulaParaCalculoSutotalGeral(List<Integer> linhasSubtotais,String letra) {
 		String formulaInicial = "";
