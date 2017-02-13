@@ -27,16 +27,18 @@ public class CalculoRodapeCenario {
 	
 	public static void calculosRodapePlanilha(XSSFWorkbook excelGalderma,XSSFSheet cenario,int ultimaLinhaCorpo,List<Integer> linhasSubtotais){
 		
-		String formulaInicial = montaFormulaParaCalculo(linhasSubtotais, "E");
-		String formulaNegociado = montaFormulaParaCalculo(linhasSubtotais, "G");
+		String formulaInicial = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "E");
+		String formulaNegociado = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "G");
 		
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicial,formulaNegociado);
 		
 		
+		String NTformulaInicial = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "E");
+		String NTformulaNegociado = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "G");
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+2, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219},NTformulaInicial,NTformulaNegociado);
 		
 		
-	/*	CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+2, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219});
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+3, "Investimento - Serviços Agência",new int[]{219,219,219});
+		/*		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+3, "Investimento - Serviços Agência",new int[]{219,219,219});
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+4, "FEE Agência",new int[]{219,219,219},5.2);
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+5, "Impostos Emissão NF - Serviços Agência",new int[]{219,219,219},22.9);
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+6, "TOTAL PREVISTO",new int[]{0,176,240});
@@ -45,29 +47,31 @@ public class CalculoRodapeCenario {
 	}
 
 
-
-
-
-
-
-	private static String montaFormulaParaCalculo(List<Integer> linhasSubtotais,String letra) {
+	private static String montaFormulaParaPGTOVIANTDebito(List<Integer> linhasSubtotais,String letra) {
 		String formulaInicial = "";
+	
 		for (int j = 0; j < linhasSubtotais.size(); j++) {
 			if(j <= linhasSubtotais.size()){
 				formulaInicial = formulaInicial+letra+linhasSubtotais.get(j)+"+";
 			}
-			
 		}		
-		
 		int tamanho = formulaInicial.length();
 		formulaInicial = formulaInicial.substring(0, tamanho-1);
 		return formulaInicial;
 	}
 	
-	
-	
-	
-	
+	private static String montaFormulaParaCalculoSutotalGeral(List<Integer> linhasSubtotais,String letra) {
+		String formulaInicial = "";
+		
+		for (int j = 0; j < linhasSubtotais.size(); j++) {
+			if(j <= linhasSubtotais.size() && linhasSubtotais.get(j) != -1){
+				formulaInicial = formulaInicial+letra+linhasSubtotais.get(j)+"+";
+			}
+		}		
+		int tamanho = formulaInicial.length();
+		formulaInicial = formulaInicial.substring(0, tamanho-1);
+		return formulaInicial;
+	}
 	
 	
 	/**
