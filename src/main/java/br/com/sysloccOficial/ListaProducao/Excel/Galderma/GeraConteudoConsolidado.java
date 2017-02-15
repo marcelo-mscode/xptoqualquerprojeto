@@ -26,11 +26,18 @@ public class GeraConteudoConsolidado {
 		XSSFRow linha2 = cenario.createRow(linhaComeco); linha2.setHeightInPoints(35);
 
 		XSSFCell cell = linha2.createCell(0);
-		cell.setCellValue(nomeAba+numCenario);
+		
+		if(nomeAba.equals("Opcionais")){
+		}else{
+			nomeAba = nomeAba+"0"+numCenario;
+		}
+	
+		cell.setCellValue(nomeAba);
+		
 		cell.setCellStyle(ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)));
 		
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 1, "'Cenário 0"+numCenario+"'!E"+(linhasConsolidado+2));
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 2, "'Cenário 0"+numCenario+"'!G"+(linhasConsolidado+2));
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 1, "'"+nomeAba+"'!E"+(linhasConsolidado+2));
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 2, "'"+nomeAba+"'!G"+(linhasConsolidado+2));
 		ExcelFormatoCelulaComum.numeroCentralizadoBold(excel, linha2, 70, 3, corFundoCelulaPadrao);
 		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 4, "C"+(linhaComeco+1)+"/D"+(linhaComeco+1)+"");
 		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 5, "B"+(linhaComeco+1)+"-C"+(linhaComeco+1)+"");

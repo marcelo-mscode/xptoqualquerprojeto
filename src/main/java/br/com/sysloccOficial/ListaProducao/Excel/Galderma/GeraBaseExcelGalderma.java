@@ -55,7 +55,6 @@ public class GeraBaseExcelGalderma {
 		LinhasConsolidado linhas = new LinhasConsolidado();
 		LinhasConsolidado linhas1 = new LinhasConsolidado();
 		LinhasConsolidado linhas2 = new LinhasConsolidado();
-		LinhasConsolidado linhas3 = new LinhasConsolidado();
 		
 		linhas.setNomeAba("Cenário ");linhas.setUltimaLinhaCalculos(linhasConsolidado);
 		linhas1.setNomeAba("Cenário ");linhas1.setUltimaLinhaCalculos(linhasConsolidado2);
@@ -67,22 +66,9 @@ public class GeraBaseExcelGalderma {
 		linhasParaConsolidado.add(linhas2);
 		
 		
-		/*int[] linhasParaMontarConsolidado = new int[3];
-		linhasParaMontarConsolidado[0] = linhasConsolidado;
-		linhasParaMontarConsolidado[0][1] = linhasConsolidado;
-		linhasParaMontarConsolidado[1] = linhasConsolidado2;
-		linhasParaMontarConsolidado[2] = linhasConsolidado3;*/
-		
+	
 		
 		CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado);		
-		
-		
-		
-
-		
-		
-		//GeraCorpoCenarios.geraCorpoAbaCenarios(cenario2, excelGalderma,"Cenário 02",montaGruposParaExcel,categoriasGalderma);
-		
 		
 		
 
