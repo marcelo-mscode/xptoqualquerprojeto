@@ -52,9 +52,13 @@ public class AuxCarregaGrupos {
 	 * ------> Opcionais
 	 */
 	public List<Grupo> retornaGruposOpcionais(Integer idLista){
-		TypedQuery<Grupo> grupos = manager.createQuery(
-				"from Grupo where idLista ="+idLista+" and opcional = 1 and categoriaGalderma > 1 order by ordemGrupo", Grupo.class);
-		return grupos.getResultList();
+		try {
+			TypedQuery<Grupo> grupos = manager.createQuery(
+					"from Grupo g where idLista ="+idLista+" and opcional = 1 and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by g.ordemGrupo", Grupo.class);
+			return grupos.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	/**
