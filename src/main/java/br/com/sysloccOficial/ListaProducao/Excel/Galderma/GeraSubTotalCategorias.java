@@ -22,8 +22,6 @@ public class GeraSubTotalCategorias {
 	
 	public static void subTotalCategorias(XSSFWorkbook excel, XSSFSheet cenario,int primeiraLinhaGrupoCategoria,int ultimaLinhaConteudoCategoria){
 		
-		//	JOptionPane.showMessageDialog(null, ""+primeiraLinhaGrupoCategoria);
-		
 		XSSFRow linha2 = cenario.createRow(ultimaLinhaConteudoCategoria);
 		ExcelFormatoCelulaComum.textoBold(excel,linha2, "Subtotal", 0, corFundoCelulaPadrao);
 		

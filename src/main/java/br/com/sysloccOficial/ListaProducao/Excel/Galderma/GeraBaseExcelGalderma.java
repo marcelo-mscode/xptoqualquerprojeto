@@ -2,10 +2,12 @@ package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -42,14 +44,49 @@ public class GeraBaseExcelGalderma {
 		List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
 		
 		
-		GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 01",montaGruposParaExcel,categoriasGalderma);
-		
-		
-		
-		//GeraCorpoConsolidado.geraCorpoAbaConsolidado(consolidado, excelGalderma,"Consolidado");
+		XSSFSheet consolidadoCriado = GeraCorpoConsolidado.geraCorpoAbaConsolidado(consolidado, excelGalderma,"Consolidado");
 
-		/*GeraCorpoCenarios.geraCorpoAbaCenarios(cenario2, excelGalderma,"Cenário 02");
-		GeraCorpoCenarios.geraCorpoAbaCenariosOpcionais(opcionais, excelGalderma,"Opcionais");*/
+		
+		int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 01",montaGruposParaExcel,categoriasGalderma);
+		int linhasConsolidado2 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 02",montaGruposParaExcel,categoriasGalderma);
+		int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Opcionais",montaGruposParaExcel,categoriasGalderma);
+		
+		
+		LinhasConsolidado linhas = new LinhasConsolidado();
+		LinhasConsolidado linhas1 = new LinhasConsolidado();
+		LinhasConsolidado linhas2 = new LinhasConsolidado();
+		LinhasConsolidado linhas3 = new LinhasConsolidado();
+		
+		linhas.setNomeAba("Cenário ");linhas.setUltimaLinhaCalculos(linhasConsolidado);
+		linhas1.setNomeAba("Cenário ");linhas1.setUltimaLinhaCalculos(linhasConsolidado2);
+		linhas2.setNomeAba("Opcionais");linhas2.setUltimaLinhaCalculos(linhasConsolidado3);
+		
+		List<LinhasConsolidado> linhasParaConsolidado = new ArrayList<LinhasConsolidado>();
+		linhasParaConsolidado.add(linhas);
+		linhasParaConsolidado.add(linhas1);
+		linhasParaConsolidado.add(linhas2);
+		
+		
+		/*int[] linhasParaMontarConsolidado = new int[3];
+		linhasParaMontarConsolidado[0] = linhasConsolidado;
+		linhasParaMontarConsolidado[0][1] = linhasConsolidado;
+		linhasParaMontarConsolidado[1] = linhasConsolidado2;
+		linhasParaMontarConsolidado[2] = linhasConsolidado3;*/
+		
+		
+		CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado);		
+		
+		
+		
+
+		
+		
+		//GeraCorpoCenarios.geraCorpoAbaCenarios(cenario2, excelGalderma,"Cenário 02",montaGruposParaExcel,categoriasGalderma);
+		
+		
+		
+
+		//GeraCorpoCenarios.geraCorpoAbaCenariosOpcionais(opcionais, excelGalderma,"Opcionais");
 		
 		base.fechaPlanilha(excelGalderma,out);
 		

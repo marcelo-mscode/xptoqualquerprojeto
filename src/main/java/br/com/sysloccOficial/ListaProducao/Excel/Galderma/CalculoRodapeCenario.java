@@ -14,18 +14,14 @@ import br.com.sysloccOficial.Excel.ExcelCelulaBackground;
 import br.com.sysloccOficial.Excel.ExcelCelulaEspecial;
 import br.com.sysloccOficial.Excel.ExcelFonts;
 import br.com.sysloccOficial.Excel.ExcelMerge;
+import br.com.sysloccOficial.conf.Utilitaria;
 
 @Component
 public class CalculoRodapeCenario {
 	
 	private static XSSFCellStyle estilo;
 	
-	
-	
-	
-	
-	
-	public static void calculosRodapePlanilha(XSSFWorkbook excelGalderma,XSSFSheet cenario,int ultimaLinhaCorpo,List<Integer> linhasSubtotais){
+	public static void calculosRodapePlanilha(XSSFWorkbook excelGalderma,XSSFSheet cenario,int ultimaLinhaCorpo,List<Integer[]> linhasSubtotais){
 		
 		String formulaInicial = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "E");
 		String formulaNegociado = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "G");
@@ -36,53 +32,69 @@ public class CalculoRodapeCenario {
 		String NTformulaInicial = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "E");
 		String NTformulaNegociado = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "G");
 	
-		System.out.println();
-		
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+2, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219},NTformulaInicial,NTformulaNegociado);
 		
 		
-		/*		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+3, "Investimento - Serviços Agência",new int[]{219,219,219});
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+4, "FEE Agência",new int[]{219,219,219},5.2);
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+5, "Impostos Emissão NF - Serviços Agência",new int[]{219,219,219},22.9);
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+6, "TOTAL PREVISTO",new int[]{0,176,240});
-		*/
+		
+		String ServicosAgenciaformulaInicial = montaFormulaServicosAgencia(linhasSubtotais, "E");
+		String ServicosAgenciaformulaNegociado = montaFormulaServicosAgencia(linhasSubtotais, "G");
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+3, "Investimento - Serviços Agência",new int[]{219,219,219},ServicosAgenciaformulaInicial,ServicosAgenciaformulaNegociado);
+		
+		String feeAgenciaInicial = "E"+(ultimaLinhaCorpo+3)+"*D"+(ultimaLinhaCorpo+5);
+		String feeAgenciaNegociado = "G"+(ultimaLinhaCorpo+3)+"*F"+(ultimaLinhaCorpo+5);
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+4, "FEE Agência",new int[]{219,219,219},5.2,feeAgenciaInicial,feeAgenciaNegociado);
+	
+		String ImpostoInicial = "E"+(ultimaLinhaCorpo+4)+"*D"+(ultimaLinhaCorpo+6);
+		String ImpostoNegociado = "G"+(ultimaLinhaCorpo+4)+"*F"+(ultimaLinhaCorpo+6);
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+5, "Impostos Emissão NF - Serviços Agência",new int[]{219,219,219},22.9,ImpostoInicial,ImpostoNegociado);
+		
+		String TotalPrevistoInicial = "SUM(E"+(ultimaLinhaCorpo+3)+":E"+(ultimaLinhaCorpo+6)+")";
+		String TotalPrevistoNegociado = "SUM(G"+(ultimaLinhaCorpo+3)+":G"+(ultimaLinhaCorpo+6)+")";
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+6, "TOTAL PREVISTO",new int[]{0,176,240},TotalPrevistoInicial,TotalPrevistoNegociado);
 		
 	}
 
-
-	private static String montaFormulaParaPGTOVIANTDebito(List<Integer> linhasSubtotais,String letra) {
+	private static String montaFormulaServicosAgencia(List<Integer[]> linhasSubtotais,String letra) {
 		String formulaInicial = "";
-		
-		for(int j = 0; j < linhasSubtotais.size(); j++){
-			if(linhasSubtotais.get(j) == -1){
-				linhasSubtotais.remove(j);
+		for (int j = 0; j < linhasSubtotais.size(); j++) {
+			if(j <= linhasSubtotais.size()&& linhasSubtotais.get(j)[1] == 8){
+				formulaInicial = formulaInicial+letra+linhasSubtotais.get(j)[0]+"+";
 			}
 		}
+		try {
+			formulaInicial = Utilitaria.retiraUltimoCaracter(formulaInicial);
+			return formulaInicial;
+		} catch (Exception e) {
+			return "0";
+		}
 		
-		for (int j = 0; j < linhasSubtotais.size() -1; j++) {
-			if(j <= linhasSubtotais.size()){
-				formulaInicial = formulaInicial+letra+linhasSubtotais.get(j)+"+";
-			}
-		}		
-		int tamanho = formulaInicial.length();
-		formulaInicial = formulaInicial.substring(0, tamanho-1);
-		return formulaInicial;
 	}
 	
 	
-	private static String montaFormulaParaCalculoSutotalGeral(List<Integer> linhasSubtotais,String letra) {
+	
+	private static String montaFormulaParaPGTOVIANTDebito(List<Integer[]> linhasSubtotais,String letra) {
 		String formulaInicial = "";
-		
 		for (int j = 0; j < linhasSubtotais.size(); j++) {
-			if(j <= linhasSubtotais.size() && linhasSubtotais.get(j) != -1){
-				formulaInicial = formulaInicial+letra+linhasSubtotais.get(j)+"+";
+			if(j <= linhasSubtotais.size()&& linhasSubtotais.get(j)[1] != 8){
+				formulaInicial = formulaInicial+letra+linhasSubtotais.get(j)[0]+"+";
 			}
 		}		
-		int tamanho = formulaInicial.length();
-		formulaInicial = formulaInicial.substring(0, tamanho-1);
+		formulaInicial = Utilitaria.retiraUltimoCaracter(formulaInicial);
 		return formulaInicial;
 	}
 	
+	
+	private static String montaFormulaParaCalculoSutotalGeral(List<Integer[]> linhasSubtotais,String letra) {
+		String formulaInicial = "";
+		for (int j = 0; j < linhasSubtotais.size(); j++) {
+			if(j <= linhasSubtotais.size()){
+				formulaInicial = formulaInicial+letra+linhasSubtotais.get(j)[0]+"+";
+			}
+		}		
+		formulaInicial = Utilitaria.retiraUltimoCaracter(formulaInicial);
+		return formulaInicial;
+	}
+
 	
 	/**
 	 * Método que faz a linha de 
@@ -102,6 +114,7 @@ public class CalculoRodapeCenario {
 		estilo.setFont(ExcelFonts.fontBold(excelGalderma, 12, "Tahoma"));
 		estilo = ExcelBordas.borda(estilo);
 		cell.setCellStyle(ExcelCelulaBackground.background(estilo, corFundo));
+		
 		cell.setCellValue(texto);
 		
 		ExcelMerge.merge(excelGalderma, cenario, cell, linha, 0, 2);

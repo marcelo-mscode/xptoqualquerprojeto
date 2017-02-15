@@ -729,5 +729,10 @@ public Integer novoCodJob(){
 		return c2;
 	}
 	
+	public static String retiraUltimoCaracter(String formulaInicial) {
+		int tamanho = formulaInicial.length();
+		formulaInicial = formulaInicial.substring(0, tamanho-1);
+		return formulaInicial;
+	}
 	
 }

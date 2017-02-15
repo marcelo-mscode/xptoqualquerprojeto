@@ -22,6 +22,7 @@ public class ExcelCelulaEspecial {
 
 	public static void formatoFormula(XSSFWorkbook excel,XSSFCellStyle estilo,XSSFRow linha,int posicaoCelula,String valor){
 		estilo.setDataFormat(excel.createDataFormat().getFormat("R$		    #,##0.00"));
+		estilo.setAlignment(XSSFCellStyle.ALIGN_LEFT);
 		XSSFCell celulaNova = linha.createCell(posicaoCelula);
 		celulaNova.setCellType(XSSFCell.CELL_TYPE_FORMULA);
 		celulaNova.setCellStyle(estilo);

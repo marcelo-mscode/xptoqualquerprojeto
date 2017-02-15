@@ -7,6 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
+
 import br.com.sysloccOficial.Excel.ExcelBordas;
 import br.com.sysloccOficial.Excel.ExcelCelulaEspecial;
 import br.com.sysloccOficial.Excel.ExcelEstiloPadrao;
@@ -18,21 +19,21 @@ public class GeraConteudoConsolidado {
 	
 	public static int[] corFundoCelulaPadrao = {255,255,254};
 	
-	public static int geraConteudo(XSSFWorkbook excel, XSSFSheet cenario,int linhaComeco){
+	public static int geraConteudo(XSSFWorkbook excel, XSSFSheet cenario,String nomeAba,int linhaComeco,int linhasConsolidado,int numCenario){
 		
 		int linhaParaFormula = linhaComeco+1;
 		
 		XSSFRow linha2 = cenario.createRow(linhaComeco); linha2.setHeightInPoints(35);
 
 		XSSFCell cell = linha2.createCell(0);
-		cell.setCellValue("Cenário 01");
+		cell.setCellValue(nomeAba+numCenario);
 		cell.setCellStyle(ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)));
 		
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 1, "'Cenário 01'!E30");
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 2, "'Cenário 01'!G30");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 1, "'Cenário 0"+numCenario+"'!E"+(linhasConsolidado+2));
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 2, "'Cenário 0"+numCenario+"'!G"+(linhasConsolidado+2));
 		ExcelFormatoCelulaComum.numeroCentralizadoBold(excel, linha2, 70, 3, corFundoCelulaPadrao);
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 4, "C19/D19");
-		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 5, "B19-C19");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 4, "C"+(linhaComeco+1)+"/D"+(linhaComeco+1)+"");
+		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 5, "B"+(linhaComeco+1)+"-C"+(linhaComeco+1)+"");
 		ExcelFormatoCelulaComum.textoSimplesCentralizadoBold(excel, cell, linha2, "10/01/207", 6, corFundoCelulaPadrao);
 		ExcelFormatoCelulaComum.textoSimplesCentralizadoBold(excel, cell, linha2, "Jantar no Hotel com Apresentação de Tango", 7, corFundoCelulaPadrao);
 		

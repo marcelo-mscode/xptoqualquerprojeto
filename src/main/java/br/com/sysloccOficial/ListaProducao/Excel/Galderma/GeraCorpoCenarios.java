@@ -28,7 +28,7 @@ public class GeraCorpoCenarios {
 
 	}*/
 	
-	public static void geraCorpoAbaCenarios(XSSFSheet cenario,XSSFWorkbook excelGalderma,String nomeAba,
+	public static int geraCorpoAbaCenarios(XSSFSheet cenario,XSSFWorkbook excelGalderma,String nomeAba,
 											List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma)
 											throws FileNotFoundException, IOException{
 		
@@ -41,11 +41,13 @@ public class GeraCorpoCenarios {
 		//Não precisa mexer mais
 		CorpoCenarioGaldermaTopo.geraTopoEstatico(excelGalderma, cenario, 17);
 		
-		
-		int linhaParainfoRodape = passaInformacoesCorpoExcel(cenario, excelGalderma, gruposParaExcel, categoriasGalderma);
+		int linhasParaConsolidado = passaInformacoesCorpoExcel(cenario, excelGalderma, gruposParaExcel, categoriasGalderma);
 		
 		//Não mexer mais
-		GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,linhaParainfoRodape+7);
+		GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,linhasParaConsolidado+7);
+		
+		return linhasParaConsolidado;
+		
 	}
 
 	/**
@@ -59,8 +61,9 @@ public class GeraCorpoCenarios {
 		
 		int linhaComecoCategorias = 20;
 		int linhaComecoInfoCategorias = 21;
+		int linhasConsolidado = 0;
 		
-		List<Integer> linhasSubtotais = new ArrayList<Integer>();
+		List<Integer[]> linhasSubtotais = new ArrayList<Integer[]>();
 		
 		
 
@@ -93,26 +96,29 @@ public class GeraCorpoCenarios {
 						linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
 					}
 			}
-			
 			ultimaLinhaGrupoCategoria = qtdInfoGrupo2;
-			if(categoriasGalderma.get(i).getIdCategoriaGalderma() != 8){
-				linhasSubtotais.add(ultimaLinhaGrupoCategoria+4);
-				linhasSubtotais.add(-1);
-			}else{
-				linhasSubtotais.add(ultimaLinhaGrupoCategoria+4);
-			}
+
+				Integer[] linhas = new Integer[2];
+
+				if(categoriasGalderma.get(i).getIdCategoriaGalderma() == 8){
+					linhas[0] = ultimaLinhaGrupoCategoria+4;
+					linhas[1] = 8;
+					linhasSubtotais.add(linhas);
+				}else{
+					linhas[0] = ultimaLinhaGrupoCategoria+4;
+					linhas[1] = 0;
+					linhasSubtotais.add(linhas);
+				}
 			
-			CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
+				CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
 			
 			qtdInfoGrupo2 = qtdInfoGrupo2+4;
-			
 		}
-		
+		linhasConsolidado = qtdInfoGrupo2;
 		CalculoRodapeCenario.calculosRodapePlanilha(excelGalderma, cenario, qtdInfoGrupo2,linhasSubtotais);
-		
-		return qtdInfoGrupo2;
-		
+		return linhasConsolidado;
 	}
+
 	
 	/**
 	 * Método para gerar rodapé da aba
