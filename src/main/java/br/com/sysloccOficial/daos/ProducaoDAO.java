@@ -340,10 +340,6 @@ public class ProducaoDAO {
 			return idPlanilhaFilha;
 			}
 		}
-    	
-    	/* galdermaDAO.salvaidsNovoCenario(idPlanilhaMae, idPlanilhaFilha, numeroCenario);*/
-    	
-    	/* idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);*/
     }
     
     
