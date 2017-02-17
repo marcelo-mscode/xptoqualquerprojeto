@@ -31,6 +31,7 @@ import br.com.sysloccOficial.daos.ListaDAO;
 import br.com.sysloccOficial.daos.ProducaoDAO;
 import br.com.sysloccOficial.daos.ProdutoDAO;
 import br.com.sysloccOficial.model.Categoria;
+import br.com.sysloccOficial.model.CenariosGalderma;
 import br.com.sysloccOficial.model.CriacaoItemLista;
 import br.com.sysloccOficial.model.CriacaoItemStatus;
 import br.com.sysloccOficial.model.CriacaoLista;
@@ -807,5 +808,31 @@ public class ProducaoController {
 		}
 	return MV;
 	}
+    
+    
+    @RequestMapping("/geraCenarioGalderma")
+    public String geraCenarioGalderma(Integer idLista){
+    	
+    	System.out.println("___________________________________________________");
+	    Integer retorno =	producaoDAO.verificaSePlanilhaMae(idLista);
+	    System.out.println("___________________________________________________");
+	    
+	    return "redirect:editaLista?idLista="+retorno;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	
 }

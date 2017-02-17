@@ -51,7 +51,8 @@
 
 <div class="row" style="margin-top: 0;background-color: #f2f2f2;border-bottom: 1px solid #ccc;">
 	<div id="itemEnviadoCriacao" style="z-index: 9999;position: absolute;"></div>
-	<div class="col-md-6 tira-padding" style="font-family: 'OpenSansLight'"><h3 style="margin-top: 11px">PLANILHA INTERNA
+	<div class="col-md-6 tira-padding" style="font-family: 'OpenSansLight'">
+	    <h3 style="margin-top: 11px">PLANILHA INTERNA
 		  <c:if test="${idlistaEstatus == 2 }"> 
 		  	( Fechada )
 		  </c:if>
@@ -65,6 +66,9 @@
 		  
 		  </h3>
 	 </div>
+	 <div class="col-md-6 tira-padding" style="font-family: 'OpenSansLight'">
+		  <a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
+	 </div> 
 </div>
    
    <div class="row"style="padding: 5px 0;">

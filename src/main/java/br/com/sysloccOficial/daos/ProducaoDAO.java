@@ -11,32 +11,37 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.ListaProducao.DeterminaQuantidade.dao.DeterminaQuantidadesDAO;
+import br.com.sysloccOficial.ListaProducao.Excel.Galderma.DAO.ExcelGaldermaDAO;
+import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.model.Categoria;
+import br.com.sysloccOficial.model.CenariosGalderma;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.ListaEstatus;
 import br.com.sysloccOficial.model.OrcamentoFornecedor;
 import br.com.sysloccOficial.model.ProdutoGrupo;
-import br.com.sysloccOficial.model.producao.CartaContFornecedor;
-import br.com.sysloccOficial.model.producao.FornecedorFinanceiro;
 import br.com.sysloccOficial.model.producao.ProducaoP;
-import br.com.sysloccOficial.model.prospeccao.Prospeccao;
 
 @Repository
 public class ProducaoDAO {
 	
-	@PersistenceContext
-	private EntityManager manager;
+	@PersistenceContext private EntityManager manager;
 	@Autowired private DeterminaQuantidadesDAO deterQuantDAO;
 	@Autowired private ProdutoGrupoDAO produtoGrupoDAO;
 	@Autowired private GrupoDAO grupoDAO;
 	@Autowired private CategoriaDAO categoriaDAO;
+	@Autowired private Utilitaria util;
+	
+	
+	
+	@Autowired ExcelGaldermaDAO galdermaDAO;
 	
 	
 	public List<Grupo> listaGrupoPorIdCategoria(Integer idCategoria){
@@ -294,6 +299,88 @@ public class ProducaoDAO {
 		List<Integer> diasPrazo = q.getResultList();
 		return diasPrazo;
 	}
+    
+    
+    public Integer verificaSePlanilhaMae(Integer idLista){
+    	
+    	Integer idPlanilhaMae = 0;
+    	Integer idPlanilhaFilha = 0;
+    	Integer numeroCenario = 0;
+    	
+    	
+/*    	try { // planilha filha ?
+    		
+    		CenariosGalderma  teste = galdermaDAO.verificaPlanilhaFilha(idLista);
+    		return teste;
+    		
+		} catch (Exception e) {//Não é filha
+			
+			try { // É planilha Mãe ? 
+				
+				CenariosGalderma  cenariosMae = galdermaDAO.verificaPlanilhaMae(idLista);
+				return cenariosMae;
+			
+			} catch (Exception e2) {//Não é mãe
+				
+				idPlanilhaMae = idLista;
+				idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
+				numeroCenario = 2
+				return idNovoCenario;
+			}
+		}*/
+    	
+
+		idPlanilhaMae = idLista;
+		idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
+		numeroCenario = 2;
+    	
+    	
+    	galdermaDAO.salvaidsNovoCenario(idPlanilhaMae, idPlanilhaFilha, numeroCenario);
+    	
+    	/*idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
+    	
+    	*/
+    	
+		return 2439;
+	  /*return idPlanilhaFilha;*/
+
+    }
+    
+    
+    public Integer espelhamentoCenarioGalderna(Integer idLista){
+		Lista lista = manager.find(Lista.class, idLista);
+		//ListaEstatus listaEstatus = manager.find(ListaEstatus.class, 1);
+		
+		ModelAndView MV = new ModelAndView("producao/listaDuplicada");
+		
+		// Código Modificado para o modelo de
+		// Quando for duplicar a lista ele assumirá o codigo do job
+		// mais regra para LP normalmente.
+		String codLista = util.montaCodigoDuplicaLista(lista.getIdJob().getIdJob(), lista.getIdJob().getCodJob());
+		
+		Lista listaDuplicada = new Lista();
+		
+		listaDuplicada = lista;
+		listaDuplicada.setRevisao(0);
+		listaDuplicada.setIdLista(null);
+		listaDuplicada.setIdlistaEstatus(manager.find(ListaEstatus.class, 1));
+	    listaDuplicada.setListaCod(codLista);
+
+		manager.detach(listaDuplicada);
+		manager.persist(listaDuplicada);
+		Integer  idNovaLista = listaDuplicada.getIdLista();
+		clonaCategoria(idLista,listaDuplicada);
+
+		manager.clear();
+		Lista novalista = manager.find(Lista.class, idNovaLista);
+		
+		MV.addObject("idNovaLista", novalista.getIdLista());
+        return novalista.getIdLista();
+	}
+    
+    
+    
+    
     
     
 }
