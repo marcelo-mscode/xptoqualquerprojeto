@@ -308,9 +308,25 @@ public class ProducaoDAO {
     	Integer numeroCenario = 0;
     	
     	
+    	CenariosGalderma  teste = galdermaDAO.verificaPlanilhaFilha(idLista);
+		
+    	
+    	
+		idPlanilhaMae = teste.getPlanilhaMae();
+		idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
+		numeroCenario = galdermaDAO.qtdPlanilhasFilhas(idPlanilhaMae);
+    	
+    	
+    	
 /*    	try { // planilha filha ?
     		
     		CenariosGalderma  teste = galdermaDAO.verificaPlanilhaFilha(idLista);
+    		
+    		idPlanilhaMae = idLista;
+			idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
+			numeroCenario = 2;
+    		
+    		
     		return teste;
     		
 		} catch (Exception e) {//Não é filha
@@ -324,16 +340,9 @@ public class ProducaoDAO {
 				
 				idPlanilhaMae = idLista;
 				idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
-				numeroCenario = 2
-				return idNovoCenario;
+				numeroCenario = 2;
 			}
 		}*/
-    	
-
-		idPlanilhaMae = idLista;
-		idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
-		numeroCenario = 2;
-    	
     	
     	galdermaDAO.salvaidsNovoCenario(idPlanilhaMae, idPlanilhaFilha, numeroCenario);
     	

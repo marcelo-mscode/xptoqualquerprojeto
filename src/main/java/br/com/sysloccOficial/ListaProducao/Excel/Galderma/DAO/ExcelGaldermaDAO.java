@@ -61,6 +61,10 @@ public class ExcelGaldermaDAO {
 		manager.persist(novoCenario);
 	}
 	
+	public Integer qtdPlanilhasFilhas(Integer idPlanilhaMae){
+		TypedQuery<Integer> qtdFilhas = manager.createQuery("Select count(idCenarios) from CenariosGalderma where planilhaMae ="+idPlanilhaMae, Integer.class);
+		return qtdFilhas.getSingleResult();
+	}
 	
 	
 	
