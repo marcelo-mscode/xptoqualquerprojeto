@@ -306,53 +306,44 @@ public class ProducaoDAO {
     	Integer idPlanilhaMae = 0;
     	Integer idPlanilhaFilha = 0;
     	Integer numeroCenario = 0;
+    	Long num;
     	
     	
-    	CenariosGalderma  teste = galdermaDAO.verificaPlanilhaFilha(idLista);
-		
-    	
-    	
-		idPlanilhaMae = teste.getPlanilhaMae();
-		idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
-		numeroCenario = galdermaDAO.qtdPlanilhasFilhas(idPlanilhaMae);
-    	
-    	
-    	
-/*    	try { // planilha filha ?
+    	try { // planilha filha ?
     		
-    		CenariosGalderma  teste = galdermaDAO.verificaPlanilhaFilha(idLista);
-    		
-    		idPlanilhaMae = idLista;
-			idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
-			numeroCenario = 2;
-    		
-    		
-    		return teste;
+	    	CenariosGalderma  cenarioFilha = galdermaDAO.verificaPlanilhaFilha(idLista);
+	    	idPlanilhaMae = cenarioFilha.getPlanilhaMae();
+	    	idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
+	    	num = galdermaDAO.qtdPlanilhasFilhas(idPlanilhaMae);
+	    	numeroCenario = Integer.valueOf(num.toString())+2;
+    		galdermaDAO.salvaidsNovoCenario(idPlanilhaMae, idPlanilhaFilha, numeroCenario);
+    		return idPlanilhaFilha;
     		
 		} catch (Exception e) {//Não é filha
 			
 			try { // É planilha Mãe ? 
 				
-				CenariosGalderma  cenariosMae = galdermaDAO.verificaPlanilhaMae(idLista);
-				return cenariosMae;
+			CenariosGalderma  cenariosMae = galdermaDAO.verificaPlanilhaMae(idLista);
+	    	idPlanilhaMae = cenariosMae.getPlanilhaMae();
+	    	idPlanilhaFilha = espelhamentoCenarioGalderna(idPlanilhaMae);
+	    	num = galdermaDAO.qtdPlanilhasFilhas(idPlanilhaMae);
+	    	numeroCenario = Integer.valueOf(num.toString())+2;
+			galdermaDAO.salvaidsNovoCenario(idPlanilhaMae, idPlanilhaFilha, numeroCenario);	
+			return idPlanilhaFilha;
 			
-			} catch (Exception e2) {//Não é mãe
+		} catch (Exception e2) {//Não é mãe
 				
-				idPlanilhaMae = idLista;
-				idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
-				numeroCenario = 2;
+			idPlanilhaMae = idLista;
+			idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
+			numeroCenario = 2;
+			galdermaDAO.salvaidsNovoCenario(idPlanilhaMae, idPlanilhaFilha, numeroCenario);
+			return idPlanilhaFilha;
 			}
-		}*/
+		}
     	
-    	galdermaDAO.salvaidsNovoCenario(idPlanilhaMae, idPlanilhaFilha, numeroCenario);
+    	/* galdermaDAO.salvaidsNovoCenario(idPlanilhaMae, idPlanilhaFilha, numeroCenario);*/
     	
-    	/*idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);
-    	
-    	*/
-    	
-		return 2439;
-	  /*return idPlanilhaFilha;*/
-
+    	/* idPlanilhaFilha = espelhamentoCenarioGalderna(idLista);*/
     }
     
     

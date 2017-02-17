@@ -30,7 +30,7 @@ public class ExcelGaldermaDAO {
 	
 	public CenariosGalderma verificaPlanilhaMae(Integer idLista){
 		
-		TypedQuery<CenariosGalderma> cenariosMae = manager.createQuery("from CenariosGalderma where planilhaMae = "+idLista, CenariosGalderma.class);
+		TypedQuery<CenariosGalderma> cenariosMae = manager.createQuery("from CenariosGalderma where planilhaMae = "+idLista, CenariosGalderma.class).setMaxResults(1);
 		cenariosMae.getSingleResult();
 		// chamar método para verificar qts filhas tem
 		System.out.println("É planilha Mãe, chamando método para verificar qts filhas tem");
@@ -61,8 +61,8 @@ public class ExcelGaldermaDAO {
 		manager.persist(novoCenario);
 	}
 	
-	public Integer qtdPlanilhasFilhas(Integer idPlanilhaMae){
-		TypedQuery<Integer> qtdFilhas = manager.createQuery("Select count(idCenarios) from CenariosGalderma where planilhaMae ="+idPlanilhaMae, Integer.class);
+	public Long qtdPlanilhasFilhas(Integer idPlanilhaMae){
+		TypedQuery<Long> qtdFilhas = manager.createQuery("Select count(idCenarios) from CenariosGalderma where planilhaMae ="+idPlanilhaMae, Long.class);
 		return qtdFilhas.getSingleResult();
 	}
 	
