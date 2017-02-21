@@ -4,6 +4,7 @@ package br.com.sysloccOficial.controllers;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -11,8 +12,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 
+import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.context.annotation.Scope;
@@ -731,8 +734,14 @@ public class ProducaoController {
     public void verificaSeListaExiste(Integer idListaNova,Integer idListaAntiga, String CodLista){ 
     		Lista lista = manager.getReference(Lista.class, idListaNova);
     			
-			String consulta = " select c from CriacaoLista c join fetch c.listaProducao join fetch c.criacaoItemLista where idListaProducao="+idListaAntiga;
-			List<CriacaoLista>listaCriacao = criacaoDAO.ListaDeObjetos(consulta);
+    		List<CriacaoLista>listaCriacao = new ArrayList<CriacaoLista>();
+    		
+    		try {
+    			String consulta = "select c from CriacaoLista c join fetch c.listaProducao join fetch c.criacaoItemLista where idListaProducao="+idListaAntiga;
+    			listaCriacao = criacaoDAO.ListaDeObjetos(consulta);
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Erro: "+e);
+			}
 			
 			String consultaGrupo = "SELECT g FROM Grupo g where idLista ="+idListaNova+" and criacao= 1";
 			List<Grupo> grupos= criacaoDAO.ListaDeGrupos(consultaGrupo);
