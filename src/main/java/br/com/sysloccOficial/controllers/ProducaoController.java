@@ -487,7 +487,48 @@ public class ProducaoController {
 			verificaSeListaExiste(listaDuplicada.getIdLista(),idListaAntiga,codLista);
 			
 	        MV.addObject("idNovaLista", listaDuplicada.getIdLista());
-			
+	        
+	        
+// ------------------------------------------------------------------------- //	        
+
+	      //Verifica se tem refencia em filha 
+	        try {
+	        	String consultaFilha = "from CenariosGalderma where planilhaFilha = "+ idLista;
+	        	TypedQuery<CenariosGalderma> cnf = manager.createQuery(consultaFilha, CenariosGalderma.class);
+	        	CenariosGalderma cenarios = cnf.getSingleResult();
+	        	System.out.println("É filha, atualizando");
+
+	        	cenarios.setPlanilhaFilha(listaDuplicada.getIdLista());
+	        	manager.merge(cenarios);
+	        	System.out.println("Atualizado com sucesso.");
+	        	// Se true
+	        	//atualizar para id da lista duplicada
+			} catch (Exception e) {
+				System.out.println("Não é filha.");
+				try {
+					String consultaMae = "from CenariosGalderma where planilhaMae = "+ idLista;
+					TypedQuery<CenariosGalderma> cnf = manager.createQuery(consultaMae, CenariosGalderma.class);
+					List<CenariosGalderma> cenariosMae = cnf.getResultList();
+					
+					if(cenariosMae.isEmpty()){
+						//se false, não fazer nada
+						System.out.println("Não é mãe, nada a fazer");
+					}else{
+						//verificar em referencia em mae
+						//se true, pegar lista de todos os idCenarios a atualizar idsCenariosMae
+						System.out.println("É mãe, atualizando registros.");
+						for (int i = 0; i < cenariosMae.size(); i++) {
+							cenariosMae.get(i).setPlanilhaMae(listaDuplicada.getIdLista());
+							manager.merge(cenariosMae.get(i));
+							System.out.println("Mãe atualizado com sucesso.");
+						}
+					}
+				} catch (Exception e2) {
+					//se false, não fazer nada
+				}
+			}
+	        
+// ------------------------------------------------------------------------- //	        
 	        return MV;
 		}	
 	
