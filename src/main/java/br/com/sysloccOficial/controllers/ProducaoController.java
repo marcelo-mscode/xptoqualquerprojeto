@@ -863,11 +863,11 @@ public class ProducaoController {
     
     
     @RequestMapping("/geraCenarioGalderma")
+    @CacheEvict(value="listaProducao", allEntries=true)
     public String geraCenarioGalderma(Integer idLista){
     	
-    	System.out.println("___________________________________________________");
 	    Integer retorno =	producaoDAO.verificaSePlanilhaMae(idLista);
-	    
+
 	    return "redirect:editaLista?idLista="+retorno;
     }
     
