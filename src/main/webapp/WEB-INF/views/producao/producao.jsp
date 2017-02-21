@@ -28,6 +28,10 @@
 	<c:set value="${lista.administracaoValor}" var="administracaoValor"/>
 	<c:set value="${lista.administracaoValor}" var="administracaoValor"/>
 	<c:set value="${lista.idlistaEstatus.idlistaEstatus}" var="idlistaEstatus"/>
+	<c:set value="${lista.idlistaEstatus.idlistaEstatus}" var="idlistaEstatus"/>
+	
+	
+	
 	
 </c:forEach>
 <!-- ---------------------------------------------------------------- -->
@@ -145,6 +149,9 @@
 
     <tr>
 	    <td>Título da lista</td>
+	    
+	    
+	    <td>Cenário</td>
 	    <td>Cliente</td>
 	    <td>Job</td>
 	    <td>Código da Lista</td>
