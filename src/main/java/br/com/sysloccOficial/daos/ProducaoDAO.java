@@ -333,10 +333,11 @@ public class ProducaoDAO {
 			// seta numero do cenário 1 para planilha mãe
 			Lista listaMae = manager.find(Lista.class, idLista);
 			listaMae.setNumCenarioGalderma(1);
+			manager.merge(listaMae);
 			// seta numero do cenário da planilha filha
 			Lista listaFilha = manager.find(Lista.class, idPlanilhaFilha);
 			listaFilha.setNumCenarioGalderma(numeroCenario);
-			
+			manager.merge(listaFilha);
 			return idPlanilhaFilha;
 			
 		} catch (Exception e2) {//Não é mãe
