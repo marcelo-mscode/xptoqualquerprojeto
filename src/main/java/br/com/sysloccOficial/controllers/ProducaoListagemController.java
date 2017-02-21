@@ -109,8 +109,7 @@ public class ProducaoListagemController {
 	@RequestMapping("/listaProducao")
     @Cacheable(value="listaProducao")
 	public ModelAndView listaProducao() throws ParseException{
-		ModelAndView MV = new ModelAndView();
-		MV.setViewName("producao/exibeListas");
+		ModelAndView MV = new ModelAndView("producao/exibeListas");
 		
 		
 		List<Object[]> codListas = listaDAO.idListasTeste();
@@ -137,6 +136,7 @@ public class ProducaoListagemController {
 			ListaConsulta l = new ListaConsulta();
 
 			l.setLista((String)listaDAO.condicao(idLista,"l.lista"));
+			l.setNumCenarioGalderma((Integer)listaDAO.condicao(idLista,"l.numCenarioGalderma"));
 			l.setIdLista((Integer)listaDAO.condicao(idLista,"l.idLista"));
 			l.setRevisao((Integer)listaDAO.condicao(idLista,"l.revisao"));
 			l.setEmpresa((String)listaDAO.condicao(idLista,"l.idJob.empresa.empresa"));

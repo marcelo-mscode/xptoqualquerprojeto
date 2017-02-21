@@ -5,6 +5,7 @@ public class ListaConsulta {
 	private Integer idLista;
 	private Integer revisao;
 	
+	private Integer numCenarioGalderma;
 	
 	private String lista;
 	private String empresa;
@@ -13,6 +14,14 @@ public class ListaConsulta {
 	private String listaCod;
 	
 	
+	public Integer getNumCenarioGalderma() {
+		return numCenarioGalderma;
+	}
+
+	public void setNumCenarioGalderma(Integer numCenarioGalderma) {
+		this.numCenarioGalderma = numCenarioGalderma;
+	}
+
 	public String getListaCod() {
 		return listaCod;
 	}

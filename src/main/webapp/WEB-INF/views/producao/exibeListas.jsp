@@ -139,7 +139,13 @@
 								<tr>
 									<td>${lista2.listaCod}</td>
 									<td class="alinhamentoVertical">${lista2.revisao}</td>
-									<td class="alinhamentoVertical"><a href="editaLista?idLista=${lista2.idLista}">${lista2.lista}</a></td>
+
+									<td class="alinhamentoVertical">
+										<a href="editaLista?idLista=${lista2.idLista}">${lista2.lista}
+											<c:if test="${lista2.numCenarioGalderma != null}"> - Cenário ${lista2.numCenarioGalderma}</c:if>
+										 </a>
+									</td>
+									
 									<td>${lista2.empresa}</td>
 									<td>${lista2.job}</td>
 									<td>${lista2.status}</td>
