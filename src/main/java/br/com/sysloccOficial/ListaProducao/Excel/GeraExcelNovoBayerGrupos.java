@@ -108,12 +108,10 @@ public class GeraExcelNovoBayerGrupos {
 								diariacomImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 								preco = preco.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
 								
-								if(listaGrupos.get(i).getIdgrupo() == 77042){
+								if(listaGrupos.get(i).getIdgrupo() == 77049){
 									System.out.println(listaGrupos.get(j).getIdgrupo());
-									JOptionPane.showMessageDialog(null, "Preço: " +preco);
+									JOptionPane.showMessageDialog(null, "Preço: " +preco+"\nQtd: "+qtdcomImposto+"\ndiariacomImposto: "+diariacomImposto);
 								}
-								
-								
 								
 						//		comImpostoUnico = comImpostoUnico.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
 								comImpostoUnico = comImpostoUnico.add(preco.multiply(new BigDecimal(diariacomImposto)).multiply(new BigDecimal(qtdcomImposto)));
