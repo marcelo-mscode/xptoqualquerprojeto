@@ -109,9 +109,7 @@ public class GeraExcelNovoBayerGrupos {
 								//Pega preço do produto
 								preco = preco.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
 								
-								
-						//		comImpostoUnico = comImpostoUnico.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
-								comImpostoUnico = comImpostoUnico.add(preco.multiply(/*new BigDecimal(diariacomImposto)).multiply(*/new BigDecimal(qtdcomImposto)));
+								comImpostoUnico = comImpostoUnico.add(preco.multiply(new BigDecimal(qtdcomImposto)));
 								
 								if(listaGrupos.get(i).getIdgrupo() == 77049){
 									System.out.println(listaGrupos.get(j).getIdgrupo());
@@ -129,8 +127,7 @@ public class GeraExcelNovoBayerGrupos {
 									qtdsemImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade()*listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade2()*listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 									diariasemImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 									precoSemImposto = precoSemImposto.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
-									semImpostoUnico = semImpostoUnico.add(precoSemImposto.multiply(new BigDecimal(diariasemImposto)).multiply(new BigDecimal(qtdsemImposto)));
-									//semImpostoUnico = semImpostoUnico.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
+									semImpostoUnico = semImpostoUnico.add(precoSemImposto.multiply(new BigDecimal(qtdsemImposto)));
 								}
 					    }
 			     }
