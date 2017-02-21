@@ -856,7 +856,6 @@ public class ProducaoController {
     	
     	System.out.println("___________________________________________________");
 	    Integer retorno =	producaoDAO.verificaSePlanilhaMae(idLista);
-	    System.out.println("___________________________________________________");
 	    
 	    return "redirect:editaLista?idLista="+retorno;
     }

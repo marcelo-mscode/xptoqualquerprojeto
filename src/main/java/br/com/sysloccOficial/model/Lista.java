@@ -28,6 +28,9 @@ public class Lista {
 	private Integer concluido;	
 	private Integer revisao;		
 	
+	private Integer numCenarioGalderma;
+	
+	
 	private String lista;
 	private String listaCod;	
 	private String observacoes;
@@ -75,6 +78,12 @@ public class Lista {
 	
 	public Integer getIdLista() {
 		return idLista;
+	}
+	public Integer getNumCenarioGalderma() {
+		return numCenarioGalderma;
+	}
+	public void setNumCenarioGalderma(Integer numCenarioGalderma) {
+		this.numCenarioGalderma = numCenarioGalderma;
 	}
 	public String getAdministracaoTransiente() {
 		return administracaoTransiente;

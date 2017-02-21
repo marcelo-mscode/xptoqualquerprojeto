@@ -329,6 +329,14 @@ public class ProducaoDAO {
 	    	num = galdermaDAO.qtdPlanilhasFilhas(idPlanilhaMae);
 	    	numeroCenario = Integer.valueOf(num.toString())+2;
 			galdermaDAO.salvaidsNovoCenario(idPlanilhaMae, idPlanilhaFilha, numeroCenario);	
+			
+			// seta numero do cenário 1 para planilha mãe
+			Lista listaMae = manager.find(Lista.class, idLista);
+			listaMae.setNumCenarioGalderma(1);
+			// seta numero do cenário da planilha filha
+			Lista listaFilha = manager.find(Lista.class, idPlanilhaFilha);
+			listaFilha.setNumCenarioGalderma(numeroCenario);
+			
 			return idPlanilhaFilha;
 			
 		} catch (Exception e2) {//Não é mãe
