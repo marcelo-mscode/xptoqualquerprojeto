@@ -111,7 +111,7 @@ public class GeraExcelNovoBayerGrupos {
 								
 								
 						//		comImpostoUnico = comImpostoUnico.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
-								comImpostoUnico = comImpostoUnico.add(preco.multiply(new BigDecimal(diariacomImposto))/*.multiply(new BigDecimal(qtdcomImposto))*/);
+								comImpostoUnico = comImpostoUnico.add(preco.multiply(/*new BigDecimal(diariacomImposto)).multiply(*/new BigDecimal(qtdcomImposto)));
 								
 								if(listaGrupos.get(i).getIdgrupo() == 77049){
 									System.out.println(listaGrupos.get(j).getIdgrupo());
