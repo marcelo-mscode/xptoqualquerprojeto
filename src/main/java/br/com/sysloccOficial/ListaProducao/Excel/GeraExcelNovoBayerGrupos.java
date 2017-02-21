@@ -100,6 +100,11 @@ public class GeraExcelNovoBayerGrupos {
 	 				  if(listaGrupos.get(i).getProdutoGrupo().get(j).isImposto() == true){
 							if(comImposto.equals(zero)){
 								
+								if(listaGrupos.get(i).getIdgrupo() == 77042){
+									System.out.println(listaGrupos.get(j).getIdgrupo());
+								}
+								
+								
 								BigDecimal preco = new BigDecimal("0.00");
 								
 								qtdcomImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade()*listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade2()*listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
