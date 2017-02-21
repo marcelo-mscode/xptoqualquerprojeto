@@ -102,8 +102,11 @@ public class GeraExcelNovoBayerGrupos {
 								
 								BigDecimal preco = new BigDecimal("0.00");
 								
+								//Multiplica qtd1 * qts2 * diarias
 								qtdcomImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade()*listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade2()*listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
+								//Pega diarias
 								diariacomImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
+								//Pega preço do produto
 								preco = preco.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
 								
 								
