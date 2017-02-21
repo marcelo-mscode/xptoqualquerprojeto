@@ -491,7 +491,7 @@ public class ProducaoController {
 	        
 // ------------------------------------------------------------------------- //	        
 
-	      //Verifica se tem refencia em filha 
+	      //Verifica se tem referência em filha 
 	        try {
 	        	String consultaFilha = "from CenariosGalderma where planilhaFilha = "+ idLista;
 	        	TypedQuery<CenariosGalderma> cnf = manager.createQuery(consultaFilha, CenariosGalderma.class);
@@ -500,6 +500,11 @@ public class ProducaoController {
 
 	        	cenarios.setPlanilhaFilha(listaDuplicada.getIdLista());
 	        	manager.merge(cenarios);
+	        	
+	        	Lista listaAtual = manager.find(Lista.class, idLista);
+	        	listaAtual.setNumCenarioGalderma(null);
+	        	manager.merge(listaAtual);
+	        	
 	        	System.out.println("Atualizado com sucesso.");
 	        	// Se true
 	        	//atualizar para id da lista duplicada
@@ -514,7 +519,7 @@ public class ProducaoController {
 						//se false, não fazer nada
 						System.out.println("Não é mãe, nada a fazer");
 					}else{
-						//verificar em referencia em mae
+						//verificar em referência em mae
 						//se true, pegar lista de todos os idCenarios a atualizar idsCenariosMae
 						System.out.println("É mãe, atualizando registros.");
 						for (int i = 0; i < cenariosMae.size(); i++) {
@@ -522,6 +527,12 @@ public class ProducaoController {
 							manager.merge(cenariosMae.get(i));
 							System.out.println("Mãe atualizado com sucesso.");
 						}
+						
+						Lista listaAtual = manager.find(Lista.class, idLista);
+			        	listaAtual.setNumCenarioGalderma(null);
+			        	manager.merge(listaAtual);
+						
+						
 					}
 				} catch (Exception e2) {
 					//se false, não fazer nada
