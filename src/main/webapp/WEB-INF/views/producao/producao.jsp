@@ -28,7 +28,7 @@
 	<c:set value="${lista.administracaoValor}" var="administracaoValor"/>
 	<c:set value="${lista.administracaoValor}" var="administracaoValor"/>
 	<c:set value="${lista.idlistaEstatus.idlistaEstatus}" var="idlistaEstatus"/>
-	<c:set value="${lista.idlistaEstatus.idlistaEstatus}" var="idlistaEstatus"/>
+	<c:set value="${lista.numCenarioGalderma}" var="numCenarioGalderma"/>
 	
 	
 	
@@ -49,7 +49,7 @@
 
 
 <div class="col-md-12">
-<div class="container shadow-com-padding col-md-11" style="background: #fff;margin-top: 15px;margin-left: 4%"> 
+<div class="container shadow-com-padding col-md-12" style="background: #fff;margin-top: 15px;"> 
 
 <%-- <h1>Usuario: ${usuarioSessao}</h1> --%>
 
@@ -150,8 +150,11 @@
     <tr>
 	    <td>Título da lista</td>
 	    
-	    
-	    <td>Cenário</td>
+	   <c:if test="${numCenarioGalderma != null}">
+	    <td style="text-align: center;background-color: #ffff80;">Cenário</td>
+	   </c:if> 
+	   
+	   
 	    <td>Cliente</td>
 	    <td>Job</td>
 	    <td>Código da Lista</td>
@@ -160,6 +163,9 @@
 	    <td style="font-weight:bold;border-right:1px solid #ccc;font-size: 15px;" id="colunaNomeLista">
 		    <input type="text" value="${titulo}" style="width: 90%;border: none;" onblur="atualizaNomeLista();" id="nomeLista">
 	    </td>
+		<c:if test="${numCenarioGalderma != null}">
+	    	<td style="font-weight:bold;border-right:1px solid #ccc;font-size: 15px;text-align: center;background-color: #ffffcc;">${numCenarioGalderma}</td>
+		</c:if>
 	    <td style="font-weight:bold;border-right:1px solid #ccc;font-size: 15px;">${empresa}</td>
 	    <td style="font-weight:bold;border-right:1px solid #ccc;font-size: 15px;">${tituloJob}</td>
 	    <td style="font-weight:bold;border-right:1px solid #ccc;font-size: 15px;">${codLista} .${revisao}</td>
