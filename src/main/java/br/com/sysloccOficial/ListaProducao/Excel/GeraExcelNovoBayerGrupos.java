@@ -100,22 +100,21 @@ public class GeraExcelNovoBayerGrupos {
 	 				  if(listaGrupos.get(i).getProdutoGrupo().get(j).isImposto() == true){
 							if(comImposto.equals(zero)){
 								
-								
-								
 								BigDecimal preco = new BigDecimal("0.00");
 								
 								qtdcomImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade()*listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade2()*listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 								diariacomImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 								preco = preco.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
 								
-								if(listaGrupos.get(i).getIdgrupo() == 77049){
-									System.out.println(listaGrupos.get(j).getIdgrupo());
-									JOptionPane.showMessageDialog(null, "Preço: " +preco+"\nQtd: "+qtdcomImposto+"\ndiariacomImposto: "+diariacomImposto);
-								}
 								
 						//		comImpostoUnico = comImpostoUnico.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
-								comImpostoUnico = comImpostoUnico.add(preco.multiply(new BigDecimal(diariacomImposto)).multiply(new BigDecimal(qtdcomImposto)));
+								comImpostoUnico = comImpostoUnico.add(preco.multiply(new BigDecimal(diariacomImposto))/*.multiply(new BigDecimal(qtdcomImposto))*/);
 								
+								if(listaGrupos.get(i).getIdgrupo() == 77049){
+									System.out.println(listaGrupos.get(j).getIdgrupo());
+									JOptionPane.showMessageDialog(null, "Preço: " +preco+"\nQtd: "+qtdcomImposto+"\ndiariacomImposto: "+diariacomImposto+"\nPreço total: "+comImpostoUnico);
+								}
+
 							}
 						}
 	// ------------------------------------------------------------------------------------------------------------------------ //
@@ -193,6 +192,7 @@ public class GeraExcelNovoBayerGrupos {
 	    // ---------
 			
 		if(comImpostoUnico.equals(zero)){
+		
 		}else{
 			CorpoGrupoCategoriaBayer corpoGrupoBayer = new CorpoGrupoCategoriaBayer();
 
@@ -221,6 +221,7 @@ public class GeraExcelNovoBayerGrupos {
 			corpoGrupos.add(corpoGrupoBayer);
 		}
 		if(semImpostoUnico.equals(zero)){
+			
 		}else{	
 			CorpoGrupoCategoriaBayer corpoGrupoBayerSemImposto = new CorpoGrupoCategoriaBayer();
 			
