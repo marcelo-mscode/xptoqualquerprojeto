@@ -41,22 +41,22 @@ public class GeraBaseExcelGalderma {
 
 		
 		//Lógica para pegar lista de ids da planilha mãe e filhas
+		List<Integer> pegaIdsCenarios = montaCorpoCategorias.pegaIdsCenarios(idLista);
 		
 		
 		
-		
-		List<Integer> idsListas = new ArrayList<Integer>();
+		/*List<Integer> idsListas = new ArrayList<Integer>();
 		idsListas.add(2479);
-		idsListas.add(2497);
+		idsListas.add(2497);*/
 		
 		List<LinhasConsolidado> linhasParaConsolidado = new ArrayList<LinhasConsolidado>();
-		for (int i = 0; i < idsListas.size(); i++) {
+		for (int i = 0; i < pegaIdsCenarios.size(); i++) {
 			
 			int numCenario = i +1;
 			
 			// Monta dados para um cenário por idLista
-			List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(idsListas.get(i));
-			List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(idsListas.get(i));
+			List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(pegaIdsCenarios.get(i));
+			List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(pegaIdsCenarios.get(i));
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
 			
 			//Cria o Cenários passando os dados		

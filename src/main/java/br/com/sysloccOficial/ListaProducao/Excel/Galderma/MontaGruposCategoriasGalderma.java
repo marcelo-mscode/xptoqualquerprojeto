@@ -37,46 +37,41 @@ public class MontaGruposCategoriasGalderma{
 		
 		List<Integer> listaIds = new ArrayList<Integer>();
 		
-		
 		//Verifica se tem referência em filha 
         try {
-        	
-        	//Pegar idMae, adicionar na Lista 
         	String consulta = "select planilhaMae from CenariosGalderma where planilhaFilha = " +idLista;
         	TypedQuery<Integer> idMae = manager.createQuery(consulta, Integer.class);
         	Integer idListaMae = idMae.getSingleResult();
-        	
-        	String cunsultaFilhas = "select planilhaFilha from CenariosGalderma where planilhaMae=" + idListaMae + "order by cenarioFilha";
-        	TypedQuery<Integer> idsFilhas = manager.createQuery(cunsultaFilhas, Integer.class);
-        	List<Integer> listaIdsFilhas = idsFilhas.getResultList();
-        	
-        	listaIds.add(idListaMae);
-        	
-        	for (int i = 0; i < listaIdsFilhas.size(); i++) {
-        		listaIds.add(listaIdsFilhas.get(i));
-			}
-        	
+        	preencheListaComIds(listaIds, idListaMae);
         	return listaIds;
-        		
-        	// Se true
-        	//atualizar para id da lista duplicada
+  
 		} catch (Exception e) {
-			System.out.println("Não é filha.");
 			try {
-				String consultaMae = "from CenariosGalderma where planilhaMae = "+ idLista;
-				TypedQuery<CenariosGalderma> cnf = manager.createQuery(consultaMae, CenariosGalderma.class);
-				List<CenariosGalderma> cenariosMae = cnf.getResultList();
-				
+				String consultaMae = "select planilhaMae from CenariosGalderma where planilhaMae = "+ idLista;
+				TypedQuery<Integer> idMae = manager.createQuery(consultaMae, Integer.class);
+	        	Integer idListaMae = idMae.getSingleResult();
+	        	preencheListaComIds(listaIds, idListaMae);
+	        	return listaIds;
+	        	
 			} catch (Exception e2) {
-				
-				
-				//se false, não fazer nada
+				return null;
 			}
 		}
+	}
+
+
+
+
+	private void preencheListaComIds(List<Integer> listaIds, Integer idListaMae) {
+		String cunsultaFilhas = "select planilhaFilha from CenariosGalderma where planilhaMae=" + idListaMae + "order by cenarioFilha";
+		TypedQuery<Integer> idsFilhas = manager.createQuery(cunsultaFilhas, Integer.class);
+		List<Integer> listaIdsFilhas = idsFilhas.getResultList();
 		
+		listaIds.add(idListaMae);
 		
-		
-		return null;
+		for (int i = 0; i < listaIdsFilhas.size(); i++) {
+			listaIds.add(listaIdsFilhas.get(i));
+		}
 	}
 	
 	
