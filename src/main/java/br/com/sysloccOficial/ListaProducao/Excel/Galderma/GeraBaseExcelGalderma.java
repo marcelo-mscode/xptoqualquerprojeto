@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.hibernate.mapping.Array;
@@ -54,14 +56,24 @@ public class GeraBaseExcelGalderma {
 			
 			int numCenario = i +1;
 			
+			
+			if(pegaIdsCenarios.get(i) == 2499){
+				System.out.println();
+			}
+			
+			
 			// Monta dados para um cenário por idLista
 			List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(pegaIdsCenarios.get(i));
 			List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(pegaIdsCenarios.get(i));
 			
 			
+			
 			for (int j = 0; j < listaGrupos.size(); j++) {
+				
 				if(listaGrupos.get(j).getProdutoGrupo().size() == 0){
+					JOptionPane.showMessageDialog(null, "Antes de excluir:"+ listaGrupos.size());
 								listaGrupos.remove(j); 
+					JOptionPane.showMessageDialog(null, "Depois de excluir:"+ listaGrupos.size());
 				}
 			}
 			
@@ -78,10 +90,7 @@ public class GeraBaseExcelGalderma {
 		}
 		
 		
-		System.out.println();
-		
 		CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado);		
-
 		
 		//GeraCorpoCenarios.geraCorpoAbaCenariosOpcionais(opcionais, excelGalderma,"Opcionais");
 		
