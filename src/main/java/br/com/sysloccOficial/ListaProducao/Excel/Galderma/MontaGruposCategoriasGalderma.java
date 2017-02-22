@@ -30,6 +30,17 @@ public class MontaGruposCategoriasGalderma{
 	@Autowired private AuxCarregaGrupos montaGrupos;
 	
 	
+	
+	public List<Integer> pegaIdsCenarios(Integer idLista){
+		
+		
+		
+		return null;
+	}
+	
+	
+	
+	
 	public List<Grupo> listaGruposNAOOpcionais(Integer idLista){
 		List<Grupo> listaGrupos = montaGrupos.listaGruposNAOOpcionais(2424);;
 		return listaGrupos;

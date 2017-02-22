@@ -15,7 +15,7 @@
 	
 <p style="font-size:80px;text-align:center;font-family: 'Oxygen', sans-serif;color: #f05736">BEM-VINDO AO SYSLOCC</p>
 
-<a href="excelGalderma" class="btn btn-default btn-lg col-md-offset-5" >Excel</a>
+<a href="excelGalderma?idLista=2497" class="btn btn-default btn-lg col-md-offset-5" >Excel</a>
 
 <!-- <p style="font-size:24px;text-align:center;font-family: 'Oxygen', sans-serif;color: #999999">Less Excel, More Production !</p>	
  -->

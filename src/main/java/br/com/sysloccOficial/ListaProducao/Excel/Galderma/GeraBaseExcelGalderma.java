@@ -29,7 +29,7 @@ public class GeraBaseExcelGalderma {
 	static XSSFSheet opcionais;
 	
 	
-	public String constroiExcel() throws IOException{
+	public String constroiExcel(Integer idLista) throws IOException{
 		
 		excelGalderma = new XSSFWorkbook();
 		
@@ -39,22 +39,39 @@ public class GeraBaseExcelGalderma {
 		
 		XSSFSheet consolidadoCriado = GeraCorpoConsolidado.geraCorpoAbaConsolidado(consolidado, excelGalderma,"Consolidado");
 
-		LinhasConsolidado linhas = new LinhasConsolidado();
-		LinhasConsolidado linhas1 = new LinhasConsolidado();
-		LinhasConsolidado linhas2 = new LinhasConsolidado();
+		
+		//Lógica para pegar lista de ids da planilha mãe e filhas
+		
+		
+		
+		List<Integer> idsListas = new ArrayList<Integer>();
+		idsListas.add(2479);
+		idsListas.add(2497);
 		
 		List<LinhasConsolidado> linhasParaConsolidado = new ArrayList<LinhasConsolidado>();
-		
-		//Pega categoria de um cenário por idLista
-		List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(2479);
-		List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(2479);
-		List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
-		
-		
-		
-		int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 01",montaGruposParaExcel,categoriasGalderma);
-		int linhasConsolidado2 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 02",montaGruposParaExcel,categoriasGalderma);
+		for (int i = 0; i < idsListas.size(); i++) {
+			
+			int numCenario = i +1;
+			
+			// Monta dados para um cenário por idLista
+			List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(idsListas.get(i));
+			List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(idsListas.get(i));
+			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
+			
+			//Cria o Cenários passando os dados		
+			int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 0"+numCenario,montaGruposParaExcel,categoriasGalderma);
+			//Monta dados para Consolidado
+			LinhasConsolidado linhas = new LinhasConsolidado();
+			linhas.setNomeAba("Cenário ");
+			linhas.setUltimaLinhaCalculos(linhasConsolidado);
+			linhasParaConsolidado.add(linhas);
 
+		}
+	
+		CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado);		
+
+		
+		//GeraCorpoCenarios.geraCorpoAbaCenariosOpcionais(opcionais, excelGalderma,"Opcionais");
 		
 		/*List<Grupo> listaGruposOpcionais = montaGrupos.listaGruposOpcionais(2439);
 		
@@ -70,24 +87,8 @@ public class GeraBaseExcelGalderma {
 			linhas2.setNomeAba("Opcionais");linhas2.setUltimaLinhaCalculos(linhasConsolidado3);
 			linhasParaConsolidado.add(linhas2);
 		}*/
-		
-		linhas.setNomeAba("Cenário ");linhas.setUltimaLinhaCalculos(linhasConsolidado);
-		linhas1.setNomeAba("Cenário ");linhas1.setUltimaLinhaCalculos(linhasConsolidado2);
-		
-		linhasParaConsolidado.add(linhas);
-		linhasParaConsolidado.add(linhas1);
-		
-		
-	
-		
-		CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado);		
-		
-		
 
-		//GeraCorpoCenarios.geraCorpoAbaCenariosOpcionais(opcionais, excelGalderma,"Opcionais");
-		
 		base.fechaPlanilha(excelGalderma,out);
-		
 		return downloadExcel;
 	}
 }

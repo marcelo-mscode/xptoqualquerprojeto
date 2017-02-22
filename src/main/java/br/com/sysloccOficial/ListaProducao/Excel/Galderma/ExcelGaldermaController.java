@@ -25,7 +25,7 @@ public class ExcelGaldermaController {
 	@Autowired private AuxCarregaGrupos montaGrupos;
 	
 	@RequestMapping("excelGalderma")
-	public String excelGalderma() throws IOException{
+	public String excelGalderma(Integer idLista) throws IOException{
 		
 		
 		
@@ -50,7 +50,7 @@ public class ExcelGaldermaController {
 		
 		
 		
-		String downloadExcel = excel.constroiExcel();
+		String downloadExcel = excel.constroiExcel(idLista);
 		
 		
 		System.out.println(downloadExcel);
