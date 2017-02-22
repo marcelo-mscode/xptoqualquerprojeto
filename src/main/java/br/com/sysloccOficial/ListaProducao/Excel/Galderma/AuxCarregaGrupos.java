@@ -75,7 +75,7 @@ public class AuxCarregaGrupos {
 		try {
 			
 			TypedQuery<Integer> gruposIds = manager.createQuery(
-					"SELECT distinct(g.grupoCategoriaGalderma.idCategoriaGalderma) FROM Grupo g where idlista= "+idLista+" and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by categoriaGalderma", Integer.class);
+					"SELECT distinct(g.grupoCategoriaGalderma.idCategoriaGalderma) FROM Grupo g where idlista= "+idLista+" and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 and opcional = 0 order by categoriaGalderma", Integer.class);
 			List<Integer> gruposIdsGalderma = gruposIds.getResultList();
 			
 			String consulta =  Utilitaria.limpaSqlComListStastico("from GrupoCategoriaGalderma where idCategoriaGalderma in ("+gruposIdsGalderma+")");
