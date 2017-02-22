@@ -40,32 +40,24 @@ public class MontaGruposCategoriasGalderma{
 		
 		//Verifica se tem referência em filha 
         try {
-       /* 	String consultaFilha = "from CenariosGalderma where planilhaFilha = "+ idLista;
-        	TypedQuery<CenariosGalderma> cnf = manager.createQuery(consultaFilha, CenariosGalderma.class);
-        	CenariosGalderma cenarios = cnf.getSingleResult();
-        	System.out.println("É filha, atualizando");*/
         	
         	//Pegar idMae, adicionar na Lista 
         	String consulta = "select planilhaMae from CenariosGalderma where planilhaFilha = " +idLista;
         	TypedQuery<Integer> idMae = manager.createQuery(consulta, Integer.class);
         	Integer idListaMae = idMae.getSingleResult();
         	
-        	String cunsultaFilhas = "select planilhaFilha from CenariosGalderma where planilhaMae=" + idListaMae;
+        	String cunsultaFilhas = "select planilhaFilha from CenariosGalderma where planilhaMae=" + idListaMae + "order by cenarioFilha";
         	TypedQuery<Integer> idsFilhas = manager.createQuery(cunsultaFilhas, Integer.class);
         	List<Integer> listaIdsFilhas = idsFilhas.getResultList();
         	
         	listaIds.add(idListaMae);
         	
+        	for (int i = 0; i < listaIdsFilhas.size(); i++) {
+        		listaIds.add(listaIdsFilhas.get(i));
+			}
         	
-        	
-        	//fazer consulta e pegar todos ids filhas e adiciona na lista
-        	
-        	
-        	
-        	
-        	
-        	
-        	
+        	return listaIds;
+        		
         	// Se true
         	//atualizar para id da lista duplicada
 		} catch (Exception e) {
