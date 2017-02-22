@@ -155,7 +155,7 @@ public class MontaGruposCategoriasGalderma{
 								qtdcomImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade()*listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade2()*listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 								diariacomImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 								preco = preco.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
-								comImpostoUnico = comImpostoUnico.add(preco.multiply(new BigDecimal(diariacomImposto)).multiply(new BigDecimal(qtdcomImposto)));
+								comImpostoUnico = comImpostoUnico.add(preco.multiply(new BigDecimal(qtdcomImposto)));
 								
 							}
 						}
@@ -168,7 +168,7 @@ public class MontaGruposCategoriasGalderma{
 									qtdsemImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade()*listaGrupos.get(i).getProdutoGrupo().get(j).getQuantidade2()*listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 									diariasemImposto = listaGrupos.get(i).getProdutoGrupo().get(j).getDiarias();
 									precoSemImposto = precoSemImposto.add(listaGrupos.get(i).getProdutoGrupo().get(j).getPrecoProduto());
-									semImpostoUnico = semImpostoUnico.add(precoSemImposto.multiply(new BigDecimal(diariasemImposto)).multiply(new BigDecimal(qtdsemImposto)));
+									semImpostoUnico = semImpostoUnico.add(precoSemImposto.multiply(new BigDecimal(qtdsemImposto)));
 								}
 					    }
 			     }
