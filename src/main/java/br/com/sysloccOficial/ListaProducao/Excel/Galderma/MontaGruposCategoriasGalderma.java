@@ -140,11 +140,7 @@ public class MontaGruposCategoriasGalderma{
 				orcamSemImposto = pegaOrcamentos(listaGrupos, i,0,qtdFinal);
 				
 				for (int j = 0; j < listaGrupos.get(i).getProdutoGrupo().size(); j++) {
-					
-					if(listaGrupos.get(i).getIdgrupo() == 77433){
-						JOptionPane.showMessageDialog(null, "Ta Vazio:  "+listaGrupos.get(i).getIdgrupo());
-					}
-					
+						
 	// ------------------------------------------------------------------------------------------------------------------------ //
 	 				  if(listaGrupos.get(i).getProdutoGrupo().get(j).isImposto() == true){
 							if(comImposto.equals(zero)){
