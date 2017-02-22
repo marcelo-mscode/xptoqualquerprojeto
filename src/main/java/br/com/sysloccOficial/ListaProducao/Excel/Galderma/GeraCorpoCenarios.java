@@ -86,6 +86,7 @@ public class GeraCorpoCenarios {
 			
 			GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, qtdInfoGrupo3,categoriasGalderma.get(i).getCategoria()); // ok
 			
+			
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
 						if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
 					   
@@ -94,6 +95,10 @@ public class GeraCorpoCenarios {
 						
 						qtdInfoGrupo2 = linhaComecoInfoCategorias + 1;
 						linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
+					}else{
+						
+						JOptionPane.showMessageDialog(null, "Não é :"+ gruposParaExcel.get(j).getIdGrupo());
+						
 					}
 			}
 			ultimaLinhaGrupoCategoria = qtdInfoGrupo2;
@@ -109,7 +114,7 @@ public class GeraCorpoCenarios {
 					linhas[1] = 0;
 					linhasSubtotais.add(linhas);
 				}
-			
+				
 				CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
 			
 			qtdInfoGrupo2 = qtdInfoGrupo2+4;

@@ -27,35 +27,9 @@ public class ExcelGaldermaController {
 	@RequestMapping("excelGalderma")
 	public String excelGalderma(Integer idLista) throws IOException{
 		
-		
-		
-//		List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(2424);
-		
-		
-/*		List<Grupo> listaGrupos = new ArrayList<Grupo>();
-		
-		try {
-			
-			String consulta = "from Grupo where idLista = 2424 and opcional = 0 and categoriaGalderma > 1 order by ordemGrupo";
-			
-			Query q  = manager.createQuery(consulta, Grupo.class);
-			
-			listaGrupos = q.getResultList();
-
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, ""+e);
-		}
-*/		
-		
-		
-		
-		
 		String downloadExcel = excel.constroiExcel(idLista);
 		
-		
 		System.out.println(downloadExcel);
-		
-		
 		
 		return "redirect:index";
 		

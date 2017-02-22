@@ -30,7 +30,7 @@ public class GeraSubTotalCategorias {
 			celulaBco.setCellStyle(ExcelEstiloPadrao.estiloPadrao(excel));
 		}
 		
-		if(primeiraLinhaGrupoCategoria == null){
+		if(ultimaLinhaConteudoCategoria == 0){
 			
 		}
 		

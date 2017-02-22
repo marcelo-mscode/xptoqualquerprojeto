@@ -60,7 +60,7 @@ public class GeraBaseExcelGalderma {
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
 			
 			
-			System.out.println();
+			
 			
 			
 			
