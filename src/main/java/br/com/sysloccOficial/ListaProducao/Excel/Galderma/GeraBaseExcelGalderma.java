@@ -79,7 +79,10 @@ public class GeraBaseExcelGalderma {
 		
 		//GeraCorpoCenarios.geraCorpoAbaCenariosOpcionais(opcionais, excelGalderma,"Opcionais");
 		
-		/*List<Grupo> listaGruposOpcionais = montaGrupos.listaGruposOpcionais(2439);
+		
+		LinhasConsolidado linhas2 = new LinhasConsolidado();
+		
+		List<Grupo> listaGruposOpcionais = montaGrupos.listaGruposOpcionais(idLista);
 		
 		if(listaGruposOpcionais.isEmpty()){
 			
@@ -87,12 +90,12 @@ public class GeraBaseExcelGalderma {
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcelOpcionais = montaCorpoCategorias.montaGruposParaExcel(listaGruposOpcionais);
 			
 			
-			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,categoriasGalderma);
+			/*int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,categoriasGalderma);
 			
 			
 			linhas2.setNomeAba("Opcionais");linhas2.setUltimaLinhaCalculos(linhasConsolidado3);
-			linhasParaConsolidado.add(linhas2);
-		}*/
+			linhasParaConsolidado.add(linhas2);*/
+		}
 
 		base.fechaPlanilha(excelGalderma,out);
 		return downloadExcel;
