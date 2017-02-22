@@ -88,13 +88,14 @@ public class GeraCorpoCenarios {
 			
 			
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
+				
 						if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
-					   
-						CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j)); //Chama método para gerar o corpo
 						
-						
-						qtdInfoGrupo2 = linhaComecoInfoCategorias + 1;
-						linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
+							CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j)); //Chama método para gerar o corpo
+	
+							qtdInfoGrupo2 = linhaComecoInfoCategorias + 1;
+
+							linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
 					}
 			}
 			ultimaLinhaGrupoCategoria = qtdInfoGrupo2;
