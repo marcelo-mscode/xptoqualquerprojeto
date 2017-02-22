@@ -33,6 +33,12 @@ public class MontaGruposCategoriasGalderma{
 	
 	public List<Integer> pegaIdsCenarios(Integer idLista){
 		
+		//Verificar se eh filha
+		
+		
+		
+		
+		
 		
 		
 		return null;
