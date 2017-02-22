@@ -17,7 +17,9 @@ import org.springframework.stereotype.Component;
 import br.com.sysloccOficial.ListaProducao.Excel.ChainVerificaCategoriaImposto;
 import br.com.sysloccOficial.controllerExcel.AuxExcelSQL;
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
+import br.com.sysloccOficial.model.CenariosGalderma;
 import br.com.sysloccOficial.model.Grupo;
+import br.com.sysloccOficial.model.Lista;
 
 
 @Component
@@ -33,11 +35,52 @@ public class MontaGruposCategoriasGalderma{
 	
 	public List<Integer> pegaIdsCenarios(Integer idLista){
 		
-		//Verificar se eh filha
+		List<Integer> listaIds = new ArrayList<Integer>();
 		
 		
-		
-		
+		//Verifica se tem referência em filha 
+        try {
+       /* 	String consultaFilha = "from CenariosGalderma where planilhaFilha = "+ idLista;
+        	TypedQuery<CenariosGalderma> cnf = manager.createQuery(consultaFilha, CenariosGalderma.class);
+        	CenariosGalderma cenarios = cnf.getSingleResult();
+        	System.out.println("É filha, atualizando");*/
+        	
+        	//Pegar idMae, adicionar na Lista 
+        	String consulta = "select planilhaMae from CenariosGalderma where planilhaFilha = " +idLista;
+        	TypedQuery<Integer> idMae = manager.createQuery(consulta, Integer.class);
+        	Integer idListaMae = idMae.getSingleResult();
+        	
+        	String cunsultaFilhas = "select planilhaFilha from CenariosGalderma where planilhaMae=" + idListaMae;
+        	TypedQuery<Integer> idsFilhas = manager.createQuery(cunsultaFilhas, Integer.class);
+        	List<Integer> listaIdsFilhas = idsFilhas.getResultList();
+        	
+        	listaIds.add(idListaMae);
+        	
+        	
+        	
+        	//fazer consulta e pegar todos ids filhas e adiciona na lista
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	// Se true
+        	//atualizar para id da lista duplicada
+		} catch (Exception e) {
+			System.out.println("Não é filha.");
+			try {
+				String consultaMae = "from CenariosGalderma where planilhaMae = "+ idLista;
+				TypedQuery<CenariosGalderma> cnf = manager.createQuery(consultaMae, CenariosGalderma.class);
+				List<CenariosGalderma> cenariosMae = cnf.getResultList();
+				
+			} catch (Exception e2) {
+				
+				
+				//se false, não fazer nada
+			}
+		}
 		
 		
 		
