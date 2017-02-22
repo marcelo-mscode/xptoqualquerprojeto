@@ -30,6 +30,10 @@ public class GeraSubTotalCategorias {
 			celulaBco.setCellStyle(ExcelEstiloPadrao.estiloPadrao(excel));
 		}
 		
+		if(primeiraLinhaGrupoCategoria == null){
+			
+		}
+		
 		//Soma SubTotalInicial
 		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBold(excel), linha2, 4, "SUM(E"+primeiraLinhaGrupoCategoria+":E"+ultimaLinhaConteudoCategoria+")");
 
