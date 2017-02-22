@@ -37,15 +37,12 @@ public class GeraBaseExcelGalderma {
 		FileOutputStream out = base.caminhoeNomeDoArquivo();
 		String downloadExcel = base.caminhoDownloadExcel("Galderma","upload/upload/excel/"+"Galderma");
 		
-		
-		
-		
-		
 		XSSFSheet consolidadoCriado = GeraCorpoConsolidado.geraCorpoAbaConsolidado(consolidado, excelGalderma,"Consolidado");
 
 		LinhasConsolidado linhas = new LinhasConsolidado();
 		LinhasConsolidado linhas1 = new LinhasConsolidado();
 		LinhasConsolidado linhas2 = new LinhasConsolidado();
+		
 		List<LinhasConsolidado> linhasParaConsolidado = new ArrayList<LinhasConsolidado>();
 		
 		//Pega categoria de um cenário por idLista
