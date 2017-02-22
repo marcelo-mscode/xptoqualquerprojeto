@@ -59,6 +59,11 @@ public class GeraBaseExcelGalderma {
 			List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(pegaIdsCenarios.get(i));
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
 			
+			
+			System.out.println();
+			
+			
+			
 			//Cria o Cenários passando os dados		
 			int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 0"+numCenario,montaGruposParaExcel,categoriasGalderma);
 			//Monta dados para Consolidado

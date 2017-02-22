@@ -100,12 +100,19 @@ public class MontaGruposCategoriasGalderma{
 		List<CorpoGrupoCategoriaGalderma> corpoGrupos = new ArrayList<CorpoGrupoCategoriaGalderma>();
 		
 		for (int i = 0; i < listaGrupos.size(); i++) {
-			
 			if(listaGrupos.get(i).getProdutoGrupo().size() == 0){
-				
+							listaGrupos.remove(i); 
+			}
+		}
+		
+		
+		for (int i = 0; i < listaGrupos.size(); i++) {
+			
+		/*	if(listaGrupos.get(i).getProdutoGrupo().size() == 0){
+				JOptionPane.showMessageDialog(null, "Tem vazio: "+listaGrupos.get(i).getIdgrupo());
 			}else{
 				
-				
+				*/
 				BigDecimal zero = new BigDecimal("0.00");
 				BigDecimal comImposto = new BigDecimal("0.00");
 				BigDecimal comImpostoUnico = new BigDecimal("0.00");
@@ -174,7 +181,7 @@ public class MontaGruposCategoriasGalderma{
 						          listaGrupos.get(i).isIncideAdministracao(), listaGrupos.get(i).isFeeReduzido(),orcamComImposto,orcamSemImposto,
 						          qtdUnica,diariaUnica,comImpostoUnico, semImpostoUnico);
 			}
-		}
+		
 		return corpoGrupos;
 	}
 	
