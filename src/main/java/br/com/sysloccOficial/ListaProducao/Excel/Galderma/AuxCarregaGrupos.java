@@ -70,8 +70,6 @@ public class AuxCarregaGrupos {
 		
 		try {
 			
-		//	String consulta = "";
-			
 			TypedQuery<Integer> gruposIds = manager.createQuery(
 					"SELECT distinct(g.grupoCategoriaGalderma.idCategoriaGalderma) FROM Grupo g where idlista= "+idLista+" and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by categoriaGalderma", Integer.class);
 			List<Integer> gruposIdsGalderma = gruposIds.getResultList();
@@ -83,7 +81,6 @@ public class AuxCarregaGrupos {
 			return grupos.getResultList();
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, ""+e);
 			
 			return null;
 		}
