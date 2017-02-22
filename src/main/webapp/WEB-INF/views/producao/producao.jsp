@@ -70,9 +70,9 @@
 		  
 		  </h3>
 	 </div>
-	<%--  <div class="col-md-6 tira-padding" style="font-family: 'OpenSansLight'">
+	 <div class="col-md-6 tira-padding" style="font-family: 'OpenSansLight'">
 		  <a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
-	 </div>  --%>
+	 </div> 
 </div>
    
    <div class="row"style="padding: 5px 0;">

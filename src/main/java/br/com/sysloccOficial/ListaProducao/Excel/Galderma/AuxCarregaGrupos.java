@@ -68,16 +68,25 @@ public class AuxCarregaGrupos {
 	 */
 	public List<GrupoCategoriaGalderma> categoriasGalderma(Integer idLista) {
 		
-		
-		TypedQuery<Integer> gruposIds = manager.createQuery(
-				"SELECT distinct(g.grupoCategoriaGalderma.idCategoriaGalderma) FROM Grupo g where idlista= "+idLista+" and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by categoriaGalderma", Integer.class);
-		List<Integer> gruposIdsGalderma = gruposIds.getResultList();
-		
-		String consulta =  Utilitaria.limpaSqlComListStastico("from GrupoCategoriaGalderma where idCategoriaGalderma in ("+gruposIdsGalderma+")");
-		
-		TypedQuery<GrupoCategoriaGalderma> grupos = manager.createQuery(consulta, GrupoCategoriaGalderma.class);
-		
-		return grupos.getResultList();
+		try {
+			
+		//	String consulta = "";
+			
+			TypedQuery<Integer> gruposIds = manager.createQuery(
+					"SELECT distinct(g.grupoCategoriaGalderma.idCategoriaGalderma) FROM Grupo g where idlista= "+idLista+" and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by categoriaGalderma", Integer.class);
+			List<Integer> gruposIdsGalderma = gruposIds.getResultList();
+			
+			String consulta =  Utilitaria.limpaSqlComListStastico("from GrupoCategoriaGalderma where idCategoriaGalderma in ("+gruposIdsGalderma+")");
+			
+			TypedQuery<GrupoCategoriaGalderma> grupos = manager.createQuery(consulta, GrupoCategoriaGalderma.class);
+			
+			return grupos.getResultList();
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, ""+e);
+			
+			return null;
+		}
 	}
 	
 	
