@@ -95,14 +95,15 @@ public class GeraCorpoCenarios {
 						
 						qtdInfoGrupo2 = linhaComecoInfoCategorias + 1;
 						linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
-					}else{
-						
-						JOptionPane.showMessageDialog(null, "Não é :"+ gruposParaExcel.get(j).getIdGrupo());
-						
 					}
 			}
 			ultimaLinhaGrupoCategoria = qtdInfoGrupo2;
 
+			if(qtdInfoGrupo2 == 0){
+				JOptionPane.showMessageDialog(null, "Aqui tem um erro.");
+			}
+			
+			
 				Integer[] linhas = new Integer[2];
 
 				if(categoriasGalderma.get(i).getIdCategoriaGalderma() == 8){
