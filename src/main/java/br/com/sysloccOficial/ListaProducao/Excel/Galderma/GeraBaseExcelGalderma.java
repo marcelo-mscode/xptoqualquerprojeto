@@ -56,26 +56,11 @@ public class GeraBaseExcelGalderma {
 			
 			int numCenario = i +1;
 			
-			
-			if(pegaIdsCenarios.get(i) == 2499){
-				System.out.println();
-			}
-			
-			
 			// Monta dados para um cenário por idLista
 			List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(pegaIdsCenarios.get(i));
 			List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(pegaIdsCenarios.get(i));
 			
-			
-			
-			for (int j = 0; j < listaGrupos.size(); j++) {
-				
-				if(listaGrupos.get(j).getProdutoGrupo().size() == 0){
-					JOptionPane.showMessageDialog(null, "Antes de excluir:"+ listaGrupos.size());
-								listaGrupos.remove(j); 
-					JOptionPane.showMessageDialog(null, "Depois de excluir:"+ listaGrupos.size());
-				}
-			}
+			removeGruposVazios(categoriasGalderma, listaGrupos);
 			
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
 			
@@ -111,5 +96,27 @@ public class GeraBaseExcelGalderma {
 
 		base.fechaPlanilha(excelGalderma,out);
 		return downloadExcel;
+	}
+
+
+	private void removeGruposVazios(List<GrupoCategoriaGalderma> categoriasGalderma,
+			List<Grupo> listaGrupos) {
+		for (int j = 0; j < listaGrupos.size(); j++) {
+			if(listaGrupos.get(j).getProdutoGrupo().size() == 0){
+							listaGrupos.remove(j); 
+			}
+		}
+		
+		for (int j = 0; j < categoriasGalderma.size(); j++) {
+			boolean verifica = false;
+			for (int j2 = 0; j2 < listaGrupos.size(); j2++) {
+				if(categoriasGalderma.get(j).getIdCategoriaGalderma() == listaGrupos.get(j2).getGrupoCategoriaGalderma().getIdCategoriaGalderma()){
+					verifica = true;
+				}
+			}
+			if(verifica == false){
+				categoriasGalderma.remove(j);
+			}
+		}
 	}
 }
