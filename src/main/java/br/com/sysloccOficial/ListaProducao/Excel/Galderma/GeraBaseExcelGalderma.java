@@ -37,9 +37,9 @@ public class GeraBaseExcelGalderma {
 		FileOutputStream out = base.caminhoeNomeDoArquivo();
 		String downloadExcel = base.caminhoDownloadExcel("Galderma","upload/upload/excel/"+"Galderma");
 		
-		List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(2439);
+		List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(2479);
 		
-		List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(2439);
+		List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(2479);
 		List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
 		
 		
@@ -53,10 +53,10 @@ public class GeraBaseExcelGalderma {
 		List<LinhasConsolidado> linhasParaConsolidado = new ArrayList<LinhasConsolidado>();
 		
 		int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 01",montaGruposParaExcel,categoriasGalderma);
-		int linhasConsolidado2 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 02",montaGruposParaExcel,categoriasGalderma);
+//		int linhasConsolidado2 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 02",montaGruposParaExcel,categoriasGalderma);
 
 		
-		List<Grupo> listaGruposOpcionais = montaGrupos.listaGruposOpcionais(2439);
+		/*List<Grupo> listaGruposOpcionais = montaGrupos.listaGruposOpcionais(2439);
 		
 		if(listaGruposOpcionais.isEmpty()){
 			
@@ -69,10 +69,10 @@ public class GeraBaseExcelGalderma {
 			
 			linhas2.setNomeAba("Opcionais");linhas2.setUltimaLinhaCalculos(linhasConsolidado3);
 			linhasParaConsolidado.add(linhas2);
-		}
+		}*/
 		
 		linhas.setNomeAba("Cenário ");linhas.setUltimaLinhaCalculos(linhasConsolidado);
-		linhas1.setNomeAba("Cenário ");linhas1.setUltimaLinhaCalculos(linhasConsolidado2);
+//		linhas1.setNomeAba("Cenário ");linhas1.setUltimaLinhaCalculos(linhasConsolidado2);
 		
 		linhasParaConsolidado.add(linhas);
 		linhasParaConsolidado.add(linhas1);
