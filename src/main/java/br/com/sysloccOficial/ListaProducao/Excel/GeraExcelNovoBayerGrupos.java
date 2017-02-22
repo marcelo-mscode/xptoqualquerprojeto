@@ -111,10 +111,10 @@ public class GeraExcelNovoBayerGrupos {
 								
 								comImpostoUnico = comImpostoUnico.add(preco.multiply(new BigDecimal(qtdcomImposto)));
 								
-								if(listaGrupos.get(i).getIdgrupo() == 77049){
+								/*if(listaGrupos.get(i).getIdgrupo() == 77049){
 									System.out.println(listaGrupos.get(j).getIdgrupo());
 									JOptionPane.showMessageDialog(null, "Preço: " +preco+"\nQtd: "+qtdcomImposto+"\ndiariacomImposto: "+diariacomImposto+"\nPreço total: "+comImpostoUnico);
-								}
+								}*/
 
 							}
 						}
