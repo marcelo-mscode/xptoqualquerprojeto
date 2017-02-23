@@ -33,13 +33,9 @@ public class ExcelGaldermaController {
 
 		System.out.println(downloadExcel);
 
+		System.out.println("Tempo Total: "+( System.currentTimeMillis()-tempoInicio));
 		
-//		String.format( "%03d:%02d", System.currentTimeMillis()-tempoInicio / 3600000, ( System.currentTimeMillis()-tempoInicio / 60000 ) % 60 );
-		
-		System.out.println("Tempo Total: "+( System.currentTimeMillis()-tempoInicio / 60000 ) % 60 );
-		
-		
-		return "redirect:index";
+		return "redirect:editaLista?idLista="+idLista;
 	}
 	
 

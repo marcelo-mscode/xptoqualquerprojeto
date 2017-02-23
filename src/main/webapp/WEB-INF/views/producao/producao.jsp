@@ -628,6 +628,8 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
           <div class="col-md-8">
               <div class="checkbox col-md-offset-1 tira-padding ajustaDivChecked">
                 <input type="checkbox" class="form-group ajustaCheckBox" name="opcional"> Opcional da Planilha            
+              
+                <input type="checkbox" class="form-group ajustaCheckBox" name="opcionalGalderma" style="margin-left: 20px"><b style="margin-left: 45px">Opcional Galderma</b>           
               </div>
           </div>
 

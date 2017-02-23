@@ -33,6 +33,7 @@ public class Grupo {
 	private String categoria;
 	private String grupoCod;
 	private boolean opcional;
+	private boolean opcionalGalderma;
 	private boolean incideAdministracao;
 	private boolean feeReduzido;
 	private boolean criacao;
@@ -64,6 +65,14 @@ public class Grupo {
 		return idCategoriaGaldermaTransiente;
 	}
 	
+	public boolean isOpcionalGalderma() {
+		return opcionalGalderma;
+	}
+
+	public void setOpcionalGalderma(boolean opcionalGalderma) {
+		this.opcionalGalderma = opcionalGalderma;
+	}
+
 	public void setIdCategoriaGaldermaTransiente(
 			Integer idCategoriaGaldermaTransiente) {
 		this.idCategoriaGaldermaTransiente = idCategoriaGaldermaTransiente;
