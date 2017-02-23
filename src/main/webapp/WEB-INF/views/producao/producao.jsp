@@ -511,9 +511,12 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 		          	<c:if test="${grupo.opcional ==  false && grupo.opcionalGalderma == false || grupo.opcional ==  false && grupo.opcionalGalderma == true}">
 		          		<fmt:formatNumber value="${grupo.grupoValorIncideImposto}" pattern="#,##0.00"/>
 		          	</c:if>
+		          	
 		          	<c:if test="${grupo.opcional ==  true && grupo.opcionalGalderma == true ||
 		          		          grupo.opcional ==  true && grupo.opcionalGalderma == false ||
-		          		          grupo.opcional ==  false && grupo.opcionalGalderma == true}"></c:if>
+		          		          grupo.opcional ==  false && grupo.opcionalGalderma == true}">
+		          	</c:if>
+		         
 		          </td>
 <!--  -->		          	
 
