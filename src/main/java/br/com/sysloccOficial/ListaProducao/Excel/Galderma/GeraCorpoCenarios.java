@@ -117,6 +117,8 @@ public class GeraCorpoCenarios {
 				}
 				
 				if(cenario.getSheetName().equals("Opcionais")){
+
+					System.out.println(qtdInfoGrupo2+" - "+linhasSubtotais);
 					
 				}else{
 					CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
@@ -124,6 +126,8 @@ public class GeraCorpoCenarios {
 				}
 		}
 		linhasConsolidado = qtdInfoGrupo2;
+		
+		
 		CalculoRodapeCenario.calculosRodapePlanilha(excelGalderma, cenario, qtdInfoGrupo2,linhasSubtotais);
 		return linhasConsolidado;
 	}

@@ -2,6 +2,8 @@ package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -26,21 +28,19 @@ public class CalculoRodapeCenario {
 		
 		//Se Opcionais
 		//Pegar primeira e últmima linha e somar célula E
-		String formulaInicialOpc = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "E");
+/*		String formulaInicialOpc = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "E");
 		String formulaNegociadoOpc = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "G");
-		
-		int i = linhasSubtotais.get(0);
-		
-		
-		
-		
-		
-		
-		String formulaInicial = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "E");
-		String formulaNegociado = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "G");
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicial,formulaNegociado);
-
-		
+*/		
+		if(cenario.getSheetName().equals("Opcionais")){
+			int i = linhasSubtotais.get(0)[0] - 5;
+			String formulaInicialOpc = "SUM(E"+i+":E"+ultimaLinhaCorpo+")";
+			String formulaNegociadoOpc = "SUM(G"+i+":G"+ultimaLinhaCorpo+")";
+			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicialOpc,formulaNegociadoOpc);
+		}else{
+			String formulaInicial = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "E");
+			String formulaNegociado = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "G");
+			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicial,formulaNegociado);
+		}
 		
 		String NTformulaInicial = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "E");
 		String NTformulaNegociado = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "G");
