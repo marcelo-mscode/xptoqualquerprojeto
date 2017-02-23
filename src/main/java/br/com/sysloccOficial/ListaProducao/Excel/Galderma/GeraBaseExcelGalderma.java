@@ -91,7 +91,7 @@ public class GeraBaseExcelGalderma {
 		List<GrupoCategoriaGalderma> catOpc3 =  removeCategoriasOpcionais(catOpc2, listaGruposOpcionais);
 	
 		
-		/*LinhasConsolidado linhas2 = new LinhasConsolidado();
+		LinhasConsolidado linhas2 = new LinhasConsolidado();
 		if(listaGruposOpcionais.isEmpty()){
 			
 		}else{
@@ -100,12 +100,12 @@ public class GeraBaseExcelGalderma {
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcelOpcionais = montaCorpoCategorias.montaGruposParaExcel(listaGruposOpcionais);
 			
 			
-			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,categoriasGalderma);
+			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,catOpc3);
 			
 			
 			linhas2.setNomeAba("Opcionais");linhas2.setUltimaLinhaCalculos(linhasConsolidado3);
 			linhasParaConsolidado.add(linhas2);
-		}*/
+		}
 
 		base.fechaPlanilha(excelGalderma,out);
 		return downloadExcel;
@@ -116,8 +116,6 @@ public class GeraBaseExcelGalderma {
 		
 		for (int i = 0; i < categoriasGaldermaOpc.size(); i++) {
 			boolean confere = false;
-			
-			System.out.println(i+"Categoria:"+categoriasGaldermaOpc.get(i).getCategoria());
 			
 			int g = categoriasGaldermaOpc.get(i).getIdCategoriaGalderma();
 			for (int j = 0; j < listaGruposOpcionais.size(); j++) {
