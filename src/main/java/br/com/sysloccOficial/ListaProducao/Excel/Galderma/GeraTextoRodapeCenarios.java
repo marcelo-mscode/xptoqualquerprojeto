@@ -18,8 +18,8 @@ public class GeraTextoRodapeCenarios {
 		textoRodape(excelGalderma, cenario, linhaUltima, "Observações: *Check-in a partir das 12H00 - Checkout até 12H00\nOs valores apresentados são válidos exclusivamente para o grupo e período em referência\nForma de pagamento: Faturamento para 60 dias, exceto Hotel e Bar do Alemão 30 dias.");
 	}
 
-	public static void geraTextoRodapeOpcionais(XSSFWorkbook excelGalderma,XSSFSheet cenario){
-		textoRodape(excelGalderma, cenario, 38, "Forma de pagamento: Faturamento para 60 dias.");
+	public static void geraTextoRodapeOpcionais(XSSFWorkbook excelGalderma,XSSFSheet cenario,int linhaUltima){
+		textoRodape(excelGalderma, cenario, linhaUltima, "Forma de pagamento: Faturamento para 60 dias.");
 	}
 	
 	

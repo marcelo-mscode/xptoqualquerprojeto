@@ -44,8 +44,12 @@ public class GeraCorpoCenarios {
 		int linhasParaConsolidado = passaInformacoesCorpoExcel(cenario, excelGalderma, gruposParaExcel, categoriasGalderma);
 		
 		//Não mexer mais
-		GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,linhasParaConsolidado+7);
-		
+		if(nomeAba.equals("Opcionais")){
+			GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario,linhasParaConsolidado+7);
+		}else{
+			GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,linhasParaConsolidado+7);
+		}
+	
 		return linhasParaConsolidado;
 		
 	}
@@ -112,9 +116,12 @@ public class GeraCorpoCenarios {
 					linhasSubtotais.add(linhas);
 				}
 				
-				CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
-			
-			qtdInfoGrupo2 = qtdInfoGrupo2+4;
+				if(cenario.getSheetName().equals("Opcionais")){
+					
+				}else{
+					CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
+					qtdInfoGrupo2 = qtdInfoGrupo2+4;
+				}
 		}
 		linhasConsolidado = qtdInfoGrupo2;
 		CalculoRodapeCenario.calculosRodapePlanilha(excelGalderma, cenario, qtdInfoGrupo2,linhasSubtotais);
@@ -128,12 +135,12 @@ public class GeraCorpoCenarios {
 	 * @throws FileNotFoundException 
 	 * 
 	 */
-	public static void geraCorpoAbaCenariosOpcionais(XSSFSheet cenario,XSSFWorkbook excelGalderma,String nomeAba,String infoGrupo) throws FileNotFoundException, IOException{
-	  cenario = excelGalderma.createSheet(nomeAba); /** Cria Aba Cenarios da planilha */
+	/*public static void geraCorpoAbaCenariosOpcionais(XSSFSheet cenario,XSSFWorkbook excelGalderma,String nomeAba,String infoGrupo) throws FileNotFoundException, IOException{
+	  cenario = excelGalderma.createSheet(nomeAba); *//** Cria Aba Cenarios da planilha *//*
 	  cenario.setZoom(80);
 	  	ExcelImagem.InsereImagem(excelGalderma, cenario, "C:/SYSLOC/upload/logoEmpresas/logoExcelAgencia2.png",0.35);
 		GeraCabecalhoExcelGalderma.geraCabecalho(cenario, excelGalderma, nomeAba);
 		CorpoCenarioGalderma.corpoCenarioOpcionais(excelGalderma, cenario,infoGrupo,250,450, new BigDecimal("3596.00"), new BigDecimal("3596.00"));
-		GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario);
-	}
+		GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma,18,cenario);
+	}*/
 }

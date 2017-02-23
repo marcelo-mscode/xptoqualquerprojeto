@@ -76,10 +76,7 @@ public class GeraBaseExcelGalderma {
 		
 		
 		
-		CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado);		
-		
-		//GeraCorpoCenarios.geraCorpoAbaCenariosOpcionais(opcionais, excelGalderma,"Opcionais");
-		
+		/*CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado);	*/	
 		
 		List<GrupoCategoriaGalderma> categoriasGaldermaOpc = montaGrupos.pegaTodasCategoriasGalderma();
 		List<Grupo> listaGruposOpcionais = montaGrupos.listaGruposOpcionais(pegaIdsCenarios);
@@ -107,6 +104,9 @@ public class GeraBaseExcelGalderma {
 			linhasParaConsolidado.add(linhas2);
 		}
 
+		
+		CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado);	
+		
 		base.fechaPlanilha(excelGalderma,out);
 		return downloadExcel;
 	}

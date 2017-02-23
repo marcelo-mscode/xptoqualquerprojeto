@@ -23,18 +23,28 @@ public class CalculoRodapeCenario {
 	
 	public static void calculosRodapePlanilha(XSSFWorkbook excelGalderma,XSSFSheet cenario,int ultimaLinhaCorpo,List<Integer[]> linhasSubtotais){
 		
+		
+		//Se Opcionais
+		//Pegar primeira e últmima linha e somar célula E
+		String formulaInicialOpc = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "E");
+		String formulaNegociadoOpc = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "G");
+		
+		int i = linhasSubtotais.get(0);
+		
+		
+		
+		
+		
+		
 		String formulaInicial = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "E");
 		String formulaNegociado = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "G");
-		
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicial,formulaNegociado);
+
 		
 		
 		String NTformulaInicial = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "E");
 		String NTformulaNegociado = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "G");
-	
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+2, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219},NTformulaInicial,NTformulaNegociado);
-		
-		
 		
 		String ServicosAgenciaformulaInicial = montaFormulaServicosAgencia(linhasSubtotais, "E");
 		String ServicosAgenciaformulaNegociado = montaFormulaServicosAgencia(linhasSubtotais, "G");
