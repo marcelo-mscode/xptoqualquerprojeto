@@ -88,7 +88,11 @@ public class GeraCorpoCenarios {
 				primeiraLinhaGrupoCategoria = qtdInfoGrupo2+1;
 			}
 			
-			GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, qtdInfoGrupo3,categoriasGalderma.get(i).getCategoria()); // ok
+			if(cenario.getSheetName().equals("Opcionais")){
+				
+			}else{
+				GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, qtdInfoGrupo3,categoriasGalderma.get(i).getCategoria()); // ok
+			}
 			
 			
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
