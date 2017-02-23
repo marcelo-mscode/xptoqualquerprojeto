@@ -86,6 +86,21 @@ public class AuxCarregaGrupos {
 		}
 	}
 	
+	/**
+	 * Pega lista de todas as categorias
+	 * 
+	 * Utilizado em opcionais Galderma
+	 * 
+	 * 
+	 * 
+	 */
+	public List<GrupoCategoriaGalderma> pegaTodasCategoriasGalderma(){
+		TypedQuery<GrupoCategoriaGalderma> categorias = manager.createQuery("from GrupoCategoriaGalderma order by idCategoriaGalderma",GrupoCategoriaGalderma.class);
+		return categorias.getResultList();
+	}
+	
+	
+	
 	
 
 }
