@@ -526,7 +526,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 
 <!-- Opcional -->		          	
 		          <td>
-		          	<c:if test="${grupo.opcional == true }">
+		          	<c:if test="${grupo.opcional == true}">
 		          		<c:if test="${grupo.grupoValorIncideImposto == 0}">
 		          			<fmt:formatNumber value="${grupo.grupoValorNaoIncideImposto}" pattern="#,##0.00"/>
 		          		</c:if>
