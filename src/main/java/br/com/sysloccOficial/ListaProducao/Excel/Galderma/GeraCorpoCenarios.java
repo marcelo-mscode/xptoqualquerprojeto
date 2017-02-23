@@ -118,8 +118,6 @@ public class GeraCorpoCenarios {
 				
 				if(cenario.getSheetName().equals("Opcionais")){
 
-					System.out.println(qtdInfoGrupo2+" - "+linhasSubtotais);
-					
 				}else{
 					CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
 					qtdInfoGrupo2 = qtdInfoGrupo2+4;
