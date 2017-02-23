@@ -94,7 +94,6 @@ public class GeraCorpoCenarios {
 				GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, qtdInfoGrupo3,categoriasGalderma.get(i).getCategoria()); // ok
 			}
 			
-			
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
 				
 						if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
