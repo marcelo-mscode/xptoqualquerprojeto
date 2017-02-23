@@ -27,12 +27,19 @@ public class ExcelGaldermaController {
 	@RequestMapping("excelGalderma")
 	public String excelGalderma(Integer idLista) throws IOException{
 		
-		String downloadExcel = excel.constroiExcel(idLista);
+		long tempoInicio = System.currentTimeMillis();
 		
+		String downloadExcel = excel.constroiExcel(idLista);
+
 		System.out.println(downloadExcel);
+
+		
+//		String.format( "%03d:%02d", System.currentTimeMillis()-tempoInicio / 3600000, ( System.currentTimeMillis()-tempoInicio / 60000 ) % 60 );
+		
+		System.out.println("Tempo Total: "+( System.currentTimeMillis()-tempoInicio / 60000 ) % 60 );
+		
 		
 		return "redirect:index";
-		
 	}
 	
 

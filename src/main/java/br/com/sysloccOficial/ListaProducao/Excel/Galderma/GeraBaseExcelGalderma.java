@@ -89,13 +89,7 @@ public class GeraBaseExcelGalderma {
 		List<GrupoCategoriaGalderma> catOpc =  removeCategoriasOpcionais(categoriasGaldermaOpc, listaGruposOpcionais);
 		List<GrupoCategoriaGalderma> catOpc2 =  removeCategoriasOpcionais(catOpc, listaGruposOpcionais);
 		List<GrupoCategoriaGalderma> catOpc3 =  removeCategoriasOpcionais(catOpc2, listaGruposOpcionais);
-		
-		
-		for (int i = 0; i < catOpc3.size(); i++) {
-			System.out.println(catOpc3.get(i).getCategoria());
-		}
-		
-		System.out.println();
+	
 		
 		/*LinhasConsolidado linhas2 = new LinhasConsolidado();
 		if(listaGruposOpcionais.isEmpty()){
@@ -119,26 +113,32 @@ public class GeraBaseExcelGalderma {
 
 
 	private List<GrupoCategoriaGalderma> removeCategoriasOpcionais(List<GrupoCategoriaGalderma> categoriasGaldermaOpc,List<Grupo> listaGruposOpcionais) {
+		
 		for (int i = 0; i < categoriasGaldermaOpc.size(); i++) {
 			boolean confere = false;
+			
+			System.out.println(i+"Categoria:"+categoriasGaldermaOpc.get(i).getCategoria());
+			
 			int g = categoriasGaldermaOpc.get(i).getIdCategoriaGalderma();
-			System.out.println(">>>>>"+g+"\n");
 			for (int j = 0; j < listaGruposOpcionais.size(); j++) {
 				int l = listaGruposOpcionais.get(j).getGrupoCategoriaGalderma().getIdCategoriaGalderma();
 				if(g == l){
 					confere = true;
 				}
 			}
+						
 			if(confere == false){
 				categoriasGaldermaOpc.remove(i);
 			}
 		}
 		
-		
 		return categoriasGaldermaOpc;
 	}
 
-
+	
+	
+	
+	
 	private void removeGruposVazios(List<GrupoCategoriaGalderma> categoriasGalderma,
 			List<Grupo> listaGrupos) {
 		for (int j = 0; j < listaGrupos.size(); j++) {
