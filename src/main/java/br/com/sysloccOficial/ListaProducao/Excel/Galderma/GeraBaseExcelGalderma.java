@@ -45,12 +45,6 @@ public class GeraBaseExcelGalderma {
 		//Lógica para pegar lista de ids da planilha mãe e filhas
 		List<Integer> pegaIdsCenarios = montaCorpoCategorias.pegaIdsCenarios(idLista);
 		
-		
-		
-		/*List<Integer> idsListas = new ArrayList<Integer>();
-		idsListas.add(2479);
-		idsListas.add(2497);*/
-		
 		List<LinhasConsolidado> linhasParaConsolidado = new ArrayList<LinhasConsolidado>();
 		for (int i = 0; i < pegaIdsCenarios.size(); i++) {
 			
@@ -96,11 +90,11 @@ public class GeraBaseExcelGalderma {
 			
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcelOpcionais = montaCorpoCategorias.montaGruposParaExcel(listaGruposOpcionais);
 			
-			
 			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,catOpc3);
 			
 			
-			linhas2.setNomeAba("Opcionais");linhas2.setUltimaLinhaCalculos(linhasConsolidado3);
+			linhas2.setNomeAba("Opcionais");
+			linhas2.setUltimaLinhaCalculos(linhasConsolidado3);
 			linhasParaConsolidado.add(linhas2);
 		}
 

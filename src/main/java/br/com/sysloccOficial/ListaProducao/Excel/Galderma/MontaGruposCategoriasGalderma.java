@@ -89,16 +89,6 @@ public class MontaGruposCategoriasGalderma{
 	
 	public List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel(List<Grupo> listaGrupos){
 		
-		/*List<Grupo> listaGrupos = null;
-		
-		if(opcionais == false){
-			listaGrupos = listaGruposNAOOpcionais(idLista);
-		}else{
-			listaGrupos = listaGruposOpcionais(idLista);
-		}*/
-		
-		
-		
 		
 		List<CorpoGrupoCategoriaGalderma> corpoGrupos = new ArrayList<CorpoGrupoCategoriaGalderma>();
 		
@@ -125,6 +115,8 @@ public class MontaGruposCategoriasGalderma{
 					qtdUnica = listaGrupos.get(i).getDetermPadrao().getQuantDetermPadrao();
 					diariaUnica = listaGrupos.get(i).getDetermPadrao().getDiariasPadrao();
 				}else{
+					System.out.println();
+					
 					qtdUnica = listaGrupos.get(i).getDeterm().getQuantDeterm();
 					diariaUnica = listaGrupos.get(i).getDeterm().getDiarias();
 				}

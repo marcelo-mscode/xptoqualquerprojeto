@@ -32,7 +32,7 @@ public class CalculoRodapeCenario {
 		String formulaNegociadoOpc = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "G");
 */		
 		if(cenario.getSheetName().equals("Opcionais")){
-			int i = linhasSubtotais.get(0)[0] - 5;
+			int i = linhasSubtotais.get(0)[0] - 6;
 			String formulaInicialOpc = "SUM(E"+i+":E"+ultimaLinhaCorpo+")";
 			String formulaNegociadoOpc = "SUM(G"+i+":G"+ultimaLinhaCorpo+")";
 			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicialOpc,formulaNegociadoOpc);
