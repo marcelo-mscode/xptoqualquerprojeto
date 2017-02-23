@@ -100,12 +100,7 @@ public class GeraCorpoCenarios {
 			}
 			ultimaLinhaGrupoCategoria = qtdInfoGrupo2;
 
-			if(qtdInfoGrupo2 == 0){
-				JOptionPane.showMessageDialog(null, "Aqui tem um erro.");
-			}
-			
-			
-				Integer[] linhas = new Integer[2];
+			Integer[] linhas = new Integer[2];
 
 				if(categoriasGalderma.get(i).getIdCategoriaGalderma() == 8){
 					linhas[0] = ultimaLinhaGrupoCategoria+4;

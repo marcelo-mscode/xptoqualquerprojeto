@@ -26,7 +26,7 @@ public class AuxCarregaGrupos {
 		List<Grupo> listaGrupos = retornaGruposGalderma(idLista);
 		return listaGrupos;
 	}
-	public List<Grupo> listaGruposOpcionais(Integer idLista){
+	public List<Grupo> listaGruposOpcionais(List<Integer> idLista){
 		List<Grupo> listaGrupos = retornaGruposOpcionais(idLista);
 		return listaGrupos;
 	}
@@ -38,10 +38,6 @@ public class AuxCarregaGrupos {
 	public List<Grupo> retornaGruposGalderma(Integer idLista){
 		
 		try {
-			
-			
-			String consulta   = "from Grupo g where idLista ="+idLista+" and opcional = 0 and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by g.ordemGrupo";
-			
 			TypedQuery<Grupo> grupos = manager.createQuery(
 					"from Grupo g where idLista ="+idLista+" and opcional = 0 and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by g.ordemGrupo", Grupo.class);
 			return grupos.getResultList();
@@ -55,10 +51,10 @@ public class AuxCarregaGrupos {
 	 * Método para retornar uma lista de Grupos de acordo com o idLista da Lista
 	 * ------> Opcionais
 	 */
-	public List<Grupo> retornaGruposOpcionais(Integer idLista){
+	public List<Grupo> retornaGruposOpcionais(List<Integer> idLista){
 		try {
-			TypedQuery<Grupo> grupos = manager.createQuery(
-					"from Grupo g where idLista ="+idLista+" and opcional = 1 order by g.ordemGrupo", Grupo.class);
+			String consulta =  Utilitaria.limpaSqlComListStastico("from Grupo g where idLista in ("+idLista+") and opcional = 1 order by idLista");
+			TypedQuery<Grupo> grupos = manager.createQuery(consulta, Grupo.class);
 			return grupos.getResultList();
 		} catch (Exception e) {
 			return null;
