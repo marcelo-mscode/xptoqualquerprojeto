@@ -4,15 +4,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JOptionPane;
-
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.hibernate.mapping.Array;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import br.com.sysloccOficial.Excel.BaseGeraExcel;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
@@ -68,14 +63,10 @@ public class GeraBaseExcelGalderma {
 
 		}
 		
-		
-		
 		/*CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado);	*/	
 		
 		List<GrupoCategoriaGalderma> categoriasGaldermaOpc = montaGrupos.pegaTodasCategoriasGalderma();
 		List<Grupo> listaGruposOpcionais = montaGrupos.listaGruposOpcionais(pegaIdsCenarios);
-		
-		
 		
 		List<GrupoCategoriaGalderma> catOpc =  removeCategoriasOpcionais(categoriasGaldermaOpc, listaGruposOpcionais);
 		List<GrupoCategoriaGalderma> catOpc2 =  removeCategoriasOpcionais(catOpc, listaGruposOpcionais);

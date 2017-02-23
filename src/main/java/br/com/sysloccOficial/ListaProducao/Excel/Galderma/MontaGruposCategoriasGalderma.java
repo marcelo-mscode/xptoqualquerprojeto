@@ -115,8 +115,6 @@ public class MontaGruposCategoriasGalderma{
 					qtdUnica = listaGrupos.get(i).getDetermPadrao().getQuantDetermPadrao();
 					diariaUnica = listaGrupos.get(i).getDetermPadrao().getDiariasPadrao();
 				}else{
-					System.out.println();
-					
 					qtdUnica = listaGrupos.get(i).getDeterm().getQuantDeterm();
 					diariaUnica = listaGrupos.get(i).getDeterm().getDiarias();
 				}

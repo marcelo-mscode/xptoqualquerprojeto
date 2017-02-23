@@ -71,6 +71,10 @@
 		  </h3>
 	 </div>
 	 <div class="col-md-6 tira-padding" style="font-family: 'OpenSansLight'">
+		  <a href="excelGalderma?idLista=${idLista}" class="btn btn-default" style="margin: 5px 0 0 330px">
+			  	<img alt="" src="<c:url value="resources/images/excel.png" />" width="18"  height="18" >
+			  	Excel galderma
+		  </a>
 		  <a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
 	 </div> 
 </div>

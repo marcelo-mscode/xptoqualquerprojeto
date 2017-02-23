@@ -25,6 +25,10 @@ public class GeraConteudoCategoriasCenarios {
 		
 		int[] cor = {255,255,25};
 		
+		
+		if(cenario.getSheetName().equals("Opcionais")){
+			linhaComeco = linhaComeco - 1 ;
+		}
 		int linhaParaFormula = linhaComeco+1;
 		
 		XSSFRow linha2 = cenario.createRow(linhaComeco);
