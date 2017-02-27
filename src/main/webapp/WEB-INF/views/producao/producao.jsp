@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <c:import url="../_comum/header.jsp" />
@@ -48,7 +49,16 @@
 <br /><br />
 
 
+
+
+
 <div class="col-md-12">
+
+
+ 
+
+
+
 <div class="container shadow-com-padding col-md-12" style="background: #fff;margin-top: 15px;"> 
 
 <%-- <h1>Usuario: ${usuarioSessao}</h1> --%>
@@ -70,13 +80,19 @@
 		  
 		  </h3>
 	 </div>
-	 <div class="col-md-6 tira-padding" style="font-family: 'OpenSansLight'">
+	 <%-- <div class="col-md-6 tira-padding" style="font-family: 'OpenSansLight'">
 		  <a href="excelGalderma?idLista=${idLista}" class="btn btn-default" style="margin: 5px 0 0 330px">
 			  	<img alt="" src="<c:url value="resources/images/excel.png" />" width="18"  height="18" >
 			  	Excel galderma
 		  </a>
 		  <a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
-	 </div> 
+	 </div>  --%>
+	 
+	 
+	 
+	 
+	 
+	 
 </div>
    
    <div class="row"style="padding: 5px 0;">

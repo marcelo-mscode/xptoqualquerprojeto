@@ -19,7 +19,7 @@
 <!-- Criar nova lista-->
 <div class="row">
   
- <div class="col-md-10 painel ajuste-left">
+ <div class="col-md-10 painel ajuste-left" style="box-shadow:3px -2px 17px 3px #ccc;">
  
 <form action="cadastraLista" class="col-md-8" id="cadastraLista" method="post" onsubmit="criarNovaListaBotao.disabled = true; return true;">
       <div class="form-group">
@@ -63,7 +63,7 @@
 
 <div class="row display-none" id="duplicaListaToggle">
 
-	 <div class="col-md-10 painel ajuste-left">
+	 <div class="col-md-10 painel ajuste-left" style="box-shadow: 3px 8px 17px 3px #ccc;">
 	 	<div class="form-group col-md-8">
           <label for="exampleInputEmail1">Cliente de Origem</label>
           <select class="form-control" onchange="exibeJobPorEmpresa(this.value);" id="selectListaCopiar">

@@ -781,7 +781,7 @@ public class ProducaoController {
     @CacheEvict(value="listaProducao", allEntries=true)
     public ModelAndView copiaLista(Integer idListaParaCopiar,String tituloLista, Integer selectJobsEmpresa){
     	
-    	ModelAndView MV = new ModelAndView();
+    	ModelAndView MV = new ModelAndView("producao/listaCopiada");
     	
     	Lista listaParaCopiar = manager.find(Lista.class, idListaParaCopiar);
     	Job job = manager.getReference(Job.class, selectJobsEmpresa);
@@ -800,13 +800,12 @@ public class ProducaoController {
     	novaLista.setIdlistaEstatus(listaEstatus);
     	novaLista.setRevisao(0);
     	novaLista.setUser(user);
+    	novaLista.setDataCriacao(Calendar.getInstance());
     	
     	manager.detach(listaParaCopiar);
     	manager.persist(novaLista);
     	
     	producaoDAO.clonaCategoria(idListaParaCopiar,novaLista);
-    
-    	MV.setViewName("producao/listaCopiada");
 		MV.addObject("idNovaLista", novaLista.getIdLista());
     	
     	return MV;
