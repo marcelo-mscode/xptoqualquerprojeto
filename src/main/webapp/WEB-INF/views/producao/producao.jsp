@@ -673,6 +673,17 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
                 </select>
               </div>
           </div>
+	
+		
+          <div class="col-md-7 categoriaEmpresasLista">
+        	<p>TAXAS GALDERMA</p>	
+              <div class="col-md-3 col-md-offset-1 tira-padding" style="margin: 8px 0;">
+                Taxa de Serviço<input class="form-control" value="" name="txServico" />
+              </div>
+              <div class="col-md-4 col-md-offset-1 tira-padding" style="margin: 8px 15px;">
+                Taxa de ISS<input class="form-control" value=""  name="txISS"/>
+              </div>
+          </div>
 <%-- </security:authorize> --%> 
           
           <div class="col-md-7">

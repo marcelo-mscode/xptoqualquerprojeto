@@ -38,6 +38,9 @@ public class Grupo {
 	private boolean feeReduzido;
 	private boolean criacao;
 	private Integer ordemGrupo;
+	private double txServico;
+	private double txISS;
+	
 	
 	
 // ------------- Transientes ----------------//
@@ -65,6 +68,22 @@ public class Grupo {
 		return idCategoriaGaldermaTransiente;
 	}
 	
+	public double getTxServico() {
+		return txServico;
+	}
+
+	public void setTxServico(double txServico) {
+		this.txServico = txServico;
+	}
+
+	public double getTxISS() {
+		return txISS;
+	}
+
+	public void setTxISS(double txISS) {
+		this.txISS = txISS;
+	}
+
 	public boolean isOpcionalGalderma() {
 		return opcionalGalderma;
 	}
