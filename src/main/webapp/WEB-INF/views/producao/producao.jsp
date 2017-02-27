@@ -88,11 +88,6 @@
 		  <a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
 	 </div> 
 	 
-	 
-	 
-	 
-	 
-	 
 </div>
    
    <div class="row"style="padding: 5px 0;">
