@@ -573,7 +573,7 @@ function emailErro(){
 				<div class="col-md-8" style="height: 23px"></div>
 				<div class="form-inline">
 					<div class="form-group col-md-12 tira-padding">
-						<label for="">Qtd Pessoas&nbsp&nbsp</label> <input type="text"
+						<label for="">Qtd Pax/Dias</label> <input type="text"
 							name="localEventoQtdPessoas" class="form-control col-md-offset-1"
 							style="width: 65px">
 					</div>
