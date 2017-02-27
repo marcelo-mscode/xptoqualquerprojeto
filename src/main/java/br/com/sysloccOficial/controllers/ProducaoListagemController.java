@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -178,6 +179,13 @@ public class ProducaoListagemController {
 		MV.addObject("lista", listaDAO.editaLista(idLista));
 		MV.addObject("categoria", listaDAO.listadeCategorias(idLista));
 		MV.addObject("categoriasGalderma", listaDAO.listadeCategoriasGalderma());
+		
+		
+		List<GrupoCategoriaGalderma> gald = listaDAO.listadeCategoriasGalderma();		
+		for (int i = 0; i < gald.size(); i++) {
+			System.out.println(gald.get(i).getCategoria());
+		}
+		
 		MV.addObject("categoriasBayer", listaDAO.listadeCategoriasBayer());
 		MV.addObject("grupoOrdem", listaDAO.listadeGruposPorIdLista(idLista));
 		

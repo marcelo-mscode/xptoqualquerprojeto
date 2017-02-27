@@ -673,7 +673,6 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
                 </select>
               </div>
           </div>
-	
 		
           <div class="col-md-7 categoriaEmpresasLista">
         	<p>TAXAS GALDERMA</p>	
