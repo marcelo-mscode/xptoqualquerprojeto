@@ -432,6 +432,21 @@
 								</select>
 							</div>
 						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="categoria">Categoria Galderma</label>
+							<div class="controls margim-bottom5">
+								<select id="categoriaBayer" name="idgrupoCategoriaBayerTransiente" class="form-control">
+									<option value="${grupo.grupoCategoriaGalderma.idCategoriaGalderma}">${grupo.grupoCategoriaGalderma.categoria}</option>
+									<c:forEach items="${categoriasGalderma}" var="categoriasGalderma">
+										<c:if test="${grupo.grupoCategoriaGalderma.idCategoriaGalderma == categoriasGalderma.idCategoriaGalderma}"></c:if>
+										<c:if test="${grupo.grupoCategoriaGalderma.idCategoriaGalderma != categoriasGalderma.idCategoriaGalderma}">
+											<option value="${categoriasGalderma.idCategoriaGalderma}">${categoriasGalderma.categoria}</option>
+										</c:if>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
 						
 						
 					<!-- Multiple Checkboxes -->

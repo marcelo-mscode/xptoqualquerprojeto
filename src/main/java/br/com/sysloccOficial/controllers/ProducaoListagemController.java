@@ -237,6 +237,7 @@ public class ProducaoListagemController {
 		MV.addObject("grupo", produtoGrupoDAO.listaGrupo(idGrupo));
 		MV.addObject("categorias", produtoGrupoDAO.pegaCategoriaPorIdGrupo(idGrupo));
 		MV.addObject("categoriasBayer", produtoGrupoDAO.categoriaBayer());
+		MV.addObject("categoriasGalderma", listaDAO.listadeCategoriasGalderma());
 		MV.addObject("lista", produtoGrupoDAO.pegaListaParaProdutoGrupo(idGrupo));
 		MV.addObject("empresa",produtoGrupoDAO.empresaLista(idGrupo));
 		MV.addObject("fornecedores", empresaDAO.listaFornecedores());

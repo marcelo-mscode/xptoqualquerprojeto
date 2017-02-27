@@ -597,9 +597,9 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				<!-- Taxa de Serviço -->        
 			         <c:if test="${grupo.txISS > 0 ||  grupo.txServico > 0}">
 			         	<tr>
-			         		<td align="right">Taxas Serviço</td>
+			         		<td align="right">Taxa Serviço (%)</td>
 			         		<td>${grupo.txISS}</td>
-			         		<td>Taxas ISS</td>
+			         		<td>Taxa ISS</td>
 			         		<td>${grupo.txServico}</td>
 			         		<td colspan="4">
 			         	</tr>
