@@ -879,13 +879,12 @@ public class ProducaoController {
 	    return "redirect:editaLista?idLista="+retorno;
     }
     
-    @RequestMapping("editaInfoGalderma")
-    public String editaInfoGalderma(Integer idLista, String info){
-    	
-    	
-    	System.out.println("Cheguei");
-    	
-    	return null;
+    @RequestMapping("editaInfoGaldermaTexto")
+    @CacheEvict(value="listaProducao", allEntries=true)
+    @ResponseBody
+    public String editaInfoGaldermaTexto(Integer idLista, String info){
+    	producaoDAO.editaInfoGalderma(idLista, info);
+    	return "ok";
     }
     
     

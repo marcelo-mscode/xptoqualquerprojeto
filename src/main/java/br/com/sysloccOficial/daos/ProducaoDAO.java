@@ -398,8 +398,16 @@ public class ProducaoDAO {
         return novalista.getIdLista();
 	}
     
-    
-    
+    public void editaInfoGalderma(Integer idLista, String texto){
+    	try {
+    		Lista lista = manager.find(Lista.class, idLista);
+    		lista.setInfoConsolidadoGalderma(texto);
+    		manager.merge(lista);
+    		manager.clear();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Deu erro em Editar a Lista"+e);
+		}
+    }
     
     
     

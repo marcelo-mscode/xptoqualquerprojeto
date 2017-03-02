@@ -2529,32 +2529,3 @@ function pagaContas(idLista,idFornecedor,qtdDias,idLinha) {
 	
 };
 
-function editaInfoGalderma() {
-	
-	/*var info = $("#infoGalderma").text();
-	*/
-	
-	alert(idLista);
-	
-	/*$.ajax({
-		url : "editaInfoGalderma?idLista="+idLista+"&info="+idFornecedor,
-		success : function(data) {
-			$("#ConfirmaPagamento").fadeOut(500);
-			$("#contasPagarAjax").html(data);
-		},
-		beforeSend : function() {
-			$("#ConfirmaPagamento").fadeIn(500);
-		},
-		complete : function() {
-			$("#ConfirmaPagamento").fadeOut(500);
-		}
-	});*/
-	
-}
-
-
-
-
-
-
-

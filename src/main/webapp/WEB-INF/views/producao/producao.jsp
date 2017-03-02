@@ -68,7 +68,7 @@
 		
 			<input type="text"  onblur="editaInfoGalderma();" />
 		
-			<textarea id="infoGalderma" class="form-control" rows="3" cols="8" name="infoConsolidadoGalderma" onblur="editaInfoGalderma();" >${infoConsolidadoGalderma}</textarea>
+			<textarea id="infoGalderma" class="form-control" rows="3" cols="8" name="infoConsolidadoGalderma" onblur="infoGalderma(${idLista});">${infoConsolidadoGalderma}</textarea>
 			<a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
 		</div>
 		<div class="col-md-3">
@@ -947,4 +947,30 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 <c:import url="../_comum/footer.jsp" />
+
+<script type="text/javascript">
+
+function infoGalderma(idLista) {
+		
+		var info = $("#infoGalderma").text();
+		
+		$.ajax({
+			url : "editaInfoGaldermaTexto?idLista="+idLista+"&info="+info,
+			success : function(data) {
+				/* $("#ConfirmaPagamento").fadeOut(500);
+				$("#contasPagarAjax").html(data); */
+				
+				alert(data);
+			},
+			beforeSend : function() {
+				/* $("#ConfirmaPagamento").fadeIn(500); */
+			},
+			complete : function() {
+				/* $("#ConfirmaPagamento").fadeOut(500); */
+			}
+		});
+		
+	}
+</script>
+
 <script type="text/javascript" src="<c:url value="resources/js/listaProducaoAjax.js" />"></script>
