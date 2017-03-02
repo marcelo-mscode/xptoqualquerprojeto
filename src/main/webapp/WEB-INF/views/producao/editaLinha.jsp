@@ -38,7 +38,7 @@
 </div>
 <br /><br />
 
-<div class="container shadow-com-padding" style="background: #fff;margin-top: 20px"> 
+<div class="container shadow-com-padding" style="background: #fff;margin-top: 20px;height: 1100px;"> 
  	<div class="row" style="margin-top: 0;background-color: #f2f2f2;border-bottom: 1px solid #ccc;padding: 10px;">
 	  <div class="col-md-12 tira-padding" style="font-family: 'OpenSansLight'">
 	  	<h4><a href="editaLista?idLista=${lista[3]}&#ancoraGrupo${grupo.idgrupo}" class="botao-voltar" style="margin-left: 15px;padding: 5px 20px 5px 20px;"><i class="glyphicon glyphicon-menu-left"></i></a>
@@ -436,7 +436,7 @@
 						<div class="control-group">
 							<label class="control-label" for="categoria">Categoria Galderma</label>
 							<div class="controls margim-bottom5">
-								<select id="categoriaBayer" name="idgrupoCategoriaBayerTransiente" class="form-control">
+								<select id="categoriaBayer" name="idCategoriaGaldermaTransiente" class="form-control">
 									<option value="${grupo.grupoCategoriaGalderma.idCategoriaGalderma}">${grupo.grupoCategoriaGalderma.categoria}</option>
 									<c:forEach items="${categoriasGalderma}" var="categoriasGalderma">
 										<c:if test="${grupo.grupoCategoriaGalderma.idCategoriaGalderma == categoriasGalderma.idCategoriaGalderma}"></c:if>
@@ -469,19 +469,15 @@
 						    	</c:if>
 
 						      Incide FEE
-						    </label>
-						    <br>	
-
-
-						    <label style="margin-top: 10px;">
 						    	<c:if test="${grupo.feeReduzido == true}">
-						    	  <input id="feeReduzido" type="checkbox" name="feeReduzido" checked="checked" style="width: 20px;height: 17px">
+						    	  <input id="feeReduzido" type="checkbox" name="feeReduzido" checked="checked" style="margin-left:10px; width: 20px;height: 17px">
 						    	</c:if>
 						    	<c:if test="${grupo.feeReduzido == false}">
-						    	  <input id="feeReduzido" type="checkbox" name="feeReduzido" style="width: 20px;height: 17px">
+						    	  <input id="feeReduzido" type="checkbox" name="feeReduzido" style="margin-left:10px;width: 20px;height: 17px">
 						    	</c:if>
 						      Incide FEE Reduzido
 						    </label>
+						    
 						  
 						    <label class="checkbox" for="checkboxes-1" style="margin-left: 20px;">
 						      <c:if test="${grupo.opcional == true}">
@@ -492,8 +488,21 @@
 						    	  <input type="checkbox" name="opcional" style="width: 20px;height: 17px">
 						    </c:if>
 						      
-						      Opcional
+						    Opcional
+   					        
+   					        <c:if test="${grupo.opcionalGalderma == true}">
+						    	  <input type="checkbox" name="opcionalGalderma" checked="checked" style="margin-left:23px;width: 20px;height: 17px">
+						    </c:if>
+						
+						    <c:if test="${grupo.opcionalGalderma == false}">
+						    	  <input type="checkbox" name="opcionalGalderma" style="margin-left:23px;width: 20px;height: 17px">
+						    </c:if>
+						      <span style="margin-left:48px;">Opcional Galderma</span>
 						    </label>
+						    	<div style="margin-top: 15px;">
+						    	  Taxa Serviço Galderma<input type="text" name="txServico" class="form-control" style="margin-bottom:10px;width: 60px;height:35px" value="${grupo.txServico}">
+						    	  Taxa ISS Galderma<input type="text" name="txISS" class="form-control" style="width: 60px;height:35px" value="${grupo.txISS}">
+						    	</div>
 						  </div>
 						</div>
 						

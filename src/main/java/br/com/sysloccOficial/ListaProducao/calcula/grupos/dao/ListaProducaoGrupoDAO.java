@@ -16,6 +16,7 @@ import br.com.sysloccOficial.model.Categoria;
 import br.com.sysloccOficial.model.Empresa;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.GrupoCategoriaBayer;
+import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.OrcamentoFornecedor;
 import br.com.sysloccOficial.model.ProdutoGrupo;
@@ -42,6 +43,13 @@ public class ListaProducaoGrupoDAO {
 			GrupoCategoriaBayer categoriaBayer = manager.find(GrupoCategoriaBayer.class, grupo.getIdgrupoCategoriaBayerTransiente());
 			grupo2.setGrupoCategoriaBayer(categoriaBayer);
 		}
+
+		if(grupo.getIdCategoriaGaldermaTransiente() == null){
+			
+		}else{
+			GrupoCategoriaGalderma categoriaGalderma = manager.find(GrupoCategoriaGalderma.class, grupo.getIdCategoriaGaldermaTransiente());
+			grupo2.setGrupoCategoriaGalderma(categoriaGalderma);
+		}
 		
 		Lista lista = manager.find(Lista.class, grupo.getIdListaTransiente());
 		
@@ -58,8 +66,21 @@ public class ListaProducaoGrupoDAO {
 		
 		grupo2.setFeeReduzido(grupo.isFeeReduzido());
 		grupo2.setOpcional(grupo.isOpcional());
-		grupo2.setIdCategoria(categoria);
+		grupo2.setOpcionalGalderma(grupo.isOpcionalGalderma());
 		
+		
+		
+		grupo2.setTxISS(grupo.getTxISS());
+		
+		
+		
+		grupo2.setTxISS(grupo.getTxISS());
+		
+		
+		
+		grupo2.setTxServico(grupo.getTxServico());
+		
+		grupo2.setIdCategoria(categoria);
 		manager.merge(grupo2);
 		manager.close();
 		

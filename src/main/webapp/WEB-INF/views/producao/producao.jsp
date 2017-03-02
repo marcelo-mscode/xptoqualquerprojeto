@@ -55,6 +55,10 @@
 <div class="col-md-12">
 
 
+<div>
+	<a href="" style="float: right">Galderma</a>
+</div>
+
  
 
 
@@ -691,10 +695,10 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
           <div class="col-md-7 categoriaEmpresasLista">
         	<p>TAXAS GALDERMA</p>	
               <div class="col-md-3 col-md-offset-1 tira-padding" style="margin: 8px 0;">
-                Taxa de Serviço<input class="form-control" value="" name="txServico" />
+                Taxa de Serviço<input class="form-control" value="0" name="txServico" />
               </div>
               <div class="col-md-4 col-md-offset-1 tira-padding" style="margin: 8px 15px;">
-                Taxa de ISS<input class="form-control" value=""  name="txISS"/>
+                Taxa de ISS<input class="form-control" value="0"  name="txISS"/>
               </div>
           </div>
 <%-- </security:authorize> --%> 

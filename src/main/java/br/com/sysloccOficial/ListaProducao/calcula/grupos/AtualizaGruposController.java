@@ -33,6 +33,7 @@ public class AtualizaGruposController {
 	public String atualizaDescricaoCategoria(Grupo grupo){
 		
 		Grupo grupo2 = listaProducaoGrupoDAO.atualizaGrupo(grupo);
+		
 		Lista lista = manager.find(Lista.class, grupo.getIdListaTransiente());
 		
 		valoresEmGrupo.atualizaImpostoGrupo(grupo2);// Setando valores no Grupo dos itens
