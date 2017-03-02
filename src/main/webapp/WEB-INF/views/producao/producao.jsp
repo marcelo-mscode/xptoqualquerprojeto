@@ -952,15 +952,15 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 
 function infoGalderma(idLista) {
 		
-		var info = $("#infoGalderma").text();
+		var info = $("#infoGalderma").val();
 		
+				
 		$.ajax({
 			url : "editaInfoGaldermaTexto?idLista="+idLista+"&info="+info,
 			success : function(data) {
 				/* $("#ConfirmaPagamento").fadeOut(500);
 				$("#contasPagarAjax").html(data); */
 				
-				alert(data);
 			},
 			beforeSend : function() {
 				/* $("#ConfirmaPagamento").fadeIn(500); */
