@@ -400,14 +400,11 @@ public class ProducaoDAO {
     
     public void editaInfoGalderma(Integer idLista, String texto){
     	try {
-    		
     		Lista lista = manager.find(Lista.class, idLista);
     		lista.setInfoConsolidadoGalderma(texto);
     		manager.merge(lista);
-
-    		System.out.println("Depois: "+lista.getInfoConsolidadoGalderma());
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Deu erro em Editar a Lista"+e);
+			//throw new IllegalArgumentException("Coloca um nome decente aeeeee: "+e);
 		}
     }
     

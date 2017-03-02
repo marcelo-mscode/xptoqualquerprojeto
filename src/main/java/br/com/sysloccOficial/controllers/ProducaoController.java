@@ -883,7 +883,6 @@ public class ProducaoController {
     @CacheEvict(value="listaProducao", allEntries=true)
     @ResponseBody
     public String editaInfoGaldermaTexto(Integer idLista, String info){
-    	JOptionPane.showMessageDialog(null, ""+info);
     	producaoDAO.editaInfoGalderma(idLista, info);
     	return "ok";
     }

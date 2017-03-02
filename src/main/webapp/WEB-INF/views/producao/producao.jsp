@@ -58,17 +58,15 @@
 
 <div>
 	<div class="row col-md-12">
-		<a href="" style="float: right">Galderma</a>
+		<button id="animaPainelGalderma" class="btn btn-link" style="float: right">Galderma</button>
 	</div>
 	
-	<div class="row">
+	<div class="row display-none" id="painelGalderma">
 		<div class="col-md-6"></div>
 		
 		<div class="col-md-6">
-		
-			<input type="text"  onblur="editaInfoGalderma();" />
-		
 			<textarea id="infoGalderma" class="form-control" rows="3" cols="8" name="infoConsolidadoGalderma" onblur="infoGalderma(${idLista});">${infoConsolidadoGalderma}</textarea>
+			<i class="glyphicon glyphicon-ok display-none" id="editaOk" style="color: green"></i>
 			<a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
 		</div>
 		<div class="col-md-3">
@@ -950,26 +948,23 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 
 <script type="text/javascript">
 
+
+$("#animaPainelGalderma").click(function() {
+	  $("#painelGalderma").toggle("fast");
+});
+
+
 function infoGalderma(idLista) {
-		
-		var info = $("#infoGalderma").val();
-		
-				
 		$.ajax({
-			url : "editaInfoGaldermaTexto?idLista="+idLista+"&info="+info,
+			url : "editaInfoGaldermaTexto?idLista="+idLista+"&info="+$("#infoGalderma").val(),
 			success : function(data) {
-				/* $("#ConfirmaPagamento").fadeOut(500);
-				$("#contasPagarAjax").html(data); */
-				
+				$("#editaOk").fadeIn(500);
 			},
 			beforeSend : function() {
-				/* $("#ConfirmaPagamento").fadeIn(500); */
 			},
 			complete : function() {
-				/* $("#ConfirmaPagamento").fadeOut(500); */
 			}
 		});
-		
 	}
 </script>
 
