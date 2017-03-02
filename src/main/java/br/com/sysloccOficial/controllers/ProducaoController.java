@@ -879,7 +879,14 @@ public class ProducaoController {
 	    return "redirect:editaLista?idLista="+retorno;
     }
     
-    
+    @RequestMapping("editaInfoGalderma")
+    public String editaInfoGalderma(Integer idLista, String info){
+    	
+    	
+    	System.out.println("Cheguei");
+    	
+    	return null;
+    }
     
     
     

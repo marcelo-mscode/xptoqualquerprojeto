@@ -30,6 +30,7 @@
 	<c:set value="${lista.administracaoValor}" var="administracaoValor"/>
 	<c:set value="${lista.idlistaEstatus.idlistaEstatus}" var="idlistaEstatus"/>
 	<c:set value="${lista.numCenarioGalderma}" var="numCenarioGalderma"/>
+	<c:set value="${lista.infoConsolidadoGalderma}" var="infoConsolidadoGalderma"/>
 	
 	
 	
@@ -64,7 +65,7 @@
 		<div class="col-md-6"></div>
 		
 		<div class="col-md-6">
-			<textarea  class="form-control" rows="3" cols="8"></textarea>
+			<textarea id="infoGalderma" class="form-control" rows="3" cols="8" name="infoConsolidadoGalderma" onblur="editaInfoGalderma(${idLista})" >${infoConsolidadoGalderma}</textarea>
 			<a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
 		</div>
 		<div class="col-md-3">
