@@ -65,7 +65,10 @@
 		<div class="col-md-6"></div>
 		
 		<div class="col-md-6">
-			<textarea id="infoGalderma" class="form-control" rows="3" cols="8" name="infoConsolidadoGalderma" onblur="editaInfoGalderma(${idLista})" >${infoConsolidadoGalderma}</textarea>
+		
+			<input type="text"  onblur="editaInfoGalderma();" />
+		
+			<textarea id="infoGalderma" class="form-control" rows="3" cols="8" name="infoConsolidadoGalderma" onblur="editaInfoGalderma();" >${infoConsolidadoGalderma}</textarea>
 			<a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
 		</div>
 		<div class="col-md-3">

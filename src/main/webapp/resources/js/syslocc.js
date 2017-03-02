@@ -2510,6 +2510,9 @@ function mudaCampoData(id){
 
 
 function pagaContas(idLista,idFornecedor,qtdDias,idLinha) {
+	
+
+	
 	$.ajax({
 		url : "pagaConta?idLista="+idLista+"&idFornecedor="+idFornecedor+"&qtdDias="+qtdDias,
 		success : function(data) {
@@ -2526,10 +2529,12 @@ function pagaContas(idLista,idFornecedor,qtdDias,idLinha) {
 	
 };
 
-function editaInfoGalderma(idLista) {
+function editaInfoGalderma() {
 	
-	var info = $("#infoGalderma").text();
+	/*var info = $("#infoGalderma").text();
+	*/
 	
+	alert(idLista);
 	
 	/*$.ajax({
 		url : "editaInfoGalderma?idLista="+idLista+"&info="+idFornecedor,
@@ -2545,8 +2550,7 @@ function editaInfoGalderma(idLista) {
 		}
 	});*/
 	
-};
-
+}
 
 
 
