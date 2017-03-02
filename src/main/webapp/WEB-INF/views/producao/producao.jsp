@@ -56,7 +56,21 @@
 
 
 <div>
-	<a href="" style="float: right">Galderma</a>
+	<div class="row col-md-12">
+		<a href="" style="float: right">Galderma</a>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-6"></div>
+		
+		<div class="col-md-6">
+			<textarea  class="form-control" rows="3" cols="8"></textarea>
+			<a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
+		</div>
+		<div class="col-md-3">
+		</div>
+	</div>
+
 </div>
 
  

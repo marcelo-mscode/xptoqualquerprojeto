@@ -180,12 +180,6 @@ public class ProducaoListagemController {
 		MV.addObject("categoria", listaDAO.listadeCategorias(idLista));
 		MV.addObject("categoriasGalderma", listaDAO.listadeCategoriasGalderma());
 		
-		
-		List<GrupoCategoriaGalderma> gald = listaDAO.listadeCategoriasGalderma();		
-		for (int i = 0; i < gald.size(); i++) {
-			System.out.println(gald.get(i).getCategoria());
-		}
-		
 		MV.addObject("categoriasBayer", listaDAO.listadeCategoriasBayer());
 		MV.addObject("grupoOrdem", listaDAO.listadeGruposPorIdLista(idLista));
 		

@@ -308,6 +308,7 @@ hr.message-inner-separator{clear: both;
 .textUpperCase{text-transform: uppercase;}
 .categoriaEmpresasLista{margin-top: 20px;background-color: #ccc;padding: 10px;border-radius: 5px;margin-left: 15px;}
 
-
+.float-right{float: right;}
+.float-left{float: left;}
 
 

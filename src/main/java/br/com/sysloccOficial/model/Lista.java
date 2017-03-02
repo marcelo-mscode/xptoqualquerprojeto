@@ -35,12 +35,11 @@ public class Lista {
 	private String listaCod;	
 	private String observacoes;
 	private String formaPagamento;
+	private String infoConsolidadoGalderma;
 	
 	private BigDecimal margemPadrao;
 	private BigDecimal administracao;
 	private BigDecimal feeReduzido;
-	
-	
 	
 	private BigDecimal SubTotalCusto;
 	private BigDecimal SubTotalVendaNaoIncideImposto;
@@ -78,6 +77,12 @@ public class Lista {
 	
 	public Integer getIdLista() {
 		return idLista;
+	}
+	public String getInfoConsolidadoGalderma() {
+		return infoConsolidadoGalderma;
+	}
+	public void setInfoConsolidadoGalderma(String infoConsolidadoGalderma) {
+		this.infoConsolidadoGalderma = infoConsolidadoGalderma;
 	}
 	public Integer getNumCenarioGalderma() {
 		return numCenarioGalderma;
