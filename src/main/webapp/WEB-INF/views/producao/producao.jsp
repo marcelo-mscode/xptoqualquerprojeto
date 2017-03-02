@@ -57,15 +57,28 @@
 
 
 <div>
-	<div class="row col-md-12">
-		<button id="animaPainelGalderma" class="btn btn-link" style="float: right">Galderma</button>
+	<div class="row col-md-12" style="margin: 15px 0 10px 0;">
+		<button id="animaPainelGalderma" class="btn btn-default" style="float: right">Galderma</button>
 	</div>
 	
-	<div class="row display-none" id="painelGalderma">
-		<div class="col-md-6"></div>
+	<div class="row" id="painelGalderma">
+		<div class="col-md-6">
+			<p style="margin: 0px;">Nova Categoria Galderma</p>
+			<input id="novaCategoriaGald" class="form-control input-360px"  style="margin: 5px 0 10px 0;" onblur="criaNovaCategoria();" />
+		
+			<select name="idCategoriaGaldermaTransiente" class="form-control input-360px">
+                	<c:forEach items="${categoriasGalderma}" var="galderma">
+	                	<option value="${galderma.idCategoriaGalderma}"> ${galderma.categoria}</option>
+                	</c:forEach>
+            </select>
+		
+		
+		
+		</div>
 		
 		<div class="col-md-6">
-			<textarea id="infoGalderma" class="form-control" rows="3" cols="8" name="infoConsolidadoGalderma" onblur="infoGalderma(${idLista});">${infoConsolidadoGalderma}</textarea>
+			<p style="color: #808080;font-size: 11px;">Informações de consolidado Galderma</p>
+			<textarea id="infoGalderma" class="form-control" rows="3" cols="8" name="infoConsolidadoGalderma" onblur="infoGalderma(${idLista});" style="margin-bottom: 15px">${infoConsolidadoGalderma}</textarea>
 			<i class="glyphicon glyphicon-ok display-none" id="editaOk" style="color: green"></i>
 			<a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
 		</div>
@@ -100,13 +113,12 @@
 		  
 		  </h3>
 	 </div>
-	 <div class="col-md-6 tira-padding" style="font-family: 'OpenSansLight'">
+	<%--  <div class="col-md-6 tira-padding" style="font-family: 'OpenSansLight'">
 		  <a href="excelGalderma?idLista=${idLista}" class="btn btn-default" style="margin: 5px 0 0 330px">
 			  	<img alt="" src="<c:url value="resources/images/excel.png" />" width="18"  height="18" >
 			  	Excel galderma
 		  </a>
-		  <a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
-	 </div> 
+	 </div>  --%>
 	 
 </div>
    
@@ -114,23 +126,26 @@
 	<div class="col-md-12" style="padding-left: 10px;">
 			
 		<div class="col-md-12 tira-padding ">
-			<a href="printProducao?idLista=${idLista}" class="btn btn-default" >Gerar Planilha do Cliente</a>
+			<a href="printProducao?idLista=${idLista}" class="btn btn-default" >Planilha Cliente</a>
 			<a onclick="exportaExcelAjax(${idLista});" class="btn btn-default" id="planilhaGerarExcel">
 			<img alt="" src="<c:url value="resources/images/excel.png" />" width="18"  height="18" > 
 				Excel
 			</a>
-			
 		
-			<a onclick="exportaExcelAjaxBayer(${idLista});" class="btn btn-default" id="planilhaGerarExcelBayer">
+			<%-- <a onclick="exportaExcelAjaxBayer(${idLista});" class="btn btn-default" id="planilhaGerarExcelBayer">
+				<img alt="" src="<c:url value="resources/images/excel.png" />" width="18"  height="18" > 
+				Excel Bayer
+			</a> --%>
+
+			<a onclick="exportaExcelAjaxNovoBayer(${idLista});" class="btn btn-default" id="planilhaGerarNovoExcelBayer">
 				<img alt="" src="<c:url value="resources/images/excel.png" />" width="18"  height="18" > 
 				Excel Bayer
 			</a>
 
-			<a onclick="exportaExcelAjaxNovoBayer(${idLista});" class="btn btn-default" id="planilhaGerarNovoExcelBayer">
-				<img alt="" src="<c:url value="resources/images/excel.png" />" width="18"  height="18" > 
-				Excel Novo Bayer
-			</a>
-
+			<a href="excelGalderma?idLista=${idLista}" class="btn btn-default">
+			  	<img alt="" src="<c:url value="resources/images/excel.png" />" width="18"  height="18" >
+			  	Excel Galderma
+		    </a>
 			
 			
 			
@@ -957,6 +972,22 @@ $("#animaPainelGalderma").click(function() {
 function infoGalderma(idLista) {
 		$.ajax({
 			url : "editaInfoGaldermaTexto?idLista="+idLista+"&info="+$("#infoGalderma").val(),
+			success : function(data) {
+				$("#editaOk").fadeIn(500);
+			},
+			beforeSend : function() {
+			},
+			complete : function() {
+			}
+		});
+	}
+
+function criaNovaCategoria() {
+		
+	alert();
+	
+	$.ajax({
+			url : "novaCategoriaGald?novaCategoria="+$("#novaCategoriaGald").val(),
 			success : function(data) {
 				$("#editaOk").fadeIn(500);
 			},

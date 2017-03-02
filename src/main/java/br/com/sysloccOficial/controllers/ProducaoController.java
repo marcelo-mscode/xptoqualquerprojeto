@@ -888,7 +888,12 @@ public class ProducaoController {
     }
     
     
-    
+    @RequestMapping("novaCategoriaGald")
+    public void novaCategoriaGald(String novaCategoria){
+    	
+    	System.out.println(novaCategoria);
+    	
+    }
     
     
     
