@@ -889,10 +889,10 @@ public class ProducaoController {
     
     
     @RequestMapping("novaCategoriaGald")
-    public void novaCategoriaGald(String novaCategoria){
-    	
-    	System.out.println(novaCategoria);
-    	
+    @ResponseBody
+    public String novaCategoriaGald(String novaCategoria){
+    	producaoDAO.salvaNovaCategGalderma(novaCategoria);
+    	return "ok";
     }
     
     

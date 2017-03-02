@@ -23,6 +23,7 @@ import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.model.Categoria;
 import br.com.sysloccOficial.model.CenariosGalderma;
 import br.com.sysloccOficial.model.Grupo;
+import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.ListaEstatus;
 import br.com.sysloccOficial.model.OrcamentoFornecedor;
@@ -407,6 +408,19 @@ public class ProducaoDAO {
 			//throw new IllegalArgumentException("Coloca um nome decente aeeeee: "+e);
 		}
     }
+    
+    
+    public void salvaNovaCategGalderma(String categ){
+    	try {	
+    		GrupoCategoriaGalderma categoria = new GrupoCategoriaGalderma();
+    		categoria.setCategoria(categ);
+    		manager.persist(categoria);
+    		manager.close();
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Algo de errado em criar nova Categoria: "+e);
+		}
+    }
+    
     
     
     

@@ -61,10 +61,10 @@
 		<button id="animaPainelGalderma" class="btn btn-default" style="float: right">Galderma</button>
 	</div>
 	
-	<div class="row" id="painelGalderma">
+	<div class="row display-none" id="painelGalderma">
 		<div class="col-md-6">
 			<p style="margin: 0px;">Nova Categoria Galderma</p>
-			<input id="novaCategoriaGald" class="form-control input-360px"  style="margin: 5px 0 10px 0;" onblur="criaNovaCategoria();" />
+			<input id="novaCategoriaGalderma" class="form-control input-360px"  style="margin: 5px 0 10px 0;" onblur="criaNovaCategoria();" />
 		
 			<select name="idCategoriaGaldermaTransiente" class="form-control input-360px">
                 	<c:forEach items="${categoriasGalderma}" var="galderma">
@@ -80,7 +80,7 @@
 			<p style="color: #808080;font-size: 11px;">Informações de consolidado Galderma</p>
 			<textarea id="infoGalderma" class="form-control" rows="3" cols="8" name="infoConsolidadoGalderma" onblur="infoGalderma(${idLista});" style="margin-bottom: 15px">${infoConsolidadoGalderma}</textarea>
 			<i class="glyphicon glyphicon-ok display-none" id="editaOk" style="color: green"></i>
-			<a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-default" style="float: right;margin-top: 5px">Gerar Cenário</a>
+			<a href="geraCenarioGalderma?idLista=${idLista}" class="btn btn-success" style="float: right;margin-top: 5px">Gerar Cenário</a>
 		</div>
 		<div class="col-md-3">
 		</div>
@@ -984,12 +984,10 @@ function infoGalderma(idLista) {
 
 function criaNovaCategoria() {
 		
-	alert();
-	
 	$.ajax({
-			url : "novaCategoriaGald?novaCategoria="+$("#novaCategoriaGald").val(),
+			url : "novaCategoriaGald?novaCategoria="+$("#novaCategoriaGalderma").val(),
 			success : function(data) {
-				$("#editaOk").fadeIn(500);
+				location.reload();
 			},
 			beforeSend : function() {
 			},
