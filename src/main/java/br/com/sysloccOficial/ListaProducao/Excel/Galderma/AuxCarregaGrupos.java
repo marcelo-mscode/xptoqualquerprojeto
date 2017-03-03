@@ -126,37 +126,22 @@ public class AuxCarregaGrupos {
 		List<String> deadlines = new ArrayList<String>();
 		String mae = "from CenariosGalderma where planilhaMae = "+idLista;
 		
-		try {
-			
-			try {
-				
 				deadlines = listaDealine(deadlines, mae);
 
 				if(!deadlines.isEmpty()){
 					Lista lista = manager.find(Lista.class, idLista);
 					deadlines.add(lista.getInfoConsolidadoGalderma());
+				}else{
+					String idPlanilhaMae = "select planilhaMae from CenariosGalderma where planilhaFilha = "+idLista+" order by cenarioFilha";
+					
+					TypedQuery<Integer> idPlanMae = manager.createQuery(idPlanilhaMae, Integer.class);
+					Lista listaMae = manager.find(Lista.class, idPlanMae.getSingleResult());
+					deadlines.add(listaMae.getInfoConsolidadoGalderma());
+					
+					deadlines = listaDealine(deadlines, mae);
 				}
-				
-			} catch (Exception e) {
-				
-				String idPlanilhaMae = "select planilhaMae from CenariosGalderma where planilhaFilha = "+idLista+" order by cenarioFilha";
-
-				TypedQuery<Integer> idPlanMae = manager.createQuery(idPlanilhaMae, Integer.class);
-				Lista listaMae = manager.find(Lista.class, idPlanMae.getSingleResult());
-				deadlines.add(listaMae.getInfoConsolidadoGalderma());
-				
-				listaDealine(deadlines, mae);
-				
-			}
-			return deadlines;
-
-		} catch (Exception e) {
 			
-			
-			
-			return null;
-		}
-		
+			return deadlines;	
 	}
 	private List<String> listaDealine(List<String> deadlines, String mae) {
 	
