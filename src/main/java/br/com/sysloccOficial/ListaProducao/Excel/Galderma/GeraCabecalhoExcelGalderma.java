@@ -1,18 +1,25 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
+import java.text.ParseException;
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import br.com.sysloccOficial.conf.UtilitariaDatas;
+import br.com.sysloccOficial.model.Job;
 
 @Component
 public class GeraCabecalhoExcelGalderma {
 	
+	@Autowired
+	private static UtilitariaDatas utilData;
 	
-	
-	public static void geraCabecalho(XSSFSheet aba,XSSFWorkbook excelGalderma,String nomeAba){
+	public static void geraCabecalho(XSSFSheet aba,XSSFWorkbook excelGalderma,String nomeAba, Job job) throws ParseException{
 	
 		textoContato(aba, excelGalderma, "Gestor: A definir Paula Samora", 1);
 		textoContato(aba, excelGalderma, "Telefone: 11 3524-6498", 2);
@@ -26,7 +33,7 @@ public class GeraCabecalhoExcelGalderma {
 		textoContato(aba, excelGalderma, "Telefone: 11 3524-6498", 8);
 		textoContato(aba, excelGalderma, "Email: paula.samora@galderma.com", 9);
 		
-		geraCabecalhoEvento(aba, excelGalderma, nomeAba);
+		geraCabecalhoEvento(aba, excelGalderma, nomeAba, job);
 	}
 	
 	private static void textoContato(XSSFSheet aba,XSSFWorkbook excelGalderma,String texto,int posicaoLinha){
@@ -47,11 +54,16 @@ public class GeraCabecalhoExcelGalderma {
 	}
 
 	
-	public static void geraCabecalhoEvento(XSSFSheet aba,XSSFWorkbook excelGalderma,String nomeAba){
-		textoEvento(aba,excelGalderma, "EVENTO: Festa de Confraternização Farmacologia Bayer",12); 
-		textoEvento(aba,excelGalderma, "DATA: 13 A 17 DE MARÇO DE 2017",13); 
-		textoEvento(aba,excelGalderma, "LOCAL: CAMPINAS / HORTOLÂNDIA",14); 
-		textoEvento(aba,excelGalderma, "NÚMEROS DE PESSOAS",15); 
+	public static void geraCabecalhoEvento(XSSFSheet aba,XSSFWorkbook excelGalderma,String nomeAba, Job job) throws ParseException{
+		textoEvento(aba,excelGalderma, "EVENTO: "+ job.getTitulo() ,12); 
+
+		for (int i = 0; i < job.getLocalEvento().size(); i++) {
+			String dataInicio =  UtilitariaDatas.converteDateParaStringStatic(job.getLocalEvento().get(i).getLocalEventoDataInicio());
+			String dataFim =  UtilitariaDatas.converteDateParaStringStatic(job.getLocalEvento().get(i).getLocalEventoDataTermino());
+			textoEvento(aba,excelGalderma, "DATA: "+dataInicio+" até " +dataFim,13); 
+			textoEvento(aba,excelGalderma, "LOCAL: "+job.getLocalEvento().get(i).getLocal(),14); 
+			textoEvento(aba,excelGalderma, "NÚMEROS DE PESSOAS/DIA: " +job.getLocalEvento().get(i).getLocalEventoQtdPessoas() ,15); 
+		}
 	}
 	
 	private static void textoEvento(XSSFSheet aba,XSSFWorkbook excelGalderma,String texto,int posicaoLinha){

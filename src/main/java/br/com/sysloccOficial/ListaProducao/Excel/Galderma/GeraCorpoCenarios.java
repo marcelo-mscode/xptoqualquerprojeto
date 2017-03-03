@@ -2,11 +2,9 @@ package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JOptionPane;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -14,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.sysloccOficial.Excel.ExcelImagem;
 import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
+import br.com.sysloccOficial.model.Job;
 
 @Component
 public class GeraCorpoCenarios {
@@ -22,6 +21,7 @@ public class GeraCorpoCenarios {
 	 * Método para gerar o cabeçalho da aba
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
+	 * @throws ParseException 
 	 * 
 	 */
 	/*public static void geraCabecalhoAbaCenarios(XSSFSheet cenario,XSSFWorkbook excelGalderma,String nomeAba){
@@ -29,13 +29,13 @@ public class GeraCorpoCenarios {
 	}*/
 	
 	public static int geraCorpoAbaCenarios(XSSFSheet cenario,XSSFWorkbook excelGalderma,String nomeAba,
-											List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma)
-											throws FileNotFoundException, IOException{
+											List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma,Job job)
+											throws FileNotFoundException, IOException, ParseException{
 		
 		cenario = excelGalderma.createSheet(nomeAba); /** Cria Aba Cenarios da planilha */
 		cenario.setZoom(80);
 		ExcelImagem.InsereImagem(excelGalderma, cenario, "C:/SYSLOC/upload/logoEmpresas/logoExcelAgencia2.png",0.35);
-		GeraCabecalhoExcelGalderma.geraCabecalho(cenario, excelGalderma, nomeAba);
+		GeraCabecalhoExcelGalderma.geraCabecalho(cenario, excelGalderma, nomeAba, job);
 
 		
 		//Não precisa mexer mais

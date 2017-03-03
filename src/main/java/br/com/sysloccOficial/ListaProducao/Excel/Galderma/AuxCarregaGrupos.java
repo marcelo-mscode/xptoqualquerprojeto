@@ -1,19 +1,22 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
+import br.com.sysloccOficial.model.CenariosGalderma;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
+import br.com.sysloccOficial.model.Job;
+import br.com.sysloccOficial.model.Lista;
 
 @Service
 public class AuxCarregaGrupos {
@@ -98,6 +101,96 @@ public class AuxCarregaGrupos {
 		TypedQuery<GrupoCategoriaGalderma> categorias = manager.createQuery("from GrupoCategoriaGalderma where idCategoriaGalderma > 1 order by idCategoriaGalderma",GrupoCategoriaGalderma.class);
 		return categorias.getResultList();
 	}
+	
+	/**
+	 * Pega Job da Lista
+	 * 
+	 */
+	public Job pegaJob(Integer idLista){
+		try {
+			Lista lista = manager.find(Lista.class, idLista);
+			return lista.getIdJob();
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+	
+	/**
+	 * Monta Lista de String com informações Galderma de cada Lista 
+	 * A lista começa pela mãe e depois pelas filhas em ordem de cenário
+	 * 
+	 */
+	public List<String> listaInfoGalderma(Integer idLista){
+		
+		List<String> deadlines = new ArrayList<String>();
+		String mae = "from CenariosGalderma where planilhaMae = "+idLista;
+		
+		try {
+			
+			try {
+				
+				deadlines = listaDealine(deadlines, mae);
+
+				if(!deadlines.isEmpty()){
+					Lista lista = manager.find(Lista.class, idLista);
+					deadlines.add(lista.getInfoConsolidadoGalderma());
+				}
+				
+			} catch (Exception e) {
+				
+				String idPlanilhaMae = "select planilhaMae from CenariosGalderma where planilhaFilha = "+idLista+" order by cenarioFilha";
+
+				TypedQuery<Integer> idPlanMae = manager.createQuery(idPlanilhaMae, Integer.class);
+				Lista listaMae = manager.find(Lista.class, idPlanMae.getSingleResult());
+				deadlines.add(listaMae.getInfoConsolidadoGalderma());
+				
+				listaDealine(deadlines, mae);
+				
+			}
+			return deadlines;
+
+		} catch (Exception e) {
+			
+			
+			
+			return null;
+		}
+		
+	}
+	private List<String> listaDealine(List<String> deadlines, String mae) {
+	
+		
+		try {
+			TypedQuery<CenariosGalderma> cenarios = manager.createQuery(mae, CenariosGalderma.class);
+			List<CenariosGalderma> listaCenariosGaldermas = cenarios.getResultList();
+			
+			if(listaCenariosGaldermas.isEmpty()){
+				return null;
+			}else{
+				for (int i = 0; i < listaCenariosGaldermas.size(); i++) {
+					Lista listas = manager.find(Lista.class, listaCenariosGaldermas.get(i).getPlanilhaFilha());
+					deadlines.add(listas.getInfoConsolidadoGalderma());
+				}
+				return deadlines;
+			}
+			
+			
+			
+		} catch (Exception e) {
+			return null;
+//			throw new IllegalArgumentException("Deu erro ao montar deadlines em AuxCarregaGrupos linhe 166");
+			
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

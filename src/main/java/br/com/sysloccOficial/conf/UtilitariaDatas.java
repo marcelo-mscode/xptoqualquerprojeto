@@ -404,7 +404,12 @@ public ArrayList<Integer> FormataDataJodaGenerica(Date data) throws ParseExcepti
 		return meses;
 	}
 	
-	
+	public static String converteDateParaStringStatic (Date data) throws ParseException{
+  	    SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");  
+        //vai te retorna uma String  
+		String result = f.format(data);  
+		return result;
+	}
 	
 	
 	

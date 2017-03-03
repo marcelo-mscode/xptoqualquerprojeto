@@ -2,15 +2,19 @@ package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import br.com.sysloccOficial.Excel.BaseGeraExcel;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
+import br.com.sysloccOficial.model.Job;
 
 @Component
 public class GeraBaseExcelGalderma {
@@ -26,7 +30,7 @@ public class GeraBaseExcelGalderma {
 	static XSSFSheet opcionais;
 	
 	
-	public String constroiExcel(Integer idLista) throws IOException{
+	public String constroiExcel(Integer idLista) throws IOException, ParseException{
 		
 		excelGalderma = new XSSFWorkbook();
 		
@@ -34,11 +38,19 @@ public class GeraBaseExcelGalderma {
 		FileOutputStream out = base.caminhoeNomeDoArquivo();
 		String downloadExcel = base.caminhoDownloadExcel("Galderma","upload/upload/excel/"+"Galderma");
 		
-		XSSFSheet consolidadoCriado = GeraCorpoConsolidado.geraCorpoAbaConsolidado(consolidado, excelGalderma,"Consolidado");
+		Job jobDaLista =  montaGrupos.pegaJob(idLista);
+		
+		
+		List<String> infoGalderma = montaGrupos.listaInfoGalderma(idLista);
+		
+
+		XSSFSheet consolidadoCriado = GeraCorpoConsolidado.geraCorpoAbaConsolidado(consolidado, excelGalderma,"Consolidado",jobDaLista);
 
 		
 		//Lógica para pegar lista de ids da planilha mãe e filhas
 		List<Integer> pegaIdsCenarios = montaCorpoCategorias.pegaIdsCenarios(idLista);
+		
+		
 		
 		List<LinhasConsolidado> linhasParaConsolidado = new ArrayList<LinhasConsolidado>();
 		for (int i = 0; i < pegaIdsCenarios.size(); i++) {
@@ -54,7 +66,7 @@ public class GeraBaseExcelGalderma {
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
 			
 			//Cria o Cenários passando os dados		
-			int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 0"+numCenario,montaGruposParaExcel,categoriasGalderma);
+			int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 0"+numCenario,montaGruposParaExcel,categoriasGalderma,jobDaLista);
 			//Monta dados para Consolidado
 			LinhasConsolidado linhas = new LinhasConsolidado();
 			linhas.setNomeAba("Cenário ");
@@ -74,6 +86,7 @@ public class GeraBaseExcelGalderma {
 	
 		
 		LinhasConsolidado linhas2 = new LinhasConsolidado();
+
 		if(listaGruposOpcionais.isEmpty()){
 			
 		}else{
@@ -81,7 +94,7 @@ public class GeraBaseExcelGalderma {
 			
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcelOpcionais = montaCorpoCategorias.montaGruposParaExcel(listaGruposOpcionais);
 			
-			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,catOpc3);
+			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,catOpc3,jobDaLista);
 			
 			
 			linhas2.setNomeAba("Opcionais");
@@ -90,7 +103,7 @@ public class GeraBaseExcelGalderma {
 		}
 
 		
-		CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado);	
+		CorpoConsolidadoGalderma.corpoPlanilhaConsolidado(excelGalderma, consolidadoCriado,linhasParaConsolidado,jobDaLista, infoGalderma);	
 		
 		base.fechaPlanilha(excelGalderma,out);
 		return downloadExcel;

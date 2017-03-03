@@ -29,12 +29,19 @@ public class ExcelGaldermaController {
 		
 		long tempoInicio = System.currentTimeMillis();
 		
-		String downloadExcel = excel.constroiExcel(idLista);
+		try {
+			
+			String downloadExcel = excel.constroiExcel(idLista);
+			
 
-		System.out.println(downloadExcel);
+			System.out.println(downloadExcel);
+		
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Houve umn erro ao construir o Excel: "+e);
+		}
 
 		System.out.println("Tempo Total: "+( System.currentTimeMillis()-tempoInicio));
-		
+
 		return "redirect:editaLista?idLista="+idLista;
 	}
 	
