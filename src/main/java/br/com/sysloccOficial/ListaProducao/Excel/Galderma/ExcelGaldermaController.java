@@ -30,10 +30,7 @@ public class ExcelGaldermaController {
 		long tempoInicio = System.currentTimeMillis();
 		
 		try {
-			
 			String downloadExcel = excel.constroiExcel(idLista);
-			
-
 			System.out.println(downloadExcel);
 		
 		} catch (Exception e) {

@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -14,20 +15,12 @@ import br.com.sysloccOficial.model.LocalEvento;
 public class CorpoConsolidadoGalderma {
 	
 	public static void corpoPlanilhaConsolidado(XSSFWorkbook excelGalderma,XSSFSheet cenario,
-												List<LinhasConsolidado> linhasParaConsolidado,Job job,List<String> infoGalderma){
+												List<LinhasConsolidado> linhasParaConsolidado,Job job,List<String> infoGalderma) throws ParseException{
 		//Cabeçalho estático 
 		CorpoConsolidadoGaldermaTopo.geraCabecalhoEstatico(excelGalderma, cenario, 17);
 		int linhaComecaConteudo = 18;
 		int numCenario = 1;
 		int qtsPessoasDias = 0;
-		String deadLine = "";
-		
-		
-		try {
-			deadLine = UtilitariaDatas.converteDateParaStringStatic(job.getPropostaData());
-		} catch (Exception e) {
-			
-		}
 		
 		for (int i = 0; i < job.getLocalEvento().size() ; i++) {
 			qtsPessoasDias = job.getLocalEvento().get(i).getLocalEventoQtdPessoas();
