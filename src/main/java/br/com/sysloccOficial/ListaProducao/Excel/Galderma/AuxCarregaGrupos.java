@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -124,60 +125,55 @@ public class AuxCarregaGrupos {
 	public List<String> listaInfoGalderma(Integer idLista){
 		
 		List<String> deadlines = new ArrayList<String>();
-		String mae = "from CenariosGalderma where planilhaMae = "+idLista;
 		
-				deadlines = listaDealine(deadlines, mae);
 
-				if(!deadlines.isEmpty()){
+				String mae = "from CenariosGalderma where planilhaMae = "+idLista;
+				
+				TypedQuery<CenariosGalderma> cenarios = manager.createQuery(mae, CenariosGalderma.class);
+				
+				List<CenariosGalderma> listaCenariosGaldermas = cenarios.getResultList();
+				
+				
+				if(!listaCenariosGaldermas.isEmpty()){
+
 					Lista lista = manager.find(Lista.class, idLista);
 					deadlines.add(lista.getInfoConsolidadoGalderma());
-				}else{
-					String idPlanilhaMae = "select planilhaMae from CenariosGalderma where planilhaFilha = "+idLista+" order by cenarioFilha";
 					
+					
+					for (int i = 0; i < listaCenariosGaldermas.size(); i++) {
+						Lista listas = manager.find(Lista.class, listaCenariosGaldermas.get(i).getPlanilhaFilha());
+						deadlines.add(listas.getInfoConsolidadoGalderma());
+					}
+					
+					return deadlines;
+					
+				}else{
+				
+					String idPlanilhaMae = "select planilhaMae from CenariosGalderma where planilhaFilha = "+idLista+" order by cenarioFilha";
+	
 					TypedQuery<Integer> idPlanMae = manager.createQuery(idPlanilhaMae, Integer.class);
 					Lista listaMae = manager.find(Lista.class, idPlanMae.getSingleResult());
 					deadlines.add(listaMae.getInfoConsolidadoGalderma());
-					
-					deadlines = listaDealine(deadlines, mae);
-				}
-			
-			return deadlines;	
-	}
-	private List<String> listaDealine(List<String> deadlines, String mae) {
 	
-		
-		try {
-			TypedQuery<CenariosGalderma> cenarios = manager.createQuery(mae, CenariosGalderma.class);
-			List<CenariosGalderma> listaCenariosGaldermas = cenarios.getResultList();
-			
-			if(listaCenariosGaldermas.isEmpty()){
-				return null;
-			}else{
-				for (int i = 0; i < listaCenariosGaldermas.size(); i++) {
-					Lista listas = manager.find(Lista.class, listaCenariosGaldermas.get(i).getPlanilhaFilha());
-					deadlines.add(listas.getInfoConsolidadoGalderma());
-				}
-				return deadlines;
+					try {
+						TypedQuery<CenariosGalderma> cenarios2 = manager.createQuery("from CenariosGalderma where planilhaMae = "+idPlanMae.getSingleResult(), CenariosGalderma.class);
+						List<CenariosGalderma> listaCenariosGaldermas2 = cenarios2.getResultList();
+						
+						for (int i = 0; i < listaCenariosGaldermas2.size(); i++) {
+							Lista listas = manager.find(Lista.class, listaCenariosGaldermas2.get(i).getPlanilhaFilha());
+							deadlines.add(listas.getInfoConsolidadoGalderma());
+						}
+						return deadlines;
+					} catch (Exception e) {
+						JOptionPane.showMessageDialog(null, ""+e);	// TODO: handle exception
+						return null;
+					}
+					
+					
+					
 			}
 			
-			
-			
-		} catch (Exception e) {
-			return null;
-//			throw new IllegalArgumentException("Deu erro ao montar deadlines em AuxCarregaGrupos linhe 166");
-			
-		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 

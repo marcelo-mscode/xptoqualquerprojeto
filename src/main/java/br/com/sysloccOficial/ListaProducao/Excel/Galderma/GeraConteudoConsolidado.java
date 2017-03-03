@@ -19,7 +19,7 @@ public class GeraConteudoConsolidado {
 	
 	public static int[] corFundoCelulaPadrao = {255,255,254};
 	
-	public static int geraConteudo(XSSFWorkbook excel, XSSFSheet cenario,String nomeAba,int linhaComeco,int linhasConsolidado,int numCenario,int qtdPessoasDias,String deadLine){
+	public static int geraConteudo(XSSFWorkbook excel, XSSFSheet cenario,String nomeAba,int linhaComeco,int linhasConsolidado,int numCenario,int qtdPessoasDias,String infoLista, String deadline){
 		
 		int linhaParaFormula = linhaComeco+1;
 		
@@ -41,8 +41,8 @@ public class GeraConteudoConsolidado {
 		ExcelFormatoCelulaComum.numeroCentralizadoBold(excel, linha2, qtdPessoasDias, 3, corFundoCelulaPadrao);
 		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 4, "C"+(linhaComeco+1)+"/D"+(linhaComeco+1)+"");
 		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadraoBoldCentralizado(excel,estiloConteudo(excel)), linha2, 5, "B"+(linhaComeco+1)+"-C"+(linhaComeco+1)+"");
-		ExcelFormatoCelulaComum.textoSimplesCentralizadoBold(excel, cell, linha2, deadLine, 6, corFundoCelulaPadrao);
-		ExcelFormatoCelulaComum.textoSimplesCentralizadoBold(excel, cell, linha2, "Jantar no Hotel com Apresentação de Tango", 7, corFundoCelulaPadrao);
+		ExcelFormatoCelulaComum.textoSimplesCentralizadoBold(excel, cell, linha2, deadline, 6, corFundoCelulaPadrao);
+		ExcelFormatoCelulaComum.textoSimplesCentralizadoBold(excel, cell, linha2, infoLista, 7, corFundoCelulaPadrao);
 		
 		
 		return linhaParaFormula;

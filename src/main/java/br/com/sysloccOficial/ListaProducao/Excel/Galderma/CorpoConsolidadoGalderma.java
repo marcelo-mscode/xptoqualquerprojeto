@@ -34,9 +34,21 @@ public class CorpoConsolidadoGalderma {
 		}
 			
 		for (int i = 0; i < linhasParaConsolidado.size(); i++) {
+			
+			
+			String infoLista = "";
+			
+			if(infoGalderma == null){
+				
+			}else{
+				infoLista = infoGalderma.get(i);
+			}
+			
+			
+			
 			GeraConteudoConsolidado.geraConteudo(excelGalderma, cenario,linhasParaConsolidado.get(i).getNomeAba(),linhaComecaConteudo,
 												 linhasParaConsolidado.get(i).getUltimaLinhaCalculos(),numCenario
-												 ,qtsPessoasDias,infoGalderma.get(i));
+												 ,qtsPessoasDias,infoLista, UtilitariaDatas.converteDateParaStringStatic(job.getPropostaData()));
 			linhaComecaConteudo++;
 			numCenario++;
 		}
