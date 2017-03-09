@@ -499,10 +499,10 @@
 						    </c:if>
 						      <span style="margin-left:48px;">Opcional Galderma</span>
 						    </label>
-						    	<div style="margin-top: 15px;">
+						    	<%-- <div style="margin-top: 15px;">
 						    	  Taxa Serviço Galderma<input type="text" name="txServico" class="form-control" style="margin-bottom:10px;width: 60px;height:35px" value="${grupo.txServico}">
 						    	  Taxa ISS Galderma<input type="text" name="txISS" class="form-control" style="width: 60px;height:35px" value="${grupo.txISS}">
-						    	</div>
+						    	</div> --%>
 						  </div>
 						</div>
 						
