@@ -28,16 +28,17 @@ public class CorpoConsolidadoGalderma {
 			
 		for (int i = 0; i < linhasParaConsolidado.size(); i++) {
 			
-			
 			String infoLista = "";
-			
-			if(infoGalderma == null){
-				
+			if( i >= infoGalderma.size()){
+				infoLista = "Opcionais";
 			}else{
-				infoLista = infoGalderma.get(i);
+				
+				if(infoGalderma.get(i) == null){
+					infoLista = "Nenhuma informação na lista";
+				}else{
+					infoLista = infoGalderma.get(i);
+				}
 			}
-			
-			
 			
 			GeraConteudoConsolidado.geraConteudo(excelGalderma, cenario,linhasParaConsolidado.get(i).getNomeAba(),linhaComecaConteudo,
 												 linhasParaConsolidado.get(i).getUltimaLinhaCalculos(),numCenario
@@ -45,6 +46,5 @@ public class CorpoConsolidadoGalderma {
 			linhaComecaConteudo++;
 			numCenario++;
 		}
-		
 	}
 }

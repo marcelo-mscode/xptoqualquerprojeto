@@ -80,9 +80,6 @@ public class GeraBaseExcelGalderma {
 		List<GrupoCategoriaGalderma> categoriasGaldermaOpc = montaGrupos.pegaTodasCategoriasGalderma();
 		List<Grupo> listaGruposOpcionais = montaGrupos.listaGruposOpcionais(pegaIdsCenarios);
 		
-		List<GrupoCategoriaGalderma> catOpc =  removeCategoriasOpcionais(categoriasGaldermaOpc, listaGruposOpcionais);
-		List<GrupoCategoriaGalderma> catOpc2 =  removeCategoriasOpcionais(catOpc, listaGruposOpcionais);
-		List<GrupoCategoriaGalderma> catOpc3 =  removeCategoriasOpcionais(catOpc2, listaGruposOpcionais);
 	
 		
 		LinhasConsolidado linhas2 = new LinhasConsolidado();
@@ -91,6 +88,9 @@ public class GeraBaseExcelGalderma {
 			
 		}else{
 			
+			List<GrupoCategoriaGalderma> catOpc =  removeCategoriasOpcionais(categoriasGaldermaOpc, listaGruposOpcionais);
+			List<GrupoCategoriaGalderma> catOpc2 =  removeCategoriasOpcionais(catOpc, listaGruposOpcionais);
+			List<GrupoCategoriaGalderma> catOpc3 =  removeCategoriasOpcionais(catOpc2, listaGruposOpcionais);
 			
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcelOpcionais = montaCorpoCategorias.montaGruposParaExcel(listaGruposOpcionais);
 			
@@ -117,6 +117,7 @@ public class GeraBaseExcelGalderma {
 			
 			int g = categoriasGaldermaOpc.get(i).getIdCategoriaGalderma();
 			for (int j = 0; j < listaGruposOpcionais.size(); j++) {
+				
 				int l = listaGruposOpcionais.get(j).getGrupoCategoriaGalderma().getIdCategoriaGalderma();
 				if(g == l){
 					confere = true;

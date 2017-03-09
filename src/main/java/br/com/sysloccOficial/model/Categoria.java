@@ -26,6 +26,8 @@ public class Categoria {
   //private Integer idImposto;
   private Integer categoriaOrdem;
   private BigDecimal imposto;
+  private double txServico;
+  private double txISS;
 		
   
 // ----------------- Transiente ------------------------------ //
@@ -42,8 +44,21 @@ public class Categoria {
   
 // ---------------------------------------------------------- //  
   
+  
   	public Integer getIdcategoria() {
 		return idcategoria;
+	}
+	public double getTxServico() {
+		return txServico;
+	}
+	public void setTxServico(double txServico) {
+		this.txServico = txServico;
+	}
+	public double getTxISS() {
+		return txISS;
+	}
+	public void setTxISS(double txISS) {
+		this.txISS = txISS;
 	}
 	public String getImpostoTitulo() {
 		return impostoTitulo;

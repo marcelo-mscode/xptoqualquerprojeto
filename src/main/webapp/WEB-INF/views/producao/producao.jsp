@@ -9,7 +9,8 @@
 <style>
 	.ajustaCheckBox{height: 18px;width: 18px}
 	.ajustaDivChecked{margin-bottom: 0px;margin-left: 22px;margin-top: 8px;line-height: 25px;}
-	.categoriaEmpresasLista{margin: 10px 0 10px 0;background-color: #e6e6e6;padding: 10px;border-radius: 5px;margin-left: 15px;}
+	.categoriaEmpresasLista {margin: 10px 0 10px 0;background-color: #e6e6e6;padding: 10px;border-radius: 5px;}
+	.categoriaGaldermaLateral{margin: 10px 0 10px 15px;}
 </style>
 
 <c:forEach items="${lista}" var="lista">
@@ -429,28 +430,33 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
       </div>
 
     <div class="col-md-8 form-group  tira-padding categoria display-none" style="padding-bottom: 15px;">
-					<div class="divisor"><hr></div>
+	<div class="divisor"><hr></div>
 		<form action="salvaCategoria" method="post" id="salvaCategoria"  onsubmit="criaCategoriaBotao.disabled = true; return true;">
 				   <input type="hidden" name="idListaTransiente" value="${idLista}" />
-		
-					<div class="col-md-6 tira-padding ">
-						<input type="text" class="form-control" placeholder="Nome da Categoria" name="categoria" id="salvaCategoriaCategoria">
-					</div>
-
-
-					<div class="col-md-8 tira-padding" style="margin: 10px 0;">
-						<select name="idImpostoTrasiente" id="" class="form-control">
-							<c:forEach items="${imposto}" var="imposto">
-								<option value="${imposto.idimposto}">${imposto.impostoTitulo} (${imposto.imposto} %)</option>
-							</c:forEach>
-						</select>
-					</div>
-
-					<div class="col-md-6 tira-padding">
-						<input class="btn btn-danger" type="submit"	value="Criar Categoria" name="criaCategoriaBotao">
-					</div>
+				   <div class="col-md-6 tira-padding ">
+				      <input type="text" class="form-control input-420px" placeholder="Nome da Categoria" name="categoria" id="salvaCategoriaCategoria">
+				   </div>
+				   <div class="col-md-8 tira-padding" style="margin: 10px 0;">
+				      <select name="idImpostoTrasiente" id="" class="form-control input-420px">
+				         <c:forEach items="${imposto}" var="imposto">
+				            <option value="${imposto.idimposto}">${imposto.impostoTitulo} (${imposto.imposto} %)</option>
+				         </c:forEach>
+				      </select>
+				   </div>
+				   <div class="col-md-7 categoriaEmpresasLista input-420px">
+				      <p style="margin: 0 0 -10px;">TAXAS GALDERMA</p>
+				      <div class="col-md-4 col-md-offset-1 tira-padding">
+				         Taxa de Serviço
+				         <input class="form-control" value="0" name="txServico" />
+				      </div>
+				      <div class="col-md-4 col-md-offset-1 tira-padding" style="margin: 0px 15px;">
+				         Taxa de ISS<input class="form-control" value="0" name="txISS" />
+				      </div>
+				   </div>
+				   <div class="col-md-6 tira-padding">
+				      <input class="btn btn-danger" type="submit"	value="Criar Categoria" name="criaCategoriaBotao">
+				   </div>
 		</form>
-		
 		</div>
       </div>
     </div>
@@ -684,13 +690,12 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
               </div>
           </div>
           
-<%-- <security:authorize access="hasRole('ROLE_ADMIN')"> --%>          
           <div class="col-md-8 ">
               <div class="checkbox col-md-offset-1 tira-padding ajustaDivChecked">
                 <input id="feeReduzido" type="checkbox" class="form-group ajustaCheckBox" name="feeReduzido"><span>Fee Reduzido</span>             
               </div>
           </div>
-<%-- </security:authorize> --%>
+
           <div class="col-md-8">
               <div class="checkbox col-md-offset-1 tira-padding ajustaDivChecked">
                 <input type="checkbox" class="form-group ajustaCheckBox" name="opcional"> Opcional da Planilha            
@@ -699,9 +704,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
               </div>
           </div>
 
-
-<%-- <security:authorize access="hasRole('ROLE_ADMIN')">  --%>	 
-          <div class="col-md-7 categoriaEmpresasLista">
+          <div class="col-md-7 categoriaEmpresasLista categoriaGaldermaLateral">
           	  <span>CATEGORIAS BAYER</span>
               <div class="checkbox col-md-offset-1 tira-padding " style="margin: 8px 0;">
                 <select name="idgrupoCategoriaBayerTransiente" class="form-control">
@@ -712,7 +715,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
               </div>
           </div>
           
-          <div class="col-md-7 categoriaEmpresasLista">
+          <div class="col-md-7 categoriaEmpresasLista categoriaGaldermaLateral">
           	<span>CATEGORIAS GALDERMA</span>
               <div class="checkbox col-md-offset-1 tira-padding" style="margin: 8px 0;">
                 <select name="idCategoriaGaldermaTransiente" class="form-control">
@@ -722,17 +725,6 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
                 </select>
               </div>
           </div>
-		
-          <div class="col-md-7 categoriaEmpresasLista">
-        	<p>TAXAS GALDERMA</p>	
-              <div class="col-md-3 col-md-offset-1 tira-padding" style="margin: 8px 0;">
-                Taxa de Serviço<input class="form-control" value="0" name="txServico" />
-              </div>
-              <div class="col-md-4 col-md-offset-1 tira-padding" style="margin: 8px 15px;">
-                Taxa de ISS<input class="form-control" value="0"  name="txISS"/>
-              </div>
-          </div>
-<%-- </security:authorize> --%> 
           
           <div class="col-md-7">
               <div class="form-group">
@@ -742,7 +734,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
           </div>
 
           <div class="col-md-7" style="margin-bottom: 8px">
-              <div class="form-group">
+                        <div class="form-group">
                 <textarea class="form-control" placeholder="Necessidades" rows="4" name="necessidades" style="width: 475px;"></textarea>
               </div>
           </div>  
@@ -767,6 +759,22 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 </c:if>
 <!-- -----------------------------------------------------------------------------------------------------------------------------------------  -->		          
 		
+		
+		<c:if test="${categoria.txServico > 0}">
+			<tr>
+			  <td>
+			 	 <b>Taxa Serviço:</b> ${categoria.txServico}%
+			  </td>
+			  <td>
+			 	 <b>Taxa ISS:</b>  ${categoria.txISS}%
+			  </td>
+			  
+			  <td colspan="6"></td>
+			  
+			</tr>
+		</c:if>
+		
+				
 		<tr style="background-color: #F7F3F7">
 		  
 		  	
@@ -798,7 +806,6 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 			
 			<c:set var="subtotal"  value="${subtotal + total + locco}" />
 			
-		
 		  <td >	
 			<span style="padding-left: 0px">${categoria.categoria}:  <strong><fmt:formatNumber value="${totalsub}" pattern="#,##0.00" /></strong></span> 
           </td>

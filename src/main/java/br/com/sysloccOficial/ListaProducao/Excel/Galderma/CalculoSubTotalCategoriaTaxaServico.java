@@ -18,7 +18,7 @@ public class CalculoSubTotalCategoriaTaxaServico {
 public static int[] corFundoCelulaPadrao = {255,255,255};
 	
 	public static void calculoSubTotalCategoriaTaxas(XSSFWorkbook excel, XSSFSheet cenario,
-													 int linhaComeco,String tipoServico, double porc1,double porc2,int linhaSubTotal,int linhaPorc){
+													 int linhaComeco,String tipoServico, double porcServico,double porcIss,int linhaSubTotal,int linhaPorc){
 		
 		//linhaSubTotal = linhaSubTotal +1;
 		
@@ -31,9 +31,9 @@ public static int[] corFundoCelulaPadrao = {255,255,255};
 			celulaBco.setCellStyle(ExcelEstiloPadrao.estiloPadrao(excel));
 		}
 		
-		ExcelCelulaEspecial.formatoPorcentagem(excel, ExcelEstiloPadrao.estiloPadrao(excel, ExcelFonts.font(excel, 12, "Tahoma")), porc1 ,linha2,3);
+		ExcelCelulaEspecial.formatoPorcentagem(excel, ExcelEstiloPadrao.estiloPadrao(excel, ExcelFonts.font(excel, 12, "Tahoma")), porcServico ,linha2,3);
 		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadrao(excel), linha2, 4, "E"+linhaSubTotal+"*D"+linhaPorc+"");
-		ExcelCelulaEspecial.formatoPorcentagem(excel, ExcelEstiloPadrao.estiloPadrao(excel, ExcelFonts.font(excel, 12, "Tahoma")), porc2 ,linha2,5);
+		ExcelCelulaEspecial.formatoPorcentagem(excel, ExcelEstiloPadrao.estiloPadrao(excel, ExcelFonts.font(excel, 12, "Tahoma")), porcIss ,linha2,5);
 		ExcelCelulaEspecial.formatoFormula(excel, ExcelEstiloPadrao.estiloPadrao(excel), linha2, 6, "G"+linhaSubTotal+"*F"+linhaPorc+"");
 		
 	}

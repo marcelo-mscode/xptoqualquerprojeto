@@ -1,6 +1,7 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,17 +26,14 @@ public class ExcelGaldermaController {
 	@Autowired private AuxCarregaGrupos montaGrupos;
 	
 	@RequestMapping("excelGalderma")
-	public String excelGalderma(Integer idLista) throws IOException{
+	public String excelGalderma(Integer idLista) throws IOException, ParseException{
 		
 		long tempoInicio = System.currentTimeMillis();
 		
-		try {
-			String downloadExcel = excel.constroiExcel(idLista);
-			System.out.println(downloadExcel);
+		String downloadExcel = excel.constroiExcel(idLista);
+		System.out.println(downloadExcel);
 		
-		} catch (Exception e) {
-			throw new IllegalArgumentException("Houve umn erro ao construir o Excel: "+e);
-		}
+		
 
 		System.out.println("Tempo Total: "+( System.currentTimeMillis()-tempoInicio));
 
