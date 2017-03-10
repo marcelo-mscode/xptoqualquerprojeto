@@ -1,6 +1,9 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
 import java.math.BigDecimal;
+
+import javax.swing.JOptionPane;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
@@ -30,6 +33,8 @@ public class CorpoCenarioGalderma {
 	}
 	
 	public static void geraSubTotalCadaCategoria(XSSFWorkbook excelGalderma,XSSFSheet cenario,int primeiraLinhaGrupoCategoria,int ultimaLinhaConteudoCategoria, double txServico, double txIss){
+		
+		
 		
 		GeraSubTotalCategorias.subTotalCategorias(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaConteudoCategoria);
 		

@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
@@ -97,7 +99,7 @@ public class GeraCorpoCenarios {
 			
 			// Tx da categoria
 			double taxaISS = 0;
-			String categoria =  categoriasGalderma.get(i).getCategoria();
+			double taxaServico = 0;
 			
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
 				
@@ -108,8 +110,8 @@ public class GeraCorpoCenarios {
 							qtdInfoGrupo2 = linhaComecoInfoCategorias + 1;
 
 							linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
+							taxaISS = gruposParaExcel.get(j).getTxISS();
 							
-							/*taxaISS = gruposParaExcel.get(j).get*/
 							
 					}
 			}
@@ -132,11 +134,8 @@ public class GeraCorpoCenarios {
 				}else{
 				
 					
-				/**
-				 * 
-				 * 
-				 * 	CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
-				 */
+				 CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria,taxaISS,taxaServico);
+				 
 					
 					
 					

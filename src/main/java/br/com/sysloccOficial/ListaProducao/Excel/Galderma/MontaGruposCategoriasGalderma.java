@@ -272,9 +272,9 @@ public class MontaGruposCategoriasGalderma{
 			
 			
 			corpoGrupoGalderma.setTxServico(listaGrupos.get(i).getIdCategoria().getTxServico());
+			corpoGrupoGalderma.setTxISS(listaGrupos.get(i).getIdCategoria().getTxISS());
 			
-			
-			System.out.println("Grupo: "+ listaGrupos.get(i).getGrupo()+" - TxServico: "+listaGrupos.get(i).getIdCategoria().getTxServico());
+			//System.out.println("Grupo: "+ listaGrupos.get(i).getGrupo()+" - TxServico: "+listaGrupos.get(i).getIdCategoria().getTxServico());
 			
 			corpoGrupos.add(corpoGrupoGalderma);
 		}
