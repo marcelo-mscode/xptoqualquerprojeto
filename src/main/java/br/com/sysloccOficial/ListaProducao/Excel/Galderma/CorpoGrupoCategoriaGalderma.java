@@ -15,10 +15,26 @@ public class CorpoGrupoCategoriaGalderma {
 	private double quantidade;
 	private double diaria;
 	
-// ----------------------------------------------------------------- //	
+	private double txServico;
+	private double txISS;
 	
+	
+// ----------------------------------------------------------------- //	
+
 	public String getTipoServico() {
 		return tipoServico;
+	}
+	public double getTxServico() {
+		return txServico;
+	}
+	public void setTxServico(double txServico) {
+		this.txServico = txServico;
+	}
+	public double getTxISS() {
+		return txISS;
+	}
+	public void setTxISS(double txISS) {
+		this.txISS = txISS;
 	}
 	public int getIdCategoriaGalderma() {
 		return idCategoriaGalderma;

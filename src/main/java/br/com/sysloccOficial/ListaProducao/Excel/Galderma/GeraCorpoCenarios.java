@@ -109,7 +109,7 @@ public class GeraCorpoCenarios {
 
 							linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
 							
-							
+							/*taxaISS = gruposParaExcel.get(j).get*/
 							
 					}
 			}
@@ -130,7 +130,16 @@ public class GeraCorpoCenarios {
 				if(cenario.getSheetName().equals("Opcionais")){
 
 				}else{
-					CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
+				
+					
+				/**
+				 * 
+				 * 
+				 * 	CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria);
+				 */
+					
+					
+					
 					qtdInfoGrupo2 = qtdInfoGrupo2+4;
 				}
 		}

@@ -270,6 +270,12 @@ public class MontaGruposCategoriasGalderma{
 			
 			corpoGrupoGalderma.setTipoServico(categoriasimpostoBayer(corpoGrupoGalderma.isTemImposto(),incideAdministracao,feeReduzido));
 			
+			
+			corpoGrupoGalderma.setTxServico(listaGrupos.get(i).getIdCategoria().getTxServico());
+			
+			
+			System.out.println("Grupo: "+ listaGrupos.get(i).getGrupo()+" - TxServico: "+listaGrupos.get(i).getIdCategoria().getTxServico());
+			
 			corpoGrupos.add(corpoGrupoGalderma);
 		}
 		if(semImpostoUnico.equals(zero)){
