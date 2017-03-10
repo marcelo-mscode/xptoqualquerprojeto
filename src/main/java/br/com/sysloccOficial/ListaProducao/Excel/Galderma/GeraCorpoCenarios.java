@@ -111,7 +111,7 @@ public class GeraCorpoCenarios {
 
 							linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
 							taxaISS = gruposParaExcel.get(j).getTxISS();
-							
+							taxaServico = gruposParaExcel.get(j).getTxServico();
 							
 					}
 			}
@@ -134,7 +134,7 @@ public class GeraCorpoCenarios {
 				}else{
 				
 					
-				 CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria,taxaISS,taxaServico);
+				 CorpoCenarioGalderma.geraSubTotalCadaCategoria(excelGalderma, cenario,primeiraLinhaGrupoCategoria, ultimaLinhaGrupoCategoria,taxaServico,taxaISS);
 				 
 					
 					
