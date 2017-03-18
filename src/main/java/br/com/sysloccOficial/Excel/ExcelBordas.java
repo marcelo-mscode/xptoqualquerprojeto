@@ -46,6 +46,13 @@ public class ExcelBordas {
 		estiloCelula.setLeftBorderColor(IndexedColors.BLACK.getIndex());
 		estiloCelula.setBorderTop(XSSFCellStyle.BORDER_MEDIUM);
 		estiloCelula.setTopBorderColor(IndexedColors.BLACK.getIndex());
+		estiloCelula.setBorderBottom(XSSFCellStyle.BORDER_MEDIUM);
+		estiloCelula.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+		estiloCelula.setBorderRight(XSSFCellStyle.BORDER_MEDIUM);
+		estiloCelula.setRightBorderColor(IndexedColors.BLACK.getIndex());
+		
+		
+		
 		return estiloCelula;
 	}
 	public static XSSFCellStyle bordaTopoBold(XSSFCellStyle estiloCelula){

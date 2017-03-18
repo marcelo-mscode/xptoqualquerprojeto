@@ -77,13 +77,23 @@ public class GeraExcelNovoBayerGrupos {
 				BigDecimal orcamComImposto = new BigDecimal("0");
 				BigDecimal orcamSemImposto = new BigDecimal("0");
 				
-
 				if(listaGrupos.get(i).getDetermPadrao() != null){
 					qtdUnica = listaGrupos.get(i).getDetermPadrao().getQuantDetermPadrao();
 					diariaUnica = listaGrupos.get(i).getDetermPadrao().getDiariasPadrao();
 				}else{
-					qtdUnica = listaGrupos.get(i).getDeterm().getQuantDeterm();
-					diariaUnica = listaGrupos.get(i).getDeterm().getDiarias();
+					
+					if(listaGrupos.get(i).getDeterm() == null){
+						qtdUnica = 1;
+					}else{
+						qtdUnica = listaGrupos.get(i).getDeterm().getQuantDeterm();
+					}
+
+					if(listaGrupos.get(i).getDeterm() == null){
+						diariaUnica = 1;
+					}else{
+						diariaUnica = listaGrupos.get(i).getDeterm().getDiarias();
+					}
+					
 				}
 
 				// Pegar id de ProdutoGrupo com Imposto

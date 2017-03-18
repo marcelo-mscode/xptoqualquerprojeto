@@ -43,8 +43,8 @@ public class CorpoCenarioGaldermaTopo {
 		String[] textosCabecalho = {"Diárias","Qtd","Valor Unitário Inicial","Sub Total Inicial","Valor Unitário Negociado","Valor Total já Negociado"};
 		
 		cenario.setColumnWidth(0, 21500);
-		cenario.setColumnWidth(3, 6500);
-		cenario.setColumnWidth(4, 6500);
+		cenario.setColumnWidth(3, 9500);
+		cenario.setColumnWidth(4, 9500);
 		cenario.setColumnWidth(5, 8500);
 		cenario.setColumnWidth(6, 8500);
 		

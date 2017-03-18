@@ -174,8 +174,8 @@ public class ProducaoListagemController {
 		TypedQuery<Integer> q = manager.createQuery("select l.idJob.idJob from Lista l where idLista="+idLista,Integer.class);
 		Integer idJob = q.getSingleResult();
 		
-		ModelAndView MV = new ModelAndView();
-		MV.setViewName("producao/producao");
+		ModelAndView MV = new ModelAndView("producao/producao");
+
 		MV.addObject("lista", listaDAO.editaLista(idLista));
 		MV.addObject("categoria", listaDAO.listadeCategorias(idLista));
 		MV.addObject("categoriasGalderma", listaDAO.listadeCategoriasGalderma());

@@ -48,11 +48,20 @@ public class GeraBaseExcelGalderma {
 
 		
 		//Lógica para pegar lista de ids da planilha mãe e filhas
+		/**
+		 * Quando não tem cenário criado pegar apenas o Id da planilha clicada
+		 * 
+		 */
 		List<Integer> pegaIdsCenarios = montaCorpoCategorias.pegaIdsCenarios(idLista);
 		
 		
 		
+		
+		
 		List<LinhasConsolidado> linhasParaConsolidado = new ArrayList<LinhasConsolidado>();
+		
+		
+		
 		for (int i = 0; i < pegaIdsCenarios.size(); i++) {
 			
 			int numCenario = i +1;

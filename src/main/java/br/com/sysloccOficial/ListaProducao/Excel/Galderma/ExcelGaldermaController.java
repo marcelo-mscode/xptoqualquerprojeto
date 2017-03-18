@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.controllerExcel.AuxExcelSQL;
 import br.com.sysloccOficial.model.Grupo;
@@ -26,18 +27,27 @@ public class ExcelGaldermaController {
 	@Autowired private AuxCarregaGrupos montaGrupos;
 	
 	@RequestMapping("excelGalderma")
-	public String excelGalderma(Integer idLista) throws IOException, ParseException{
+	public ModelAndView excelGalderma(Integer idLista) throws IOException, ParseException{
 		
-		long tempoInicio = System.currentTimeMillis();
-		
-		String downloadExcel = excel.constroiExcel(idLista);
-		System.out.println(downloadExcel);
-		
-		
+		try {
+			long tempoInicio = System.currentTimeMillis();
+			
+			String downloadExcel = excel.constroiExcel(idLista);
+			System.out.println(downloadExcel);
+			
+			System.out.println("Tempo Total: "+( System.currentTimeMillis()-tempoInicio));
+			
+			ModelAndView MV = new ModelAndView("producao/geraExcel/ExcelGalderma");
+			MV.addObject("nomeArquivo", downloadExcel);
+			
+			return MV;
+		} catch (Exception e) {
+//			JOptionPane.showMessageDialog(null,"ExcelGaldermaController: "+e);
+			ModelAndView MV = new ModelAndView("producao/geraExcel/ExcelErro");
+			MV.addObject("idLista", idLista);
+			return MV;
+		}
 
-		System.out.println("Tempo Total: "+( System.currentTimeMillis()-tempoInicio));
-
-		return "redirect:editaLista?idLista="+idLista;
 	}
 	
 

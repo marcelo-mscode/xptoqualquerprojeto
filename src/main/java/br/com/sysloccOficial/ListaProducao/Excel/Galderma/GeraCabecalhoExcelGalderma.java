@@ -20,18 +20,30 @@ public class GeraCabecalhoExcelGalderma {
 	private static UtilitariaDatas utilData;
 	
 	public static void geraCabecalho(XSSFSheet aba,XSSFWorkbook excelGalderma,String nomeAba, Job job) throws ParseException{
-	
-		textoContato(aba, excelGalderma, "Gestor: A definir Paula Samora", 1);
-		textoContato(aba, excelGalderma, "Telefone: 11 3524-6498", 2);
-		textoContato(aba, excelGalderma, "Email: paula.samora@galderma.com", 3);
+		
+		String nomeContato = job.getContato().getContato();
+		String email = "";
+		String telefone = "";
+		
+		for (int i = 0; i < job.getContato().getComunicador().size(); i++) {
+			if(job.getContato().getComunicador().get(i).getComunicador().contains("@")){
+				email = job.getContato().getComunicador().get(i).getComunicador();
+			}else{
+				telefone = job.getContato().getComunicador().get(i).getComunicador();
+			}
+		}
+		
+		textoContato(aba, excelGalderma, "Gestor: "+nomeContato, 1);
+		textoContato(aba, excelGalderma, "Telefone: "+telefone, 2);
+		textoContato(aba, excelGalderma, "Email: "+email, 3);
 		
 		textoContato(aba, excelGalderma, "Compras: Paula Samora", 4);
 		textoContato(aba, excelGalderma, "Telefone: 11 3524-6498", 5);
 		textoContato(aba, excelGalderma, "Email: paula.samora@galderma.com", 6);
 		
-		textoContato(aba, excelGalderma, "Fornecedor: A definir Paula Samora", 7);
-		textoContato(aba, excelGalderma, "Telefone: 11 3524-6498", 8);
-		textoContato(aba, excelGalderma, "Email: paula.samora@galderma.com", 9);
+		textoContato(aba, excelGalderma, "Fornecedor: LOCCO Agencia", 7, new int[]{247, 255, 0});
+		textoContato(aba, excelGalderma, "Telefone: 11 - 3938-3250", 8, new int[]{247, 255, 0});
+		textoContato(aba, excelGalderma, "Email: celia@loccoagencia.com.br; pedro@loccoagencia.com.br", 9, new int[]{247, 255, 0});
 		
 		geraCabecalhoEvento(aba, excelGalderma, nomeAba, job);
 	}
@@ -46,7 +58,24 @@ public class GeraCabecalhoExcelGalderma {
 		XSSFCell celula3 = linha.createCell(4);
 		celula1.setCellValue(texto);
 		
-		XSSFCellStyle estilo = EstilosGaldema.estiloCabecalhoContato(excelGalderma);
+		XSSFCellStyle estilo = EstilosGaldema.estiloCabecalhoContato(excelGalderma,new int[]{242,242,242});
+		estilo.setAlignment(XSSFCellStyle.ALIGN_LEFT);
+		celula1.setCellStyle(estilo);
+		celula2.setCellStyle(estilo);
+		celula3.setCellStyle(estilo);
+	}
+
+	private static void textoContato(XSSFSheet aba,XSSFWorkbook excelGalderma,String texto,int posicaoLinha,int[] cor){
+		
+		XSSFRow linha = aba.createRow(posicaoLinha);
+		linha.setHeightInPoints(20);
+		
+		XSSFCell celula1 = linha.createCell(2);
+		XSSFCell celula2 = linha.createCell(3);
+		XSSFCell celula3 = linha.createCell(4);
+		celula1.setCellValue(texto);
+		
+		XSSFCellStyle estilo = EstilosGaldema.estiloCabecalhoContato(excelGalderma,cor);
 		estilo.setAlignment(XSSFCellStyle.ALIGN_LEFT);
 		celula1.setCellStyle(estilo);
 		celula2.setCellStyle(estilo);
@@ -56,10 +85,18 @@ public class GeraCabecalhoExcelGalderma {
 	
 	public static void geraCabecalhoEvento(XSSFSheet aba,XSSFWorkbook excelGalderma,String nomeAba, Job job) throws ParseException{
 		textoEvento(aba,excelGalderma, "EVENTO: "+ job.getTitulo() ,12); 
-
+		
+		String dataInicio = "Data não cadastrada";
+		String dataFim = "Data não cadastrada";
 		for (int i = 0; i < job.getLocalEvento().size(); i++) {
-			String dataInicio =  UtilitariaDatas.converteDateParaStringStatic(job.getLocalEvento().get(i).getLocalEventoDataInicio());
-			String dataFim =  UtilitariaDatas.converteDateParaStringStatic(job.getLocalEvento().get(i).getLocalEventoDataTermino());
+			
+			if(job.getLocalEvento().get(i).getLocalEventoDataInicio() != null){
+				dataInicio =  UtilitariaDatas.converteDateParaStringStatic(job.getLocalEvento().get(i).getLocalEventoDataInicio());
+			}
+			if(job.getLocalEvento().get(i).getLocalEventoDataTermino() != null){
+				dataFim =  UtilitariaDatas.converteDateParaStringStatic(job.getLocalEvento().get(i).getLocalEventoDataTermino());
+			}
+			
 			textoEvento(aba,excelGalderma, "DATA: "+dataInicio+" até " +dataFim,13); 
 			textoEvento(aba,excelGalderma, "LOCAL: "+job.getLocalEvento().get(i).getLocal(),14); 
 			textoEvento(aba,excelGalderma, "NÚMEROS DE PESSOAS/DIA: " +job.getLocalEvento().get(i).getLocalEventoQtdPessoas() ,15); 

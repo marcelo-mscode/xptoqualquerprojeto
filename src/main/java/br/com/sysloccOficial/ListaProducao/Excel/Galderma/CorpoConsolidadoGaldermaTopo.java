@@ -21,7 +21,7 @@ public class CorpoConsolidadoGaldermaTopo {
 		
 		cenario.setColumnWidth(0, 7500);
 		cenario.setColumnWidth(1, 7500);
-		cenario.setColumnWidth(2, 7500);
+		cenario.setColumnWidth(2, 12500);
 		cenario.setColumnWidth(3, 7500);
 		cenario.setColumnWidth(4, 7500);
 		cenario.setColumnWidth(5, 7500);

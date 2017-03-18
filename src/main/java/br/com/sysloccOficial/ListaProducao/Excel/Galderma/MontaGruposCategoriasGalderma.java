@@ -54,7 +54,10 @@ public class MontaGruposCategoriasGalderma{
 	        	return listaIds;
 	        	
 			} catch (Exception e2) {
-				return null;
+				
+				listaIds.add(idLista);
+				
+				return listaIds;
 			}
 		}
 	}
@@ -123,8 +126,8 @@ public class MontaGruposCategoriasGalderma{
 				
 				double qtdFinal = qtdUnica * diariaUnica;
 				
-				orcamComImposto = pegaOrcamentos(listaGrupos, i,1,qtdFinal);
-				orcamSemImposto = pegaOrcamentos(listaGrupos, i,0,qtdFinal);
+				/*orcamComImposto = pegaOrcamentos(listaGrupos, i,1,qtdFinal);
+				orcamSemImposto = pegaOrcamentos(listaGrupos, i,0,qtdFinal);*/
 				
 				for (int j = 0; j < listaGrupos.get(i).getProdutoGrupo().size(); j++) {
 						
@@ -154,6 +157,17 @@ public class MontaGruposCategoriasGalderma{
 								}
 					    }
 			     }
+				
+				orcamComImposto = pegaOrcamentos(listaGrupos, i,1,qtdFinal);
+				if(orcamComImposto.equals(new BigDecimal("0"))){
+					orcamComImposto = comImpostoUnico;
+				}
+				
+				orcamSemImposto = pegaOrcamentos(listaGrupos, i,0,qtdFinal);
+				if(orcamSemImposto.equals(new BigDecimal("0"))){
+					orcamSemImposto = semImpostoUnico;
+				}
+				
 	// ------------------------------------------------------------------------------------------------------------------------ //
 					
 				   valoresEmCadaItem(listaGrupos, corpoGrupos, i, zero, comImposto,semImposto, qtdcomImposto,
@@ -175,7 +189,7 @@ public class MontaGruposCategoriasGalderma{
 			List<Integer> idsProdutoGrupos = pegaidsProdutoGrupos(listaGrupos, i, imposto);
 			
 			if(idsProdutoGrupos == null || idsProdutoGrupos.isEmpty()){
-				return null;
+				return new BigDecimal("0");
 			}else{
 				BigDecimal vOrcComImpot = pegaSomaOrcamentosProdutoGrupos(idsProdutoGrupos);
 				if(vOrcComImpot == nulo){
@@ -260,12 +274,14 @@ public class MontaGruposCategoriasGalderma{
 			
 			corpoGrupoGalderma.setPrecoItem(precoImpostoFinal);
 			
-			if(orcamentoComImposto.equals(zero)){
-				corpoGrupoGalderma.setOrcamento(comImpostoUnico.divide(quantFinal ,12,RoundingMode.UP));
+			corpoGrupoGalderma.setOrcamento(comImpostoUnico.divide(quantFinal ,12,RoundingMode.UP));
+			
+
+			/*			if(orcamentoComImposto.equals(zero)){
 			}else{
 				corpoGrupoGalderma.setOrcamento(orcamentoComImposto);
 			}
-			corpoGrupoGalderma.setQuantidade(qtdUnica);
+*/			corpoGrupoGalderma.setQuantidade(qtdUnica);
 			corpoGrupoGalderma.setDiaria(diariaUnica);
 			
 			corpoGrupoGalderma.setTipoServico(categoriasimpostoBayer(corpoGrupoGalderma.isTemImposto(),incideAdministracao,feeReduzido));

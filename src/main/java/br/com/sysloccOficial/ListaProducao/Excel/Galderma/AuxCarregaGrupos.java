@@ -149,13 +149,15 @@ public class AuxCarregaGrupos {
 					
 				}else{
 				
-					String idPlanilhaMae = "select planilhaMae from CenariosGalderma where planilhaFilha = "+idLista+" order by cenarioFilha";
-	
-					TypedQuery<Integer> idPlanMae = manager.createQuery(idPlanilhaMae, Integer.class);
-					Lista listaMae = manager.find(Lista.class, idPlanMae.getSingleResult());
-					deadlines.add(listaMae.getInfoConsolidadoGalderma());
-	
+					
+					
 					try {
+
+						String idPlanilhaMae = "select planilhaMae from CenariosGalderma where planilhaFilha = "+idLista+" order by cenarioFilha";
+						TypedQuery<Integer> idPlanMae = manager.createQuery(idPlanilhaMae, Integer.class);
+						Lista listaMae = manager.find(Lista.class, idPlanMae.getSingleResult());
+						deadlines.add(listaMae.getInfoConsolidadoGalderma());
+						
 						TypedQuery<CenariosGalderma> cenarios2 = manager.createQuery("from CenariosGalderma where planilhaMae = "+idPlanMae.getSingleResult(), CenariosGalderma.class);
 						List<CenariosGalderma> listaCenariosGaldermas2 = cenarios2.getResultList();
 						
@@ -165,8 +167,11 @@ public class AuxCarregaGrupos {
 						}
 						return deadlines;
 					} catch (Exception e) {
-						JOptionPane.showMessageDialog(null, ""+e);	// TODO: handle exception
-						return null;
+						
+						deadlines.add("Nenhuma Informação Cadastrada no cenário!");
+						
+//						JOptionPane.showMessageDialog(null, "AuxCarregaGrupos, linha 170: "+e);	// TODO: handle exception
+						return deadlines;
 					}
 					
 					

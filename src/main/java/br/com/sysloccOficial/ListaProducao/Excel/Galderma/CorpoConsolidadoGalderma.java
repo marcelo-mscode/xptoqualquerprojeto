@@ -1,6 +1,7 @@
 package br.com.sysloccOficial.ListaProducao.Excel.Galderma;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -23,7 +24,9 @@ public class CorpoConsolidadoGalderma {
 		int qtsPessoasDias = 0;
 		
 		for (int i = 0; i < job.getLocalEvento().size() ; i++) {
-			qtsPessoasDias = job.getLocalEvento().get(i).getLocalEventoQtdPessoas();
+			if(job.getLocalEvento().get(i).getLocalEventoQtdPessoas() != null){
+				qtsPessoasDias = job.getLocalEvento().get(i).getLocalEventoQtdPessoas();
+			}
 		}
 			
 		for (int i = 0; i < linhasParaConsolidado.size(); i++) {
@@ -34,15 +37,25 @@ public class CorpoConsolidadoGalderma {
 			}else{
 				
 				if(infoGalderma.get(i) == null){
-					infoLista = "Nenhuma informação na lista";
+					infoLista = "Nenhuma informação cadastrada na lista";
 				}else{
 					infoLista = infoGalderma.get(i);
 				}
 			}
 			
+			String dataProposta = "";
+			if(job.getPropostaData() == null){
+				dataProposta = "Prazo para proposta não cadastrado em Job";
+			}else{
+				dataProposta = UtilitariaDatas.converteDateParaStringStatic(job.getPropostaData());
+			}
+			
+			
+			
+			
 			GeraConteudoConsolidado.geraConteudo(excelGalderma, cenario,linhasParaConsolidado.get(i).getNomeAba(),linhaComecaConteudo,
 												 linhasParaConsolidado.get(i).getUltimaLinhaCalculos(),numCenario
-												 ,qtsPessoasDias,infoLista, UtilitariaDatas.converteDateParaStringStatic(job.getPropostaData()));
+												 ,qtsPessoasDias,infoLista, dataProposta );
 			linhaComecaConteudo++;
 			numCenario++;
 		}

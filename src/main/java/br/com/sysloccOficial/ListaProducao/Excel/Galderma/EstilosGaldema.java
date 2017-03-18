@@ -22,9 +22,10 @@ public class EstilosGaldema {
 	}
 	
 	
-	public static XSSFCellStyle estiloCabecalhoContato(XSSFWorkbook excelGalderma){
+	public static XSSFCellStyle estiloCabecalhoContato(XSSFWorkbook excelGalderma, int[]cor){
 		XSSFCellStyle estilo = excelGalderma.createCellStyle();
-		estilo = ExcelCelulaBackground.background(estilo, new int[]{242,242,242});
+		estilo = ExcelCelulaBackground.background(estilo, cor);
+//		estilo = ExcelCelulaBackground.background(estilo, new int[]{242,242,242});
 		estilo = ExcelBordas.bordaEsquerdaTopoBold(estilo);
 		estilo.setFont(ExcelFonts.font(excelGalderma, 12,"Tahoma", new int[]{0,0,1}));
 		estilo.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);

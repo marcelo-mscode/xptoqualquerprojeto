@@ -1484,6 +1484,27 @@ function exportaExcelAjaxNovoBayer(idLista) {
 	});
 }
 
+//Gera planilha Excel Galderma
+function exportaExcelGalderma(idLista) {
+	$("#planilhaNovaGalderma")
+	.text("Gerando Planilha ...")
+	.css("pointer-events", "none")
+	.prepend(
+	"<img src='resources/images/ajax-loader-fff.gif' width='20' height='20' alt='loading' id='loader-confirmacao' style='margin-right: 2px;'>");
+	$.ajax({
+		url : "excelGalderma?idLista="+idLista,
+		success : function(data) {
+			
+			$("#geraExcel").fadeIn(300).html(data);
+		}
+	});
+}
+
+
+
+
+
+
 // ------------------ //
 // Gera planilha Excel ListaEmpresas
 function exportaExcelEmpresas() {
