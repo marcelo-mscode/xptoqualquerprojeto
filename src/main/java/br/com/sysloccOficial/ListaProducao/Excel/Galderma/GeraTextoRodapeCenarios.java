@@ -15,7 +15,7 @@ import br.com.sysloccOficial.Excel.ExcelMerge;
 public class GeraTextoRodapeCenarios {
 
 	public static void geraTextoRodape(XSSFWorkbook excelGalderma,XSSFSheet cenario,int linhaUltima){
-		textoRodape(excelGalderma, cenario, linhaUltima, "Observações: *Check-in a partir das 12H00 - Checkout até 12H00\nOs valores apresentados são válidos exclusivamente para o grupo e período em referência\nForma de pagamento: Faturamento para 60 dias, exceto Hotel e Bar do Alemão 30 dias.");
+		textoRodape(excelGalderma, cenario, linhaUltima, "Observações: ");
 	}
 
 	public static void geraTextoRodapeOpcionais(XSSFWorkbook excelGalderma,XSSFSheet cenario,int linhaUltima){

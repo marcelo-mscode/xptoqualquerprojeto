@@ -43,15 +43,16 @@ public class CorpoConsolidadoGalderma {
 				}
 			}
 			
-			String dataProposta = "";
-			if(job.getPropostaData() == null){
-				dataProposta = "Prazo para proposta não cadastrado em Job";
-			}else{
-				dataProposta = UtilitariaDatas.converteDateParaStringStatic(job.getPropostaData());
-			}
+			String dataProposta = " ";
 			
-			
-			
+			/*			
+			 * DeadLine
+			 * if(job.getPropostaData() == null){
+							dataProposta = " ";
+						}else{
+							dataProposta = UtilitariaDatas.converteDateParaStringStatic(job.getPropostaData());
+						}
+			*/			
 			
 			GeraConteudoConsolidado.geraConteudo(excelGalderma, cenario,linhasParaConsolidado.get(i).getNomeAba(),linhaComecaConteudo,
 												 linhasParaConsolidado.get(i).getUltimaLinhaCalculos(),numCenario

@@ -300,7 +300,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				<div class="form-group">
 				  	<div class="input-group">
 					    <span class="input-group-addon colorTopText">Fee&nbsp%</span>
-					    <input type="text" class="form-control input-60px" value="${administracao}" name="administracaoTransiente">
+					    <input type="text" class="form-control input-120px" value="${administracao}" name="administracaoTransiente">
 				  	</div>
 				</div>
 

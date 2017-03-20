@@ -176,7 +176,10 @@ public class ProducaoListagemController {
 		
 		ModelAndView MV = new ModelAndView("producao/producao");
 
+		
 		MV.addObject("lista", listaDAO.editaLista(idLista));
+		
+		
 		MV.addObject("categoria", listaDAO.listadeCategorias(idLista));
 		MV.addObject("categoriasGalderma", listaDAO.listadeCategoriasGalderma());
 		

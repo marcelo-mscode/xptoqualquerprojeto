@@ -256,6 +256,8 @@ public class MontaGruposCategoriasGalderma{
 	    // ---------
 			
 		if(comImpostoUnico.equals(zero)){
+		
+		
 		}else{
 			CorpoGrupoCategoriaGalderma corpoGrupoGalderma = new CorpoGrupoCategoriaGalderma();
 			
@@ -286,11 +288,8 @@ public class MontaGruposCategoriasGalderma{
 			
 			corpoGrupoGalderma.setTipoServico(categoriasimpostoBayer(corpoGrupoGalderma.isTemImposto(),incideAdministracao,feeReduzido));
 			
-			
 			corpoGrupoGalderma.setTxServico(listaGrupos.get(i).getIdCategoria().getTxServico());
 			corpoGrupoGalderma.setTxISS(listaGrupos.get(i).getIdCategoria().getTxISS());
-			
-			//System.out.println("Grupo: "+ listaGrupos.get(i).getGrupo()+" - TxServico: "+listaGrupos.get(i).getIdCategoria().getTxServico());
 			
 			corpoGrupos.add(corpoGrupoGalderma);
 		}
@@ -313,12 +312,16 @@ public class MontaGruposCategoriasGalderma{
 			if(orcamentoSemImposto.equals(zero)){
 				corpoGrupoBayerSemImposto.setOrcamento(precoSemImpostoFinal);
 			}else{
-				corpoGrupoBayerSemImposto.setOrcamento(orcamentoSemImposto);
+				corpoGrupoBayerSemImposto.setOrcamento(orcamentoSemImposto.divide(quantFinal ,12,RoundingMode.UP));
 			}
 			corpoGrupoBayerSemImposto.setQuantidade(qtdUnica);
 			corpoGrupoBayerSemImposto.setDiaria(diariaUnica);
 			
 			corpoGrupoBayerSemImposto.setTipoServico(categoriasimpostoBayer(corpoGrupoBayerSemImposto.isTemImposto(),incideAdministracao,feeReduzido));
+			
+			corpoGrupoBayerSemImposto.setTxServico(listaGrupos.get(i).getIdCategoria().getTxServico());
+			corpoGrupoBayerSemImposto.setTxISS(listaGrupos.get(i).getIdCategoria().getTxISS());
+			
 			corpoGrupos.add(corpoGrupoBayerSemImposto);
 		}
 		

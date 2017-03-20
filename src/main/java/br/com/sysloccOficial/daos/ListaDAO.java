@@ -131,14 +131,22 @@ public class ListaDAO {
 	
 	public List<Lista> editaLista(Integer idLista){
 		
-		String consulta = "select l from Lista l where idLista=:idLista";
+		String consulta = "select l from Lista l where idLista="+idLista;
 		
 		TypedQuery<Lista> lista = manager.createQuery(consulta, Lista.class);
-		lista.setParameter("idLista", idLista);
+		//	lista.setParameter("idLista", idLista);
 		
-		return lista.getResultList();
+		List<Lista> novaListagem = lista.getResultList();
+		
+		return novaListagem;
 	}
 	
+	public Lista pegaLista(Integer idLista){
+		String consulta = "select l from Lista l where idLista=:idLista";
+		TypedQuery<Lista> lista = manager.createQuery(consulta, Lista.class);
+		lista.setParameter("idLista", idLista);
+		return lista.getSingleResult();
+	}
 	
 	
 	public List<Categoria> listadeCategorias(Integer idLista){
