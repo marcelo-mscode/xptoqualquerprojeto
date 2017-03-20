@@ -48,6 +48,42 @@ public class GeraCabecalhoExcelGalderma {
 		geraCabecalhoEvento(aba, excelGalderma, nomeAba, job);
 	}
 	
+	public static void geraCabecalhoFormula(XSSFSheet aba,XSSFWorkbook excelGalderma,String nomeAba, Job job) throws ParseException{
+		
+		textoContatoFormula(aba, excelGalderma, "=Consolidado!C2", 1);
+		textoContatoFormula(aba, excelGalderma, "=Consolidado!C3", 2);
+		textoContatoFormula(aba, excelGalderma, "='Consolidado'!C4", 3);
+		
+		textoContatoFormula(aba, excelGalderma, "='Consolidado'!C5", 4);
+		textoContatoFormula(aba, excelGalderma, "='Consolidado'!C6", 5);
+		textoContatoFormula(aba, excelGalderma, "='Consolidado'!C7", 6);
+		
+		textoContato(aba, excelGalderma, "Fornecedor: LOCCO Agencia", 7, new int[]{247, 255, 0});
+		textoContato(aba, excelGalderma, "Telefone: 11 - 3938-3250", 8, new int[]{247, 255, 0});
+		textoContato(aba, excelGalderma, "Email: celia@loccoagencia.com.br; pedro@loccoagencia.com.br", 9, new int[]{247, 255, 0});
+		
+		geraCabecalhoEvento(aba, excelGalderma, nomeAba, job);
+	}
+	
+	private static void textoContatoFormula(XSSFSheet aba,XSSFWorkbook excelGalderma,String texto,int posicaoLinha){
+		
+		XSSFRow linha = aba.createRow(posicaoLinha);
+		linha.setHeightInPoints(20);
+		
+		XSSFCell celula1 = linha.createCell(2);
+		XSSFCell celula2 = linha.createCell(3);
+		XSSFCell celula3 = linha.createCell(4);
+		celula1.setCellType(XSSFCell.CELL_TYPE_FORMULA);
+		celula1.setCellValue(texto);
+		
+		XSSFCellStyle estilo = EstilosGaldema.estiloCabecalhoContato(excelGalderma,new int[]{242,242,242});
+		estilo.setAlignment(XSSFCellStyle.ALIGN_LEFT);
+		celula1.setCellStyle(estilo);
+		celula2.setCellStyle(estilo);
+		celula3.setCellStyle(estilo);
+	}
+	
+	
 	private static void textoContato(XSSFSheet aba,XSSFWorkbook excelGalderma,String texto,int posicaoLinha){
 		
 		XSSFRow linha = aba.createRow(posicaoLinha);
@@ -56,6 +92,7 @@ public class GeraCabecalhoExcelGalderma {
 		XSSFCell celula1 = linha.createCell(2);
 		XSSFCell celula2 = linha.createCell(3);
 		XSSFCell celula3 = linha.createCell(4);
+		//celula1.setCellType(XSSFCell.CELL_TYPE_FORMULA);
 		celula1.setCellValue(texto);
 		
 		XSSFCellStyle estilo = EstilosGaldema.estiloCabecalhoContato(excelGalderma,new int[]{242,242,242});
