@@ -1,11 +1,13 @@
 package br.com.sysloccOficial.Excel;
 
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 
-import javax.swing.JOptionPane;
+import javax.imageio.ImageIO;
 
 import org.apache.poi.ss.usermodel.ClientAnchor;
 import org.apache.poi.ss.usermodel.CreationHelper;
@@ -15,7 +17,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.core.env.JOptCommandLinePropertySource;
 
 public class ExcelImagem {
 	
@@ -36,15 +37,15 @@ public class ExcelImagem {
 	    ClientAnchor anchor = helper.createClientAnchor();
 	    //set top-left corner of the picture,
 	    //subsequent call of Picture#resize() will operate relative to it
-	    anchor.setCol1(0);
-	    anchor.setCol2(1);
+	    anchor.setAnchorType(3);
+/*	    anchor.setCol2(1);
 	    anchor.setRow1(1);
 	    anchor.setRow2(3);
-	    
+*/	    
 	    Picture pict = drawing.createPicture(anchor, pictureIdx);
 
 	    //auto-size picture relative to its top-left corner
-	    pict.resize(0.28);
+	    pict.resize(0.5,0.5);
 	    //JOptionPane.showMessageDialog(null, ""+tamanhoImagem);
 	   /* pict.resize(0.67);*/
 	}
