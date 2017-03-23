@@ -42,7 +42,7 @@ public class ExcelGaldermaController {
 			
 			return MV;
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null,"ExcelGaldermaController: "+e);
+			JOptionPane.showMessageDialog(null,"ExcelGaldermaController: "+e);
 			ModelAndView MV = new ModelAndView("producao/geraExcel/ExcelErro");
 			MV.addObject("idLista", idLista);
 			return MV;
