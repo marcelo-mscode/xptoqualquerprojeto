@@ -35,9 +35,14 @@ public class ExcelImagem {
 	    ClientAnchor anchor = helper.createClientAnchor();
 	    //set top-left corner of the picture,
 	    //subsequent call of Picture#resize() will operate relative to it
-	    anchor.setCol1(0);
-	    anchor.setCol2(0);
-	    anchor.setRow1(3);
+	    anchor.setDx1(0); 
+	    anchor.setDy1(0); 
+	    anchor.setDx2(151); 
+	    anchor.setDy2(122); 
+	    anchor.setCol1(0); 
+	    anchor.setRow1(2); 
+	    anchor.setCol2(2); 
+	    anchor.setRow2(3); 
 	    
 	    Picture pict = drawing.createPicture(anchor, pictureIdx);
 
