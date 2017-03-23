@@ -896,7 +896,17 @@ public class ProducaoController {
     }
     
     
-    
+    @RequestMapping("atualizaTaxaServico")
+    public String atualizaTaxaServico(Integer idCategoria, String valor){
+    	producaoDAO.atualizaTxServico(idCategoria, valor);
+    	return "ok";
+    }
+
+    @RequestMapping("atualizaTaxaISS")
+    public String atualizaTaxaISS(Integer idCategoria, String valor){
+    	producaoDAO.atualizaTxISS(idCategoria, valor);
+    	return "ok";
+    }
     
     
     

@@ -64,9 +64,11 @@
 	
 	<div class="row display-none" id="painelGalderma">
 		<div class="col-md-6">
-			<p style="margin: 0px;">Nova Categoria Galderma</p>
+			<p style="margin: 0px;">Nova Categoria Galderma (somente em caso de exceção)</p>
+			<i class="glyphicon glyphicon-ok display-none" id="editaOk" style="color: green;">&nbsp&nbspSalvo com sucesso !</i>
 			<input id="novaCategoriaGalderma" class="form-control input-360px"  style="margin: 5px 0 10px 0;" onblur="criaNovaCategoria();" />
-		
+			<i class="glyphicon glyphicon-error display-none" id="editaError" style="color: red;margin-top: -10px;margin-bottom: 11px;">&nbsp&nbspColoque um nome para a categoria</i>
+			
 			<select name="idCategoriaGaldermaTransiente" class="form-control input-360px">
                 	<c:forEach items="${categoriasGalderma}" var="galderma">
 	                	<option value="${galderma.idCategoriaGalderma}"> ${galderma.categoria}</option>
@@ -523,30 +525,30 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				<tr class="meio-Linha">
 
 				<c:choose>
-					<c:when test="${grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer == null ||
-									grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria == 1}">
+					<c:when test="${grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer == null && grupo.grupoCategoriaGalderma.idCategoriaGalderma == 1 ||
+									grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria == 1 && grupo.grupoCategoriaGalderma.idCategoriaGalderma == 1}">
 				        			<td>
     				</c:when>
-					<c:when test="${grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer != null ||
-									grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria != 1}">
+					<c:when test="${grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer != null && grupo.grupoCategoriaGalderma.idCategoriaGalderma != null ||
+									grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria != 1 && grupo.grupoCategoriaGalderma.idCategoriaGalderma != 1}">
 				         			<td style="border-left: 2px solid #f1c40f;">
     				</c:when>
 
-					<c:when test="${grupo.incideAdministracao == false && grupo.feeReduzido == false && grupo.grupoCategoriaBayer == null ||
-									grupo.incideAdministracao == false && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria == 1}">
+					<c:when test="${grupo.incideAdministracao == false && grupo.feeReduzido == false && grupo.grupoCategoriaBayer == null && grupo.grupoCategoriaGalderma.idCategoriaGalderma == null ||
+									grupo.incideAdministracao == false && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria == 1 && grupo.grupoCategoriaGalderma.idCategoriaGalderma == 1 }">
 				        			<td style="border-right: 2px solid #e74c3c;">
 				    </c:when>
-					<c:when test="${grupo.incideAdministracao == false && grupo.feeReduzido == false && grupo.grupoCategoriaBayer != null ||
-									grupo.incideAdministracao == false && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria != 1}">
+					<c:when test="${grupo.incideAdministracao == false && grupo.feeReduzido == false && grupo.grupoCategoriaBayer != null && grupo.grupoCategoriaGalderma.idCategoriaGalderma != null ||
+									grupo.incideAdministracao == false && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria != 1 && grupo.grupoCategoriaGalderma.idCategoriaGalderma != 1}">
 							        <td style="border-right: 2px solid #e74c3c;border-left: 2px solid #f1c40f;">
 				    </c:when>
 
-					<c:when test="${grupo.feeReduzido == true && grupo.grupoCategoriaBayer == null && grupo.grupoCategoriaBayer == null ||
-									grupo.feeReduzido == true && grupo.grupoCategoriaBayer.idGrupoCategoria == 1}">
+					<c:when test="${grupo.feeReduzido == true && grupo.grupoCategoriaBayer == null && grupo.grupoCategoriaBayer == null && grupo.grupoCategoriaGalderma.idCategoriaGalderma == null ||
+									grupo.feeReduzido == true && grupo.grupoCategoriaBayer.idGrupoCategoria == 1 && grupo.grupoCategoriaGalderma.idCategoriaGalderma == 1}">
 				        			<td style="border-right: 2px solid #3498db;">
 				    </c:when>
-					<c:when test="${grupo.feeReduzido == true && grupo.grupoCategoriaBayer != null ||
-									grupo.feeReduzido == true && grupo.grupoCategoriaBayer.idGrupoCategoria != 1}">
+					<c:when test="${grupo.feeReduzido == true && grupo.grupoCategoriaBayer != null && grupo.grupoCategoriaGalderma.idCategoriaGalderma != null ||
+									grupo.feeReduzido == true && grupo.grupoCategoriaBayer.idGrupoCategoria != 1 && grupo.grupoCategoriaGalderma.idCategoriaGalderma != 1}">
 				        			<td style="border-right: 2px solid #3498db;border-left: 2px solid #f1c40f;">
 				    </c:when>
 				    
@@ -634,18 +636,6 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 		          
 		          
 		        </tr>
-		
-				<!-- Taxa de Serviço -->        
-			         <c:if test="${grupo.txISS > 0 ||  grupo.txServico > 0}">
-			         	<tr>
-			         		<td align="right">Taxa Serviço (%)</td>
-			         		<td>${grupo.txISS}</td>
-			         		<td>Taxa ISS</td>
-			         		<td>${grupo.txServico}</td>
-			         		<td colspan="4">
-			         	</tr>
-			         </c:if>
-				<!-- Taxa de Serviço -->        
 	    
 	         </c:if>  
 					         
@@ -760,36 +750,15 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 <!-- -----------------------------------------------------------------------------------------------------------------------------------------  -->		          
 		
 		
-		<c:if test="${categoria.txServico > 0}">
-			<tr>
-			  <td>
-			 	 <b>Taxa Serviço:</b> ${categoria.txServico}%
-			  </td>
-			  <td>
-			 	 <b>Taxa ISS:</b>  ${categoria.txISS}%
-			  </td>
-			  
-			  <td colspan="6"></td>
-			  
-			</tr>
-		</c:if>
-		
-				
-		<tr style="background-color: #F7F3F7">
-		  
-		  	
-		  	
-			<c:set var="total" value="0" />  
-
-			<c:forEach items="${categoria.grupo}" var="categorias">
+	<!--  Variáveis para subTotais  -->	
+		<c:forEach items="${categoria.grupo}" var="categorias">
 				<c:if test="${categorias.opcional == true}"></c:if>
 				<c:if test="${categorias.opcional == false}">
 					<c:set var="total" value="${total + categorias.grupoValorIncideImposto}" />
 				</c:if>
  		    </c:forEach>
 			
-			
-				<c:set var="locco" value="0" />  
+			<c:set var="locco" value="0" />  
 			<c:forEach items="${categoria.grupo}" var="fatDireto">
 				<c:if test="${fatDireto.opcional  == true}">
 				</c:if>
@@ -803,8 +772,61 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 			<c:set var="totalsub"  value="${total + locco}" />
 			<c:set var="totalFatLocco" value="${totalFatLocco + total}" />
     		<c:set var="totalFatDireto" value="${totalFatDireto + locco}" />
-			
 			<c:set var="subtotal"  value="${subtotal + total + locco}" />
+	<!--  Variáveis para subTotais  -->	
+		
+		
+		
+		
+		
+		
+<!-- Taxa de Serviço -->    			
+		<c:if test="${categoria.txServico > 0 || categoria.txISS > 0}">
+			<tr>
+			  <td>
+			 	 <b>Taxa Serviços:</b>
+			  </td>
+			  <td style="padding: 0px !important"><input id="txservico${categoria.idcategoria}" onblur="txServico(${categoria.idcategoria});" type="text"  value="${categoria.txServico}" style="border: none;height: 27px;width: 37px;padding-left: 5px;"/>%</td>
+			  <td><fmt:formatNumber value="${totalsub*(categoria.txServico/100)}" pattern="#,##0.00" /></td>
+			  <td colspan="5"></td>
+			</tr>
+			<tr style="border-bottom: 2px solid gray;">  
+			  <td>
+			 	 <b>Taxa ISS:</b>
+			  </td>
+			  <td style="padding: 0px !important"><input id="txiss${categoria.idcategoria}" onblur="txISS(${categoria.idcategoria});" type="text"  value="${categoria.txISS}" style="border: none;height: 27px;width: 37px;padding-left: 5px;"/>%</td>
+			  <td><fmt:formatNumber value="${totalsub*(categoria.txISS/100)}" pattern="#,##0.00" /></td>
+			  <td colspan="5"></td>
+			  
+			</tr>
+		</c:if>
+<!-- Taxa de Serviço -->    		
+				
+		<tr style="background-color: #F7F3F7">
+		  
+			
+			<%-- <c:forEach items="${categoria.grupo}" var="categorias">
+				<c:if test="${categorias.opcional == true}"></c:if>
+				<c:if test="${categorias.opcional == false}">
+					<c:set var="total" value="${total + categorias.grupoValorIncideImposto}" />
+				</c:if>
+ 		    </c:forEach>
+			
+			<c:set var="locco" value="0" />  
+			<c:forEach items="${categoria.grupo}" var="fatDireto">
+				<c:if test="${fatDireto.opcional  == true}">
+				</c:if>
+				<c:if test="${fatDireto.opcional  == false}">
+					<c:set var="locco" value="${locco + fatDireto.grupoValorNaoIncideImposto}" />
+				</c:if>
+			</c:forEach>
+				
+				
+							
+			<c:set var="totalsub"  value="${total + locco}" />
+			<c:set var="totalFatLocco" value="${totalFatLocco + total}" />
+    		<c:set var="totalFatDireto" value="${totalFatDireto + locco}" />
+			<c:set var="subtotal"  value="${subtotal + total + locco}" /> --%>
 			
 		  <td >	
 			<span style="padding-left: 0px">${categoria.categoria}:  <strong><fmt:formatNumber value="${totalsub}" pattern="#,##0.00" /></strong></span> 
@@ -989,19 +1011,71 @@ function infoGalderma(idLista) {
 		});
 	}
 
+
 function criaNovaCategoria() {
-		
-	$.ajax({
-			url : "novaCategoriaGald?novaCategoria="+$("#novaCategoriaGalderma").val(),
-			success : function(data) {
-				location.reload();
-			},
-			beforeSend : function() {
-			},
-			complete : function() {
-			}
-		});
+	var categoria = $("#novaCategoriaGalderma").val();
+	if(categoria == null || categoria == "" || categoria == " "){
+		$("#novaCategoriaGalderma").css("border","2px solid red");
+		$("#editaError").css("display","block");
+		$("#editaError").show();
+		return false;
+	}else{
+		$.ajax({
+				url : "novaCategoriaGald?novaCategoria="+$("#novaCategoriaGalderma").val(),
+				success : function(data) {
+					location.reload();
+				},
+				beforeSend : function() {
+				},
+				complete : function() {
+					$("#editaOk").show();
+					$("#novaCategoriaGalderma").css("border","2px solid green");
+					$("#editaError").hide();
+				}
+			});
 	}
+}
+
+function txServico(idCategoria) {
+	var servico = $("#txservico"+idCategoria).val();
+	if(servico == null || servico == "" || servico == " "){
+		$("#txservico"+idCategoria).css("border","2px solid red");
+		alert("Não deixe o campo 'Taxa de Serviço vazio'");
+		return false;
+	}else{
+		$.ajax({
+				url : "atualizaTaxaServico?idCategoria="+idCategoria+"&valor="+servico,
+				success : function(data) {
+					location.reload();
+				},
+				beforeSend : function() {
+				},
+				complete : function() {
+					location.reload();
+				}
+			});
+	}
+}
+function txISS(idCategoria) {
+	var servico = $("#txiss"+idCategoria).val();
+	if(servico == null || servico == "" || servico == " "){
+		$("#txiss"+idCategoria).css("border","2px solid red");
+		alert("Não deixe o campo 'Taxa de ISS vazio'");
+		return false;
+	}else{
+		$.ajax({
+				url : "atualizaTaxaISS?idCategoria="+idCategoria+"&valor="+servico,
+				success : function(data) {
+					location.reload();
+				},
+				beforeSend : function() {
+				},
+				complete : function() {
+					location.reload();
+				}
+			});
+	}
+}
 </script>
 
 <script type="text/javascript" src="<c:url value="resources/js/listaProducaoAjax.js" />"></script>

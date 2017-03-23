@@ -423,6 +423,31 @@ public class ProducaoDAO {
     
     
     
+    public void atualizaTxServico(Integer idCategoria, String valor){
+    	String valor2 = valor.replace(",", ".");
+    	try {
+    		Categoria categoria = manager.find(Categoria.class, idCategoria);
+    		categoria.setTxServico(Double.parseDouble(valor2));
+    		manager.merge(categoria);
+    	} catch (Exception e) {
+    		//System.out.println("Deu erro ProducaoDAO 434: "+e);
+    	}
+    	
+    }
+    public void atualizaTxISS(Integer idCategoria, String valor){
+    	String valor2 = valor.replace(",", ".");
+    	try {
+    		Categoria categoria = manager.find(Categoria.class, idCategoria);
+    		categoria.setTxISS(Double.parseDouble(valor2));
+    		manager.merge(categoria);
+    	} catch (Exception e) {
+    		//System.out.println("Deu erro ProducaoDAO 434: "+e);
+    	}
+    	
+    }
+    
+    
+    
     
 }
 

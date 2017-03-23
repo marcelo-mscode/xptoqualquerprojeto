@@ -36,7 +36,9 @@ public class GeraCorpoCenarios {
 		
 		cenario = excelGalderma.createSheet(nomeAba); /** Cria Aba Cenarios da planilha */
 		cenario.setZoom(80);
+		
 		ExcelImagem.InsereImagem(excelGalderma, cenario, "C:/SYSLOC/upload/logoEmpresas/logoExcelAgencia2.png",0.35);
+	
 		GeraCabecalhoExcelGalderma.geraCabecalhoFormula(cenario, excelGalderma, nomeAba, job);
 
 		

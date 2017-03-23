@@ -50,40 +50,53 @@ public class GeraCabecalhoExcelGalderma {
 	
 	public static void geraCabecalhoFormula(XSSFSheet aba,XSSFWorkbook excelGalderma,String nomeAba, Job job) throws ParseException{
 		
-		textoContatoFormula(aba, excelGalderma, "=B22", 1);
-		/*textoContatoFormula(aba, excelGalderma, "=Consolidado!C3", 2);
-		textoContatoFormula(aba, excelGalderma, "='Consolidado'!C4", 3);
 		
-		textoContatoFormula(aba, excelGalderma, "='Consolidado'!C5", 4);
-		textoContatoFormula(aba, excelGalderma, "='Consolidado'!C6", 5);
-		textoContatoFormula(aba, excelGalderma, "='Consolidado'!C7", 6);
+		int[] corCinza = new int[]{242,242,242};
+		int[] corAmarelo = new int[]{247, 255, 0};
+		
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C2", 1, corCinza);
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C3", 2, corCinza);
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C4", 3, corCinza);
+		
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C5", 4, corCinza);
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C6", 5, corCinza);
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C7", 6, corCinza);
+
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C8", 7, corAmarelo);
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C9", 8, corAmarelo);
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C10", 9, corAmarelo);
+		
+/*		
 		
 		textoContato(aba, excelGalderma, "Fornecedor: LOCCO Agencia", 7, new int[]{247, 255, 0});
 		textoContato(aba, excelGalderma, "Telefone: 11 - 3938-3250", 8, new int[]{247, 255, 0});
-		textoContato(aba, excelGalderma, "Email: celia@loccoagencia.com.br; pedro@loccoagencia.com.br", 9, new int[]{247, 255, 0});*/
-		
+		textoContato(aba, excelGalderma, "Email: celia@loccoagencia.com.br; pedro@loccoagencia.com.br", 9, new int[]{247, 255, 0});
+*/		
 		geraCabecalhoEvento(aba, excelGalderma, nomeAba, job);
 	}
 	
-	private static void textoContatoFormula(XSSFSheet aba,XSSFWorkbook excelGalderma,String texto,int posicaoLinha){
-		
-		
-		System.out.println(texto);
+	private static void textoContatoFormula(XSSFSheet aba,XSSFWorkbook excelGalderma,String texto,int posicaoLinha,int[] cor){
 		
 		XSSFRow linha = aba.createRow(posicaoLinha);
 		linha.setHeightInPoints(20);
 		
 		XSSFCell celula1 = linha.createCell(2);
 		celula1.setCellType(XSSFCell.CELL_TYPE_FORMULA);
-		celula1.setCellValue(texto);
 		
-	/*	XSSFCell celula2 = linha.createCell(3);
+		try {
+			celula1.setCellFormula(texto);
+			celula1.setCellValue(texto);
+		} catch (Exception e) {
+			System.out.println("Erro: "+e);
+		}
+		
+		XSSFCell celula2 = linha.createCell(3);
 		XSSFCell celula3 = linha.createCell(4);
-		XSSFCellStyle estilo = EstilosGaldema.estiloCabecalhoContato(excelGalderma,new int[]{242,242,242});
+		XSSFCellStyle estilo = EstilosGaldema.estiloCabecalhoContato(excelGalderma,cor);
 		estilo.setAlignment(XSSFCellStyle.ALIGN_LEFT);
 		celula1.setCellStyle(estilo);
 		celula2.setCellStyle(estilo);
-		celula3.setCellStyle(estilo);*/
+		celula3.setCellStyle(estilo);
 	}
 	
 	
