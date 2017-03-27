@@ -525,7 +525,8 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				<tr class="meio-Linha">
 
 				<c:choose>
-					<c:when test="${grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer == null && grupo.grupoCategoriaGalderma.idCategoriaGalderma == 1 ||
+					<c:when test="${grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer == null && grupo.grupoCategoriaGalderma ==  null  ||
+									grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria == 1 && grupo.grupoCategoriaGalderma ==  null  ||
 									grupo.incideAdministracao == true && grupo.feeReduzido == false && grupo.grupoCategoriaBayer.idGrupoCategoria == 1 && grupo.grupoCategoriaGalderma.idCategoriaGalderma == 1}">
 				        			<td>
     				</c:when>
@@ -543,7 +544,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 							        <td style="border-right: 2px solid #e74c3c;border-left: 2px solid #f1c40f;">
 				    </c:when>
 
-					<c:when test="${grupo.feeReduzido == true && grupo.grupoCategoriaBayer == null && grupo.grupoCategoriaBayer == null && grupo.grupoCategoriaGalderma.idCategoriaGalderma == null ||
+					<c:when test="${grupo.feeReduzido == true && grupo.grupoCategoriaBayer == null && grupo.grupoCategoriaGalderma == null ||
 									grupo.feeReduzido == true && grupo.grupoCategoriaBayer.idGrupoCategoria == 1 && grupo.grupoCategoriaGalderma.idCategoriaGalderma == 1}">
 				        			<td style="border-right: 2px solid #3498db;">
 				    </c:when>
