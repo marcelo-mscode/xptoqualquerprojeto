@@ -58,11 +58,11 @@ public class CalculoRodapeCenario {
 		//(E82+E83)*D84
 		
 		String margem10 = "(E"+(ultimaLinhaCorpo+3)+"+E"+(ultimaLinhaCorpo+4)+")*D"+(ultimaLinhaCorpo+5);
-		String margem10Negociado = "(G"+(ultimaLinhaCorpo+3)+"+G"+(ultimaLinhaCorpo+4)+")";
+		String margem10Negociado = "(G"+(ultimaLinhaCorpo+3)+"+G"+(ultimaLinhaCorpo+4)+")*F"+(ultimaLinhaCorpo+5);
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+4, "Margem + 10% Extras",new int[]{219,219,219},10,margem10,margem10Negociado);
 	
-		String feeAgenciaInicial = "E"+(ultimaLinhaCorpo+3)+"*D"+(ultimaLinhaCorpo+5);
-		String feeAgenciaNegociado = "G"+(ultimaLinhaCorpo+3)+"*F"+(ultimaLinhaCorpo+5);
+		String feeAgenciaInicial = "E"+(ultimaLinhaCorpo+3)+"*D"+(ultimaLinhaCorpo+6);
+		String feeAgenciaNegociado = "G"+(ultimaLinhaCorpo+3)+"*F"+(ultimaLinhaCorpo+6);
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+5, "FEE Agência",new int[]{219,219,219},5.2,feeAgenciaInicial,feeAgenciaNegociado);
 		
 		String ImpostoInicial = "E"+(ultimaLinhaCorpo+4)+"*D"+(ultimaLinhaCorpo+6);
