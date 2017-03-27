@@ -55,17 +55,23 @@ public class CalculoRodapeCenario {
 		String ServicosAgenciaformulaNegociado = montaFormulaServicosAgencia(linhasSubtotais, "G");
 		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+3, "Investimento - Serviços Agência",new int[]{219,219,219},ServicosAgenciaformulaInicial,ServicosAgenciaformulaNegociado);
 		
+		//(E82+E83)*D84
+		
+		String margem10 = "(E"+(ultimaLinhaCorpo+3)+"+E"+(ultimaLinhaCorpo+4)+")*D"+(ultimaLinhaCorpo+5);
+		String margem10Negociado = "(G"+(ultimaLinhaCorpo+3)+"+G"+(ultimaLinhaCorpo+4)+")";
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+4, "Margem + 10% Extras",new int[]{219,219,219},10,margem10,margem10Negociado);
+	
 		String feeAgenciaInicial = "E"+(ultimaLinhaCorpo+3)+"*D"+(ultimaLinhaCorpo+5);
 		String feeAgenciaNegociado = "G"+(ultimaLinhaCorpo+3)+"*F"+(ultimaLinhaCorpo+5);
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+4, "FEE Agência",new int[]{219,219,219},5.2,feeAgenciaInicial,feeAgenciaNegociado);
-	
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+5, "FEE Agência",new int[]{219,219,219},5.2,feeAgenciaInicial,feeAgenciaNegociado);
+		
 		String ImpostoInicial = "E"+(ultimaLinhaCorpo+4)+"*D"+(ultimaLinhaCorpo+6);
 		String ImpostoNegociado = "G"+(ultimaLinhaCorpo+4)+"*F"+(ultimaLinhaCorpo+6);
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+5, "Impostos Emissão NF - Serviços Agência",new int[]{219,219,219},22.9,ImpostoInicial,ImpostoNegociado);
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+6, "Impostos Emissão NF - Serviços Agência",new int[]{219,219,219},22.9,ImpostoInicial,ImpostoNegociado);
 		
 		String TotalPrevistoInicial = "SUM(E"+(ultimaLinhaCorpo+3)+":E"+(ultimaLinhaCorpo+6)+")";
 		String TotalPrevistoNegociado = "SUM(G"+(ultimaLinhaCorpo+3)+":G"+(ultimaLinhaCorpo+6)+")";
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+6, "TOTAL PREVISTO",new int[]{0,176,240},TotalPrevistoInicial,TotalPrevistoNegociado);
+		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+7, "TOTAL PREVISTO",new int[]{0,176,240},TotalPrevistoInicial,TotalPrevistoNegociado);
 		
 	}
 
