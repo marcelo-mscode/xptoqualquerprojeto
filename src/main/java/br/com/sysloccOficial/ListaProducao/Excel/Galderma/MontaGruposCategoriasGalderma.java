@@ -333,7 +333,11 @@ public class MontaGruposCategoriasGalderma{
 			}*/
 			
 
+			System.out.println(precoSemImpostoFinal);
 			System.out.println(orcamentoSemImposto);
+			
+			
+			
 			// Funcionando quando tenho orçamento cadastrado
 			corpoGrupoBayerSemImposto.setOrcamento(orcamentoSemImposto);
 			
