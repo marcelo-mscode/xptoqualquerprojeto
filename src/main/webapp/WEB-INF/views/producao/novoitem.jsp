@@ -185,7 +185,7 @@
                     
                     
                   <!-- X <input id="quantidade2" onblur="calculaValorTotal();" type="text" class="form-control voltar" style="  height: 24px;width: 50px;font-size: 11px;padding: 5px;" name="quantidade2" value="1"> -->
-                  X <input id="quantidade2" onblur="calculaValorTotal();" type="text" class="form-control voltar" style="  height: 24px;width: 50px;font-size: 11px;padding: 5px;" name="quantidade2Transiente" value="1">
+                  X <input id="quantidade2" onblur="calculaValorTotal();" type="text" class="form-control voltar is-disabled" style="  height: 24px;width: 50px;font-size: 11px;padding: 5px;background-color: #ccc;" name="quantidade2Transiente" value="1">
                   = <span id="QtdUnidadeItem"> 1 </span>&nbsp<span id="tipoUnidadeItem"> Unid.</span>
                     
                    <div class="form-inline" style="margin-left:22px">

@@ -667,79 +667,83 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
         </div>
       <div class="col-md-8 form-group tira-padding" id="exibelinha${categoria.idcategoria}" style="display:none">
           <hr>
- <form action="SalvaGrupo" method="post" id="salvaGrupoLista" onsubmit="salvarGrupoBotao.disabled = true; return true;"> 
- 		
- 			<input type="hidden" value="${idLista}" name="idListaTransiente">
- 			<input type="hidden" value="${categoria.idcategoria}" name="idCategoriaTransiente">
- 			
- 
-          <div class="col-md-8">
-              <input type="text" class="form-control" placeholder="Título da linha" name="grupo" id="salvatituloLista">
-          </div>
-          
-          <div class="col-md-8 ">
-              <div class="checkbox col-md-offset-1 tira-padding ajustaDivChecked">
-                <input id="feeNormal" type="checkbox" class="form-group ajustaCheckBox"  name="incideAdministracao" checked="checked"> Incide Fee            
-              </div>
-          </div>
-          
-          <div class="col-md-8 ">
-              <div class="checkbox col-md-offset-1 tira-padding ajustaDivChecked">
-                <input id="feeReduzido" type="checkbox" class="form-group ajustaCheckBox" name="feeReduzido"><span>Fee Reduzido</span>             
-              </div>
-          </div>
-
-          <div class="col-md-8">
-              <div class="checkbox col-md-offset-1 tira-padding ajustaDivChecked">
-                <input type="checkbox" class="form-group ajustaCheckBox" name="opcional"> Opcional da Planilha            
-              
-                <input type="checkbox" class="form-group ajustaCheckBox" name="opcionalGalderma" style="margin-left: 20px"><b style="margin-left: 45px">Opcional Galderma</b>           
-              </div>
-          </div>
-
-          <div class="col-md-7 categoriaEmpresasLista categoriaGaldermaLateral">
-          	  <span>CATEGORIAS BAYER</span>
-              <div class="checkbox col-md-offset-1 tira-padding " style="margin: 8px 0;">
-                <select name="idgrupoCategoriaBayerTransiente" class="form-control">
-                	<c:forEach items="${categoriasBayer}" var="bayer">
-	                	<option value="${bayer.idGrupoCategoria}">${bayer.categoria}</option>
-                	</c:forEach>
-                </select>           
-              </div>
-          </div>
-          
-          <div class="col-md-7 categoriaEmpresasLista categoriaGaldermaLateral">
-          	<span>CATEGORIAS GALDERMA</span>
-              <div class="checkbox col-md-offset-1 tira-padding" style="margin: 8px 0;">
-                <select name="idCategoriaGaldermaTransiente" class="form-control">
-                	<c:forEach items="${categoriasGalderma}" var="galderma">
-	                	<option value="${galderma.idCategoriaGalderma}">${galderma.categoria}</option>
-                	</c:forEach>
-                </select>
-              </div>
-          </div>
-          
-          <div class="col-md-7">
-              <div class="form-group">
-                <textarea class="form-control" placeholder="Texto da Planilha" rows="4" name="informacoes" style="width: 475px;"></textarea>
-              </div>
-
-          </div>
-
-          <div class="col-md-7" style="margin-bottom: 8px">
-                        <div class="form-group">
-                <textarea class="form-control" placeholder="Necessidades" rows="4" name="necessidades" style="width: 475px;"></textarea>
-              </div>
-          </div>  
-          
-	  	<div class="col-md-12" style="margin: 20px 0px;">
-          <div class="col-md-8 tira-padding">
-                <input class="btn btn-danger" type="submit" value="Salvar linha" name="salvarGrupoBotao" >
-                <a class="btn btn-info" onclick="insereLinha(exibelinha${categoria.idcategoria},${categoria.idcategoria});">Cancelar</a>
-          </div>
-         </div> 
-
-</form>
+		  <!-- Formulário cria Linha  -->
+				 <form action="SalvaGrupo" method="post" id="salvaGrupoLista" onsubmit="salvarGrupoBotao.disabled = true; return true;"> 
+				 		
+				 			<input type="hidden" value="${idLista}" name="idListaTransiente">
+				 			<input type="hidden" value="${categoria.idcategoria}" name="idCategoriaTransiente">
+				 			
+				 
+				          <div class="col-md-8">
+				              <input type="text" class="form-control" placeholder="Título da linha" name="grupo" id="salvatituloLista">
+				          </div>
+				          
+				          <div class="col-md-8 ">
+				              <div class="checkbox col-md-offset-1 tira-padding ajustaDivChecked">
+				                <input id="feeNormal" type="checkbox" class="form-group ajustaCheckBox"  name="incideAdministracao" checked="checked"> Incide Fee            
+				              </div>
+				          </div>
+				          
+				          <div class="col-md-8 ">
+				              <div class="checkbox col-md-offset-1 tira-padding ajustaDivChecked">
+				                <input id="feeReduzido" type="checkbox" class="form-group ajustaCheckBox" name="feeReduzido"><span>Fee Reduzido</span>             
+				              </div>
+				          </div>
+				
+				          <div class="col-md-8">
+				              <div class="checkbox col-md-offset-1 tira-padding ajustaDivChecked">
+				                <input type="checkbox" class="form-group ajustaCheckBox" name="opcional"> Opcional da Planilha            
+				              
+				                <input type="checkbox" class="form-group ajustaCheckBox" name="opcionalGalderma" style="margin-left: 20px"><b style="margin-left: 45px">Opcional Galderma</b>           
+				              </div>
+				          </div>
+				
+				          <div class="col-md-7 categoriaEmpresasLista categoriaGaldermaLateral">
+				          	  <span>CATEGORIAS BAYER</span>
+				              <div class="checkbox col-md-offset-1 tira-padding " style="margin: 8px 0;">
+				                <select name="idgrupoCategoriaBayerTransiente" class="form-control">
+				                	<c:forEach items="${categoriasBayer}" var="bayer">
+					                	<option value="${bayer.idGrupoCategoria}">${bayer.categoria}</option>
+				                	</c:forEach>
+				                </select>           
+				              </div>
+				          </div>
+				          
+				          <div class="col-md-7 categoriaEmpresasLista categoriaGaldermaLateral">
+				          	<span>CATEGORIAS GALDERMA</span>
+				              <div class="checkbox col-md-offset-1 tira-padding" style="margin: 8px 0;">
+				                <select name="idCategoriaGaldermaTransiente" class="form-control">
+				                	<c:forEach items="${categoriasGalderma}" var="galderma">
+					                	<option value="${galderma.idCategoriaGalderma}">${galderma.categoria}</option>
+				                	</c:forEach>
+				                </select>
+				              </div>
+				          </div>
+				          
+				          <div class="col-md-7">
+				              <div class="form-group">
+				                <textarea class="form-control" placeholder="Texto da Planilha" rows="4" name="informacoes" style="width: 475px;"></textarea>
+				              </div>
+				
+				          </div>
+				
+				          <div class="col-md-7" style="margin-bottom: 8px">
+				                        <div class="form-group">
+				                <textarea class="form-control" placeholder="Necessidades" rows="4" name="necessidades" style="width: 475px;"></textarea>
+				              </div>
+				          </div>  
+				          
+					  	<div class="col-md-12" style="margin: 20px 0px;">
+				          <div class="col-md-8 tira-padding">
+				                <input class="btn btn-danger" type="submit" value="Salvar linha" name="salvarGrupoBotao" >
+				                <a class="btn btn-info" onclick="insereLinha(exibelinha${categoria.idcategoria},${categoria.idcategoria});">Cancelar</a>
+				          </div>
+				         </div> 
+				
+				</form>
+			<!-- Fim Formulário cria Linha  -->
+				
+				
 			
 		</div>
      </div>
@@ -759,7 +763,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				<c:if test="${categorias.opcional == false}">
 					<c:set var="total" value="${total + categorias.grupoValorIncideImposto}" />
 				</c:if>
- 		</c:forEach>
+ 		    </c:forEach>
 			
 			<c:set var="locco" value="0" />  
 			<c:forEach items="${categoria.grupo}" var="fatDireto">
@@ -777,6 +781,10 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
     		<c:set var="totalFatDireto" value="${totalFatDireto + locco}" />
 			<c:set var="subtotal"  value="${subtotal + total + locco}" />
 	<!--  Variáveis para subTotais  -->	
+		
+		
+		
+		
 		
 		
 <!-- Taxa de Serviço -->    			
@@ -801,6 +809,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 		</c:if>
 <!-- Taxa de Serviço -->    		
 				
+		<!-- <tr style="background-color: #F7F3F7"> -->
 		<tr style="background-color: #ebe0eb">
 		  
 			
@@ -857,29 +866,21 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
           <td></td>
           <td></td>
           <td></td>
-    
-    <c:if test="${idlistaEstatus == 1}"> 
-          <td></td> <td></td>
-	</c:if>
-	
+		    <c:if test="${idlistaEstatus == 1}"> 
+		          <td></td> <td></td>
+			</c:if>
 		</tr>
-		
 		<tr><td colspan="8"></td></tr>
-		
-		</c:forEach>
-		
+	</c:forEach>
 		
 	    <tr>
 			<td style="font-size: 15px">
-			
 				Sub Total: <fmt:formatNumber value="${subtotal}" pattern="#,##0.00" />
 			</td>
-			
 			<td style="font-size: 15px"><fmt:formatNumber value="${totalFatLocco}" pattern="#,##0.00" /></td>
 			<td style="font-size: 15px"><fmt:formatNumber value="${totalFatDireto}" pattern="#,##0.00" /></td>
 			<td></td>
 			<td colspan="4"></td>
-			
 		</tr>
 
 </table>
