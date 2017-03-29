@@ -176,6 +176,7 @@ public class MontaGruposCategoriasGalderma{
 				
 				orcamSemImposto = pegaOrcamentos(listaGrupos, i,0,qtdFinal);
 				if(orcamSemImposto.equals(new BigDecimal("0"))){
+					System.out.println(semImpostoUnico);
 					orcamSemImposto = semImpostoUnico;
 				}
 				
@@ -193,6 +194,7 @@ public class MontaGruposCategoriasGalderma{
 
 	private BigDecimal pegaOrcamentos(List<Grupo> listaGrupos, int i,int imposto,double qtdFinal) {
 		BigDecimal orcamento;
+		BigDecimal orcamento2;
 		BigDecimal nulo = null; 
 
 		try {
@@ -207,8 +209,8 @@ public class MontaGruposCategoriasGalderma{
 					return new BigDecimal("0");
 				}else{
 					orcamento = vOrcComImpot;
-					orcamento = orcamento.divide(new BigDecimal(qtdFinal),12,RoundingMode.UP);
-					return orcamento;
+					orcamento2 = orcamento.divide(new BigDecimal(qtdFinal),12,RoundingMode.UP);
+					return orcamento2;
 				}
 			}
 		
@@ -320,11 +322,14 @@ public class MontaGruposCategoriasGalderma{
 			
 			corpoGrupoBayerSemImposto.setPrecoItem(precoSemImpostoFinal);
 			
-			if(orcamentoSemImposto.equals(zero)){
-				corpoGrupoBayerSemImposto.setOrcamento(precoSemImpostoFinal);
+			
+			
+			/*if(orcamentoSemImposto.equals(zero)){
+				corpoGrupoBayerSemImposto.setOrcamento(precoSemImpostoFinal.divide(quantFinal ,12,RoundingMode.UP));
 			}else{
-				corpoGrupoBayerSemImposto.setOrcamento(orcamentoSemImposto);
-			}
+			}*/
+			corpoGrupoBayerSemImposto.setOrcamento(orcamentoSemImposto);
+			
 			corpoGrupoBayerSemImposto.setQuantidade(qtdUnica);
 			corpoGrupoBayerSemImposto.setDiaria(diariaUnica);
 			
