@@ -115,11 +115,22 @@ public class MontaGruposCategoriasGalderma{
 				
 
 				if(listaGrupos.get(i).getDetermPadrao() != null){
-					qtdUnica = listaGrupos.get(i).getDetermPadrao().getQuantDetermPadrao();
-					diariaUnica = listaGrupos.get(i).getDetermPadrao().getDiariasPadrao();
+						if(listaGrupos.get(i).getDetermPadrao().getQuantDetermPadrao() == 0){
+							qtdUnica = 1;
+							diariaUnica = 1;
+						}else{
+							qtdUnica = listaGrupos.get(i).getDetermPadrao().getQuantDetermPadrao();
+							diariaUnica = listaGrupos.get(i).getDetermPadrao().getDiariasPadrao();
+						}
 				}else{
-					qtdUnica = listaGrupos.get(i).getDeterm().getQuantDeterm();
-					diariaUnica = listaGrupos.get(i).getDeterm().getDiarias();
+					
+					if(listaGrupos.get(i).getDeterm()  == null){
+						qtdUnica = 1;
+						diariaUnica = 1;
+					}else{
+						qtdUnica = listaGrupos.get(i).getDeterm().getQuantDeterm();
+						diariaUnica = listaGrupos.get(i).getDeterm().getDiarias();
+					}
 				}
 
 				// Pegar id de ProdutoGrupo com Imposto
@@ -312,7 +323,7 @@ public class MontaGruposCategoriasGalderma{
 			if(orcamentoSemImposto.equals(zero)){
 				corpoGrupoBayerSemImposto.setOrcamento(precoSemImpostoFinal);
 			}else{
-				corpoGrupoBayerSemImposto.setOrcamento(orcamentoSemImposto.divide(quantFinal ,12,RoundingMode.UP));
+				corpoGrupoBayerSemImposto.setOrcamento(orcamentoSemImposto);
 			}
 			corpoGrupoBayerSemImposto.setQuantidade(qtdUnica);
 			corpoGrupoBayerSemImposto.setDiaria(diariaUnica);
