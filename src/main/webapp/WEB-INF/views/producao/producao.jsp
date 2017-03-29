@@ -759,7 +759,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				<c:if test="${categorias.opcional == false}">
 					<c:set var="total" value="${total + categorias.grupoValorIncideImposto}" />
 				</c:if>
- 		    </c:forEach>
+ 		</c:forEach>
 			
 			<c:set var="locco" value="0" />  
 			<c:forEach items="${categoria.grupo}" var="fatDireto">
@@ -777,10 +777,6 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
     		<c:set var="totalFatDireto" value="${totalFatDireto + locco}" />
 			<c:set var="subtotal"  value="${subtotal + total + locco}" />
 	<!--  Variáveis para subTotais  -->	
-		
-		
-		
-		
 		
 		
 <!-- Taxa de Serviço -->    			
@@ -805,7 +801,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 		</c:if>
 <!-- Taxa de Serviço -->    		
 				
-		<tr style="background-color: #F7F3F7">
+		<tr style="background-color: #ebe0eb">
 		  
 			
 			<%-- <c:forEach items="${categoria.grupo}" var="categorias">

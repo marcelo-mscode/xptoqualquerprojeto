@@ -11,7 +11,7 @@
    <div class="form-inline" style="margin-top:10px">Quantidade&nbsp&nbsp
 
 		<input id="quantidade1" onblur="calculaValorTotal();" type="text" class="form-control voltar estiloInput"  value="${fn:replace(quantidade1,'.',',')}" name="quantidadeTransiente">
-      X <input id="quantidade2" onblur="calculaValorTotal();" type="text" class="form-control voltar estiloInput"  value="${fn:replace(quantidade2,'.',',')}" name="quantidade2Transiente">
+      X <input id="quantidade2" onblur="calculaValorTotal();" type="text" class="form-control voltar estiloInput is-disabled"  value="${fn:replace(quantidade2,'.',',')}" name="quantidade2Transiente" >
       = <span id="QtdUnidadeItem">
       	<c:set var="diar" value="${quantidade1*quantidade2}" />
       	${fn:replace(diar,'.',',')}
