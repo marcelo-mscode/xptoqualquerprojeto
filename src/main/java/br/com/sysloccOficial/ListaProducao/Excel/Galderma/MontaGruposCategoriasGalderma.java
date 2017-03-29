@@ -176,7 +176,6 @@ public class MontaGruposCategoriasGalderma{
 				
 				orcamSemImposto = pegaOrcamentos(listaGrupos, i,0,qtdFinal);
 				if(orcamSemImposto.equals(new BigDecimal("0"))){
-					System.out.println(semImpostoUnico);
 					orcamSemImposto = semImpostoUnico;
 				}
 				
@@ -323,11 +322,19 @@ public class MontaGruposCategoriasGalderma{
 			corpoGrupoBayerSemImposto.setPrecoItem(precoSemImpostoFinal);
 			
 			
+			// Se não tem orçamento ok
+			
+			// Se tem orçamento está dividindo pela quantidade
+			
 			
 			/*if(orcamentoSemImposto.equals(zero)){
 				corpoGrupoBayerSemImposto.setOrcamento(precoSemImpostoFinal.divide(quantFinal ,12,RoundingMode.UP));
 			}else{
 			}*/
+			
+
+			System.out.println(orcamentoSemImposto);
+			// Funcionando quando tenho orçamento cadastrado
 			corpoGrupoBayerSemImposto.setOrcamento(orcamentoSemImposto);
 			
 			corpoGrupoBayerSemImposto.setQuantidade(qtdUnica);
