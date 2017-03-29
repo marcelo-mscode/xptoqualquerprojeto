@@ -49,9 +49,9 @@ public class GeraCorpoCenarios {
 		
 		//Não mexer mais
 		if(nomeAba.equals("Opcionais")){
-			GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario,linhasParaConsolidado+8);
+			GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario,linhasParaConsolidado+7);
 		}else{
-			GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,linhasParaConsolidado+8);
+			GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,linhasParaConsolidado+7);
 		}
 	
 		return linhasParaConsolidado;
