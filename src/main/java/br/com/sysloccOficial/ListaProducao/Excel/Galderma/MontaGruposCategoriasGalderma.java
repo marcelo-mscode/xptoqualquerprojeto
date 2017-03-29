@@ -290,12 +290,7 @@ public class MontaGruposCategoriasGalderma{
 			
 			corpoGrupoGalderma.setOrcamento(comImpostoUnico.divide(quantFinal ,12,RoundingMode.UP));
 			
-
-			/*			if(orcamentoComImposto.equals(zero)){
-			}else{
-				corpoGrupoGalderma.setOrcamento(orcamentoComImposto);
-			}
-*/			corpoGrupoGalderma.setQuantidade(qtdUnica);
+			corpoGrupoGalderma.setQuantidade(qtdUnica);
 			corpoGrupoGalderma.setDiaria(diariaUnica);
 			
 			corpoGrupoGalderma.setTipoServico(categoriasimpostoBayer(corpoGrupoGalderma.isTemImposto(),incideAdministracao,feeReduzido));
@@ -321,25 +316,14 @@ public class MontaGruposCategoriasGalderma{
 			
 			corpoGrupoBayerSemImposto.setPrecoItem(precoSemImpostoFinal);
 			
-			
-			// Se não tem orçamento ok
-			
-			// Se tem orçamento está dividindo pela quantidade
-			
-			
-			/*if(orcamentoSemImposto.equals(zero)){
-				corpoGrupoBayerSemImposto.setOrcamento(precoSemImpostoFinal.divide(quantFinal ,12,RoundingMode.UP));
+			// Verifica se um grupo tem orçamento cadastrado 
+			if(precoSemImpostoFinal.equals(orcamentoSemImposto.divide(quantFinal ,12,RoundingMode.UP))){
+				//System.out.println("Não tem orçamento cadastrado");
+				corpoGrupoBayerSemImposto.setOrcamento(precoSemImpostoFinal);
 			}else{
-			}*/
-			
-
-			System.out.println(precoSemImpostoFinal);
-			System.out.println(orcamentoSemImposto);
-			
-			
-			
-			// Funcionando quando tenho orçamento cadastrado
-			corpoGrupoBayerSemImposto.setOrcamento(orcamentoSemImposto);
+				//System.out.println("Agora tem orçamento cadastrado");
+				corpoGrupoBayerSemImposto.setOrcamento(orcamentoSemImposto);
+			}
 			
 			corpoGrupoBayerSemImposto.setQuantidade(qtdUnica);
 			corpoGrupoBayerSemImposto.setDiaria(diariaUnica);
