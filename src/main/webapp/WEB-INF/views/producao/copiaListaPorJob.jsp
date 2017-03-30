@@ -11,7 +11,7 @@
 	
       <c:otherwise>
 		<c:forEach items="${listaJob}" var="listaJob">
-			<option value="${listaJob[0]}">${listaJob[1]} - ${listaJob[2]}</option>
+			<option value="${listaJob[0]}">${listaJob[1]}.${listaJob[3]} - ${listaJob[2]}</option>
 		</c:forEach>
 	  </c:otherwise>
 	

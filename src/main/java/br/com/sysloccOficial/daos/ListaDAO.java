@@ -278,7 +278,7 @@ public Object listadeCategoriaPorId(Integer idcategoria){
 	
 
 	public List<Object[]> listasPorJob(Integer idJob){
-		String consulta  = "select l.idLista, l.listaCod, l.lista from Lista l where idJob="+idJob;
+		String consulta  = "select l.idLista, l.listaCod, l.lista, l.revisao from Lista l where idJob="+idJob;
 		Query query = manager.createQuery(consulta);
 		
 		List<Object[]> lista = query.getResultList();		
