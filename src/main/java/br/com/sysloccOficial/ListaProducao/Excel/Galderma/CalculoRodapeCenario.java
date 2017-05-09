@@ -27,6 +27,9 @@ public class CalculoRodapeCenario {
 		
 		
 		if(cenario.getSheetName().equals("Opcionais")){
+			
+			System.out.println(linhasSubtotais.get(0)[0] - 6);
+			
 			int i = linhasSubtotais.get(0)[0] - 6;
 			String formulaInicialOpc = "SUM(E"+i+":E"+ultimaLinhaCorpo+")";
 			String formulaNegociadoOpc = "SUM(G"+i+":G"+ultimaLinhaCorpo+")";
@@ -43,7 +46,7 @@ public class CalculoRodapeCenario {
 		}else{
 			String formulaInicial = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "E");
 			String formulaNegociado = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "G");
-			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicial,formulaNegociado);
+ 			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicial,formulaNegociado);
 
 			String NTformulaInicial = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "E");
 			String NTformulaNegociado = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "G");

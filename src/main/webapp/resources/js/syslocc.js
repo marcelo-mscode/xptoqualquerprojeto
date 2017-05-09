@@ -1714,6 +1714,9 @@ function efeitoToogleDuplo(item,item2) {
 // Cria lista
 function criaLista(idLista, idGrupo) {
 
+		
+	$('#criacaoLista'+idGrupo).addClass("is-disabled");
+	
 	$.ajax({
 		method : "POST",
 		url : "criaLista?idLista=" + idLista + "&idGrupo=" + idGrupo,
@@ -1723,6 +1726,9 @@ function criaLista(idLista, idGrupo) {
 			// $("#itemEnviadoCriacao").fadeIn(300).html(data);
 		},
 		beforeSend : function() {
+			
+
+			
 		},
 		complete : function() {
 		}

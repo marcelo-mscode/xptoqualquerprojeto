@@ -80,16 +80,24 @@ public class GeraCorpoCenarios {
 		int ultimaLinhaGrupoCategoria = 0;
 		int primeiraLinhaGrupoCategoria = 0;
 		
-		
+		//Para cada categoria Galderma
 		for (int i = 0; i < categoriasGalderma.size(); i++) {
 			
 			if(qtdInfoGrupo2 == 0){
+				
 				qtdInfoGrupo3 = linhaComecoCategorias;
 				primeiraLinhaGrupoCategoria = linhaComecoInfoCategorias;
 			}else {
 				qtdInfoGrupo3 = qtdInfoGrupo2;
 				linhaComecoInfoCategorias = qtdInfoGrupo2+1;
 				primeiraLinhaGrupoCategoria = qtdInfoGrupo2+1;
+				
+			
+				if(qtdInfoGrupo2 == 52){
+					System.out.println(qtdInfoGrupo2);
+				}
+
+			
 			}
 			
 			if(cenario.getSheetName().equals("Opcionais")){
@@ -111,14 +119,19 @@ public class GeraCorpoCenarios {
 	
 							qtdInfoGrupo2 = linhaComecoInfoCategorias + 1;
 
+							
+
 							linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
 							taxaISS = gruposParaExcel.get(j).getTxISS();
 							taxaServico = gruposParaExcel.get(j).getTxServico();
 							
 					}
 			}
+			
+			
+			
 			ultimaLinhaGrupoCategoria = qtdInfoGrupo2;
-
+			
 			Integer[] linhas = new Integer[2];
 
 				if(categoriasGalderma.get(i).getIdCategoriaGalderma() == 8){
@@ -145,6 +158,12 @@ public class GeraCorpoCenarios {
 				}
 		}
 		linhasConsolidado = qtdInfoGrupo2;
+		
+		/*
+		for (int j = 0; j < linhasSubtotais.size(); j++) {
+			System.out.println("Linhas: "+linhasSubtotais.get(j)[0]);
+		}*/
+		
 		
 		
 		CalculoRodapeCenario.calculosRodapePlanilha(excelGalderma, cenario, qtdInfoGrupo2,linhasSubtotais);

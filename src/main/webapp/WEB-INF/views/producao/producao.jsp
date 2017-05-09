@@ -629,7 +629,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 					  <td style="text-align: center;" id="criacaoLista${grupo.idgrupo}">
 					  
 					  <c:if test="${grupo.criacao == false}">
-					  		<input type="checkbox" style="width: 15px;height: 15px" onclick="criaLista(${idLista},${grupo.idgrupo});"/>
+					  		<input id="checksCriaLista${grupo.idgrupo}" type="checkbox" style="width: 15px;height: 15px" onclick="criaLista(${idLista},${grupo.idgrupo});"/>
 					  </c:if>
 					  <c:if test="${grupo.criacao == true}">
 					  		<input type="checkbox" style="width: 15px;height: 15px" checked="checked" disabled="disabled" />
