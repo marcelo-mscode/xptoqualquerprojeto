@@ -814,8 +814,6 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 <!-- Taxa de Serviço -->    		
 				
 			<tr style="background-color:  #f4eef6">
-		
-		  
 			
 			<%-- <c:forEach items="${categoria.grupo}" var="categorias">
 				<c:if test="${categorias.opcional == true}"></c:if>
@@ -847,7 +845,6 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 	      <td>	 
 	    	 <fmt:formatNumber value="${total}" pattern="#,##0.00" />
 	      </td>
-
 				     <c:set var="locco" value="0" />  
 				
 	
@@ -888,9 +885,6 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 		</tr>
 
 </table>
-
-
-  
 
  </div>
 </div>
