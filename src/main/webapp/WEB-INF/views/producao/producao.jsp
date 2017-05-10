@@ -50,10 +50,6 @@
 </div>
 <br /><br />
 
-
-
-
-
 <div class="col-md-12">
 
 
@@ -582,10 +578,15 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 
 <!-- Fat Direto -->		          	
 		          <td>
-		          	 <c:if test="${grupo.opcional == true or grupo.opcionalGalderma == true}"></c:if>
-		          	 <c:if test="${grupo.grupoValorNaoIncideImposto > 1 && grupo.opcional == false || grupo.grupoValorNaoIncideImposto < 0 && grupo.opcional == false}">
+		          	 <c:if test="${grupo.grupoValorNaoIncideImposto > 1 && grupo.opcional == false && grupo.opcionalGalderma == false ||
+		          	               grupo.grupoValorNaoIncideImposto < 0 && grupo.opcional == false && grupo.opcionalGalderma == false}">
 		          	 	<fmt:formatNumber value="${grupo.grupoValorNaoIncideImposto}" pattern="#,##0.00"/>
 		          	 </c:if>	
+
+		          	 <c:if test="${grupo.opcional ==  true && grupo.opcionalGalderma == true ||
+		          		           grupo.opcional ==  true && grupo.opcionalGalderma == false ||
+		          		           grupo.opcional ==  false && grupo.opcionalGalderma == true}">
+		          	</c:if>
 		          </td>
 <!-- -->		          	
 
