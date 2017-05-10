@@ -567,7 +567,8 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 
 <!-- Fat LoCCO  -->		          	
 		          <td>
-		          	<c:if test="${grupo.opcional ==  false && grupo.opcionalGalderma == false || grupo.opcional ==  false && grupo.opcionalGalderma == true}">
+		          	<c:if test="${grupo.opcional ==  false && grupo.opcionalGalderma == false ||
+		          	              grupo.opcional ==  false && grupo.opcionalGalderma == true && grupo.opcionalGalderma == false}">
 		          		<fmt:formatNumber value="${grupo.grupoValorIncideImposto}" pattern="#,##0.00"/>
 		          	</c:if>
 		          	
@@ -588,6 +589,9 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 		          </td>
 <!-- -->		          	
 
+
+
+
 <!-- Opcional -->		          	
 		          <td>
 		          	<c:if test="${grupo.opcional == true or grupo.opcionalGalderma == true}">
@@ -602,6 +606,8 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 		            <c:if test="${grupo.opcional == false or grupo.opcionalGalderma == false}"></c:if>	
 		          </td>
 <!--  -->		          
+
+
 		          <td><p class="quebraTexto" style="width: 380px;">${grupo.informacoes}</p></td>
 		          <td><p class="quebraTexto" style="width: 160px">${grupo.necessidades}</p></td>
 		          
