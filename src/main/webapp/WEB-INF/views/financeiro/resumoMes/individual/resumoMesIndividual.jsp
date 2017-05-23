@@ -12,7 +12,18 @@
 .cabecalhoLista > td {line-height: 33px !important;}
 .descricao {text-align: left;}
 .temContratacao{border-left: 1px solid red}
+.descEventoClientes > tr, .descEventoClientes > tr > th {text-align: center}
+.semPadding > tr > th {padding: 0 !important}
 
+
+.totalBancos{vertical-align: middle !important;text-align: center;font-weight: bold;border:1px solid #ddd}
+.fundotabela3{background-color: rgb(204,255,255) }
+.fundoDespesasFixas{background-color: rgb(255,204,153) }
+.fundoAmarelo{background-color: rgb(255,255,153)}
+.fundoRosa{background-color: rgb(255,153,204)}
+.fundoVerde{background-color: rgb(204,255,204)}
+
+.colorRed{color: red}
 
 </style>
 <div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;">
@@ -24,9 +35,71 @@
 </div>
 
 <div style="height: 35px;">
-	<div class="col-md-12" style="margin: 10px 0px 25px -14px;/* border-bottom: 1px solid #ccc; */padding-bottom: 10px;">
-		<span style="font-family: 'OpenSansLight';font-size: 25px;margin-left: 32px;">Resumo do Mês de MAIO</span>
+	<div class="col-md-12" style="margin: 10px 0px 25px -14px;/* border-bottom: 1px solid #ccc; */padding-bottom: 10px;" align="center">
+		<span style="font-family: 'OpenSansLight';font-size: 25px;margin-left: 32px;">Resumo do Mês de MAIO 2017</span>
 	</div>
+</div>
+
+<div id="criacaoListas" class="col-md-12 efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:35px 40px 70px 35px;">
+	<div style="padding: 0 20px 0 20px;">
+		<table class="table table-striped table-hover table-condensed" style="border:1px solid #ddd">
+		  <tbody id="prospeccaoFiltro">
+			
+			<c:import url="saldosBancarios.jsp" />
+	
+		</tbody>
+	</table>
+</div>
+
+<div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;">
+	<table class="table table-striped table-hover table-condensed" style="margin-top: 20px; border: 1px solid #ddd">
+		  <tbody class="descEventoClientes">
+				<c:import url="dadosEventos.jsp" />	
+		  </tbody>
+	</table>
+	
+	<table class="table table-striped table-hover table-condensed" style="border: 1px solid #ddd"">
+		  <tbody class="descEventoClientes">
+			
+			<c:import url="despesasBvs.jsp" />	 <tr><td colspan="7"></td></tr>
+	
+		</tbody>
+	</table>
+	
+	<table class="table table-striped table-hover table-condensed" style="border: 1px solid #ddd"">
+		  <tbody class="descEventoClientes">
+
+			<c:import url="despesasFixas.jsp" /> <tr><td colspan="7"></td></tr>
+			<c:import url="despesasVariaveis.jsp" /> <tr><td colspan="7"></td></tr>
+
+		</tbody>
+	</table>
+
+
+	<table class="table table-striped table-hover table-condensed" style="border: 1px solid #ddd"">
+		  <tbody class="descEventoClientes">
+			<c:import url="contasBvsTotal.jsp" /> <tr><td colspan="7"></td></tr>
+		</tbody>
+	</table>
+
+	<table class="table table-striped table-hover table-condensed" style="border: 1px solid #ddd"">
+		  <tbody class="descEventoClientes">
+			<c:import url="resumoFinal.jsp" /> <tr><td colspan="7"></td></tr>
+		</tbody>
+	</table>
+	
+	<table class="table table-striped table-hover table-condensed" style="border: 1px solid #ddd"">
+		  <tbody class="descEventoClientes semPadding">
+			<c:import url="contasCorrente.jsp" /> <tr><td colspan="7"></td></tr>
+		</tbody>
+	</table>
+	
+</div>
+	
+	
+	
+	
+	
 </div>
 
 

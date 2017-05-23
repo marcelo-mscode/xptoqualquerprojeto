@@ -75,6 +75,7 @@ public class RelatorioEventos {
 	private boolean recebido;
 
 	@Temporal(TemporalType.TIMESTAMP)private Calendar dataRecebido;
+	
 // ------------------------------------------------------------------------- //
     @OneToOne (mappedBy="relatorioEvento") private GiroEvento giroEvento;
     @OneToMany (mappedBy = "relatorioEvento") private List<CacheEvento> cacheEvento;

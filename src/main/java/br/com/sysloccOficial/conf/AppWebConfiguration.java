@@ -62,7 +62,7 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventoIndividu
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventoIndividualController;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventosIndexController;
 import br.com.sysloccOficial.financeiro.resumomes.index.ResumoMesIndex;
-import br.com.sysloccOficial.financeiro.resumomes.individual.ResumoMesIndividual;
+import br.com.sysloccOficial.financeiro.resumomes.individual.ResumoMesIndividualController;
 import br.com.sysloccOficial.model.prospeccao.Prospeccao;
 import br.com.sysloccOficial.prospeccao.controllerProspeccao.editaProspeccao.ProspeccaoEditaController;
 import br.com.sysloccOficial.prospeccao.controllerProspeccao.index.ProspeccaoIndexController;
@@ -104,7 +104,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          ContasPagarController.class,
 								          ContasReceberController.class,
 								          ResumoMesIndex.class,
-								          ResumoMesIndividual.class,
+								          ResumoMesIndividualController.class,
 								          RelatorioEventosIndexController.class,
 								          RelatorioEventoIndividualController.class,
 								          AtualizaGruposController.class,

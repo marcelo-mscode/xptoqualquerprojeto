@@ -63,7 +63,38 @@ public class RelatorioEventoDAO {
 			return q.getSingleResult();
 			
 		} catch (Exception e) {
-//			JOptionPane.showMessageDialog(null, ""+e);
+			return null;
+		}
+	}
+
+	public List<Lista> relatorioListasIdLista(List<RelatorioEventos> eventos){
+		
+		List<Integer> idListas = new ArrayList<Integer>();
+		
+		for (int i = 0; i < eventos.size(); i++) {
+			idListas.add(eventos.get(i).getIdLista());
+		}
+		
+		try {
+			String consulta1 ="from Lista where idLista in("+idListas+")";
+			String consulta2 = consulta1.replace("[", "").replace("]", "");
+			
+			System.out.println(consulta2);
+			TypedQuery<Lista> q = manager.createQuery(consulta2, Lista.class);
+			
+			return q.getResultList();
+			
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public List<RelatorioEventos> relatorioEventoPorMesReferencia(Integer mes){
+		try {
+			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where mesReferencia="+mes + "order by idRelatorioEvento", RelatorioEventos.class);
+			return q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Ocorreu um erro Em RelatorioEventoDAO\nMétodo -- > relatorioEventoPorMesReferencia:" +e);
 			return null;
 		}
 	}
