@@ -117,6 +117,6 @@
 				<th>=></th>
 				<th>=></th>
 				<th>=></th>
-				<th style="font-weight: bold;">19.965,87</th>
+				<th style="font-weight: bold;"><fmt:formatNumber value="${lucroOperacional}" pattern="#,##0.00"/></th>
 				<th>34,5</th>
 			</tr>

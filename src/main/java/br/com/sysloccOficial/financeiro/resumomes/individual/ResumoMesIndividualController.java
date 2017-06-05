@@ -34,7 +34,7 @@ public class ResumoMesIndividualController {
 		MV.addObject("faturamentoMes", dadosEvento.faturamentoMes(dadosEvento.somaTotalEventos(infoEvento),dadosEvento.pgtoExternas(infoEvento)));
 		MV.addObject("impostos", dadosEvento.impostos(dadosEvento.somaTotalEventos(infoEvento)));
 		MV.addObject("totalCustosFaturamentos", 
-					dadosEvento.totalCustosFaturamentos(
+							dadosEvento.totalCustosFaturamentos(
 							dadosEvento.faturamentoMes(dadosEvento.somaTotalEventos(infoEvento),dadosEvento.pgtoExternas(infoEvento)),
 							dadosEvento.impostos(dadosEvento.somaTotalEventos(infoEvento))));
 		
@@ -43,6 +43,11 @@ public class ResumoMesIndividualController {
 		MV.addObject("somaCacheDiretoria", dadosEvento.somaCacheDiretoria(infoEvento));
 		MV.addObject("somaCacheTotal", dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento)));
 		
+		MV.addObject("lucroOperacional", dadosEvento.lucroOperacional(
+				dadosEvento.faturamentoMes(dadosEvento.somaTotalEventos(infoEvento),dadosEvento.pgtoExternas(infoEvento)),
+				dadosEvento.impostos(dadosEvento.somaTotalEventos(infoEvento)),
+				dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento))
+				));
 		
 		return MV;
 	}

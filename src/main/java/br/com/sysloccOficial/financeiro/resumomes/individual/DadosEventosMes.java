@@ -77,6 +77,17 @@ public class DadosEventosMes {
 		return somaCache;
 	}
 	
+	public BigDecimal lucroOperacional(BigDecimal FaturamentoMes, BigDecimal impostos, BigDecimal totalCache) {
+		
+		BigDecimal lucroOperacional = new BigDecimal("0");
+		
+		//FaturamentoMes - impostos - creditoImpostos - totalCache
+		
+		lucroOperacional = FaturamentoMes.subtract(impostos).subtract(totalCache);
+		
+		return lucroOperacional;
+	}
+	
 	
 	
 	
