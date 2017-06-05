@@ -12,8 +12,8 @@
 				<th class="input-160px"></th>
 				<th class="input-160px"></th>
 				<th class="input-160px"></th>
-				<th class="input-160px" style="font-weight: bold;">58.268,84</th>
-				<th class="input-160px">100,80	</th>
+				<th class="input-160px" style="font-weight: bold;"><fmt:formatNumber value="${SomaDespFixas}" pattern="#,##0.00"/></th>
+				<th class="input-160px">100,80</th>
 			</tr>
 			
 			<tr>
@@ -49,7 +49,7 @@
 			<tr>
 				<th class="input-260px">Salários</th>
 				<th><fmt:formatNumber value="${outrosFolhaPgto}" pattern="#,##0.00"/></th>
-				<th style="color: red" rowspan="2"><fmt:formatNumber value="${outrosFolhaPgto}" pattern="#,##0.00"/></th>
+				<th style="color: red;vertical-align: middle;" rowspan="2"><fmt:formatNumber value="${outrosFolhaPgto}" pattern="#,##0.00"/></th>
 				<th></th>
 				<th></th>
 				<th></th>
@@ -58,7 +58,7 @@
 
 			<tr>
 				<th class="input-260px" style="background-color: red">Dissidio Fev ??</th>
-				<th class="fundoAmarelo"></th>
+				<th class="fundoAmarelo" style="color: red"> - </th>
 				<th></th>
 				<th></th>
 				<th></th>

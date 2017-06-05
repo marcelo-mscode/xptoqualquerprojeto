@@ -87,5 +87,11 @@ public class DadosEventosMes {
 		lucroOperacional = FaturamentoMes.subtract(impostos).subtract(totalCache);
 		return lucroOperacional;
 	}
+
+	public BigDecimal SomaDespFixas(BigDecimal outrosImpostos, BigDecimal outrosEscritorios,
+									BigDecimal outrosTelefones,BigDecimal outrosFolhaPgto) {
+		BigDecimal soma = outrosImpostos.add(outrosEscritorios).add(outrosTelefones).add(outrosFolhaPgto);
+		return soma;
+	}
 	
 }
