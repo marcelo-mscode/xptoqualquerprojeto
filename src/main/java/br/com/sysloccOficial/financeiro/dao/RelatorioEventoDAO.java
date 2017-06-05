@@ -247,7 +247,6 @@ public class RelatorioEventoDAO {
 		
 		try {
 			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'",BigDecimal.class);
-			System.out.println();
 			return f.getSingleResult();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "erro SomaImpostos: "+e);

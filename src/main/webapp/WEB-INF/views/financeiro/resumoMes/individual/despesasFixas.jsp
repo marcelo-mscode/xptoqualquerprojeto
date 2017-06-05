@@ -18,7 +18,7 @@
 			
 			<tr>
 				<th class="input-160px">Outros Impostos/contador</th>
-				<th class="input-160px">${outrosImpostosContador}</th>
+				<th class="input-160px"><fmt:formatNumber value="${outrosImpostosContador}" pattern="#,##0.00"/></th>
 				<th class="input-160px"></th>
 				<th class="input-160px"></th>
 				<th class="input-160px"></th>
@@ -28,7 +28,7 @@
 			
 			<tr>
 				<th class="input-260px">Escritório</th>
-				<th>${outrosEscritorio}</th>
+				<th><fmt:formatNumber value="${outrosEscritorio}" pattern="#,##0.00"/></th>
 				<th></th>
 				<th></th>
 				<th></th>
@@ -38,8 +38,8 @@
 			
 			<tr>
 				<th class="input-260px">Telefones</th>
-				<th>${outrosTelefones}</th>
-				<th>${outrosTelefones}</th>
+				<th><fmt:formatNumber value="${outrosTelefones}" pattern="#,##0.00"/></th>
+				<th><fmt:formatNumber value="${outrosTelefones}" pattern="#,##0.00"/></th>
 				<th></th>
 				<th></th>
 				<th></th>
@@ -48,7 +48,7 @@
 			
 			<tr>
 				<th class="input-260px">Salários</th>
-				<th>${outrosFolhaPgto}</th>
+				<th><fmt:formatNumber value="${outrosFolhaPgto}" pattern="#,##0.00"/></th>
 				<th></th>
 				<th></th>
 				<th></th>
@@ -57,9 +57,9 @@
 			</tr>
 
 			<tr>
-				<th class="input-260px">Dissidio Fev</th>
-				<th></th>
-				<th style="color: red">43.245,52</th>
+				<th class="input-260px" style="background-color: red">Dissidio Fev ??????</th>
+				<th style="color: red"></th>
+				<th style="color: red"><fmt:formatNumber value="${outrosImpostosContador}" pattern="#,##0.00"/> - 43.245,52</th>
 				<th></th>
 				<th></th>
 				<th></th>
