@@ -28,7 +28,7 @@
 			
 			<tr>
 				<th class="input-260px">Escritório</th>
-				<th>9.451,15</th>
+				<th>${outrosEscritorio}</th>
 				<th></th>
 				<th></th>
 				<th></th>
@@ -38,8 +38,8 @@
 			
 			<tr>
 				<th class="input-260px">Telefones</th>
-				<th>1.584,29</th>
-				<th>1.584,29</th>
+				<th>${outrosTelefones}</th>
+				<th>${outrosTelefones}</th>
 				<th></th>
 				<th></th>
 				<th></th>

@@ -81,7 +81,7 @@ public class RelatorioEventoDAO {
 			String consulta1 ="from Lista where idLista in("+idListas+")";
 			String consulta2 = consulta1.replace("[", "").replace("]", "");
 			
-			System.out.println(consulta2);
+	//		System.out.println(consulta2);
 			TypedQuery<Lista> q = manager.createQuery(consulta2, Lista.class);
 			
 			return q.getResultList();
@@ -243,9 +243,11 @@ public class RelatorioEventoDAO {
 	
 	
 	
-	public BigDecimal outrosImpostosContador(String nomeTabela, String data) {
+	public BigDecimal despesasFixas(String nomeTabela, String data) {
+		
 		try {
 			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'",BigDecimal.class);
+			System.out.println();
 			return f.getSingleResult();
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "erro SomaImpostos: "+e);
