@@ -49,7 +49,7 @@
 			<tr>
 				<th class="input-260px">Salários</th>
 				<th><fmt:formatNumber value="${outrosFolhaPgto}" pattern="#,##0.00"/></th>
-				<th></th>
+				<th style="color: red" rowspan="2"><fmt:formatNumber value="${outrosFolhaPgto}" pattern="#,##0.00"/></th>
 				<th></th>
 				<th></th>
 				<th></th>
@@ -59,7 +59,7 @@
 			<tr>
 				<th class="input-260px" style="background-color: red">Dissidio Fev ??</th>
 				<th class="fundoAmarelo"></th>
-				<th style="color: red"><fmt:formatNumber value="${outrosImpostosContador}" pattern="#,##0.00"/> - 43.245,52</th>
+				<th></th>
 				<th></th>
 				<th></th>
 				<th></th>
