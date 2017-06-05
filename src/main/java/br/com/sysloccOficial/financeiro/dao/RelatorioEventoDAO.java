@@ -9,6 +9,7 @@ import java.util.List;
 
 
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -18,6 +19,7 @@ import javax.swing.JOptionPane;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.sysloccOficial.financeiro.model.FinancImpostos;
 import br.com.sysloccOficial.financeiro.relatorioeventos.Giro;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioCaches;
 import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
@@ -241,7 +243,15 @@ public class RelatorioEventoDAO {
 	
 	
 	
-	
+	public BigDecimal outrosImpostosContador(String nomeTabela, String data) {
+		try {
+			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'",BigDecimal.class);
+			return f.getSingleResult();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "erro SomaImpostos: "+e);
+			return null;
+		}
+	}
 	
 	
 	

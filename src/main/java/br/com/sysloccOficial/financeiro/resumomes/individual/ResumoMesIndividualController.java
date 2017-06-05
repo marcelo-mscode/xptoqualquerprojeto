@@ -49,6 +49,10 @@ public class ResumoMesIndividualController {
 				dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento))
 				));
 		
+		MV.addObject("outrosImpostosContador", relatorioEventoDAO.outrosImpostosContador("FinancImpostos","2016-10"));
+		
+		
+		
 		return MV;
 	}
 	

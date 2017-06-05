@@ -2,7 +2,12 @@ package br.com.sysloccOficial.financeiro.resumomes.individual;
 
 import java.math.BigDecimal;
 import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Component;
+
+import br.com.sysloccOficial.financeiro.model.FinancImpostos;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
 @Component
@@ -78,25 +83,9 @@ public class DadosEventosMes {
 	}
 	
 	public BigDecimal lucroOperacional(BigDecimal FaturamentoMes, BigDecimal impostos, BigDecimal totalCache) {
-		
 		BigDecimal lucroOperacional = new BigDecimal("0");
-		
-		//FaturamentoMes - impostos - creditoImpostos - totalCache
-		
 		lucroOperacional = FaturamentoMes.subtract(impostos).subtract(totalCache);
-		
 		return lucroOperacional;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

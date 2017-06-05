@@ -18,7 +18,7 @@
 			
 			<tr>
 				<th class="input-160px">Outros Impostos/contador</th>
-				<th class="input-160px">6.487,88</th>
+				<th class="input-160px">${outrosImpostosContador}</th>
 				<th class="input-160px"></th>
 				<th class="input-160px"></th>
 				<th class="input-160px"></th>
