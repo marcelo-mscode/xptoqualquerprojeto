@@ -48,7 +48,7 @@
 			
 			<tr>
 				<th class="input-260px">Salários</th>
-				<th>40.745,52</th>
+				<th>${outrosFolhaPgto}</th>
 				<th></th>
 				<th></th>
 				<th></th>
