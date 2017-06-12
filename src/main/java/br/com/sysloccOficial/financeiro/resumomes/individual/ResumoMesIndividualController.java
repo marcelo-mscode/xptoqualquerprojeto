@@ -73,6 +73,10 @@ public class ResumoMesIndividualController {
 		MV.addObject("outrasDespesas", relatorioEventoDAO.despesasFixas("FinancOutrasDespesas","2016-05"));
 		MV.addObject("creditosAplicacoes", dadosEvento.somaCreditosAplicacoes(somaDespesasFixas, somaDespVariaveis));
 		
+		MV.addObject("MOmargemContribuicao", relatorioEventoDAO.MOMargemContribuicao("2016","MAIO"));
+		
+		
+		
 		return MV;
 	}
 	

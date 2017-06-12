@@ -254,6 +254,18 @@ public class RelatorioEventoDAO {
 		}
 	}
 	
+
+	public BigDecimal MOMargemContribuicao(String anoEvento, String mesEvento) {
+		
+		try {
+			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valor) from RelatorioEventos where anoEvento = '"+anoEvento+"' and mesEvento = '"+mesEvento+"'",BigDecimal.class);
+			return f.getSingleResult();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "erro SomaImpostos: "+e);
+			return null;
+		}
+	}
+	
 	
 	
 	

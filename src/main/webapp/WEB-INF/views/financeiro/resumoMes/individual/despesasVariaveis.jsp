@@ -74,7 +74,7 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				<th style="color: blue;"><b>5.018,74</b></th>
+				<th style="color: blue;"><b><fmt:formatNumber value="${MOmargemContribuicao}" pattern="#,##0.00"/></b></th>
 				<th>136,10</th>
 			</tr>
 
