@@ -12,7 +12,7 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				<th style="font-weight: bold;">20.427,80</th>
+				<th style="font-weight: bold;"><fmt:formatNumber value="${somaDespVariaveis}" pattern="#,##0.00"/></th>
 				<th>35,3</th>
 			</tr>
 			
@@ -62,7 +62,7 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				<th style="border: 2px solid #000"><b>78.696,64</b></th>
+				<th style="border: 2px solid #000"><b><fmt:formatNumber value="${creditosAplicacoes}" pattern="#,##0.00"/></b></th>
 				<th>136,10</th>
 			</tr>
 			

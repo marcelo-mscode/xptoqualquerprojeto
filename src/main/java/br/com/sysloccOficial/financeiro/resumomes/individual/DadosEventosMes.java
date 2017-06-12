@@ -94,14 +94,19 @@ public class DadosEventosMes {
 		return soma;
 	}
 
-	public BigDecimal somaDespesasariaveis(BigDecimal despFixas) {
+	public BigDecimal SomaDespVariaveis(BigDecimal DespBancarias, BigDecimal despCaixaProjetos,
+			BigDecimal outrosVariaveis) {
+		BigDecimal soma = DespBancarias.add(despCaixaProjetos).add(outrosVariaveis);
+		return soma;
+	}
+
+	public BigDecimal somaCreditosAplicacoes(BigDecimal despFixas,BigDecimal despVariaveis) {
 		BigDecimal soma = new BigDecimal("0");
 		
-		soma.add(despFixas);
+		soma  = soma.add(despFixas).add(despVariaveis);
 		
 		// Soma Despesas Variaveis + Soma Despesas Fixas
 		
-		// TODO Auto-generated method stub
 		return soma;
 	}
 	
