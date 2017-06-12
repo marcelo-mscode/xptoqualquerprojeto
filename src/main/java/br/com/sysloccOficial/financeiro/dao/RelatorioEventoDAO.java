@@ -250,7 +250,7 @@ public class RelatorioEventoDAO {
 			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'",BigDecimal.class);
 			return f.getSingleResult();
 		} catch (Exception e) {
-			System.out.println("erro SomaImpostos: "+e);
+			System.out.println("erro despesasFixas: "+e);
 			return null;
 		}
 	}
@@ -262,7 +262,7 @@ public class RelatorioEventoDAO {
 			TypedQuery<BigDecimal> f = manager.createQuery("select sum(margemContribuicao) from RelatorioEventos where anoEvento = '"+anoEvento+"' and mesEvento = '"+mesEvento+"'",BigDecimal.class);
 			return f.getSingleResult();
 		} catch (Exception e) {
-			System.out.println("erro SomaImpostos: "+e);
+			System.out.println("erro MOMargemContribuicao: "+e);
 			return null;
 		}
 	}
@@ -272,7 +272,20 @@ public class RelatorioEventoDAO {
 			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valorLoccoAgenc) from RelatorioEventos where anoEvento = '"+anoEvento+"' and mesEvento = '"+mesEvento+"'",BigDecimal.class);
 			return f.getSingleResult();
 		} catch (Exception e) {
-			System.out.println("erro SomaImpostos: "+e);
+			System.out.println("erro contasReceber: "+e);
+			return null;
+		}
+	}
+	
+	public BigDecimal eventosContasPagar(String anoEvento, String mesEvento) {
+		
+		// 
+		
+		try {
+			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valorLoccoAgenc) from RelatorioEventos where anoEvento = '"+anoEvento+"' and mesEvento = '"+mesEvento+"'",BigDecimal.class);
+			return f.getSingleResult();
+		} catch (Exception e) {
+			System.out.println("erro contasReceber: "+e);
 			return null;
 		}
 	}
