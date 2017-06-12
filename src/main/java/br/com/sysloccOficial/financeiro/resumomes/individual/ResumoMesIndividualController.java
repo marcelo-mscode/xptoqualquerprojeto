@@ -54,13 +54,16 @@ public class ResumoMesIndividualController {
 		MV.addObject("outrosTelefones", relatorioEventoDAO.despesasFixas("FinancTelefone","2016-10"));
 		MV.addObject("outrosFolhaPgto", relatorioEventoDAO.despesasFixas("FinancFolhaPgto","2016-10"));
 	
+		BigDecimal somaDespesasFixas = dadosEvento.SomaDespFixas(relatorioEventoDAO.despesasFixas("FinancImpostos","2016-05"),
+				relatorioEventoDAO.despesasFixas("FinancEscritorio","2016-10"),	
+				relatorioEventoDAO.despesasFixas("FinancTelefone","2016-10"),
+				relatorioEventoDAO.despesasFixas("FinancFolhaPgto","2016-10"));
 		
-		MV.addObject("SomaDespFixas", dadosEvento.SomaDespFixas(relatorioEventoDAO.despesasFixas("FinancImpostos","2016-05"),
-																relatorioEventoDAO.despesasFixas("FinancEscritorio","2016-10"),	
-																relatorioEventoDAO.despesasFixas("FinancTelefone","2016-10"),
-																relatorioEventoDAO.despesasFixas("FinancFolhaPgto","2016-10")));
+		MV.addObject("SomaDespFixas", somaDespesasFixas);
 		
-		
+		MV.addObject("despCaixasProjetos", relatorioEventoDAO.despesasFixas("FinancDespesas","2016-05"));
+		MV.addObject("outrasDespesas", relatorioEventoDAO.despesasFixas("FinancOutrasDespesas","2016-05"));
+		MV.addObject("creditosApliacoes", dadosEvento.somaDespesasariaveis(somaDespesasFixas));
 		
 		return MV;
 	}

@@ -93,5 +93,16 @@ public class DadosEventosMes {
 		BigDecimal soma = outrosImpostos.add(outrosEscritorios).add(outrosTelefones).add(outrosFolhaPgto);
 		return soma;
 	}
+
+	public BigDecimal somaDespesasariaveis(BigDecimal despFixas) {
+		BigDecimal soma = new BigDecimal("0");
+		
+		soma.add(despFixas);
+		
+		// Soma Despesas Variaveis + Soma Despesas Fixas
+		
+		// TODO Auto-generated method stub
+		return soma;
+	}
 	
 }

@@ -28,7 +28,7 @@
 			
 			<tr>
 				<th class="input-260px">Despesas Caixa/Projetos</th>
-				<th>528,85</th>
+				<th><fmt:formatNumber value="${despCaixasProjetos}" pattern="#,##0.00"/></th>
 				<th></th>
 				<th></th>
 				<th></th>
@@ -38,7 +38,7 @@
 			
 			<tr>
 				<th class="input-260px">Outros Variáveis</th>
-				<th>17.610,18</th>
+				<th><fmt:formatNumber value="${outrasDespesas}" pattern="#,##0.00"/></th>
 				<th></th>
 				<th></th>
 				<th></th>
@@ -48,7 +48,7 @@
 			
 			<tr>
 				<th class="input-260px"><b>Juros Simples Nacional</b></th>
-				<th></th>
+				<th style="background-color: red"> - </th>
 				<th></th>
 				<th></th>
 				<th></th>
