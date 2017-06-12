@@ -267,4 +267,14 @@ public class RelatorioEventoDAO {
 		}
 	}
 
+	public BigDecimal contasReceber(String anoEvento, String mesEvento) {
+		try {
+			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valorLoccoAgenc) from RelatorioEventos where anoEvento = '"+anoEvento+"' and mesEvento = '"+mesEvento+"'",BigDecimal.class);
+			return f.getSingleResult();
+		} catch (Exception e) {
+			System.out.println("erro SomaImpostos: "+e);
+			return null;
+		}
+	}
+
 }

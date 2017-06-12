@@ -12,7 +12,7 @@
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
-		<th class="input-160px" style="border: 2px solid #000"><b>161.591,59</b></th>
+		<th class="input-160px" style="border: 2px solid #000"><b><fmt:formatNumber value="${contasReceber}" pattern="#,##0.00"/></b></th>
 		<th class="input-160px"></th>
 	</tr>
 
@@ -22,7 +22,7 @@
 		<th></th>
 		<th></th>
 		<th></th>
-		<th style="border: 2px solid #000"><b> - </b></th>
+		<th style="border: 2px solid #000; background-color: red"><b> - </b></th>
 		<th></th>
 	</tr>
 	
@@ -32,7 +32,7 @@
 		<th> - </th>
 		<th>Total =></th>
 		<th> - </th>
-		<th style="border: 2px solid #000"><b>161.591,59</b></th>
+		<th style="border: 2px solid #000"><b>${contasReceber}</b></th>
 		<th> - </th>
 	</tr>
 	

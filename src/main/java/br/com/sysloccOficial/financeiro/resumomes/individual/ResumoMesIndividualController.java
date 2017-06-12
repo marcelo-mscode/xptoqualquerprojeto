@@ -85,6 +85,8 @@ public class ResumoMesIndividualController {
 		MV.addObject("MOmargemContribuicao", MOContrib);
 
 		MV.addObject("giroDeficitAvit", dadosEvento.giroDeficitAvit(lucroOperacional,creditoAplic,MOContrib));
+
+		MV.addObject("contasReceber", relatorioEventoDAO.contasReceber("2016","MAIO"));
 		
 		
 		return MV;
