@@ -10,6 +10,7 @@ import java.util.List;
 
 
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -249,7 +250,7 @@ public class RelatorioEventoDAO {
 			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'",BigDecimal.class);
 			return f.getSingleResult();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "erro SomaImpostos: "+e);
+			System.out.println("erro SomaImpostos: "+e);
 			return null;
 		}
 	}
@@ -258,22 +259,12 @@ public class RelatorioEventoDAO {
 	public BigDecimal MOMargemContribuicao(String anoEvento, String mesEvento) {
 		
 		try {
-			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valor) from RelatorioEventos where anoEvento = '"+anoEvento+"' and mesEvento = '"+mesEvento+"'",BigDecimal.class);
+			TypedQuery<BigDecimal> f = manager.createQuery("select sum(margemContribuicao) from RelatorioEventos where anoEvento = '"+anoEvento+"' and mesEvento = '"+mesEvento+"'",BigDecimal.class);
 			return f.getSingleResult();
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "erro SomaImpostos: "+e);
+			System.out.println("erro SomaImpostos: "+e);
 			return null;
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

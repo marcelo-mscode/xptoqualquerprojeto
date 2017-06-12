@@ -84,6 +84,6 @@
 				<th>=></th>
 				<th>=></th>
 				<th>=></th>
-				<th style="font-weight: bold;color: red">(53.697,90)</th>
+				<th style="font-weight: bold;color: red"><fmt:formatNumber value="${giroDeficitAvit}" pattern="#,##0.00"/></th>
 				<th style="color: red;background-color: #fff">(92,88)</th>
 			</tr>

@@ -43,17 +43,20 @@ public class ResumoMesIndividualController {
 		MV.addObject("somaCacheDiretoria", dadosEvento.somaCacheDiretoria(infoEvento));
 		MV.addObject("somaCacheTotal", dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento)));
 		
-		MV.addObject("lucroOperacional", dadosEvento.lucroOperacional(
+		//
+		BigDecimal lucroOperacional = dadosEvento.lucroOperacional(
 				dadosEvento.faturamentoMes(dadosEvento.somaTotalEventos(infoEvento),dadosEvento.pgtoExternas(infoEvento)),
 				dadosEvento.impostos(dadosEvento.somaTotalEventos(infoEvento)),
 				dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento))
-				));
+				);
+		MV.addObject("lucroOperacional", lucroOperacional);
 		
 		MV.addObject("outrosImpostosContador", relatorioEventoDAO.despesasFixas("FinancImpostos","2016-05"));
 		MV.addObject("outrosEscritorio", relatorioEventoDAO.despesasFixas("FinancEscritorio","2016-10"));
 		MV.addObject("outrosTelefones", relatorioEventoDAO.despesasFixas("FinancTelefone","2016-10"));
 		MV.addObject("outrosFolhaPgto", relatorioEventoDAO.despesasFixas("FinancFolhaPgto","2016-10"));
-	
+		
+		//
 		BigDecimal somaDespesasFixas = dadosEvento.SomaDespFixas(relatorioEventoDAO.despesasFixas("FinancImpostos","2016-05"),
 				relatorioEventoDAO.despesasFixas("FinancEscritorio","2016-10"),	
 				relatorioEventoDAO.despesasFixas("FinancTelefone","2016-10"),
@@ -63,7 +66,8 @@ public class ResumoMesIndividualController {
 		
 		
 		MV.addObject("despCaixasProjetos", relatorioEventoDAO.despesasFixas("FinancDespesas","2016-05"));
-
+		
+		//
 		BigDecimal somaDespVariaveis = dadosEvento.SomaDespVariaveis(
 				new BigDecimal("2289.04")
 				, relatorioEventoDAO.despesasFixas("FinancDespesas","2016-05")
@@ -71,10 +75,16 @@ public class ResumoMesIndividualController {
 		MV.addObject("somaDespVariaveis", somaDespVariaveis);
 				
 		MV.addObject("outrasDespesas", relatorioEventoDAO.despesasFixas("FinancOutrasDespesas","2016-05"));
-		MV.addObject("creditosAplicacoes", dadosEvento.somaCreditosAplicacoes(somaDespesasFixas, somaDespVariaveis));
 		
-		MV.addObject("MOmargemContribuicao", relatorioEventoDAO.MOMargemContribuicao("2016","MAIO"));
+		//
+		BigDecimal creditoAplic = dadosEvento.somaCreditosAplicacoes(somaDespesasFixas, somaDespVariaveis);
+		MV.addObject("creditosAplicacoes",creditoAplic);
 		
+		//
+		BigDecimal MOContrib = relatorioEventoDAO.MOMargemContribuicao("2016","MAIO");
+		MV.addObject("MOmargemContribuicao", MOContrib);
+
+		MV.addObject("giroDeficitAvit", dadosEvento.giroDeficitAvit(lucroOperacional,creditoAplic,MOContrib));
 		
 		
 		return MV;

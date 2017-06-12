@@ -102,12 +102,21 @@ public class DadosEventosMes {
 
 	public BigDecimal somaCreditosAplicacoes(BigDecimal despFixas,BigDecimal despVariaveis) {
 		BigDecimal soma = new BigDecimal("0");
-		
 		soma  = soma.add(despFixas).add(despVariaveis);
-		
-		// Soma Despesas Variaveis + Soma Despesas Fixas
-		
 		return soma;
 	}
+	
+	public BigDecimal giroDeficitAvit(BigDecimal lucroOperacional, BigDecimal creditoAplic, BigDecimal margemOperacional) {
+		BigDecimal soma = new BigDecimal("0");
+		// Lucro Operacional - CreditosAplicacoes + MO
+		try {
+			soma = soma.add(lucroOperacional).subtract(creditoAplic).add(margemOperacional);
+			return soma;
+		} catch (Exception e) {
+			System.out.println("erro SomaImpostos: "+e);
+			return null;
+		}
+	}
+	
 	
 }
