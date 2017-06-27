@@ -170,13 +170,13 @@
 				<button onclick="revisarPlanilhaPorAjax(${idLista});" type="button" class="btn btn-danger" id="revisarPlanilha" >Revisar Planilha</button> 
 			</c:if>
 	
-			<%-- <c:if test="${idlistaEstatus == 2}">
+			<c:if test="${idlistaEstatus == 2}">
 				<button onclick="aprovarPlanilhaPorAjax(${idLista});" type="button" class="btn btn-primary" id="aprovarPlanilha" style="float: right;">Aprovar Para Produção</button> 
 			</c:if>
 	
 			<c:if test="${idlistaEstatus == 5}">
 				<button disabled="disabled" type="button" class="btn btn-primary" id="aprovarPlanilha" style="float: right;"	>Aprovado Para Produção</button> 
-			</c:if> --%>
+			</c:if>
 	
 		</div>
 		

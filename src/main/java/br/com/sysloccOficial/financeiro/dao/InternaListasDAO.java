@@ -31,7 +31,7 @@ public class InternaListasDAO {
 			List<Lista> listasInternas = qs.getResultList();
 			return listasInternas;
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, ""+e);// TODO: handle exception
+			System.out.println("Erro ao gerar Listas Internas: "+e);
 			return null;
 		}
 		
