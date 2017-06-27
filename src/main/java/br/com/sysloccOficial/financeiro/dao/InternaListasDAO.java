@@ -20,7 +20,7 @@ public class InternaListasDAO {
 
 	public List<Lista> listasInternasComItensFechados() {
 		try {
-		TypedQuery<Integer> q = manager.createQuery("select distinct(p.lista.idLista) from ProducaoP p",Integer.class);
+		TypedQuery<Integer> q = manager.createQuery("select distinct(p.lista.idLista) from ProducaoP p where idlista <> 1932",Integer.class);
 		List<Integer> ids = q.getResultList();
 		
 		String consulta = "select l from Lista l where idLista in ("+ids+")";

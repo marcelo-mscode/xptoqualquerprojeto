@@ -18,8 +18,7 @@ public class IndexInterna {
 
 	@RequestMapping("listasInternas")
 	public ModelAndView indexListasInternas(){
-		ModelAndView MV = new ModelAndView();
-		MV.setViewName("financeiro/interna/listasInternas/index");
+		ModelAndView MV = new ModelAndView("financeiro/interna/listasInternas/index");
 		List<Lista> listaInternas = internaListasDAO.listasInternasComItensFechados();
 		MV.addObject("listasInternas", listaInternas);
 		return MV;

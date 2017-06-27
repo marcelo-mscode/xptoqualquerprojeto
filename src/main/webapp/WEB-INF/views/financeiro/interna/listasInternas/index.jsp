@@ -41,7 +41,7 @@
 				<td>${loop.count}</td>
 			    <td><a href="internaIndividual?idLista=${listasInternas.idLista}">${listasInternas.lista}</a></td>
 				<td>${listasInternas.idJob.empresa.empresa}</td>
-				<td>16/06/2015</td>
+				<td>Colocar data evento no código</td>
 				<td>
 					${fn:length(listasInternas.producaoP)}
 				</td>
