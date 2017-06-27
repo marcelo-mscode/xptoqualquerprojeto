@@ -80,6 +80,7 @@
                           </td>
                         </tr>
                         <c:forEach items="${categoria.grupo}" var="grupo">
+                          <c:if test="${grupo.opcional == false }">
                          
                           <tr class="border-teste">
                             <td class="alinhamentoVertical border-top-table-top" colspan="5">
@@ -237,7 +238,7 @@
                               </table>
                             </td>
                             </tr>
-                            
+                            </c:if>
                         </c:forEach>
                       </c:forEach>
                     </tbody>

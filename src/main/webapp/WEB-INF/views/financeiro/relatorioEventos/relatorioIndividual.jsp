@@ -79,7 +79,7 @@
 
 		<tr>
 			<td class="descricao" style="border-left: 2px solid #ccc !important">% Imposto =></td>
-			<td class="descricao"><b>15,95%</b></td>
+			<td class="descricao" style="background-color: red;color: #fff"><b>15,95%</b></td>
 			<td class="descricao"><b><fmt:formatNumber value="${relatorio.impostoSobreValorLoccoAgencia}" pattern="#,##0.00"/></b></td>
 		</tr>
 	  </tbody>

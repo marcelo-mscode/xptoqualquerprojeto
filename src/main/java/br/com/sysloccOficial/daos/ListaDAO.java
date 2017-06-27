@@ -201,7 +201,7 @@ public class ListaDAO {
 	}
 	
 	public List<Grupo> listaDeGrupos(Integer IdLista){
-		String consulta = "from Grupo g where idLista="+IdLista;
+		String consulta = "from Grupo g where idLista="+IdLista+" and opcional = 0";
 		TypedQuery<Grupo>lista = manager.createQuery(consulta, Grupo.class);
 		return lista.getResultList();
 	}
