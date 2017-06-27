@@ -90,8 +90,13 @@ public class DadosEventosMes {
 
 	public BigDecimal SomaDespFixas(BigDecimal outrosImpostos, BigDecimal outrosEscritorios,
 									BigDecimal outrosTelefones,BigDecimal outrosFolhaPgto) {
-		BigDecimal soma = outrosImpostos.add(outrosEscritorios).add(outrosTelefones).add(outrosFolhaPgto);
-		return soma;
+		try {
+			BigDecimal soma = outrosImpostos.add(outrosEscritorios).add(outrosTelefones).add(outrosFolhaPgto);
+			return soma;
+		} catch (Exception e) {
+			BigDecimal soma = new BigDecimal("0");
+			return soma;
+		}
 	}
 
 	public BigDecimal SomaDespVariaveis(BigDecimal DespBancarias, BigDecimal despCaixaProjetos,
@@ -115,6 +120,21 @@ public class DadosEventosMes {
 		} catch (Exception e) {
 			System.out.println("erro SomaImpostos: "+e);
 			return null;
+		}
+	}
+
+	public BigDecimal totalPagar(BigDecimal eventosContasPagar,BigDecimal totalSalarios, BigDecimal totalCaches,
+								 BigDecimal totalImpostosNF, BigDecimal OutrosImpostos) {
+		try {
+			
+			BigDecimal somaTotalPagar = new BigDecimal("0");
+			somaTotalPagar = somaTotalPagar.add(eventosContasPagar).add(totalSalarios).add(totalCaches).
+						   add(totalImpostosNF).add(OutrosImpostos);
+			return somaTotalPagar;
+			
+		} catch (Exception e) {
+			BigDecimal somaTotalpagar = new BigDecimal("0");
+			return somaTotalpagar;
 		}
 	}
 	

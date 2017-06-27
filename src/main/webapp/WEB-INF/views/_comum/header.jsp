@@ -189,6 +189,7 @@
                 </ul>
               </li>
               <li class="divider"></li>
+	          <li><a href="<c:url value="relatorioCache" />">Relatório Caches</a></li>
 	          <li><a href="<c:url value="cachePadrao" />">Cache Padrão</a></li>
 			  <li><a href="<c:url value="cachePadrao" />"><i class="glyphicon glyphicon-cog" style="top: 2px;margin-right: 5px"></i>Categorias</a></li>
             </ul>
