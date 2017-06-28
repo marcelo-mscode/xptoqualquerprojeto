@@ -138,7 +138,7 @@ public class ApoioCartaDAO {
 	    	MV.addObject("CartaOutroFornecedor", outrof);
 	    	
 		} catch (Exception e) {
-			System.out.println("Não tem ");
+			System.out.println("ApoioCartaDAO, linha 141, diz: \nNão tem Carta de contratação de outro fornecedor !!!!");
 		}
 	}
 	
