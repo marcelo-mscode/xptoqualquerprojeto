@@ -39,6 +39,8 @@ public class AtualizaRelatorioEventoApoio {
 	
 	
 	public void montaObjetoRelatorio(Integer idLista,String mes,String ano){
+	
+		
 		Integer idRelatorioParaGiroTelefone = null;
 		Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
 		List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
@@ -71,7 +73,7 @@ public class AtualizaRelatorioEventoApoio {
 			novoRelatorio.setDataAtualizacao(Calendar.getInstance());
 			novoRelatorio.setIdLista(idLista);
 			
-			novoRelatorio.setImpostoSobreValorLoccoAgencia(calculaImpostoSobreValorLoccoAgencia(novoRelatorio.getValorLoccoAgenc(), new BigDecimal("0.1595")));
+			novoRelatorio.setImpostoSobreValorLoccoAgencia(calculaImpostoSobreValorLoccoAgencia(novoRelatorio.getValorLoccoAgenc(), new BigDecimal("0.155")));
 			novoRelatorio.setValorLiquido(novoRelatorio.getValorLoccoAgenc().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
 			novoRelatorio.setImpostoClienteDiferenca(novoRelatorio.getImpostoCliente().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
 			
