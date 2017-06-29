@@ -135,7 +135,7 @@ public class CalculoValoresInterna extends Calculadora{
 	}
 	
 	public BigDecimal getImpostoValorFornecedor() {
-		return impostoValorFornecedor = getTotal1LoCCO().multiply(new BigDecimal("0.1595")); 
+		return impostoValorFornecedor = getTotal1LoCCO().multiply(new BigDecimal("0.155")); 
 	}
 
 	public BigDecimal getImpostoDiferenca() {
