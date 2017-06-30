@@ -188,6 +188,28 @@ public class InternaIndividualDAO {
 		}
 	}
 
+	public void impostoInterna(String texto, Integer idLista) {
+		
+		double imposto = util.converteStringParaDouble(texto.replace(",", "."));
+		
+		Lista lista = manager.find(Lista.class, idLista);
+		try {
+			TypedQuery<InfoInterna> q = manager.createQuery("from InfoInterna where idlista="+idLista,InfoInterna.class);
+			InfoInterna infoInterna = q.getSingleResult();
+			infoInterna.setImpostoInterna(imposto);
+			manager.merge(infoInterna);
+			manager.close();
+		} catch (Exception e) {
+			System.out.println(e);
+			
+			InfoInterna infoInterna = new InfoInterna();
+			infoInterna.setImpostoInterna(imposto);
+			infoInterna.setLista(lista);
+			manager.persist(infoInterna);
+			manager.close();
+		}
+	}
+
 	public void dataPagInterna(String texto, Integer idLista) throws ParseException {
 
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

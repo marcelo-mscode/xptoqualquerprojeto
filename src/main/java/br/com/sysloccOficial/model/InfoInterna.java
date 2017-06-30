@@ -24,6 +24,8 @@ public class InfoInterna {
 	private String nfInterna;
 	private Date dataPagamento;
 	private boolean recebido;
+	private double impostoInterna;
+	
 	
 // ---------------------------------------------------------------- //	
 
@@ -36,6 +38,12 @@ public class InfoInterna {
 	
 	public Integer getIdInfoInterna() {
 		return idInfoInterna;
+	}
+	public double getImpostoInterna() {
+		return impostoInterna;
+	}
+	public void setImpostoInterna(double impostoInterna) {
+		this.impostoInterna = impostoInterna;
 	}
 	public Calendar getDataRecebido() {
 		return dataRecebido;

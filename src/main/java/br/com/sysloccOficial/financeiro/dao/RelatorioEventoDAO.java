@@ -11,6 +11,7 @@ import java.util.List;
 
 
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -306,6 +307,19 @@ public class RelatorioEventoDAO {
 			System.out.println("erro despesasFixas: "+e);
 			return null;
 		}
+	}
+
+	public InfoInterna infoInterna(Integer idLista) {
+		
+		try {
+			TypedQuery<InfoInterna> info = manager.createQuery("", InfoInterna.class);
+			return info.getSingleResult();
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao buscar informações em InfoInterna: "+e);
+			return null;
+		}
+		
 	}
 	
 	

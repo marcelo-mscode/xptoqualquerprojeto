@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
+import br.com.sysloccOficial.model.InfoInterna;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
@@ -23,6 +24,7 @@ public class RelatorioEventoIndividualController {
 	@RequestMapping("relatorioEventoIndividual")
 	public ModelAndView relatorioEventoIndividual(Integer idLista){
 		ModelAndView MV = new ModelAndView("financeiro/relatorioEventos/relatorioIndividual");
+		
 		Lista infoLista = relatorioEventoDAO.listaPorIdLista(idLista);
 		
 		RelatorioEventos relatorioEventos = relatorioEventoDAO.relatorioEventoPorIdLista(idLista);
@@ -31,10 +33,18 @@ public class RelatorioEventoIndividualController {
 		
 	 	List<CacheEvento> relatorio = relatorioEventoDAO.listaCacheEventoPorEvento(relatorioEventos.getIdRelatorioEvento());
 		
+	 	
+	 	InfoInterna infoInterna = relatorioEventoDAO.infoInterna(idLista);
+	 	
 	    MV.addObject("relatorio",relatorioEventos);
 		MV.addObject("relatorioCaches", relatorio);
 		MV.addObject("relBVS",relatorioBVS);
 		MV.addObject("infoLista", infoLista);
+
+		MV.addObject("infoInterna", infoInterna);
+		
+		
+		
 		return MV;
 	}
 	

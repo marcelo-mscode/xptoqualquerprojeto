@@ -2479,11 +2479,6 @@ function editaCamposProducaoP(id,action, idProducao) {
 
 	var valor = $("#"+id).val();
 	
-	/*if(valor == " " || valor == "" || valor == null){
-		alert("Digite um valor para esse campo ou deixe em branco !");
-		return null;
-	}*/
-	
 	$.ajax({
 		url : action+"?texto="+valor+"&idProducao="+idProducao,
 		success : function(data) {

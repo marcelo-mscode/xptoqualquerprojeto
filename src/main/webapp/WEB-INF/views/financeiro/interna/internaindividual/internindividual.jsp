@@ -58,9 +58,9 @@
          	onblur="editaCamposProducaoP('nfInterna${infoLista.idLista}','infoInternaNf',${infoLista.idLista});" type="text" value="${infoInterna.nfInterna}">
          </td>
          
-         <td colspan="3" class="form-inline">Imposto &nbsp&nbsp
-         	<input id="nfInterna${infoLista.idLista}" class="form-control input-80px"
-         	onblur="editaCamposProducaoP('nfInterna${infoLista.idLista}','infoInternaNf',${infoLista.idLista});" type="text" value="${infoInterna.nfInterna}">
+         <td colspan="3" class="form-inline">Imposto % &nbsp&nbsp
+         	<input id="impostoInterna${infoLista.idLista}" class="form-control input-80px"
+         	onblur="editaCamposProducaoP('impostoInterna${infoLista.idLista}','impostoInterna',${infoLista.idLista});" type="text" value="${infoInterna.impostoInterna}">
          </td>
          
          

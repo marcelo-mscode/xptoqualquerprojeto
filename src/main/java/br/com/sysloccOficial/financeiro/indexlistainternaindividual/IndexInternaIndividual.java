@@ -169,10 +169,10 @@ public class IndexInternaIndividual {
 	public String impostoInterna(String texto, Integer idProducao){
 		
 		try {
-			internaIndividualDAO.dataPagInterna(texto, idProducao);
+			internaIndividualDAO.impostoInterna(texto, idProducao);
 			return "ok";
 		} catch (Exception e) {
-			System.out.println("Insira uma data válida: "+e);
+			System.out.println("Insira um imposto válido: "+e);
 			return "erro";
 		}
 		
