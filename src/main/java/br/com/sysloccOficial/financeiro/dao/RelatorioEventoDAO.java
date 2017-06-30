@@ -312,7 +312,7 @@ public class RelatorioEventoDAO {
 	public InfoInterna infoInterna(Integer idLista) {
 		
 		try {
-			TypedQuery<InfoInterna> info = manager.createQuery("", InfoInterna.class);
+			TypedQuery<InfoInterna> info = manager.createQuery("from InfoInterna where idLista = "+idLista, InfoInterna.class);
 			return info.getSingleResult();
 			
 		} catch (Exception e) {

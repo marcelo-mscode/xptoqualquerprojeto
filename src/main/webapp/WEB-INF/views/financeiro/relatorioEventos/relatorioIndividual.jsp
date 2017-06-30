@@ -51,16 +51,16 @@
 			<td>${infoLista.idJob.empresa.empresa}</td>
 			<td></td>
 			<td>Data do Evento</td>
-			<td>06/05/2016</td>
+			<td style="background-color: red;color: #fff">06/05/2016 Colocar data</td>
 			
 		</tr>
 
 		<tr>
 			<td>Nome do Evento</td>
 			<td>${infoLista.lista}</td>
-			<td>NF</td>
+			<td style="background-color: red;color: #fff">NF</td>
 			<td>Local do Evento</td>
-			<td>SP</td>
+			<td style="background-color: red;color: #fff">SP</td>
 		</tr>
 	  </tbody>
 	</table>
@@ -79,7 +79,7 @@
 
 		<tr>
 			<td class="descricao" style="border-left: 2px solid #ccc !important">% Imposto =></td>
-			<td class="descricao" style="background-color: red;color: #fff"><b>15,95%</b></td>
+			<td class="descricao"><b>${infoInterna.impostoInterna}%</b></td>
 			<td class="descricao"><b><fmt:formatNumber value="${relatorio.impostoSobreValorLoccoAgencia}" pattern="#,##0.00"/></b></td>
 		</tr>
 	  </tbody>
@@ -232,7 +232,7 @@
 			<td>Imposto cliente 22,90%</td>
 			<td><fmt:formatNumber value="${infoLista.impostoValor}" pattern="#,##0.00"/></td>
 			<td></td>
-			<td><fmt:formatNumber value="${infoLista.impostoValor - (infoLista.valorTotal * 0.1595)}" pattern="#,##0.00"/></td>
+			<td><fmt:formatNumber value="${infoLista.impostoValor - (infoLista.valorTotal * (infoInterna.impostoInterna/100))}" pattern="#,##0.00"/></td>
 			<td></td>
 		</tr>
 		
@@ -290,7 +290,7 @@
 	  <tbody id="prospeccaoFiltro">
 	  <tr>
 	  	<td align="center" colspan="2" >Liquido de Impostos =></td>
-	  	<td align="center"><b><fmt:formatNumber value="${infoLista.valorTotal - (infoLista.valorTotal * infoInterna.impostoInterna)}" pattern="#,##0.00"/></b></td>
+	  	<td align="center"><b><fmt:formatNumber value="${infoLista.valorTotal - (infoLista.valorTotal * (infoInterna.impostoInterna/100))}" pattern="#,##0.00"/></b></td>
 	  </tr>
 	  <tr>
 	  	<td colspan="3" style="padding: 18px"></td>
