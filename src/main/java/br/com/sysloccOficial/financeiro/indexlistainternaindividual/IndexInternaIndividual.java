@@ -158,9 +158,24 @@ public class IndexInternaIndividual {
 			internaIndividualDAO.dataPagInterna(texto, idProducao);
 			return "ok";
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, ""+e);
+			System.out.println("Insira uma data válida: "+e);
+//			JOptionPane.showMessageDialog(null, ""+e);
 			return "erro";
 		}
+	}
+	
+	@RequestMapping("impostoInterna")
+	@ResponseBody
+	public String impostoInterna(String texto, Integer idProducao){
+		
+		try {
+			internaIndividualDAO.dataPagInterna(texto, idProducao);
+			return "ok";
+		} catch (Exception e) {
+			System.out.println("Insira uma data válida: "+e);
+			return "erro";
+		}
+		
 	}
 	
 	

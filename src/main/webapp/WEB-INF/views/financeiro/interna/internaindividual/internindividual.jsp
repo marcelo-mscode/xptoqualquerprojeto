@@ -42,11 +42,12 @@
 </div>
 
 <div id="criacaoListas" class="efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:10px 0px 70px 10px;">
-   <table class="table table-striped table-hover table-condensed" style="position: fixed;margin-top: 73px;">
+   <table class="table table-bordered table-hover table-condensed" style="position: fixed;margin-top: 73px;">
       <tr>
          <td colspan="4">Evento: ${infoLista.lista}</td>
          <td colspan="2">${infoLista.idJob.empresa.empresa}</td>
          <td colspan="3">Requisitante: ${infoLista.idJob.contatos.contato}</td>
+       
          <td colspan="3" class="form-inline">Data Pagto:
          	 <input id="dataPag${infoLista.idLista}" class="form-control input-160px"
          	 onblur="editaCamposProducaoP('dataPag${infoLista.idLista}','infoInternaData',${infoLista.idLista});" onclick="mudaCampoData('dataPag${infoLista.idLista}');" type="text"
@@ -56,6 +57,14 @@
          	<input id="nfInterna${infoLista.idLista}" class="form-control input-80px"
          	onblur="editaCamposProducaoP('nfInterna${infoLista.idLista}','infoInternaNf',${infoLista.idLista});" type="text" value="${infoInterna.nfInterna}">
          </td>
+         
+         <td colspan="3" class="form-inline">Imposto &nbsp&nbsp
+         	<input id="nfInterna${infoLista.idLista}" class="form-control input-80px"
+         	onblur="editaCamposProducaoP('nfInterna${infoLista.idLista}','infoInternaNf',${infoLista.idLista});" type="text" value="${infoInterna.nfInterna}">
+         </td>
+         
+         
+         
       </tr>
    </table>
    <a href="relatorioEventoIndividual?idLista=${infoLista.idLista}" style="float: right;margin-right: 15px;">Relatório Evento: ${infoLista.lista}</a>
