@@ -123,25 +123,17 @@
                  
                 <!-- Fat Locco -->  
                   <td class="textRight">
-	                  <c:if test="${itensInterna.produtoGrupo.imposto == true && }">
+	                  <c:if test="${itensInterna.produtoGrupo.imposto == true && itensInterna.produtoGrupo.idGrupo.incideAdministracao == false}">
 	              	    <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/> 
 	                  </c:if>
                   </td>
-               <!--  --> 
 				
                 <!-- SubContratados -->  
                   <td class="textRight">
-                  SubContratados
-                  
-<%-- 	             <c:if test="${itensInterna.produtoGrupo.imposto == true}">
-	              	    <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/> 
+ 	            	 <c:if test="${itensInterna.produtoGrupo.imposto == true && itensInterna.produtoGrupo.idGrupo.incideAdministracao == true}">
+	              	  	<fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/> 
 	                 </c:if>
- --%>                  </td>
-               <!--  --> 
-				
-				
-				
-				
+                 </td>
 				               
                <!-- Fat Direto -->
                   <td class="textRight">
@@ -149,9 +141,6 @@
 	              	    <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
 	                  </c:if>
                   </td>
- 			   <!--  -->                  
-
-
                   
                   <!-- Valor fornecedor -->	
                   <td class="colorRed" style="padding: 0px">
@@ -243,6 +232,7 @@
 		               	<td colspan="1">Despesas Evento</td>
 		               	<td colspan="1"></td>
 		               	<td colspan="1"></td>
+		               	<td colspan="1"></td>
 						<td class="colorRed"><fmt:formatNumber value="${totalDepesas}" pattern="#,##0.00"/></td>
 		               	<td colspan="1"></td>
 		               	<td class="colorRed">(<fmt:formatNumber value="${totalDepesas}" pattern="#,##0.00"/>)</td>
@@ -287,16 +277,23 @@
                   </td>
                </tr> -->
                <tr>
-                  <td colspan="12" style="height: 20px;"></td>
+                  <td colspan="13" style="height: 20px;"></td>
                </tr>
                <tr>
                   <th class="servicos" style="text-align: left;">SubTotais</th>
+
                   <th class="servicos">
                      <fmt:formatNumber value="${calculadora.subLoCCo}" pattern="#,##0.00"/>
                   </th>
+
+                  <th class="servicos">
+						? 2.705,00 ?<%-- <fmt:formatNumber value="${calculadora.subDireto}" pattern="#,##0.00"/> --%>
+                  </th>
+
                   <th class="servicos">
                      <fmt:formatNumber value="${calculadora.subDireto}" pattern="#,##0.00"/>
                   </th>
+
                   <td class="colorRed">
 	                  	<c:if test="${totalDepesas != null }">
 	                     <fmt:formatNumber value="${calculadora.subValorFornecedor+totalDepesas}" pattern="#,##0.00"/>
@@ -322,13 +319,16 @@
                   
                   <td colspan="6"></td>
                </tr>
+               
+<!-- FEE  -->               
                <tr>
                   <th>Fee ${infoLista.administracao}%</th>
                   <th class="servicos">
                      <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
                   </th>
                   <th></th>
-                  <td class="colorRed">-</td>
+                  <td class="colorRed"></td>
+                  <td class="colorRed"></td>
                   <td class="textRight">
                      <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
                   </td>
@@ -337,13 +337,35 @@
                   </td>
                   <td colspan="6"></td>
                </tr>
+
+<!-- FEE REDUZIDO -->               
+               <tr>
+                  <th>Fee REDUZIDO ${infoLista.administracao}%</th>
+                  <th class="servicos">
+                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
+                  </th>
+                  <th></th>
+                  <td class="colorRed"></td>
+                  <td class="colorRed"></td>
+                  <td class="textRight">
+                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
+                  </td>
+                  <td class="textRight">
+                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
+                  </td>
+                  <td colspan="6"></td>
+               </tr>
+<!--  -->               
+               
+               
                <tr>
                   <th>Despesas Evento</th>
                   <th></th>
                   <th></th>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>-</td>
+                  <th></th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                   <td colspan="6"></td>
                </tr>
                <tr>
@@ -352,8 +374,9 @@
                      <fmt:formatNumber value="${calculadora.subTotalGeral}" pattern="#,##0.00"/>
                   </th>
                   <th></th>
-                  <td>-</td>
-                  <td>-</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                   <td colspan="6"></td>
                </tr>
                <tr>
@@ -361,6 +384,7 @@
                   <th class="servicos textRight">
                      <fmt:formatNumber value="${impostoLista}" pattern="#,##0.00"/>
                   </th>
+                  <th class="servicos"></th>
                   <th class="servicos"></th>
                   <th class="servicos colorRed">
                      <fmt:formatNumber value="${calculadora.impostoValorFornecedor}" pattern="#,##0.00"/>
@@ -378,6 +402,7 @@
                   <th class="servicos textRight">
                      <fmt:formatNumber value="${calculadora.total1LoCCO}" pattern="#,##0.00"/>
                   </th>
+                  <th class="servicos textRight"></th>
                   <th class="servicos textRight"></th>
                   <td></td>
                   <td></td>
@@ -399,6 +424,7 @@
                   <th class="fundoVerde textRight" colspan="2">
                      <fmt:formatNumber value="${calculadora.total2}" pattern="#,##0.00"/>
                   </th>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <th class="fundoVerde"></th>

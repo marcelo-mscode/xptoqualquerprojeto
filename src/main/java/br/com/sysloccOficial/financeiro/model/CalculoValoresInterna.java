@@ -78,7 +78,7 @@ public class CalculoValoresInterna extends Calculadora{
 
 	public BigDecimal getsubLoCCo() {
 		for (int i = 0; i < listaDeProducaoP.size(); i++) {
-			 if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == true)
+			 if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == true && listaDeProducaoP.get(i).getProdutoGrupo().getIdGrupo().isIncideAdministracao() ==  false)
 				 subLoCCo = calculaSubTotais(listaDeProducaoP.get(i).getProdutoGrupo().isImposto());
 		 }			
 	return subLoCCo;
@@ -116,6 +116,9 @@ public class CalculoValoresInterna extends Calculadora{
 			  calculoTotal = calculoTotal.add(precoPorQuantidades);
 		  }
 		}
+		
+		System.out.println("----> calculoTotal: " +calculoTotal);
+		
 		return calculoTotal;
 	}
 
