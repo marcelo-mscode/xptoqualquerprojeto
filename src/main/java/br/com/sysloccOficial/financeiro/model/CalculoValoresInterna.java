@@ -117,7 +117,6 @@ public class CalculoValoresInterna extends Calculadora{
 		  }
 		}
 		
-		System.out.println("----> calculoTotal: " +calculoTotal);
 		
 		return calculoTotal;
 	}
