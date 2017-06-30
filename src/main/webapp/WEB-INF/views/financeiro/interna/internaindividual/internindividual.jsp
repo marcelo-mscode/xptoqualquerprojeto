@@ -89,13 +89,14 @@
             <tbody id="prospeccaoFiltro">
                <tr style="text-align: center">
                   <th class="servicos">Serviços</th>
-                  <th class="servicos" colspan="2">Custos</th>
+                  <th class="servicos" colspan="3">Custos</th>
                   <th class="internaLocco" colspan="3">Interna Locco</th>
                   <th class="infFornecedores" colspan="6">Informações Fornecedores</th>
                </tr>
                <tr style="background: #f1f1f1 !important;font-size: 12px">
                   <th class="servicos"></th>
                   <th class="servicos">FatLocco</th>
+                  <th class="servicos">SubContratados</th>
                   <th class="servicos">FatDireto</th>
                   <th class="internaLocco colorRed" style="text-align: center;width: 100px;" >Valor Fornecedor</th>
                   <th class="internaLocco" >Valor NF</th>
@@ -117,17 +118,41 @@
                   <c:if test="${itensInterna.statusProducao == 'ITEMFECHADO'}">			
            	       <tr>
                   </c:if>
+                  
                   <td>${itensInterna.produtoGrupo.idGrupo.grupo}<%--  - ${itensInterna.produtoGrupo.produto} --%></td>
+                 
+                <!-- Fat Locco -->  
                   <td class="textRight">
-                  <c:if test="${itensInterna.produtoGrupo.imposto == true}">
-              	    <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/> 
-                  </c:if>
+	                  <c:if test="${itensInterna.produtoGrupo.imposto == true && }">
+	              	    <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/> 
+	                  </c:if>
                   </td>
+               <!--  --> 
+				
+                <!-- SubContratados -->  
                   <td class="textRight">
-                  <c:if test="${itensInterna.produtoGrupo.imposto == false}">
-              	    <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
-                  </c:if>
+                  SubContratados
+                  
+<%-- 	             <c:if test="${itensInterna.produtoGrupo.imposto == true}">
+	              	    <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/> 
+	                 </c:if>
+ --%>                  </td>
+               <!--  --> 
+				
+				
+				
+				
+				               
+               <!-- Fat Direto -->
+                  <td class="textRight">
+	                  <c:if test="${itensInterna.produtoGrupo.imposto == false}">
+	              	    <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
+	                  </c:if>
                   </td>
+ 			   <!--  -->                  
+
+
+                  
                   <!-- Valor fornecedor -->	
                   <td class="colorRed" style="padding: 0px">
 	                  <c:if test="${itensInterna.valorContratacao == '0.00' && itensInterna.idEmpFornecedor.idEmpresa != 6961}">
