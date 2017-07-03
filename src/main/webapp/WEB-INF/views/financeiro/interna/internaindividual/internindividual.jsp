@@ -19,6 +19,7 @@
    .fundoCinza{background-color: #ccc !important;text-align: center}
    .ladoDireito{text-align: right;}
    .textRight{text-align: right;}
+   .textCenter{text-align: center;}
    .table-bordered > thead > tr > th,
    .table-bordered > tbody > tr > th,
    .table-bordered > tfoot > tr > th,
@@ -393,7 +394,7 @@
                   </th>
                   <th class="servicos"></th>
                   <th class="servicos"></th>
-                  <th class="servicos colorRed">
+                  <th class="servicos colorRed textCenter">
                      <fmt:formatNumber value="${calculadora.impostoValorFornecedor}" pattern="#,##0.00"/>
                   </th>
                   <td class="textRight">
@@ -483,7 +484,7 @@
                      </th>
                   </tr>
                   <tr>
-                     <th class="ladoDireito">Impostos ?????</th>
+                     <th class="ladoDireito">Impostos</th>
                      <th class="fundoVerdeEscuro" style="text-align: center;"> 22,90%</th>
                      <th class="servicos ladoDireito" >
                         <fmt:formatNumber value="${calculadora.impostoListatabela}" pattern="#,##0.00"/>
@@ -495,7 +496,7 @@
                      <th class="ladoDireito" >TOTAL NF1</th>
                      <th></th>
                      <th class="ladoDireito" >
-                      ??   <fmt:formatNumber value="${calculadora.total1LoCCO}" pattern="#,##0.00"/> ??
+                      	<fmt:formatNumber value="${calculadora.totalNF1}" pattern="#,##0.00"/>
                      </th>
                   </tr>
                   <tr>

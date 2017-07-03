@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
 import br.com.sysloccOficial.financeiro.model.CalculoValoresInterna;
 import br.com.sysloccOficial.model.DesIntFinanc;
+import br.com.sysloccOficial.model.InfoInterna;
 import br.com.sysloccOficial.model.OrcamentoFornecedor;
 import br.com.sysloccOficial.model.producao.ProducaoP;
 import br.com.sysloccOficial.model.producao.ProducaoPDespesas;
@@ -31,14 +32,20 @@ public class IndexInternaIndividual {
 	public ModelAndView internaIndividual(Integer idLista){
 		ModelAndView MV = new ModelAndView("financeiro/interna/internaindividual/internindividual");
 		
+		InfoInterna infoInterna =  internaIndividualDAO.infoInterna(idLista);
+		
+		
+		
+		
 		Set<ProducaoP> listaProducaoP = internaIndividualDAO.internaIndividual(idLista);
 		List<ProducaoP> listaProducaoPTeste = internaIndividualDAO.internaIndividualTeste(idLista);
 
 		BigDecimal impostoDaLista = internaIndividualDAO.totalImpostoDaLista(idLista);
 		
 		List<ProducaoP> listaItensIndividuais = new ArrayList<ProducaoP>(listaProducaoP);
-	
-		CalculoValoresInterna calculaValoresListaIndividual = new CalculoValoresInterna(listaItensIndividuais,idLista,impostoDaLista);
+		
+		
+		CalculoValoresInterna calculaValoresListaIndividual = new CalculoValoresInterna(listaItensIndividuais,idLista,impostoDaLista,infoInterna.getImpostoInterna());
 		
 		List<Object[]> listaDeIdsFornecedores = internaIndividualDAO.listaDeIdsFornecedores(idLista);
 		
@@ -54,7 +61,7 @@ public class IndexInternaIndividual {
 			internaIndividualDAO.logicaCalculaRowSpanTabela(listaProducaoPTeste, listaDeIdsFornecedores);
 		}
 		
-		MV.addObject("infoInterna", internaIndividualDAO.infoInterna(idLista));
+		MV.addObject("infoInterna", infoInterna);
 		
 		MV.addObject("infoColunas", listaDeIdsFornecedores);
 		

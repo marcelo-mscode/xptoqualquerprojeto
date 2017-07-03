@@ -25,14 +25,14 @@ public class CalculoValoresInterna extends Calculadora{
 	
 	private List<ProducaoP> listaDeProducaoP;
 	private BigDecimal impostoLista;
+	private double impostoDaInterna;
 	
-	public CalculoValoresInterna(List<ProducaoP> _listaDeProducaoP, Integer _idLista, BigDecimal _impostoLista) {
+	public CalculoValoresInterna(List<ProducaoP> _listaDeProducaoP, Integer _idLista, BigDecimal _impostoLista, double impostoDaInterna) {
 		this.listaDeProducaoP = _listaDeProducaoP;
 		this.impostoLista = _impostoLista;
+		this.impostoDaInterna = impostoDaInterna;
 	}
 	
-	
-
 	private BigDecimal subLoCCo = new BigDecimal("0.00");
 	private BigDecimal subDireto = new BigDecimal("0.00");
 	private BigDecimal subContratados = new BigDecimal("0.00");
@@ -47,6 +47,9 @@ public class CalculoValoresInterna extends Calculadora{
 	private BigDecimal total1LoCCO;
 	private BigDecimal subValorFornecedor;	
 	private BigDecimal subValorNf;
+
+	private BigDecimal totalNF1;
+	
 	
 	private BigDecimal prevExtraSubContrat= new BigDecimal("0.00");
 	private BigDecimal prevExtraCustosInternos = new BigDecimal("0.00");
@@ -164,7 +167,7 @@ public class CalculoValoresInterna extends Calculadora{
 
 	public BigDecimal getTotal1LoCCO() {
 		total1LoCCO = getSubTotalGeral();
-		total1LoCCO = total1LoCCO.add(getImpostoListatabela());
+		total1LoCCO = total1LoCCO.add(getImpostoListaPlanilha());
 		return total1LoCCO;
 	}
 	
@@ -199,6 +202,14 @@ public class CalculoValoresInterna extends Calculadora{
 	}
 	
 	
+	public BigDecimal getTotalNF1() {
+		totalNF1 = getSubTotalGeralTabela();
+		totalNF1 = totalNF1.add(getImpostoListatabela());
+		return totalNF1;
+	}
+	
+	
+	
 	public BigDecimal getImpostoListatabela() {
 		BigDecimal calculaImposto = subTotalGeralTabela.divide(new BigDecimal("0.771"),12,RoundingMode.UP);
 		BigDecimal calculaImposto2 = calculaImposto.subtract(subTotalGeralTabela);
@@ -208,7 +219,7 @@ public class CalculoValoresInterna extends Calculadora{
 
 	
 	public BigDecimal getImpostoValorFornecedor() {
-		return impostoValorFornecedor = getTotal1LoCCO().multiply(new BigDecimal("0.155")); 
+		return impostoValorFornecedor = getTotal1LoCCO().multiply(new BigDecimal((impostoDaInterna/100))); 
 	}
 
 	public BigDecimal getImpostoDiferenca() {
@@ -308,7 +319,7 @@ public class CalculoValoresInterna extends Calculadora{
 
 
 	public BigDecimal getTotalEvento() {
-		totalEvento = total1LoCCO.add(totalFatNF2);
+		totalEvento = totalNF1.add(totalFatNF2);
 		return totalEvento;
 	}
 	
