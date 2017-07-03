@@ -479,7 +479,7 @@
                      <th class="ladoDireito">SubTotal</th>
                      <th></th>
                      <th class="ladoDireito" >
-                        <fmt:formatNumber value="${calculadora.subTotalGeral}" pattern="#,##0.00"/>
+                        <fmt:formatNumber value="${calculadora.getSubTotalGeralTabela}" pattern="#,##0.00"/>
                      </th>
                   </tr>
                   <tr>

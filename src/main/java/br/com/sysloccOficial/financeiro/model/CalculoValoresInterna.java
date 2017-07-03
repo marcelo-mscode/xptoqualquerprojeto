@@ -56,10 +56,10 @@ public class CalculoValoresInterna extends Calculadora{
 	private BigDecimal subTotalFatNF2= new BigDecimal("0.00");
 	private BigDecimal impostoFatNF2= new BigDecimal("0.00");
 	private BigDecimal totalFatNF2= new BigDecimal("0.00");
-	private BigDecimal totalEvento= new BigDecimal("0.00");
+	private BigDecimal totalEvento = new BigDecimal("0.00");
 	private BigDecimal prevExtras = new BigDecimal("0.1");
+	private BigDecimal subTotalGeralTabela = new BigDecimal("0.00");;
 
-	
 	
 	public BigDecimal getSubDireto() {
 		return subDireto = calculaSubDireto();
@@ -175,26 +175,35 @@ public class CalculoValoresInterna extends Calculadora{
 	public BigDecimal getSubTotalGeral() {
 		List<BigDecimal> totalFeeLoccoEdireto = new ArrayList<BigDecimal>();
 		
-		
-		System.out.println("getFeeGeral: "+getFeeGeral());
-		System.out.println("getFeeReduzido: "+getFeeReduzido());
-		System.out.println("getSubContratados: "+calculaSubContratados());
-		System.out.println("subDireto: "+calculaSubDireto());
-		System.out.println("getsubLoCCo: "+calculaSubLoCCo());
-		System.out.println("\n\n");
-		
 		totalFeeLoccoEdireto.add(getFeeGeral());
 		totalFeeLoccoEdireto.add(getFeeReduzido());
-		//totalFeeLoccoEdireto.add(calculaSubDireto());
 		totalFeeLoccoEdireto.add(calculaSubContratados());
 		totalFeeLoccoEdireto.add(calculaSubLoCCo());
-		
 		
 		subTotalGeral = somaListaDeValores(totalFeeLoccoEdireto);
 		return subTotalGeral;
 	}
 
 	
+	public BigDecimal getSubTotalGeralTabela() {
+		
+		List<BigDecimal> totalFeeLoccoEdireto = new ArrayList<BigDecimal>();
+		
+		totalFeeLoccoEdireto.add(getFeeGeral());
+		totalFeeLoccoEdireto.add(calculaSubContratados());
+		totalFeeLoccoEdireto.add(calculaSubLoCCo());
+		
+		subTotalGeralTabela = somaListaDeValores(totalFeeLoccoEdireto);
+		
+		return subTotalGeralTabela;
+	}
+
+	
+	
+	public void setSubTotalGeralTabela(BigDecimal subTotalGeralTabela) {
+		this.subTotalGeralTabela = subTotalGeralTabela;
+	}
+
 	public BigDecimal getTotal1LoCCO() {
 		total1LoCCO = subTotalGeral.add(impostoLista);
 		return total1LoCCO;
