@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -76,13 +77,6 @@ public class CalculoValoresInterna extends Calculadora{
 //	private BigDecimal Total1Direto;
 
 
-	public BigDecimal getsubLoCCo() {
-		for (int i = 0; i < listaDeProducaoP.size(); i++) {
-			 if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == true && listaDeProducaoP.get(i).getProdutoGrupo().getIdGrupo().isIncideAdministracao() ==  false)
-				 subLoCCo = calculaSubTotais(listaDeProducaoP.get(i).getProdutoGrupo().isImposto());
-		 }			
-	return subLoCCo;
-	}
 
 	
 	public BigDecimal getSubDireto() {
@@ -96,6 +90,15 @@ public class CalculoValoresInterna extends Calculadora{
 	public BigDecimal getFeeGeral() {
 			feeGeral = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getAdministracaoValor();
 	    return feeGeral;
+	}
+
+	public BigDecimal getsubLoCCo() {
+		for (int i = 0; i < listaDeProducaoP.size(); i++) {
+			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == true && listaDeProducaoP.get(i).getProdutoGrupo().getIdGrupo().isIncideAdministracao() ==  false)
+				subLoCCo = calculaSubTotais(listaDeProducaoP.get(i).getProdutoGrupo().isImposto());
+			// JOptionPane.showMessageDialog(null, "SubLocco: "+subLoCCo);
+		}			
+		return subLoCCo;
 	}
 
 	private BigDecimal calculaSubTotais(boolean imposto){
@@ -116,8 +119,6 @@ public class CalculoValoresInterna extends Calculadora{
 			  calculoTotal = calculoTotal.add(precoPorQuantidades);
 		  }
 		}
-		
-		
 		return calculoTotal;
 	}
 

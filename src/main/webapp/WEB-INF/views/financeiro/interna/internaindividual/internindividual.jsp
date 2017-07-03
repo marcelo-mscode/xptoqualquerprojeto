@@ -31,9 +31,12 @@
    .ajusteMenuFinanceiro, .bodyXY{width: 150% !important; }
    .ajusteFinanceiro{float: none !important;}
    .ajusteFinanceiroBar{position: fixed;width:150%;}
+   .alinhamentoVertical > td {vertical-align: middle !important;}
+   
+   
    
 </style>
-<div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;margin-top: 50px;position: fixed;">
+<div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;margin-top: 49px;position: fixed;z-index: 9999;">
    <ol class="breadcrumb">
       <li><a href="index.html">Menu</a></li>
       <li><a href="listasInternas">Planilhas Internas</a></li>
@@ -41,9 +44,9 @@
    </ol>
 </div>
 
-<div id="criacaoListas" class="efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:10px 0px 70px 10px;">
-   <table class="table table-bordered table-hover table-condensed" style="position: fixed;margin-top: 73px;">
-      <tr>
+<div class="col-md-12" style="margin-top: 11px;text-align: center;">
+   <table class="table table-bordered table-hover table-condensed" style="width:98%;position: fixed;margin-top: 72px;background-color: #fff;z-index: 9999;">
+      <tr class="alinhamentoVertical">
          <td colspan="4">Evento: ${infoLista.lista}</td>
          <td colspan="2">${infoLista.idJob.empresa.empresa}</td>
          <td colspan="3">Requisitante: ${infoLista.idJob.contatos.contato}</td>
@@ -67,6 +70,10 @@
          
       </tr>
    </table>
+</div>   
+   
+   
+<div id="criacaoListas" class="efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:10px 0px 70px 10px;">
    <a href="relatorioEventoIndividual?idLista=${infoLista.idLista}" style="float: right;margin-right: 15px;">Relatório Evento: ${infoLista.lista}</a>
    <!-- <div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;"> -->
    <ul class="nav nav-tabs" role="tablist" style="margin-top: 150px;">
