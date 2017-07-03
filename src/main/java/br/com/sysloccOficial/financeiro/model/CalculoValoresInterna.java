@@ -37,8 +37,10 @@ public class CalculoValoresInterna extends Calculadora{
 
 	private BigDecimal subLoCCo = new BigDecimal("0.00");
 	private BigDecimal subDireto = new BigDecimal("0.00");
+	private BigDecimal subContratados = new BigDecimal("0.00");
 	private BigDecimal subDiferenca;
 	private BigDecimal feeGeral = new BigDecimal("0.00");
+	private BigDecimal feeReduzido = new BigDecimal("0.00");
 	private BigDecimal subTotalGeral;
 	private BigDecimal impostoValorFornecedor;
 	private BigDecimal impostoDiferenca;
@@ -82,7 +84,8 @@ public class CalculoValoresInterna extends Calculadora{
 	public BigDecimal getSubDireto() {
 		for (int i = 0; i < listaDeProducaoP.size(); i++) {
 			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == false)	
-				subDireto = calculaSubTotais(listaDeProducaoP.get(i).getProdutoGrupo().isImposto());
+				//subDireto = calculaSubTotais(listaDeProducaoP.get(i).getProdutoGrupo().isImposto());
+				subDireto = subDireto.add(calculaSubLocco(i));
 		}
 		return subDireto;
 	}
@@ -92,35 +95,71 @@ public class CalculoValoresInterna extends Calculadora{
 	    return feeGeral;
 	}
 
+	
+	public BigDecimal getFeeReduzido() {
+		feeGeral = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getAdministracaoValor();
+		return feeGeral;
+	}
+	
+	
+	
 	public BigDecimal getsubLoCCo() {
 		for (int i = 0; i < listaDeProducaoP.size(); i++) {
 			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == true && listaDeProducaoP.get(i).getProdutoGrupo().getIdGrupo().isIncideAdministracao() ==  false)
-				subLoCCo = calculaSubTotais(listaDeProducaoP.get(i).getProdutoGrupo().isImposto());
-			// JOptionPane.showMessageDialog(null, "SubLocco: "+subLoCCo);
+				subLoCCo = subLoCCo.add(calculaSubLocco(i));
+				System.out.println(i+" - "+subLoCCo);
 		}			
 		return subLoCCo;
 	}
 
-	private BigDecimal calculaSubTotais(boolean imposto){
+	public BigDecimal getsubContratados(){
+		for (int i = 0; i < listaDeProducaoP.size(); i++) {
+			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == true && listaDeProducaoP.get(i).getProdutoGrupo().getIdGrupo().isIncideAdministracao() ==  true)
+				//subLoCCo = calculaSubTotais(listaDeProducaoP.get(i).getProdutoGrupo().isImposto());
+				subContratados  = subContratados.add(calculaSubLocco(i));
+				System.out.println(i+" - "+subContratados);
+		}			
+		return subContratados;
+	}
+	
+	
+	private BigDecimal calculaSubLocco(int _i){
+		BigDecimal calculoTotal = new BigDecimal("0");
+		double quant;
+			  BigDecimal precoPorQuantidades = new BigDecimal("0");
+			  BigDecimal preco = new BigDecimal("0");
+			  quant = 0;
+			  preco = preco.add(listaDeProducaoP.get(_i).getProdutoGrupo().getPrecoProduto());
+			  quant = multiplicaQuantPorDiarias(listaDeProducaoP.get(_i).getProdutoGrupo().getQuantidade(),
+					  listaDeProducaoP.get(_i).getProdutoGrupo().getQuantidade2(),
+					  listaDeProducaoP.get(_i).getProdutoGrupo().getDiarias());
+			  precoPorQuantidades = precoPorQuantidades.add(preco).multiply(new BigDecimal(quant));
+			  calculoTotal = calculoTotal.add(precoPorQuantidades);
+		return calculoTotal;
+	}
+
+	
+	
+	/*private BigDecimal calculaSubTotais(boolean imposto){
 		
 		BigDecimal calculoTotal = new BigDecimal("0");
 		
 		double quant;
 		for (int i = 0; i < listaDeProducaoP.size(); i++) {
-		  if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == imposto){
-			  BigDecimal precoPorQuantidades = new BigDecimal("0");
-			  BigDecimal preco = new BigDecimal("0");
-			  quant = 0;
-			  preco = preco.add(listaDeProducaoP.get(i).getProdutoGrupo().getPrecoProduto());
-			  quant = multiplicaQuantPorDiarias(listaDeProducaoP.get(i).getProdutoGrupo().getQuantidade(),
-					  listaDeProducaoP.get(i).getProdutoGrupo().getQuantidade2(),
-					  listaDeProducaoP.get(i).getProdutoGrupo().getDiarias());
-			  precoPorQuantidades = precoPorQuantidades.add(preco).multiply(new BigDecimal(quant));
-			  calculoTotal = calculoTotal.add(precoPorQuantidades);
-		  }
+			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == imposto){
+				BigDecimal precoPorQuantidades = new BigDecimal("0");
+				BigDecimal preco = new BigDecimal("0");
+				quant = 0;
+				preco = preco.add(listaDeProducaoP.get(i).getProdutoGrupo().getPrecoProduto());
+				quant = multiplicaQuantPorDiarias(listaDeProducaoP.get(i).getProdutoGrupo().getQuantidade(),
+						listaDeProducaoP.get(i).getProdutoGrupo().getQuantidade2(),
+						listaDeProducaoP.get(i).getProdutoGrupo().getDiarias());
+				precoPorQuantidades = precoPorQuantidades.add(preco).multiply(new BigDecimal(quant));
+				calculoTotal = calculoTotal.add(precoPorQuantidades);
+			}
 		}
 		return calculoTotal;
-	}
+	}*/
 
 	public BigDecimal getSubTotalGeral() {
 		List<BigDecimal> totalFeeLoccoEdireto = new ArrayList<BigDecimal>();

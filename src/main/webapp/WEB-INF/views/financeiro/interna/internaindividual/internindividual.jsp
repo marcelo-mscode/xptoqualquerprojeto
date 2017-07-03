@@ -294,7 +294,7 @@
                   </th>
 
                   <th class="servicos">
-						? 2.705,00 ?<%-- <fmt:formatNumber value="${calculadora.subDireto}" pattern="#,##0.00"/> --%>
+						<fmt:formatNumber value="${calculadora.subContratados}" pattern="#,##0.00"/>
                   </th>
 
                   <th class="servicos">
@@ -347,7 +347,7 @@
 
 <!-- FEE REDUZIDO -->               
                <tr>
-                  <th>Fee REDUZIDO ${infoLista.administracao}%</th>
+                  <th>Fee REDUZIDO ${infoLista.feeReduzido}%</th>
                   <th class="servicos">
                      <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
                   </th>

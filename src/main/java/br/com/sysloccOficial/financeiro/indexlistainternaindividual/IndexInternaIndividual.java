@@ -37,6 +37,7 @@ public class IndexInternaIndividual {
 		BigDecimal impostoDaLista = internaIndividualDAO.totalImpostoDaLista(idLista);
 		
 		List<ProducaoP> listaItensIndividuais = new ArrayList<ProducaoP>(listaProducaoP);
+	
 		CalculoValoresInterna calculaValoresListaIndividual = new CalculoValoresInterna(listaItensIndividuais,idLista,impostoDaLista);
 		
 		List<Object[]> listaDeIdsFornecedores = internaIndividualDAO.listaDeIdsFornecedores(idLista);
