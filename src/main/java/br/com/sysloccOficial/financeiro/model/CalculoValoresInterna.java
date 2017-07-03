@@ -198,12 +198,6 @@ public class CalculoValoresInterna extends Calculadora{
 		return subTotalGeralTabela;
 	}
 
-	
-	
-	public void setSubTotalGeralTabela(BigDecimal subTotalGeralTabela) {
-		this.subTotalGeralTabela = subTotalGeralTabela;
-	}
-
 	public BigDecimal getTotal1LoCCO() {
 		total1LoCCO = subTotalGeral.add(impostoLista);
 		return total1LoCCO;
