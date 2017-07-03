@@ -57,42 +57,32 @@ public class CalculoValoresInterna extends Calculadora{
 	private BigDecimal impostoFatNF2= new BigDecimal("0.00");
 	private BigDecimal totalFatNF2= new BigDecimal("0.00");
 	private BigDecimal totalEvento= new BigDecimal("0.00");
-	
-	
-	
-	BigDecimal prevExtras = new BigDecimal("0.1");
-	
-	
-//	private BigDecimal feeLoCCO;
-//	private BigDecimal feeDireto; 
-//	private BigDecimal feeValorFornecedor;	
-//	private BigDecimal feeValorNf;	
-//	private BigDecimal feeDiferenca;
-//	private BigDecimal DespesasLoCCo;
-//	private BigDecimal DespesasDireto;
-//	private BigDecimal DespesasValorFornecedor;
-//	private BigDecimal DespesasValorNf;
-//	private BigDecimal DespesasDiferenca;
-//	private BigDecimal impostoLoCCo;
-//	private BigDecimal impostoValorNf;
-//	private BigDecimal impostoParaFormula;
-//	private BigDecimal Total1Direto;
+	private BigDecimal prevExtras = new BigDecimal("0.1");
 
-
-
+	
 	
 	public BigDecimal getSubDireto() {
-		for (int i = 0; i < listaDeProducaoP.size(); i++) {
-			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == false)	
-				//subDireto = calculaSubTotais(listaDeProducaoP.get(i).getProdutoGrupo().isImposto());
-				subDireto = subDireto.add(calculaSubLocco(i));
-		}
-		return subDireto;
+		return subDireto = calculaSubDireto();
 	}
 
+	private BigDecimal calculaSubDireto() {
+		BigDecimal soma = new BigDecimal("0");
+		for (int i = 0; i < listaDeProducaoP.size(); i++) {
+			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == false)	
+				soma = soma.add(calculaSubLocco(i));
+		}
+		return soma;
+	}
+
+	
 	public BigDecimal getFeeGeral() {
-		feeGeral = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getAdministracaoValor();
-	    return feeGeral.subtract(getFeeReduzido()) ;
+		try {
+			feeGeral = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getAdministracaoValor();
+			return feeGeral.subtract(getFeeReduzido()) ;
+		} catch (Exception e) {
+			return new BigDecimal("0");
+		}
+		
 	}
 
 	public BigDecimal getFeeReduzido() {
@@ -114,21 +104,34 @@ public class CalculoValoresInterna extends Calculadora{
 	
 	
 	public BigDecimal getsubLoCCo() {
-		for (int i = 0; i < listaDeProducaoP.size(); i++) {
-			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == true && listaDeProducaoP.get(i).getProdutoGrupo().getIdGrupo().isIncideAdministracao() ==  false)
-				subLoCCo = subLoCCo.add(calculaSubLocco(i));
-		}			
-		return subLoCCo;
+		return subLoCCo = calculaSubLoCCo();
 	}
 
+	public BigDecimal calculaSubLoCCo() {
+		BigDecimal somaSubLocco = new BigDecimal("0");
+		for (int i = 0; i < listaDeProducaoP.size(); i++) {
+			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == true && listaDeProducaoP.get(i).getProdutoGrupo().getIdGrupo().isIncideAdministracao() ==  false)
+				somaSubLocco = somaSubLocco.add(calculaSubLocco(i));
+		}			
+		return somaSubLocco;
+	}
+
+	
 	public BigDecimal getsubContratados(){
+		return subContratados = calculaSubContratados();
+	}	
+		
+	public BigDecimal calculaSubContratados(){
+		BigDecimal somaSubContratados = new BigDecimal("0");
 		for (int i = 0; i < listaDeProducaoP.size(); i++) {
 			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == true && listaDeProducaoP.get(i).getProdutoGrupo().getIdGrupo().isIncideAdministracao() ==  true)
-				//subLoCCo = calculaSubTotais(listaDeProducaoP.get(i).getProdutoGrupo().isImposto());
-				subContratados  = subContratados.add(calculaSubLocco(i));
+				somaSubContratados  = somaSubContratados.add(calculaSubLocco(i));
 		}			
-		return subContratados;
+		return somaSubContratados;
 	}
+	
+	
+	
 	
 	
 	private BigDecimal calculaSubLocco(int _i){
@@ -175,16 +178,16 @@ public class CalculoValoresInterna extends Calculadora{
 		
 		System.out.println("getFeeGeral: "+getFeeGeral());
 		System.out.println("getFeeReduzido: "+getFeeReduzido());
-		System.out.println("getSubContratados: "+subContratados);
-		System.out.println("getSubDireto: "+subDireto);
-		System.out.println("getsubLoCCo: "+subLoCCo);
+		System.out.println("getSubContratados: "+calculaSubContratados());
+		System.out.println("subDireto: "+calculaSubDireto());
+		System.out.println("getsubLoCCo: "+calculaSubLoCCo());
 		System.out.println("\n\n");
 		
 		totalFeeLoccoEdireto.add(getFeeGeral());
 		totalFeeLoccoEdireto.add(getFeeReduzido());
-		totalFeeLoccoEdireto.add(getSubDireto());
-		totalFeeLoccoEdireto.add(getsubContratados());
-		totalFeeLoccoEdireto.add(getsubLoCCo());
+		//totalFeeLoccoEdireto.add(calculaSubDireto());
+		totalFeeLoccoEdireto.add(calculaSubContratados());
+		totalFeeLoccoEdireto.add(calculaSubLoCCo());
 		
 		
 		subTotalGeral = somaListaDeValores(totalFeeLoccoEdireto);
