@@ -4,12 +4,16 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Calendar;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import br.com.sysloccOficial.conf.UtilitariaDatas;
+import br.com.sysloccOficial.daos.GrupoDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
@@ -18,6 +22,7 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventoIndividu
 import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.GiroEvento;
+import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
@@ -31,6 +36,7 @@ public class AtualizaRelatorioEventoApoio {
 	@Autowired RelatorioEventoDAO relatorioDAO;
 	@Autowired AnaliticoIndividualDAO analiticoDAO;
 	@Autowired UtilitariaDatas utildatas;
+	@Autowired GrupoDAO grupoDAO;
 	
 	
 	
@@ -66,7 +72,12 @@ public class AtualizaRelatorioEventoApoio {
 			
 			novoRelatorio.setBvs(new BigDecimal("0.00"));
 			novoRelatorio.setCacheEquipEx(new BigDecimal("0.00"));
-			novoRelatorio.setValorLoccoAgenc(infoLista.getValorTotal());
+			
+			
+			//BigDecimal valorGrupoSemImposto = grupoDAO.valorGrupoSemImposto(idLista);
+			
+			novoRelatorio.setValorLoccoAgenc(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
+			
 			novoRelatorio.setServicos(infoLista.getValorTotal());
 			novoRelatorio.setFee(infoLista.getAdministracaoValor());
 			novoRelatorio.setImpostoCliente(infoLista.getImpostoValor());
@@ -176,7 +187,7 @@ public class AtualizaRelatorioEventoApoio {
 		}
 		
 	}
-
+	
 
 	private BigDecimal calculoValorTelefone(BigDecimal giroSemTelefoneEvento, Integer idRelatorioAtual,String mes,String ano) {
 		// Pegar o soma de todos os giros

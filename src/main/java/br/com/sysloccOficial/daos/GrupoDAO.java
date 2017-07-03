@@ -2,11 +2,15 @@ package br.com.sysloccOficial.daos;
 
 import java.math.BigDecimal;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.model.Categoria;
 import br.com.sysloccOficial.model.Empresa;
@@ -63,7 +67,24 @@ public class GrupoDAO {
 		manager.close();
 	}
 	
-	
+	public BigDecimal valorGrupoSemImposto(Integer idlista){
+		
+		try {
+			String consulta = "SELECT sum(precoProduto*quantidade*quantidade2*diarias) FROM ProdutoGrupo where idGrupo in "
+					+ "		  (SELECT idgrupo FROM Grupo where idlista = "+idlista+") and imposto = 0";
+			Query valorTotal = manager.createQuery(consulta);
+			
+			double teste = (double) valorTotal.getSingleResult();
+			
+			BigDecimal testes = new BigDecimal(teste);
+			System.out.println(testes);
+			
+			return testes;
+		} catch (Exception e) {
+			System.out.println("Não tem grupo sem imposto: "+e);
+			return new BigDecimal("0");
+		}
+	}
 	
 	
 }
