@@ -36,7 +36,7 @@
    
    
 </style>
-<div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;margin-top: 49px;position: fixed;z-index: 9999;">
+<div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;margin-top: 49px;position: fixed;z-index: 99;">
    <ol class="breadcrumb">
       <li><a href="index.html">Menu</a></li>
       <li><a href="listasInternas">Planilhas Internas</a></li>
@@ -45,7 +45,7 @@
 </div>
 
 <div class="col-md-12" style="margin-top: 11px;text-align: center;">
-   <table class="table table-bordered table-hover table-condensed" style="width:98%;position: fixed;margin-top: 72px;background-color: #fff;z-index: 9999;">
+   <table class="table table-bordered table-hover table-condensed" style="width:98%;position: fixed;margin-top: 72px;background-color: #fff;z-index: 99;">
       <tr class="alinhamentoVertical">
          <td colspan="4">Evento: ${infoLista.lista}</td>
          <td colspan="2">${infoLista.idJob.empresa.empresa}</td>
@@ -349,16 +349,16 @@
                <tr>
                   <th>Fee REDUZIDO ${infoLista.feeReduzido}%</th>
                   <th class="servicos">
-                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
+                     <fmt:formatNumber value="${calculadora.feeReduzido}" pattern="#,##0.00"/>
                   </th>
                   <th></th>
                   <td class="colorRed"></td>
                   <td class="colorRed"></td>
                   <td class="textRight">
-                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
+                     <fmt:formatNumber value="${calculadora.feeReduzido}" pattern="#,##0.00"/>
                   </td>
                   <td class="textRight">
-                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
+                     <fmt:formatNumber value="${calculadora.feeReduzido}" pattern="#,##0.00"/>
                   </td>
                   <td colspan="6"></td>
                </tr>
