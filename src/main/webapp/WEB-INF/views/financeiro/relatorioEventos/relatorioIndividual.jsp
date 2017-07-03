@@ -290,7 +290,7 @@
 	  <tbody id="prospeccaoFiltro">
 	  <tr>
 	  	<td align="center" colspan="2" >Liquido de Impostos =></td>
-	  	<td align="center"><b><fmt:formatNumber value="${infoLista.valorTotal - (infoLista.valorTotal * (infoInterna.impostoInterna/100))}" pattern="#,##0.00"/></b></td>
+	  	<td align="center"><b><fmt:formatNumber value="${relatorio.valorLoccoAgenc - (relatorio.valorLoccoAgenc * (infoInterna.impostoInterna/100))}" pattern="#,##0.00"/></b></td>
 	  </tr>
 	  <tr>
 	  	<td colspan="3" style="padding: 18px"></td>
