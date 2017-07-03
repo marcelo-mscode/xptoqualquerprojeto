@@ -458,7 +458,7 @@
                      <th style="text-align: right;">Total Serviços Subcontratados</th>
                      <th style="width: 80px;"></th>
                      <th class="fundoVerdeEscuro ladoDireito" style="width: 180px;">
-                        <fmt:formatNumber value="${calculadora.subDireto}" pattern="#,##0.00"/>
+                        <fmt:formatNumber value="${calculadora.subContratados}" pattern="#,##0.00"/>
                      </th>
                   </tr>
                   <tr>
