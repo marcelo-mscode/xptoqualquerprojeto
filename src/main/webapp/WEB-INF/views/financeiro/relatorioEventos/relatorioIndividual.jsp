@@ -309,19 +309,19 @@
 		<tr>
 			<td>Serviços</td>
 			<td></td>
-			<td><fmt:formatNumber value="${infoLista.valorTotal}" pattern="#,##0.00"/></td>
+			<td><fmt:formatNumber value="${relatorio.valorLoccoAgenc}" pattern="#,##0.00"/></td>
 		</tr>	
 	 		
 		<tr>
 			<td>Impostos</td>
 			<td>( - )</td>
-			<td><fmt:formatNumber value="${infoLista.valorTotal * 0.1595}" pattern="#,##0.00"/></td>
+			<td><fmt:formatNumber value="${relatorio.impostoSobreValorLoccoAgencia}" pattern="#,##0.00"/></td>
 		</tr>	
 	 		
 		<tr>
 			<td>Vlr Liquido</td>
 			<td></td>
-			<td><fmt:formatNumber value="${infoLista.valorTotal - (infoLista.valorTotal * 0.1595)}" pattern="#,##0.00"/></td>
+			<td><fmt:formatNumber value="${relatorio.valorLoccoAgenc - relatorio.impostoSobreValorLoccoAgencia}" pattern="#,##0.00"/></td>
 		</tr>	
 	 	
 	 	
