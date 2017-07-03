@@ -195,6 +195,8 @@ public class CalculoValoresInterna extends Calculadora{
 		
 		subTotalGeralTabela = somaListaDeValores(totalFeeLoccoEdireto);
 		
+		
+		
 		return subTotalGeralTabela;
 	}
 	
@@ -207,7 +209,11 @@ public class CalculoValoresInterna extends Calculadora{
 	
 
 	public BigDecimal getTotal1LoCCO() {
+		
+		
 		total1LoCCO = subTotalGeralTabela.add(impostoListatabela);
+		
+		
 		return total1LoCCO;
 	}
 	
