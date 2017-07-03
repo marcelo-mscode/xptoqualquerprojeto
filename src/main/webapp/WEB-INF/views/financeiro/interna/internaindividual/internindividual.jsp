@@ -479,14 +479,14 @@
                      <th class="ladoDireito">SubTotal</th>
                      <th></th>
                      <th class="ladoDireito" >
-                        <fmt:formatNumber value="${calculadora.getSubTotalGeralTabela}" pattern="#,##0.00"/>
+                        <fmt:formatNumber value="${calculadora.subTotalGeralTabela}" pattern="#,##0.00"/>
                      </th>
                   </tr>
                   <tr>
                      <th class="ladoDireito">Impostos</th>
                      <th class="fundoVerdeEscuro" style="text-align: center;"> 22,90%</th>
                      <th class="servicos ladoDireito" >
-                        <fmt:formatNumber value="${impostoLista}" pattern="#,##0.00"/>
+                        <fmt:formatNumber value="${calculadora.impostoListatabela}" pattern="#,##0.00"/>
                      </th>
                   </tr>
                   <tr class="fundoVerde">

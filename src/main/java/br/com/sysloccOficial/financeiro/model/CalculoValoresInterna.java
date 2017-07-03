@@ -58,8 +58,8 @@ public class CalculoValoresInterna extends Calculadora{
 	private BigDecimal totalFatNF2= new BigDecimal("0.00");
 	private BigDecimal totalEvento = new BigDecimal("0.00");
 	private BigDecimal prevExtras = new BigDecimal("0.1");
-	private BigDecimal subTotalGeralTabela = new BigDecimal("0.00");;
-
+	private BigDecimal subTotalGeralTabela = new BigDecimal("0.00");
+	private BigDecimal impostoListatabela = new BigDecimal("0");
 	
 	public BigDecimal getSubDireto() {
 		return subDireto = calculaSubDireto();
@@ -197,9 +197,17 @@ public class CalculoValoresInterna extends Calculadora{
 		
 		return subTotalGeralTabela;
 	}
+	
+	
+	public BigDecimal getImpostoListatabela() {
+		BigDecimal calculaImposto = subTotalGeralTabela.divide(new BigDecimal("0.771"),12,RoundingMode.UP);
+		BigDecimal calculaImposto2 = calculaImposto.subtract(subTotalGeralTabela);
+		return impostoListatabela = calculaImposto2;
+	}
+	
 
 	public BigDecimal getTotal1LoCCO() {
-		total1LoCCO = subTotalGeral.add(impostoLista);
+		total1LoCCO = subTotalGeralTabela.add(impostoListatabela);
 		return total1LoCCO;
 	}
 	
@@ -266,7 +274,7 @@ public class CalculoValoresInterna extends Calculadora{
 	}
 	
 	public BigDecimal getPrevExtraSubContrat() {
-		prevExtraSubContrat = getSubDireto().multiply(prevExtras);
+		prevExtraSubContrat = subContratados.multiply(prevExtras);
 		return prevExtraSubContrat;
 	}
 
