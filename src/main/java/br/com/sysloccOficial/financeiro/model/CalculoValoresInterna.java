@@ -24,12 +24,10 @@ public class CalculoValoresInterna extends Calculadora{
 	@PersistenceContext	private EntityManager manager;
 	
 	private List<ProducaoP> listaDeProducaoP;
-//	private Integer idLista;
 	private BigDecimal impostoLista;
 	
 	public CalculoValoresInterna(List<ProducaoP> _listaDeProducaoP, Integer _idLista, BigDecimal _impostoLista) {
 		this.listaDeProducaoP = _listaDeProducaoP;
-//		this.idLista = _idLista;
 		this.impostoLista = _impostoLista;
 	}
 	
@@ -60,6 +58,7 @@ public class CalculoValoresInterna extends Calculadora{
 	private BigDecimal prevExtras = new BigDecimal("0.1");
 	private BigDecimal subTotalGeralTabela = new BigDecimal("0.00");
 	private BigDecimal impostoListatabela = new BigDecimal("0");
+	private BigDecimal impostoListaPlanilha = new BigDecimal("0");
 	
 	public BigDecimal getSubDireto() {
 		return subDireto = calculaSubDireto();
@@ -149,29 +148,6 @@ public class CalculoValoresInterna extends Calculadora{
 		return calculoTotal;
 	}
 
-	
-	
-	/*private BigDecimal calculaSubTotais(boolean imposto){
-		
-		BigDecimal calculoTotal = new BigDecimal("0");
-		
-		double quant;
-		for (int i = 0; i < listaDeProducaoP.size(); i++) {
-			if(listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == imposto){
-				BigDecimal precoPorQuantidades = new BigDecimal("0");
-				BigDecimal preco = new BigDecimal("0");
-				quant = 0;
-				preco = preco.add(listaDeProducaoP.get(i).getProdutoGrupo().getPrecoProduto());
-				quant = multiplicaQuantPorDiarias(listaDeProducaoP.get(i).getProdutoGrupo().getQuantidade(),
-						listaDeProducaoP.get(i).getProdutoGrupo().getQuantidade2(),
-						listaDeProducaoP.get(i).getProdutoGrupo().getDiarias());
-				precoPorQuantidades = precoPorQuantidades.add(preco).multiply(new BigDecimal(quant));
-				calculoTotal = calculoTotal.add(precoPorQuantidades);
-			}
-		}
-		return calculoTotal;
-	}*/
-
 	public BigDecimal getSubTotalGeral() {
 		List<BigDecimal> totalFeeLoccoEdireto = new ArrayList<BigDecimal>();
 		
@@ -180,12 +156,36 @@ public class CalculoValoresInterna extends Calculadora{
 		totalFeeLoccoEdireto.add(calculaSubContratados());
 		totalFeeLoccoEdireto.add(calculaSubLoCCo());
 		
+
 		subTotalGeral = somaListaDeValores(totalFeeLoccoEdireto);
+
 		return subTotalGeral;
 	}
 
+	public BigDecimal getTotal1LoCCO() {
+		total1LoCCO = getSubTotalGeral();
+		total1LoCCO = total1LoCCO.add(getImpostoListatabela());
+		return total1LoCCO;
+	}
 	
-	public BigDecimal getSubTotalGeralTabela() {
+	public BigDecimal getImpostoListaPlanilha() {
+		BigDecimal calculaImposto = subTotalGeral.divide(new BigDecimal("0.771"),12,RoundingMode.UP);
+		BigDecimal calculaImposto2 = calculaImposto.subtract(subTotalGeral);
+		return impostoListaPlanilha = calculaImposto2;
+	}
+	
+
+	
+	
+	
+// ------------------------------------------------------------------------------------------------ //
+	/*
+	 * Calculos da tabela de Faturamento
+	 * 
+	 */
+	
+	
+	public BigDecimal getSubTotalGeralTabela() { //ok
 		
 		List<BigDecimal> totalFeeLoccoEdireto = new ArrayList<BigDecimal>();
 		
@@ -194,8 +194,6 @@ public class CalculoValoresInterna extends Calculadora{
 		totalFeeLoccoEdireto.add(calculaSubLoCCo());
 		
 		subTotalGeralTabela = somaListaDeValores(totalFeeLoccoEdireto);
-		
-		
 		
 		return subTotalGeralTabela;
 	}
@@ -208,14 +206,6 @@ public class CalculoValoresInterna extends Calculadora{
 	}
 	
 
-	public BigDecimal getTotal1LoCCO() {
-		
-		
-		total1LoCCO = subTotalGeralTabela.add(impostoListatabela);
-		
-		
-		return total1LoCCO;
-	}
 	
 	public BigDecimal getImpostoValorFornecedor() {
 		return impostoValorFornecedor = getTotal1LoCCO().multiply(new BigDecimal("0.155")); 
