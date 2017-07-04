@@ -225,19 +225,20 @@
 		</tr>
 		
 		<tr>
-			<td>FEE Reduzido 7% ???</td>
+			<td>FEE Reduzido 7%</td>
+			<td><fmt:formatNumber value="${relatorio.feeReduzido}" pattern="#,##0.00"/> -- </td>
 			<td></td>
-			<td><fmt:formatNumber value="${relatorio.margemContribuicao}" pattern="#,##0.00"/> ???</td>
-			<td>(<fmt:formatNumber value="${relatorio.margemContribuicao}" pattern="#,##0.00"/>) ???</td>
+			<td><fmt:formatNumber value="${relatorio.feeReduzido}" pattern="#,##0.00"/> -- </td>
 			<td></td>
 		</tr>
 		
 		
 		<tr>
 			<td>FEE 14%</td>
-			<td><fmt:formatNumber value="${infoLista.administracaoValor}" pattern="#,##0.00"/></td>
+			<%-- <td><fmt:formatNumber value="${infoLista.administracaoValor}" pattern="#,##0.00"/></td> --%>
+			<td><fmt:formatNumber value="${relatorio.fee}" pattern="#,##0.00"/></td>
 			<td></td>
-			<td><fmt:formatNumber value="${infoLista.administracaoValor}" pattern="#,##0.00"/></td>
+			<td><fmt:formatNumber value="${relatorio.fee}" pattern="#,##0.00"/></td>
 			<td></td>
 		</tr>
 

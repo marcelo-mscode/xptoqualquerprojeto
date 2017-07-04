@@ -49,19 +49,17 @@ public class RelatorioEventos {
 	private BigDecimal pgtoInternas;
 	private BigDecimal pgtoExternas;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataVencimento;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar dataAtualizacao;
 
 	private String nf;
 	
 	private BigDecimal margemContribuicao;
 	private BigDecimal custoTelefone;
 	private BigDecimal fee;
+	private BigDecimal feeReduzido;
 	private BigDecimal impostoCliente;
 	private BigDecimal impostoClienteDiferenca;
+	
+	
 	
 	
 	// Total relacionado a fornecedores
@@ -74,15 +72,27 @@ public class RelatorioEventos {
 	
 	private boolean recebido;
 
+	
+// ------------------------------------------------------------------------- //
+
 	@Temporal(TemporalType.TIMESTAMP)private Calendar dataRecebido;
+	@Temporal(TemporalType.TIMESTAMP)private Date dataVencimento;
+	@Temporal(TemporalType.TIMESTAMP)private Calendar dataAtualizacao;
 	
 // ------------------------------------------------------------------------- //
     @OneToOne (mappedBy="relatorioEvento") private GiroEvento giroEvento;
     @OneToMany (mappedBy = "relatorioEvento") private List<CacheEvento> cacheEvento;
     
 // --------------------------------------------------------------------- //	
-	public Integer getIdRelatorioEvento() {
+	
+    public Integer getIdRelatorioEvento() {
 		return idRelatorioEvento;
+	}
+	public BigDecimal getFeeReduzido() {
+		return feeReduzido;
+	}
+	public void setFeeReduzido(BigDecimal feeReduzido) {
+		this.feeReduzido = feeReduzido;
 	}
 	public Integer getMesReferencia() {
 		return mesReferencia;

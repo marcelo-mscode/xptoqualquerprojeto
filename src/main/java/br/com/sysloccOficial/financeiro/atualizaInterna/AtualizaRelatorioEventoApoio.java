@@ -82,8 +82,13 @@ public class AtualizaRelatorioEventoApoio {
 			novoRelatorio.setValorLoccoAgenc(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
 			
 			novoRelatorio.setServicos(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
-			novoRelatorio.setFee(infoLista.getAdministracaoValor());
 			
+// ------- //			
+
+			novoRelatorio.setFee(infoLista.getAdministracaoValor());
+			novoRelatorio.setFeeReduzido(infoLista.getAdministracaoValor());
+			
+// ------- //			
 			
 			novoRelatorio.setImpostoCliente(infoLista.getImpostoValor());
 			
