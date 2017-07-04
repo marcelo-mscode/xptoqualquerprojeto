@@ -102,6 +102,28 @@ public class CalculoValoresInterna extends Calculadora{
 		}
 		
 	}
+	public BigDecimal getFeeReduzidoNovoCalculo() {
+		
+		try {
+			BigDecimal divideFeeReduzido = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getFeeReduzido().divide(
+					new BigDecimal(100),12,RoundingMode.UP);
+			
+			
+		/*	for (int i = 0; i < listaDeProducaoP.get(0).  ; i++) {
+				
+			}
+			*/
+			
+			
+			feeReduzido = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getSubTotalVendaNaoIncideImposto().multiply(
+					divideFeeReduzido);
+			return feeReduzido;
+			
+		} catch (Exception e) {
+			return new BigDecimal("0");
+		}
+		
+	}
 	
 	
 	
