@@ -205,7 +205,7 @@
 		</c:forEach>
 		
 		<tr>
-			<td>Mcontribuição</td>
+			<td class="azulFlat2">Mcontribuição</td>
 			<td></td>
 			<td><fmt:formatNumber value="${relatorio.margemContribuicao}" pattern="#,##0.00"/></td>
 			<td>(<fmt:formatNumber value="${relatorio.margemContribuicao}" pattern="#,##0.00"/>)</td>
