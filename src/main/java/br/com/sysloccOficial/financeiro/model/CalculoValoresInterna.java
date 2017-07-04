@@ -89,6 +89,8 @@ public class CalculoValoresInterna extends Calculadora{
 
 	public BigDecimal getFeeReduzido() {
 		
+		JOptionPane.showMessageDialog(null, "");
+		
 		try {
 			BigDecimal divideFeeReduzido = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getFeeReduzido().divide(
 					new BigDecimal(100),12,RoundingMode.UP);
