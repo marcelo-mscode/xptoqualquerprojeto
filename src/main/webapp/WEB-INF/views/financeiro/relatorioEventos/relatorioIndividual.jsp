@@ -16,6 +16,9 @@
 .esquerda{border-left: 2px solid #ccc  !important;}
 .topo{border-top: 2px solid #ccc  !important;}
 .ajusteValores{padding-left: 25px !important;}
+.colorBlue{color:blue; }
+.colorRed{color:red; }
+.fontBold{font-weight: bold }
 
 
 </style>
@@ -204,21 +207,31 @@
 		</tr>
 		</c:forEach>
 		
+
 		<tr>
-			<td class="azulFlat2">Mcontribuição</td>
+			<td class="colorBlue fontBold">Mcontribuição</td>
 			<td></td>
-			<td><fmt:formatNumber value="${relatorio.margemContribuicao}" pattern="#,##0.00"/></td>
-			<td>(<fmt:formatNumber value="${relatorio.margemContribuicao}" pattern="#,##0.00"/>)</td>
+			<td class="colorBlue fontBold"><fmt:formatNumber value="${relatorio.margemContribuicao}" pattern="#,##0.00"/></td>
+			<td class="colorBlue fontBold">(<fmt:formatNumber value="${relatorio.margemContribuicao}" pattern="#,##0.00"/>)</td>
 			<td></td>
 		</tr>
 		
 		<tr>
-			<td>Custo Telefone</td>
+			<td class="colorRed fontBold">Custo Telefone</td>
 			<td></td>
-			<td><fmt:formatNumber value="${relatorio.custoTelefone}" pattern="#,##0.00"/></td>
-			<td>(<fmt:formatNumber value="${relatorio.custoTelefone}" pattern="#,##0.00"/>)</td>
+			<td class="colorRed fontBold"><fmt:formatNumber value="${relatorio.custoTelefone}" pattern="#,##0.00"/></td>
+			<td class="colorRed fontBold">(<fmt:formatNumber value="${relatorio.custoTelefone}" pattern="#,##0.00"/>)</td>
 			<td></td>
 		</tr>
+		
+		<tr>
+			<td>FEE Reduzido 7% ???</td>
+			<td></td>
+			<td><fmt:formatNumber value="${relatorio.margemContribuicao}" pattern="#,##0.00"/> ???</td>
+			<td>(<fmt:formatNumber value="${relatorio.margemContribuicao}" pattern="#,##0.00"/>) ???</td>
+			<td></td>
+		</tr>
+		
 		
 		<tr>
 			<td>FEE 14%</td>

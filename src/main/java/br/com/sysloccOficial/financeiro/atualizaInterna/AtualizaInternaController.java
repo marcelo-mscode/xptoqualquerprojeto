@@ -26,9 +26,11 @@ public class AtualizaInternaController {
 	public String atualizaInterna(Integer idLista){
 		
 		
-		String mes = "MAIO";
+		String mes = "JANEIRO";
+		String ano = "2017";
+/*		String mes = "MAIO";
 		String ano = "2016";
-		
+*/		
 		relatorioApoio.montaObjetoRelatorio(idLista,mes,ano);
 	
 		return "redirect:internaIndividual?idLista="+idLista;
