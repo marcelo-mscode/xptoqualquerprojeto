@@ -12,6 +12,7 @@ import java.util.List;
 
 
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -41,11 +42,12 @@ public class RelatorioEventoDAO {
 	@PersistenceContext	private EntityManager manager;
 	
 	public List<Integer> idsFornecedoresPorLista(int idLista){
-		TypedQuery<Integer> q = manager.createQuery("SELECT distinct(idEmpFornecedor.idEmpresa) FROM ProducaoP where idLista = "+idLista+" order by idEmpFornecedor.empresa",Integer.class);
+		TypedQuery<Integer> q = manager.createQuery("SELECT distinct(idEmpFornecedor.idEmpresa) FROM ProducaoP p where idLista = "+idLista+" and p.produtoGrupo.imposto = 1 order by idEmpFornecedor.empresa",Integer.class);
 		return q.getResultList();
 	}
 	
 	public List<ProducaoP> listaProducaoPPorIdLista(int idLista){
+		//TypedQuery<ProducaoP> q2 = manager.createQuery("SELECT p FROM ProducaoP p where idLista = "+idLista,ProducaoP.class);
 		TypedQuery<ProducaoP> q2 = manager.createQuery("SELECT p FROM ProducaoP p where idLista = "+idLista,ProducaoP.class);
 		return q2.getResultList();
 	}
@@ -320,6 +322,15 @@ public class RelatorioEventoDAO {
 			return null;
 		}
 		
+	}
+
+	public InfoInterna pegaInfoInterna(Integer idLista) {
+		try {
+			TypedQuery<InfoInterna> info = manager.createQuery("from InfoInterna where idLista= "+idLista, InfoInterna.class);
+			return info.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	

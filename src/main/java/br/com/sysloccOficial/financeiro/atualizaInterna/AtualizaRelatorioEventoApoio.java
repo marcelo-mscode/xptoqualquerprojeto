@@ -23,6 +23,7 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.GiroEvento;
 import br.com.sysloccOficial.model.Grupo;
+import br.com.sysloccOficial.model.InfoInterna;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
@@ -49,6 +50,8 @@ public class AtualizaRelatorioEventoApoio {
 		
 		Integer idRelatorioParaGiroTelefone = null;
 		Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
+		InfoInterna infoInterna = relatorioDAO.pegaInfoInterna(idLista);
+		
 		List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
 		List<CachePadrao> listaRelatorioCaches = relatorioDAO.listaRelatorioCaches();
 		
@@ -78,13 +81,19 @@ public class AtualizaRelatorioEventoApoio {
 			
 			novoRelatorio.setValorLoccoAgenc(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
 			
-			novoRelatorio.setServicos(infoLista.getValorTotal());
+			novoRelatorio.setServicos(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
 			novoRelatorio.setFee(infoLista.getAdministracaoValor());
+			
+			
 			novoRelatorio.setImpostoCliente(infoLista.getImpostoValor());
+			
+			
 			novoRelatorio.setDataAtualizacao(Calendar.getInstance());
 			novoRelatorio.setIdLista(idLista);
 			
-			novoRelatorio.setImpostoSobreValorLoccoAgencia(calculaImpostoSobreValorLoccoAgencia(novoRelatorio.getValorLoccoAgenc(), new BigDecimal("0.155")));
+			novoRelatorio.setImpostoSobreValorLoccoAgencia(calculaImpostoSobreValorLoccoAgencia(novoRelatorio.getValorLoccoAgenc(), new BigDecimal(infoInterna.getImpostoInterna()/100)));
+			
+			
 			novoRelatorio.setValorLiquido(novoRelatorio.getValorLoccoAgenc().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
 			novoRelatorio.setImpostoClienteDiferenca(novoRelatorio.getImpostoCliente().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
 			
