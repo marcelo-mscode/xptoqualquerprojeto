@@ -114,26 +114,17 @@ public class AtualizaRelatorioEventoApoio {
 			BigDecimal totalDiferencaSemTelefone = totalDiferencaSemTelefone(relatorioBVS,novoRelatorio.getFee(),novoRelatorio.getFeeReduzido(), novoRelatorio.getImpostoClienteDiferenca());
 			
 			
-			// Esses Valores !!!!
 			BigDecimal totalCacheFuncionariosSemTelefone = relatorioDAO.calculaTotalCachesFuncionarios(totalDiferencaSemTelefone, listaRelatorioCaches);
-			
-			
-			System.out.println("Funcionarios: "+ totalCacheFuncionariosSemTelefone);
-			
 			BigDecimal totalCacheDiretoriaSemTelefone = relatorioDAO.caculaValorSeDiretoria(listaRelatorioCaches,totalDiferencaSemTelefone,totalCacheFuncionariosSemTelefone);
-			
-			System.out.println("Diretoria: "+ totalCacheDiretoriaSemTelefone);
-			
-			System.out.println("Soma: "+ (totalCacheDiretoriaSemTelefone.add(totalCacheDiretoriaSemTelefone)));
-			
-			
-			
 			
 			novoRelatorio.setTotalCachesSemTelefone(totalCacheDiretoriaSemTelefone.add(totalCacheFuncionariosSemTelefone));
 			
 			
 			BigDecimal giroSTelef = caculaGiroSemTelefone(novoRelatorio.getValorLiquido(),
 					novoRelatorio.getTotalCachesSemTelefone(),totalApagar(relatorioBVS));
+			
+			System.out.println("Giro sem telefone: "+giroSTelef);
+			
 			
 			novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
 			
@@ -159,10 +150,22 @@ public class AtualizaRelatorioEventoApoio {
 			novoRelatorio.setTotalCachesComTelefone(totalCacheDiretoriaComTelefone.add(totalCacheFuncComTelefone));
 			novoRelatorio.setCacheEquipIn(totalCacheFuncComTelefone);
 
+			
+			BigDecimal pgtoExternasSemImpostossTESTE = novoRelatorio.getPgtoExternas().subtract(novoRelatorio.getMargemContribuicao()).
+					subtract(novoRelatorio.getCustoTelefone());
+			
+			System.out.println("PGTO: "+ pgtoExternasSemImpostossTESTE);
+			
+			
 			//Calcula giro Com telefone
 			BigDecimal giroComTelefone = novoRelatorio.getValorLiquido()
 					.subtract(novoRelatorio.getTotalCachesComTelefone())
-					.subtract(novoRelatorio.getPgtoExternas());
+					
+			// Esse valor agora !!!!!
+			.subtract(pgtoExternasSemImpostossTESTE);
+			//.subtract(novoRelatorio.getPgtoExternas());
+			
+			
 			
 			novoRelatorio.setCacheEquipIn(calculacacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
 			novoRelatorio.setTotalCachesIntExt(calculacacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
@@ -286,10 +289,14 @@ public class AtualizaRelatorioEventoApoio {
 	}
 	
 	public BigDecimal caculaGiroSemTelefone(BigDecimal valorLiquido, BigDecimal cacheSemTelefone, BigDecimal externas){
+		
+		
 		BigDecimal giroSemTelefone = new BigDecimal("0");
 		BigDecimal bvs = new BigDecimal("0");
 		BigDecimal internas = new BigDecimal("0");
 		giroSemTelefone = valorLiquido.subtract(cacheSemTelefone).subtract(externas).subtract(internas).add(bvs);
+		
+		
 		return giroSemTelefone;
 	}
 	
