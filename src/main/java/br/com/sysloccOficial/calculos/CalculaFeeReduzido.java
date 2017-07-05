@@ -1,19 +1,24 @@
 package br.com.sysloccOficial.calculos;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
+import br.com.sysloccOficial.model.ProdutoGrupo;
 
 public class CalculaFeeReduzido {
 	
-	
 	@Autowired ProdutoGrupoDAO produtoDAO;
 	
-	public static BigDecimal calculaFeeReduzido(){
+	private static BigDecimal valor = new BigDecimal("0");
+	
+	public static BigDecimal calculaFeeReduzido(Integer idLista){
 		
-		BigDecimal teste = new BigDecimal("1000.00");
+		
+		
+		valor = valorFee(idLista);
 		
 		
 		return teste;
@@ -21,12 +26,21 @@ public class CalculaFeeReduzido {
 	
 	
 	private BigDecimal valorFee(Integer idLista){
+		ProdutoGrupoDAO prod  = new ProdutoGrupoDAO();
 		
-		BigDecimal teste = produtoDAO.listaProdutosPorIdLista(2806);
 		
-		return null;
+		List<ProdutoGrupo> teste = prod.listaProdutosPorIdLista(2806);
+		
+		BigDecimal somaFeeLista = prod.calculaFee(teste, true);
+		
+		
+		return somaFeeLista;
 		
 	}
+	
+	
+	
+	
 	
 	
 	

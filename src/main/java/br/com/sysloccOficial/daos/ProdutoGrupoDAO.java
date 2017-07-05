@@ -1,6 +1,7 @@
 package br.com.sysloccOficial.daos;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -319,31 +320,66 @@ public class ProdutoGrupoDAO {
 		return g.getResultList();
 	}
 	
-	public BigDecimal listaProdutosPorIdLista(Integer idLista){
-		
-		BigDecimal total = new BigDecimal("100.25");
+	public List<ProdutoGrupo> listaProdutosPorIdLista(Integer idLista){
 		
 		try {
 			String consulta = "SELECT * FROM locomotivos.produtogrupo where idGrupo in ("
 							+ "SELECT idgrupo FROM locomotivos.grupo where idLista = "+idLista+")";
 			
 			TypedQuery<ProdutoGrupo> prodGrupo = manager.createQuery(consulta, ProdutoGrupo.class);
-			
-			List<ProdutoGrupo> listaProd = prodGrupo.getResultList();
-			
-			
+
+			return prodGrupo.getResultList();
 			
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			
+			System.out.println("Erro listaProdutosPorIdLista : "+ e);
+			
+			return null;
 		}
-		
-		
-		
-		return total;
 	}
 	
 	
+	/**
+	 * Faz a soma total do Fee da lista. 
+	 * 
+	 * Passando o Tipo de 
+	 * 
+	 */
+	
+	
+	public BigDecimal calculaFee(List<ProdutoGrupo> listaProdutos, boolean fee){
+		
+		BigDecimal totalItensSemImpostoFeeReduzido = new BigDecimal("0");
+		BigDecimal apoioSoma = new BigDecimal("0");
+		try {
+			
+			BigDecimal divideFeeReduzido = listaProdutos.get(0).getIdGrupo().getIdLista().getFeeReduzido().divide(
+					new BigDecimal(100),12,RoundingMode.UP);
+			
+			
+			for (int i = 0; i < listaProdutos.size(); i++) {
+
+				if (listaProdutos.get(i).isImposto() == false
+					 && listaProdutos.get(i).getIdGrupo().isFeeReduzido() == true) {
+					
+					double quant = listaProdutos.get(i).getQuantidade();
+					double quant2 = listaProdutos.get(i).getQuantidade2();
+					double diaria = listaProdutos.get(i).getDiarias();
+					double quantTotal = quant*quant2*diaria;
+					
+					apoioSoma = apoioSoma.add(listaProdutos.get(i).getPrecoProduto().multiply
+											  (new BigDecimal(quantTotal))) ;
+				}
+			}
+			totalItensSemImpostoFeeReduzido = apoioSoma.multiply(divideFeeReduzido);
+			System.out.println(totalItensSemImpostoFeeReduzido);
+			return totalItensSemImpostoFeeReduzido;
+		} catch (Exception e) {
+			return new BigDecimal("0");
+		}
+
+	}
 	
 	
 	

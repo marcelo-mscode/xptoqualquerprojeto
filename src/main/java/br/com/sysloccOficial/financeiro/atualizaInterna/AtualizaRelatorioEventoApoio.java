@@ -93,7 +93,7 @@ public class AtualizaRelatorioEventoApoio {
 
 			//novoRelatorio.setFeeReduzido(infoLista.getAdministracaoValor());
 			novoRelatorio.setFeeReduzido(infoLista.getAdministracaoValor());
-			System.out.println("Retorno do teste: "+calculosFeeReduzido(2806));
+			System.out.println("Retorno do teste: "+CalculaFeeReduzido.calculaFeeReduzido(idLista));
 			
 // ------- //			
 			
@@ -211,7 +211,7 @@ public class AtualizaRelatorioEventoApoio {
 	
 	
 	
-	private BigDecimal calculosFeeReduzido(Integer lista){
+/*	private BigDecimal calculosFeeReduzido(Integer lista){
 		
 		
 		List<ProdutoGrupo> produtos = produtoGrupoDAO.listaProdutoGrupoPorGrupo(11) ;
@@ -231,7 +231,7 @@ public class AtualizaRelatorioEventoApoio {
 		}
 		
 	}
-	
+*/	
 	
 	
 
