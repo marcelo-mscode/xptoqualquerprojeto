@@ -90,11 +90,8 @@ public class CalculoValoresInterna extends Calculadora{
 	public BigDecimal getFeeReduzido() {
 		
 		try {
-			BigDecimal divideFeeReduzido = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getFeeReduzido().divide(
-					new BigDecimal(100),12,RoundingMode.UP);
-			
-			feeReduzido = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getSubTotalVendaNaoIncideImposto().multiply(
-							divideFeeReduzido);
+			feeReduzido = getFeeReduzidoNovoCalculo();
+			getFeeReduzidoNovoCalculo();
 			return feeReduzido;
 			
 		} catch (Exception e) {
@@ -103,10 +100,8 @@ public class CalculoValoresInterna extends Calculadora{
 		
 	}
 	public BigDecimal getFeeReduzidoNovoCalculo() {
-		
 		BigDecimal totalItensSemImpostoFeeReduzido = new BigDecimal("0");
-		BigDecidddmal apoioSoma = new BigDecimal("0");
-		
+		BigDecimal apoioSoma = new BigDecimal("0");
 		try {
 			BigDecimal divideFeeReduzido = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getFeeReduzido().divide(
 					new BigDecimal(100),12,RoundingMode.UP);
@@ -116,14 +111,17 @@ public class CalculoValoresInterna extends Calculadora{
 				if (listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == false
 					 && listaDeProducaoP.get(i).getProdutoGrupo().getIdGrupo().isFeeReduzido() == true) {
 					
-					apoioSoma = apoioSoma.add(listaDeProducaoP.get(i).getProdutoGrupo().getPrecoProduto());
+					double quant = listaDeProducaoP.get(i).getProdutoGrupo().getQuantidade();
+					double quant2 = listaDeProducaoP.get(i).getProdutoGrupo().getQuantidade2();
+					double diaria = listaDeProducaoP.get(i).getProdutoGrupo().getDiarias();
+					double quantTotal = quant*quant2*diaria;
+					apoioSoma = apoioSoma.add(listaDeProducaoP.get(i).getProdutoGrupo().getPrecoProduto().multiply
+											  (new BigDecimal(quantTotal))) ;
 				}
 			}
-			
 			totalItensSemImpostoFeeReduzido = apoioSoma.multiply(divideFeeReduzido);
-			
+			System.out.println(totalItensSemImpostoFeeReduzido);
 			return totalItensSemImpostoFeeReduzido;
-			
 		} catch (Exception e) {
 			return new BigDecimal("0");
 		}
