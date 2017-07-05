@@ -12,8 +12,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.sysloccOficial.calculos.CalculaFeeReduzido;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.daos.GrupoDAO;
+import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
@@ -25,6 +27,7 @@ import br.com.sysloccOficial.model.GiroEvento;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.InfoInterna;
 import br.com.sysloccOficial.model.Lista;
+import br.com.sysloccOficial.model.ProdutoGrupo;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
 
@@ -38,6 +41,7 @@ public class AtualizaRelatorioEventoApoio {
 	@Autowired AnaliticoIndividualDAO analiticoDAO;
 	@Autowired UtilitariaDatas utildatas;
 	@Autowired GrupoDAO grupoDAO;
+	@Autowired ProdutoGrupoDAO produtoGrupoDAO;
 	
 	
 	
@@ -86,7 +90,10 @@ public class AtualizaRelatorioEventoApoio {
 // ------- //			
 
 			novoRelatorio.setFee(infoLista.getAdministracaoValor());
+
+			//novoRelatorio.setFeeReduzido(infoLista.getAdministracaoValor());
 			novoRelatorio.setFeeReduzido(infoLista.getAdministracaoValor());
+			System.out.println("Retorno do teste: "+calculosFeeReduzido(2806));
 			
 // ------- //			
 			
@@ -201,6 +208,31 @@ public class AtualizaRelatorioEventoApoio {
 		}
 		
 	}
+	
+	
+	
+	private BigDecimal calculosFeeReduzido(Integer lista){
+		
+		
+		List<ProdutoGrupo> produtos = produtoGrupoDAO.listaProdutoGrupoPorGrupo(11) ;
+		
+		
+		try {
+			
+			BigDecimal soma = CalculaFeeReduzido.calculaFeeReduzido();
+			
+			return soma;
+			
+		} catch (Exception e) {
+			
+			System.out.println("Erro: "+e);
+			return null;
+		
+		}
+		
+	}
+	
+	
 	
 
 	private BigDecimal calculoValorTelefone(BigDecimal giroSemTelefoneEvento, Integer idRelatorioAtual,String mes,String ano) {

@@ -255,14 +255,6 @@ public class ProdutoGrupoDAO {
 		orcamento.setIdOrcamento(null);
 		orcamento.setGrupo(umGrupo);
 		
-		/*ProdutoGrupo umProdutoGrupo;
-	
-		 umProdutoGrupo = prodg;
-		 umProdutoGrupo.setIdProdutoGrupo(null);
-		 umProdutoGrupo.setIdGrupo(umGrupo);
-		 umProdutoGrupo.setTidProdutoGrupo(util.nomeAleatorio(12));
-		 umProdutoGrupo.setStatus(null);*/
-		 
 		 try {
 			 manager.detach(orcamento);
 			 manager.persist(orcamento);
@@ -326,5 +318,44 @@ public class ProdutoGrupoDAO {
 		TypedQuery<GrupoCategoriaBayer> g = manager.createQuery("from GrupoCategoriaBayer", GrupoCategoriaBayer.class);
 		return g.getResultList();
 	}
+	
+	public BigDecimal listaProdutosPorIdLista(Integer idLista){
+		
+		BigDecimal total = new BigDecimal("100.25");
+		
+		try {
+			String consulta = "SELECT * FROM locomotivos.produtogrupo where idGrupo in ("
+							+ "SELECT idgrupo FROM locomotivos.grupo where idLista = "+idLista+")";
+			
+			TypedQuery<ProdutoGrupo> prodGrupo = manager.createQuery(consulta, ProdutoGrupo.class);
+			
+			List<ProdutoGrupo> listaProd = prodGrupo.getResultList();
+			
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		
+		return total;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
