@@ -246,7 +246,7 @@
 			<td>Imposto cliente 22,90%</td>
 			<td><fmt:formatNumber value="${infoLista.impostoValor}" pattern="#,##0.00"/></td>
 			<td></td>
-			<td><fmt:formatNumber value="${infoLista.impostoValor - (infoLista.valorTotal * (infoInterna.impostoInterna/100))}" pattern="#,##0.00"/></td>
+			<td><fmt:formatNumber value="${infoLista.impostoValor - relatorio.impostoSobreValorLoccoAgencia}" pattern="#,##0.00"/></td>
 			<td></td>
 		</tr>
 		

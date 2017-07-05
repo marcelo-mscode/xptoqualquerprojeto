@@ -114,10 +114,11 @@ public class AnaliticoIndividualDAO {
 			String consultaTelefone = "select sum(valor) from FinancTelefone where analitico.idAnalitico="+idAnalitico;
 			TypedQuery<BigDecimal> s = manager.createQuery(consultaTelefone, BigDecimal.class);
 			BigDecimal valorTelefone = s.getSingleResult();
+		
 			return valorTelefone;
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("Não encontrou valores de telefone cadastrados para o mes de "+mes+" de "+ano);
 			return zero;
 		}
 		
