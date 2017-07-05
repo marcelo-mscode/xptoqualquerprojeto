@@ -409,7 +409,7 @@
 		<tr>
 			<td><fmt:formatDate value="${infoLista.infoInterna.dataPagamento}" pattern="dd/MM/yyyy"/> </td>
 			<td>${infoLista.infoInterna.nfInterna}</td>
-			<td><fmt:formatNumber value="${infoLista.valorTotal}" pattern="#,##0.00"/></td>
+			<td><fmt:formatNumber value="${relatorio.valorLoccoAgenc}" pattern="#,##0.00"/></td>
 		</tr>
 		
 		

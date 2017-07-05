@@ -154,7 +154,6 @@ public class AtualizaRelatorioEventoApoio {
 			BigDecimal pgtoExternasSemImpostossTESTE = novoRelatorio.getPgtoExternas().subtract(novoRelatorio.getMargemContribuicao()).
 					subtract(novoRelatorio.getCustoTelefone());
 			
-			System.out.println("PGTO: "+ pgtoExternasSemImpostossTESTE);
 			
 			
 			//Calcula giro Com telefone
@@ -162,10 +161,8 @@ public class AtualizaRelatorioEventoApoio {
 					.subtract(novoRelatorio.getTotalCachesComTelefone())
 					
 			// Esse valor agora !!!!!
-			.subtract(pgtoExternasSemImpostossTESTE);
+			.subtract(novoRelatorio.getPgtoExternas());
 			//.subtract(novoRelatorio.getPgtoExternas());
-			
-			
 			
 			novoRelatorio.setCacheEquipIn(calculacacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
 			novoRelatorio.setTotalCachesIntExt(calculacacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
