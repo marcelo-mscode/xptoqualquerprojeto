@@ -88,12 +88,11 @@ public class AtualizaRelatorioEventoApoio {
 			novoRelatorio.setServicos(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
 			
 // ------- //			
-
-			novoRelatorio.setFee(infoLista.getAdministracaoValor());
-
-			//novoRelatorio.setFeeReduzido(infoLista.getAdministracaoValor());
-			novoRelatorio.setFeeReduzido(infoLista.getAdministracaoValor());
-			System.out.println("Retorno do teste: "+CalculaFeeReduzido.calculaFeeReduzido(idLista));
+			
+			BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
+			
+			novoRelatorio.setFee(infoLista.getAdministracaoValor().subtract(feeReduzido));
+			novoRelatorio.setFeeReduzido(feeReduzido);
 			
 // ------- //			
 			
@@ -210,31 +209,6 @@ public class AtualizaRelatorioEventoApoio {
 	}
 	
 	
-	
-/*	private BigDecimal calculosFeeReduzido(Integer lista){
-		
-		
-		List<ProdutoGrupo> produtos = produtoGrupoDAO.listaProdutoGrupoPorGrupo(11) ;
-		
-		
-		try {
-			
-			BigDecimal soma = CalculaFeeReduzido.calculaFeeReduzido();
-			
-			return soma;
-			
-		} catch (Exception e) {
-			
-			System.out.println("Erro: "+e);
-			return null;
-		
-		}
-		
-	}
-*/	
-	
-	
-
 	private BigDecimal calculoValorTelefone(BigDecimal giroSemTelefoneEvento, Integer idRelatorioAtual,String mes,String ano) {
 		// Pegar o soma de todos os giros
 		/**

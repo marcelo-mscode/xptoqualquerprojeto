@@ -10,31 +10,24 @@ import br.com.sysloccOficial.model.ProdutoGrupo;
 
 public class CalculaFeeReduzido {
 	
-	@Autowired ProdutoGrupoDAO produtoDAO;
-	
-	private static BigDecimal valor = new BigDecimal("0");
-	
 	public static BigDecimal calculaFeeReduzido(Integer idLista){
 		
+		BigDecimal valor = valorFee(idLista);
 		
-		
-		valor = valorFee(idLista);
-		
-		
-		return teste;
+		return valor;
 	}
 	
 	
-	private BigDecimal valorFee(Integer idLista){
+	private static BigDecimal valorFee(Integer idLista){
 		ProdutoGrupoDAO prod  = new ProdutoGrupoDAO();
 		
 		
 		List<ProdutoGrupo> teste = prod.listaProdutosPorIdLista(2806);
 		
-		BigDecimal somaFeeLista = prod.calculaFee(teste, true);
+		//BigDecimal somaFeeLista = prod.calculaFee(teste, true);
 		
 		
-		return somaFeeLista;
+		return null;
 		
 	}
 	

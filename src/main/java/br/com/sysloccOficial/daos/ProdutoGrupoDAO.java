@@ -321,34 +321,34 @@ public class ProdutoGrupoDAO {
 	}
 	
 	public List<ProdutoGrupo> listaProdutosPorIdLista(Integer idLista){
-		
 		try {
-			String consulta = "SELECT * FROM locomotivos.produtogrupo where idGrupo in ("
-							+ "SELECT idgrupo FROM locomotivos.grupo where idLista = "+idLista+")";
-			
+			String consulta = "select p FROM ProdutoGrupo p where p.idGrupo.idgrupo in ("
+							+ "SELECT idgrupo FROM Grupo where idLista = "+idLista+")";
 			TypedQuery<ProdutoGrupo> prodGrupo = manager.createQuery(consulta, ProdutoGrupo.class);
-
 			return prodGrupo.getResultList();
 			
-			
 		} catch (Exception e) {
-			
-			System.out.println("Erro listaProdutosPorIdLista : "+ e);
-			
+			System.out.println("ProdutoGrupoDAO - Linha: 323\nErro listaProdutosPorIdLista : "+ e);
 			return null;
+		}
+	}
+	
+	public BigDecimal calculaSomaFeeLista(Integer idLista){
+		try {
+			List<ProdutoGrupo> listaProdutos = listaProdutosPorIdLista(idLista);
+			return calculaFee(listaProdutos);
+		} catch (Exception e) {
+			System.out.println("ProdutoGrupoDAO - Linha: 342\nDeu erro ao calcular Soma do Fee: "+e);
+			return new BigDecimal("0");
 		}
 	}
 	
 	
 	/**
-	 * Faz a soma total do Fee da lista. 
-	 * 
-	 * Passando o Tipo de 
+	 * Faz a soma total do FeeReduzido da lista. 
 	 * 
 	 */
-	
-	
-	public BigDecimal calculaFee(List<ProdutoGrupo> listaProdutos, boolean fee){
+	public BigDecimal calculaFee(List<ProdutoGrupo> listaProdutos){
 		
 		BigDecimal totalItensSemImpostoFeeReduzido = new BigDecimal("0");
 		BigDecimal apoioSoma = new BigDecimal("0");
@@ -356,8 +356,6 @@ public class ProdutoGrupoDAO {
 			
 			BigDecimal divideFeeReduzido = listaProdutos.get(0).getIdGrupo().getIdLista().getFeeReduzido().divide(
 					new BigDecimal(100),12,RoundingMode.UP);
-			
-			
 			for (int i = 0; i < listaProdutos.size(); i++) {
 
 				if (listaProdutos.get(i).isImposto() == false
@@ -373,9 +371,9 @@ public class ProdutoGrupoDAO {
 				}
 			}
 			totalItensSemImpostoFeeReduzido = apoioSoma.multiply(divideFeeReduzido);
-			System.out.println(totalItensSemImpostoFeeReduzido);
 			return totalItensSemImpostoFeeReduzido;
 		} catch (Exception e) {
+			System.out.println("ProdutoGrupoDAO - Linha: 358\nNão tem item sem imposto e com feeReduzido.");
 			return new BigDecimal("0");
 		}
 
