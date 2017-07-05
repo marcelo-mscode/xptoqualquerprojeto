@@ -254,7 +254,7 @@
 
 		<tr class="bordaDestaque">
 			<td><b>TOTAL</b></td>
-			<td><b><fmt:formatNumber value="${infoLista.valorTotal}" pattern="#,##0.00"/></b></td>
+			<td><b><fmt:formatNumber value="${relatorio.valorLoccoAgenc}" pattern="#,##0.00"/></b></td>
 			<td><b><fmt:formatNumber value="${relatorio.pgtoExternas}" pattern="#,##0.00"/></b></td>
 			<td><b><fmt:formatNumber value="${relatorio.totalDiferenca}" pattern="#,##0.00"/></b></td>
 			<td>
