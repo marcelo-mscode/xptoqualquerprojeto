@@ -105,7 +105,7 @@ public class CalculoValoresInterna extends Calculadora{
 	public BigDecimal getFeeReduzidoNovoCalculo() {
 		
 		BigDecimal totalItensSemImpostoFeeReduzido = new BigDecimal("0");
-		BigDecimal apoioSoma = new BigDecimal("0");
+		BigDecidddmal apoioSoma = new BigDecimal("0");
 		
 		try {
 			BigDecimal divideFeeReduzido = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getFeeReduzido().divide(
@@ -113,24 +113,20 @@ public class CalculoValoresInterna extends Calculadora{
 			
 			
 			for (int i = 0; i < listaDeProducaoP.size(); i++) {
-				if (listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == false) {
+				if (listaDeProducaoP.get(i).getProdutoGrupo().isImposto() == false
+					 && listaDeProducaoP.get(i).getProdutoGrupo().getIdGrupo().isFeeReduzido() == true) {
 					
+					apoioSoma = apoioSoma.add(listaDeProducaoP.get(i).getProdutoGrupo().getPrecoProduto());
 				}
-				
-				
-				
 			}
 			
+			totalItensSemImpostoFeeReduzido = apoioSoma.multiply(divideFeeReduzido);
 			
-			
-			feeReduzido = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getSubTotalVendaNaoIncideImposto().multiply(
-					divideFeeReduzido);
-			return feeReduzido;
+			return totalItensSemImpostoFeeReduzido;
 			
 		} catch (Exception e) {
 			return new BigDecimal("0");
 		}
-		
 	}
 	
 	
