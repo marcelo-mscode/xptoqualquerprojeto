@@ -111,18 +111,29 @@ public class AtualizaRelatorioEventoApoio {
 			
 			novoRelatorio.setTotalAPagarFornecedores(totalAPAgarFornecedores(relatorioBVS));
 			
-			BigDecimal totalDiferencaSemTelefone = totalDiferencaSemTelefone(relatorioBVS,novoRelatorio.getFee(), novoRelatorio.getImpostoClienteDiferenca());
+			BigDecimal totalDiferencaSemTelefone = totalDiferencaSemTelefone(relatorioBVS,novoRelatorio.getFee(),novoRelatorio.getFeeReduzido(), novoRelatorio.getImpostoClienteDiferenca());
 			
 			
+			// Esses Valores !!!!
 			BigDecimal totalCacheFuncionariosSemTelefone = relatorioDAO.calculaTotalCachesFuncionarios(totalDiferencaSemTelefone, listaRelatorioCaches);
+			
+			
+			System.out.println("Funcionarios: "+ totalCacheFuncionariosSemTelefone);
+			
 			BigDecimal totalCacheDiretoriaSemTelefone = relatorioDAO.caculaValorSeDiretoria(listaRelatorioCaches,totalDiferencaSemTelefone,totalCacheFuncionariosSemTelefone);
+			
+			System.out.println("Diretoria: "+ totalCacheDiretoriaSemTelefone);
+			
+			System.out.println("Soma: "+ (totalCacheDiretoriaSemTelefone.add(totalCacheDiretoriaSemTelefone)));
+			
+			
 			
 			
 			novoRelatorio.setTotalCachesSemTelefone(totalCacheDiretoriaSemTelefone.add(totalCacheFuncionariosSemTelefone));
 			
+			
 			BigDecimal giroSTelef = caculaGiroSemTelefone(novoRelatorio.getValorLiquido(),
-														  novoRelatorio.getTotalCachesSemTelefone(),
-														  totalApagar(relatorioBVS));
+					novoRelatorio.getTotalCachesSemTelefone(),totalApagar(relatorioBVS));
 			
 			novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
 			
@@ -240,13 +251,13 @@ public class AtualizaRelatorioEventoApoio {
 		return valorImposto;
 	}
 	
-	public BigDecimal totalDiferencaSemTelefone(List<RelatorioBVS> relatorioBVS,BigDecimal fee, BigDecimal impostoClienteDiferenca){
+	public BigDecimal totalDiferencaSemTelefone(List<RelatorioBVS> relatorioBVS,BigDecimal fee,BigDecimal feeReduzido, BigDecimal impostoClienteDiferenca){
 		BigDecimal totalDiferenca = new BigDecimal("0");
 		
 		for (int i = 0; i < relatorioBVS.size(); i++) {
 			totalDiferenca = totalDiferenca.add(relatorioBVS.get(i).getDiferenca());
 		}
-		totalDiferenca = totalDiferenca.add(fee).add(impostoClienteDiferenca);
+		totalDiferenca = totalDiferenca.add(fee).add(impostoClienteDiferenca).add(feeReduzido);
 		return totalDiferenca;
 	}
 	

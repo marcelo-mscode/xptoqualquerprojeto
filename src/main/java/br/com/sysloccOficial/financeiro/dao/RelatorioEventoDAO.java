@@ -131,6 +131,8 @@ public class RelatorioEventoDAO {
 	}
 	
 	public BigDecimal calculaTotalCachesFuncionarios(BigDecimal totalDif, List<CachePadrao> relatorio) {
+		
+		
 		BigDecimal totalCachesFunc = new BigDecimal("0");
 	
 		for (int i = 0; i < relatorio.size(); i++) {
