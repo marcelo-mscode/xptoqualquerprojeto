@@ -1,0 +1,41 @@
+Antes da atualização de 05/07/2017
+
+
+
+
+private BigDecimal calculoValorTelefone(BigDecimal giroSemTelefoneEvento, Integer idRelatorioAtual,String mes,String ano) {
+		// Pegar o soma de todos os giros
+		/**
+		 * Posso pegar o soma dos outros giros que estiverem cadastrados no banco o somar com o giro atual
+		 * assim teremos a soma de todos os giros do mes
+		 */
+		BigDecimal somaGirosEventosMes = relatorioDAO.somaGirosPorAnoMes(ano, mes, idRelatorioAtual);
+		
+		BigDecimal razaoCalculoTelefone = new BigDecimal("0.00");
+		BigDecimal validador = new BigDecimal("0.00");
+		
+		/*BigDecimal somaGirosEventosMes = relatorioDAO.somaGirosPorAnoMes("2016", "MAIO",idRelatorioAtual);
+		somaGirosEventosMes = somaGirosEventosMes.add(giroSemTelefoneEvento);*/
+		
+		// Pegar valor telefone
+/*		BigDecimal valorTelefone2 = analiticoDAO.somaValorTelefonePorMesAno("MAIO", "2016");
+*/		
+//		BigDecimal valorTelefone = new BigDecimal("1584.29");
+		BigDecimal valorTelefone = analiticoDAO.somaValorTelefonePorMesAno(mes,ano);
+		
+		// Pegar o valor do giro sem telefone
+		BigDecimal valorGiroDesseEvento = giroSemTelefoneEvento;
+		
+		// Dividir o giro desse evento pela soma de todos os eventos
+		if(somaGirosEventosMes.equals(validador) || somaGirosEventosMes == null){
+			 razaoCalculoTelefone = valorGiroDesseEvento.divide( valorGiroDesseEvento,12,RoundingMode.UP);
+		}else{
+			 razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,12,RoundingMode.UP);
+		}
+		
+		// Pegar o resultado e multiplicar pelo valor mensal do telefone
+		BigDecimal valorTelefoneEvento = valorTelefone.multiply(razaoCalculoTelefone);
+		
+		return valorTelefoneEvento;
+		
+	}

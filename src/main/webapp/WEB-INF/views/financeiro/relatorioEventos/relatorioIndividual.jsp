@@ -226,9 +226,9 @@
 		
 		<tr>
 			<td>FEE Reduzido 7%</td>
-			<td><fmt:formatNumber value="${relatorio.feeReduzido}" pattern="#,##0.00"/> -- </td>
+			<td><fmt:formatNumber value="${relatorio.feeReduzido}" pattern="#,##0.00"/></td>
 			<td></td>
-			<td><fmt:formatNumber value="${relatorio.feeReduzido}" pattern="#,##0.00"/> -- </td>
+			<td><fmt:formatNumber value="${relatorio.feeReduzido}" pattern="#,##0.00"/></td>
 			<td></td>
 		</tr>
 		

@@ -87,10 +87,8 @@ public class AtualizaRelatorioEventoApoio {
 			
 			novoRelatorio.setServicos(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
 			
-// ------- //			
-			
+// -------  FeeResuzido			
 			BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
-			
 			novoRelatorio.setFee(infoLista.getAdministracaoValor().subtract(feeReduzido));
 			novoRelatorio.setFeeReduzido(feeReduzido);
 			
@@ -128,24 +126,20 @@ public class AtualizaRelatorioEventoApoio {
 			
 			novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
 			
-			//Calcula o Custo do Telefone
+//  ------  Calcula o Custo do Telefone
 			custoTelefone = calculoValorTelefone(giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
 			
 			novoRelatorio.setCustoTelefone(custoTelefone);
 			
-			//Calcula totalExternas
+// -------  Calcula totalExternas
 			BigDecimal totalExterna = novoRelatorio.getMargemContribuicao().add(novoRelatorio.getCustoTelefone().add(totalApagar(relatorioBVS)));
 			novoRelatorio.setPgtoExternas(totalExterna);
-			
-			
 			
 			
 			BigDecimal totalDiferencaComTelefone =  totalDiferencaComTelefone(relatorioBVS, novoRelatorio.getFee(),
 					novoRelatorio.getImpostoClienteDiferenca(), novoRelatorio.getMargemContribuicao(), custoTelefone);
 			
 		
-			
-			
 			novoRelatorio.setTotalDiferenca(totalDiferencaComTelefone);
 			
 			BigDecimal totalCacheFuncComTelefone = relatorioDAO.calculaTotalCachesFuncionarios(totalDiferencaComTelefone, listaRelatorioCaches);
@@ -210,6 +204,10 @@ public class AtualizaRelatorioEventoApoio {
 	
 	
 	private BigDecimal calculoValorTelefone(BigDecimal giroSemTelefoneEvento, Integer idRelatorioAtual,String mes,String ano) {
+
+		BigDecimal razaoCalculoTelefone = new BigDecimal("0.00");
+		BigDecimal validador = new BigDecimal("0.00");
+		
 		// Pegar o soma de todos os giros
 		/**
 		 * Posso pegar o soma dos outros giros que estiverem cadastrados no banco o somar com o giro atual
@@ -217,16 +215,6 @@ public class AtualizaRelatorioEventoApoio {
 		 */
 		BigDecimal somaGirosEventosMes = relatorioDAO.somaGirosPorAnoMes(ano, mes, idRelatorioAtual);
 		
-		BigDecimal razaoCalculoTelefone = new BigDecimal("0.00");
-		BigDecimal validador = new BigDecimal("0.00");
-		
-		/*BigDecimal somaGirosEventosMes = relatorioDAO.somaGirosPorAnoMes("2016", "MAIO",idRelatorioAtual);
-		somaGirosEventosMes = somaGirosEventosMes.add(giroSemTelefoneEvento);*/
-		
-		// Pegar valor telefone
-/*		BigDecimal valorTelefone2 = analiticoDAO.somaValorTelefonePorMesAno("MAIO", "2016");
-*/		
-//		BigDecimal valorTelefone = new BigDecimal("1584.29");
 		BigDecimal valorTelefone = analiticoDAO.somaValorTelefonePorMesAno(mes,ano);
 		
 		// Pegar o valor do giro sem telefone

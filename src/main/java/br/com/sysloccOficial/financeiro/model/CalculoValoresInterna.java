@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.financeiro.calculadora.Calculadora;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
 import br.com.sysloccOficial.model.producao.ProducaoP;
@@ -21,6 +22,7 @@ import br.com.sysloccOficial.model.producao.ProducaoP;
 public class CalculoValoresInterna extends Calculadora{
 	
 	@Autowired private InternaIndividualDAO internaIndividualDAO;
+	@Autowired private ProdutoGrupoDAO produtoDAO;
 	@PersistenceContext	private EntityManager manager;
 	
 	private List<ProducaoP> listaDeProducaoP;
@@ -102,6 +104,7 @@ public class CalculoValoresInterna extends Calculadora{
 	public BigDecimal getFeeReduzidoNovoCalculo() {
 		BigDecimal totalItensSemImpostoFeeReduzido = new BigDecimal("0");
 		BigDecimal apoioSoma = new BigDecimal("0");
+		
 		try {
 			BigDecimal divideFeeReduzido = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getFeeReduzido().divide(
 					new BigDecimal(100),12,RoundingMode.UP);
@@ -120,7 +123,7 @@ public class CalculoValoresInterna extends Calculadora{
 				}
 			}
 			totalItensSemImpostoFeeReduzido = apoioSoma.multiply(divideFeeReduzido);
-			System.out.println(totalItensSemImpostoFeeReduzido);
+			
 			return totalItensSemImpostoFeeReduzido;
 		} catch (Exception e) {
 			return new BigDecimal("0");
