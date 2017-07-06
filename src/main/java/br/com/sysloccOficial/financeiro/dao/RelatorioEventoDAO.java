@@ -13,6 +13,7 @@ import java.util.List;
 
 
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -28,6 +29,7 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioCaches;
 import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
+import br.com.sysloccOficial.model.DesIntFinanc;
 import br.com.sysloccOficial.model.GiroEvento;
 import br.com.sysloccOficial.model.InfoInterna;
 import br.com.sysloccOficial.model.Lista;
@@ -334,8 +336,14 @@ public class RelatorioEventoDAO {
 			return null;
 		}
 	}
-	
-	
-	
-	
+
+	public List<DesIntFinanc> despesasProjeto(Integer idLista) {
+		try {
+			TypedQuery<DesIntFinanc> despesas = manager.createQuery("FROM DesIntFinanc WHERE idLista = "+idLista, DesIntFinanc.class);
+			return despesas.getResultList();
+			
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

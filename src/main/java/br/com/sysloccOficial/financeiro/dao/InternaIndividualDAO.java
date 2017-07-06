@@ -328,10 +328,6 @@ public class InternaIndividualDAO {
 
 	public void salvaDespesas(DesIntFinanc despesas) throws ParseException {
 		
-		
-		
-		
-		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date data = new java.sql.Date(format.parse(despesas.getDataTransiente()).getTime());
 		despesas.setData(data);

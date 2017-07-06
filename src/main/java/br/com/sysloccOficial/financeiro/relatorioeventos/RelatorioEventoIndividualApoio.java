@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
+import br.com.sysloccOficial.model.DesIntFinanc;
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
 
@@ -25,6 +26,9 @@ public class RelatorioEventoIndividualApoio {
 		List<Integer> idsFornecedoresPorList = relatorioEventoDAO.idsFornecedoresPorLista(idLista);
 		List<ProducaoP> listaProducaoPPorIdLista = relatorioEventoDAO.listaProducaoPPorIdLista(idLista);	
 		List<RelatorioBVS> listaRelatorioBVS = new ArrayList<RelatorioBVS>();
+		
+		List<DesIntFinanc> despesasProjeto = relatorioEventoDAO.despesasProjeto(idLista);
+		
 		
 		for (Integer ids : idsFornecedoresPorList) {
 			
@@ -54,6 +58,13 @@ public class RelatorioEventoIndividualApoio {
 			
 			listaRelatorioBVS.add(bvs);
 		}
+		if(!despesasProjeto.isEmpty()){
+			System.out.println("Tem Valor !!!");
+		}
+
+		
+		
+		
 		return listaRelatorioBVS;
 	}
 	
