@@ -58,7 +58,13 @@ public class RelatorioEventoIndividualApoio {
 			
 			listaRelatorioBVS.add(bvs);
 		}
+
 		if(!despesasProjeto.isEmpty()){
+			
+			for (int i = 0; i < despesasProjeto.size(); i++) {
+				
+			}
+			
 			System.out.println("Tem Valor !!!");
 		}
 
