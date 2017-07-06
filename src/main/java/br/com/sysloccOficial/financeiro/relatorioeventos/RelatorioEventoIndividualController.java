@@ -23,7 +23,7 @@ public class RelatorioEventoIndividualController {
 	
 	@RequestMapping("relatorioEventoIndividual")
 	public ModelAndView relatorioEventoIndividual(Integer idLista){
-		ModelAndView MV = new ModelAndView("financeiro/relatorioEventos/relatorioIndividual");
+		ModelAndView MV = new ModelAndView("financeiro/relatorioEventos/relatorioIndividual/relatorioIndividual");
 		
 		Lista infoLista = relatorioEventoDAO.listaPorIdLista(idLista);
 		
