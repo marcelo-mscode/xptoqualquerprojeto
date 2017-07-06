@@ -45,7 +45,8 @@ public class IndexInternaIndividual {
 		List<ProducaoP> listaItensIndividuais = new ArrayList<ProducaoP>(listaProducaoP);
 		
 		
-		CalculoValoresInterna calculaValoresListaIndividual = new CalculoValoresInterna(listaItensIndividuais,idLista,impostoDaLista,infoInterna.getImpostoInterna());
+		CalculoValoresInterna calculaValoresListaIndividual = new CalculoValoresInterna(listaItensIndividuais,idLista,
+																      impostoDaLista,infoInterna.getImpostoInterna());
 		
 		List<Object[]> listaDeIdsFornecedores = internaIndividualDAO.listaDeIdsFornecedores(idLista);
 		

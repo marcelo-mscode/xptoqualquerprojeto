@@ -64,7 +64,12 @@ public class InternaIndividualDAO {
 			TypedQuery<InfoInterna> q = manager.createQuery("from InfoInterna where idLista="+idLista,InfoInterna.class);
 			return q.getSingleResult();
 		} catch (Exception e) {
-			return null;
+			
+			InfoInterna info = new InfoInterna();
+			info.setImpostoInterna(0.0);
+			
+			
+			return info;
 		}
 		
 	}
