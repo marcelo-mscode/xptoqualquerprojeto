@@ -68,7 +68,6 @@ public class InternaIndividualDAO {
 			InfoInterna info = new InfoInterna();
 			info.setImpostoInterna(0.0);
 			
-			
 			return info;
 		}
 		
