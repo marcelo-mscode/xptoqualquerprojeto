@@ -105,7 +105,7 @@ public class ResumoMesIndividualController {
 
 		MV.addObject("giroDeficitAvit", dadosEvento.giroDeficitAvit(lucroOperacional,creditoAplic,MOContrib));
 
-		MV.addObject("contasReceber", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes));
+		MV.addObject("contasReceber", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes).add(new BigDecimal("95323.10")));
 		
 		//
 		MV.addObject("eventosContasPagar", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes));
