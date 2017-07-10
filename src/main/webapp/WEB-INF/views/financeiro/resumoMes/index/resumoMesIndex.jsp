@@ -12,6 +12,7 @@
 .cabecalhoLista > td {line-height: 33px !important;}
 .descricao {text-align: left;}
 .temContratacao{border-left: 1px solid red}
+.bordaGrossa{border: 2px solid #000 !important}
 
 
 </style>

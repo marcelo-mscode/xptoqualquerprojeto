@@ -62,7 +62,17 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				<th style="border: 2px solid #000"><b><fmt:formatNumber value="${creditosAplicacoes}" pattern="#,##0.00"/></b></th>
+				<th></th>
+				<th>136,10</th>
+			</tr>
+
+			<tr>
+				<th class="fundoDespesasFixas input-260px">Total Despesas:</th>
+				<th class="fundoDespesasFixas">=></th>
+				<th class="fundoDespesasFixas">=></th>
+				<th class="fundoDespesasFixas">=></th>
+				<th class="fundoDespesasFixas">=></th>
+				<th  class="fundoDespesasFixas" style="border: 2px solid #000"><b><fmt:formatNumber value="${creditosAplicacoes}" pattern="#,##0.00"/></b></th>
 				<th>136,10</th>
 			</tr>
 			
@@ -78,12 +88,12 @@
 				<th>136,10</th>
 			</tr>
 
-			<tr class="fundoAmarelo input-260px">
-				<th>Giro ( déficit ou superávit ):</th>
-				<th>=></th>
-				<th>=></th>
-				<th>=></th>
-				<th>=></th>
-				<th style="font-weight: bold;color: red"><fmt:formatNumber value="${giroDeficitAvit}" pattern="#,##0.00"/></th>
-				<th style="color: red;background-color: #fff">(92,88)</th>
+			<tr class="fundoAmarelo input-260px" style="border: 2px solid #000">
+				<th  class="fundoAmarelo">Giro ( déficit ou superávit ):</th>
+				<th  class="fundoAmarelo">=></th>
+				<th  class="fundoAmarelo">=></th>
+				<th  class="fundoAmarelo">=></th>
+				<th  class="fundoAmarelo">=></th>
+				<th  class="fundoAmarelo" style="font-weight: bold;color: red;border: 2px solid #000"><fmt:formatNumber value="${giroDeficitAvit}" pattern="#,##0.00"/></th>
+				<th style="color: red;background-color: #fff;border: none">(92,88)</th>
 			</tr>

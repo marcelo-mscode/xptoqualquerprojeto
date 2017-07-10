@@ -387,6 +387,50 @@ public ArrayList<Integer> FormataDataJodaGenerica(Date data) throws ParseExcepti
 		return numeroMes;
 	}
 	
+	public String nomeMesPorDigito(Integer digitoMes){
+		String mes = "";
+		if(digitoMes.equals(1)){
+			mes = "JANEIRO";
+		}
+		if(digitoMes.equals(2)){
+			mes = "FEVEREIRO";
+		}
+		if(digitoMes.equals(3)){
+			mes = "MARÇO";
+		}
+		if(digitoMes.equals(4)){
+			mes = "ABRIL";
+		}
+		if(digitoMes.equals(5)){
+			mes = "MAIO";
+		}
+		if(digitoMes.equals(6)){
+			mes = "JUNHO";
+		}
+		if(digitoMes.equals(7)){
+			mes = "JULHO";
+		}
+		if(digitoMes.equals(8)){
+			mes = "AGOSTO";
+		}
+		if(digitoMes.equals(9)){
+			mes = "SETEMBRO";
+		}
+		if(digitoMes.equals(10)){
+			mes = "OUTUBRO";
+		}
+		if(digitoMes.equals(11)){
+			mes = "NOVEMBRO";
+		}
+		if(digitoMes.equals(12)){
+			mes = "DEZEMBRO";
+		}
+		return mes;
+	}
+	
+	
+	
+	
 	public List<String> mesesAno(){
 		List<String> meses = new ArrayList<String>();
 		meses.add("JANEIRO");

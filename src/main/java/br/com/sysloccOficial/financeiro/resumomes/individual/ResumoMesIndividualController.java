@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
@@ -17,6 +18,7 @@ public class ResumoMesIndividualController {
 	
 	@Autowired RelatorioEventoDAO relatorioEventoDAO;
 	@Autowired DadosEventosMes dadosEvento;
+	@Autowired UtilitariaDatas utilDatas;
 	
 
 	@RequestMapping("resumoMesIndividual")
@@ -24,6 +26,8 @@ public class ResumoMesIndividualController {
 		
 		
 		String anoMes = ( mes < 10 ) ? ano+"-0"+mes  : ano+"-"+mes;
+		
+		String nomeMes = utilDatas.nomeMesPorDigito(mes);
 		
 		
 		ModelAndView MV = new ModelAndView("financeiro/resumoMes/individual/resumoMesIndividual");
@@ -96,15 +100,15 @@ public class ResumoMesIndividualController {
 		MV.addObject("creditosAplicacoes",creditoAplic);
 		
 		//
-		BigDecimal MOContrib = relatorioEventoDAO.MOMargemContribuicao("2016","MAIO");
+		BigDecimal MOContrib = relatorioEventoDAO.MOMargemContribuicao(ano.toString(),nomeMes);
 		MV.addObject("MOmargemContribuicao", MOContrib);
 
 		MV.addObject("giroDeficitAvit", dadosEvento.giroDeficitAvit(lucroOperacional,creditoAplic,MOContrib));
 
-		MV.addObject("contasReceber", relatorioEventoDAO.contasReceber("2016","MAIO"));
+		MV.addObject("contasReceber", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes));
 		
 		//
-		MV.addObject("eventosContasPagar", relatorioEventoDAO.contasReceber("2016","MAIO"));
+		MV.addObject("eventosContasPagar", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes));
 		
 		//
 		MV.addObject("salarios", relatorioEventoDAO.salarios(anoMes));
