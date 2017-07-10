@@ -21,6 +21,11 @@ public class ResumoMesIndividualController {
 
 	@RequestMapping("resumoMesIndividual")
 	public ModelAndView resumoMesIndex(Integer mes, Integer ano){
+		
+		
+		
+		String anoMes = ano+"-"+mes;
+		
 		ModelAndView MV = new ModelAndView("financeiro/resumoMes/individual/resumoMesIndividual");
 		
 		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(mes,ano);
@@ -58,30 +63,33 @@ public class ResumoMesIndividualController {
 				);
 		MV.addObject("lucroOperacional", lucroOperacional);
 		
-		MV.addObject("outrosImpostosContador", relatorioEventoDAO.despesasFixas("FinancImpostos","2016-05"));
-		MV.addObject("outrosEscritorio", relatorioEventoDAO.despesasFixas("FinancEscritorio","2016-05"));
-		MV.addObject("outrosTelefones", relatorioEventoDAO.despesasFixas("FinancTelefone","2016-05"));
-		MV.addObject("outrosFolhaPgto", relatorioEventoDAO.despesasFixas("FinancFolhaPgto","2016-05"));
+		MV.addObject("outrosImpostosContador", relatorioEventoDAO.despesasFixas("FinancImpostos", anoMes));
+		MV.addObject("outrosEscritorio", relatorioEventoDAO.despesasFixas("FinancEscritorio",anoMes));
+		MV.addObject("outrosTelefones", relatorioEventoDAO.despesasFixas("FinancTelefone",anoMes));
+		MV.addObject("outrosFolhaPgto", relatorioEventoDAO.despesasFixas("FinancFolhaPgto",anoMes));
 		
 		//
-		BigDecimal somaDespesasFixas = dadosEvento.SomaDespFixas(relatorioEventoDAO.despesasFixas("FinancImpostos","2016-05"),
-				relatorioEventoDAO.despesasFixas("FinancEscritorio","2016-05"),	
-				relatorioEventoDAO.despesasFixas("FinancTelefone","2016-05"),
-				relatorioEventoDAO.despesasFixas("FinancFolhaPgto","2016-05"));
+		BigDecimal somaDespesasFixas = dadosEvento.SomaDespFixas(relatorioEventoDAO.despesasFixas("FinancImpostos",anoMes),
+				relatorioEventoDAO.despesasFixas("FinancEscritorio",anoMes),	
+				relatorioEventoDAO.despesasFixas("FinancTelefone",anoMes),
+				relatorioEventoDAO.despesasFixas("FinancFolhaPgto",anoMes));
 		MV.addObject("SomaDespFixas", somaDespesasFixas);
 		
 		
 		
-		MV.addObject("despCaixasProjetos", relatorioEventoDAO.despesasFixas("FinancDespesas","2016-05"));
+		MV.addObject("despCaixasProjetos", relatorioEventoDAO.despesasFixas("FinancDespesas",anoMes));
 		
-		//
+// ----------------------------------------
 		BigDecimal somaDespVariaveis = dadosEvento.SomaDespVariaveis(
 				new BigDecimal("2289.04")
 				, relatorioEventoDAO.despesasFixas("FinancDespesas","2016-05")
 				, relatorioEventoDAO.despesasFixas("FinancOutrasDespesas","2016-05"));
 		MV.addObject("somaDespVariaveis", somaDespVariaveis);
-				
-		MV.addObject("outrasDespesas", relatorioEventoDAO.despesasFixas("FinancOutrasDespesas","2016-05"));
+// ----------------------------------------
+
+		
+		
+		MV.addObject("outrasDespesas", relatorioEventoDAO.despesasFixas("FinancOutrasDespesas",anoMes));
 		
 		//
 		BigDecimal creditoAplic = dadosEvento.somaCreditosAplicacoes(somaDespesasFixas, somaDespVariaveis);
@@ -99,15 +107,15 @@ public class ResumoMesIndividualController {
 		MV.addObject("eventosContasPagar", relatorioEventoDAO.contasReceber("2016","MAIO"));
 		
 		//
-		MV.addObject("salarios", relatorioEventoDAO.salarios("2016-05"));
+		MV.addObject("salarios", relatorioEventoDAO.salarios(anoMes));
 		
 		//
-		MV.addObject("outrosImpostos", relatorioEventoDAO.outrosImpostos("2016-05"));
+		MV.addObject("outrosImpostos", relatorioEventoDAO.outrosImpostos(anoMes));
 		
 		
 		MV.addObject("totalPagar", dadosEvento.totalPagar(relatorioEventoDAO.contasReceber("2016","MAIO"),
 								   relatorioEventoDAO.salarios("2016-05"),
-								   somaTotalCache, impostos, relatorioEventoDAO.outrosImpostos("2016-05")
+								   somaTotalCache, impostos, relatorioEventoDAO.outrosImpostos(anoMes)
 		));
 		
 		
