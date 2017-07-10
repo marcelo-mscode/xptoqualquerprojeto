@@ -84,7 +84,7 @@ public class ResumoMesIndividualController {
 		MV.addObject("despCaixasProjetos", finanDespesas);
 		
 		BigDecimal somaDespVariaveis = dadosEvento.SomaDespVariaveis(
-				new BigDecimal("2289.04")
+				new BigDecimal("9344.94")
 				, finanDespesas
 				, relatorioEventoDAO.despesasFixas("FinancOutrasDespesas",anoMes));
 		MV.addObject("somaDespVariaveis", somaDespVariaveis);

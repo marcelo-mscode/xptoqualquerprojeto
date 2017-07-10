@@ -18,7 +18,7 @@
 			
 			<tr>
 				<th class="input-260px">Despesas bancárias:</th>
-				<th style="background-color: red">2.289,04</th>
+				<th style="background-color: red"> 9.344,94</th>
 				<th></th>
 				<th></th>
 				<th></th>
