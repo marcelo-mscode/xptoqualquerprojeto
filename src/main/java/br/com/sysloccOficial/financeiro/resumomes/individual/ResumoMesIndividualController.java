@@ -29,7 +29,11 @@ public class ResumoMesIndividualController {
 		ModelAndView MV = new ModelAndView("financeiro/resumoMes/individual/resumoMesIndividual");
 		
 		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(mes,ano);
+		
 		List<Lista> infoLista = relatorioEventoDAO.relatorioListasIdLista(infoEvento);
+		
+//		Integer impostoInterna = relatorioEventoDAO.pegaImpostoInterna(idLista);
+		
 		
 		MV.addObject("infoEvento", infoEvento);
 		MV.addObject("infoLista", infoLista);
@@ -38,15 +42,15 @@ public class ResumoMesIndividualController {
 		MV.addObject("pgtoExternas", dadosEvento.pgtoExternas(infoEvento));
 		MV.addObject("faturamentoMes", dadosEvento.faturamentoMes(dadosEvento.somaTotalEventos(infoEvento),dadosEvento.pgtoExternas(infoEvento)));
 		
-		
-		BigDecimal impostos = dadosEvento.impostos(dadosEvento.somaTotalEventos(infoEvento));
+		// ----------------------------------------		
+		BigDecimal impostos = dadosEvento.impostosSobreValorLoccoAgencia(infoEvento);
 		MV.addObject("impostos", impostos);
-		
+		// ----------------------------------------		
 		
 		MV.addObject("totalCustosFaturamentos", 
 							dadosEvento.totalCustosFaturamentos(
 							dadosEvento.faturamentoMes(dadosEvento.somaTotalEventos(infoEvento),dadosEvento.pgtoExternas(infoEvento)),
-							dadosEvento.impostos(dadosEvento.somaTotalEventos(infoEvento))));
+							dadosEvento.impostosSobreValorLoccoAgencia(infoEvento)));
 		
 		
 		MV.addObject("somaCacheEquipe", dadosEvento.somaCacheEquipe(infoEvento));
@@ -58,7 +62,7 @@ public class ResumoMesIndividualController {
 		//
 		BigDecimal lucroOperacional = dadosEvento.lucroOperacional(
 				dadosEvento.faturamentoMes(dadosEvento.somaTotalEventos(infoEvento),dadosEvento.pgtoExternas(infoEvento)),
-				dadosEvento.impostos(dadosEvento.somaTotalEventos(infoEvento)),
+				dadosEvento.impostosSobreValorLoccoAgencia(infoEvento),
 				dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento))
 				);
 		MV.addObject("lucroOperacional", lucroOperacional);
@@ -79,15 +83,11 @@ public class ResumoMesIndividualController {
 		BigDecimal finanDespesas = relatorioEventoDAO.despesasFixas("FinancDespesas",anoMes);
 		MV.addObject("despCaixasProjetos", finanDespesas);
 		
-// ----------------------------------------
 		BigDecimal somaDespVariaveis = dadosEvento.SomaDespVariaveis(
 				new BigDecimal("2289.04")
 				, finanDespesas
 				, relatorioEventoDAO.despesasFixas("FinancOutrasDespesas",anoMes));
 		MV.addObject("somaDespVariaveis", somaDespVariaveis);
-// ----------------------------------------
-
-		
 		
 		MV.addObject("outrasDespesas", relatorioEventoDAO.despesasFixas("FinancOutrasDespesas",anoMes));
 		

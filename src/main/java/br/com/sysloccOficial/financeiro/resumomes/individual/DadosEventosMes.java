@@ -47,11 +47,28 @@ public class DadosEventosMes {
 	}
 
 	public BigDecimal impostos(BigDecimal faturamentoEventos) {
+		
+		//somar todos os impostosSobreValorLoccoAgencia
+		
+		
 		BigDecimal faturamentoMes = new BigDecimal("0");
 		faturamentoMes = faturamentoEventos.multiply(new BigDecimal("0.1595")); 
 		return faturamentoMes;
 	}
 
+	public BigDecimal impostosSobreValorLoccoAgencia(List<RelatorioEventos> infoEvento) {
+		//somar todos os impostosSobreValorLoccoAgencia
+		
+		BigDecimal pgtoExt = new BigDecimal("0");
+		for (int i = 0; i < infoEvento.size(); i++) {
+			pgtoExt = pgtoExt.add(infoEvento.get(i).getImpostoSobreValorLoccoAgencia());
+		}
+		return pgtoExt;
+	}
+
+	
+	
+	
 	public BigDecimal totalCustosFaturamentos(BigDecimal faturamento, BigDecimal impostos) {
 		BigDecimal totalCustosFaturamentos = faturamento.subtract(impostos);
 		return totalCustosFaturamentos;
