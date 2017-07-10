@@ -57,7 +57,6 @@ public class DadosEventosMes {
 	}
 
 	public BigDecimal impostosSobreValorLoccoAgencia(List<RelatorioEventos> infoEvento) {
-		//somar todos os impostosSobreValorLoccoAgencia
 		
 		BigDecimal pgtoExt = new BigDecimal("0");
 		for (int i = 0; i < infoEvento.size(); i++) {

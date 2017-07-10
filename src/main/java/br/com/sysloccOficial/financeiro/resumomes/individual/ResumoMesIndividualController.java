@@ -117,7 +117,7 @@ public class ResumoMesIndividualController {
 		MV.addObject("outrosImpostos", relatorioEventoDAO.outrosImpostos(anoMes));
 		
 		
-		MV.addObject("totalPagar", dadosEvento.totalPagar(relatorioEventoDAO.contasReceber("2016","MAIO"),
+		MV.addObject("totalPagar", dadosEvento.totalPagar(relatorioEventoDAO.contasReceber(ano.toString(),nomeMes),
 								   relatorioEventoDAO.salarios(anoMes),
 								   somaTotalCache, impostos, relatorioEventoDAO.outrosImpostos(anoMes)
 		));

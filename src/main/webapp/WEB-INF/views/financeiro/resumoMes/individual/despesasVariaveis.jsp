@@ -95,5 +95,5 @@
 				<th  class="fundoAmarelo">=></th>
 				<th  class="fundoAmarelo">=></th>
 				<th  class="fundoAmarelo" style="font-weight: bold;color: red;border: 2px solid #000"><fmt:formatNumber value="${giroDeficitAvit}" pattern="#,##0.00"/></th>
-				<th style="color: red;background-color: #fff;border: none">(92,88)</th>
+				<th style="color: red;background-color: #fff;border: 2px solid #000">(92,88)</th>
 			</tr>
