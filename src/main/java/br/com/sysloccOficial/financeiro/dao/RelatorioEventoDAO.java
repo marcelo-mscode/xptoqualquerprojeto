@@ -253,6 +253,9 @@ public class RelatorioEventoDAO {
 	
 	public BigDecimal despesasFixas(String nomeTabela, String data) {
 		
+		
+		String consulta = "select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'";
+		
 		try {
 			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'",BigDecimal.class);
 			return f.getSingleResult();

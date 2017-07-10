@@ -23,8 +23,14 @@ public class ResumoMesIndividualController {
 	public ModelAndView resumoMesIndex(Integer mes, Integer ano){
 		
 		
+		String anoMes = "";
 		
-		String anoMes = ano+"-"+mes;
+		if(mes < 10){
+			anoMes = ano+"-0"+mes;
+		}else{
+			anoMes = ano+"-"+mes;
+		}
+		
 		
 		ModelAndView MV = new ModelAndView("financeiro/resumoMes/individual/resumoMesIndividual");
 		
@@ -76,14 +82,14 @@ public class ResumoMesIndividualController {
 		MV.addObject("SomaDespFixas", somaDespesasFixas);
 		
 		
-		
-		MV.addObject("despCaixasProjetos", relatorioEventoDAO.despesasFixas("FinancDespesas",anoMes));
+		BigDecimal finanDespesas = relatorioEventoDAO.despesasFixas("FinancDespesas",anoMes);
+		MV.addObject("despCaixasProjetos", finanDespesas);
 		
 // ----------------------------------------
 		BigDecimal somaDespVariaveis = dadosEvento.SomaDespVariaveis(
 				new BigDecimal("2289.04")
-				, relatorioEventoDAO.despesasFixas("FinancDespesas","2016-05")
-				, relatorioEventoDAO.despesasFixas("FinancOutrasDespesas","2016-05"));
+				, finanDespesas
+				, relatorioEventoDAO.despesasFixas("FinancOutrasDespesas",anoMes));
 		MV.addObject("somaDespVariaveis", somaDespVariaveis);
 // ----------------------------------------
 
@@ -114,7 +120,7 @@ public class ResumoMesIndividualController {
 		
 		
 		MV.addObject("totalPagar", dadosEvento.totalPagar(relatorioEventoDAO.contasReceber("2016","MAIO"),
-								   relatorioEventoDAO.salarios("2016-05"),
+								   relatorioEventoDAO.salarios(anoMes),
 								   somaTotalCache, impostos, relatorioEventoDAO.outrosImpostos(anoMes)
 		));
 		
