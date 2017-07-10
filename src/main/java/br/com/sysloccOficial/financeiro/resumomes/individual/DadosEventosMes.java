@@ -16,13 +16,10 @@ public class DadosEventosMes {
 	
 	public BigDecimal somaTotalEventos(List<RelatorioEventos> infoEvento) {
 		BigDecimal pgtoExt = new BigDecimal("0");
-	
 		for (int i = 0; i < infoEvento.size(); i++) {
-			pgtoExt = pgtoExt.add(infoEvento.get(i).getImpostoSobreValorLoccoAgencia());
+			pgtoExt = pgtoExt.add(infoEvento.get(i).getServicos());
 		}
 		return pgtoExt;
-	
-	
 	}
 	
 	public BigDecimal custoTerceiros (List<RelatorioEventos> infoEvento){

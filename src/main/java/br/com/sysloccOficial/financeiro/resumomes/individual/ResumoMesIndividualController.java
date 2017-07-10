@@ -23,13 +23,7 @@ public class ResumoMesIndividualController {
 	public ModelAndView resumoMesIndex(Integer mes, Integer ano){
 		
 		
-		String anoMes = "";
-		
-		if(mes < 10){
-			anoMes = ano+"-0"+mes;
-		}else{
-			anoMes = ano+"-"+mes;
-		}
+		String anoMes = ( mes < 10 ) ? ano+"-0"+mes  : ano+"-"+mes;
 		
 		
 		ModelAndView MV = new ModelAndView("financeiro/resumoMes/individual/resumoMesIndividual");
