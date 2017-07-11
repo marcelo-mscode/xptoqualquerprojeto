@@ -1224,12 +1224,7 @@ function revisarPlanilhaPorAjax(idLista) {
 function aprovarPlanilhaPorAjax(idLista,data) {
 	
 	
-	alert(idLista);
-	alert(data);
-	
-	
-	
-	
+	/*var dataEvento = $("#dataParaAprovarEvento").val();*/	
 	$("#aprovarPlanilha")
 			.text("Aprovando Planilha ...")
 			.css("pointer-events", "none")
@@ -1238,7 +1233,7 @@ function aprovarPlanilhaPorAjax(idLista,data) {
 
 	$.ajax({
 		method : "POST",
-		url : "aprovaPlanilha?idLista = " + idLista + "data = "+ data,
+		url : "aprovaPlanilha?idLista="+idLista+"&data="+$("#dataParaAprovarEvento").val(),
 		success : function(data) {
 			$("#listaConcluida").fadeIn(300).html(data);
 		}

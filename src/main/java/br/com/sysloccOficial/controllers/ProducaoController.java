@@ -330,20 +330,20 @@ public class ProducaoController {
 	public ModelAndView aprovaPlanilha(Integer idLista, String data) throws InterruptedException{
 		
 		
-		JOptionPane.showMessageDialog(null, "");
 		
-		ModelAndView MV = new ModelAndView("producao/listaConcluida");
 		
-		/*Lista listaAprovada = manager.find(Lista.class, idLista);
+		ModelAndView MV = new ModelAndView("producao/listaConcluida"); 
+		
+		Lista listaAprovada = manager.find(Lista.class, idLista);
 		ListaEstatus estatus = manager.find(ListaEstatus.class, 5);
 		Usuario usuario = util.retornaUsuarioLogado();
 		
-		
+		listaAprovada.setDataDoEvento(UtilitariaConversoes.conveterStringParaCalendar(data));
 		listaAprovada.setIdlistaEstatus(estatus);
 		listaAprovada.setDataAprovacao(Calendar.getInstance());
 		listaAprovada.setUsuarioAprova(usuario);
 		
-		manager.merge(listaAprovada);*/
+		manager.merge(listaAprovada);
 		
 		MV.addObject("categoria", "Planilha Aprovada com sucesso !");
 		

@@ -25,6 +25,19 @@ public class UtilitariaConversoes {
 		  cal.setTime(date);
 		  return cal;
 	}
+// ---------------- Converte de String para Calendar ----------------------------//	
+	public static Calendar conveterStringParaCalendar(String data){ 
+		 try {
+				/*data = data + " 00:00:00";*/
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(sdf.parse(data));
+				return cal;
+			} catch (ParseException e) {
+				e.printStackTrace();
+				return null;
+			}
+	}
 // ---------------- Converte de String para Date ----------------------------//	
 	public Date converteDatasStringParaCalendar(String data){
 		Calendar c = Calendar.getInstance();

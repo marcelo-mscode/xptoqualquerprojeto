@@ -14,7 +14,7 @@
 	      </div>
 	      <div class="modal-body">
 	      	<span>Data do Evento:  </span> 
-	        <input class="form-control input-180px" type="date" id="dataParaAprovarEvento">
+	        <input class="form-control input-180px" type="date" id="dataParaAprovarEvento" />
 	      </div>
 	      <div class="modal-footer">
 		
