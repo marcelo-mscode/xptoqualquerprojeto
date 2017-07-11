@@ -1221,9 +1221,13 @@ function revisarPlanilhaPorAjax(idLista) {
 // ----------------------------------------------------------------------------
 // //
 // Funcao para Revisar Lista
-function aprovarPlanilhaPorAjax(idLista) {
+function aprovarPlanilhaPorAjax(idLista,data) {
 
-	$("#aprovarPlanilha")
+	var data = data;
+	
+	alert(data);
+	
+/*	$("#aprovarPlanilha")
 			.text("Aprovando Planilha ...")
 			.css("pointer-events", "none")
 			.prepend(
@@ -1236,7 +1240,7 @@ function aprovarPlanilhaPorAjax(idLista) {
 			$("#listaConcluida").fadeIn(300).html(data);
 		}
 	});
-};
+*/};
 
 // ----------------------------------------------------------------------------
 // //

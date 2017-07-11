@@ -184,6 +184,18 @@
 		  
 		</div>
 		
+			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+			  Abrir modal de demonstração
+			</button>
+			
+			<!-- Modal -->
+			<c:import url="aprovarPlanilhaProducao/aprovaPlanilha.jsp">
+				<c:param name="idlista" value="${idLista}" />
+			</c:import>
+		
+		
+		
+		
  	</div>
   </div>
 	

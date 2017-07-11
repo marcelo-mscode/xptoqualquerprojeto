@@ -5,10 +5,22 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-	<c:if test="${statusLista  == 2}">
-		<button onclick="aprovarPlanilhaPorAjax(${idLista});" type="button" class="btn btn-primary" id="aprovarPlanilha" style="float: right;">Aprovar Para Produção</button> 
-	</c:if>
-	
-	<c:if test="${statusLista  == 5}">
-		<button disabled="disabled" type="button" class="btn btn-primary" id="aprovarPlanilha" style="float: right;">Aprovado Para Produção</button> 
-	</c:if>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document" style="width: 30%">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">APROVAR PLANILHA PARA PRODUÇÃO</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<span>Data do Evento:  </span> 
+	        <input class="form-control input-180px" type="date">
+	      </div>
+	      <div class="modal-footer">
+		
+			<button onclick="aprovarPlanilhaPorAjax(${param.idlista});" type="button" class="btn btn-primary" id="aprovarPlanilha" style="float: left;">Aprovar</button>
+		    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
