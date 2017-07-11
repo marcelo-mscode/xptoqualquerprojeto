@@ -1222,16 +1222,11 @@ function revisarPlanilhaPorAjax(idLista) {
 // //
 // Funcao para Aprovar Lista
 function aprovarPlanilhaPorAjax(idLista,data) {
-	
-	
 	var dataEvento = $("#dataParaAprovarEvento").val();
-	alert(dataEvento);
-	
 	if($("#dataParaAprovarEvento").val() == null || $("#dataParaAprovarEvento").val() == "" || $("#dataParaAprovarEvento").val() == " "){
-		alert("Vazio");
+		$("#erroDataAprovar").fadeIn();
 		return false;
 	}else{
-		
 	$("#aprovarPlanilha")
 			.text("Aprovando Planilha ...")
 			.css("pointer-events", "none")

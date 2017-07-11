@@ -13,8 +13,9 @@
 	        <h4 class="modal-title" id="myModalLabel">APROVAR PLANILHA PARA PRODUÇÃO</h4>
 	      </div>
 	      <div class="modal-body">
-	      	<span>Data do Evento:  </span> 
+	      	<span>Data do Evento:</span> 
 	        <input class="form-control input-180px" type="date" id="dataParaAprovarEvento" />
+	        <span style="color:red;display: none" id="erroDataAprovar">*Preencha a data do Evento</span>
 	      </div>
 	      <div class="modal-footer">
 		

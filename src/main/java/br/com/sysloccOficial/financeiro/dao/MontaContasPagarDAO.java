@@ -30,8 +30,6 @@ public class MontaContasPagarDAO {
 		
 		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
 		
-		
-		
 		List<Integer> idListas =  pegaIdsListasIndividuais(); 
 		
 		
@@ -43,8 +41,6 @@ public class MontaContasPagarDAO {
 				List<Object[]> constroiObjeto = montaObjeto(idListas.get(i),idFornecedores.get(j));
 				objetoConstruido.addAll(constroiObjeto);
 			}
-			
-			
 			
 		}
 		
@@ -85,8 +81,6 @@ public class MontaContasPagarDAO {
 	
 	
 	public List<Object[]> montaObjeto(Integer idLista,Integer idFornecedor){
-		
-		
 		
 		/**
 		 * Pega todos os registros da Lord em producaoP de uma lista
