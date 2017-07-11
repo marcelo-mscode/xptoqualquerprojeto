@@ -171,7 +171,10 @@
 			</c:if>
 	
 			<c:if test="${idlistaEstatus == 2}">
-				<button onclick="aprovarPlanilhaPorAjax(${idLista});" type="button" class="btn btn-primary" id="aprovarPlanilha" style="float: right;">Aprovar Para Produção</button> 
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="float: right;">
+				  Aprovar para Produção
+				</button>
+				<%-- <button onclick="aprovarPlanilhaPorAjax(${idLista});" type="button" class="btn btn-primary" id="aprovarPlanilha" style="float: right;">Aprovar Para Produção</button> --%> 
 			</c:if>
 	
 			<c:if test="${idlistaEstatus == 5}">
@@ -184,18 +187,11 @@
 		  
 		</div>
 		
-			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-			  Abrir modal de demonstração
-			</button>
-			
-			<!-- Modal -->
+<%-- 			<!-- Modal -->
 			<c:import url="aprovarPlanilhaProducao/aprovaPlanilha.jsp">
 				<c:param name="idlista" value="${idLista}" />
 			</c:import>
-		
-		
-		
-		
+ --%>		
  	</div>
   </div>
 	
@@ -993,6 +989,10 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 </div>
 
 
+<!-- Modal -->
+<c:import url="aprovarPlanilhaProducao/aprovaPlanilha.jsp">
+	<c:param name="idlista" value="${idLista}" />
+</c:import>
 
 
 

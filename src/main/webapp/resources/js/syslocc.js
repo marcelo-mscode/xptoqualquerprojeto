@@ -1220,14 +1220,17 @@ function revisarPlanilhaPorAjax(idLista) {
 };
 // ----------------------------------------------------------------------------
 // //
-// Funcao para Revisar Lista
+// Funcao para Aprovar Lista
 function aprovarPlanilhaPorAjax(idLista,data) {
-
-	var data = data;
 	
+	
+	alert(idLista);
 	alert(data);
 	
-/*	$("#aprovarPlanilha")
+	
+	
+	
+	$("#aprovarPlanilha")
 			.text("Aprovando Planilha ...")
 			.css("pointer-events", "none")
 			.prepend(
@@ -1235,12 +1238,12 @@ function aprovarPlanilhaPorAjax(idLista,data) {
 
 	$.ajax({
 		method : "POST",
-		url : "aprovaPlanilha?idLista=" + idLista,
+		url : "aprovaPlanilha?idLista = " + idLista + "data = "+ data,
 		success : function(data) {
 			$("#listaConcluida").fadeIn(300).html(data);
 		}
 	});
-*/};
+};
 
 // ----------------------------------------------------------------------------
 // //
