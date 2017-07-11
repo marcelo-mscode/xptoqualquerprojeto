@@ -1224,7 +1224,14 @@ function revisarPlanilhaPorAjax(idLista) {
 function aprovarPlanilhaPorAjax(idLista,data) {
 	
 	
-	/*var dataEvento = $("#dataParaAprovarEvento").val();*/	
+	var dataEvento = $("#dataParaAprovarEvento").val();
+	alert(dataEvento);
+	
+	if($("#dataParaAprovarEvento").val() == null || $("#dataParaAprovarEvento").val() == "" || $("#dataParaAprovarEvento").val() == " "){
+		alert("Vazio");
+		return false;
+	}else{
+		
 	$("#aprovarPlanilha")
 			.text("Aprovando Planilha ...")
 			.css("pointer-events", "none")
@@ -1238,6 +1245,8 @@ function aprovarPlanilhaPorAjax(idLista,data) {
 			$("#listaConcluida").fadeIn(300).html(data);
 		}
 	});
+	
+	}
 };
 
 // ----------------------------------------------------------------------------

@@ -29,7 +29,7 @@ public class UtilitariaConversoes {
 	public static Calendar conveterStringParaCalendar(String data){ 
 		 try {
 				/*data = data + " 00:00:00";*/
-				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(sdf.parse(data));
 				return cal;
