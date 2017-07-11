@@ -73,10 +73,17 @@ public class Lista {
 // ------------------- Datas --------------------------- //
 	@Temporal(TemporalType.TIMESTAMP) private Calendar dataCriacao;
 	@Temporal(TemporalType.TIMESTAMP) private Calendar dataAprovacao;
+	@Temporal(TemporalType.TIMESTAMP) private Calendar dataDoEvento;
 // ----------------------------------------------------- //	
 	
 	public Integer getIdLista() {
 		return idLista;
+	}
+	public Calendar getDataDoEvento() {
+		return dataDoEvento;
+	}
+	public void setDataDoEvento(Calendar dataDoEvento) {
+		this.dataDoEvento = dataDoEvento;
 	}
 	public String getInfoConsolidadoGalderma() {
 		return infoConsolidadoGalderma;
