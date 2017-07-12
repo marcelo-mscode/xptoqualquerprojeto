@@ -63,14 +63,14 @@ public class MontaContasPagarDAO {
 
 
 	public List<Integer> pegaIdsListasIndividuais() {
-		String idsListasIndiv = "select distinct(lista.idLista) from ProducaoP order by lista.idLista";
+		String idsListasIndiv = "select distinct(lista.idLista) from ProducaoP order by lista.dataDoEvento desc";
 		TypedQuery<Integer> listaIds = manager.createQuery(idsListasIndiv,Integer.class);
 		List<Integer> idListas = listaIds.getResultList();
 		return idListas;
 	}
 
 	public List<Object[]> pegaListasIndividuais() {
-		String idsListasIndiv = "select distinct(lista.idLista), lista.lista from ProducaoP order by lista.idLista";
+		String idsListasIndiv = "select distinct(lista.idLista), lista.lista from ProducaoP order by lista.dataDoEvento desc";
 		TypedQuery<Object[]> listaIds = manager.createQuery(idsListasIndiv,Object[].class);
 		List<Object[]> idListas = listaIds.getResultList();
 		return idListas;
