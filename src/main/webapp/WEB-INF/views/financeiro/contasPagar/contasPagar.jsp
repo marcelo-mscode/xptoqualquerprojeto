@@ -34,13 +34,13 @@
 
 			<tr>
 				<td style="width: 40%;">
-				 	<div id="contasPagarAjax" class="" style="padding-right: 0;border-right: 5px solid #ccc;">
+				 	<div id="contasPagarAjax" class="" style="padding-right: 0;border-right: 5px solid #ccc;border-left: 5px solid #ccc;">
 						<c:import url="contasPagarMesAtual.jsp" />
 					</div>	
 				</td>
 				
 				<td style="width: 0%">
-					<div id="contasPagarAjaxMesAnterior" class="" style="padding-right: 0;border-right: 2px solid #ccc;">
+					<div id="contasPagarAjaxMesAnterior" class="" style="padding-right: 0;border-right: 5px solid #ccc;">
 						<c:import url="contasPagarMesAnterior.jsp" />
 					</div>
 				</td>
