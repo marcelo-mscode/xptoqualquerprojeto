@@ -8,7 +8,7 @@
 	<table class="table table-striped table-hover table-condensed" >
 	  <tbody id="prospeccaoFiltro">
 		<tr style="background: #f1f1f1 !important;text-align: center !important;">
-			<td colspan="5" style="text-align: center !important;"><h4>Fornecedores - Eventos do Mês</h4></td>
+			<td colspan="5" style="text-align: center !important;color:red"><h4>Fornecedores - Eventos do Mês</h4></td>
 		</tr>
 		<tr style="background: #f1f1f1 !important;" class="cabecalhoLista">
 			<td align="left">NF/ND</td>

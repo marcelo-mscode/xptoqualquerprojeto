@@ -36,17 +36,16 @@ public class ContasPagarController {
 		List<Object[]> lista = montaObjeto.constroiObjeto();
 		MV.addObject("novaLista", lista);
 
-		
-		
-		
 		//Listas de meses anteriores
 		
-/*		List<Object[]> idListas = montaObjeto.pegaListasIndividuais(); 
-		MV.addObject("idListas",idListas);
 		
-		List<Object[]> lista = montaObjeto.constroiObjeto();
-		MV.addObject("novaLista", lista);
-*/		
+		
+		List<Object[]> idListasAnteriores = montaObjeto.pegaListasMesAnterior(); 
+		MV.addObject("idListasAnteriores",idListasAnteriores);
+		
+		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
+		MV.addObject("listaAnteriores", listaAnteriores);
+	
 		
 		
 		return MV;

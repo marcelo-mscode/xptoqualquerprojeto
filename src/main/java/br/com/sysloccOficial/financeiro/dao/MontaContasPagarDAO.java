@@ -56,21 +56,21 @@ public class MontaContasPagarDAO {
 
 
 	public List<Object[]> pegaListasMesAtual() {
-		
-		
-		
 		String dataHoje =  UtilitariaDatas.pegaDataAtualEmStringPassandoFormato("yyyy-MM");
-		
 		String idsListasIndiv = "select distinct(lista.idLista), lista.lista from ProducaoP where lista.dataDoEvento like '%"+dataHoje+"%' order by lista.dataDoEvento desc";
 		TypedQuery<Object[]> listaIds = manager.createQuery(idsListasIndiv,Object[].class);
 		List<Object[]> idListas = listaIds.getResultList();
 		return idListas;
 	}
 
-	
-	
-	
-	
+	public List<Object[]> pegaListasMesAnterior() {
+		String dataHoje =  UtilitariaDatas.pegaDataAtualEmStringPassandoFormato("yyyy-MM");
+		String idsListasIndiv = "select distinct(lista.idLista), lista.lista from ProducaoP where lista.dataDoEvento like '%"+dataHoje+"-01%' order by lista.dataDoEvento desc";
+		TypedQuery<Object[]> listaIds = manager.createQuery(idsListasIndiv,Object[].class);
+		List<Object[]> idListas = listaIds.getResultList();
+		return idListas;
+	}
+
 	public List<Integer> pegaIdsListasIndividuais() {
 		String idsListasIndiv = "select distinct(lista.idLista) from ProducaoP order by lista.dataDoEvento desc";
 		TypedQuery<Integer> listaIds = manager.createQuery(idsListasIndiv,Integer.class);
