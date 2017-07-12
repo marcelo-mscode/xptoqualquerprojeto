@@ -14,7 +14,7 @@
 			<td colspan="5" style="text-align: center !important;color:red"><h4>Fornecedores - Relatórios Anteriores</h4></td>
 		</tr>
 		<tr style="background: #f1f1f1 !important;" class="cabecalhoLista">
-			<td align="left">NF/ND</td>
+			<td align="left" class="pLeft">NF/ND</td>
 			<td align="left">Vencimento</td>
 			<td align="left">Descrição</td>
 			<td align="left" colspan="2">Valor</td>
@@ -26,7 +26,7 @@
 		 <c:forEach items="${idListasAnteriores}" var="idListas">
 	
 		 	<tr>
-		 		<td colspan="5" align="left"><h4><b>${idListas[1]}</b></h4></td>
+		 		<td colspan="5" align="left" class="pLeft"><h4><b>${idListas[1]}</b></h4></td>
 		 	</tr>
 		 
 			<c:forEach items="${listaAnteriores}" var="novaLista" varStatus="loop">
@@ -41,7 +41,7 @@
 						
 						
 						
-						<td <c:if test="${novaLista[7] == true}">class="temContratacao"</c:if>>${novaLista[2]}</td>
+						<td <c:if test="${novaLista[7] == true}">class="temContratacao"</c:if> class="pLeft">${novaLista[2]}</td>
 	
 						<td><fmt:formatDate value="${novaLista[0]}"   pattern="dd/MM/yyyy" /></td>
 						<td>${novaLista[1]}</td>
@@ -54,4 +54,4 @@
 		 </c:forEach>	
 	
 		</table>
-		<h1><fmt:formatNumber value="${valorTotal}" pattern="#,##0.00" /></h1>
+		<h1 class="pLeft"><fmt:formatNumber value="${valorTotal}" pattern="#,##0.00" /></h1>

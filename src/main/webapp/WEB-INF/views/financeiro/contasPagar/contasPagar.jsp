@@ -11,7 +11,8 @@
 .cabecalhoLista {text-align: center !important;line-height: 33px !important;}
 .cabecalhoLista > td {line-height: 33px !important;}
 .descricao {text-align: left;}
-.temContratacao{border-left: 1px solid red}
+.temContratacao{border-left: 1px solid red;padding-left: 15px !important}
+.pLeft{padding-left: 15px !important}
 
 
 </style>
@@ -33,14 +34,14 @@
 		<table class="col-md-12">
 
 			<tr>
-				<td style="width: 40%;">
-				 	<div id="contasPagarAjax" class="" style="padding-right: 1;border-right: 5px solid #ccc;border-left: 5px solid #ccc;margin-top: -294px;">
+				<td style="width: 40%;vertical-align: top;">
+ 				 	<div id="contasPagarAjax" class="" style="padding-right: 0;border-right: 5px solid #ccc;border-left: 5px solid #ccc;">
 						<c:import url="contasPagarMesAtual.jsp" />
 					</div>	
 				</td>
 				
-				<td style="width: 0%">
-					<div id="contasPagarAjaxMesAnterior" class="" style="padding-right: 0;border-right: 5px solid #ccc;">
+				<td style="width: 0%;vertical-align: top;">
+ 					<div id="contasPagarAjaxMesAnterior" class="" style="padding-right: 0;border-left: 5px solid #ccc;border-right: 5px solid #ccc;">
 						<c:import url="contasPagarMesAnterior.jsp" />
 					</div>
 				</td>
