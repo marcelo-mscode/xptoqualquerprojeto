@@ -456,7 +456,15 @@ public ArrayList<Integer> FormataDataJodaGenerica(Date data) throws ParseExcepti
 	}
 	
 	
-	
+	public static String getTime(String format){
+        if (format.isEmpty()) {
+            throw new NullPointerException("A pattern não pode ser NULL!");
+        }
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formato = new SimpleDateFormat(format);
+        Date data = (Date) calendar.getTime();
+        return formato.format(data);
+	}
 	
 	
 	

@@ -1,7 +1,10 @@
 package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -57,10 +60,6 @@ public class MontaContasPagarDAO {
 		List<Integer> idsFornecedores = conLista.getResultList();
 		return idsFornecedores;
 	}
-
-
-
-
 
 	public List<Integer> pegaIdsListasIndividuais() {
 		String idsListasIndiv = "select distinct(lista.idLista) from ProducaoP order by lista.dataDoEvento desc";

@@ -26,11 +26,28 @@ public class ContasPagarController {
 	public ModelAndView contasPagar(){
 		ModelAndView MV = new ModelAndView("financeiro/contasPagar/contasPagar");
 		
+		
+		
+		//Listas do Mes Atual
+		
 		List<Object[]> idListas = montaObjeto.pegaListasIndividuais(); 
 		MV.addObject("idListas",idListas);
 		
 		List<Object[]> lista = montaObjeto.constroiObjeto();
 		MV.addObject("novaLista", lista);
+
+
+		
+		
+		//Listas de meses anteriores
+		
+/*		List<Object[]> idListas = montaObjeto.pegaListasIndividuais(); 
+		MV.addObject("idListas",idListas);
+		
+		List<Object[]> lista = montaObjeto.constroiObjeto();
+		MV.addObject("novaLista", lista);
+*/		
+		
 		
 		return MV;
 	}
