@@ -43,28 +43,49 @@ public class MontaContasPagarDAO {
 		return objetoConstruido;
 	}
 
-	public BigDecimal somaTotalMeses(List<Object[]> lista, List<Object[]> listaAnteriores){
+	public List<Object[]> constroiObjetoTeste(List<Object[]> idListas){
+		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
+		//List<Integer> idListas =  pegaIdsListasIndividuais(); 
+		for (int i = 0; i < idListas.size(); i++) {
+			Integer num = (Integer) idListas.get(i)[0];
+			
+			List<Integer> idFornecedores = pegaIdsFornecedoresPorIdLista(num);
+			for (int j = 0; j < idFornecedores.size(); j++) {
+				List<Object[]> constroiObjeto = montaObjeto(num,idFornecedores.get(j));
+				objetoConstruido.addAll(constroiObjeto);
+			}
+		}
+		return objetoConstruido;
+	}
+
+	public BigDecimal somaTotalMeses(List<Object[]> listaAtual, List<Object[]> listaAnteriores){
 		
 		BigDecimal somaAnteriores = new BigDecimal("0");
 		BigDecimal somaAtual = new BigDecimal("0");
 		BigDecimal somaTotal = new BigDecimal("0");
 		
-		for (int i = 0; i < lista.size(); i++) {
-			
-				somaAtual = somaAtual.add((BigDecimal) lista.get(i)[4]);
-			
+		
+		
+		if(listaAtual.isEmpty()){
+			System.out.println("Sou uma lista atual vazia");	
+		}else{
+			for (int i = 0; i < listaAtual.size(); i++) {
+				somaAtual = somaAtual.add((BigDecimal) listaAtual.get(i)[4]);
+			}
 		}
-
-		for (int i = 0; i < listaAnteriores.size(); i++) {
-			somaAnteriores = somaAnteriores.add((BigDecimal) lista.get(i)[4]);
+		
+		if(listaAnteriores.isEmpty()){
+			System.out.println("Sou uma lista anterior vazia");	
+		}else{
+			for (int i = 0; i < listaAnteriores.size(); i++) {
+				somaAnteriores = somaAnteriores.add((BigDecimal) listaAnteriores.get(i)[4]);
+			}
 		}
-
 		
 		
-		System.out.println("Atual: "+somaAtual);
-		System.out.println("Anterior: "+somaAnteriores);
+		somaTotal = somaAtual.add(somaAnteriores);
 		
-		return null;
+		return somaTotal;
 	}
 	
 	

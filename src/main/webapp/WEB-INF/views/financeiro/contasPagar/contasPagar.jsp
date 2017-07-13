@@ -59,17 +59,7 @@
 						
 <div class="col-md-4" style="padding:15px;font-size:30px;text-align:center ;position:fixed ;bottom: 0;background-color: #fff;border: 1px solid #ccc;height: 60px">
  
- 
- 
- 
- 
- <fmt:formatNumber value="${valorTotal}" pattern="#,##0.00" />
- 
- 
- 
- 
- 
- 
+ <fmt:formatNumber value="${somaTotal}" pattern="#,##0.00" />
  <a onclick="location.reload();"><i class="glyphicon glyphicon-refresh" style="font-size: 20px;float: right;top: 9px"></i></a>	
 </div>
 

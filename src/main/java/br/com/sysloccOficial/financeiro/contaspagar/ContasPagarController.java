@@ -34,8 +34,8 @@ public class ContasPagarController {
 		List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
 		MV.addObject("idListas",idListas);
 		
-		List<Object[]> lista = montaObjeto.constroiObjeto();
-		MV.addObject("novaLista", lista);
+		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
+		MV.addObject("novaLista", listaAtual);
 
 		//Listas de meses anteriores
 		
@@ -47,8 +47,8 @@ public class ContasPagarController {
 		
 	
 		
-		BigDecimal total = montaObjeto.somaTotalMeses(lista, listaAnteriores);
-	//	MV.addObject("listaAnteriores", listaAnteriores);
+		BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
+	    MV.addObject("somaTotal", somaTotal);
 		
 		
 		
