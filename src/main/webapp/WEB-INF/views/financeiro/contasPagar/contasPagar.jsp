@@ -56,8 +56,22 @@
 	</div>
 		
   </div>		
-
-
+						
+<div class="col-md-4" style="padding:15px;font-size:30px;text-align:center ;position:fixed ;bottom: 0;background-color: #fff;border: 1px solid #ccc;height: 60px">
+ 
+ 
+ 
+ 
+ 
+ <fmt:formatNumber value="${valorTotal}" pattern="#,##0.00" />
+ 
+ 
+ 
+ 
+ 
+ 
+ <a onclick="location.reload();"><i class="glyphicon glyphicon-refresh" style="font-size: 20px;float: right;top: 9px"></i></a>	
+</div>
 
 <div class="col-md-12 alpha60 div-confirmacao" id="ConfirmaPagamento" style="position: fixed; display: none;background-color: rgba(255, 255, 255, 0.7);">
 	<div class="col-md-4"></div>
@@ -76,8 +90,6 @@
 	<div class="col-md-4"></div>
 </div>
 
-
-						
 
 
 

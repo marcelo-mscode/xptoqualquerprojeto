@@ -43,7 +43,31 @@ public class MontaContasPagarDAO {
 		return objetoConstruido;
 	}
 
+	public BigDecimal somaTotalMeses(List<Object[]> lista, List<Object[]> listaAnteriores){
+		
+		BigDecimal somaAnteriores = new BigDecimal("0");
+		BigDecimal somaAtual = new BigDecimal("0");
+		BigDecimal somaTotal = new BigDecimal("0");
+		
+		for (int i = 0; i < lista.size(); i++) {
+			
+				somaAtual = somaAtual.add((BigDecimal) lista.get(i)[4]);
+			
+		}
 
+		for (int i = 0; i < listaAnteriores.size(); i++) {
+			somaAnteriores = somaAnteriores.add((BigDecimal) lista.get(i)[4]);
+		}
+
+		
+		
+		System.out.println("Atual: "+somaAtual);
+		System.out.println("Anterior: "+somaAnteriores);
+		
+		return null;
+	}
+	
+	
 
 
 

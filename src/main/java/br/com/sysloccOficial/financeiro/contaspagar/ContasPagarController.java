@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.financeiro.contaspagar;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,14 +39,19 @@ public class ContasPagarController {
 
 		//Listas de meses anteriores
 		
-		
-		
 		List<Object[]> idListasAnteriores = montaObjeto.pegaListasMesAnterior(); 
 		MV.addObject("idListasAnteriores",idListasAnteriores);
 		
 		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
 		MV.addObject("listaAnteriores", listaAnteriores);
+		
 	
+		
+		BigDecimal total = montaObjeto.somaTotalMeses(lista, listaAnteriores);
+	//	MV.addObject("listaAnteriores", listaAnteriores);
+		
+		
+		
 		
 		
 		return MV;
