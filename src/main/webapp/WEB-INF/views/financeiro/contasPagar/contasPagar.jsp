@@ -13,23 +13,27 @@
 .descricao {text-align: left;}
 .temContratacao{border-left: 1px solid red;padding-left: 15px !important}
 .pLeft{padding-left: 15px !important}
-
+.ajusteFinanceiroBar {position: fixed;width: 150%;}
+.ajusteFinanceiro {float: none !important;}
+.breadcrumbFinanc{ height: 35px;border-bottom: 1px solid #ccc;margin-top: 49px;width: 150%;position: fixed;z-index: 9}
+.textoContasPagar{height: 35px;margin-top: 85px;position: fixed;width: 100%;}
+.subtextoContasPagar{margin: -1px 0px 25px -14px;padding-bottom: 10px;text-align: center;}
 
 </style>
-<div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;">
+<div class="col-md-12 bodyXY breadcrumbFinanc">
 		  <ol class="breadcrumb">
 		    <li><a href="index.html">Menu</a></li>
 		    <li class="active">Contas Pagar</li>
 		  </ol>					
 </div>
 
-<div style="height: 35px;">
-	<div class="col-md-12" style="margin: 10px 0px 25px -14px;/* border-bottom: 1px solid #ccc; */padding-bottom: 10px;">
-		<span style="font-family: 'OpenSansLight';font-size: 25px;margin-left: 32px;">CONTAS PAGAR</span>
+<div class="textoContasPagar">
+	<div class=subtextoContasPagar>
+		<span style="font-family: 'OpenSansLight';font-size: 25px;margin-left: 32px;">CONTAS A PAGAR</span>
 	</div>
 </div>
 
-<div id="criacaoListas" class="efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:35px 40px 70px 35px;width: 200%;">
+<div id="criacaoListas" class="efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:35px 40px 70px 35px;width: 150%;margin-top: 135px;">
  <div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;" class="col-md-12">
 		<table class="col-md-12">
 
