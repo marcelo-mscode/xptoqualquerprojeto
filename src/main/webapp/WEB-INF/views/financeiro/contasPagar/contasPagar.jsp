@@ -16,8 +16,8 @@
 .ajusteFinanceiroBar {position: fixed;width: 150%;}
 .ajusteFinanceiro {float: none !important;}
 .breadcrumbFinanc{ height: 35px;border-bottom: 1px solid #ccc;margin-top: 49px;width: 150%;position: fixed;z-index: 9}
-.textoContasPagar{height: 35px;margin-top: 85px;position: fixed;width: 100%;}
-.subtextoContasPagar{margin: -1px 0px 25px -14px;padding-bottom: 10px;text-align: center;}
+.textoContasPagar{height: 35px;margin-top: 85px;position: fixed;width: 100%;z-index: 9}
+.subtextoContasPagar{margin: -1px 0px 25px -14px;text-align: center;background-color: #f8f8f8;border-bottom: 1px solid #ccc;}
 
 </style>
 <div class="col-md-12 bodyXY breadcrumbFinanc">
@@ -33,8 +33,8 @@
 	</div>
 </div>
 
-<div id="criacaoListas" class="efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:35px 40px 70px 35px;width: 150%;margin-top: 135px;">
- <div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;" class="col-md-12">
+<div id="criacaoListas" class="efeitoDegrade" style="font-family: 'OpenSansLight';padding:35px 40px 70px 35px;width: 150%;margin-top: 119px;">
+ <div style="padding: 20px 20px 40px 20px;box-shadow: 0px 0px 30px 5px #ccc;margin-bottom: 250px;" class="col-md-12">
 		<table class="col-md-12">
 
 			<tr>
