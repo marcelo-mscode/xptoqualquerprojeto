@@ -245,29 +245,54 @@ public class MontaContasPagarDAO {
 		
 		
 		
-		String consultaProducaoP = "select idProducao from ProducaoP where idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
-		TypedQuery<Integer> listaProducaoP = manager.createQuery(consultaProducaoP,Integer.class);
-		List<Integer> listaP = listaProducaoP.getResultList();
+		List<Integer> listaIdProducaoPorIdListaEIdFornecedor = pegaIdProducaoP(idLista, idFornecedor);
 		
-		String consultaFornFinanceiro =util.limpaSqlComList("SELECT idFornecedor FROM FornecedorFinanceiro where idProducao in ("+listaP+")");
-		TypedQuery<Integer> listaFornFinanceiro = manager.createQuery(consultaFornFinanceiro,Integer.class);
-		List<Integer> listaF = listaFornFinanceiro.getResultList();
+		List<Integer> listaIdFornecedorEmFornecedorFinanceiroPorIdProducao = pegaIdFornecedorFornecedorFinanceiro(listaIdProducaoPorIdListaEIdFornecedor);
 		
-		String consultaValorPgto =util.limpaSqlComList("FROM ValorPagtoFornecedor v join fetch v.dtPgotFornecedor where idFornecedorFinanceiro in("+listaF
-		+") and diasPrazoParaPagamento="+qtdDias);
-		TypedQuery<ValorPagtoFornecedor> listaValorPgto = manager.createQuery(consultaValorPgto,ValorPagtoFornecedor.class);
-		List<ValorPagtoFornecedor> listaValorP = listaValorPgto.getResultList();
+		List<ValorPagtoFornecedor> listaValorPagamentoFornecedor = pegaListaValoresPGTODoFornecedor(qtdDias,
+				listaIdFornecedorEmFornecedorFinanceiroPorIdProducao);
 		
-		for (int i = 0; i < listaValorP.size(); i++) {
+		efetivaPagamento(listaValorPagamentoFornecedor);
+	}
+
+	
+	private void efetivaPagamento( List<ValorPagtoFornecedor> listaValorPagamentoFornecedor) {
+		
+		for (int i = 0; i < listaValorPagamentoFornecedor.size(); i++) {
 			int idDataPgto = 0;
 			
-			idDataPgto = listaValorP.get(i).getDtPgotFornecedor().getDtPagtoForncedor();
+			idDataPgto = listaValorPagamentoFornecedor.get(i).getDtPgotFornecedor().getDtPagtoForncedor();
 			DtPgtoFornecedor dataP = manager.find(DtPgtoFornecedor.class, idDataPgto);
 			
 			dataP.setStatus(StatusFinanceiro.PAGO);
 			manager.merge(dataP);
 			manager.close();
 		}
+		
+	}
+
+	private List<ValorPagtoFornecedor> pegaListaValoresPGTODoFornecedor(Integer qtdDias,
+			List<Integer> listaIdFornecedorEmFornecedorFinanceiroPorIdProducao) {
+		String consultaValorPgto =util.limpaSqlComList("FROM ValorPagtoFornecedor v join fetch v.dtPgotFornecedor where idFornecedorFinanceiro in("+listaIdFornecedorEmFornecedorFinanceiroPorIdProducao
+		+") and diasPrazoParaPagamento="+qtdDias);
+		
+		TypedQuery<ValorPagtoFornecedor> listaValorPgto = manager.createQuery(consultaValorPgto,ValorPagtoFornecedor.class);
+		List<ValorPagtoFornecedor> listaValorP = listaValorPgto.getResultList();
+		return listaValorP;
+	}
+
+	private List<Integer> pegaIdFornecedorFornecedorFinanceiro(List<Integer> listaP) {
+		String consultaFornFinanceiro =util.limpaSqlComList("SELECT idFornecedor FROM FornecedorFinanceiro where idProducao in ("+listaP+")");
+		TypedQuery<Integer> listaFornFinanceiro = manager.createQuery(consultaFornFinanceiro,Integer.class);
+		List<Integer> listaF = listaFornFinanceiro.getResultList();
+		return listaF;
+	}
+
+	private List<Integer> pegaIdProducaoP(Integer idLista, Integer idFornecedor) {
+		String consultaProducaoP = "select idProducao from ProducaoP where idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
+		TypedQuery<Integer> listaProducaoP = manager.createQuery(consultaProducaoP,Integer.class);
+		List<Integer> listaP = listaProducaoP.getResultList();
+		return listaP;
 	}
 	
 	

@@ -67,9 +67,13 @@ public class ContasPagarController {
 	
 	@RequestMapping("pagaConta")
 	public ModelAndView pagaConta(Integer idLista,Integer idFornecedor,Integer qtdDias){
+		
+		
 		montaObjeto.pagaConta(idLista,idFornecedor,qtdDias);
 		
 		ModelAndView MV = new ModelAndView("financeiro/contasPagar/contasPagarAjax");
+	
+		
 		List<Object[]> idListas = montaObjeto.pegaListasIndividuais(); 
 		MV.addObject("idListas",idListas);
 		

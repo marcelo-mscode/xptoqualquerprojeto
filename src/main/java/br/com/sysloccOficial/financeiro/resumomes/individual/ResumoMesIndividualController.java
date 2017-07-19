@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.conf.UtilitariaDatas;
+import br.com.sysloccOficial.financeiro.dao.MontaContasPagarDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
@@ -19,6 +20,7 @@ public class ResumoMesIndividualController {
 	@Autowired RelatorioEventoDAO relatorioEventoDAO;
 	@Autowired DadosEventosMes dadosEvento;
 	@Autowired UtilitariaDatas utilDatas;
+	@Autowired MontaContasPagarDAO montaObjeto;
 	
 
 	@RequestMapping("resumoMesIndividual")
@@ -108,6 +110,10 @@ public class ResumoMesIndividualController {
 		MV.addObject("contasReceber", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes).add(new BigDecimal("95323.10")));
 		
 		//
+		
+		
+		
+		
 		MV.addObject("eventosContasPagar", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes));
 		
 		//

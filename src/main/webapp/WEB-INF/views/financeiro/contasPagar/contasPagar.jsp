@@ -80,15 +80,4 @@
 	<div class="col-md-4"></div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
 <c:import url="../../_comum/footer.jsp" />
