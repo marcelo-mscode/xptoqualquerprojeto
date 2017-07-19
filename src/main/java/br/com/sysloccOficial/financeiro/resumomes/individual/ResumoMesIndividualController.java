@@ -111,10 +111,16 @@ public class ResumoMesIndividualController {
 		
 		//
 		
+		List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
+		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
+		
+		
+		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
+		BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
 		
 		
 		
-		MV.addObject("eventosContasPagar", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes));
+		MV.addObject("eventosContasPagar", somaTotal);
 		
 		//
 		MV.addObject("salarios", relatorioEventoDAO.salarios(anoMes));
