@@ -7,19 +7,17 @@
 
 <table class="table table-hover table-bordered">
     <tr>
-       <td colspan="7" align="center" class="amareloFlat"><b>IMPOSTOS NF EVENTOS</b></td>
+       <td colspan="5" align="center" class="amareloFlat"><b>IMPOSTOS NF EVENTOS</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData" colspan="3"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${InfoAnalitico.idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td class="tiraPaddingData" colspan="5"></td>
     </tr>
     <tr>
        <td colspan="3">Descrição</td>
-       <td colspan="1">Valor</td>
+       <td>Valor</td>
     </tr>
     <tr>
-       <td colspan="7"></td>
+       <td colspan="5"></td>
     </tr>
     
     <c:set var="totalOutrasdespesas" value="0.00" />
@@ -41,9 +39,10 @@
     <tr>
     
     <tr>
-       <td colspan="5"></td>
+       <td colspan="3"></td>
        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
        	<b><fmt:formatNumber value="${totalOutrasdespesas}" pattern="#,##0.00"/></b>
        </td>
+       
     </tr>
 </table>

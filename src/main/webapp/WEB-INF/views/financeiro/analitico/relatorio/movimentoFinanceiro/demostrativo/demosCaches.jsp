@@ -7,31 +7,22 @@
 
 <table class="table table-hover table-bordered">
     <tr>
-       <td colspan="7" align="center" class="amareloFlat"><b>Caches de Eventos do mes</b></td>
+       <td colspan="5" align="center" class="amareloFlat"><b>CACHES DE EVENTOS DO MÊS</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="dataOutrasDespesas" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${InfoAnalitico.idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td class="tiraPaddingData" colspan="5"></td>
     </tr>
     <tr>
-       <td>DATA</td>
        <td colspan="3">Descrição</td>
-       <td colspan="1">Valor</td>
+       <td>Valor</td>
     </tr>
     <tr>
-       <td colspan="7"></td>
+       <td colspan="5"></td>
     </tr>
     
     <c:set var="totalOutrasdespesas" value="0.00" />
     <c:forEach items="${outrasdespesas}" var="outrasdespesas">
        <tr>
-       	  <td class="tiraPaddingData"><input id="dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${outrasdespesas.data}" pattern="dd/MM"/>" type="text"
-                onclick="mudaCampoData('dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}');"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'data','outrasdespesas');"
-                />
-          </td>
           <td class="tiraPaddingData" colspan="3">
              <input id="descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="${outrasdespesas.descricao}"
                 onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'descricao','outrasdespesas');"
@@ -48,9 +39,10 @@
     <tr>
     
     <tr>
-       <td colspan="5"></td>
+       <td colspan="3"></td>
        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
        	<b><fmt:formatNumber value="${totalOutrasdespesas}" pattern="#,##0.00"/></b>
        </td>
+       
     </tr>
 </table>
