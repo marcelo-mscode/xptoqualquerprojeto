@@ -331,6 +331,17 @@
                   <c:import url="movimentoFinanceiro/itauEntrada.jsp" />
                </td>
                
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/itauSaida.jsp" />
+               </td>
+
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/itauTarifas.jsp" />
+               </td>
+
+<!--  ------------------------------------------------------------------------  -->
+
+               
             </tr>
          </tbody>
       </table>
