@@ -26,7 +26,8 @@
    .botaoMais{width: 70px;font-size: 23px;padding: 0;font-weight: 800;}
    .botaoMaisDespesa{width: 50px;}
    .tiraPaddingData{padding: 0px 0px 0px 5px  !important;height: 50px !important}
-
+  	
+	
 </style>
 <div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;margin-top: 50px">
    <ol class="breadcrumb">
@@ -48,6 +49,7 @@
             <tr>	
             	<td colspan="4" align="center" class="corEscritorio" style="border-right: 2px solid #ccc"><b>CUSTO FIXO LOCCO AGENCIA</b></td>
             	<td colspan="2" align="center" class="corEscritorio"><b>CUSTO VARIÁVEL LOCCO AGENCIA</b></td>
+            	<td colspan="3" align="center" class="amareloFlat"><b>MOVIMENTAÇÃO ITAU</b></td>
             </tr>
             <tr>
             	<td class="juntaColunas ajusteTelefone" id="impostos">

@@ -7,7 +7,7 @@
 
 <table class="table table-hover table-bordered">
     <tr>
-       <td colspan="7" align="center" class="corFolhaPgto"><b>MOV CAIXA - ENTRADA</b></td>
+       <td colspan="7" align="center" class="amareloFlat"><b>MOVIMENTOS DE CAIXA - ENTRADA</b></td>
     </tr>
     <tr>
        <td class="tiraPaddingData"><input id="ndMovItau" class="ajusteInput2 tiraPaddingData input-70px" type="text" placeholder="ND/NF"/></td>		
