@@ -324,6 +324,13 @@
                      </tr>
                   </table>
                </td>
+               
+<!--  ------------------------------------------------------------------------  -->
+	               
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/itauEntrada.jsp" />
+               </td>
+               
             </tr>
          </tbody>
       </table>
