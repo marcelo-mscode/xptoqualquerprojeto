@@ -50,6 +50,7 @@
             	<td colspan="4" align="center" class="corEscritorio" style="border-right: 2px solid #ccc"><b>CUSTO FIXO LOCCO AGENCIA</b></td>
             	<td colspan="2" align="center" class="corEscritorio"><b>CUSTO VARIÁVEL LOCCO AGENCIA</b></td>
             	<td colspan="3" align="center" class="amareloFlat"><b>MOVIMENTAÇÃO ITAU</b></td>
+            	<td colspan="3" align="center" class="verdeClaroFlat"><b>CEF</b></td>
             </tr>
             <tr>
             	<td class="juntaColunas ajusteTelefone" id="impostos">
@@ -328,7 +329,6 @@
                </td>
                
 <!--  ------------------------------------------------------------------------  -->
-	               
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
                   <c:import url="movimentoFinanceiro/itauEntrada.jsp" />
                </td>
@@ -340,7 +340,19 @@
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
                   <c:import url="movimentoFinanceiro/itauTarifas.jsp" />
                </td>
+<!--  ------------------------------------------------------------------------  -->
 
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/cefEntrada.jsp" />
+               </td>
+               
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/cefSaida.jsp" />
+               </td>
+
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/cefTarifas.jsp" />
+               </td>
 <!--  ------------------------------------------------------------------------  -->
 
                
