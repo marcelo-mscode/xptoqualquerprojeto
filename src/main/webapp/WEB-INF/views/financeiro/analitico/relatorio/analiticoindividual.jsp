@@ -41,33 +41,7 @@
       <h2 class="">Analítico ${InfoAnalitico.mesA} ${InfoAnalitico.anoA}</h2>
 		
 		
-		<table class="table table-bordered bordaDestaque" >
-		  <tbody>
-		     <tr>	
-		     	<td colspan="4" align="center" class="corEscritorio" style="border-right: 2px solid #ccc"><b>SALDO BANCÁRIO</b></td>
-		      </tr>
-		      <tr>
-		      	<td>Saldo ITAU</td>
-		      	<td>31/12/2017</td>
-		      	<td>17.429,58</td>
-		      	<td>Tarifas</td>
-		      	<td>3.116,52</td>
-		      	<td>Créditos</td>
-		      	<td>3.116,52</td>
-		      	<td>Débitos</td>
-		      	<td>3.116,52</td>
-		      	<td>Saldo Itau 31/01/2017</td>
-		      	<td>1.105,84</td>
-		      	<td> 53.238,00</td>
-		      	
-		      	
-		      </tr>
-		      
-		      
-		
-		   </tbody>
-		</table>		
-		      
+	  <c:import url="saldoBancario/saldoBancario.jsp" />
       
       <table class="table table-bordered bordaDestaque" >
          <tbody id="prospeccaoFiltro">
