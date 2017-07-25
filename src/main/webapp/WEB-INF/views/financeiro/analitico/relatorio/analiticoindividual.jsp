@@ -35,9 +35,40 @@
       <li class="active">Analítico ${InfoAnalitico.mesA} ${InfoAnalitico.anoA}</li>
    </ol>
 </div>
+
 <div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 168%">
    <div style="padding: 15px 0 55px 20px;;box-shadow: 0px 0px 30px 5px #ccc;margin-top: 42px;padding-right: 40px;">
       <h2 class="">Analítico ${InfoAnalitico.mesA} ${InfoAnalitico.anoA}</h2>
+		
+		
+		<table class="table table-bordered bordaDestaque" >
+		  <tbody>
+		     <tr>	
+		     	<td colspan="4" align="center" class="corEscritorio" style="border-right: 2px solid #ccc"><b>SALDO BANCÁRIO</b></td>
+		      </tr>
+		      <tr>
+		      	<td>Saldo ITAU</td>
+		      	<td>31/12/2017</td>
+		      	<td>17.429,58</td>
+		      	<td>Tarifas</td>
+		      	<td>3.116,52</td>
+		      	<td>Créditos</td>
+		      	<td>3.116,52</td>
+		      	<td>Débitos</td>
+		      	<td>3.116,52</td>
+		      	<td>Saldo Itau 31/01/2017</td>
+		      	<td>1.105,84</td>
+		      	<td> 53.238,00</td>
+		      	
+		      	
+		      </tr>
+		      
+		      
+		
+		   </tbody>
+		</table>		
+		      
+      
       <table class="table table-bordered bordaDestaque" >
          <tbody id="prospeccaoFiltro">
             <tr>	

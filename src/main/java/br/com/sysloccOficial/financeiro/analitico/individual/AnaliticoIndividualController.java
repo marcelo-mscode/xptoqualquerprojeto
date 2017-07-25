@@ -21,7 +21,7 @@ public class AnaliticoIndividualController {
 	
 	@RequestMapping("analiticoIndividual")
 	private ModelAndView analiticoIndividual(Integer idAnalitico){
-		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/analisticoindividual");
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/analiticoindividual");
 		
 		FinancAnalitico analitico = analiticoIndDAO.carregaAnaliticoIndividual(idAnalitico);
 		MV.addObject("InfoAnalitico",analitico);
