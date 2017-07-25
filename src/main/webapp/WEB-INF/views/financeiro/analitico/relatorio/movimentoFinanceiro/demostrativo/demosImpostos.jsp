@@ -17,13 +17,13 @@
        <td>Valor</td>
     </tr>
     <tr>
-       <td colspan="2" class="input-120px">Simples Nacional</td>
+       <td colspan="2" class="input-120px pad0" align="center">Simples Nacional</td>
     </tr>
     
    
        <tr>
-          <td class="tiraPaddingData" colspan="1"><input class="ajusteInput2 tiraPaddingData input-120px"  value="15,95%"/></td>
-          <td class="tiraPaddingData" colspan="1"><input class="ajusteInput2 tiraPaddingData input-80px"  value="1.347,66"></td>
+          <td class="tiraPaddingData" colspan="1"><input class="ajusteInput2 tiraPaddingData input-120px"  value="15,95% ???"/></td>
+          <td class="tiraPaddingData" colspan="1"><input class="ajusteInput2 tiraPaddingData input-80px"  value="1.347,66 ????"></td>
        </tr>
        
 
@@ -32,7 +32,7 @@
     <tr>
        <td></td>
        <td style="height: 51px;vertical-align: middle;font-size: 15px" >
-       	<b>???????</b>
+       	<b> ???????</b>
        </td>
        
     </tr>
