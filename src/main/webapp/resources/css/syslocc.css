@@ -310,4 +310,4 @@ hr.message-inner-separator{clear: both;
 
 .float-right{float: right;}
 .float-left{float: left;}
-.pad0{padding: 0}
+.pad0{padding: 0 !important}
