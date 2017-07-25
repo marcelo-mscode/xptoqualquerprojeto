@@ -26,7 +26,8 @@
    .botaoMais{width: 70px;font-size: 23px;padding: 0;font-weight: 800;}
    .botaoMaisDespesa{width: 50px;}
    .tiraPaddingData{padding: 0px 0px 0px 5px  !important;height: 50px !important}
-  	
+   .corMarronEstranha{background-color: rgb(255,204,153);}	
+   .corRosaEstranha{background-color: rgb(255,153,204);}	
 	
 </style>
 <div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;margin-top: 50px">
@@ -49,8 +50,11 @@
             <tr>	
             	<td colspan="4" align="center" class="corEscritorio" style="border-right: 2px solid #ccc"><b>CUSTO FIXO LOCCO AGENCIA</b></td>
             	<td colspan="2" align="center" class="corEscritorio"><b>CUSTO VARIÁVEL LOCCO AGENCIA</b></td>
+            	<td colspan="2" align="center" class="amareloFlat"><b>DEMONSTRATIVO FINANCEIRO</b></td>
             	<td colspan="3" align="center" class="amareloFlat"><b>MOVIMENTAÇÃO ITAU</b></td>
             	<td colspan="3" align="center" class="verdeClaroFlat"><b>CEF</b></td>
+            	<td colspan="3" align="center" class="corMarronEstranha"><b>BRADESCO</b></td>
+            	<td colspan="3" align="center" class="corRosaEstranha"><b>SANTANDER</b></td>
             </tr>
             <tr>
             	<td class="juntaColunas ajusteTelefone" id="impostos">
@@ -330,30 +334,69 @@
                
 <!--  ------------------------------------------------------------------------  -->
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
-                  <c:import url="movimentoFinanceiro/itauEntrada.jsp" />
+                  <c:import url="movimentoFinanceiro/demostrativo/demosImpostos.jsp" />
+               </td>
+
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/demostrativo/demosCaches.jsp" />
+               </td>
+
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/itau/itauEntrada.jsp" />
                </td>
                
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
-                  <c:import url="movimentoFinanceiro/itauSaida.jsp" />
+                  <c:import url="movimentoFinanceiro/itau/itauSaida.jsp" />
                </td>
 
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
-                  <c:import url="movimentoFinanceiro/itauTarifas.jsp" />
+                  <c:import url="movimentoFinanceiro/itau/itauTarifas.jsp" />
                </td>
 <!--  ------------------------------------------------------------------------  -->
 
-               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
-                  <c:import url="movimentoFinanceiro/cefEntrada.jsp" />
+               <%-- <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/cef/cefEntrada.jsp" />
                </td>
                
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
-                  <c:import url="movimentoFinanceiro/cefSaida.jsp" />
+                  <c:import url="movimentoFinanceiro/cef/cefSaida.jsp" />
                </td>
 
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
-                  <c:import url="movimentoFinanceiro/cefTarifas.jsp" />
-               </td>
+                  <c:import url="movimentoFinanceiro/cef/cefTarifas.jsp" />
+               </td> --%>
 <!--  ------------------------------------------------------------------------  -->
+				
+
+               <%-- <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/bradesco/bradEntrada.jsp" />
+               </td>
+               
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/bradesco/bradSaida.jsp" />
+               </td>
+
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/bradesco/bradTarifas.jsp" />
+               </td> --%>
+
+<!--  ------------------------------------------------------------------------  -->
+
+               <%-- <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/santander/santEntrada.jsp" />
+               </td>
+               
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/santander/santSaida.jsp" />
+               </td>
+
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+                  <c:import url="movimentoFinanceiro/santander/santTarifas.jsp" />
+               </td> --%>	
+
+<!--  ------------------------------------------------------------------------  -->
+
+
 
                
             </tr>

@@ -7,7 +7,7 @@
 
 <table class="table table-hover table-bordered">
     <tr>
-       <td colspan="7" align="center" class="verdeClaroFlat"><b>MOVIMENTOS DE CAIXA - SAIDA</b></td>
+       <td colspan="7" align="center" class="corMarronEstranha"><b>BRADESCO MOVIMENTOS DE CAIXA - TARIFAS/CPMF</b></td>
     </tr>
     <tr>
        <td class="tiraPaddingData"><input id="dataOutrasDespesas" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
