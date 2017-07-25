@@ -50,7 +50,7 @@
             <tr>	
             	<td colspan="4" align="center" class="corEscritorio" style="border-right: 2px solid #ccc"><b>CUSTO FIXO LOCCO AGENCIA</b></td>
             	<td colspan="2" align="center" class="corEscritorio"><b>CUSTO VARIÁVEL LOCCO AGENCIA</b></td>
-            	<td colspan="2" align="center" class="amareloFlat"><b>DEMONSTRATIVO FINANCEIRO</b></td>
+            	<td colspan="2" align="center" class="info"><b>DEMONSTRATIVO FINANCEIRO</b></td>
             	<td colspan="3" align="center" class="amareloFlat"><b>MOVIMENTAÇÃO ITAU</b></td>
             	<td colspan="3" align="center" class="verdeClaroFlat"><b>CEF</b></td>
             	<td colspan="3" align="center" class="corMarronEstranha"><b>BRADESCO</b></td>

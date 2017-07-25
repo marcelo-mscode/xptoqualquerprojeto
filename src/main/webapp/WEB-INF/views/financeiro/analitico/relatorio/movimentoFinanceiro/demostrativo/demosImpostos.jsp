@@ -7,41 +7,32 @@
 
 <table class="table table-hover table-bordered">
     <tr>
-       <td colspan="5" align="center" class="amareloFlat"><b>IMPOSTOS NF EVENTOS</b></td>
+       <td colspan="2" align="center" class="info"><b>IMPOSTOS NF EVENTOS</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData" colspan="5"></td>
+       <td class="tiraPaddingData" colspan="2"></td>
     </tr>
     <tr>
-       <td colspan="3">Descrição</td>
+       <td colspan="1">Descrição</td>
        <td>Valor</td>
     </tr>
     <tr>
-       <td colspan="5"></td>
+       <td colspan="2" class="input-120px">Simples Nacional</td>
     </tr>
     
-    <c:set var="totalOutrasdespesas" value="0.00" />
-    <c:forEach items="${outrasdespesas}" var="outrasdespesas">
+   
        <tr>
-          <td class="tiraPaddingData" colspan="3">
-             <input id="descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="${outrasdespesas.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'descricao','outrasdespesas');"
-                />
-          </td>
-          <td class="tiraPaddingData"  <c:if test = "${outrasdespesas.valor < 0}">style='color:red'</c:if> >
-             <input id="valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${outrasdespesas.valor}" pattern="#,##0.00"/>"
-             onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'valor','outrasdespesas');"
-             /> 
-          </td>
+          <td class="tiraPaddingData" colspan="1"><input class="ajusteInput2 tiraPaddingData input-120px"  value="15,95%"/></td>
+          <td class="tiraPaddingData" colspan="1"><input class="ajusteInput2 tiraPaddingData input-80px"  value="1.347,66"></td>
        </tr>
-       <c:set var="totalOutrasdespesas" value="${totalOutrasdespesas+outrasdespesas.valor}" />
-    </c:forEach>
+       
+
     <tr>
     
     <tr>
-       <td colspan="3"></td>
-       <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
-       	<b><fmt:formatNumber value="${totalOutrasdespesas}" pattern="#,##0.00"/></b>
+       <td></td>
+       <td style="height: 51px;vertical-align: middle;font-size: 15px" >
+       	<b>???????</b>
        </td>
        
     </tr>

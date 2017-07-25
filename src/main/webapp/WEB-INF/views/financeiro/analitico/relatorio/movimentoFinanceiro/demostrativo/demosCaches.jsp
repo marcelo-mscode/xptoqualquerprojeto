@@ -7,7 +7,7 @@
 
 <table class="table table-hover table-bordered">
     <tr>
-       <td colspan="5" align="center" class="amareloFlat"><b>CACHES DE EVENTOS DO MÊS</b></td>
+       <td colspan="5" align="center" class="info"><b>CACHES DE EVENTOS DO MÊS</b></td>
     </tr>
     <tr>
        <td class="tiraPaddingData" colspan="5"></td>
