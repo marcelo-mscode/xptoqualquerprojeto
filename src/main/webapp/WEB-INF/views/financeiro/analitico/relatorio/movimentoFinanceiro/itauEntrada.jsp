@@ -7,31 +7,31 @@
 
 <table class="table table-hover table-bordered">
     <tr>
-       <td colspan="6" align="center" class="corFolhaPgto"><b>MOV CAIXA - ENTRADA</b></td>
+       <td colspan="7" align="center" class="corFolhaPgto"><b>MOV CAIXA - ENTRADA</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="ndMovItau" class="ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="ND/NF"/></td>		
-       <td class="tiraPaddingData" colspan="2"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
+       <td class="tiraPaddingData"><input id="ndMovItau" class="ajusteInput2 tiraPaddingData input-70px" type="text" placeholder="ND/NF"/></td>		
+       <td class="tiraPaddingData" colspan="3"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
        <td class="tiraPaddingData"><input id="dataOutrasDespesas" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
        <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
        <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${InfoAnalitico.idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
        <td>NF/ND</td>
-       <td>Descrição</td>
+       <td colspan="3">Descrição</td>
        <td>VENC</td>
-       <td colspan="2">Valor</td>
+       <td colspan="1">Valor</td>
     </tr>
     <tr>
-       <td colspan="4"></td>
+       <td colspan="7"></td>
     </tr>
     
     <c:set var="totalOutrasdespesas" value="0.00" />
     <c:forEach items="${outrasdespesas}" var="outrasdespesas">
        <tr>
 		<td>ND/NF</td>       
-          <td class="tiraPaddingData" colspan="2">
-             <input id="descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-120px" value="${outrasdespesas.descricao}"
+          <td class="tiraPaddingData" colspan="3">
+             <input id="descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="${outrasdespesas.descricao}"
                 onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'descricao','outrasdespesas');"
                 />
           </td>
@@ -50,8 +50,8 @@
     <tr>
     
     <tr>
-       <td colspan="3"></td>
-       <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
+       <td colspan="5"></td>
+       <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
        	<b><fmt:formatNumber value="${totalOutrasdespesas}" pattern="#,##0.00"/></b>
        </td>
     </tr>
