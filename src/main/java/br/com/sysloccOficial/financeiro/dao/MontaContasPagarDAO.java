@@ -67,7 +67,7 @@ public class MontaContasPagarDAO {
 		
 		
 		if(listaAtual.isEmpty()){
-			System.out.println("Sou uma lista atual vazia");	
+			//System.out.println("Sou uma lista atual vazia");	
 		}else{
 			for (int i = 0; i < listaAtual.size(); i++) {
 				somaAtual = somaAtual.add((BigDecimal) listaAtual.get(i)[4]);
@@ -75,7 +75,7 @@ public class MontaContasPagarDAO {
 		}
 		
 		if(listaAnteriores.isEmpty()){
-			System.out.println("Sou uma lista anterior vazia");	
+			//System.out.println("Sou uma lista anterior vazia");	
 		}else{
 			for (int i = 0; i < listaAnteriores.size(); i++) {
 				somaAnteriores = somaAnteriores.add((BigDecimal) listaAnteriores.get(i)[4]);
