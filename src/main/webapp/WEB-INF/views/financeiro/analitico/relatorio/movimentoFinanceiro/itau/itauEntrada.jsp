@@ -19,14 +19,14 @@
     <tr>
        <td>NF/ND</td>
        <td colspan="3">Descrição</td>
-       <td>VENC</td>
-       <td colspan="1">Valor</td>
+       <td>Vencimento</td>
+       <td colspan="2">Valor</td>
     </tr>
     <tr>
        <td colspan="7"></td>
     </tr>
     
-    <c:set var="totalOutrasdespesas" value="0.00" />
+    <c:set var="totalentradasItau" value="0.00" />
     <c:forEach items="${entradasItau}" var="entradasItau">
        <tr>
           <td class="tiraPaddingData" colspan="3">
@@ -34,45 +34,34 @@
               onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${entradasItau.idFinancItauEntrada}',${entradasItau.idFinancItauEntrada},'descricao','outrasdespesas');"/>
           </td>
 
-<%--          
-          </td> --%>
-      
        	  <td class="tiraPaddingData">
-             <input id="descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="${outrasdespesas.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'descricao','outrasdespesas');"
+             <input id="descricaoOutrasdespesas${entradasItau.idFinancItauEntrada}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasItau.descricao}"
+                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${entradasItau.idFinancItauEntrada}',${entradasItau.idFinancItauEntrada},'descricao','outrasdespesas');"
              />
-       	  
-       	  	${entradasItau.descricao}
           </td>
           
-<%--      <td class="tiraPaddingData"><input id="dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${outrasdespesas.data}" pattern="dd/MM"/>" type="text"
-                onclick="mudaCampoData('dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}');"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'data','outrasdespesas');"
-                />
-          </td> --%>
-      
-      
           <td class="tiraPaddingData"  <c:if test = "${entradasItau.valor < 0}">style='color:red'</c:if> >
-          		${entradasItau.data}
+          		
+          		<input id="dataOutrasdespesas${entradasItau.idFinancItauEntrada}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${entradasItau.data}" pattern="dd/MM"/>" type="text"
+                onclick="mudaCampoData('dataOutrasdespesas${entradasItau.idFinancItauEntrada}');"
+                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','dataOutrasdespesas${entradasItau.idFinancItauEntrada}',${entradasItau.idFinancItauEntrada},'data','outrasdespesas');"
+                />
           </td>
 
           <td class="tiraPaddingData"  <c:if test = "${entradasItau.valor < 0}">style='color:red'</c:if> >
-          		${entradasItau.valor}
+          		<input id="valorOutrasdespesas${entradasItau.idFinancItauEntrada}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${entradasItau.valor}" pattern="#,##0.00"/>"
+             	onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${entradasItau.idFinancItauEntrada}',${entradasItau.idFinancItauEntrada},'valor','outrasdespesas');"
+            	 /> 
           </td>
-<%--           <td class="tiraPaddingData"  <c:if test = "${outrasdespesas.valor < 0}">style='color:red'</c:if> >
-             <input id="valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${outrasdespesas.valor}" pattern="#,##0.00"/>"
-             onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'valor','outrasdespesas');"
-             /> 
-          </td> --%>
        </tr>
-      <%--  <c:set var="totalOutrasdespesas" value="${totalOutrasdespesas+outrasdespesas.valor}" /> --%>
+       <c:set var="totalentradasItau" value="${totalentradasItau+entradasItau.valor}" />
     </c:forEach>
     <tr>
     
     <tr>
        <td colspan="5"></td>
        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
-       	<b><fmt:formatNumber value="${totalOutrasdespesas}" pattern="#,##0.00"/></b>
+       	<b><fmt:formatNumber value="${totalentradasItau}" pattern="#,##0.00"/></b>
        </td>
     </tr>
 </table>
