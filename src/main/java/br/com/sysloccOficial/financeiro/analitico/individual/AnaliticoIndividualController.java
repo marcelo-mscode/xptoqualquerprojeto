@@ -47,6 +47,11 @@ public class AnaliticoIndividualController {
 		MV.addObject("DemostrativoImpostos", dadosEvento.impostosSobreValorLoccoAgencia(infoEvento));
 		
 		
+		BigDecimal somaTotalCache = dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento));
+		MV.addObject("somaCacheTotal", somaTotalCache);
+		
+		
+		
 		
 		return MV;
 	}

@@ -32,7 +32,7 @@
     <tr>
        <td></td>
        <td style="height: 51px;vertical-align: middle;font-size: 15px" >
-       	<b> ???????</b>
+       	<b><fmt:formatNumber value="${DemostrativoImpostos}" pattern="#,##0.00"/></b>
        </td>
        
     </tr>
