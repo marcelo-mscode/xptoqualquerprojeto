@@ -12,7 +12,7 @@ public class VideosYt {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer idVideo;
-	private String tituloVIdeo;
+	private String tituloVideo;
 	private String descricaoVideos;
 	private String tagsVideos;
 	private String playList;
@@ -26,11 +26,12 @@ public class VideosYt {
 	public void setIdVideo(Integer idVideo) {
 		this.idVideo = idVideo;
 	}
-	public String getTituloVIdeo() {
-		return tituloVIdeo;
+	
+	public String getTituloVideo() {
+		return tituloVideo;
 	}
-	public void setTituloVIdeo(String tituloVIdeo) {
-		this.tituloVIdeo = tituloVIdeo;
+	public void setTituloVideo(String tituloVideo) {
+		this.tituloVideo = tituloVideo;
 	}
 	public String getDescricaoVideos() {
 		return descricaoVideos;

@@ -23,6 +23,7 @@ import br.com.sysloccOficial.financeiro.model.FinancFolhaPgto;
 import br.com.sysloccOficial.financeiro.model.FinancImpostos;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.FinancTelefone;
+import br.com.sysloccOficial.model.VideosYt;
 
 
 @Repository
@@ -124,4 +125,23 @@ public class AnaliticoIndividualDAO {
 		
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+// --------------------------------------------------------- //
+	public void salvaVideo(VideosYt videos){
+		try {
+			manager.persist(videos);
+		} catch (Exception e) {
+			System.out.println("Erro ao salvar um video: "+e);
+		}
+		
+	}
+	
+	
 }

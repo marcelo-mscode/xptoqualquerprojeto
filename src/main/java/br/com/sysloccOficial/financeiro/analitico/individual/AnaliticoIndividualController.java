@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,6 +12,7 @@ import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancEscritorio;
 import br.com.sysloccOficial.financeiro.model.FinancTelefone;
+import br.com.sysloccOficial.model.VideosYt;
 
 
 
@@ -48,8 +50,11 @@ public class AnaliticoIndividualController {
 	}
 	
 	@RequestMapping("salvarVideos")
-	public ModelAndView salvarVideos(){
+	public ModelAndView salvarVideos(VideosYt videos){
 		ModelAndView MV = new ModelAndView("videos/videos");
+		
+		
+		analiticoIndDAO.salvaVideo(videos);
 		
 		System.out.println("Teste NOVo");
 

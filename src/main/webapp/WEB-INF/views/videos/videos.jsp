@@ -7,14 +7,14 @@
 <c:import url="../_comum/header.jsp" />
 
 
-<div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 250%">
+<div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 80%">
    
-   <div class="col-md-6">
+   <div class="col-md-12">
 	   
 	   <form action="salvarVideos">
-		   	<input  class="form-control" value="Título do Video" /><br>
-		   	<input  class="form-control" value="Descrição do Video" /><br>
-		   	<input  class="form-control" value="Tags do Video" /><br>
+		   	<input  class="form-control" placeholder="Título do Video" name="tituloVideo"/><br>
+		   	<textarea  class="form-control" placeholder="Descrição do Video" name="descricaoVideos" cols="15" rows="5" ></textarea><br>
+		   	<textarea  class="form-control" placeholder="Tags do Video" name="tagsVideos" cols="15" rows="10" ></textarea><br>
 		   	<button class="btn btn-primary"   type="submit">salvar</button>
 	   </form>
  	</div>
