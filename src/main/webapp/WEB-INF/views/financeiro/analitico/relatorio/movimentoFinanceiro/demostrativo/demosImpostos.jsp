@@ -23,7 +23,7 @@
    
        <tr>
           <td class="tiraPaddingData" colspan="1"><input class="ajusteInput2 tiraPaddingData input-120px"  value="15,95% ???"/></td>
-          <td class="tiraPaddingData" colspan="1"><input class="ajusteInput2 tiraPaddingData input-80px"  value="1.347,66 ????"></td>
+          <td class="tiraPaddingData" colspan="1"><input class="ajusteInput2 tiraPaddingData input-80px"  value="<fmt:formatNumber value="${DemostrativoImpostos}" pattern="#,##0.00"/>"></td>
        </tr>
        
 

@@ -57,12 +57,15 @@ public class DadosEventosMes {
 	}
 
 	public BigDecimal impostosSobreValorLoccoAgencia(List<RelatorioEventos> infoEvento) {
-		
-		BigDecimal pgtoExt = new BigDecimal("0");
-		for (int i = 0; i < infoEvento.size(); i++) {
-			pgtoExt = pgtoExt.add(infoEvento.get(i).getImpostoSobreValorLoccoAgencia());
+		try {
+			BigDecimal pgtoExt = new BigDecimal("0");
+			for (int i = 0; i < infoEvento.size(); i++) {
+				pgtoExt = pgtoExt.add(infoEvento.get(i).getImpostoSobreValorLoccoAgencia());
+			}
+			return pgtoExt;
+		} catch (Exception e) {
+			return new BigDecimal("0.00");
 		}
-		return pgtoExt;
 	}
 
 	
