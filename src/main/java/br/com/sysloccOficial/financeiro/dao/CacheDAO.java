@@ -2,8 +2,8 @@ package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +14,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sysloccOficial.conf.Utilitaria;
+import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
+import br.com.sysloccOficial.model.CachePadraoAnalitico;
 
 @Repository
 @Transactional
@@ -53,22 +55,40 @@ public class CacheDAO {
 	}
 	
 	
-	public void listaCachesPorMesAno(){
-		
+	public List<CachePadraoAnalitico> listaCachesPorMesAno(){
 		
 		List<Integer> idsRelatorios =  relatorioDAO.idsRelatoriosEventosPorMesAno(01, 2017);
 
-//		String consultaCache =  util.limpaSqlComList("SELECT distinct(cachePadrao) FROM CacheEvento where relatorioEvento in ("+idsRelatorios+")");
-		String consultaCache =  util.limpaSqlComList("SELECT distinct(cachePadrao) FROM CacheEvento where relatorioEvento in ("+idsRelatorios+")");
+		String consultaCache =  util.limpaSqlComList("FROM CacheEvento where relatorioEvento in ("+idsRelatorios+")");
 		
-		Set<E>
+		TypedQuery<CacheEvento> caches = manager.createQuery(consultaCache, CacheEvento.class);
+		List<CacheEvento> listaCaches = caches.getResultList();
+		
 		
 		// CACHES EVENTO POR IDSRELATORIOS ORDERNADO POR CACHE PADRAO
+		String consultaIdsCachePadrao =  util.limpaSqlComList("SELECT distinct(cachePadrao.idCachePadrao) FROM CacheEvento where relatorioEvento in ("+idsRelatorios+")");
+		TypedQuery<Integer> ids = manager.createQuery(consultaIdsCachePadrao, Integer.class);
+		List<Integer> idsFuncionarioCache = ids.getResultList();
 		
 		
+		List<CachePadraoAnalitico> listaDeCachesMontada = new ArrayList<CachePadraoAnalitico>();
 		
-		System.out.println();
-		
+		for (int i = 0; i < idsFuncionarioCache.size(); i++) {
+			
+			CachePadraoAnalitico padrao = new CachePadraoAnalitico();
+			BigDecimal valor = new BigDecimal("0");
+			
+			for (int j = 0; j < listaCaches.size(); j++) {
+				if(idsFuncionarioCache.get(i) ==  listaCaches.get(j).getCachePadrao().getIdCachePadrao()){
+					valor = valor.add(listaCaches.get(j).getValor());
+					padrao.setNomeFuncionario(listaCaches.get(j).getCachePadrao().getNomeFunc());
+				}
+			}
+			padrao.setIdCacheFuncionario(idsFuncionarioCache.get(i));
+			padrao.setValor(valor);
+			listaDeCachesMontada.add(padrao);
+		}
+		return listaDeCachesMontada;
 	}
 	
 	

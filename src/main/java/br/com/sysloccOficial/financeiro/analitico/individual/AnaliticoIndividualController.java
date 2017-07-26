@@ -13,6 +13,7 @@ import br.com.sysloccOficial.financeiro.dao.CacheDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.resumomes.individual.DadosEventosMes;
+import br.com.sysloccOficial.model.CachePadraoAnalitico;
 import br.com.sysloccOficial.model.RelatorioEventos;
 import br.com.sysloccOficial.model.VideosYt;
 
@@ -49,7 +50,7 @@ public class AnaliticoIndividualController {
 		BigDecimal somaTotalCache = dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento));
 		MV.addObject("somaCacheTotal", somaTotalCache);
 		
-		cacheDAO.listaCachesPorMesAno();
+		 MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno());
 		
 		
 		return MV;
