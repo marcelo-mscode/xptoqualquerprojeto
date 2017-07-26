@@ -36,4 +36,28 @@ public class AnaliticoIndividualController {
 		return MV;
 	}
 	
+
+	@RequestMapping("videos")
+	public ModelAndView videos (){
+		
+		ModelAndView MV = new ModelAndView("videos/videos");
+		
+		
+		
+		return MV;
+	}
+	
+	@RequestMapping("salvarVideos")
+	public ModelAndView salvarVideos(){
+		ModelAndView MV = new ModelAndView("videos/videos");
+		
+		System.out.println("Teste NOVo");
+
+		
+		return MV;
+	}
+	
+	
+	
+	
 }
