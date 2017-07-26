@@ -20,28 +20,23 @@
        <td colspan="5"></td>
     </tr>
     
-    <c:set var="totalOutrasdespesas" value="0.00" />
-    <c:forEach items="${outrasdespesas}" var="outrasdespesas">
+    <c:set var="totalCaches" value="0.00" />
+    <c:forEach items="${ListaCacheTotal}" var="ListaCacheTotal">
+
        <tr>
-          <td class="tiraPaddingData" colspan="3">
-             <input id="descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="${outrasdespesas.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'descricao','outrasdespesas');"
-                />
-          </td>
-          <td class="tiraPaddingData"  <c:if test = "${outrasdespesas.valor < 0}">style='color:red'</c:if> >
-             <input id="valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${outrasdespesas.valor}" pattern="#,##0.00"/>"
-             onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'valor','outrasdespesas');"
-             /> 
-          </td>
+          <td class="tiraPaddingData" colspan="3">${ListaCacheTotal.nomeFuncionario}</td>
+          <td class="tiraPaddingData"><fmt:formatNumber value="${ListaCacheTotal.valor}" pattern="#,##0.00"/></td>
        </tr>
-       <c:set var="totalOutrasdespesas" value="${totalOutrasdespesas+outrasdespesas.valor}" />
+
+
+       <c:set var="totalCaches" value="${totalCaches+ListaCacheTotal.valor}" />
     </c:forEach>
     <tr>
     
     <tr>
        <td colspan="3"></td>
        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
-       	<b><fmt:formatNumber value="${totalOutrasdespesas}" pattern="#,##0.00"/></b>
+       	<b><fmt:formatNumber value="${totalCaches}" pattern="#,##0.00"/></b>
        </td>
        
     </tr>
