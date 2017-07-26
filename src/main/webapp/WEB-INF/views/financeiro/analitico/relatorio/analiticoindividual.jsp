@@ -341,11 +341,11 @@
                   <c:import url="movimentoFinanceiro/demostrativo/demosCaches.jsp" />
                </td>
 
-               <%-- <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
                   <c:import url="movimentoFinanceiro/itau/itauEntrada.jsp" />
                </td>
                
-               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+               <%-- <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
                   <c:import url="movimentoFinanceiro/itau/itauSaida.jsp" />
                </td>
 
