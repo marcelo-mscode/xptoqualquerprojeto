@@ -21,6 +21,7 @@ import br.com.sysloccOficial.financeiro.model.FinancDespesas;
 import br.com.sysloccOficial.financeiro.model.FinancEscritorio;
 import br.com.sysloccOficial.financeiro.model.FinancFolhaPgto;
 import br.com.sysloccOficial.financeiro.model.FinancImpostos;
+import br.com.sysloccOficial.financeiro.model.FinancItauEntrada;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.FinancTelefone;
 import br.com.sysloccOficial.model.VideosYt;
@@ -125,7 +126,14 @@ public class AnaliticoIndividualDAO {
 		
 	}
 
-	
+	public List<FinancItauEntrada> carregaAnaliticoItauEntrada(Integer idAnalitico) {
+		try {
+			TypedQuery<FinancItauEntrada> f = manager.createQuery("select f from FinancItauEntrada f join fetch f.analitico where idAnalitico="+idAnalitico,FinancItauEntrada.class);
+			return f.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 	
 	

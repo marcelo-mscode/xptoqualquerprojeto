@@ -46,11 +46,16 @@ public class AnaliticoIndividualController {
 		MV.addObject("impostos",analiticoIndDAO.carregaAnaliticoIndividualFinancImpostos(idAnalitico));
 		MV.addObject("DemostrativoImpostos", dadosEvento.impostosSobreValorLoccoAgencia(infoEvento));
 		
+		MV.addObject("somaCacheTotal", dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento)));
 		
-		BigDecimal somaTotalCache = dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento));
-		MV.addObject("somaCacheTotal", somaTotalCache);
+		MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno());
 		
-		 MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno());
+		// ---- Entradas Itau ---- //		
+		
+		MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno());
+		
+		
+		
 		
 		
 		return MV;

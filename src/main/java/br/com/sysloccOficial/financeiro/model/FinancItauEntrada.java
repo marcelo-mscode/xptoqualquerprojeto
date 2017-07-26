@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,14 +21,26 @@ public class FinancItauEntrada {
 	private Integer idFinancItauEntrada;
 	private BigDecimal valor;
 	private String descricao;
+	private String nfnd;
 	
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 
+	// ------------------------------------------------------------------ //	
+		@OneToOne @JoinColumn(name="analitico") private FinancAnalitico analitico;	
+	// ------------------------------------------------------------------ //	
 
-	
-	
+	public String getNfnd() {
+		return nfnd;
+	}
+
+
+	public void setNfnd(String nfnd) {
+		this.nfnd = nfnd;
+	}
+
+
 	public Integer getIdFinancItauEntrada() {
 		return idFinancItauEntrada;
 	}
@@ -64,6 +78,16 @@ public class FinancItauEntrada {
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+
+	public FinancAnalitico getAnalitico() {
+		return analitico;
+	}
+
+
+	public void setAnalitico(FinancAnalitico analitico) {
+		this.analitico = analitico;
 	}
 	
 }
