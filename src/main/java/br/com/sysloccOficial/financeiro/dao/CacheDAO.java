@@ -3,14 +3,17 @@ package br.com.sysloccOficial.financeiro.dao;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.model.CachePadrao;
 
 @Repository
@@ -18,6 +21,8 @@ import br.com.sysloccOficial.model.CachePadrao;
 public class CacheDAO {
 
 	@PersistenceContext	private EntityManager manager;
+	@Autowired RelatorioEventoDAO relatorioDAO;
+	@Autowired Utilitaria util;
 	
 	
 	public List<CachePadrao> listaTodosCaches(){
@@ -46,4 +51,27 @@ public class CacheDAO {
 		cache.setHabilitado(false);
 		manager.merge(cache);
 	}
+	
+	
+	public void listaCachesPorMesAno(){
+		
+		
+		List<Integer> idsRelatorios =  relatorioDAO.idsRelatoriosEventosPorMesAno(01, 2017);
+
+//		String consultaCache =  util.limpaSqlComList("SELECT distinct(cachePadrao) FROM CacheEvento where relatorioEvento in ("+idsRelatorios+")");
+		String consultaCache =  util.limpaSqlComList("SELECT distinct(cachePadrao) FROM CacheEvento where relatorioEvento in ("+idsRelatorios+")");
+		
+		Set<E>
+		
+		// CACHES EVENTO POR IDSRELATORIOS ORDERNADO POR CACHE PADRAO
+		
+		
+		
+		System.out.println();
+		
+	}
+	
+	
+	
+	
 }
