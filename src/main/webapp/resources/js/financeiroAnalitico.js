@@ -69,3 +69,47 @@ function editaCamposAnaliticoDespesas(action,campo,idTabela,tipoCampo,idDivAjax)
 	});
 };
 
+// ---------------------------------------------------------------------------------------- //
+// MOVIMENTO FINANCEIRO
+function InsereDadosMovimentacao(ndnf, data,desc,valor1,action, idAnalitico,idDivAjax) {
+	
+	var valor = $("#"+valor1).val();
+	var descricao = $("#"+desc).val();
+	var datas = $("#"+data).val();
+	var ndnf1 = $("#"+ndnf).val();
+	
+
+	console.log(datas);
+	
+	
+	
+	if(datas == '' || datas ==' ' || datas == null){
+		$("#"+data).css("border","1px solid red");
+		alert("Coloque um valor");
+		return false;
+	}
+	if(descricao == '' || descricao ==' ' || descricao == null){
+		$("#"+desc).css("border","1px solid red");
+		alert("Coloque um valor");
+		return false;
+	}
+
+	
+	$.ajax({
+		url : action+"?idAnalitico="+idAnalitico+"&DataPgto="+datas+"&valor="+valor+"&descricao="+descricao+"&ndnf="+ndnf1,
+		success : function(data) {
+			$("#"+idDivAjax).html(data);
+		}
+	});
+};
+
+
+
+
+
+
+
+
+
+
+

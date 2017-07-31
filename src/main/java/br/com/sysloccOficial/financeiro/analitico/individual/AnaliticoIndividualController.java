@@ -67,22 +67,8 @@ public class AnaliticoIndividualController {
 		
 		ModelAndView MV = new ModelAndView("videos/videos");
 		
-		
-		
 		return MV;
 	}
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	@RequestMapping("salvarVideos")
 	public ModelAndView salvarVideos(VideosYt videos){
