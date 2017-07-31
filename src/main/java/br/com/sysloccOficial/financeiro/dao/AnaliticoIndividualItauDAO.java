@@ -5,14 +5,18 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
+import br.com.sysloccOficial.financeiro.model.FinancItauEntrada;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 
 @Repository
@@ -23,25 +27,26 @@ public class AnaliticoIndividualItauDAO {
 	@Autowired private AnaliticoIndividualDAO individualDAO;
 	
 	
-	public void salvaNovaEntrada(Integer idAnalitico,String DataPgto,String valor,String descricao) throws ParseException {
+	public void salvaNovaEntrada(Integer idAnalitico,String DataPgto,String valor,String descricao,String ndnf) throws ParseException {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date data = new java.sql.Date(format.parse(DataPgto).getTime());
 		
 		FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
+	
 		try {
-			FinancOutrasDespesas despesas = new FinancOutrasDespesas ();
-			despesas.setDescricao(descricao);
+			FinancItauEntrada entradas = new FinancItauEntrada ();
+			entradas.setDescricao(descricao);
 			
 			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
-				despesas.setValor(new BigDecimal("0.00"));
+				entradas.setValor(new BigDecimal("0.00"));
 			}else{
-				despesas.setValor(new BigDecimal(util.formataValores(valor)));
+				entradas.setValor(new BigDecimal(util.formataValores(valor)));
 			}
-			
-			despesas.setAnalitico(analitico);
-			despesas.setData(data);
-			manager.persist(despesas);
+			entradas.setNfnd(ndnf);
+			entradas.setAnalitico(analitico);
+			entradas.setData(data);
+			manager.persist(entradas);
 			
 		} catch (Exception e) {
 			System.out.println(e);

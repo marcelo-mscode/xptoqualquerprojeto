@@ -22,19 +22,21 @@ public class AnaliticoIndividualMovimentacaoItau {
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/outrasDespesasAjax");
 		
 		
-		System.out.println(idAnalitico);
-		System.out.println(DataPgto);
-		System.out.println(valor);
-		System.out.println(descricao);
-		System.out.println(ndnf);
 		
 		
-		analiticoItauDAO.salvaNovaEntrada(idAnalitico,DataPgto,valor,descricao);
 		
-		MV.addObject("idAnalitico",idAnalitico);
+		analiticoItauDAO.salvaNovaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf);
+		
+		
+		System.out.println("Entrada Salva !");
+		
+		
+		
+		
+	//	MV.addObject("idAnalitico",idAnalitico);
 	
-		List<FinancOutrasDespesas> analitico2 = analiticoIndDAO.carregaAnaliticoOutrasDespesas(idAnalitico);
-		MV.addObject("outrasdespesas",analitico2);
+	/*	List<FinancOutrasDespesas> analitico2 = analiticoIndDAO.carregaAnaliticoOutrasDespesas(idAnalitico);
+		MV.addObject("outrasdespesas",analitico2);*/
 		
 		
 
@@ -43,7 +45,7 @@ public class AnaliticoIndividualMovimentacaoItau {
 		MV.addObject("idAnalitico",idAnalitico);
 		List<FinancTelefone> analitico2 = analiticoIndDAO.carregaAnaliticoTelefone(idAnalitico);
 		MV.addObject("telefone",analitico2);*/
-		return MV;
+		return null;
 	}
 
 	/*@RequestMapping("editaTelefone")
