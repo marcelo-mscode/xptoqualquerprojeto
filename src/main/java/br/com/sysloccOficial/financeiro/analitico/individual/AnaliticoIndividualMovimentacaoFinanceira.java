@@ -12,7 +12,7 @@ import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualItauDAO;
 
 @Controller
-public class AnaliticoIndividualMovimentacaoItau {
+public class AnaliticoIndividualMovimentacaoFinanceira {
 
 	@Autowired private AnaliticoIndividualItauDAO analiticoItauDAO;
 	@Autowired private AnaliticoIndividualDAO analiticoIndDAO;
@@ -20,7 +20,7 @@ public class AnaliticoIndividualMovimentacaoItau {
 	
 	@RequestMapping("salvaNovaEntrada")
 	@ResponseBody
-	private ModelAndView salvaNovoTelefone(Integer idAnalitico,String DataPgto, String valor,String descricao,String ndnf) throws ParseException{
+	private ModelAndView salvaNovaEntrada(Integer idAnalitico,String DataPgto, String valor,String descricao,String ndnf) throws ParseException{
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauEntradaAjax");
 		
 		analiticoItauDAO.salvaNovaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf);
@@ -29,7 +29,10 @@ public class AnaliticoIndividualMovimentacaoItau {
 		MV.addObject("entradasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico));
 		return MV;
 	}
-
+	
+	
+	
+	
 	/*@RequestMapping("editaTelefone")
 	@ResponseBody
 	private ModelAndView editaTelefone(Integer idTabela,String valor,String tipoCampo){
