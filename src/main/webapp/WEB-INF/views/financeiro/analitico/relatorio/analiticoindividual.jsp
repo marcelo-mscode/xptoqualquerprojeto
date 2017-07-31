@@ -341,7 +341,7 @@
                   <c:import url="movimentoFinanceiro/demostrativo/demosCaches.jsp" />
                </td>
 
-               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+               <td class="juntaColunas ajusteTelefone" id="entradasItau">
                   <c:import url="movimentoFinanceiro/itau/itauEntrada.jsp" />
                </td>
                

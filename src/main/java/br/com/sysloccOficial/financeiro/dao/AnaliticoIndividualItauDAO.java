@@ -49,7 +49,7 @@ public class AnaliticoIndividualItauDAO {
 			manager.persist(entradas);
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("Erro ao salva dados de entrada Itau: "+e);
 		}
 		
 	}

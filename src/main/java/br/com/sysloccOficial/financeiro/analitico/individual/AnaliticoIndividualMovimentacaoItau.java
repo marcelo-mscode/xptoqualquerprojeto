@@ -8,44 +8,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualItauDAO;
 
 @Controller
 public class AnaliticoIndividualMovimentacaoItau {
 
 	@Autowired private AnaliticoIndividualItauDAO analiticoItauDAO;
+	@Autowired private AnaliticoIndividualDAO analiticoIndDAO;
 	
 	
 	@RequestMapping("salvaNovaEntrada")
 	@ResponseBody
 	private ModelAndView salvaNovoTelefone(Integer idAnalitico,String DataPgto, String valor,String descricao,String ndnf) throws ParseException{
-		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/outrasDespesasAjax");
-		
-		
-		
-		
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauEntradaAjax");
 		
 		analiticoItauDAO.salvaNovaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf);
 		
-		
-		System.out.println("Entrada Salva !");
-		
-		
-		
-		
-	//	MV.addObject("idAnalitico",idAnalitico);
-	
-	/*	List<FinancOutrasDespesas> analitico2 = analiticoIndDAO.carregaAnaliticoOutrasDespesas(idAnalitico);
-		MV.addObject("outrasdespesas",analitico2);*/
-		
-		
-
-		
-		/*analiticoIndDAO.salvaNovoTelefone(idAnalitico,valor,descricao);
 		MV.addObject("idAnalitico",idAnalitico);
-		List<FinancTelefone> analitico2 = analiticoIndDAO.carregaAnaliticoTelefone(idAnalitico);
-		MV.addObject("telefone",analitico2);*/
-		return null;
+		MV.addObject("entradasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico));
+		return MV;
 	}
 
 	/*@RequestMapping("editaTelefone")
