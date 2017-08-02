@@ -128,7 +128,7 @@ public class AnaliticoIndividualDAO {
 
 	public List<FinancItauEntrada> carregaAnaliticoItauEntrada(Integer idAnalitico) {
 		try {
-			TypedQuery<FinancItauEntrada> f = manager.createQuery("select f from FinancItauEntrada f join fetch f.analitico where idAnalitico="+idAnalitico,FinancItauEntrada.class);
+			TypedQuery<FinancItauEntrada> f = manager.createQuery("select f from MovimentacaoBancos f join fetch f.analitico where idAnalitico="+idAnalitico+" and banco.idBanco = 1",FinancItauEntrada.class);
 			return f.getResultList();
 		} catch (Exception e) {
 			return null;
