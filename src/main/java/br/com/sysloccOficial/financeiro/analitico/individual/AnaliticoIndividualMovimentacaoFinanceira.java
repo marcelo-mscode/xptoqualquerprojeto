@@ -30,9 +30,9 @@ public class AnaliticoIndividualMovimentacaoFinanceira {
 	}
 	
 	
-	@RequestMapping("editaTelefone")
+	@RequestMapping("editaMovimentacaoFinanceira")
 	@ResponseBody
-	private ModelAndView editaTelefone(Integer idTabela,String valor,String tipoCampo){
+	private ModelAndView editaMovimentacaoFinanceira(Integer idTabela,String valor,String tipoCampo) throws ParseException{
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/telefonesAjax");
 		
 		Integer idAnalitico = analiticoItauDAO.editaMovFinanceiro(idTabela,valor,tipoCampo);

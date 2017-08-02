@@ -65,7 +65,7 @@ public class AnaliticoIndividualItauDAO {
 		}
 	}
 	
-	public Integer editaMovFinanceiro(Integer idTabela,String DataPgto,String valor, String tipoCampo) throws ParseException {
+	public Integer editaMovFinanceiro(Integer idTabela,String valor, String tipoCampo) throws ParseException {
 		
 		MovimentacaoBancos  despesas = manager.find(MovimentacaoBancos.class, idTabela);
 

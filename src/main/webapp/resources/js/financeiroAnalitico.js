@@ -98,7 +98,7 @@ function InsereDadosMovimentacao(ndnf, data,desc,valor1,action, idAnalitico,idDi
 };
 
 //Edita Valores Entradas
-function editaValoresEntradasItau(action,campo,idTabela,tipoCampo,idDivAjax) {
+function editaValoresEntradas(action,campo,idTabela,tipoCampo,idDivAjax) {
 	
 	var valor = $("#"+campo).val();
 	var valor2 = valor.replace("%","x1x2x3x");

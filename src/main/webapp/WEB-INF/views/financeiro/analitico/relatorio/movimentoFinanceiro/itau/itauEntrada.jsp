@@ -30,13 +30,13 @@
     <c:forEach items="${entradasItau}" var="entradasItau">
        <tr>
           <td class="tiraPaddingData" colspan="3">
-              <input id="descricaoOutrasdespesas${entradasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasItau.ndnf}"
-              onblur="editaValoresEntradasItau('editaOutrasDespesas','descricaoOutrasdespesas${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'ndnf','entradasItau','1');"/>
+              <input id="ndnfItau${entradasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasItau.ndnf}"
+              onblur="editaValoresEntradas('editaMovimentacaoFinanceira','ndnfItau${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'ndnf','entradasItau');"/>
           </td>
 
        	  <td class="tiraPaddingData">
-             <input id="descricaoOutrasdespesas${entradasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasItau.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'descricao','entradasItau');"
+             <input id="descricaoFinanceiraItau${entradasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasItau.descricao}"
+                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','descricaoOutrasdespesas${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'descricao','entradasItau');"
              />
           </td>
           
