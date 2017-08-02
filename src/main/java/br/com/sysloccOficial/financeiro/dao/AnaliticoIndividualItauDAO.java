@@ -5,20 +5,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
-import br.com.sysloccOficial.financeiro.model.FinancItauEntrada;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 
@@ -69,9 +65,22 @@ public class AnaliticoIndividualItauDAO {
 		}
 	}
 	
-	public Integer editaOutrasDespesas(Integer idTabela,String DataPgto,String valor, String tipoCampo) throws ParseException {
+	public Integer editaMovFinanceiro(Integer idTabela,String DataPgto,String valor, String tipoCampo) throws ParseException {
 		
-		FinancOutrasDespesas  despesas = manager.find(FinancOutrasDespesas .class, idTabela);
+		MovimentacaoBancos  despesas = manager.find(MovimentacaoBancos.class, idTabela);
+
+		if(tipoCampo.equals("ndnf")){
+			try {
+				despesas.setNdnf(valor);
+			} catch (Exception e) {
+				System.out.println("Erro ao editar uma ndnf: "+e);
+			}
+		}
+
+		if(tipoCampo.equals("descricao")){
+			String valor2 = valor.replace("x1x2x3x", "%");
+			despesas.setDescricao(valor2);
+		}
 
 		if(tipoCampo.equals("data")){
 			try {
@@ -83,10 +92,6 @@ public class AnaliticoIndividualItauDAO {
 			}
 		}
 			
-		if(tipoCampo.equals("descricao")){
-			String valor2 = valor.replace("x1x2x3x", "%");
-			despesas.setDescricao(valor2);
-		}
 		if(tipoCampo.equals("valor")){
 			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
 				despesas.setValor(new BigDecimal("0.00"));

@@ -23,30 +23,25 @@ public class AnaliticoIndividualMovimentacaoFinanceira {
 	private ModelAndView salvaNovaEntrada(Integer idAnalitico,String DataPgto, String valor,String descricao,String ndnf,Integer idBanco) throws ParseException{
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauEntradaAjax");
 		
-		
-		
 		analiticoItauDAO.salvaNovaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf,idBanco);
-		
 		MV.addObject("idAnalitico",idAnalitico);
 		MV.addObject("entradasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico));
 		return MV;
 	}
 	
 	
-	
-	
-	/*@RequestMapping("editaTelefone")
+	@RequestMapping("editaTelefone")
 	@ResponseBody
 	private ModelAndView editaTelefone(Integer idTabela,String valor,String tipoCampo){
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/telefonesAjax");
 		
-		Integer idAnalitico = analiticoIndDAO.editaTelefone(idTabela,valor,tipoCampo);
-		
+		Integer idAnalitico = analiticoItauDAO.editaMovFinanceiro(idTabela,valor,tipoCampo);
 		MV.addObject("idAnalitico",idAnalitico);
-		List<FinancTelefone> analitico2 = analiticoIndDAO.carregaAnaliticoTelefone(idAnalitico);
-		MV.addObject("telefone",analitico2);
+
+		/*List<FinancTelefone> analitico2 = analiticoIndDAO.carregaAnaliticoTelefone(idAnalitico);
+		MV.addObject("telefone",analitico2);*/
 		return MV;
-	}*/
+	}
 	
 	
 	

@@ -103,15 +103,12 @@ function editaValoresEntradasItau(action,campo,idTabela,tipoCampo,idDivAjax) {
 	var valor = $("#"+campo).val();
 	var valor2 = valor.replace("%","x1x2x3x");
 
-	console.log()
-	
-	
-	/*$.ajax({
+	$.ajax({
 		url : action+"?idTabela="+idTabela+"&valor="+valor2+"&tipoCampo="+tipoCampo,
 		success : function(data) {
 			$("#"+idDivAjax).html(data);
 		}
-	});*/
+	});
 };
 
 

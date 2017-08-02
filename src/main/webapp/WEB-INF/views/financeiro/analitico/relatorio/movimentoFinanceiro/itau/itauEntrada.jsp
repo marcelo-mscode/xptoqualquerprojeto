@@ -31,7 +31,7 @@
        <tr>
           <td class="tiraPaddingData" colspan="3">
               <input id="descricaoOutrasdespesas${entradasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasItau.ndnf}"
-              onblur="editaValoresEntradasItau('editaOutrasDespesas','descricaoOutrasdespesas${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'descricao','entradasItau');"/>
+              onblur="editaValoresEntradasItau('editaOutrasDespesas','descricaoOutrasdespesas${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'ndnf','entradasItau','1');"/>
           </td>
 
        	  <td class="tiraPaddingData">
