@@ -1,14 +1,11 @@
 package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
-import br.com.sysloccOficial.financeiro.model.FinancCategTelef;
 import br.com.sysloccOficial.financeiro.model.FinancDespesas;
 import br.com.sysloccOficial.financeiro.model.FinancEscritorio;
 import br.com.sysloccOficial.financeiro.model.FinancFolhaPgto;
@@ -24,6 +20,7 @@ import br.com.sysloccOficial.financeiro.model.FinancImpostos;
 import br.com.sysloccOficial.financeiro.model.FinancItauEntrada;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.FinancTelefone;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.model.VideosYt;
 
 
@@ -126,11 +123,13 @@ public class AnaliticoIndividualDAO {
 		
 	}
 
-	public List<FinancItauEntrada> carregaAnaliticoItauEntrada(Integer idAnalitico) {
+	public List<MovimentacaoBancos> carregaAnaliticoItauEntrada(Integer idAnalitico) {
 		try {
-			TypedQuery<FinancItauEntrada> f = manager.createQuery("select f from MovimentacaoBancos f join fetch f.analitico where idAnalitico="+idAnalitico+" and banco.idBanco = 1",FinancItauEntrada.class);
+			TypedQuery<MovimentacaoBancos> f = manager.createQuery("select f from MovimentacaoBancos f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = 1",MovimentacaoBancos.class);
 			return f.getResultList();
 		} catch (Exception e) {
+			System.out.println("Não foi possível carregar as listagens de entradas do Itau: "+e);
+			
 			return null;
 		}
 	}
