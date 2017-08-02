@@ -71,7 +71,7 @@ function editaCamposAnaliticoDespesas(action,campo,idTabela,tipoCampo,idDivAjax)
 
 // ---------------------------------------------------------------------------------------- //
 // MOVIMENTO FINANCEIRO
-function InsereDadosMovimentacao(idBanco,ndnf, data,desc,valor1,action, idAnalitico,idDivAjax) {
+function novoDadosMovimentacao(idBanco,ndnf, data,desc,valor1,action, idAnalitico,idDivAjax) {
 	
 	alert("Cheguei ");
 	
