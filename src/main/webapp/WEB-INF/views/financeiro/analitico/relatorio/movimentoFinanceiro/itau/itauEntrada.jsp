@@ -11,10 +11,10 @@
     </tr>
     <tr>
        <td class="tiraPaddingData"><input id="ndMovItau" class="ajusteInput2 tiraPaddingData input-70px" type="text" placeholder="ND/NF"/></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descMovItau" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="dataMovItau" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
-       <td class="tiraPaddingData"><input id="valorMovItau" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td><button onclick="novoDadosMovimentacao('1','ndMovItau','dataMovItau','descMovItau','valorMovItau','salvaNovaEntrada',${InfoAnalitico.idAnalitico},'entradasItau');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td class="tiraPaddingData" colspan="3"><input id="descMovItau" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"  value="teste de script"/></td>
+       <td class="tiraPaddingData"><input id="dataMovItau" type="date"  class="ajusteInput2 tiraPaddingData input-140px" value="2017-02-02"/></td>		
+       <td class="tiraPaddingData"><input id="valorMovItau" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor" value="200.00"/></td>
+       <td><button onclick="InsereDadosMovimentacao('ndMovItau','dataMovItau','descMovItau','valorMovItau','salvaNovaEntrada',${InfoAnalitico.idAnalitico},'entradasItau','1');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
        <td>NF/ND</td>

@@ -20,7 +20,7 @@ public class AnaliticoIndividualMovimentacaoFinanceira {
 	
 	@RequestMapping("salvaNovaEntrada")
 	@ResponseBody
-	private ModelAndView salvaNovaEntrada(Integer idBanco, Integer idAnalitico,String DataPgto, String valor,String descricao,String ndnf) throws ParseException{
+	private ModelAndView salvaNovaEntrada(Integer idAnalitico,String DataPgto, String valor,String descricao,String ndnf,Integer idBanco) throws ParseException{
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauEntradaAjax");
 		
 		System.out.println(idBanco);

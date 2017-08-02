@@ -36,6 +36,7 @@
 <script type="text/javascript" src="<c:url value="resources/js/validaFormularios.js" />"></script>
 <script type="text/javascript" src="<c:url value="resources/js/jquery.validate.js" />"></script>
 <script type="text/javascript" src="<c:url value="resources/js/notificacoes.js" />"></script>
+<script type="text/javascript" src="<c:url value="resources/js/financeiroAnalitico.js" />"></script>
 <%-- <script type="text/javascript" src="<c:url value="resources/js/jquery.nicescroll.min.js" />"></script> --%>
 
 <script>
