@@ -77,8 +77,6 @@ function InsereDadosMovimentacao(ndnf, data,desc,valor1,action, idAnalitico,idDi
 	var datas = $("#"+data).val();
 	var ndnf1 = $("#"+ndnf).val();
 	
-	alert(action+"?idAnalitico="+idAnalitico+"&DataPgto="+datas+"&valor="+valor+"&descricao="+descricao+"&ndnf="+$("#"+ndnf).val()+"&idBanco="+idBanco);
-
 	if(datas == '' || datas ==' ' || datas == null){
 		$("#"+data).css("border","1px solid red");
 		alert("Coloque um valor");

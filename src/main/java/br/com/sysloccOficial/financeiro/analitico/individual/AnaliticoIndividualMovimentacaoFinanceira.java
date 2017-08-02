@@ -23,11 +23,10 @@ public class AnaliticoIndividualMovimentacaoFinanceira {
 	private ModelAndView salvaNovaEntrada(Integer idAnalitico,String DataPgto, String valor,String descricao,String ndnf,Integer idBanco) throws ParseException{
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauEntradaAjax");
 		
-		System.out.println(idBanco);
 		
 		
-		/*analiticoItauDAO.salvaNovaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf);
-		
+		analiticoItauDAO.salvaNovaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf,idBanco);
+		/*
 		MV.addObject("idAnalitico",idAnalitico);
 		MV.addObject("entradasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico));*/
 		return MV;

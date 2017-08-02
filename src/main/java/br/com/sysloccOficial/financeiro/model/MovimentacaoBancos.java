@@ -2,6 +2,7 @@ package br.com.sysloccOficial.financeiro.model;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class MovimentacaoBancos {
 	
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar data;
+	private Date data;
 	
 	
 // ------------------------------------------------------------------ //	
@@ -58,10 +59,10 @@ public class MovimentacaoBancos {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	public Calendar getData() {
+	public Date getData() {
 		return data;
 	}
-	public void setData(Calendar data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 	public FinancAnalitico getAnalitico() {

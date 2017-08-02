@@ -15,41 +15,46 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sysloccOficial.conf.Utilitaria;
+import br.com.sysloccOficial.conf.UtilitariaDatas;
+import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancItauEntrada;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 
 @Repository
 @Transactional
 public class AnaliticoIndividualItauDAO {
 	@PersistenceContext	private EntityManager manager;
 	@Autowired private Utilitaria util;
+	@Autowired private UtilitariaDatas utilDatas;
 	@Autowired private AnaliticoIndividualDAO individualDAO;
 	
 	
-	public void salvaNovaEntrada(Integer idAnalitico,String DataPgto,String valor,String descricao,String ndnf) throws ParseException {
+	public void salvaNovaEntrada(Integer idAnalitico,String DataPgto,String valor,String descricao,String ndnf,Integer idBanco) throws ParseException {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date data = new java.sql.Date(format.parse(DataPgto).getTime());
 		
 		FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
-	
+		BancosAnalitico banco = manager.getReference(BancosAnalitico.class, idBanco);
 		try {
-			FinancItauEntrada entradas = new FinancItauEntrada ();
+			MovimentacaoBancos entradas = new MovimentacaoBancos();
+			entradas.setData(data);
 			entradas.setDescricao(descricao);
-			
+			entradas.setNdnf(ndnf);
 			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
 				entradas.setValor(new BigDecimal("0.00"));
 			}else{
 				entradas.setValor(new BigDecimal(util.formataValores(valor)));
 			}
-			entradas.setNfnd(ndnf);
 			entradas.setAnalitico(analitico);
-			entradas.setData(data);
+			entradas.setBanco(banco);
+
 			manager.persist(entradas);
 			
 		} catch (Exception e) {
-			System.out.println("Erro ao salva dados de entrada Itau: "+e);
+			System.out.println("Erro ao salvar dados de entrada Itau: "+e);
 		}
 		
 	}
