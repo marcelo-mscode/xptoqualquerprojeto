@@ -26,9 +26,9 @@ public class AnaliticoIndividualMovimentacaoFinanceira {
 		
 		
 		analiticoItauDAO.salvaNovaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf,idBanco);
-		/*
+		
 		MV.addObject("idAnalitico",idAnalitico);
-		MV.addObject("entradasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico));*/
+		MV.addObject("entradasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico));
 		return MV;
 	}
 	
