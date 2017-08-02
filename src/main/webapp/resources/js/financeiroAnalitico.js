@@ -72,7 +72,10 @@ function editaCamposAnaliticoDespesas(action,campo,idTabela,tipoCampo,idDivAjax)
 // ---------------------------------------------------------------------------------------- //
 // MOVIMENTO FINANCEIRO
 function InsereDadosMovimentacao(idBanco,ndnf, data,desc,valor1,action, idAnalitico,idDivAjax) {
-	var valor = $("#"+valor1).val();
+	
+	alert("Cheguei ");
+	
+	/*var valor = $("#"+valor1).val();
 	var descricao = $("#"+desc).val();
 	var datas = $("#"+data).val();
 	var ndnf1 = $("#"+ndnf).val();
@@ -80,10 +83,10 @@ function InsereDadosMovimentacao(idBanco,ndnf, data,desc,valor1,action, idAnalit
 	
 	
 	alert(action+"?idBanco="+idBanco+"&idAnalitico="+idAnalitico+"&DataPgto="+datas+"&valor="+valor+"&descricao="+descricao+"&ndnf="+$("#"+ndnf).val());
+	*/
 	
 	
-	
-	if(datas == '' || datas ==' ' || datas == null){
+	/*if(datas == '' || datas ==' ' || datas == null){
 		$("#"+data).css("border","1px solid red");
 		alert("Coloque um valor");
 		return false;
@@ -99,7 +102,7 @@ function InsereDadosMovimentacao(idBanco,ndnf, data,desc,valor1,action, idAnalit
 		success : function(data) {
 			$("#"+idDivAjax).html(data);
 		}
-	});
+	});*/
 };
 
 //Edita Valores Entradas
