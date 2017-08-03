@@ -66,9 +66,7 @@
 					<td><a href="receberConta?idLista=${infoInterna.lista.idLista}" class="btn btn-success">Recebido</a></td>
 				</tr>
 			  </c:if>
-				 
 			 </c:forEach>
-			 
 		 </c:forEach>
 
 		 <c:set var="valorTotal" value="0" />
@@ -82,7 +80,6 @@
 		 	<td></td>
 		 	<td><b><fmt:formatNumber value="${valorTotal}" pattern="#,##0.00"/></b></td>
 		 	<td></td>
-		 
 		 </tr>	
 		
 	  </tbody>
