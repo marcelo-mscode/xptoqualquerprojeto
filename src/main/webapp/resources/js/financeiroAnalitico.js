@@ -106,8 +106,6 @@ function editaValoresEntradas(action,campo,idTabela,tipoCampo,idDivAjax,idBanco)
 	$.ajax({
 		url : action+"?idTabela="+idTabela+"&valor="+valor2+"&tipoCampo="+tipoCampo+"&idBanco="+idBanco,
 		success : function(data) {
-			console.log(data);
-			
 			$("#"+idDivAjax).html(data);
 		}
 	});

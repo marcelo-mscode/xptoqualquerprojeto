@@ -33,13 +33,14 @@
 	<table class="table table-striped table-hover table-condensed" >
 	  <tbody id="prospeccaoFiltro">
 		<tr style="background: #f1f1f1 !important;text-align: center !important;">
-			<td colspan="5" style="text-align: center !important;">CONTAS A RECEBER<br>Notas Fiscais e Debitos</td>
+			<td colspan="6" style="text-align: center !important;">CONTAS A RECEBER<br>Notas Fiscais e Debitos</td>
 		</tr>
 		<tr style="background: #f1f1f1 !important" class="cabecalhoLista">
 			<td>NF/ND</td>
 			<td>Descrição</td>
 			<td>Vencimento</td>
 			<td>Valor</td>
+			<td>Banco</td>
 			<td></td>
 		</tr>
 		
@@ -53,6 +54,15 @@
 					<td class="descricao">${infoInterna.lista.lista}</td>
 					<td><fmt:formatDate value="${infoInterna.dataPagamento}" pattern="dd/MM/yyyy" /></td>
 					<td><fmt:formatNumber value="${listaReceber.valorLoccoAgenc}" pattern="#,##0.00"/> </td>
+					<td>
+						<select class="form-control">
+							<option value="0">Banco</option>
+							<option value="1">Itau</option>
+							<option value="1">CEF</option>
+							<option value="1">Bradesco</option>
+							<option value="1">Santander</option>
+						</select>
+					</td>
 					<td><a href="receberConta?idLista=${infoInterna.lista.idLista}" class="btn btn-success">Recebido</a></td>
 				</tr>
 			  </c:if>

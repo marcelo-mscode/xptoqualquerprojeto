@@ -42,9 +42,6 @@ public class AnaliticoIndividualMovimentacaoFinanceira {
 
 		List<MovimentacaoBancos> analitico2 = analiticoMovFinanceiroDAO.carregaMovimentaBancos(idAnalitico,idBanco);
 		MV.addObject("entradasItau",analitico2);
-		
-		System.out.println("Editei ");
-		
 		return MV;
 	}
 	
