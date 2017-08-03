@@ -5,13 +5,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.model.InfoInterna;
+import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
 @Repository
@@ -41,6 +42,10 @@ public class ContasReceberDAO {
 
 	public void recebeConta(Integer idLista) {
 		
+		
+		MovimentacaoBancos bancoItau = new MovimentacaoBancos();
+		
+		
 		TypedQuery<InfoInterna> q = manager.createQuery("from InfoInterna where lista.idLista="+idLista,InfoInterna.class);
 		InfoInterna infoInterna = q.getSingleResult();
 		infoInterna.setRecebido(true);
@@ -53,6 +58,19 @@ public class ContasReceberDAO {
 		relatorio.setDataRecebido(Calendar.getInstance());
 		manager.merge(relatorio);
 		manager.close();
+		
+		
+		Lista lista = manager.find(Lista.class, idLista);
+		
+		
+		
+		bancoItau.setNdnf(infoInterna.getNfInterna());
+		bancoItau.setData(infoInterna.getDataPagamento());
+		bancoItau.setDescricao(lista.getLista());
+		
+		
+		
+		
 		
 	}
 	
