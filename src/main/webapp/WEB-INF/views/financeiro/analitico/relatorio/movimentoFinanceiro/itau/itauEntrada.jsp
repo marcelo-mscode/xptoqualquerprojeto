@@ -11,9 +11,9 @@
     </tr>
     <tr>
        <td class="tiraPaddingData"><input id="ndMovItau" class="ajusteInput2 tiraPaddingData input-70px" type="text" placeholder="ND/NF"/></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descMovItau" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"  value="teste de script"/></td>
-       <td class="tiraPaddingData"><input id="dataMovItau" type="date"  class="ajusteInput2 tiraPaddingData input-140px" value="2017-02-02"/></td>		
-       <td class="tiraPaddingData"><input id="valorMovItau" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor" value="200.00"/></td>
+       <td class="tiraPaddingData" colspan="3"><input id="descMovItau" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
+       <td class="tiraPaddingData"><input id="dataMovItau" type="date"  class="ajusteInput2 tiraPaddingData input-140px"/></td>		
+       <td class="tiraPaddingData"><input id="valorMovItau" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
        <td><button onclick="InsereDadosMovimentacao('ndMovItau','dataMovItau','descMovItau','valorMovItau','salvaNovaEntrada',${InfoAnalitico.idAnalitico},'entradasItau','1');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
@@ -31,25 +31,25 @@
        <tr>
           <td class="tiraPaddingData" colspan="3">
               <input id="ndnfItau${entradasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasItau.ndnf}"
-              onblur="editaValoresEntradas('editaMovimentacaoFinanceira','ndnfItau${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'ndnf','entradasItau');"/>
+              onblur="editaValoresEntradas('editaMovimentacaoFinanceira','ndnfItau${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'ndnf','entradasItau','1');"/>
           </td>
 
        	  <td class="tiraPaddingData">
              <input id="descricaoEntradaItau${entradasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasItau.descricao}"
-                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','descricaoEntradaItau${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'descricao','entradasItau');"
+                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','descricaoEntradaItau${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'descricao','entradasItau','1');"
              />
           </td>
           
           <td class="tiraPaddingData"  <c:if test = "${entradasItau.valor < 0}">style='color:red'</c:if> >
           		<input id="dataEntradaItau${entradasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${entradasItau.data}" pattern="dd/MM"/>"
-                onclick="mudaCampoData('dataOutrasdespesas${entradasItau.idMovBancos}');"
-                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','dataEntradaItau${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'data','entradasItau');"
+                onclick="mudaCampoData('dataEntradaItau${entradasItau.idMovBancos}');"
+                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','dataEntradaItau${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'data','entradasItau','1');"
                 />
           </td>
 
           <td class="tiraPaddingData"  <c:if test = "${entradasItau.valor < 0}">style='color:red'</c:if> >
-          		<input id="valorOutrasdespesas${entradasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${entradasItau.valor}" pattern="#,##0.00"/>"
-             	onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'valor','entradasItau');"
+          		<input id="valorItau${entradasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${entradasItau.valor}" pattern="#,##0.00"/>"
+             	onblur="editaValoresEntradas('editaMovimentacaoFinanceira','valorItau${entradasItau.idMovBancos}',${entradasItau.idMovBancos},'valor','entradasItau','1');"
             	 /> 
           </td>
        </tr>

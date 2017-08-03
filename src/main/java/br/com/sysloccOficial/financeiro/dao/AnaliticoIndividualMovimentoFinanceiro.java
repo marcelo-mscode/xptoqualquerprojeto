@@ -20,7 +20,7 @@ import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 
 @Repository
 @Transactional
-public class AnaliticoIndividualItauDAO {
+public class AnaliticoIndividualMovimentoFinanceiro {
 	@PersistenceContext	private EntityManager manager;
 	@Autowired private Utilitaria util;
 	@Autowired private UtilitariaDatas utilDatas;
@@ -55,12 +55,12 @@ public class AnaliticoIndividualItauDAO {
 		
 	}
 	
-	public List<FinancOutrasDespesas > carregaAnaliticoOutrasDespesas(Integer idAnalitico) {
+	public List<MovimentacaoBancos> carregaMovimentaBancos(Integer idAnalitico, Integer idBanco) {
 		try {
-			TypedQuery<FinancOutrasDespesas > f = manager.createQuery("select f from FinancOutrasDespesas  f where analitico.idAnalitico="+idAnalitico,FinancOutrasDespesas .class);
+			TypedQuery<MovimentacaoBancos > f = manager.createQuery("select m from MovimentacaoBancos  m where analitico.idAnalitico="+idAnalitico+" and m.banco.idBanco = "+idBanco,MovimentacaoBancos .class);
 			return f.getResultList();
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("Erro ao carregar a lista de Movimento Financeiro: "+e);
 			return null;
 		}
 	}

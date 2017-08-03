@@ -98,14 +98,16 @@ function InsereDadosMovimentacao(ndnf, data,desc,valor1,action, idAnalitico,idDi
 };
 
 //Edita Valores Entradas
-function editaValoresEntradas(action,campo,idTabela,tipoCampo,idDivAjax) {
+function editaValoresEntradas(action,campo,idTabela,tipoCampo,idDivAjax,idBanco) {
 	
 	var valor = $("#"+campo).val();
 	var valor2 = valor.replace("%","x1x2x3x");
 
 	$.ajax({
-		url : action+"?idTabela="+idTabela+"&valor="+valor2+"&tipoCampo="+tipoCampo,
+		url : action+"?idTabela="+idTabela+"&valor="+valor2+"&tipoCampo="+tipoCampo+"&idBanco="+idBanco,
 		success : function(data) {
+			console.log(data);
+			
 			$("#"+idDivAjax).html(data);
 		}
 	});
