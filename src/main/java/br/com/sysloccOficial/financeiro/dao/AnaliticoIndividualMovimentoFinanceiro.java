@@ -20,6 +20,7 @@ import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 
 @Repository
 @Transactional
@@ -117,7 +118,7 @@ public class AnaliticoIndividualMovimentoFinanceiro {
 		FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
 		BancosAnalitico banco = manager.getReference(BancosAnalitico.class, idBanco);
 		try {
-			MovimentacaoBancos entradas = new MovimentacaoBancos();
+			MovimentacaoBancosSaidas entradas = new MovimentacaoBancosSaidas();
 			entradas.setData(data);
 			entradas.setDescricao(descricao);
 			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
@@ -131,7 +132,7 @@ public class AnaliticoIndividualMovimentoFinanceiro {
 			manager.persist(entradas);
 			
 		} catch (Exception e) {
-			System.out.println("Erro ao salvar dados de entrada Itau: "+e);
+			System.out.println("Erro ao salvar dados de Saida: "+e);
 		}
 		
 		

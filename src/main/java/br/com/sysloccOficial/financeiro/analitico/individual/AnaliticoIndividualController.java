@@ -50,8 +50,9 @@ public class AnaliticoIndividualController {
 		
 		MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno());
 		
-		// ---- Entradas Itau ---- //		
+		// ---- Entradas/Saidas Itau ---- //		
 		MV.addObject("entradasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico));
+		MV.addObject("saidasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico));
 		
 		
 		

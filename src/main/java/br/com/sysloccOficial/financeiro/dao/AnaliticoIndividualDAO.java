@@ -123,13 +123,22 @@ public class AnaliticoIndividualDAO {
 		
 	}
 
-	public List<MovimentacaoBancos> carregaAnaliticoItauEntrada(Integer idAnalitico) {
+	public List<MovimentacaoBancos> carregaAnaliticoItauEntrada(Integer idAnalitico,Integer idBanco) {
 		try {
-			TypedQuery<MovimentacaoBancos> f = manager.createQuery("select f from MovimentacaoBancos f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = 1",MovimentacaoBancos.class);
+			TypedQuery<MovimentacaoBancos> f = manager.createQuery("select f from MovimentacaoBancos f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancos.class);
 			return f.getResultList();
 		} catch (Exception e) {
 			System.out.println("Não foi possível carregar as listagens de entradas do Itau: "+e);
-			
+			return null;
+		}
+	}
+	
+	public List<MovimentacaoBancos> carregaAnaliticoSaidas(Integer idAnalitico) {
+		try {
+			TypedQuery<MovimentacaoBancos> f = manager.createQuery("select f from MovimentacaoBancosSaidas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = 1",MovimentacaoBancos.class);
+			return f.getResultList();
+		} catch (Exception e) {
+			System.out.println("Não foi possível carregar as listagens de saidas do Itau: "+e);
 			return null;
 		}
 	}
