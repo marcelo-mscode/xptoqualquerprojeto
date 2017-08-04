@@ -5,12 +5,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
@@ -104,6 +107,37 @@ public class AnaliticoIndividualMovimentoFinanceiro {
 		Integer idAnalitico = despesas.getAnalitico().getIdAnalitico();
 		manager.close();
 		return idAnalitico;
+	}
+
+	public void salvaNovaSaida(Integer idAnalitico, String dataPgto,String valor, String descricao, Integer idBanco) throws ParseException {
+
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date data = new java.sql.Date(format.parse(dataPgto).getTime());
+		
+		FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
+		BancosAnalitico banco = manager.getReference(BancosAnalitico.class, idBanco);
+		try {
+			MovimentacaoBancos entradas = new MovimentacaoBancos();
+			entradas.setData(data);
+			entradas.setDescricao(descricao);
+			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+				entradas.setValor(new BigDecimal("0.00"));
+			}else{
+				entradas.setValor(new BigDecimal(util.formataValores(valor)));
+			}
+			entradas.setAnalitico(analitico);
+			entradas.setBanco(banco);
+
+			manager.persist(entradas);
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao salvar dados de entrada Itau: "+e);
+		}
+		
+		
+		
+		
+		
 	}
 
 }
