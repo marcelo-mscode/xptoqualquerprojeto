@@ -67,7 +67,7 @@ public class ContasReceberDAO {
 		bancoItau.setNdnf(infoInterna.getNfInterna());
 		bancoItau.setData(infoInterna.getDataPagamento());
 		bancoItau.setDescricao(lista.getLista());
-		
+		bancoItau.setValor(relatorio.getValorLoccoAgenc());
 		
 		
 		
