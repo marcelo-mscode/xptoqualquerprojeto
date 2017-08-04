@@ -63,10 +63,26 @@ public class ContasReceberDAO {
 		relatorio.setDataRecebido(Calendar.getInstance());
 		manager.merge(relatorio);
 		manager.close();
-	
+		
+		/**
+		 * Chamada ao método usado para registrar as contas recebidas no painél do Análitico
+		 * 
+		 */
 		salvaContasAnalitico(idLista, tipoBanco, bancoItau, infoInterna, relatorio);
 	}
 
+	/**
+	 * Método usado para registrar as contas recebidas no painél do Análitico.
+	 *
+	 * Quando não existir um análitico criado no mês que a conta for recebida, 
+	 * o sistema irá registrar os valores no último análitico criado.
+	 * 
+	 * @param idLista
+	 * @param tipoBanco
+	 * @param bancoItau
+	 * @param infoInterna
+	 * @param relatorio
+	 */
 	private void salvaContasAnalitico(Integer idLista, Integer tipoBanco,MovimentacaoBancos bancoItau, InfoInterna infoInterna,
 									  RelatorioEventos relatorio) {
 		

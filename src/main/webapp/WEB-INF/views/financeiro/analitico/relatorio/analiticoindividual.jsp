@@ -345,10 +345,11 @@
                   <c:import url="movimentoFinanceiro/itau/itauEntrada.jsp" />
                </td>
                
-               <%-- <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+               <td class="juntaColunas ajusteTelefone" id="saidasItau">
                   <c:import url="movimentoFinanceiro/itau/itauSaida.jsp" />
                </td>
-
+			   
+			   <%-- 
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
                   <c:import url="movimentoFinanceiro/itau/itauTarifas.jsp" />
                </td> --%>
