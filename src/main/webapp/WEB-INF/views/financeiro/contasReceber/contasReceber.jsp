@@ -54,16 +54,20 @@
 					<td class="descricao">${infoInterna.lista.lista}</td>
 					<td><fmt:formatDate value="${infoInterna.dataPagamento}" pattern="dd/MM/yyyy" /></td>
 					<td><fmt:formatNumber value="${listaReceber.valorLoccoAgenc}" pattern="#,##0.00"/> </td>
-					<td>
-						<select class="form-control">
-							<option value="0">Banco</option>
-							<option value="1">Itau</option>
-							<option value="1">CEF</option>
-							<option value="1">Bradesco</option>
-							<option value="1">Santander</option>
-						</select>
-					</td>
-					<td><a href="receberConta?idLista=${infoInterna.lista.idLista}" class="btn btn-success">Recebido</a></td>
+					<form action="receberConta" method="post" >
+					<input type="hidden" value="${infoInterna.lista.idLista}">
+					
+						<td>
+							<select class="form-control" name="tipoBanco">
+								<option value="0">Banco</option>
+								<option value="1">Itau</option>
+								<option value="2">CEF</option>
+								<option value="3">Bradesco</option>
+								<option value="4">Santander</option>
+							</select>
+						</td>
+						<td><button type="submit" class="btn btn-success">Recebido</button></td>
+					</form>
 				</tr>
 			  </c:if>
 			 </c:forEach>

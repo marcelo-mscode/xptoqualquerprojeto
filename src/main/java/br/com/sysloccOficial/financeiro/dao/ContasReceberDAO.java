@@ -50,15 +50,15 @@ public class ContasReceberDAO {
 		InfoInterna infoInterna = q.getSingleResult();
 		infoInterna.setRecebido(true);
 		infoInterna.setDataRecebido(Calendar.getInstance());
-	//	manager.merge(infoInterna);
+		manager.merge(infoInterna);
 		
 		TypedQuery<RelatorioEventos> s = manager.createQuery("from RelatorioEventos where idLista="+idLista,RelatorioEventos.class);
 		RelatorioEventos relatorio = s.getSingleResult();
 		relatorio.setRecebido(true);
 		relatorio.setDataRecebido(Calendar.getInstance());
-/*		manager.merge(relatorio);
+		manager.merge(relatorio);
 		manager.close();
-*/		
+	
 		
 		Lista lista = manager.find(Lista.class, idLista);
 		
