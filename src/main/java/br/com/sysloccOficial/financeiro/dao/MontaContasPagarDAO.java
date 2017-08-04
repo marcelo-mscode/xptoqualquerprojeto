@@ -220,7 +220,7 @@ public class MontaContasPagarDAO {
 		TypedQuery<Object[]> listaT = manager.createQuery(consultaDiasPrazoPagamento,Object[].class);
 		List<Object[]> lista = listaT.getResultList();
 		
-		System.out.println();
+		//System.out.println();
 		
 		return lista;
 	}
