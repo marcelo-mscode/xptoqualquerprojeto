@@ -49,10 +49,7 @@ public class ContasReceberDAO {
 
 	public void recebeConta(Integer idLista, Integer tipoBanco) {
 		
-		
-		
 		MovimentacaoBancos bancoItau = new MovimentacaoBancos();
-		
 		
 		TypedQuery<InfoInterna> q = manager.createQuery("from InfoInterna where lista.idLista="+idLista,InfoInterna.class);
 		InfoInterna infoInterna = q.getSingleResult();
@@ -68,18 +65,13 @@ public class ContasReceberDAO {
 		manager.close();
 	
 		salvaContasAnalitico(idLista, tipoBanco, bancoItau, infoInterna, relatorio);
-		
-//		System.out.println(banco.getNomebanco());
 	}
 
 	private void salvaContasAnalitico(Integer idLista, Integer tipoBanco,MovimentacaoBancos bancoItau, InfoInterna infoInterna,
 									  RelatorioEventos relatorio) {
 		
 		ArrayList<String> datasHoje = utilDatas.dataHojeFormatada();
-		
-		String ano = datasHoje.get(2);
-		String mes = datasHoje.get(1);
-		
+
 		BancosAnalitico banco = manager.getReference(BancosAnalitico.class, tipoBanco);
 		Lista lista = manager.find(Lista.class, idLista);
 		
@@ -90,14 +82,14 @@ public class ContasReceberDAO {
 		bancoItau.setBanco(banco);
 
 		try {
-			TypedQuery<FinancAnalitico> analit = manager.createQuery("from FinancAnalitico where anoA="+ano+" and mesA='"+mes+"'", FinancAnalitico.class);
+			TypedQuery<FinancAnalitico> analit = manager.createQuery("from FinancAnalitico where anoA="+datasHoje.get(2)+" and mesA='"+datasHoje.get(1)+"'", FinancAnalitico.class);
 			FinancAnalitico analitico = analit.getSingleResult();
 			bancoItau.setAnalitico(analitico);
 		
 		} catch (Exception e) {
-			System.out.println("Não tem Analitico cadastrado para esse mês de: "+mes);
-			FinancAnalitico analiticoNovo = manager.getReference(FinancAnalitico.class, 1);
-			bancoItau.setAnalitico(analiticoNovo);
+			TypedQuery<FinancAnalitico> ultimoAnalitico = manager.createQuery("from FinancAnalitico order by idAnalitico desc",FinancAnalitico.class).setMaxResults(1);
+			FinancAnalitico ultimo = ultimoAnalitico.getSingleResult();
+			bancoItau.setAnalitico(ultimo);
 		}
 		
 		manager.persist(bancoItau);
