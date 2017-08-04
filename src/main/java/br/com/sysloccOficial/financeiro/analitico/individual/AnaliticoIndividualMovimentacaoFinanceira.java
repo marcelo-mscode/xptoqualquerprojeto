@@ -52,7 +52,7 @@ public class AnaliticoIndividualMovimentacaoFinanceira {
 		analiticoMovFinanceiroDAO.salvaNovaSaida(idAnalitico,DataPgto,valor,descricao,idBanco);
 		
 		MV.addObject("idAnalitico",idAnalitico);
-		MV.addObject("entradasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico,idBanco));
+		MV.addObject("saidasItau", analiticoIndDAO.carregaAnaliticoSaidas(idAnalitico,1));
 		
 		return MV;
 	}

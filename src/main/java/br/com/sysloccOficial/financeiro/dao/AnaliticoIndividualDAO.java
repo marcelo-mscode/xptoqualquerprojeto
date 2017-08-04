@@ -17,10 +17,10 @@ import br.com.sysloccOficial.financeiro.model.FinancDespesas;
 import br.com.sysloccOficial.financeiro.model.FinancEscritorio;
 import br.com.sysloccOficial.financeiro.model.FinancFolhaPgto;
 import br.com.sysloccOficial.financeiro.model.FinancImpostos;
-import br.com.sysloccOficial.financeiro.model.FinancItauEntrada;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.FinancTelefone;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 import br.com.sysloccOficial.model.VideosYt;
 
 
@@ -133,9 +133,9 @@ public class AnaliticoIndividualDAO {
 		}
 	}
 	
-	public List<MovimentacaoBancos> carregaAnaliticoSaidas(Integer idAnalitico) {
+	public List<MovimentacaoBancosSaidas> carregaAnaliticoSaidas(Integer idAnalitico,Integer idBanco) {
 		try {
-			TypedQuery<MovimentacaoBancos> f = manager.createQuery("select f from MovimentacaoBancosSaidas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = 1",MovimentacaoBancos.class);
+			TypedQuery<MovimentacaoBancosSaidas> f = manager.createQuery("select f from MovimentacaoBancosSaidas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaidas.class);
 			return f.getResultList();
 		} catch (Exception e) {
 			System.out.println("Não foi possível carregar as listagens de saidas do Itau: "+e);
