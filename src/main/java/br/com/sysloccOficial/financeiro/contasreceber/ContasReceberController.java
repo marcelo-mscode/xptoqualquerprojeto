@@ -37,10 +37,9 @@ public class ContasReceberController {
 	}
 
 	@RequestMapping("receberConta")
-	public String receberConta(Integer idLista){
+	public String receberConta(Integer idLista, Integer tipoBanco){
 		
-		
-		contasreceberDAO.recebeConta(idLista);
+		contasreceberDAO.recebeConta(idLista,tipoBanco);
 		
 		return "redirect:contasReceber";
 	}

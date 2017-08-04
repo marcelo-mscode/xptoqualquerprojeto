@@ -55,7 +55,7 @@
 					<td><fmt:formatDate value="${infoInterna.dataPagamento}" pattern="dd/MM/yyyy" /></td>
 					<td><fmt:formatNumber value="${listaReceber.valorLoccoAgenc}" pattern="#,##0.00"/> </td>
 					<form action="receberConta" method="post" >
-					<input type="hidden" value="${infoInterna.lista.idLista}">
+					<input type="hidden" value="${infoInterna.lista.idLista}" name="idLista">
 					
 						<td>
 							<select class="form-control" name="tipoBanco">
