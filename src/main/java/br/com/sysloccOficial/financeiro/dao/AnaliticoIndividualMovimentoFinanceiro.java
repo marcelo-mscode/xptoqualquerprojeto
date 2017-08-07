@@ -26,6 +26,7 @@ import br.com.sysloccOficial.financeiro.movbancos.FinanceiroMovBancos;
 @Repository
 @Transactional
 public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBancos{
+	
 	@PersistenceContext	private EntityManager manager;
 	@Autowired private Utilitaria util;
 	@Autowired private UtilitariaDatas utilDatas;
