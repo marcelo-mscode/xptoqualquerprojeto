@@ -139,12 +139,20 @@ function insereDadosMovimentacaoSaidas(data,desc,valor1,action, idAnalitico,idDi
 	});
 };
 
-/*//Edita Valores Saidas
-function editaValoresEntradas(action,campo,idTabela,tipoCampo,idDivAjax,idBanco) {
+//Edita Valores Saidas
+function editaValoresSaidas(action,campo,idTabela,tipoCampo,idDivAjax,idBanco) {
 	
 	var valor = $("#"+campo).val();
 	var valor2 = valor.replace("%","x1x2x3x");
 
+	
+	console.log(action);
+	console.log(campo);
+	console.log(idTabela);
+	console.log(tipoCampo);
+	console.log(idDivAjax);
+	console.log(idBanco);
+	
 	$.ajax({
 		url : action+"?idTabela="+idTabela+"&valor="+valor2+"&tipoCampo="+tipoCampo+"&idBanco="+idBanco,
 		success : function(data) {
@@ -152,7 +160,7 @@ function editaValoresEntradas(action,campo,idTabela,tipoCampo,idDivAjax,idBanco)
 		}
 	});
 };
-*/
+
 
 
 

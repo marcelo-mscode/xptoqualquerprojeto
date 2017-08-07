@@ -12,22 +12,21 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 
 @Controller
 public class AnaliticoIndividualMovimentacaoFinanceira {
 
 	@Autowired private AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
-	@Autowired private AnaliticoIndividualDAO analiticoIndDAO;
-	
 	
 	@RequestMapping("salvaNovaEntrada")
 	@ResponseBody
 	private ModelAndView salvaNovaEntrada(Integer idAnalitico,String DataPgto, String valor,String descricao,String ndnf,Integer idBanco) throws ParseException{
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauEntradaAjax");
 		
-		analiticoMovFinanceiroDAO.salvaNovaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf,idBanco);
+		analiticoMovFinanceiroDAO.novaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf,idBanco);
 		MV.addObject("idAnalitico",idAnalitico);
-		MV.addObject("entradasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico,idBanco));
+		MV.addObject("entradasItau", analiticoMovFinanceiroDAO.carregaAnaliticoItauEntrada(idAnalitico,idBanco));
 		return MV;
 	}
 	
@@ -37,7 +36,7 @@ public class AnaliticoIndividualMovimentacaoFinanceira {
 	private ModelAndView editaMovimentacaoFinanceira(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauEntradaAjax");
 		
-		Integer idAnalitico = analiticoMovFinanceiroDAO.editaMovFinanceiro(idTabela,valor,tipoCampo);
+		Integer idAnalitico = analiticoMovFinanceiroDAO.editaNovaEntrada(idTabela,valor,tipoCampo);
 		MV.addObject("idAnalitico",idAnalitico);
 
 		List<MovimentacaoBancos> analitico2 = analiticoMovFinanceiroDAO.carregaMovimentaBancos(idAnalitico,idBanco);
@@ -49,13 +48,31 @@ public class AnaliticoIndividualMovimentacaoFinanceira {
 	@ResponseBody
 	private ModelAndView salvaNovaSaida(Integer idAnalitico,String DataPgto, String valor,String descricao,Integer idBanco) throws ParseException{
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauSaidaAjax");
-		analiticoMovFinanceiroDAO.salvaNovaSaida(idAnalitico,DataPgto,valor,descricao,idBanco);
+		analiticoMovFinanceiroDAO.novaSaida(idAnalitico,DataPgto,valor,descricao,idBanco);
 		
 		MV.addObject("idAnalitico",idAnalitico);
-		MV.addObject("saidasItau", analiticoIndDAO.carregaAnaliticoSaidas(idAnalitico,1));
+		MV.addObject("saidasItau", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,1));
 		
 		return MV;
 	}
+	
+	@RequestMapping("editaMovimentacaoFinanceiraSaidas")
+	@ResponseBody
+	private ModelAndView editaMovimentacaoFinanceiraSaidas(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauSaidaAjax");
+		
+		Integer idAnalitico = analiticoMovFinanceiroDAO.editaNovaSaida(idTabela,valor,tipoCampo);
+		MV.addObject("InfoAnalitico.idAnalitico",idAnalitico);
+
+		List<MovimentacaoBancosSaidas> analitico2 = analiticoMovFinanceiroDAO.carregaMovimentaBancosSaidas(idAnalitico,idBanco);
+		MV.addObject("saidasItau",analitico2);
+		return MV;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

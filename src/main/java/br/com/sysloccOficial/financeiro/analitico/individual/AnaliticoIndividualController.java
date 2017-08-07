@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
+import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
 import br.com.sysloccOficial.financeiro.dao.CacheDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
@@ -23,6 +24,7 @@ import br.com.sysloccOficial.model.VideosYt;
 public class AnaliticoIndividualController {
 	
 	@Autowired private AnaliticoIndividualDAO analiticoIndDAO;
+	@Autowired private AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
 	@Autowired DadosEventosMes dadosEvento;
 	@Autowired RelatorioEventoDAO relatorioEventoDAO;
 	@Autowired CacheDAO cacheDAO;
@@ -51,8 +53,8 @@ public class AnaliticoIndividualController {
 		MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno());
 		
 		// ---- Entradas/Saidas Itau ---- //		
-		MV.addObject("entradasItau", analiticoIndDAO.carregaAnaliticoItauEntrada(idAnalitico,1));
-		MV.addObject("saidasItau", analiticoIndDAO.carregaAnaliticoSaidas(idAnalitico,1));
+		MV.addObject("entradasItau", analiticoMovFinanceiroDAO.carregaAnaliticoItauEntrada(idAnalitico,1));
+		MV.addObject("saidasItau", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,1));
 		
 		
 		
