@@ -180,7 +180,7 @@ public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBanc
 		return idAnalitico;
 	}
 	
-	public List<MovimentacaoBancos> carregaAnaliticoItauEntrada(Integer idAnalitico,Integer idBanco) {
+	public List<MovimentacaoBancos> carregaAnaliticoEntradas(Integer idAnalitico,Integer idBanco) {
 		try {
 			TypedQuery<MovimentacaoBancos> f = manager.createQuery("select f from MovimentacaoBancos f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancos.class);
 			return f.getResultList();
@@ -198,6 +198,19 @@ public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBanc
 			System.out.println("Não foi possível carregar as listagens de saidas do Itau: "+e);
 			return null;
 		}
+	}
+
+	@Override
+	public void novaTarifa(Integer idAnalitico, String dataPgto, String valor,String descricao, Integer idBanco) throws ParseException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Integer editaNovaTarifa(Integer idTabela, String valor,
+			String tipoCampo) throws ParseException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

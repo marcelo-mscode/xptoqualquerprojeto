@@ -15,7 +15,7 @@ import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 
 @Controller
-public class AnaliticoIndividualMovimentacaoFinanceira {
+public class AnaliticoIndividualMovimentacaoFinanceiraController {
 
 	@Autowired private AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
 	
@@ -26,7 +26,7 @@ public class AnaliticoIndividualMovimentacaoFinanceira {
 		
 		analiticoMovFinanceiroDAO.novaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf,idBanco);
 		MV.addObject("idAnalitico",idAnalitico);
-		MV.addObject("entradasItau", analiticoMovFinanceiroDAO.carregaAnaliticoItauEntrada(idAnalitico,idBanco));
+		MV.addObject("entradasItau", analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,idBanco));
 		return MV;
 	}
 	
