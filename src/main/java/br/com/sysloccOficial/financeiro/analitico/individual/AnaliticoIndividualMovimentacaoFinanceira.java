@@ -15,7 +15,7 @@ import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 
 @Controller
-public class AnaliticoIndividualMovimentacaoFinanceiraController {
+public class AnaliticoIndividualMovimentacaoFinanceira {
 
 	@Autowired private AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
 	
