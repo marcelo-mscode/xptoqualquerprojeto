@@ -109,7 +109,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          RelatorioEventoIndividualController.class,
 								          AtualizaGruposController.class,
 								          AnaliticoIndexController.class,
-								          AnaliticoIndividualController.class,
+								         /* AnaliticoIndividualController.class,*/
 								          NovoRelatorioController.class,
 								          RelatorioCaches.class,
 								          RelatorioEventoIndividualApoio.class,
@@ -119,6 +119,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          EmpresaExcelController.class,
 								          CalculaCachesSemTelefone.class,
 								          CachePadraoController.class,
+								          AnaliticoIndividualController.class,
 								          ApoioCartaUtil.class})
 @EnableCaching
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {

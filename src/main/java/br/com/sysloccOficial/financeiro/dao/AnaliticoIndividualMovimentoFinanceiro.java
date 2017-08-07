@@ -200,7 +200,7 @@ public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBanc
 		}
 	}
 
-	@Override
+	/*@Override
 	public void novaTarifa(Integer idAnalitico, String dataPgto, String valor,String descricao, Integer idBanco) throws ParseException {
 		// TODO Auto-generated method stub
 		
@@ -211,7 +211,7 @@ public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBanc
 			String tipoCampo) throws ParseException {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 	
 	
 	
