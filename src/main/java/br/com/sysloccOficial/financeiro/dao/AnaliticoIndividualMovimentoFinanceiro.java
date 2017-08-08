@@ -29,7 +29,7 @@ import br.com.sysloccOficial.financeiro.movbancos.FinanceiroMovBancos;
 @Repository
 @Transactional
 @Qualifier("analiticoMovFinanceiro")
-public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBancos{
+public class AnaliticoIndividualMovimentoFinanceiro{
 	
 	@PersistenceContext	private EntityManager manager;
 	@Autowired private Utilitaria util;
