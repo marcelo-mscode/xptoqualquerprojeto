@@ -51,6 +51,7 @@ import br.com.sysloccOficial.financeiro.contaspagar.ContasPagarController;
 import br.com.sysloccOficial.financeiro.contaspagar.Interna;
 import br.com.sysloccOficial.financeiro.contaspagar.InternaAuxiliar;
 import br.com.sysloccOficial.financeiro.contasreceber.ContasReceberController;
+import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
 import br.com.sysloccOficial.financeiro.dao.ContasPagarDAO;
 import br.com.sysloccOficial.financeiro.dao.InternaListasDAO;
 import br.com.sysloccOficial.financeiro.funcionario.cache.CachePadraoController;
@@ -111,7 +112,6 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          AtualizaGruposController.class,
 								          AnaliticoIndexController.class,
 								          FinanceiroMovBancos.class,
-								         /* AnaliticoIndividualController.class,*/
 								          NovoRelatorioController.class,
 								          RelatorioCaches.class,
 								          RelatorioEventoIndividualApoio.class,
@@ -122,6 +122,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          CalculaCachesSemTelefone.class,
 								          CachePadraoController.class,
 								          AnaliticoIndividualController.class,
+								          AnaliticoIndividualMovimentoFinanceiro.class,
 								          ApoioCartaUtil.class})
 @EnableCaching
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {

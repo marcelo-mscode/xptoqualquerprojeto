@@ -23,8 +23,11 @@ import br.com.sysloccOficial.model.VideosYt;
 @Controller
 public class AnaliticoIndividualController {
 	
-	@Autowired private AnaliticoIndividualDAO analiticoIndDAO;
 	@Autowired private AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
+
+	
+	
+	@Autowired private AnaliticoIndividualDAO analiticoIndDAO;
 	@Autowired DadosEventosMes dadosEvento;
 	@Autowired RelatorioEventoDAO relatorioEventoDAO;
 	@Autowired CacheDAO cacheDAO;

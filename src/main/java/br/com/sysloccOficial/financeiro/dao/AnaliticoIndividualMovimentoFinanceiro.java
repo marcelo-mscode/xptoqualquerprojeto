@@ -11,22 +11,21 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
-import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
 import br.com.sysloccOficial.financeiro.movbancos.FinanceiroMovBancos;
 
-@Repository
+@Service
 @Transactional
-public class AnaliticoIndividualMovimentoFinanceiro{
+public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBancos{
 	
 	@PersistenceContext	private EntityManager manager;
 	@Autowired private Utilitaria util;
