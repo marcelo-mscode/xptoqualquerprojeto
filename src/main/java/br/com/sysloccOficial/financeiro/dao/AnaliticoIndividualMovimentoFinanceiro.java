@@ -11,20 +11,24 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import schemasMicrosoftComOfficeOffice.MovieAttribute;
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
+import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
 import br.com.sysloccOficial.financeiro.movbancos.FinanceiroMovBancos;
 
-@Service
+@Repository
 @Transactional
+@Qualifier("analiticoMovFinanceiro")
 public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBancos{
 	
 	@PersistenceContext	private EntityManager manager;

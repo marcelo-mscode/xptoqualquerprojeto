@@ -2,6 +2,9 @@ package br.com.sysloccOficial.financeiro.movbancos;
 
 import java.text.ParseException;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public interface FinanceiroMovBancos {
 	
 	public void novaEntrada(Integer idAnalitico,String DataPgto,String valor,String descricao,String ndnf,Integer idBanco) throws ParseException;
