@@ -13,11 +13,6 @@
 
 	<web>
 		<link target="/">
-			<dir name="M:/Syslocc Projeto/sysloccOficial/target/m2e-wtp/web-resources">
-				<exclude name="/"/>
-			</dir>
-		</link>
-		<link target="/">
 			<dir name="M:/Syslocc Projeto/sysloccOficial/src/main/webapp">
 			</dir>
 		</link>
