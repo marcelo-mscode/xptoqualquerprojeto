@@ -11,11 +11,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import schemasMicrosoftComOfficeOffice.MovieAttribute;
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
@@ -28,7 +26,6 @@ import br.com.sysloccOficial.financeiro.movbancos.FinanceiroMovBancos;
 
 @Repository
 @Transactional
-@Qualifier("analiticoMovFinanceiro")
 public class AnaliticoIndividualMovimentoFinanceiro{
 	
 	@PersistenceContext	private EntityManager manager;
@@ -205,7 +202,6 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		}
 	}
 
-	
 	public void novaTarifa(Integer idAnalitico, String dataPgto, String valor,String descricao, Integer idBanco) throws ParseException {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

@@ -24,7 +24,6 @@ import br.com.sysloccOficial.model.VideosYt;
 @Controller
 public class AnaliticoIndividualController {
 	
-	@Qualifier
 	@Autowired private AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
 
 	

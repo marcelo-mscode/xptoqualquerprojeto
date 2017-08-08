@@ -111,7 +111,6 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          RelatorioEventoIndividualController.class,
 								          AtualizaGruposController.class,
 								          AnaliticoIndexController.class,
-								          FinanceiroMovBancos.class,
 								          AnaliticoIndividualMovimentoFinanceiro.class,
 								          NovoRelatorioController.class,
 								          RelatorioCaches.class,
