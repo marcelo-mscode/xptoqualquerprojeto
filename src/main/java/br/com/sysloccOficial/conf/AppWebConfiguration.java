@@ -56,6 +56,7 @@ import br.com.sysloccOficial.financeiro.dao.InternaListasDAO;
 import br.com.sysloccOficial.financeiro.funcionario.cache.CachePadraoController;
 import br.com.sysloccOficial.financeiro.indexlistainternaindividual.IndexInternaIndividual;
 import br.com.sysloccOficial.financeiro.indexlistasinternas.IndexInterna;
+import br.com.sysloccOficial.financeiro.movbancos.FinanceiroMovBancos;
 import br.com.sysloccOficial.financeiro.relatorioeventos.CalculaCachesSemTelefone;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioCaches;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventoIndividualApoio;
@@ -109,6 +110,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          RelatorioEventoIndividualController.class,
 								          AtualizaGruposController.class,
 								          AnaliticoIndexController.class,
+								          FinanceiroMovBancos.class,
 								         /* AnaliticoIndividualController.class,*/
 								          NovoRelatorioController.class,
 								          RelatorioCaches.class,

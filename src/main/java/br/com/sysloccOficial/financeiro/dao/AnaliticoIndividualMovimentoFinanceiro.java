@@ -26,7 +26,7 @@ import br.com.sysloccOficial.financeiro.movbancos.FinanceiroMovBancos;
 
 @Repository
 @Transactional
-public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBancos{
+public class AnaliticoIndividualMovimentoFinanceiro{
 	
 	@PersistenceContext	private EntityManager manager;
 	@Autowired private Utilitaria util;
@@ -202,7 +202,7 @@ public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBanc
 		}
 	}
 
-	@Override
+	
 	public void novaTarifa(Integer idAnalitico, String dataPgto, String valor,String descricao, Integer idBanco) throws ParseException {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
