@@ -10,10 +10,10 @@
        <td colspan="7" align="center" class="amareloFlat"><b>MOVIMENTOS DE CAIXA - TARIFAS/CPMF</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="dataOutrasDespesas" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${InfoAnalitico.idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td class="tiraPaddingData"><input id="dataItauTarifas" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
+       <td class="tiraPaddingData" colspan="3"><input id="descItauTarifas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
+       <td class="tiraPaddingData"><input id="valorItauTarifas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
+       <td><button onclick="editaCamposFinanceiroDespesas('dataItauTarifas','descItauTarifas','valorItauTarifas','salvaNovoOutrasDespesas',${InfoAnalitico.idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
        <td>DATA</td>

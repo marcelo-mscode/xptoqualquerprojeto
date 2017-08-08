@@ -51,7 +51,7 @@ public class MovimentacaoFinanceiroController {
 		analiticoMovFinanceiroDAO.novaSaida(idAnalitico,DataPgto,valor,descricao,idBanco);
 		
 		MV.addObject("idAnalitico",idAnalitico);
-		MV.addObject("saidasItau", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,1));
+		MV.addObject("saidasItau", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,idBanco));
 		
 		return MV;
 	}

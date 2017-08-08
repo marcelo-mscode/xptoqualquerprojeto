@@ -21,6 +21,7 @@ import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
 import br.com.sysloccOficial.financeiro.movbancos.FinanceiroMovBancos;
 
 @Repository
@@ -201,12 +202,38 @@ public class AnaliticoIndividualMovimentoFinanceiro implements FinanceiroMovBanc
 		}
 	}
 
-	/*@Override
+	@Override
 	public void novaTarifa(Integer idAnalitico, String dataPgto, String valor,String descricao, Integer idBanco) throws ParseException {
-		// TODO Auto-generated method stub
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date data = new java.sql.Date(format.parse(dataPgto).getTime());
+		
+		FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
+		BancosAnalitico banco = manager.getReference(BancosAnalitico.class, idBanco);
+		try {
+			MovimentacaoBancosTarifas entradas = new MovimentacaoBancosTarifas();
+			entradas.setData(data);
+			entradas.setDescricao(descricao);
+			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+				entradas.setValor(new BigDecimal("0.00"));
+			}else{
+				entradas.setValor(new BigDecimal(util.formataValores(valor)));
+			}
+			entradas.setAnalitico(analitico);
+			entradas.setBanco(banco);
+
+			manager.persist(entradas);
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao salvar dados de Saida: "+e);
+		}
+		
+		
+		
 		
 	}
-
+	/*
+	 * 
 	@Override
 	public Integer editaNovaTarifa(Integer idTabela, String valor,
 			String tipoCampo) throws ParseException {

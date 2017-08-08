@@ -349,10 +349,9 @@
                   <c:import url="movimentoFinanceiro/itau/itauSaida.jsp" />
                </td>
 			   
-			   <%-- 
-               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+               <td class="juntaColunas ajusteTelefone" id="itauTarifas">
                   <c:import url="movimentoFinanceiro/itau/itauTarifas.jsp" />
-               </td> --%>
+               </td>
 <!--  ------------------------------------------------------------------------  -->
 
                <%-- <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
