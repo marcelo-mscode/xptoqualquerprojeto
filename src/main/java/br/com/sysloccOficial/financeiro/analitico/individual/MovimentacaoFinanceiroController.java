@@ -62,11 +62,19 @@ public class MovimentacaoFinanceiroController {
 	@RequestMapping("salvaNovaSaida")
 	@ResponseBody
 	private ModelAndView salvaNovaSaida(Integer idAnalitico,String DataPgto, String valor,String descricao,Integer idBanco) throws ParseException{
-		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauSaidaAjax");
 		analiticoMovFinanceiroDAO.novaSaida(idAnalitico,DataPgto,valor,descricao,idBanco);
 		
+		System.out.println("cAI AQUI ! ");
+		
+		MontaTiposbancos tipos = new MontaTiposbancos();
+	
+		
+		String bancos[] = tipos.montaTipoBancosSaidas(idBanco);
+		
+		
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
 		MV.addObject("idAnalitico",idAnalitico);
-		MV.addObject("saidasItau", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,idBanco));
+		MV.addObject(bancos[1], analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,idBanco));
 		
 		return MV;
 	}

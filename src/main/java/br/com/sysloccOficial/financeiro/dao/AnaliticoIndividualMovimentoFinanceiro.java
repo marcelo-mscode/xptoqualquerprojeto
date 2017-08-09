@@ -272,24 +272,4 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		return idAnalitico;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	 * 
-	@Override
-	public Integer editaNovaTarifa(Integer idTabela, String valor,
-			String tipoCampo) throws ParseException {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
-	
-	
-	
 }
