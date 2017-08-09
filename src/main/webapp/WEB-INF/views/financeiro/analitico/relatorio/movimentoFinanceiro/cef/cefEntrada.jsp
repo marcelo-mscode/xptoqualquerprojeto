@@ -10,49 +10,57 @@
        <td colspan="7" align="center" class="verdeClaroFlat"><b>CEF MOVIMENTOS DE CAIXA - ENTRADAS</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="ndMovItau" class="ajusteInput2 tiraPaddingData input-70px" type="text" placeholder="ND/NF"/></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="dataOutrasDespesas" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
-       <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${InfoAnalitico.idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td class="tiraPaddingData"><input id="ndMovCEF" class="ajusteInput2 tiraPaddingData input-70px" type="text" placeholder="ND/NF" value="1211"/></td>		
+       <td class="tiraPaddingData" colspan="3"><input id="descEntradasCEF" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição" value="Teste CEF"/></td>
+       <td class="tiraPaddingData"><input id="dataEntradasCEF" type="date"  class="ajusteInput2 tiraPaddingData input-140px" value="1980-04-23" /></td>		
+       <td class="tiraPaddingData"><input id="valorEntradasCEF" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor" value="1200,00"/></td>
+       <td><button onclick="InsereDadosMovimentacao('ndMovCEF','dataEntradasCEF','descEntradasCEF','valorEntradasCEF','salvaNovaEntrada',${InfoAnalitico.idAnalitico},'cefEntrada','2');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
        <td>NF/ND</td>
        <td colspan="3">Descrição</td>
-       <td>VENC</td>
-       <td colspan="1">Valor</td>
+       <td>Vencimento</td>
+       <td colspan="2">Valor</td>
     </tr>
     <tr>
        <td colspan="7"></td>
     </tr>
     
-    <c:set var="totalOutrasdespesas" value="0.00" />
-    <c:forEach items="${outrasdespesas}" var="outrasdespesas">
+    <c:set var="totalentradasCEF" value="0.00" />
+    <c:forEach items="${entradasCEF}" var="entradasCEF">
        <tr>
-		<td>ND/NF</td>       
           <td class="tiraPaddingData" colspan="3">
-             <input id="descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="${outrasdespesas.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'descricao','outrasdespesas');"
+              <input id="ndnfCEF${entradasCEF.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasCEF.ndnf}"
+              onblur="editaValoresEntradas('editaMovimentacaoFinanceira','ndnfCEF${entradasCEF.idMovBancos}',${entradasCEF.idMovBancos},'ndnf','cefEntrada','2');"/>
+          </td>
+
+       	  <td class="tiraPaddingData">
+             <input id="descricaoEntradaCEF${entradasCEF.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasCEF.descricao}"
+                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','descricaoEntradaCEF${entradasCEF.idMovBancos}',${entradasCEF.idMovBancos},'descricao','cefEntrada','2');"
+             />
+          </td>
+          
+          <td class="tiraPaddingData"  <c:if test = "${entradasCEF.valor < 0}">style='color:red'</c:if> >
+          		<input id="dataEntradaCEF${entradasCEF.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${entradasCEF.data}" pattern="dd/MM"/>"
+                onclick="mudaCampoData('dataEntradaCEF${entradasCEF.idMovBancos}');"
+                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','dataEntradaCEF${entradasCEF.idMovBancos}',${entradasCEF.idMovBancos},'data','cefEntrada','2');"
                 />
           </td>
-       	  <td class="tiraPaddingData"><input id="dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${outrasdespesas.data}" pattern="dd/MM"/>" type="text"
-                onclick="mudaCampoData('dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}');"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'data','outrasdespesas');"
-                /></td>
-          <td class="tiraPaddingData"  <c:if test = "${outrasdespesas.valor < 0}">style='color:red'</c:if> >
-             <input id="valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${outrasdespesas.valor}" pattern="#,##0.00"/>"
-             onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'valor','outrasdespesas');"
-             /> 
+
+          <td class="tiraPaddingData"  <c:if test = "${entradasCEF.valor < 0}">style='color:red'</c:if> >
+          		<input id="valorCEF${entradasCEF.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${entradasCEF.valor}" pattern="#,##0.00"/>"
+             	onblur="editaValoresEntradas('editaMovimentacaoFinanceira','valorCEF${entradasCEF.idMovBancos}',${entradasCEF.idMovBancos},'valor','cefEntrada','2');"
+            	 /> 
           </td>
        </tr>
-       <c:set var="totalOutrasdespesas" value="${totalOutrasdespesas+outrasdespesas.valor}" />
+       <c:set var="totalentradasCEF" value="${totalentradasCEF+entradasCEF.valor}" />
     </c:forEach>
     <tr>
     
     <tr>
        <td colspan="5"></td>
        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
-       	<b><fmt:formatNumber value="${totalOutrasdespesas}" pattern="#,##0.00"/></b>
+       	<b><fmt:formatNumber value="${totalentradasCEF}" pattern="#,##0.00"/></b>
        </td>
     </tr>
 </table>

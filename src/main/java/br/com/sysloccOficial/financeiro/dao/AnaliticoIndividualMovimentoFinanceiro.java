@@ -202,6 +202,16 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		}
 	}
 
+	public List<MovimentacaoBancosTarifas> carregaAnaliticoTarifas(Integer idAnalitico,Integer idBanco) {
+		try {
+			TypedQuery<MovimentacaoBancosTarifas> f = manager.createQuery("select f from MovimentacaoBancosTarifas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosTarifas.class);
+			return f.getResultList();
+		} catch (Exception e) {
+			System.out.println("Não foi possível carregar as listagens de Tarifas: "+e);
+			return null;
+		}
+	}
+
 	public void novaTarifa(Integer idAnalitico, String dataPgto, String valor,String descricao, Integer idBanco) throws ParseException {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -224,13 +234,53 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 			manager.persist(entradas);
 			
 		} catch (Exception e) {
-			System.out.println("Erro ao salvar dados de Saida: "+e);
+			System.out.println("Erro ao salvar nova Tarifa: "+e);
 		}
 		
-		
-		
-		
 	}
+	
+	public Integer editaNovaTarifa(Integer idTabela,String valor, String tipoCampo) throws ParseException {
+		
+		MovimentacaoBancosTarifas  despesas = manager.find(MovimentacaoBancosTarifas.class, idTabela);
+
+		if(tipoCampo.equals("descricao")){
+			String valor2 = valor.replace("x1x2x3x", "%");
+			despesas.setDescricao(valor2);
+		}
+
+		if(tipoCampo.equals("data")){
+			try {
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				Date data = new java.sql.Date(format.parse(valor).getTime());
+				despesas.setData(data);
+			} catch (ParseException e) {
+				System.out.println(e);
+			}
+		}
+			
+		if(tipoCampo.equals("valor")){
+			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+				despesas.setValor(new BigDecimal("0.00"));
+			}else{
+				despesas.setValor(new BigDecimal(util.formataValores(valor)));
+			}
+		}
+		
+		manager.merge(despesas);
+		Integer idAnalitico = despesas.getAnalitico().getIdAnalitico();
+		manager.close();
+		return idAnalitico;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	 * 
 	@Override

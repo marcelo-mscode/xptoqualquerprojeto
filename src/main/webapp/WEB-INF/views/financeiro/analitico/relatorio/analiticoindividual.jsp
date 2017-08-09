@@ -354,10 +354,10 @@
                </td>
 <!--  ------------------------------------------------------------------------  -->
 
-               <%-- <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+               <td class="juntaColunas ajusteTelefone" id="cefEntrada">
                   <c:import url="movimentoFinanceiro/cef/cefEntrada.jsp" />
                </td>
-               
+               <%-- 
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
                   <c:import url="movimentoFinanceiro/cef/cefSaida.jsp" />
                </td>
