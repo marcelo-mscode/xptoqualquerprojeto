@@ -9,7 +9,7 @@ public class BancoBradesco implements SelecionaBancos{
 		String bancos[] =  new String[2]; 
 		if(idBanco == 3){
 			bancos[0] = "/bradesco/bradEntrada";
-			bancos[1] = "entradasBradesc";
+			bancos[1] = "entradasBradesco";
 			return bancos;
 		}else{
 			return proximo.tipoBancoEntrada(idBanco);

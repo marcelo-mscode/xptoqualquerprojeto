@@ -33,9 +33,6 @@ public class MovimentacaoFinanceiroController {
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
 		
 		MV.addObject("idAnalitico",idAnalitico);
-		
-		System.out.println(bancos[1]);
-		
 		MV.addObject(bancos[1], analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,idBanco));
 		return MV;
 	}

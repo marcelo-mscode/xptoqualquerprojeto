@@ -371,11 +371,11 @@
                <td class="juntaColunas ajusteTelefone" id="bradescoEntrada">
                   <c:import url="movimentoFinanceiro/bradesco/bradEntrada.jsp" />
                </td>
-               <%-- 
-               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+              
+               <td class="juntaColunas ajusteTelefone" id="bradescoSaida">
                   <c:import url="movimentoFinanceiro/bradesco/bradSaida.jsp" />
                </td>
-
+ <%-- 
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
                   <c:import url="movimentoFinanceiro/bradesco/bradTarifas.jsp" />
                </td> --%>
