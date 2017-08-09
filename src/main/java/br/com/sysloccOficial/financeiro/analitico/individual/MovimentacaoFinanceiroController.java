@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.sysloccOficial.financeiro.analitico.individual.tiposBancos.MontaTiposbancos;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
@@ -26,10 +27,15 @@ public class MovimentacaoFinanceiroController {
 		
 		analiticoMovFinanceiroDAO.novaEntrada(idAnalitico,DataPgto,valor,descricao,ndnf,idBanco);
 
-		String bancos[] = tiposBancosEntradas(idBanco);
-
+		MontaTiposbancos tipos = new MontaTiposbancos();
+		String bancos[] = tipos.montaTipoBancos(idBanco);
+		
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
+		
 		MV.addObject("idAnalitico",idAnalitico);
+		
+		System.out.println(bancos[1]);
+		
 		MV.addObject(bancos[1], analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,idBanco));
 		return MV;
 	}
@@ -40,14 +46,16 @@ public class MovimentacaoFinanceiroController {
 	private ModelAndView editaMovimentacaoFinanceira(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
 		
 		Integer idAnalitico = analiticoMovFinanceiroDAO.editaNovaEntrada(idTabela,valor,tipoCampo);
+		List<MovimentacaoBancos> analitico2 = analiticoMovFinanceiroDAO.carregaMovimentaBancos(idAnalitico,idBanco);
 
-		String bancos[] = tiposBancosEntradas(idBanco);
+		
+		MontaTiposbancos tipos = new MontaTiposbancos();
+		String bancos[] = tipos.montaTipoBancos(idBanco);
 		
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
 		MV.addObject("idAnalitico",idAnalitico);
 
-		List<MovimentacaoBancos> analitico2 = analiticoMovFinanceiroDAO.carregaMovimentaBancos(idAnalitico,idBanco);
-		MV.addObject("entradasItau",analitico2);
+		MV.addObject(bancos[1],analitico2);
 		return MV;
 	}
 	
@@ -66,10 +74,10 @@ public class MovimentacaoFinanceiroController {
 	@RequestMapping("editaMovimentacaoFinanceiraSaidas")
 	@ResponseBody
 	private ModelAndView editaMovimentacaoFinanceiraSaidas(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
-		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauSaidaAjax");
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauSaida");
 		
 		Integer idAnalitico = analiticoMovFinanceiroDAO.editaNovaSaida(idTabela,valor,tipoCampo);
-		MV.addObject("InfoAnalitico.idAnalitico",idAnalitico);
+		MV.addObject("idAnalitico",idAnalitico);
 
 		List<MovimentacaoBancosSaidas> analitico2 = analiticoMovFinanceiroDAO.carregaMovimentaBancosSaidas(idAnalitico,idBanco);
 		MV.addObject("saidasItau",analitico2);
@@ -81,11 +89,9 @@ public class MovimentacaoFinanceiroController {
 	private ModelAndView salvaNovaTarifa(Integer idAnalitico,String DataPgto, String valor,String descricao,Integer idBanco) throws ParseException{
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauTarifas");
 
-		System.out.println(valor);
-		
 		analiticoMovFinanceiroDAO.novaTarifa(idAnalitico,DataPgto,valor,descricao,idBanco);
 		
-		MV.addObject("InfoAnalitico.idAnalitico",idAnalitico);
+		MV.addObject("idAnalitico",idAnalitico);
 		MV.addObject("tarifasItau", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco));
 
 		return MV;
@@ -117,30 +123,5 @@ public class MovimentacaoFinanceiroController {
 		MV.addObject("tarifasItau",analitico2);
 		return MV;
 	}
-	
-	
-	public String[] tiposBancosEntradas(Integer idBanco){
-		
-		String bancos[] =  new String[2]; 
-		
-		if(idBanco == 1){
-			bancos[0] = "/itau/itauEntrada";
-			bancos[1] = "entradasItau";
-		}
-		
-		
-		
-		
-		
-		if(idBanco == 2){
-			bancos[0] = "/cef/cefEntrada";
-			bancos[1] = "entradasCEF";
-		}
-		
-		return bancos;
-	}
-	
-	
-	
 	
 }

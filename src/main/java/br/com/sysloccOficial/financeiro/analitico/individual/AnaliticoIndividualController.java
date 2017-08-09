@@ -43,6 +43,7 @@ public class AnaliticoIndividualController {
 		
 		FinancAnalitico analitico = analiticoIndDAO.carregaAnaliticoIndividual(idAnalitico);
 		MV.addObject("InfoAnalitico",analitico);
+		MV.addObject("idAnalitico",analitico.getIdAnalitico());
 		
 		MV.addObject("escritorio",analiticoIndDAO.carregaAnaliticoIndividualEscritorio(idAnalitico));
 		MV.addObject("telefone",analiticoIndDAO.carregaAnaliticoIndividualTelefones(idAnalitico));

@@ -14,7 +14,7 @@
        <td class="tiraPaddingData" colspan="3"><input id="descEntradasCEF" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição" value="Teste CEF"/></td>
        <td class="tiraPaddingData"><input id="dataEntradasCEF" type="date"  class="ajusteInput2 tiraPaddingData input-140px" value="1980-04-23" /></td>		
        <td class="tiraPaddingData"><input id="valorEntradasCEF" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor" value="1200,00"/></td>
-       <td><button onclick="InsereDadosMovimentacao('ndMovCEF','dataEntradasCEF','descEntradasCEF','valorEntradasCEF','salvaNovaEntrada',${InfoAnalitico.idAnalitico},'cefEntrada','2');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td><button onclick="InsereDadosMovimentacao('ndMovCEF','dataEntradasCEF','descEntradasCEF','valorEntradasCEF','salvaNovaEntrada',${idAnalitico},'cefEntrada','2');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
        <td>NF/ND</td>

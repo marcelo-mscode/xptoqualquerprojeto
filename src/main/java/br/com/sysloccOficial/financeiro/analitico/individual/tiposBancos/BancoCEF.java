@@ -13,9 +13,9 @@ public String[] tipoBanco(Integer idBanco){
 			bancos[1] = "entradasCEF";
 			
 			return bancos;
+		}else{
+			return proximo.tipoBanco(idBanco);
 		}
-		
-		return null;
 	}
 
 	@Override
@@ -23,9 +23,6 @@ public String[] tipoBanco(Integer idBanco){
 		this.proximo = proximo;
 		
 	}
-	
-	
-
 }
 
 
