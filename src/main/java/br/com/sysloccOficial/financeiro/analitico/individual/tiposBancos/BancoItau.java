@@ -4,6 +4,7 @@ public class BancoItau implements SelecionaBancos{
 	
 	private SelecionaBancos proximo;
 	private SelecionaBancos proximoSaida;
+	private SelecionaBancos proximoTarifas;
 
 	public String[] tipoBancoEntrada(Integer idBanco){
 		String bancos[] =  new String[2]; 
@@ -46,12 +47,13 @@ public class BancoItau implements SelecionaBancos{
 			bancos[1] = "tarifasItau";
 			return bancos;
 		}else{
-			return proximoSaida.tipoBancoTarifas(idBanco);
+			return proximoTarifas.tipoBancoTarifas(idBanco);
 		}
 	}
 
 	@Override
 	public void setProximoTarifas(SelecionaBancos proximoTarifas) {
+		this.proximoTarifas = proximoTarifas;
 		// TODO Auto-generated method stub
 		
 	}

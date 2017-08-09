@@ -27,19 +27,19 @@
     <c:set var="totaltarifasItau" value="0.00" />
     <c:forEach items="${tarifasItau}" var="tarifasItau">
        <tr>
-       	  <td class="tiraPaddingData"><input id="datatarifasItau${tarifasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${tarifasItau.data}" pattern="dd/MM"/>" type="text"
-                onclick="mudaCampoData('datatarifasItau${tarifasItau.idMovBancos}');"
-                onblur="editaValoresSaidas('editaTarifasItau','datatarifasItau${tarifasItau.idMovBancos}',${tarifasItau.idMovBancos},'data','itauTarifas','1');"
+       	  <td class="tiraPaddingData"><input id="dataTarifasItau${tarifasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${tarifasItau.data}" pattern="dd/MM"/>" type="text"
+                onclick="mudaCampoData('dataTarifasItau${tarifasItau.idMovBancos}');"
+                onblur="editaValoresSaidas('editaTarifas','dataTarifasItau${tarifasItau.idMovBancos}',${tarifasItau.idMovBancos},'data','itauTarifas','1');"
                 />
           </td>
           <td class="tiraPaddingData" colspan="3">
              <input id="descricaoTarifasItau${tarifasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${tarifasItau.descricao}"
-                onblur="editaValoresSaidas('editaTarifasItau','descricaoTarifasItau${tarifasItau.idMovBancos}',${tarifasItau.idMovBancos},'descricao','itauTarifas','1');"
+                onblur="editaValoresSaidas('editaTarifas','descricaoTarifasItau${tarifasItau.idMovBancos}',${tarifasItau.idMovBancos},'descricao','itauTarifas','1');"
                 />
           </td>
           <td class="tiraPaddingData"  <c:if test = "${tarifasItau.valor < 0}">style='color:red'</c:if> >
              <input id="valortarifasItau${tarifasItau.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${tarifasItau.valor}" pattern="#,##0.00"/>"
-             onblur="editaValoresSaidas('editaTarifasItau','valortarifasItau${tarifasItau.idMovBancos}',${tarifasItau.idMovBancos},'valor','itauTarifas','1');"
+             onblur="editaValoresSaidas('editaTarifas','valortarifasItau${tarifasItau.idMovBancos}',${tarifasItau.idMovBancos},'valor','itauTarifas','1');"
              /> 
           </td>
        </tr>

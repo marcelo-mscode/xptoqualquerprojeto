@@ -99,39 +99,31 @@ public class MovimentacaoFinanceiroController {
 		analiticoMovFinanceiroDAO.novaTarifa(idAnalitico,DataPgto,valor,descricao,idBanco);
 		
 		MontaTiposbancos tipos = new MontaTiposbancos();
-		String bancos[] = tipos.montaTipoBancosSaidas(idBanco);
+		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
 		
-		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauTarifas");
+		
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
 		MV.addObject("idAnalitico",idAnalitico);
-		MV.addObject("tarifasItau", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco));
+		MV.addObject(bancos[1], analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco));
 
 		return MV;
 	}
 	
 	
-	@RequestMapping("editaTarifasItau")
+	@RequestMapping("editaTarifas")
 	@ResponseBody
-	private ModelAndView editaTarifasItau(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
+	private ModelAndView editaTarifas(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
 		
-		String tipoBanco = "";
+		MontaTiposbancos tipos = new MontaTiposbancos();
+		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
 		
-		if(idBanco == 1){
-			tipoBanco = "/itauTarifas";
-		}
-		if(idBanco == 2){
-			tipoBanco = "/itauTarifas";
-		}
-		
-		
-		
-		
-		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau"+tipoBanco);
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
 		
 		Integer idAnalitico = analiticoMovFinanceiroDAO.editaNovaTarifa(idTabela,valor,tipoCampo);
 		
-		MV.addObject("InfoAnalitico.idAnalitico",idAnalitico);
+		MV.addObject("idAnalitico",idAnalitico);
 		List<MovimentacaoBancosTarifas> analitico2 = analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco);
-		MV.addObject("tarifasItau",analitico2);
+		MV.addObject(bancos[1],analitico2);
 		return MV;
 	}
 	

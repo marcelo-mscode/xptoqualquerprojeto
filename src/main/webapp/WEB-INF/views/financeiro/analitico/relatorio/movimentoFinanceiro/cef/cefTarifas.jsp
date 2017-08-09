@@ -10,9 +10,9 @@
        <td colspan="7" align="center" class="verdeClaroFlat"><b>CEF MOVIMENTOS DE CAIXA - TARIFAS/CPMF</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="dataTarifasCEF" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descTarifasCEF" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="valorTarifasCEF" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
+       <td class="tiraPaddingData"><input id="dataTarifasCEF" type="date"  class="ajusteInput2 tiraPaddingData input-140px" value="2017-07-12"/></td>		
+       <td class="tiraPaddingData" colspan="3"><input id="descTarifasCEF" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição" value="testeste"/></td>
+       <td class="tiraPaddingData"><input id="valorTarifasCEF" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor" value="100"/></td>
        <td><button onclick="insereDadosMovimentacaoSaidas('dataTarifasCEF','descTarifasCEF','valorTarifasCEF','salvaNovaTarifa',${idAnalitico},'cefTarifas','2');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
@@ -27,19 +27,19 @@
     <c:set var="totaltarifasCEF" value="0.00" />
     <c:forEach items="${tarifasCEF}" var="tarifasCEF">
        <tr>
-       	  <td class="tiraPaddingData"><input id="datatarifasCEF${tarifasCEF.idFinanctarifasCEF}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${tarifasCEF.data}" pattern="dd/MM"/>" type="text"
-                onclick="mudaCampoData('datatarifasCEF${tarifasCEF.idFinanctarifasCEF}');"
-                onblur="editaCamposAnaliticoDespesas('editatarifasCEF','datatarifasCEF${tarifasCEF.idFinanctarifasCEF}',${tarifasCEF.idFinanctarifasCEF},'data','cefTarifas');"
+       	  <td class="tiraPaddingData"><input id="datatarifasCEF${tarifasCEF.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${tarifasCEF.data}" pattern="dd/MM"/>" type="text"
+                onclick="mudaCampoData('datatarifasCEF${tarifasCEF.idMovBancos}');"
+                onblur="editaCamposAnaliticoDespesas('editatarifasCEF','datatarifasCEF${tarifasCEF.idMovBancos}',${tarifasCEF.idMovBancos},'data','cefTarifas','2');"
                 />
           </td>
           <td class="tiraPaddingData" colspan="3">
-             <input id="descricaotarifasCEF${tarifasCEF.idFinanctarifasCEF}" class="ajusteInput2 tiraPaddingData input-140px" value="${tarifasCEF.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editatarifasCEF','descricaotarifasCEF${tarifasCEF.idFinanctarifasCEF}',${tarifasCEF.idFinanctarifasCEF},'descricao','cefTarifas');"
+             <input id="descricaotarifasCEF${tarifasCEF.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${tarifasCEF.descricao}"
+                onblur="editaCamposAnaliticoDespesas('editatarifasCEF','descricaotarifasCEF${tarifasCEF.idMovBancos}',${tarifasCEF.idMovBancos},'descricao','cefTarifas','2');"
                 />
           </td>
           <td class="tiraPaddingData"  <c:if test = "${tarifasCEF.valor < 0}">style='color:red'</c:if> >
-             <input id="valortarifasCEF${tarifasCEF.idFinanctarifasCEF}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${tarifasCEF.valor}" pattern="#,##0.00"/>"
-             onblur="editaCamposAnaliticoDespesas('editatarifasCEF','valortarifasCEF${tarifasCEF.idFinanctarifasCEF}',${tarifasCEF.idFinanctarifasCEF},'valor','cefTarifas');"
+             <input id="valortarifasCEF${tarifasCEF.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${tarifasCEF.valor}" pattern="#,##0.00"/>"
+             onblur="editaCamposAnaliticoDespesas('editatarifasCEF','valortarifasCEF${tarifasCEF.idMovBancos}',${tarifasCEF.idMovBancos},'valor','cefTarifas','2');"
              /> 
           </td>
        </tr>
