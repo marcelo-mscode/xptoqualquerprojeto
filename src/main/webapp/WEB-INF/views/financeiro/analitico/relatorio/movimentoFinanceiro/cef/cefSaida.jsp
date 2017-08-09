@@ -10,9 +10,9 @@
        <td colspan="7" align="center" class="verdeClaroFlat"><b>CEF MOVIMENTOS DE CAIXA - SAIDAS</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="dataSaidasCEF" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descSaidasCEF" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="valorSaidasCEF" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
+       <td class="tiraPaddingData"><input id="dataSaidasCEF" type="date"  class="ajusteInput2 tiraPaddingData input-140px" value="2017-07-07"/></td>		
+       <td class="tiraPaddingData" colspan="3"><input id="descSaidasCEF" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição" value="teste"/></td>
+       <td class="tiraPaddingData"><input id="valorSaidasCEF" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor" value="200.00"/></td>
        <td><button onclick="insereDadosMovimentacaoSaidas('dataSaidasCEF','descSaidasCEF','valorSaidasCEF','salvaNovaSaida',${idAnalitico},'cefSaida','2');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
