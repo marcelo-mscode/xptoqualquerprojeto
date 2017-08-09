@@ -33,8 +33,8 @@ public class MontaTiposbancos {
 		SelecionaBancos b2 = new BancoCEF();
 		SelecionaBancos b3 = new UltimoTipoBanco();
 		
-		b1.setProximoSaida(b2);
-		b2.setProximoSaida(b3);
+		b1.setProximoTarifas(b2);
+		b2.setProximoTarifas(b3);
 		
 		return b1.tipoBancoTarifas(idBanco);
 	}

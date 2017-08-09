@@ -10,11 +10,11 @@
        <td colspan="7" align="center" class="corMarronEstranha"><b>BRADESCO MOVIMENTOS DE CAIXA - ENTRADAS</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="ndMovItau" class="ajusteInput2 tiraPaddingData input-70px" type="text" placeholder="ND/NF"/></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="dataOutrasDespesas" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
-       <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${InfoAnalitico.idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td class="tiraPaddingData"><input id="ndMovBradesc" class="ajusteInput2 tiraPaddingData input-70px" type="text" placeholder="ND/NF" value="998877"/></td>		
+       <td class="tiraPaddingData" colspan="3"><input id="descMovBradesc" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição" value="novas testess"/></td>
+       <td class="tiraPaddingData"><input id="dataMovBradesc" type="date"  class="ajusteInput2 tiraPaddingData input-140px"  value="2017-07-07"/></td>		
+       <td class="tiraPaddingData"><input id="valorMovBradesc" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor" value="120,00"/></td>
+       <td><button onclick="InsereDadosMovimentacao('ndMovBradesc','dataMovBradesc','descMovBradesc','valorMovBradesc','salvaNovaEntrada',${idAnalitico},'bradescoEntrada','3');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
        <td>NF/ND</td>
@@ -26,33 +26,33 @@
        <td colspan="7"></td>
     </tr>
     
-    <c:set var="totalOutrasdespesas" value="0.00" />
-    <c:forEach items="${outrasdespesas}" var="outrasdespesas">
+    <c:set var="totalMovBradesc" value="0.00" />
+    <c:forEach items="${entradasBradesc}" var="entradasBradesc">
        <tr>
 		<td>ND/NF</td>       
           <td class="tiraPaddingData" colspan="3">
-             <input id="descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="${outrasdespesas.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'descricao','outrasdespesas');"
+             <input id="descricaoMovBradesc${entradasBradesc.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasBradesc.descricao}"
+                onblur="editaCamposAnaliticoDespesas('editaMovBradesc','descricaoMovBradesc${entradasBradesc.idMovBancos}',${entradasBradesc.idMovBancos},'descricao','MovBradesc');"
                 />
           </td>
-       	  <td class="tiraPaddingData"><input id="dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${outrasdespesas.data}" pattern="dd/MM"/>" type="text"
-                onclick="mudaCampoData('dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}');"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'data','outrasdespesas');"
+       	  <td class="tiraPaddingData"><input id="dataMovBradesc${entradasBradesc.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${entradasBradesc.data}" pattern="dd/MM"/>" type="text"
+                onclick="mudaCampoData('dataMovBradesc${entradasBradesc.idMovBancos}');"
+                onblur="editaCamposAnaliticoDespesas('editaMovBradesc','dataMovBradesc${entradasBradesc.idMovBancos}',${entradasBradesc.idMovBancos},'data','MovBradesc');"
                 /></td>
-          <td class="tiraPaddingData"  <c:if test = "${outrasdespesas.valor < 0}">style='color:red'</c:if> >
-             <input id="valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${outrasdespesas.valor}" pattern="#,##0.00"/>"
-             onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'valor','outrasdespesas');"
+          <td class="tiraPaddingData"  <c:if test = "${entradasBradesc.valor < 0}">style='color:red'</c:if> >
+             <input id="valorMovBradesc${entradasBradesc.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${entradasBradesc.valor}" pattern="#,##0.00"/>"
+             onblur="editaCamposAnaliticoDespesas('editaMovBradesc','valorMovBradesc${entradasBradesc.idMovBancos}',${entradasBradesc.idMovBancos},'valor','MovBradesc');"
              /> 
           </td>
        </tr>
-       <c:set var="totalOutrasdespesas" value="${totalOutrasdespesas+outrasdespesas.valor}" />
+       <c:set var="totalMovBradesc" value="${totalMovBradesc+MovBradesc.valor}" />
     </c:forEach>
     <tr>
     
     <tr>
        <td colspan="5"></td>
        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
-       	<b><fmt:formatNumber value="${totalOutrasdespesas}" pattern="#,##0.00"/></b>
+       	<b><fmt:formatNumber value="${totalMovBradesc}" pattern="#,##0.00"/></b>
        </td>
     </tr>
 </table>

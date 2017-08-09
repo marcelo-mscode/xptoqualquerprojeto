@@ -54,7 +54,5 @@ public class BancoItau implements SelecionaBancos{
 	@Override
 	public void setProximoTarifas(SelecionaBancos proximoTarifas) {
 		this.proximoTarifas = proximoTarifas;
-		// TODO Auto-generated method stub
-		
 	}
 }

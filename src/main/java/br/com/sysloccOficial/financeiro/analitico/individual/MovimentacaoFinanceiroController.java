@@ -101,7 +101,6 @@ public class MovimentacaoFinanceiroController {
 		MontaTiposbancos tipos = new MontaTiposbancos();
 		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
 		
-		
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
 		MV.addObject("idAnalitico",idAnalitico);
 		MV.addObject(bancos[1], analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco));
