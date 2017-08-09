@@ -24,7 +24,7 @@ public class MontaTiposbancos {
 		b1.setProximoSaida(b2);
 		b2.setProximoSaida(b3);
 		
-		return b1.tipoBancoEntrada(idBanco);
+		return b1.tipoBancoSaida(idBanco);
 	}
 	
 	

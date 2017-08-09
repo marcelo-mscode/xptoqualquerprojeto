@@ -26,4 +26,16 @@ public class UltimoTipoBanco implements SelecionaBancos{
 		
 	}
 
+	@Override
+	public String[] tipoBancoTarifas(Integer idBanco) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setProximoTarifas(SelecionaBancos proximoTarifas) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

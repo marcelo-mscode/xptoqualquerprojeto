@@ -37,4 +37,22 @@ public class BancoItau implements SelecionaBancos{
 	public void setProximoSaida(SelecionaBancos proximoSaida) {
 		this.proximoSaida = proximoSaida;
 	}
+
+	@Override
+	public String[] tipoBancoTarifas(Integer idBanco) {
+		String bancos[] =  new String[2]; 
+		if(idBanco == 1){
+			bancos[0] = "/itau/itauTarifas";
+			bancos[1] = "tarifasItau";
+			return bancos;
+		}else{
+			return proximoSaida.tipoBancoTarifas(idBanco);
+		}
+	}
+
+	@Override
+	public void setProximoTarifas(SelecionaBancos proximoTarifas) {
+		// TODO Auto-generated method stub
+		
+	}
 }

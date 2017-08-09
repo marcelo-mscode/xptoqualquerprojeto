@@ -28,7 +28,7 @@ public String[] tipoBancoEntrada(Integer idBanco){
 	@Override
 	public String[] tipoBancoSaida(Integer idBanco) {
 		String bancos[] =  new String[2]; 
-		if(idBanco == 1){
+		if(idBanco == 2){
 			bancos[0] = "/cef/cefSaida";
 			bancos[1] = "saidasCEF";
 			return bancos;
@@ -40,6 +40,18 @@ public String[] tipoBancoEntrada(Integer idBanco){
 	@Override
 	public void setProximoSaida(SelecionaBancos proximoSaida) {
 		this.proximoSaida = proximoSaida;
+		
+	}
+
+	@Override
+	public String[] tipoBancoTarifas(Integer idBanco) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setProximoTarifas(SelecionaBancos proximoTarifas) {
+		// TODO Auto-generated method stub
 		
 	}
 }

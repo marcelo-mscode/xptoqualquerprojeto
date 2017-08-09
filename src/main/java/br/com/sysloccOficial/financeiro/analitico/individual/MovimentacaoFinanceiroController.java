@@ -64,13 +64,9 @@ public class MovimentacaoFinanceiroController {
 	private ModelAndView salvaNovaSaida(Integer idAnalitico,String DataPgto, String valor,String descricao,Integer idBanco) throws ParseException{
 		analiticoMovFinanceiroDAO.novaSaida(idAnalitico,DataPgto,valor,descricao,idBanco);
 		
-		System.out.println("cAI AQUI ! ");
 		
 		MontaTiposbancos tipos = new MontaTiposbancos();
-	
-		
 		String bancos[] = tipos.montaTipoBancosSaidas(idBanco);
-		
 		
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
 		MV.addObject("idAnalitico",idAnalitico);
@@ -82,23 +78,30 @@ public class MovimentacaoFinanceiroController {
 	@RequestMapping("editaMovimentacaoFinanceiraSaidas")
 	@ResponseBody
 	private ModelAndView editaMovimentacaoFinanceiraSaidas(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
-		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauSaida");
 		
 		Integer idAnalitico = analiticoMovFinanceiroDAO.editaNovaSaida(idTabela,valor,tipoCampo);
-		MV.addObject("idAnalitico",idAnalitico);
 
+		MontaTiposbancos tipos = new MontaTiposbancos();
+		String bancos[] = tipos.montaTipoBancosSaidas(idBanco);
+		
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
+		MV.addObject("idAnalitico",idAnalitico);
+		
 		List<MovimentacaoBancosSaidas> analitico2 = analiticoMovFinanceiroDAO.carregaMovimentaBancosSaidas(idAnalitico,idBanco);
-		MV.addObject("saidasItau",analitico2);
+		MV.addObject(bancos[1],analitico2);
 		return MV;
 	}
 	
 	@RequestMapping("salvaNovaTarifa")
 	@ResponseBody
 	private ModelAndView salvaNovaTarifa(Integer idAnalitico,String DataPgto, String valor,String descricao,Integer idBanco) throws ParseException{
-		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauTarifas");
 
 		analiticoMovFinanceiroDAO.novaTarifa(idAnalitico,DataPgto,valor,descricao,idBanco);
 		
+		MontaTiposbancos tipos = new MontaTiposbancos();
+		String bancos[] = tipos.montaTipoBancosSaidas(idBanco);
+		
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro/itau/itauTarifas");
 		MV.addObject("idAnalitico",idAnalitico);
 		MV.addObject("tarifasItau", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco));
 

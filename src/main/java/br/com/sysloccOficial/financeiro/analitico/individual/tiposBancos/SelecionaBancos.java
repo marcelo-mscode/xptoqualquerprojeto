@@ -6,4 +6,7 @@ public interface SelecionaBancos {
 	void setProximo(SelecionaBancos proximo);
 	public String[] tipoBancoSaida(Integer idBanco);
 	void setProximoSaida(SelecionaBancos proximoSaida);
+
+	public String[] tipoBancoTarifas(Integer idBanco);
+	void setProximoTarifas(SelecionaBancos proximoTarifas);
 }

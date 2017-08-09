@@ -10,9 +10,9 @@
        <td colspan="7" align="center" class="amareloFlat"><b>MOVIMENTOS DE CAIXA - SAIDA</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="dataMovSaidaItau" type="date"  class="ajusteInput2 tiraPaddingData input-140px" value="2017-07-01"/></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descMovSaidaItau" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição" value="Teste teste" /></td>
-       <td class="tiraPaddingData"><input id="valorMovSaidaItau" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"  value="120.58"/></td>
+       <td class="tiraPaddingData"><input id="dataMovSaidaItau" type="date"  class="ajusteInput2 tiraPaddingData input-140px"/></td>		
+       <td class="tiraPaddingData" colspan="3"><input id="descMovSaidaItau" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
+       <td class="tiraPaddingData"><input id="valorMovSaidaItau" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
        <td><button onclick="insereDadosMovimentacaoSaidas('dataMovSaidaItau','descMovSaidaItau','valorMovSaidaItau','salvaNovaSaida',${idAnalitico},'saidasItau','1');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
