@@ -29,17 +29,17 @@
        <tr>
        	  <td class="tiraPaddingData"><input id="dataSaidasBradesco${saidasBradesco.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${saidasBradesco.data}" pattern="dd/MM"/>" type="text"
                 onclick="mudaCampoData('dataSaidasBradesco${saidasBradesco.idMovBancos}');"
-                onblur="editaCamposAnaliticoDespesas('editasaidasBradesco','dataSaidasBradesco${saidasBradesco.idMovBancos}',${saidasBradesco.idMovBancos},'data','saidasBradesco');"
+                onblur="editaValoresSaidas('editaMovimentacaoFinanceiraSaidas','dataSaidasBradesco${saidasBradesco.idMovBancos}',${saidasBradesco.idMovBancos},'data','bradescoSaida','3');"
                 />
           </td>
           <td class="tiraPaddingData" colspan="3">
              <input id="descricaosaidasBradesco${saidasBradesco.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${saidasBradesco.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editasaidasBradesco','descricaosaidasBradesco${saidasBradesco.idMovBancos}',${saidasBradesco.idMovBancos},'descricao','saidasBradesco');"
+                onblur="editaValoresSaidas('editaMovimentacaoFinanceiraSaidas','descricaosaidasBradesco${saidasBradesco.idMovBancos}',${saidasBradesco.idMovBancos},'descricao','bradescoSaida','3');"
                 />
           </td>
           <td class="tiraPaddingData"  <c:if test = "${saidasBradesco.valor < 0}">style='color:red'</c:if> >
              <input id="valorsaidasBradesco${saidasBradesco.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${saidasBradesco.valor}" pattern="#,##0.00"/>"
-             onblur="editaCamposAnaliticoDespesas('editasaidasBradesco','valorsaidasBradesco${saidasBradesco.idMovBancos}',${saidasBradesco.idMovBancos},'valor','saidasBradesco');"
+             onblur="editaValoresSaidas('editaMovimentacaoFinanceiraSaidas','valorsaidasBradesco${saidasBradesco.idMovBancos}',${saidasBradesco.idMovBancos},'valor','bradescoSaida','3');"
              /> 
           </td>
        </tr>

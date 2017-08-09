@@ -3,6 +3,7 @@ package br.com.sysloccOficial.financeiro.analitico.individual.tiposBancos;
 public class BancoBradesco implements SelecionaBancos{
 
 	private SelecionaBancos proximo;
+	private SelecionaBancos proximoSaida;
 
 	@Override
 	public String[] tipoBancoEntrada(Integer idBanco) {
@@ -24,13 +25,19 @@ public class BancoBradesco implements SelecionaBancos{
 
 	@Override
 	public String[] tipoBancoSaida(Integer idBanco) {
-		// TODO Auto-generated method stub
-		return null;
+		String bancos[] =  new String[2]; 
+		if(idBanco == 3){
+			bancos[0] = "/bradesco/bradSaida";
+			bancos[1] = "saidasBradesco";
+			return bancos;
+		}else{
+			return proximoSaida.tipoBancoSaida(idBanco);
+		}
 	}
 
 	@Override
 	public void setProximoSaida(SelecionaBancos proximoSaida) {
-		// TODO Auto-generated method stub
+		this.proximoSaida = proximoSaida;
 		
 	}
 
