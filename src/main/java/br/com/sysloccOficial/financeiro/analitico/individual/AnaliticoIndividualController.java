@@ -57,7 +57,7 @@ public class AnaliticoIndividualController {
 		
 		MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno());
 		
-		// ---- Entradas/Saidas Itau ---- //		
+		// ---- Entradas/Saidas ITAU ---- //		
 		MV.addObject("entradasItau", analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,1));
 		MV.addObject("saidasItau", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,1));
 		MV.addObject("tarifasItau", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,1));
@@ -69,6 +69,10 @@ public class AnaliticoIndividualController {
 		MV.addObject("entradasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,3));
 		MV.addObject("saidasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,3));
 		MV.addObject("tarifasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,3));
+		// ---- Entradas/Saidas SANTANDER ---- //		
+		MV.addObject("entradasSantader", analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,4));
+		/*MV.addObject("saidasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,3));
+		MV.addObject("tarifasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,3));*/
 	
 		
 		
