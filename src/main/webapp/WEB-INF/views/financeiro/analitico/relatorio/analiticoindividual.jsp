@@ -375,10 +375,10 @@
                <td class="juntaColunas ajusteTelefone" id="bradescoSaida">
                   <c:import url="movimentoFinanceiro/bradesco/bradSaida.jsp" />
                </td>
- <%-- 
-               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+
+               <td class="juntaColunas ajusteTelefone" id="bradescoTarifas">
                   <c:import url="movimentoFinanceiro/bradesco/bradTarifas.jsp" />
-               </td> --%>
+               </td>
 
 <!--  ------------------------------------------------------------------------  -->
 

@@ -4,6 +4,7 @@ public class BancoBradesco implements SelecionaBancos{
 
 	private SelecionaBancos proximo;
 	private SelecionaBancos proximoSaida;
+	private SelecionaBancos proximoTarifas;
 
 	@Override
 	public String[] tipoBancoEntrada(Integer idBanco) {
@@ -43,14 +44,19 @@ public class BancoBradesco implements SelecionaBancos{
 
 	@Override
 	public String[] tipoBancoTarifas(Integer idBanco) {
-		// TODO Auto-generated method stub
-		return null;
+		String bancos[] =  new String[2]; 
+		if(idBanco == 1){
+			bancos[0] = "/bradesco/bradTarifas";
+			bancos[1] = "tarifasItau";
+			return bancos;
+		}else{
+			return proximoTarifas.tipoBancoTarifas(idBanco);
+		}
 	}
 
 	@Override
 	public void setProximoTarifas(SelecionaBancos proximoTarifas) {
-		// TODO Auto-generated method stub
-		
+		this.proximoTarifas = proximoTarifas;
 	}
 
 }

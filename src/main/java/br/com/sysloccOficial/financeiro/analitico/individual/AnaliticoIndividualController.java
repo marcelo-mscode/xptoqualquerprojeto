@@ -68,8 +68,8 @@ public class AnaliticoIndividualController {
 		// ---- Entradas/Saidas BRADESCO ---- //		
 		MV.addObject("entradasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,3));
 		MV.addObject("saidasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,3));
-	/*	MV.addObject("tarifasCEF", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,2));
-	*/	
+		MV.addObject("tarifasCEF", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,3));
+	
 		
 		
 		
