@@ -45,9 +45,9 @@ public class BancoBradesco implements SelecionaBancos{
 	@Override
 	public String[] tipoBancoTarifas(Integer idBanco) {
 		String bancos[] =  new String[2]; 
-		if(idBanco == 1){
+		if(idBanco == 3){
 			bancos[0] = "/bradesco/bradTarifas";
-			bancos[1] = "tarifasItau";
+			bancos[1] = "tarifasBradesco";
 			return bancos;
 		}else{
 			return proximoTarifas.tipoBancoTarifas(idBanco);

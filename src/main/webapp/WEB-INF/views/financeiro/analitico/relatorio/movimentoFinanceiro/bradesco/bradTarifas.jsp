@@ -29,17 +29,17 @@
        <tr>
        	  <td class="tiraPaddingData"><input id="dataBradesco${tarifasBradesco.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${tarifasBradesco.data}" pattern="dd/MM"/>" type="text"
                 onclick="mudaCampoData('dataBradesco${tarifasBradesco.idMovBancos}');"
-                onblur="editaCamposAnaliticoDespesas('editaBradesco','dataBradesco${tarifasBradesco.idMovBancos}',${tarifasBradesco.idMovBancos},'data','bradescoTarifas');"
+                onblur="editaValoresSaidas('editaTarifas','dataBradesco${tarifasBradesco.idMovBancos}',${tarifasBradesco.idMovBancos},'data','bradescoTarifas','3');"
                 />
           </td>
           <td class="tiraPaddingData" colspan="3">
              <input id="descricaoBradesco${tarifasBradesco.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${tarifasBradesco.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editaBradesco','descricaoBradesco${tarifasBradesco.idMovBancos}',${tarifasBradesco.idMovBancos},'descricao','bradescoTarifas');"
+                onblur="editaValoresSaidas('editaTarifas','descricaoBradesco${tarifasBradesco.idMovBancos}',${tarifasBradesco.idMovBancos},'descricao','bradescoTarifas','3');"
                 />
           </td>
           <td class="tiraPaddingData"  <c:if test = "${tarifasBradesco.valor < 0}">style='color:red'</c:if> >
              <input id="valorBradesco${tarifasBradesco.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${tarifasBradesco.valor}" pattern="#,##0.00"/>"
-             onblur="editaCamposAnaliticoDespesas('editaBradesco','valorBradesco${tarifasBradesco.idMovBancos}',${tarifasBradesco.idMovBancos},'valor','bradescoTarifas');"
+             onblur="editaValoresSaidas('editaTarifas','valorBradesco${tarifasBradesco.idMovBancos}',${tarifasBradesco.idMovBancos},'valor','bradescoTarifas','3');"
              /> 
           </td>
        </tr>
