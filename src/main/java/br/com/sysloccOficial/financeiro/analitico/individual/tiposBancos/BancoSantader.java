@@ -28,7 +28,7 @@ public class BancoSantader implements SelecionaBancos{
 	public String[] tipoBancoSaida(Integer idBanco) {
 		String bancos[] =  new String[2]; 
 		if(idBanco == 4){
-			bancos[0] = "/santander/itauSaida";
+			bancos[0] = "/santander/santSaida";
 			bancos[1] = "saidasSantander";
 			return bancos;
 		}else{
@@ -45,8 +45,8 @@ public class BancoSantader implements SelecionaBancos{
 	public String[] tipoBancoTarifas(Integer idBanco) {
 		String bancos[] =  new String[2]; 
 		if(idBanco == 4){
-			bancos[0] = "/itau/itauTarifas";
-			bancos[1] = "tarifasItau";
+			bancos[0] = "/santander/santTarifas";
+			bancos[1] = "tarifasSantander";
 			return bancos;
 		}else{
 			return proximoTarifas.tipoBancoTarifas(idBanco);
