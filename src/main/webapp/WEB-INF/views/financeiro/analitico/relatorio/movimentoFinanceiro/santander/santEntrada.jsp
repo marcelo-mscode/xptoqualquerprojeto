@@ -30,8 +30,8 @@
     <c:forEach items="${entradasSantader}" var="entradasSantader">
        <tr>
 		 <td class="tiraPaddingData" colspan="1">
-              <input id="ndnfItau${entradasSantader.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasSantader.ndnf}"
-              onblur="editaValoresEntradas('editaMovimentacaoFinanceira','ndnfItau${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'ndnf','entradasSantader','4');"/>
+              <input id="ndMovSantander${entradasSantader.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasSantader.ndnf}"
+              onblur="editaValoresEntradas('editaMovimentacaoFinanceira','ndMovSantander${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'ndnf','entradasSantader','4');"/>
           </td>
       
           <td class="tiraPaddingData" colspan="3">
