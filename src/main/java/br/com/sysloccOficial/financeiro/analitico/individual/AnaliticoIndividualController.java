@@ -71,8 +71,8 @@ public class AnaliticoIndividualController {
 		MV.addObject("tarifasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,3));
 		// ---- Entradas/Saidas SANTANDER ---- //		
 		MV.addObject("entradasSantader", analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,4));
-		/*MV.addObject("saidasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,3));
-		MV.addObject("tarifasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,3));*/
+		MV.addObject("saidasSantander", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,4));
+		/*MV.addObject("tarifasBradesco", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,3));*/
 	
 		
 		

@@ -382,14 +382,14 @@
 
 <!--  ------------------------------------------------------------------------  -->
 
-               <td class="juntaColunas ajusteTelefone" id="entradasSantader">
+               <td class="juntaColunas ajusteTelefone" id="santanderEntrada">
                   <c:import url="movimentoFinanceiro/santander/santEntrada.jsp" />
                </td>
-               <!-- 
-               <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
+              
+               <td class="juntaColunas ajusteTelefone" id="santanderSaida">
                   <c:import url="movimentoFinanceiro/santander/santSaida.jsp" />
                </td>
-
+ <!-- 
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
                   <c:import url="movimentoFinanceiro/santander/santTarifas.jsp" />
                </td> --%>	

@@ -10,10 +10,10 @@
        <td colspan="7" align="center" class="amareloFlat"><b>MOVIMENTOS DE CAIXA - SAIDA</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="dataMovSaidaItau" type="date"  class="ajusteInput2 tiraPaddingData input-140px"/></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descMovSaidaItau" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="valorMovSaidaItau" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td><button onclick="insereDadosMovimentacaoSaidas('dataMovSaidaItau','descMovSaidaItau','valorMovSaidaItau','salvaNovaSaida',${idAnalitico},'saidasItau','1');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td class="tiraPaddingData"><input id="dataMovSaidaSantander" type="date"  class="ajusteInput2 tiraPaddingData input-140px"/></td>		
+       <td class="tiraPaddingData" colspan="3"><input id="descMovSaidaSantander" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
+       <td class="tiraPaddingData"><input id="valorMovSaidaSantander" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
+       <td><button onclick="insereDadosMovimentacaoSaidas('dataMovSaidaSantander','descMovSaidaSantander','valorMovSaidaSantander','salvaNovaSaida',${idAnalitico},'saidasItau','1');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
        <td>DATA</td>

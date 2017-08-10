@@ -29,7 +29,7 @@ public class BancoSantader implements SelecionaBancos{
 		String bancos[] =  new String[2]; 
 		if(idBanco == 4){
 			bancos[0] = "/santander/itauSaida";
-			bancos[1] = "saidasItau";
+			bancos[1] = "saidasSantander";
 			return bancos;
 		}else{
 			return proximoSaida.tipoBancoSaida(idBanco);

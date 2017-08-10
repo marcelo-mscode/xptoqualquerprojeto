@@ -14,7 +14,7 @@
        <td class="tiraPaddingData" colspan="3"><input id="descEntradasSantander" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
        <td class="tiraPaddingData"><input id="dataEntradasSantander" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
        <td class="tiraPaddingData"><input id="valoreEntradasSantander" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td><button onclick="InsereDadosMovimentacao('ndMovSantander','dataEntradasSantander','descEntradasSantander','valoreEntradasSantander','salvaNovaEntrada',${idAnalitico},'entradasSantader','4');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td><button onclick="InsereDadosMovimentacao('ndMovSantander','dataEntradasSantander','descEntradasSantander','valoreEntradasSantander','salvaNovaEntrada',${idAnalitico},'santanderEntrada','4');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
        <td>NF/ND</td>
@@ -31,21 +31,21 @@
        <tr>
 		 <td class="tiraPaddingData" colspan="1">
               <input id="ndMovSantander${entradasSantader.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasSantader.ndnf}"
-              onblur="editaValoresEntradas('editaMovimentacaoFinanceira','ndMovSantander${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'ndnf','entradasSantader','4');"/>
+              onblur="editaValoresEntradas('editaMovimentacaoFinanceira','ndMovSantander${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'ndnf','santanderEntrada','4');"/>
           </td>
       
           <td class="tiraPaddingData" colspan="3">
              <input id="descricaoentradasSantader${entradasSantader.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${entradasSantader.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editaentradasSantader','descricaoentradasSantader${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'descricao','entradasSantader');"
+                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','descricaoentradasSantader${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'descricao','santanderEntrada','4');"
                 />
           </td>
        	  <td class="tiraPaddingData"><input id="dataentradasSantader${entradasSantader.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${entradasSantader.data}" pattern="dd/MM"/>" type="text"
                 onclick="mudaCampoData('dataentradasSantader${entradasSantader.idMovBancos}');"
-                onblur="editaCamposAnaliticoDespesas('editaentradasSantader','dataentradasSantader${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'data','entradasSantader');"
+                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','dataentradasSantader${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'data','santanderEntrada','4');"
                 /></td>
           <td class="tiraPaddingData"  <c:if test = "${entradasSantader.valor < 0}">style='color:red'</c:if> >
              <input id="valorentradasSantader${entradasSantader.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${entradasSantader.valor}" pattern="#,##0.00"/>"
-             onblur="editaCamposAnaliticoDespesas('editaentradasSantader','valorentradasSantader${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'valor','entradasSantader');"
+             onblur="editaValoresEntradas('editaMovimentacaoFinanceira','valorentradasSantader${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'valor','santanderEntrada','4');"
              /> 
           </td>
        </tr>

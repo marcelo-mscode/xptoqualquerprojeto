@@ -10,10 +10,10 @@
        <td colspan="7" align="center" class="corRosaEstranha"><b>SANTANDER MOVIMENTOS DE CAIXA - SAIDAS</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="dataOutrasDespesas" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${InfoAnalitico.idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td class="tiraPaddingData"><input id="dataSaidasSantander" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
+       <td class="tiraPaddingData" colspan="3"><input id="descSaidasSantander" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
+       <td class="tiraPaddingData"><input id="valorSaidasSantander" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
+       <td><button onclick="insereDadosMovimentacaoSaidas('dataSaidasSantander','descSaidasSantander','valorSaidasSantander','salvaNovosaidasSantander',${idAnalitico},'santanderSaida','4');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
        <td>DATA</td>
@@ -24,33 +24,33 @@
        <td colspan="7"></td>
     </tr>
     
-    <c:set var="totalOutrasdespesas" value="0.00" />
-    <c:forEach items="${outrasdespesas}" var="outrasdespesas">
+    <c:set var="totalsaidasSantander" value="0.00" />
+    <c:forEach items="${saidasSantander}" var="saidasSantander">
        <tr>
-       	  <td class="tiraPaddingData"><input id="dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${outrasdespesas.data}" pattern="dd/MM"/>" type="text"
-                onclick="mudaCampoData('dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}');"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','dataOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'data','outrasdespesas');"
+       	  <td class="tiraPaddingData"><input id="datasaidasSantander${saidasSantander.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${saidasSantander.data}" pattern="dd/MM"/>" type="text"
+                onclick="mudaCampoData('datasaidasSantander${saidasSantander.idMovBancos}');"
+                onblur="editaCamposAnaliticoDespesas('editasaidasSantander','datasaidasSantander${saidasSantander.idMovBancos}',${saidasSantander.idMovBancos},'data','santanderSaida','4');"
                 />
           </td>
           <td class="tiraPaddingData" colspan="3">
-             <input id="descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="${outrasdespesas.descricao}"
-                onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'descricao','outrasdespesas');"
+             <input id="descricaosaidasSantander${saidasSantander.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${saidasSantander.descricao}"
+                onblur="editaCamposAnaliticoDespesas('editasaidasSantander','descricaosaidasSantander${saidasSantander.idMovBancos}',${saidasSantander.idMovBancos},'descricao','santanderSaida','4');"
                 />
           </td>
-          <td class="tiraPaddingData"  <c:if test = "${outrasdespesas.valor < 0}">style='color:red'</c:if> >
-             <input id="valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${outrasdespesas.valor}" pattern="#,##0.00"/>"
-             onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'valor','outrasdespesas');"
+          <td class="tiraPaddingData"  <c:if test = "${saidasSantander.valor < 0}">style='color:red'</c:if> >
+             <input id="valorsaidasSantander${saidasSantander.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${saidasSantander.valor}" pattern="#,##0.00"/>"
+             onblur="editaCamposAnaliticoDespesas('editasaidasSantander','valorsaidasSantander${saidasSantander.idMovBancos}',${saidasSantander.idMovBancos},'valor','santanderSaida','4');"
              /> 
           </td>
        </tr>
-       <c:set var="totalOutrasdespesas" value="${totalOutrasdespesas+outrasdespesas.valor}" />
+       <c:set var="totalsaidasSantander" value="${totalsaidasSantander+saidasSantander.valor}" />
     </c:forEach>
     <tr>
     
     <tr>
        <td colspan="5"></td>
        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
-       	<b><fmt:formatNumber value="${totalOutrasdespesas}" pattern="#,##0.00"/></b>
+       	<b><fmt:formatNumber value="${totalsaidasSantander}" pattern="#,##0.00"/></b>
        </td>
     </tr>
 </table>
