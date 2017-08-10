@@ -46,10 +46,16 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 			entradas.setData(data);
 			entradas.setDescricao(descricao);
 			entradas.setNdnf(ndnf);
-			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+			
+			
+			try {
+				if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+					entradas.setValor(new BigDecimal("0.00"));
+				}else{
+					entradas.setValor(new BigDecimal(util.formataValores(valor)));
+				}
+			} catch (Exception e) {
 				entradas.setValor(new BigDecimal("0.00"));
-			}else{
-				entradas.setValor(new BigDecimal(util.formataValores(valor)));
 			}
 			entradas.setAnalitico(analitico);
 			entradas.setBanco(banco);
@@ -110,10 +116,14 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		}
 			
 		if(tipoCampo.equals("valor")){
-			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+			try {
+				if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+					despesas.setValor(new BigDecimal("0.00"));
+				}else{
+					despesas.setValor(new BigDecimal(util.formataValores(valor)));
+				}
+			} catch (NumberFormatException e) {
 				despesas.setValor(new BigDecimal("0.00"));
-			}else{
-				despesas.setValor(new BigDecimal(util.formataValores(valor)));
 			}
 		}
 		
@@ -134,11 +144,17 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 			MovimentacaoBancosSaidas entradas = new MovimentacaoBancosSaidas();
 			entradas.setData(data);
 			entradas.setDescricao(descricao);
-			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+			
+			try {
+				if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+					entradas.setValor(new BigDecimal("0.00"));
+				}else{
+					entradas.setValor(new BigDecimal(util.formataValores(valor)));
+				}
+			} catch (NumberFormatException e) {
 				entradas.setValor(new BigDecimal("0.00"));
-			}else{
-				entradas.setValor(new BigDecimal(util.formataValores(valor)));
 			}
+			
 			entradas.setAnalitico(analitico);
 			entradas.setBanco(banco);
 
@@ -169,10 +185,14 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		}
 			
 		if(tipoCampo.equals("valor")){
-			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+			try {
+				if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+					despesas.setValor(new BigDecimal("0.00"));
+				}else{
+					despesas.setValor(new BigDecimal(util.formataValores(valor)));
+				}
+			} catch (Exception e) {
 				despesas.setValor(new BigDecimal("0.00"));
-			}else{
-				despesas.setValor(new BigDecimal(util.formataValores(valor)));
 			}
 		}
 		
@@ -259,10 +279,15 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		}
 			
 		if(tipoCampo.equals("valor")){
-			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
-				despesas.setValor(new BigDecimal("0.00"));
-			}else{
-				despesas.setValor(new BigDecimal(util.formataValores(valor)));
+			
+			try {
+				if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+					despesas.setValor(new BigDecimal("0.00"));
+				}else{
+					despesas.setValor(new BigDecimal(util.formataValores(valor)));
+				}
+			} catch (NumberFormatException e) {
+					despesas.setValor(new BigDecimal("0.00"));
 			}
 		}
 		
