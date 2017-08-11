@@ -22,6 +22,7 @@ import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaldoAnterior;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
 
 @Repository
@@ -324,11 +325,23 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 	}
 
 	public HashSet<MovimentacaoBancosSaidas> totalSaidasBanco(int idAnalitico,int idBanco){
-		
 			try {
 				TypedQuery<MovimentacaoBancosSaidas> f = manager.createQuery("select f from MovimentacaoBancosSaidas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaidas.class);
 				
 				HashSet<MovimentacaoBancosSaidas> movTarifas = new HashSet<MovimentacaoBancosSaidas>(f.getResultList());
+				
+				return movTarifas;
+			} catch (Exception e) {
+				System.out.println("Não foi possível carregar as listagens de Tarifas: "+e);
+				return null;
+			}
+	}
+
+	public HashSet<MovimentacaoBancosSaldoAnterior> totalSaldoAnteriorBanco(
+			try {
+				TypedQuery<MovimentacaoBancosSaldoAnterior> f = manager.createQuery("select f from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaldoAnterior.class);
+				
+				HashSet<MovimentacaoBancosSaldoAnterior> movTarifas = new HashSet<MovimentacaoBancosSaldoAnterior>(f.getResultList());
 				
 				return movTarifas;
 			} catch (Exception e) {

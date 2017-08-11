@@ -17,6 +17,7 @@ import br.com.sysloccOficial.financeiro.model.AnaliticoTotalBancos;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaldoAnterior;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
 import br.com.sysloccOficial.financeiro.resumomes.individual.DadosEventosMes;
 import br.com.sysloccOficial.model.RelatorioEventos;
@@ -95,6 +96,7 @@ public class AnaliticoIndividualController {
 		AnaliticoTotalBancos novo = new AnaliticoTotalBancos();
 		
 		HashSet<MovimentacaoBancos> movBancosCreditos = analiticoMovFinanceiroDAO.totalEntradasBanco(idAnalitico,idBanco);
+		HashSet<MovimentacaoBancosSaldoAnterior> movBancosSaldoAnterior = analiticoMovFinanceiroDAO.totalSaldoAnteriorBanco(idAnalitico,idBanco);
 		HashSet<MovimentacaoBancosSaidas> movBancosSaidas = analiticoMovFinanceiroDAO.totalSaidasBanco(idAnalitico,idBanco);
 		HashSet<MovimentacaoBancosTarifas> movBancosTarifas = analiticoMovFinanceiroDAO.totalTarifasBanco(idAnalitico,idBanco);
 		
