@@ -346,5 +346,17 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 				return null;
 			}
 	}
+
+	public void editaSaldosBancos(String valor, Integer idAnalitico,String tipoCampo, Integer idBanco) {
+		try {
+			System.out.println(valor);
+			System.out.println(idAnalitico);
+			System.out.println(tipoCampo);
+			System.out.println(idBanco);
+		} catch (Exception e) {
+			
+		}
+		
+	}
 	
 }

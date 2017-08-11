@@ -12,14 +12,16 @@
       </tr>
       <tr>
       	<td><b>Saldo ITAU</b></td>
-      	<td  style="padding: 0;vertical-align: middle;width: 145px;" >
+      	<td style="padding: 0;vertical-align: middle;width: 145px;" >
       	
-      	<input id="dataSaldoAnteriorItau1" style="border: none;padding: 8px;" value="<fmt:formatDate value="${movimentoItau.dataAberturaCaixa}" pattern="dd/MM/yyyy"/>"
+      	<input id="dataSaldoAnteriorItau1" style="border: none;padding: 8px;line-height: 13px;" value="<fmt:formatDate value="${movimentoItau.dataAberturaCaixa}" pattern="dd/MM/yyyy"/>"
                 onclick="mudaCampoData('dataSaldoAnteriorItau1');"
-                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','dataSaldoAnteriorItau1',1,'data','entradasItau','1');"
-                />
+                onblur="editaSaldos('dataSaldoAnteriorItau1',${idAnalitico},'data','1');"/>
       	</td>
-      	<td><fmt:formatNumber value="${movimentoItau.valorAbertura}" pattern="#,##0.00"/></td>
+      	<td style="padding: 0;vertical-align: middle;width: 145px;" >
+      		<input id="valorAnteriorItau1" style="border: none;padding: 8px;line-height: 13px;" value="<fmt:formatNumber value="${movimentoItau.valorAbertura}" pattern="#,##0.00"/>"
+             	onblur="editaValoresEntradas('editaMovimentacaoFinanceira','valorAnteriorItau1',1,'valor','entradasItau','1');"/>
+      	</td>
       	<td><b>Tarifas</b></td>
       	<td><fmt:formatNumber value="${movimentoItau.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>

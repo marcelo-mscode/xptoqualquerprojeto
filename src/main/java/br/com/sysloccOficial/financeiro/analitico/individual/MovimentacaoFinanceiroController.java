@@ -121,4 +121,33 @@ public class MovimentacaoFinanceiroController {
 		return MV;
 	}
 	
+	@RequestMapping("editaSaldosBancos")
+	@ResponseBody
+	private ModelAndView editaSaldosBancos(String valor,Integer idAnalitico,String tipoCampo,Integer idBanco) throws ParseException{
+		
+		MontaTiposbancos tipos = new MontaTiposbancos();
+		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
+		
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
+		
+		analiticoMovFinanceiroDAO.editaSaldosBancos(valor,idAnalitico,tipoCampo,idBanco);
+		
+		MV.addObject("idAnalitico",idAnalitico);
+		List<MovimentacaoBancosTarifas> analitico2 = analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco);
+		MV.addObject(bancos[1],analitico2);
+		return MV;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

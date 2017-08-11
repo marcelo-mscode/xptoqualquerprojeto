@@ -161,6 +161,25 @@ function editaValoresSaidas(action,campo,idTabela,tipoCampo,idDivAjax,idBanco) {
 	});
 };
 
+//Edita Saldos em movimento financeiros Bancos
+function editaSaldos(campo,idAnalitico,tipoCampo,idBanco) {
+	
+	var valor = $("#"+campo).val();
+	
+	console.log(campo);
+	console.log(valor);
+	console.log(idAnalitico);
+	console.log(tipoCampo);
+	console.log(idBanco);
+	
+	$.ajax({
+		url : "editaSaldosBancos?valor="+valor+"&idAnalitico="+idAnalitico+"&tipoCampo="+tipoCampo+"&idBanco="+idBanco,
+		success : function(data) {
+			/*$("#"+idDivAjax).html(data);*/
+		}
+	});
+};
+
 
 
 
