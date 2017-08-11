@@ -38,9 +38,9 @@
    </ol>
 </div>
 
-<div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 250%">
+<div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 680%">
    <div style="padding: 15px 0 55px 20px;;box-shadow: 0px 0px 30px 5px #ccc;margin-top: 42px;padding-right: 40px;">
-      <h2 class="">Analítico ${InfoAnalitico.mesA} ${InfoAnalitico.anoA}</h2>
+      <h2>Analítico ${InfoAnalitico.mesA} ${InfoAnalitico.anoA}</h2>
 		
 		
 	  <c:import url="saldoBancario/saldoBancario.jsp" />
@@ -395,9 +395,6 @@
                </td>
 
 <!--  ------------------------------------------------------------------------  -->
-
-
-
                
             </tr>
          </tbody>
@@ -405,11 +402,11 @@
    </div>
 </div>
 
-<div class="col-md-4" style="padding:15px;font-size:30px;text-align:center ;position:fixed ;bottom: 0;background-color: #fff;border: 1px solid #ccc;height: 60px">
+<div class="col-md-1" style="font-size:30px;position:fixed ;bottom: 0;background-color: #fff;border: 1px solid #ccc;height: 60px">
 
- <c:set var="totalGeral" value="${totalImpostos+totalEscritorio+totalTelefone+totalFolha+totalDespesas+totalOutrasdespesas}" />
- <fmt:formatNumber value="${totalGeral}" pattern="#,##0.00"/>
- <a onclick="location.reload();" ><i class="glyphicon glyphicon-refresh" style="font-size: 20px;float: right;top: 9px"></i></a>	
+ <%-- <c:set var="totalGeral" value="${totalImpostos+totalEscritorio+totalTelefone+totalFolha+totalDespesas+totalOutrasdespesas}" />
+ <fmt:formatNumber value="${totalGeral}" pattern="#,##0.00"/> --%>
+ <a onclick="location.reload();" ><i class="glyphicon glyphicon-refresh" style="font-size: 36px;top: 12px;margin-left: 15px;"></i></a>	
 
 </div>
 

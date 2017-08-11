@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<table class="table table-bordered table-hover bordaDestaque" style="width: 59%;">
+<table class="table table-bordered table-hover bordaDestaque" style="width: 16%;">
   <tbody>
      <tr>	
      	<td colspan="13" align="center" class="corEscritorio" style="border-right: 2px solid #ccc"><b>SALDO BANCÁRIO</b></td>
@@ -14,7 +14,7 @@
       	<td><b>Saldo ITAU</b></td>
       	<td class="campoSaldos">
       	<input id="dataSaldoAnteriorItau1" style="border: none;padding: 8px;line-height: 13px;"
-      			<c:if test="${movimentoItau.dataAberturaCaixa == null}">placeholder="Data de Abertura Caixa"</c:if>
+      			<c:if test="${movimentoItau.dataAberturaCaixa == null}">placeholder="Data de Abertura Caixa" class="amareloFlat2"</c:if>
       			<c:if test="${movimentoItau.dataAberturaCaixa != null}">
       				value="<fmt:formatDate value="${movimentoItau.dataAberturaCaixa}" pattern="dd/MM/yyyy"/>"
       			</c:if>
@@ -23,7 +23,7 @@
       	</td>
       	<td class="campoSaldos">
       		<input id="valorAnteriorItau1" style="border: none;padding: 8px;line-height: 13px;"
-      			<c:if test="${movimentoItau.valorAbertura == null}">placeholder="$Valor Abertura Caixa"</c:if>
+      			<c:if test="${movimentoItau.valorAbertura == null}">placeholder="$Valor Abertura Caixa" class="amareloFlat2"</c:if>
       			<c:if test="${movimentoItau.valorAbertura != null}">
 	      			 value="<fmt:formatNumber value="${movimentoItau.valorAbertura}" pattern="#,##0.00"/>"
       			</c:if>
@@ -37,7 +37,12 @@
       	<td><fmt:formatNumber value="${movimentoItau.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo Itau</b></td>
       	<td class="campoSaldos">
-      		<input id="dataSaldoFechamentoItau1" style="border: none;padding: 8px 10px 8px;line-height: 13px;" value="<fmt:formatDate value="${movimentoItau.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/>"
+      		<input id="dataSaldoFechamentoItau1" style="border: none;padding: 8px 10px 8px;line-height: 13px;"
+      		<c:if test="${movimentoItau.dataFechamentoCaixa == null}">placeholder="Data Fechamento Caixa" class="amareloFlat2"</c:if>
+      		<c:if test="${movimentoItau.dataFechamentoCaixa != null}">
+	      		value="<fmt:formatDate value="${movimentoItau.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/>"
+      		</c:if>
+      		
             onclick="mudaCampoData('dataSaldoFechamentoItau1');"
             onblur="editaSaldos('dataSaldoFechamentoItau1',${idAnalitico},'dataFechamento','1');"/>
       	</td>
@@ -46,7 +51,11 @@
       								   movimentoItau.totalCreditos - 
       								   movimentoItau.totalDebitos}" pattern="#,##0.00"/></td>
       	<td class="campoSaldos">
-      		<input id="valorAlternativoItau1" style="border: none;padding: 8px;line-height: 13px;" value="<fmt:formatNumber value="${movimentoItau.valoresDefinir}" pattern="#,##0.00"/>"
+      		<input id="valorAlternativoItau1" style="border: none;padding: 8px;line-height: 13px;"
+      		<c:if test="${movimentoItau.valoresDefinir == null}">placeholder="$Valor definir" class="amareloFlat2"</c:if>
+      		<c:if test="${movimentoItau.valoresDefinir != null}">
+	      		 value="<fmt:formatNumber value="${movimentoItau.valoresDefinir}" pattern="#,##0.00"/>"
+      		</c:if>
              	onblur="editaSaldos('valorAlternativoItau1',${idAnalitico},'valorDefinir','1');"/>
       	</td>
       </tr>
@@ -55,7 +64,7 @@
       	<td><b>Saldo CEF</b></td>
       	<td class="campoSaldos">
       	<input id="dataSaldoAnteriorCEF2" style="border: none;padding: 8px;line-height: 13px;"
-      		    <c:if test="${movimentoCef.dataAberturaCaixa == null}">placeholder="Data de Abertura Caixa"</c:if>
+      		    <c:if test="${movimentoCef.dataAberturaCaixa == null}">placeholder="Data de Abertura Caixa" class="amareloFlat2"</c:if>
       			<c:if test="${movimentoCef.dataAberturaCaixa != null}">
 		      	  value="<fmt:formatDate value="${movimentoCef.dataAberturaCaixa}" pattern="dd/MM/yyyy"/>"
       			</c:if>
@@ -64,7 +73,7 @@
       	</td>
       		<td class="campoSaldos">
       		<input id="valorAnteriorCEF2" style="border: none;padding: 8px;line-height: 13px;"
-      		<c:if test="${movimentoCef.valorAbertura == null}">placeholder="$Valor Abertura Caixa"</c:if>
+      		<c:if test="${movimentoCef.valorAbertura == null}">placeholder="$Valor Abertura Caixa" class="amareloFlat2"</c:if>
     		<c:if test="${movimentoCef.valorAbertura != null}">
 	   		   value="<fmt:formatNumber value="${movimentoCef.valorAbertura}" pattern="#,##0.00"/>"
     		</c:if>
@@ -78,7 +87,12 @@
       	<td><fmt:formatNumber value="${movimentoCef.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo CEF</b></td>
       	<td class="campoSaldos">
-      		<input id="dataSaldoFechamentoCEF2" style="border: none;padding: 8px 10px 8px;line-height: 13px;" value="<fmt:formatDate value="${movimentoCef.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/>"
+      		<input id="dataSaldoFechamentoCEF2" style="border: none;padding: 8px 10px 8px;line-height: 13px;"
+      		<c:if test="${movimentoCef.dataFechamentoCaixa == null}">placeholder="Data Fechamento Caixa" class="amareloFlat2"</c:if>
+      		<c:if test="${movimentoCef.dataFechamentoCaixa != null}">
+	      		 value="<fmt:formatDate value="${movimentoCef.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/>"
+      		</c:if>
+      		
             onclick="mudaCampoData('dataSaldoFechamentoCEF2');"
             onblur="editaSaldos('dataSaldoFechamentoCEF2',${idAnalitico},'dataFechamento','2');"/>
       	</td>
@@ -87,7 +101,11 @@
       								   movimentoCef.totalCreditos - 
       								   movimentoCef.totalDebitos}" pattern="#,##0.00"/></td>
       	<td class="campoSaldos">
-      		<input id="valorAlternativoCEF2" style="border: none;padding: 8px;line-height: 13px;" value="<fmt:formatNumber value="${movimentoCef.valoresDefinir}" pattern="#,##0.00"/>"
+      		<input id="valorAlternativoCEF2" style="border: none;padding: 8px;line-height: 13px;"
+      		<c:if test="${movimentoCef.valoresDefinir == null}">placeholder="$Valor definir" class="amareloFlat2"</c:if>
+      		<c:if test="${movimentoCef.valoresDefinir != null}">
+	      		 value="<fmt:formatNumber value="${movimentoCef.valoresDefinir}" pattern="#,##0.00"/>"
+      		</c:if>
              	onblur="editaSaldos('valorAlternativoCEF2',${idAnalitico},'valorDefinir','2');"/>
       	</td>
       </tr>
@@ -96,7 +114,7 @@
       	<td><b>Saldo BRADESCO</b></td>
       	<td class="campoSaldos">
       		<input id="dataSaldoAnteriorBRADESCO3" style="border: none;padding: 8px 10px 8px;line-height: 13px;"
-      		<c:if test="${movimentoBradesco.dataAberturaCaixa == null}">placeholder="Data de Abertura Caixa"</c:if>
+      		<c:if test="${movimentoBradesco.dataAberturaCaixa == null}">placeholder="Data de Abertura Caixa" class="amareloFlat2"</c:if>
       		<c:if test="${movimentoBradesco.dataAberturaCaixa != null}">
 	      		 value="<fmt:formatDate value="${movimentoBradesco.dataAberturaCaixa}" pattern="dd/MM/yyyy"/>"
       		</c:if>	
@@ -105,7 +123,7 @@
       	</td>
       	<td class="campoSaldos">
       		<input id="valorAnteriorBRADESCO3" style="border: none;padding: 8px;line-height: 13px;"
-      		<c:if test="${movimentoBradesco.valorAbertura == null}">placeholder="$Valor Abertura Caixa"</c:if>
+      		<c:if test="${movimentoBradesco.valorAbertura == null}">placeholder="$Valor Abertura Caixa" class="amareloFlat2"</c:if>
     		<c:if test="${movimentoBradesco.valorAbertura != null}">
 	      		value="<fmt:formatNumber value="${movimentoBradesco.valorAbertura}" pattern="#,##0.00"/>"
     		</c:if>
@@ -119,7 +137,11 @@
       	<td><fmt:formatNumber value="${movimentoBradesco.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo BRADESCO</b></td>
       	<td class="campoSaldos">
-      		<input id="dataSaldoFechamentoBRADESCO3" style="border: none;padding: 8px 10px 8px;line-height: 13px;" value="<fmt:formatDate value="${movimentoBradesco.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/>"
+      		<input id="dataSaldoFechamentoBRADESCO3" style="border: none;padding: 8px 10px 8px;line-height: 13px;"
+      		<c:if test="${movimentoBradesco.dataFechamentoCaixa == null}">placeholder="Data Fechamento Caixa" class="amareloFlat2"</c:if>
+      		<c:if test="${movimentoBradesco.dataFechamentoCaixa != null}">
+	      		 value="<fmt:formatDate value="${movimentoBradesco.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/>"
+      		</c:if>
             onclick="mudaCampoData('dataSaldoFechamentoBRADESCO3');"
             onblur="editaSaldos('dataSaldoFechamentoBRADESCO3',${idAnalitico},'dataFechamento','3');"/>
       	</td>
@@ -128,7 +150,12 @@
       								   movimentoBradesco.totalCreditos - 
       								   movimentoBradesco.totalDebitos}" pattern="#,##0.00"/></td>
       	<td class="campoSaldos">
-      		<input id="valorAlternativoBRADESCO3" style="border: none;padding: 8px;line-height: 13px;" value="<fmt:formatNumber value="${movimentoBradesco.valoresDefinir}" pattern="#,##0.00"/>"
+      		<input id="valorAlternativoBRADESCO3" style="border: none;padding: 8px;line-height: 13px;"
+      		<c:if test="${movimentoBradesco.valoresDefinir == null}">placeholder="$Valor definir" class="amareloFlat2"</c:if>
+      		<c:if test="${movimentoBradesco.valoresDefinir != null}">
+	      		 value="<fmt:formatNumber value="${movimentoBradesco.valoresDefinir}" pattern="#,##0.00"/>"
+      		</c:if>
+      		
              	onblur="editaSaldos('valorAlternativoBRADESCO3',${idAnalitico},'valorDefinir','3');"/>
       	</td>
       </tr>
@@ -137,9 +164,7 @@
       	<td><b>Saldo SANTANDER</b></td>
       	<td class="campoSaldos">
       		<input id="dataSaldoAnteriorSANTANDER4" style="border: none;padding: 8px 10px 8px;line-height: 13px;"
-      		<c:if test="${movimentoSantander.dataAberturaCaixa == null}">placeholder="Data de Abertura Caixa"
-      		style="background-color: blue"
-      		</c:if>
+      		<c:if test="${movimentoSantander.dataAberturaCaixa == null}">placeholder="Data de Abertura Caixa" class="amareloFlat2"</c:if>
       		<c:if test="${movimentoSantander.dataAberturaCaixa != null}">
 	      		 value="<fmt:formatDate value="${movimentoSantander.dataAberturaCaixa}" pattern="dd/MM/yyyy"/>"
       		</c:if>	
@@ -149,7 +174,7 @@
       	</td>
       	<td class="campoSaldos">
       		<input id="valorAnteriorSANTANDER4" style="border: none;padding: 8px;line-height: 13px;"
-      		<c:if test="${movimentoSantander.valorAbertura == null}">placeholder="$Valor Abertura Caixa"</c:if>
+      		<c:if test="${movimentoSantander.valorAbertura == null}">placeholder="$Valor Abertura Caixa" class="amareloFlat2"</c:if>
     		<c:if test="${movimentoSantander.valorAbertura != null}">
 	      		value="<fmt:formatNumber value="${movimentoSantander.valorAbertura}" pattern="#,##0.00"/>"
     		</c:if>
@@ -164,7 +189,12 @@
       	<td><fmt:formatNumber value="${movimentoSantander.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo SANTANDER</b></td>
       	<td class="campoSaldos">
-      		<input id="dataSaldoFechamentoSANTANDER4" style="border: none;padding: 8px 10px 8px;line-height: 13px;" value="<fmt:formatDate value="${movimentoSantander.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/>"
+      		<input id="dataSaldoFechamentoSANTANDER4" style="border: none;padding: 8px 10px 8px;line-height: 13px;"
+      		<c:if test="${movimentoSantander.dataFechamentoCaixa == null}">placeholder="Data Fechamento Caixa" class="amareloFlat2"</c:if>
+      		<c:if test="${movimentoSantander.dataFechamentoCaixa != null}">
+	      		 value="<fmt:formatDate value="${movimentoSantander.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/>"
+      		</c:if>
+      		
             onclick="mudaCampoData('dataSaldoFechamentoSANTANDER4');"
             onblur="editaSaldos('dataSaldoFechamentoSANTANDER4',${idAnalitico},'dataFechamento','4');"/>
       	</td>
@@ -173,7 +203,11 @@
       								   movimentoSantander.totalCreditos - 
       								   movimentoSantander.totalDebitos}" pattern="#,##0.00"/></td>
       	<td class="campoSaldos">
-      		<input id="valorAlternativoSANTANDER4" style="border: none;padding: 8px;line-height: 13px;" value="<fmt:formatNumber value="${movimentoSantander.valoresDefinir}" pattern="#,##0.00"/>"
+      		<input id="valorAlternativoSANTANDER4" style="border: none;padding: 8px;line-height: 13px;"
+      		<c:if test="${movimentoSantander.valoresDefinir == null}">placeholder="$Valor definir" class="amareloFlat2"</c:if>
+      		<c:if test="${movimentoSantander.valoresDefinir != null}">
+	      		 value="<fmt:formatNumber value="${movimentoSantander.valoresDefinir}" pattern="#,##0.00"/>"
+      		</c:if>
              	onblur="editaSaldos('valorAlternativoSANTANDER4',${idAnalitico},'valorDefinir','4');"/>
       	</td>
       </tr>
