@@ -45,7 +45,6 @@ public class MovimentacaoFinanceiroController {
 		Integer idAnalitico = analiticoMovFinanceiroDAO.editaNovaEntrada(idTabela,valor,tipoCampo);
 		List<MovimentacaoBancos> analitico2 = analiticoMovFinanceiroDAO.carregaMovimentaBancos(idAnalitico,idBanco);
 
-		
 		MontaTiposbancos tipos = new MontaTiposbancos();
 		String bancos[] = tipos.montaTipoBancos(idBanco);
 		
@@ -60,7 +59,6 @@ public class MovimentacaoFinanceiroController {
 	@ResponseBody
 	private ModelAndView salvaNovaSaida(Integer idAnalitico,String DataPgto, String valor,String descricao,Integer idBanco) throws ParseException{
 		analiticoMovFinanceiroDAO.novaSaida(idAnalitico,DataPgto,valor,descricao,idBanco);
-		
 		
 		MontaTiposbancos tipos = new MontaTiposbancos();
 		String bancos[] = tipos.montaTipoBancosSaidas(idBanco);

@@ -337,15 +337,12 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 			}
 	}
 
-	public HashSet<MovimentacaoBancosSaldoAnterior> totalSaldoAnteriorBanco(
+	public MovimentacaoBancosSaldoAnterior totalSaldoAnteriorBanco(int idAnalitico,int idBanco){
 			try {
 				TypedQuery<MovimentacaoBancosSaldoAnterior> f = manager.createQuery("select f from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaldoAnterior.class);
-				
-				HashSet<MovimentacaoBancosSaldoAnterior> movTarifas = new HashSet<MovimentacaoBancosSaldoAnterior>(f.getResultList());
-				
-				return movTarifas;
+				return f.getSingleResult();
 			} catch (Exception e) {
-				System.out.println("Não foi possível carregar as listagens de Tarifas: "+e);
+				System.out.println("Não foi possível carregar as listagens de Saldos Anterior: "+e);
 				return null;
 			}
 	}

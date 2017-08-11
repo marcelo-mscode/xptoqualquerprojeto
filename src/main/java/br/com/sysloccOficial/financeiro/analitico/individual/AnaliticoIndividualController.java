@@ -96,13 +96,14 @@ public class AnaliticoIndividualController {
 		AnaliticoTotalBancos novo = new AnaliticoTotalBancos();
 		
 		HashSet<MovimentacaoBancos> movBancosCreditos = analiticoMovFinanceiroDAO.totalEntradasBanco(idAnalitico,idBanco);
-		HashSet<MovimentacaoBancosSaldoAnterior> movBancosSaldoAnterior = analiticoMovFinanceiroDAO.totalSaldoAnteriorBanco(idAnalitico,idBanco);
+		MovimentacaoBancosSaldoAnterior movBancosSaldoAnterior = analiticoMovFinanceiroDAO.totalSaldoAnteriorBanco(idAnalitico,idBanco);
 		HashSet<MovimentacaoBancosSaidas> movBancosSaidas = analiticoMovFinanceiroDAO.totalSaidasBanco(idAnalitico,idBanco);
 		HashSet<MovimentacaoBancosTarifas> movBancosTarifas = analiticoMovFinanceiroDAO.totalTarifasBanco(idAnalitico,idBanco);
 		
 		novo.setNomeBanco("Itau");
+		novo.setDataAberturaCaixa(movBancosSaldoAnterior.getDataAberturaCaixa());
+		novo.setValorAbertura(movBancosSaldoAnterior.getValorAbertura());
 		novo.setTotalDebitos(movBancosSaidas);
-		novo.setValorAbertura(new BigDecimal("1000.00"));
 		novo.setTotalTarifas(movBancosTarifas);
 		novo.setTotalCreditos(movBancosCreditos);
 		return novo;
