@@ -12,7 +12,13 @@
       </tr>
       <tr>
       	<td><b>Saldo ITAU</b></td>
-      	<td><fmt:formatDate value="${movimentoItau.dataAberturaCaixa}" pattern="dd/MM/yyyy"/></td>
+      	<td  style="padding: 0;vertical-align: middle;width: 145px;" >
+      	
+      	<input id="dataSaldoAnteriorItau1" style="border: none;padding: 8px;" value="<fmt:formatDate value="${movimentoItau.dataAberturaCaixa}" pattern="dd/MM/yyyy"/>"
+                onclick="mudaCampoData('dataSaldoAnteriorItau1');"
+                onblur="editaValoresEntradas('editaMovimentacaoFinanceira','dataSaldoAnteriorItau1',1,'data','entradasItau','1');"
+                />
+      	</td>
       	<td><fmt:formatNumber value="${movimentoItau.valorAbertura}" pattern="#,##0.00"/></td>
       	<td><b>Tarifas</b></td>
       	<td><fmt:formatNumber value="${movimentoItau.totalTarifas}" pattern="#,##0.00"/></td>
@@ -29,7 +35,7 @@
       	<td> 53.238,00 ?????</td>
       </tr>
       
-      <tr>
+      <%-- <tr>
       	<td><b>Saldo CEF</b></td>
       	<td><fmt:formatDate value="${movimentoCef.dataAberturaCaixa}" pattern="dd/MM/yyyy"/></td>
       	<td><fmt:formatNumber value="${movimentoCef.valorAbertura}" pattern="#,##0.00"/></td>
@@ -86,7 +92,7 @@
       	<td> 53.238,00 ?????</td>
       </tr>
       
-      
+       --%>
       
       
    </tbody>
