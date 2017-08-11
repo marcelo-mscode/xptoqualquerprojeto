@@ -1,10 +1,10 @@
 package br.com.sysloccOficial.financeiro.analitico.individual;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,9 +13,12 @@ import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
 import br.com.sysloccOficial.financeiro.dao.CacheDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
+import br.com.sysloccOficial.financeiro.model.AnaliticoTotalBancos;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
 import br.com.sysloccOficial.financeiro.resumomes.individual.DadosEventosMes;
-import br.com.sysloccOficial.model.CachePadraoAnalitico;
 import br.com.sysloccOficial.model.RelatorioEventos;
 import br.com.sysloccOficial.model.VideosYt;
 
@@ -37,6 +40,15 @@ public class AnaliticoIndividualController {
 	private ModelAndView analiticoIndividual(Integer idAnalitico){
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/analiticoindividual");
 		
+		
+		// Carrega cabecalho de saldos Bancarios ---------------------------------------------- //
+		
+		MV.addObject("movimentoItau", carregaSaldosBancarios(idAnalitico,1));
+		MV.addObject("movimentoCef", carregaSaldosBancarios(idAnalitico,2));
+		MV.addObject("movimentoBradesco", carregaSaldosBancarios(idAnalitico,3));
+		MV.addObject("movimentoSantander", carregaSaldosBancarios(idAnalitico,4));
+		
+		// --------------------------------------------------------------------- //
 		
 		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(01,2017);
 		
@@ -73,12 +85,26 @@ public class AnaliticoIndividualController {
 		MV.addObject("entradasSantader", analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,4));
 		MV.addObject("saidasSantander", analiticoMovFinanceiroDAO.carregaAnaliticoSaidas(idAnalitico,4));
 		MV.addObject("tarifasSantander", analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,4));
-	
-		
-		
-		
 		
 		return MV;
+	}
+
+
+	private AnaliticoTotalBancos carregaSaldosBancarios(Integer idAnalitico,int idBanco) {
+
+		AnaliticoTotalBancos novo = new AnaliticoTotalBancos();
+		
+		HashSet<MovimentacaoBancos> movBancosCreditos = analiticoMovFinanceiroDAO.totalEntradasBanco(idAnalitico,idBanco);
+		HashSet<MovimentacaoBancosSaidas> movBancosSaidas = analiticoMovFinanceiroDAO.totalSaidasBanco(idAnalitico,idBanco);
+		HashSet<MovimentacaoBancosTarifas> movBancosTarifas = analiticoMovFinanceiroDAO.totalTarifasBanco(idAnalitico,idBanco);
+		
+		novo.setNomeBanco("Itau");
+		novo.setValorAbertura(new BigDecimal("17529.58"));
+		novo.setTotalDebitos(movBancosSaidas);
+		novo.setValorAbertura(new BigDecimal("1000.00"));
+		novo.setTotalTarifas(movBancosTarifas);
+		novo.setTotalCreditos(movBancosCreditos);
+		return novo;
 	}
 	
 

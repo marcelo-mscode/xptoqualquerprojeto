@@ -2,7 +2,10 @@ package br.com.sysloccOficial.financeiro.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Iterator;
+
+import br.com.sysloccOficial.model.Cliente;
 
 public class AnaliticoTotalBancos {
 	
@@ -41,32 +44,50 @@ public class AnaliticoTotalBancos {
 	public void setValorAbertura(BigDecimal valorAbertura) {
 		this.valorAbertura = valorAbertura;
 	}
-	public BigDecimal getTotalTarifas(List<MovimentacaoBancos> movBancos) {
-		
-		BigDecimal valor = new BigDecimal("0");
-		
-		
-		for (int i = 0; i < movBancos.si; i++) {
-			
-		}
-		
-		
+	
+	public BigDecimal getTotalTarifas() {
 		return totalTarifas;
 	}
-	public void setTotalTarifas(BigDecimal totalTarifas) {
-		this.totalTarifas = totalTarifas;
+	
+	public void setTotalTarifas(HashSet<MovimentacaoBancosTarifas> _totalTarifas) {
+		
+		BigDecimal valores = new BigDecimal("0");
+		
+        Iterator<MovimentacaoBancosTarifas> it = _totalTarifas.iterator();
+        while(it.hasNext()){
+        	MovimentacaoBancosTarifas valorCliente = (MovimentacaoBancosTarifas)it.next();
+           
+        	valores = valores.add(valorCliente.getValor());
+        }
+		
+		this.totalTarifas = valores;
 	}
 	public BigDecimal getTotalCreditos() {
 		return totalCreditos;
 	}
-	public void setTotalCreditos(BigDecimal totalCreditos) {
-		this.totalCreditos = totalCreditos;
+	public void setTotalCreditos(HashSet<MovimentacaoBancos> _totalCreditos) {
+		
+		BigDecimal valores = new BigDecimal("0");
+        Iterator<MovimentacaoBancos> it = _totalCreditos.iterator();
+        while(it.hasNext()){
+        	MovimentacaoBancos valorCliente = (MovimentacaoBancos)it.next();
+        	valores = valores.add(valorCliente.getValor());
+        }
+		
+		this.totalCreditos = valores;
 	}
 	public BigDecimal getTotalDebitos() {
 		return totalDebitos;
 	}
-	public void setTotalDebitos(BigDecimal totalDebitos) {
-		this.totalDebitos = totalDebitos;
+
+	public void setTotalDebitos(HashSet<MovimentacaoBancosSaidas> _totalDebitos) {
+		BigDecimal valores = new BigDecimal("0");
+        Iterator<MovimentacaoBancosSaidas> it = _totalDebitos.iterator();
+        while(it.hasNext()){
+        	MovimentacaoBancosSaidas valorCliente = (MovimentacaoBancosSaidas)it.next();
+        	valores = valores.add(valorCliente.getValor());
+        }
+		this.totalDebitos = valores;
 	}
 	public BigDecimal getTotalSaldo() {
 		return totalSaldo;

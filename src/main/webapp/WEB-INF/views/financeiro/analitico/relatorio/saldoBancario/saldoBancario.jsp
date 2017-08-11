@@ -13,61 +13,73 @@
       <tr>
       	<td><b>Saldo ITAU</b></td>
       	<td>31/12/2017</td>
-      	<td>17.429,58</td>
+      	<td><fmt:formatNumber value="${movimentoItau.valorAbertura}" pattern="#,##0.00"/></td>
       	<td><b>Tarifas</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoItau.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoItau.totalCreditos}" pattern="#,##0.00"/></td>
       	<td><b>Débitos</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoItau.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo Itau 31/01/2017</b></td>
-      	<td>1.105,84</td>
-      	<td> 53.238,00</td>
+      	<td><fmt:formatNumber value="${movimentoItau.valorAbertura -
+      								   movimentoItau.totalTarifas + 
+      								   movimentoItau.totalCreditos - 
+      								   movimentoItau.totalDebitos}" pattern="#,##0.00"/></td>
+      	<td> 53.238,00 ?????</td>
       </tr>
       
       <tr>
       	<td><b>Saldo CEF</b></td>
       	<td>31/12/2017</td>
-      	<td>17.429,58</td>
+      	<td><fmt:formatNumber value="${movimentoCef.valorAbertura}" pattern="#,##0.00"/></td>
       	<td><b>Tarifas</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoCef.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoCef.totalCreditos}" pattern="#,##0.00"/></td>
       	<td><b>Débitos</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoCef.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo Itau 31/01/2017</b></td>
-      	<td>1.105,84</td>
-      	<td> 53.238,00</td>
+      	<td><fmt:formatNumber value="${movimentoCef.valorAbertura -
+      								   movimentoCef.totalTarifas + 
+      								   movimentoCef.totalCreditos - 
+      								   movimentoCef.totalDebitos}" pattern="#,##0.00"/></td>
+      	<td> 53.238,00 ?????</td>
       </tr>
       
       <tr>
       	<td><b>Saldo BRADESCO</b></td>
       	<td>31/12/2017</td>
-      	<td>17.429,58</td>
+      	<td><fmt:formatNumber value="${movimentoBradesco.valorAbertura}" pattern="#,##0.00"/></td>
       	<td><b>Tarifas</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoBradesco.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoBradesco.totalCreditos}" pattern="#,##0.00"/></td>
       	<td><b>Débitos</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoBradesco.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo Itau 31/01/2017</b></td>
-      	<td>1.105,84</td>
-      	<td> 53.238,00</td>
+      	<td><fmt:formatNumber value="${movimentoBradesco.valorAbertura -
+      								   movimentoBradesco.totalTarifas + 
+      								   movimentoBradesco.totalCreditos - 
+      								   movimentoBradesco.totalDebitos}" pattern="#,##0.00"/></td>
+      	<td> 53.238,00 ?????</td>
       </tr>
 
       <tr>
       	<td><b>Saldo SANTANDER</b></td>
       	<td>31/12/2017</td>
-      	<td>17.429,58</td>
+      	<td><fmt:formatNumber value="${movimentoSantander.valorAbertura}" pattern="#,##0.00"/></td>
       	<td><b>Tarifas</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoSantander.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoSantander.totalCreditos}" pattern="#,##0.00"/></td>
       	<td><b>Débitos</b></td>
-      	<td>3.116,52</td>
+      	<td><fmt:formatNumber value="${movimentoSantander.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo Itau 31/01/2017</b></td>
-      	<td>1.105,84</td>
-      	<td> 53.238,00</td>
+      	<td><fmt:formatNumber value="${movimentoSantander.valorAbertura -
+      								   movimentoSantander.totalTarifas + 
+      								   movimentoSantander.totalCreditos - 
+      								   movimentoSantander.totalDebitos}" pattern="#,##0.00"/></td>
+      	<td> 53.238,00 ?????</td>
       </tr>
       
       

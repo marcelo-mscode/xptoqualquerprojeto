@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,11 +20,9 @@ import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
-import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
-import br.com.sysloccOficial.financeiro.movbancos.FinanceiroMovBancos;
 
 @Repository
 @Transactional
@@ -295,6 +295,46 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		Integer idAnalitico = despesas.getAnalitico().getIdAnalitico();
 		manager.close();
 		return idAnalitico;
+	}
+
+	public HashSet<MovimentacaoBancosTarifas> totalTarifasBanco(Integer idAnalitico,int idBanco) {
+		try {
+			TypedQuery<MovimentacaoBancosTarifas> f = manager.createQuery("select f from MovimentacaoBancosTarifas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosTarifas.class);
+			
+			HashSet<MovimentacaoBancosTarifas> movTarifas = new HashSet<MovimentacaoBancosTarifas>(f.getResultList());
+			
+			return movTarifas;
+		} catch (Exception e) {
+			System.out.println("Não foi possível carregar as listagens de Tarifas: "+e);
+			return null;
+		}
+	}
+
+	public HashSet<MovimentacaoBancos> totalEntradasBanco(Integer idAnalitico,int idBanco) {
+		try {
+			TypedQuery<MovimentacaoBancos> f = manager.createQuery("select f from MovimentacaoBancos f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancos.class);
+			
+			HashSet<MovimentacaoBancos> movTarifas = new HashSet<MovimentacaoBancos>(f.getResultList());
+			
+			return movTarifas;
+		} catch (Exception e) {
+			System.out.println("Não foi possível carregar as listagens de Tarifas: "+e);
+			return null;
+		}
+	}
+
+	public HashSet<MovimentacaoBancosSaidas> totalSaidasBanco(int idAnalitico,int idBanco){
+		
+			try {
+				TypedQuery<MovimentacaoBancosSaidas> f = manager.createQuery("select f from MovimentacaoBancosSaidas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaidas.class);
+				
+				HashSet<MovimentacaoBancosSaidas> movTarifas = new HashSet<MovimentacaoBancosSaidas>(f.getResultList());
+				
+				return movTarifas;
+			} catch (Exception e) {
+				System.out.println("Não foi possível carregar as listagens de Tarifas: "+e);
+				return null;
+			}
 	}
 	
 }
