@@ -28,6 +28,10 @@
    .tiraPaddingData{padding: 0px 0px 0px 5px  !important;height: 50px !important}
    .corMarronEstranha{background-color: rgb(255,204,153);}	
    .corRosaEstranha{background-color: rgb(255,153,204);}	
+   ::-webkit-scrollbar { width: 15px; height: 15px; }
+   ::-webkit-scrollbar-track:enabled { background-color: #FFF; }
+   ::-webkit-scrollbar-thumb:vertical { background-color: #ccc; }
+   ::-webkit-scrollbar-thumb:horizontal { background-color: #ccc; }
 	
 </style>
 <div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;margin-top: 50px">
