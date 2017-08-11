@@ -175,7 +175,7 @@ function editaSaldos(campo,idAnalitico,tipoCampo,idBanco) {
 	$.ajax({
 		url : "editaSaldosBancos?valor="+valor+"&idAnalitico="+idAnalitico+"&tipoCampo="+tipoCampo+"&idBanco="+idBanco,
 		success : function(data) {
-			/*$("#"+idDivAjax).html(data);*/
+			location.reload();
 		}
 	});
 };

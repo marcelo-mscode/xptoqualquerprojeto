@@ -349,12 +349,36 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 	public void editaSaldosBancos(String valor, Integer idAnalitico,String tipoCampo, Integer idBanco) {
 		try {
-			System.out.println(valor);
-			System.out.println(idAnalitico);
-			System.out.println(tipoCampo);
-			System.out.println(idBanco);
-		} catch (Exception e) {
 			
+			TypedQuery<MovimentacaoBancosSaldoAnterior> mov = manager.createQuery(" from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaldoAnterior.class);
+			MovimentacaoBancosSaldoAnterior paraMerge = mov.getSingleResult();
+			
+			if(tipoCampo.equals("data")){
+				try {
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+					Date data = new java.sql.Date(format.parse(valor).getTime());
+					paraMerge.setDataAberturaCaixa(data);
+				} catch (ParseException e) {
+					System.out.println(e);
+				}
+			}
+				
+			if(tipoCampo.equals("valor")){
+				
+				try {
+					if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+						paraMerge.setValorAbertura(new BigDecimal("0.00"));
+					}else{
+						paraMerge.setValorAbertura(new BigDecimal(util.formataValores(valor)));
+					}
+				} catch (NumberFormatException e) {
+					paraMerge.setValorAbertura(new BigDecimal("0.00"));
+				}
+			}
+			manager.merge(paraMerge);
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao atualizar data do Saldo Anterior: "+e);
 		}
 		
 	}
