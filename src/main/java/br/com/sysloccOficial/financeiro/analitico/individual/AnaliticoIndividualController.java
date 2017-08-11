@@ -99,7 +99,6 @@ public class AnaliticoIndividualController {
 		HashSet<MovimentacaoBancosTarifas> movBancosTarifas = analiticoMovFinanceiroDAO.totalTarifasBanco(idAnalitico,idBanco);
 		
 		novo.setNomeBanco("Itau");
-		novo.setValorAbertura(new BigDecimal("17529.58"));
 		novo.setTotalDebitos(movBancosSaidas);
 		novo.setValorAbertura(new BigDecimal("1000.00"));
 		novo.setTotalTarifas(movBancosTarifas);
