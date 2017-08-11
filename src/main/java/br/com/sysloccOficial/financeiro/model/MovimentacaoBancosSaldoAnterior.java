@@ -20,6 +20,7 @@ public class MovimentacaoBancosSaldoAnterior {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer idMovBancos;
 	private BigDecimal valorAbertura;
+	private BigDecimal valorAlternativo;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAberturaCaixa;
@@ -32,9 +33,14 @@ public class MovimentacaoBancosSaldoAnterior {
 	@OneToOne @JoinColumn(name="banco") private BancosAnalitico banco;
 // ------------------------------------------------------------------ //	
 
-	
 	public Integer getIdMovBancos() {
 		return idMovBancos;
+	}
+	public BigDecimal getValorAlternativo() {
+		return valorAlternativo;
+	}
+	public void setValorAlternativo(BigDecimal valorAlternativo) {
+		this.valorAlternativo = valorAlternativo;
 	}
 	public void setIdMovBancos(Integer idMovBancos) {
 		this.idMovBancos = idMovBancos;

@@ -377,27 +377,49 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		
 	}
 
-	private void setaCamposSaldaAnterior(String valor, String tipoCampo, MovimentacaoBancosSaldoAnterior paraMerge) {
-		if(tipoCampo.equals("data")){
+	private void setaCamposSaldaAnterior(String _valor, String _tipoCampo, MovimentacaoBancosSaldoAnterior _paraMerge) {
+		
+		if(_tipoCampo.equals("data")){
 			try {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-				Date data = new java.sql.Date(format.parse(valor).getTime());
-				paraMerge.setDataAberturaCaixa(data);
+				Date data = new java.sql.Date(format.parse(_valor).getTime());
+				_paraMerge.setDataAberturaCaixa(data);
+			} catch (ParseException e) {
+				System.out.println(e);
+			}
+		}
+		
+		if(_tipoCampo.equals("dataFechamento")){
+			try {
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				Date data = new java.sql.Date(format.parse(_valor).getTime());
+				_paraMerge.setDataAberturaFechamento(data);
 			} catch (ParseException e) {
 				System.out.println(e);
 			}
 		}
 			
-		if(tipoCampo.equals("valor")){
-			
+		if(_tipoCampo.equals("valor")){
 			try {
-				if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
-					paraMerge.setValorAbertura(new BigDecimal("0.00"));
+				if(_valor.equals(null) || _valor.equals("")|| _valor.equals(" ")){
+					_paraMerge.setValorAbertura(new BigDecimal("0.00"));
 				}else{
-					paraMerge.setValorAbertura(new BigDecimal(util.formataValores(valor)));
+					_paraMerge.setValorAbertura(new BigDecimal(util.formataValores(_valor)));
 				}
 			} catch (NumberFormatException e) {
-				paraMerge.setValorAbertura(new BigDecimal("0.00"));
+				_paraMerge.setValorAbertura(new BigDecimal("0.00"));
+			}
+		}
+
+		if(_tipoCampo.equals("valorDefinir")){
+			try {
+				if(_valor.equals(null) || _valor.equals("")|| _valor.equals(" ")){
+					_paraMerge.setValorAlternativo(new BigDecimal("0.00"));
+				}else{
+					_paraMerge.setValorAlternativo(new BigDecimal(util.formataValores(_valor)));
+				}
+			} catch (NumberFormatException e) {
+				_paraMerge.setValorAlternativo(new BigDecimal("0.00"));
 			}
 		}
 	}

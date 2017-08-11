@@ -106,6 +106,8 @@ public class AnaliticoIndividualController {
 		novo.setTotalDebitos(movBancosSaidas);
 		novo.setTotalTarifas(movBancosTarifas);
 		novo.setTotalCreditos(movBancosCreditos);
+		novo.setDataFechamentoCaixa(movBancosSaldoAnterior.getDataAberturaFechamento());
+		novo.setValoresDefinir(movBancosSaldoAnterior.getValorAlternativo());
 		return novo;
 	}
 	
