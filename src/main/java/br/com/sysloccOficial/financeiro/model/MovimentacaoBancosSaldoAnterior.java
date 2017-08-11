@@ -23,6 +23,9 @@ public class MovimentacaoBancosSaldoAnterior {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAberturaCaixa;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataAberturaFechamento;
 	
 // ------------------------------------------------------------------ //	
 	@OneToOne @JoinColumn(name="analitico") private FinancAnalitico analitico;
@@ -60,5 +63,10 @@ public class MovimentacaoBancosSaldoAnterior {
 	public void setBanco(BancosAnalitico banco) {
 		this.banco = banco;
 	}
-
+	public Date getDataAberturaFechamento() {
+		return dataAberturaFechamento;
+	}
+	public void setDataAberturaFechamento(Date dataAberturaFechamento) {
+		this.dataAberturaFechamento = dataAberturaFechamento;
+	}
 }

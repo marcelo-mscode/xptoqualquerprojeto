@@ -6,9 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -341,9 +341,14 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 			try {
 				TypedQuery<MovimentacaoBancosSaldoAnterior> f = manager.createQuery("select f from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaldoAnterior.class);
 				return f.getSingleResult();
-			} catch (Exception e) {
+			} catch (NoResultException e) {
+				
+				FinancAnalitico analitico = manager.getReference(FinancAnalitico.class, idAnalitico);
+				MovimentacaoBancosSaldoAnterior novo = new MovimentacaoBancosSaldoAnterior();
+				
+				
 				System.out.println("Não foi possível carregar as listagens de Saldos Anterior: "+e);
-				return null;
+				return novo;
 			}
 	}
 
@@ -353,34 +358,48 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 			TypedQuery<MovimentacaoBancosSaldoAnterior> mov = manager.createQuery(" from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaldoAnterior.class);
 			MovimentacaoBancosSaldoAnterior paraMerge = mov.getSingleResult();
 			
-			if(tipoCampo.equals("data")){
-				try {
-					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-					Date data = new java.sql.Date(format.parse(valor).getTime());
-					paraMerge.setDataAberturaCaixa(data);
-				} catch (ParseException e) {
-					System.out.println(e);
-				}
-			}
-				
-			if(tipoCampo.equals("valor")){
-				
-				try {
-					if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
-						paraMerge.setValorAbertura(new BigDecimal("0.00"));
-					}else{
-						paraMerge.setValorAbertura(new BigDecimal(util.formataValores(valor)));
-					}
-				} catch (NumberFormatException e) {
-					paraMerge.setValorAbertura(new BigDecimal("0.00"));
-				}
-			}
+			setaCamposSaldaAnterior(valor, tipoCampo, paraMerge);
 			manager.merge(paraMerge);
 			
 		} catch (Exception e) {
+			
+			FinancAnalitico analitico = manager.getReference(FinancAnalitico.class, idAnalitico);
+			BancosAnalitico banco = manager.getReference(BancosAnalitico.class, idBanco);
+			
+			MovimentacaoBancosSaldoAnterior novo = new MovimentacaoBancosSaldoAnterior();
+			novo.setAnalitico(analitico);
+			novo.setBanco(banco);
+			setaCamposSaldaAnterior(valor, tipoCampo, novo);
+			manager.merge(novo);
+			
 			System.out.println("Erro ao atualizar data do Saldo Anterior: "+e);
 		}
 		
+	}
+
+	private void setaCamposSaldaAnterior(String valor, String tipoCampo, MovimentacaoBancosSaldoAnterior paraMerge) {
+		if(tipoCampo.equals("data")){
+			try {
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				Date data = new java.sql.Date(format.parse(valor).getTime());
+				paraMerge.setDataAberturaCaixa(data);
+			} catch (ParseException e) {
+				System.out.println(e);
+			}
+		}
+			
+		if(tipoCampo.equals("valor")){
+			
+			try {
+				if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+					paraMerge.setValorAbertura(new BigDecimal("0.00"));
+				}else{
+					paraMerge.setValorAbertura(new BigDecimal(util.formataValores(valor)));
+				}
+			} catch (NumberFormatException e) {
+				paraMerge.setValorAbertura(new BigDecimal("0.00"));
+			}
+		}
 	}
 	
 }
