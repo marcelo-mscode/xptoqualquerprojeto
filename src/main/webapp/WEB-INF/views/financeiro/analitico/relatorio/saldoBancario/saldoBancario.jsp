@@ -17,7 +17,7 @@
                 onclick="mudaCampoData('dataSaldoAnteriorItau1');"
                 onblur="editaSaldos('dataSaldoAnteriorItau1',${idAnalitico},'data','1');"/>
       	</td>
-      	<td style="padding: 0;vertical-align: middle;width: 145px;" >
+      	<td class="campoSaldos">
       		<input id="valorAnteriorItau1" style="border: none;padding: 8px;line-height: 13px;" value="<fmt:formatNumber value="${movimentoItau.valorAbertura}" pattern="#,##0.00"/>"
              	onblur="editaSaldos('valorAnteriorItau1',${idAnalitico},'valor','1');"/>
       	</td>
@@ -43,7 +43,7 @@
                 onclick="mudaCampoData('dataSaldoAnteriorCEF2');"
                 onblur="editaSaldos('dataSaldoAnteriorCEF2',${idAnalitico},'data','2');"/>
       	</td>
-      		<td style="padding: 0;vertical-align: middle;width: 145px;" >
+      		<td class="campoSaldos">
       		<input id="valorAnteriorCEF2" style="border: none;padding: 8px;line-height: 13px;" value="<fmt:formatNumber value="${movimentoCef.valorAbertura}" pattern="#,##0.00"/>"
              	onblur="editaSaldos('valorAnteriorCEF2',${idAnalitico},'valor','2');"/>
       	</td>
@@ -69,7 +69,10 @@
                 onclick="mudaCampoData('dataSaldoAnteriorBRADESCO3');"
                 onblur="editaSaldos('dataSaldoAnteriorBRADESCO3',${idAnalitico},'data','3');"/>
       	</td>
-      	<td><fmt:formatNumber value="${movimentoBradesco.valorAbertura}" pattern="#,##0.00"/></td>
+      	<td class="campoSaldos">
+      		<input id="valorAnteriorBRADESCO3" style="border: none;padding: 8px;line-height: 13px;" value="<fmt:formatNumber value="${movimentoBradesco.valorAbertura}" pattern="#,##0.00"/>"
+           onblur="editaSaldos('valorAnteriorBRADESCO3',${idAnalitico},'valor','3');"/>
+         </td>  
       	<td><b>Tarifas</b></td>
       	<td><fmt:formatNumber value="${movimentoBradesco.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>
@@ -84,11 +87,18 @@
       								   movimentoBradesco.totalDebitos}" pattern="#,##0.00"/></td>
       	<td> 53.238,00 ?????</td>
       </tr>
-<%-- 
+  
       <tr>
       	<td><b>Saldo SANTANDER</b></td>
-      	<td><fmt:formatDate value="${movimentoSantander.dataAberturaCaixa}" pattern="dd/MM/yyyy"/></td>
-      	<td><fmt:formatNumber value="${movimentoSantander.valorAbertura}" pattern="#,##0.00"/></td>
+      	<td class="campoSaldos">
+      		<input id="dataSaldoAnteriorSANTANDER4" style="border: none;padding: 8px 10px 8px;line-height: 13px;" value="<fmt:formatDate value="${movimentoSantander.dataAberturaCaixa}" pattern="dd/MM/yyyy"/>"
+                onclick="mudaCampoData('dataSaldoAnteriorSANTANDER4');"
+                onblur="editaSaldos('dataSaldoAnteriorSANTANDER4',${idAnalitico},'data','4');"/>
+      	</td>
+      	<td class="campoSaldos">
+      		<input id="valorAnteriorSANTANDER4" style="border: none;padding: 8px;line-height: 13px;" value="<fmt:formatNumber value="${movimentoSantander.valorAbertura}" pattern="#,##0.00"/>"
+           onblur="editaSaldos('valorAnteriorSANTANDER4',${idAnalitico},'valor','4');"/>
+         </td> 
       	<td><b>Tarifas</b></td>
       	<td><fmt:formatNumber value="${movimentoSantander.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>
@@ -103,8 +113,6 @@
       								   movimentoSantander.totalDebitos}" pattern="#,##0.00"/></td>
       	<td> 53.238,00 ?????</td>
       </tr>
-      
-       --%>
       
       
    </tbody>
