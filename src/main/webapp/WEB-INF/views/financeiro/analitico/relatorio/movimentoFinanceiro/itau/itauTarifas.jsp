@@ -10,9 +10,9 @@
        <td colspan="7" align="center" class="amareloFlat"><b>MOVIMENTOS DE CAIXA - TARIFAS/CPMF</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="dataItauTarifas" type="date"  class="ajusteInput2 tiraPaddingData input-140px"  value="2017-07-10"/></td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descItauTarifas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição" value="teste tarifas"/></td>
-       <td class="tiraPaddingData"><input id="valorItauTarifas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor" value="666,66" /></td>
+       <td class="tiraPaddingData"><input id="dataItauTarifas" type="date"  class="ajusteInput2 tiraPaddingData input-140px"/></td>		
+       <td class="tiraPaddingData" colspan="3"><input id="descItauTarifas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
+       <td class="tiraPaddingData"><input id="valorItauTarifas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
        <td><button onclick="insereDadosMovimentacaoSaidas('dataItauTarifas','descItauTarifas','valorItauTarifas','salvaNovaTarifa',${idAnalitico},'itauTarifas','1');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>

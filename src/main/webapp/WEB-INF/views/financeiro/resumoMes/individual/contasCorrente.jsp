@@ -14,30 +14,50 @@
 	<tr>
 		<th class="fundoAmarelo input-260px">Saldo Bancário  Itau:</th>
 		<th class="fundoAmarelo input-160px"></th>
-		<th class="fundoAmarelo input-160px">31/mai</th>
+		<th class="fundoAmarelo input-160px"><fmt:formatDate value="${movimentoItau.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/></th>
 		<th class="fundoAmarelo input-160px"></th>
 		<th class="fundoAmarelo input-160px">=></th>
-		<th class="fundoAmarelo input-160px" style="border: 2px solid #000"><b>170.366,43</b></th>
+		<th class="fundoAmarelo input-160px" style="border: 2px solid #000"><b>
+		<c:set var="totalItau" value="${movimentoItau.valorAbertura -
+      								   movimentoItau.totalTarifas + 
+      								   movimentoItau.totalCreditos - 
+      								   movimentoItau.totalDebitos}" />
+		<fmt:formatNumber value="${movimentoItau.valorAbertura -
+      								   movimentoItau.totalTarifas + 
+      								   movimentoItau.totalCreditos - 
+      								   movimentoItau.totalDebitos}" pattern="#,##0.00"/>		
+		
+		</b></th>
 		<th class="input-160px" rowspan="4" style="vertical-align: middle;color: blue">171.193,34</th>
 	</tr>
 	
 	<tr>
 		<th class="fundoVerde input-260px">Saldo Bancário  C.E.F:</th>
 		<th class="fundoVerde input-160px"></th>
-		<th class="fundoVerde input-160px">31/mai</th>
+		<th class="fundoVerde input-160px"><fmt:formatDate value="${movimentoCef.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/></th>
 		<th class="fundoVerde input-160px"></th>
 		<th class="fundoVerde input-160px">=></th>
-		<th class="fundoVerde input-160px" style="border: 2px solid #000"><b>0,00</b></th>
+		<th class="fundoVerde input-160px" style="border: 2px solid #000"><b>
+		<fmt:formatNumber value="${movimentoCef.valorAbertura -
+      								   movimentoCef.totalTarifas + 
+      								   movimentoCef.totalCreditos - 
+      								   movimentoCef.totalDebitos}" pattern="#,##0.00"/>
+		</b></th>
 		
 	</tr>
 
 	<tr>
 		<th class="fundoDespesasFixas input-260px">Saldo Bancário  Bradesco:</th>
 		<th class="fundoDespesasFixas input-160px"></th>
-		<th class="fundoDespesasFixas input-160px">31/mai</th>
+		<th class="fundoDespesasFixas input-160px"><fmt:formatDate value="${movimentoBradesco.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/></th>
 		<th class="fundoDespesasFixas input-160px"></th>
 		<th class="fundoDespesasFixas input-160px">=></th>
-		<th class="fundoDespesasFixas input-160px" style="border: 2px solid #000"><b>116,46</b></th>
+		<th class="fundoDespesasFixas input-160px" style="border: 2px solid #000"><b>
+		<fmt:formatNumber value="${movimentoBradesco.valorAbertura -
+      								   movimentoBradesco.totalTarifas + 
+      								   movimentoBradesco.totalCreditos - 
+      								   movimentoBradesco.totalDebitos}" pattern="#,##0.00"/>
+		</b></th>
 		
 	</tr>
 
