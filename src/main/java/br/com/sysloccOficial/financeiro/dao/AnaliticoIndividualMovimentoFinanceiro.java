@@ -35,6 +35,27 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 	@Autowired private AnaliticoIndividualDAO individualDAO;
 	
 	
+	public Integer pegaIdAnalitico(String mes, String ano){
+		
+		
+		try {
+			
+			TypedQuery<Integer> f = manager.createQuery("", Integer.class);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		
+		
+		return null;
+	}
+	
+	
+	
+	
 	public void novaEntrada(Integer idAnalitico,String DataPgto,String valor,String descricao,String ndnf,Integer idBanco) throws ParseException {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

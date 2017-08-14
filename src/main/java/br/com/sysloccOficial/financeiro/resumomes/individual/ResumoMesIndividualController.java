@@ -26,13 +26,18 @@ public class ResumoMesIndividualController {
 	@RequestMapping("resumoMesIndividual")
 	public ModelAndView resumoMesIndex(Integer mes, Integer ano){
 		
+		ModelAndView MV = new ModelAndView("financeiro/resumoMes/individual/resumoMesIndividual");
 		
 		String anoMes = ( mes < 10 ) ? ano+"-0"+mes  : ano+"-"+mes;
 		
 		String nomeMes = utilDatas.nomeMesPorDigito(mes);
 		
 		
-		ModelAndView MV = new ModelAndView("financeiro/resumoMes/individual/resumoMesIndividual");
+		Integer idAnalitico = "";
+		
+		
+		
+		
 		
 		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(mes,ano);
 		
