@@ -8,9 +8,9 @@
 			<tr>
 				<td></td>
 				<td>Saldo Bancário Itau</td>
-				<td>30 /abr</td>
+				<td><fmt:formatDate value="${movimentoItau.dataAberturaCaixa}" pattern="dd/MM/yyyy"/></td>
 				<td>=></td>
-				<td>51.688,33</td>
+				<td><fmt:formatNumber value="${movimentoItau.valorAbertura}" pattern="#,##0.00"/></td>
 				<td rowspan="4" class="totalBancos"> 54.078,13</td>
 			</tr>
 			<tr>

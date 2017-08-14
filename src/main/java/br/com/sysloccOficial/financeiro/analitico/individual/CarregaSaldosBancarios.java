@@ -16,6 +16,12 @@ public class CarregaSaldosBancarios {
 	
 	@Autowired AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
 	
+	
+	public Integer pegaIdAnalitico (String mes, String ano){
+		return analiticoMovFinanceiroDAO.pegaIdAnalitico(mes, ano);
+	}
+	
+	
 	public CarregaSaldosBancarios() {
 		super();
 	}

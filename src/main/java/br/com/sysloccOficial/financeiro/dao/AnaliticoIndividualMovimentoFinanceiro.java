@@ -36,21 +36,13 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 	
 	
 	public Integer pegaIdAnalitico(String mes, String ano){
-		
-		
 		try {
-			
-			TypedQuery<Integer> f = manager.createQuery("", Integer.class);
-			
-			
+			TypedQuery<Integer> f = manager.createQuery("select idAnalitico from FinancAnalitico where anoA = '"+ano+"' and mesA ='"+mes+"'", Integer.class);
+			return f.getSingleResult();
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Não tem nenhum registro de Analitico com os dados informados:"+e+mes+ "-" +ano);
+			return null;
 		}
-		
-		
-		
-		
-		return null;
 	}
 	
 	
