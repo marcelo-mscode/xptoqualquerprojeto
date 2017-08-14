@@ -4,7 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+	
+		<c:set var="totalItau" value="${movimentoItau.valorAbertura - movimentoItau.totalTarifas + movimentoItau.totalCreditos - movimentoItau.totalDebitos}" />
+		<c:set var="totalCef" value="${movimentoCef.valorAbertura - movimentoCef.totalTarifas + movimentoCef.totalCreditos - movimentoCef.totalDebitos}" />
+		<c:set var="totalBradesco" value="${movimentoBradesco.valorAbertura - movimentoBradesco.totalTarifas + movimentoBradesco.totalCreditos - movimentoBradesco.totalDebitos}" />
+		<c:set var="totalSantander" value="${movimentoSantander.valorAbertura - movimentoSantander.totalTarifas + movimentoSantander.totalCreditos - movimentoSantander.totalDebitos}" />
 	
 	<tr>
 		<th colspan="6" class="fundoVerde">Contas Correntes:</th>
@@ -18,17 +22,9 @@
 		<th class="fundoAmarelo input-160px"></th>
 		<th class="fundoAmarelo input-160px">=></th>
 		<th class="fundoAmarelo input-160px" style="border: 2px solid #000"><b>
-		<c:set var="totalItau" value="${movimentoItau.valorAbertura -
-      								   movimentoItau.totalTarifas + 
-      								   movimentoItau.totalCreditos - 
-      								   movimentoItau.totalDebitos}" />
-		<fmt:formatNumber value="${movimentoItau.valorAbertura -
-      								   movimentoItau.totalTarifas + 
-      								   movimentoItau.totalCreditos - 
-      								   movimentoItau.totalDebitos}" pattern="#,##0.00"/>		
-		
+		<fmt:formatNumber value="${totalItau}" pattern="#,##0.00"/>		
 		</b></th>
-		<th class="input-160px" rowspan="4" style="vertical-align: middle;color: blue">171.193,34</th>
+		<th class="input-160px" rowspan="4" style="vertical-align: middle;color: blue"><fmt:formatNumber value="${totalItau+totalCef+totalBradesco+totalSantander}" pattern="#,##0.00"/></th>
 	</tr>
 	
 	<tr>
@@ -38,10 +34,7 @@
 		<th class="fundoVerde input-160px"></th>
 		<th class="fundoVerde input-160px">=></th>
 		<th class="fundoVerde input-160px" style="border: 2px solid #000"><b>
-		<fmt:formatNumber value="${movimentoCef.valorAbertura -
-      								   movimentoCef.totalTarifas + 
-      								   movimentoCef.totalCreditos - 
-      								   movimentoCef.totalDebitos}" pattern="#,##0.00"/>
+		<fmt:formatNumber value="${totalCef}" pattern="#,##0.00"/>	
 		</b></th>
 		
 	</tr>
@@ -52,11 +45,8 @@
 		<th class="fundoDespesasFixas input-160px"><fmt:formatDate value="${movimentoBradesco.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/></th>
 		<th class="fundoDespesasFixas input-160px"></th>
 		<th class="fundoDespesasFixas input-160px">=></th>
-		<th class="fundoDespesasFixas input-160px" style="border: 2px solid #000"><b>
-		<fmt:formatNumber value="${movimentoBradesco.valorAbertura -
-      								   movimentoBradesco.totalTarifas + 
-      								   movimentoBradesco.totalCreditos - 
-      								   movimentoBradesco.totalDebitos}" pattern="#,##0.00"/>
+		<th class="fundoDespesasFixas input-160px" style="border: 2px solid #000;"><b>
+		<fmt:formatNumber value="${totalBradesco}" pattern="#,##0.00"/>	
 		</b></th>
 		
 	</tr>
@@ -64,10 +54,12 @@
 	<tr>
 		<th class="fundoRosa input-260px">Saldo Bancário Santander:</th>
 		<th class="fundoRosa input-160px"></th>
-		<th class="fundoRosa input-160px">31/mai</th>
+		<th class="fundoRosa input-160px"><fmt:formatDate value="${movimentoSantander.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/></th>
 		<th class="fundoRosa input-160px"></th>
 		<th class="fundoRosa input-160px">=></th>
-		<th class="fundoRosa input-160px" style="border: 2px solid #000"><b>710,45</b></th>
+		<th class="fundoRosa input-160px" style="border: 2px solid #000"><b>
+		<fmt:formatNumber value="${totalSantander}" pattern="#,##0.00"/>	
+		</b></th>
 		
 	</tr>
 	
