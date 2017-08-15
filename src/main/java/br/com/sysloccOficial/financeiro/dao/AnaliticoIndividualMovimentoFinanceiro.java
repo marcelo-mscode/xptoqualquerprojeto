@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -398,21 +399,29 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 			return null;
 		}
 	}
-	public BigDecimal pegaTotalEmprestimosSemParcelamento(int idAnalitico){
-		
-		
-		System.out.println("select sum(valorParcela) from EmprestimoBancario f join fetch f.analitico where f.analitico.idAnalitico="+idAnalitico);
+	public BigDecimal pegaTotalEmprestimosSemParcelamento(Integer idAnalitico){
 		
 		try {
-			TypedQuery<BigDecimal> emp = manager.createQuery("select sum(valorParcela) from EmprestimoBancario f join fetch f.analitico where f.analitico.idAnalitico="+idAnalitico,BigDecimal.class);
 			
-			BigDecimal total = emp.getSingleResult();
-			
-			return total;
+			BigDecimal valors = new BigDecimal("0");
+			String consulta = "from EmprestimoBancario f join fetch f.analitico where idAnalitico="+idAnalitico;
+			TypedQuery<EmprestimoBancario> emp = manager.createQuery(consulta,EmprestimoBancario.class);
+
+			HashSet<EmprestimoBancario> total = emp.getResultList();
+			 
+			 for (int i = 0; i < total.size(); i++) {
+				valors = valors.add(total.get(i).getValorParcela());
+			}
+			 
+			return valors;
 		} catch (Exception e) {
 			System.out.println("Erro ao pegar total de emprestimos: "+e);
 			
-			return new BigDecimal("0");
+		//	JOptionPane.showMessageDialog(null, "Erro ao pegar total de emprestimos"+e);
+			
+			BigDecimal valor = new BigDecimal("0");
+			
+			return valor;
 		}
 	}
 	

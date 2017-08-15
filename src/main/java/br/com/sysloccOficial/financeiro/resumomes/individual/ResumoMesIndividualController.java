@@ -144,6 +144,10 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 								   somaTotalCache, impostos, relatorioEventoDAO.outrosImpostos(anoMes)
 		));
 		
+		// Total Giro Itau ( soma dos emprestimos cadastrados )
+		BigDecimal giroItau = new BigDecimal("11781.48");
+		MV.addObject("giroItau", giroItau);
+
 		// Total conta Garantia Itau ( soma dos emprestimos cadastrados )
 		BigDecimal totalEmprestimos = analiticoMovFinanceiroDAO.pegaTotalEmprestimosSemParcelamento(idAnalitico);
 		MV.addObject("totalEmprestimos", totalEmprestimos);

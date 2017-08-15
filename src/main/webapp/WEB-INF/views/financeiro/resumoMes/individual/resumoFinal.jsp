@@ -78,11 +78,11 @@
 
 	<tr>
 		<th class="fundoAmarelo input-260px colorRed">Giro Itau 25/05/2014:</th>
-		<th class="input-160px">Itau R$ 3.927,16 (36) 1,82%</th>
-		<th class="input-160px">1ª  30/05/2014</th>
-		<th class="input-160px">36ª 30/04/2017</th>
+		<th class="input-160px fontSize12" style="padding: 0px 0px 0px 3px;vertical-align: middle;">Itau R$ 3.927,16 (36) 1,82%</th>
+		<th class="input-160px fontSize12">1ª  30/05/2014</th>
+		<th class="input-160px fontSize12">36ª 30/04/2017</th>
 		<th class="input-160px"></th>
-		<th class="input-160px" style="border: 2px solid #000"><b>43.198,76</b></th>
+		<th class="input-160px" style="border: 2px solid #000"><b><fmt:formatNumber value="${giroItau}" pattern="#,##0.00"/></b></th>
 		<th class="input-160px"></th>
 	</tr>
 
@@ -92,7 +92,7 @@
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
-		<th class="input-160px" style="border: 2px solid #000"><b> - </b></th>
+		<th class="input-160px" style="border: 2px solid #000"><b><fmt:formatNumber value="${totalEmprestimos}" pattern="#,##0.00"/></b></th>
 		<th class="input-160px"></th>
 	</tr>
 
