@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -387,21 +388,34 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		
 	}
 
-	public List<EmprestimoBancario> carregaEmprestimos(Integer idAnalitico) {
+	public LinkedHashSet<EmprestimoBancario> carregaEmprestimos(Integer idAnalitico) {
 		try {
 			TypedQuery<EmprestimoBancario> emp = manager.createQuery("from EmprestimoBancario f join fetch f.analitico where idAnalitico="+idAnalitico,EmprestimoBancario.class);
-			
-			
-			HashSet<EmprestimoBancario> movTarifas = new HashSet<EmprestimoBancario>(f.getResultList());
-			
-			
-			
-			return emp.getResultList();
+			LinkedHashSet<EmprestimoBancario> movTarifas = new LinkedHashSet<EmprestimoBancario>(emp.getResultList());
+			return movTarifas;
 		} catch (Exception e) {
 			System.out.println("Não foi possível carregar a lista emprestimos. Motivo: "+e);
 			return null;
 		}
 	}
+	public BigDecimal pegaTotalEmprestimosSemParcelamento(int idAnalitico){
+		
+		
+		System.out.println("select sum(valorParcela) from EmprestimoBancario f join fetch f.analitico where f.analitico.idAnalitico="+idAnalitico);
+		
+		try {
+			TypedQuery<BigDecimal> emp = manager.createQuery("select sum(valorParcela) from EmprestimoBancario f join fetch f.analitico where f.analitico.idAnalitico="+idAnalitico,BigDecimal.class);
+			
+			BigDecimal total = emp.getSingleResult();
+			
+			return total;
+		} catch (Exception e) {
+			System.out.println("Erro ao pegar total de emprestimos: "+e);
+			
+			return new BigDecimal("0");
+		}
+	}
+	
 	
 	private void setaCamposSaldaAnterior(String _valor, String _tipoCampo, MovimentacaoBancosSaldoAnterior _paraMerge) {
 		

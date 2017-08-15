@@ -1,6 +1,7 @@
 package br.com.sysloccOficial.financeiro.resumomes.individual;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,10 +145,8 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		));
 		
 		// Total conta Garantia Itau ( soma dos emprestimos cadastrados )
-		MV.addObject("outrosImpostos", relatorioEventoDAO.outrosImpostos(anoMes));
-		
-		
-		List<EmprestimoBancario> carregaEmprestimos = analiticoMovFinanceiroDAO.carregaEmprestimos(idAnalitico);
+		BigDecimal totalEmprestimos = analiticoMovFinanceiroDAO.pegaTotalEmprestimosSemParcelamento(idAnalitico);
+		MV.addObject("totalEmprestimos", totalEmprestimos);
 		
 		
 		

@@ -1,6 +1,7 @@
 package br.com.sysloccOficial.financeiro.analitico.individual;
 
 import java.text.ParseException;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -164,7 +165,7 @@ public class MovimentacaoFinanceiroController {
 		
 		MV.addObject("idAnalitico",idAnalitico);
 		
-		List<EmprestimoBancario> emprestimos = analiticoMovFinanceiroDAO.carregaEmprestimos(idAnalitico);
+		LinkedHashSet<EmprestimoBancario> emprestimos = analiticoMovFinanceiroDAO.carregaEmprestimos(idAnalitico);
 		MV.addObject("emprestimosBancos",emprestimos);
 		return MV;
 	}
