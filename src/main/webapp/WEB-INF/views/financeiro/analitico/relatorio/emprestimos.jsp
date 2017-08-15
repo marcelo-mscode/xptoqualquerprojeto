@@ -11,12 +11,21 @@
     </tr>
     <tr>
        <td class="tiraPaddingData"><input id="dataSantander" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
+       <td class="" style="padding: 0px">
+       <select id="emprestimoTipoBanco" class="form-control" style="width: 120px">
+	       <option value="1">Itau</option>
+	       <option value="2">CEF</option>
+	       <option value="3">Bradesco</option>
+	       <option value="4">Santander</option>
+       </select>	
+       </td>		
        <td class="tiraPaddingData" colspan="3"><input id="descSantander" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
        <td class="tiraPaddingData"><input id="valorSantander" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
        <td><button onclick="insereDadosMovimentacaoSaidas('dataSantander','descSantander','valorSantander','salvaNovaTarifa',${idAnalitico},'emprestimos','4');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
     </tr>
     <tr>
        <td>DATA</td>
+       <td>Banco</td>
        <td colspan="3">Descrição</td>
        <td colspan="1">Valor</td>
     </tr>
@@ -32,6 +41,14 @@
                 onblur="editaValoresSaidas('editaTarifas','dataSantander${tarifasSantander.idMovBancos}',${tarifasSantander.idMovBancos},'data','santanderTarifas','4');"
                 />
           </td>
+       	  <td class="tiraPaddingData">
+	       	  <select id="emprestimoTipoBanco" class="form-control" onblur="editaValoresSaidas('editaTarifas','dataSantander${tarifasSantander.idMovBancos}',${tarifasSantander.idMovBancos},'data','santanderTarifas','4');">
+		       <option value="1">Itau</option>
+		       <option value="2">CEF</option>
+		       <option value="3">Bradesco</option>
+		       <option value="4">Santander</option>
+	       	  </select>
+          </td>
           <td class="tiraPaddingData" colspan="3">
              <input id="descricaoSantander${tarifasSantander.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${tarifasSantander.descricao}"
                 onblur="editaValoresSaidas('editaTarifas','descricaoSantander${tarifasSantander.idMovBancos}',${tarifasSantander.idMovBancos},'descricao','santanderTarifas','4');"
@@ -42,6 +59,13 @@
              onblur="editaValoresSaidas('editaTarifas','valorSantander${tarifasSantander.idMovBancos}',${tarifasSantander.idMovBancos},'valor','santanderTarifas','4');"
              /> 
           </td>
+          <td>
+          		<a href="" class="btn btn-info">PAGAR</a>
+          	
+          	
+          </td>
+          
+          
        </tr>
        <c:set var="totalSantander" value="${totalSantander+tarifasSantander.valor}" />
     </c:forEach>
