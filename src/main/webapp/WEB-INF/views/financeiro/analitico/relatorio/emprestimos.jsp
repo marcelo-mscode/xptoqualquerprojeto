@@ -7,12 +7,12 @@
 
 <table class="table table-hover table-bordered">
     <tr>
-       <td colspan="7" align="center" class="verdeClaroFlat"><b>EMPRESTIMOS</b></td>
+       <td colspan="7" align="center" class="verdeClaroFlat"><b>EMPRÉSTIMOS</b></td>
     </tr>
     <tr>
        <td class="tiraPaddingData"><input id="dataSantander" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
        <td class="" style="padding: 0px">
-       <select id="emprestimoTipoBanco" class="form-control" style="width: 120px">
+       <select id="emprestimoTipoBanco" class="form-control" style="width: 120px;height: 50px;border: none;">
 	       <option value="1">Itau</option>
 	       <option value="2">CEF</option>
 	       <option value="3">Bradesco</option>
@@ -21,10 +21,10 @@
        </td>		
        <td class="tiraPaddingData" colspan="3"><input id="descSantander" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
        <td class="tiraPaddingData"><input id="valorSantander" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td><button onclick="insereDadosMovimentacaoSaidas('dataSantander','descSantander','valorSantander','salvaNovaTarifa',${idAnalitico},'emprestimos','4');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td style="text-align: center !important;"><button onclick="insereDadosMovimentacaoSaidas('dataSantander','descSantander','valorSantander','salvaNovaTarifa',${idAnalitico},'emprestimos','4');" class="btn btn-default botaoMais botaoMaisDespesa" >+</button> </td>
     </tr>
     <tr>
-       <td>DATA</td>
+       <td>DATA PARCELA</td>
        <td>Banco</td>
        <td colspan="3">Descrição</td>
        <td colspan="1">Valor</td>
@@ -34,15 +34,15 @@
     </tr>
     
     <c:set var="totalSantander" value="0.00" />
-    <c:forEach items="${tarifasSantander}" var="tarifasSantander">
+    <c:forEach items="${emprestimosBancos}" var="emprestimosBancos">
        <tr>
-       	  <td class="tiraPaddingData"><input id="dataSantander${tarifasSantander.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${tarifasSantander.data}" pattern="dd/MM"/>" type="text"
-                onclick="mudaCampoData('dataSantander${tarifasSantander.idMovBancos}');"
-                onblur="editaValoresSaidas('editaTarifas','dataSantander${tarifasSantander.idMovBancos}',${tarifasSantander.idMovBancos},'data','santanderTarifas','4');"
+       	  <td class="tiraPaddingData"><input id="dataSantander${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${emprestimosBancos.dataPrimeiroPagamento}" pattern="dd/MM/yyyy"/>" type="text"
+                onclick="mudaCampoData('dataSantander${emprestimosBancos.idEmprestimo}');"
+                onblur="editaValoresSaidas('editaTarifas','dataSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'data','santanderTarifas','4');"
                 />
           </td>
        	  <td class="tiraPaddingData">
-	       	  <select id="emprestimoTipoBanco" class="form-control" onblur="editaValoresSaidas('editaTarifas','dataSantander${tarifasSantander.idMovBancos}',${tarifasSantander.idMovBancos},'data','santanderTarifas','4');">
+	       	  <select id="emprestimoTipoBanco" class="form-control" onblur="editaValoresSaidas('editaTarifas','dataSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'data','santanderTarifas','4');" style="width: 120px;height: 50px;border: none;">
 		       <option value="1">Itau</option>
 		       <option value="2">CEF</option>
 		       <option value="3">Bradesco</option>
@@ -50,31 +50,32 @@
 	       	  </select>
           </td>
           <td class="tiraPaddingData" colspan="3">
-             <input id="descricaoSantander${tarifasSantander.idMovBancos}" class="ajusteInput2 tiraPaddingData input-140px" value="${tarifasSantander.descricao}"
-                onblur="editaValoresSaidas('editaTarifas','descricaoSantander${tarifasSantander.idMovBancos}',${tarifasSantander.idMovBancos},'descricao','santanderTarifas','4');"
+             <input id="descricaoSantander${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData input-140px" value="${emprestimosBancos.descricao}"
+                onblur="editaValoresSaidas('editaTarifas','descricaoSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'descricao','santanderTarifas','4');"
                 />
           </td>
-          <td class="tiraPaddingData"  <c:if test = "${tarifasSantander.valor < 0}">style='color:red'</c:if> >
-             <input id="valorSantander${tarifasSantander.idMovBancos}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${tarifasSantander.valor}" pattern="#,##0.00"/>"
-             onblur="editaValoresSaidas('editaTarifas','valorSantander${tarifasSantander.idMovBancos}',${tarifasSantander.idMovBancos},'valor','santanderTarifas','4');"
+          <td class="tiraPaddingData"  <c:if test = "${emprestimosBancos.valorParcela < 0}">style='color:red'</c:if> >
+             <input id="valorSantander${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${emprestimosBancos.valorParcela}" pattern="#,##0.00"/>"
+             onblur="editaValoresSaidas('editaTarifas','valorSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'valor','santanderTarifas','4');"
              /> 
           </td>
-          <td>
-          		<a href="" class="btn btn-info">PAGAR</a>
-          	
-          	
+          <td>	
+          		<c:if test="${emprestimosBancos.pago == true}">
+	          		<a href="" class="btn btn-success" disabled="disabled">PAGO</a>
+          		</c:if>
+          		<c:if test="${emprestimosBancos.pago == false}">
+	          		<a href="" class="btn btn-info">PAGAR</a>
+          		</c:if>
           </td>
-          
-          
        </tr>
-       <c:set var="totalSantander" value="${totalSantander+tarifasSantander.valor}" />
+       <c:set var="totalSantander" value="${totalSantander+emprestimosBancos.valorParcela}" />
     </c:forEach>
     <tr>
-    
     <tr>
        <td colspan="5"></td>
        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
        	<b><fmt:formatNumber value="${totalSantander}" pattern="#,##0.00"/></b>
        </td>
+       <td></td>
     </tr>
 </table>

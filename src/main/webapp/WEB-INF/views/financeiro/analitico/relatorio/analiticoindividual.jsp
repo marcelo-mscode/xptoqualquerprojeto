@@ -42,7 +42,7 @@
    </ol>
 </div>
 
-<div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 720%">
+<div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 760%">
    <div style="padding: 15px 0 55px 20px;;box-shadow: 0px 0px 30px 5px #ccc;margin-top: 42px;padding-right: 40px;">
       <h2>Analítico ${InfoAnalitico.mesA} ${InfoAnalitico.anoA}</h2>
 		

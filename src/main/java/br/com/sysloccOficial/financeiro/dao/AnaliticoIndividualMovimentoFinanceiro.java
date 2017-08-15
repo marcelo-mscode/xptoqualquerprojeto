@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
+import br.com.sysloccOficial.financeiro.model.EmprestimoBancario;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
@@ -390,6 +391,20 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		
 	}
 
+	public List<EmprestimoBancario> carregaEmprestimos(Integer idAnalitico) {
+		try {
+			TypedQuery<EmprestimoBancario> emp = manager.createQuery("from EmprestimoBancario f join fetch f.analitico where idAnalitico="+idAnalitico,EmprestimoBancario.class);
+			return emp.getResultList();
+		} catch (Exception e) {
+			System.out.println("Não foi possível carregar a lista emprestimos. Motivo: "+e);
+			return null;
+		}
+	}
+	
+	
+	
+	
+	
 	private void setaCamposSaldaAnterior(String _valor, String _tipoCampo, MovimentacaoBancosSaldoAnterior _paraMerge) {
 		
 		if(_tipoCampo.equals("data")){
@@ -436,5 +451,10 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 			}
 		}
 	}
+
+
+
+
+	
 	
 }
