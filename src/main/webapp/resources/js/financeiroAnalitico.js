@@ -174,13 +174,13 @@ function insereEmprestimos(data,desc,valor1,action, idAnalitico,idDivAjax,idBanc
 	var banco = $("#"+idBanco).val();
 	
 	
-	console.log(datas);
+	/*console.log(datas);
 	console.log(descricao);
 	console.log(valor);
 	console.log("Action: "+action);
 	console.log(idAnalitico);
 	console.log(idDivAjax);
-	console.log(idBanco);
+	console.log(idBanco);*/
 	
 	
 	console.log(action+"?idAnalitico="+idAnalitico+"&DataPgto="+datas+"&valor="+valor+"&descricao="+descricao+"&idBanco="+banco);
@@ -199,7 +199,7 @@ function insereEmprestimos(data,desc,valor1,action, idAnalitico,idDivAjax,idBanc
 	
 	
 	$.ajax({
-		url : action+"?idAnalitico="+idAnalitico/*+"&DataPgto="+datas+"&valor="+valor+"&descricao="+descricao+"&idBanco="+banco*/,
+		url : action+"?idAnalitico="+idAnalitico+"&DataPgto="+datas+"&valor="+valor+"&descricao="+descricao+"&idBanco="+banco,
 		success : function(data) {
 			$("#"+idDivAjax).html(data);
 		}

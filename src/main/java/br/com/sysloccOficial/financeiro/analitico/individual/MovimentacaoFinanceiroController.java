@@ -141,26 +141,25 @@ public class MovimentacaoFinanceiroController {
 	
 	@RequestMapping("salvaNovoEmprestimo")
 	@ResponseBody
-	private ModelAndView salvaNovoEmprestimo(int idAnalitico/*,String DataPgto, String valor,String descricao,int idBanco*/) throws ParseException{
+	private ModelAndView salvaNovoEmprestimo(Integer idAnalitico,String DataPgto, String valor,String descricao,Integer idBanco) throws ParseException{
 		
 		
 		System.out.println(idAnalitico);
-/*		System.out.println(DataPgto);
+		System.out.println(DataPgto);
 		System.out.println(valor);
 		System.out.println(descricao);
 		System.out.println(idBanco);
-*/		
-		/*analiticoMovFinanceiroDAO.novaTarifa(idAnalitico,DataPgto,valor,descricao,idBanco);
 		
-		MontaTiposbancos tipos = new MontaTiposbancos();
+		analiticoMovFinanceiroDAO.novoEmprestimo(idAnalitico,DataPgto,valor,descricao,idBanco);
+		
+/*		MontaTiposbancos tipos = new MontaTiposbancos();
 		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
-		
-		MV.addObject("idAnalitico",idAnalitico);
-		MV.addObject(bancos[1], analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco));
+*/		
 
-		return MV;
-*/	
 		ModelAndView MV = new ModelAndView("financeiro/analitico/emprestimos");
+		/*MV.addObject("idAnalitico",idAnalitico);
+		MV.addObject(bancos[1], analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco));
+*/
 		return MV;
 		}
 	

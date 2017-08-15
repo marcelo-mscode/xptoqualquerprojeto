@@ -451,6 +451,37 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 
 
-	
+	public void novoEmprestimo(Integer idAnalitico, String dataPgto,String _valor, String descricao, Integer idBanco) {
+		
+		try {	
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date data = new java.sql.Date(format.parse(dataPgto).getTime());
+			
+			FinancAnalitico analitico = manager.getReference(FinancAnalitico.class, idAnalitico);
+			BancosAnalitico banco = manager.getReference(BancosAnalitico.class, idBanco);
+			
+			EmprestimoBancario emprestimo = new EmprestimoBancario();
+			emprestimo.setAnalitico(analitico);
+			emprestimo.setBanco(banco);
+			emprestimo.setDescricao(descricao);
+			emprestimo.setDataPrimeiroPagamento(data);
+			
+			try {
+				if(_valor.equals(null) || _valor.equals("")|| _valor.equals(" ")){
+					emprestimo.setValorParcela(new BigDecimal("0.00"));
+				}else{
+					emprestimo.setValorParcela(new BigDecimal(util.formataValores(_valor)));
+				}
+			} catch (NumberFormatException e) {
+				emprestimo.setValorParcela(new BigDecimal("0.00"));
+			}
+			
+			manager.persist(emprestimo);
+			
+		} catch (Exception e) {
+			System.out.println("Houve em erro ao salva Emprestimo:" + e);
+		}
+		
+	}
 	
 }
