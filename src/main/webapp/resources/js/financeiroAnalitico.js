@@ -144,14 +144,6 @@ function editaValoresSaidas(action,campo,idTabela,tipoCampo,idDivAjax,idBanco) {
 	
 	var valor = $("#"+campo).val();
 	var valor2 = valor.replace("%","x1x2x3x");
-
-	
-	console.log(action);
-	console.log(campo);
-	console.log(idTabela);
-	console.log(tipoCampo);
-	console.log(idDivAjax);
-	console.log(idBanco);
 	
 	$.ajax({
 		url : action+"?idTabela="+idTabela+"&valor="+valor2+"&tipoCampo="+tipoCampo+"&idBanco="+idBanco,
@@ -163,6 +155,58 @@ function editaValoresSaidas(action,campo,idTabela,tipoCampo,idDivAjax,idBanco) {
 
 //Edita Saldos em movimento financeiros Bancos
 function editaSaldos(campo,idAnalitico,tipoCampo,idBanco) {
+	
+	var valor = $("#"+campo).val();
+	
+	$.ajax({
+		url : "editaSaldosBancos?valor="+valor+"&idAnalitico="+idAnalitico+"&tipoCampo="+tipoCampo+"&idBanco="+idBanco,
+		success : function(data) {
+			location.reload();
+		}
+	});
+};
+// -------------------------------------------------------------------------------------------------------------- //
+//Salva novo Emprestimo
+function insereEmprestimos(data,desc,valor1,action, idAnalitico,idDivAjax,idBanco) {
+	var valor = $("#"+valor1).val();
+	var descricao = $("#"+desc).val();
+	var datas = $("#"+data).val();
+	var banco = $("#"+idBanco).val();
+	
+	
+	console.log(datas);
+	console.log(descricao);
+	console.log(valor);
+	console.log("Action: "+action);
+	console.log(idAnalitico);
+	console.log(idDivAjax);
+	console.log(idBanco);
+	
+	
+	console.log(action+"?idAnalitico="+idAnalitico+"&DataPgto="+datas+"&valor="+valor+"&descricao="+descricao+"&idBanco="+banco);
+	
+	
+	if(datas == '' || datas ==' ' || datas == null){
+		$("#"+data).css("border","1px solid red");
+		alert("Coloque um valor");
+		return false;
+	}
+	if(descricao == '' || descricao ==' ' || descricao == null){
+		$("#"+desc).css("border","1px solid red");
+		alert("Coloque um valor");
+		return false;
+	}
+	
+	
+	$.ajax({
+		url : action+"?idAnalitico="+idAnalitico/*+"&DataPgto="+datas+"&valor="+valor+"&descricao="+descricao+"&idBanco="+banco*/,
+		success : function(data) {
+			$("#"+idDivAjax).html(data);
+		}
+	});
+};
+//Edita Emprestimos
+function editaEmprestimos(campo,idAnalitico,tipoCampo,idBanco) {
 	
 	var valor = $("#"+campo).val();
 	
@@ -179,7 +223,5 @@ function editaSaldos(campo,idAnalitico,tipoCampo,idBanco) {
 		}
 	});
 };
-
-
 
 

@@ -139,10 +139,51 @@ public class MovimentacaoFinanceiroController {
 	}
 	
 	
+	@RequestMapping("salvaNovoEmprestimo")
+	@ResponseBody
+	private ModelAndView salvaNovoEmprestimo(int idAnalitico/*,String DataPgto, String valor,String descricao,int idBanco*/) throws ParseException{
+		
+		
+		System.out.println(idAnalitico);
+/*		System.out.println(DataPgto);
+		System.out.println(valor);
+		System.out.println(descricao);
+		System.out.println(idBanco);
+*/		
+		/*analiticoMovFinanceiroDAO.novaTarifa(idAnalitico,DataPgto,valor,descricao,idBanco);
+		
+		MontaTiposbancos tipos = new MontaTiposbancos();
+		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
+		
+		MV.addObject("idAnalitico",idAnalitico);
+		MV.addObject(bancos[1], analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco));
+
+		return MV;
+*/	
+		ModelAndView MV = new ModelAndView("financeiro/analitico/emprestimos");
+		return MV;
+		}
+	
+	/*
+	@RequestMapping("editaTarifas")
+	@ResponseBody
+	private ModelAndView editaTarifas(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
+		
+		MontaTiposbancos tipos = new MontaTiposbancos();
+		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
+		
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
+		
+		Integer idAnalitico = analiticoMovFinanceiroDAO.editaNovaTarifa(idTabela,valor,tipoCampo);
+		
+		MV.addObject("idAnalitico",idAnalitico);
+		List<MovimentacaoBancosTarifas> analitico2 = analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco);
+		MV.addObject(bancos[1],analitico2);
+		return MV;
+	}
 	
 	
-	
-	
+	*/
 	
 	
 	

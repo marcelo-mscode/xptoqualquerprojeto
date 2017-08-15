@@ -356,11 +356,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 				TypedQuery<MovimentacaoBancosSaldoAnterior> f = manager.createQuery("select f from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaldoAnterior.class);
 				return f.getSingleResult();
 			} catch (NoResultException e) {
-				
-				FinancAnalitico analitico = manager.getReference(FinancAnalitico.class, idAnalitico);
 				MovimentacaoBancosSaldoAnterior novo = new MovimentacaoBancosSaldoAnterior();
-				
-				
 				System.out.println("Não foi possível carregar as listagens de Saldos Anterior: "+e);
 				return novo;
 			}

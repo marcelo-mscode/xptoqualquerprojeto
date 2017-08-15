@@ -10,7 +10,7 @@
        <td colspan="7" align="center" class="verdeClaroFlat"><b>EMPRÉSTIMOS</b></td>
     </tr>
     <tr>
-       <td class="tiraPaddingData"><input id="dataSantander" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
+       <td class="tiraPaddingData"><input id="dataPgtoEmprestimo" type="date"  class="ajusteInput2 tiraPaddingData input-140px" value="2017-08-18"/></td>		
        <td class="" style="padding: 0px">
        <select id="emprestimoTipoBanco" class="form-control" style="width: 120px;height: 50px;border: none;">
 	       <option value="1">Itau</option>
@@ -19,9 +19,9 @@
 	       <option value="4">Santander</option>
        </select>	
        </td>		
-       <td class="tiraPaddingData" colspan="3"><input id="descSantander" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
-       <td class="tiraPaddingData"><input id="valorSantander" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
-       <td style="text-align: center !important;"><button onclick="insereDadosMovimentacaoSaidas('dataSantander','descSantander','valorSantander','salvaNovaTarifa',${idAnalitico},'emprestimos','4');" class="btn btn-default botaoMais botaoMaisDespesa" >+</button> </td>
+       <td class="tiraPaddingData" colspan="3"><input id="descEmprestimo" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição" value="Teste de emprestimo"/></td>
+       <td class="tiraPaddingData"><input id="valorEmprestimo" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor" value="800"/></td>
+       <td style="text-align: center !important;"><button onclick="insereEmprestimos('dataPgtoEmprestimo','descEmprestimo','valorEmprestimo','salvaNovoEmprestimo',${idAnalitico},'emprestimos','emprestimoTipoBanco');" class="btn btn-default botaoMais botaoMaisDespesa" >+</button> </td>
     </tr>
     <tr>
        <td>DATA PARCELA</td>
