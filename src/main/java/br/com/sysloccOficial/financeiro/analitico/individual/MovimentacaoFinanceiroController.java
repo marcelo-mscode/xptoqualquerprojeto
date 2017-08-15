@@ -143,37 +143,28 @@ public class MovimentacaoFinanceiroController {
 	@ResponseBody
 	private ModelAndView salvaNovoEmprestimo(Integer idAnalitico,String DataPgto, String valor,String descricao,Integer idBanco) throws ParseException{
 		
-		
-		System.out.println(idAnalitico);
-		System.out.println(DataPgto);
-		System.out.println(valor);
-		System.out.println(descricao);
-		System.out.println(idBanco);
-		
 		analiticoMovFinanceiroDAO.novoEmprestimo(idAnalitico,DataPgto,valor,descricao,idBanco);
-		
-/*		MontaTiposbancos tipos = new MontaTiposbancos();
-		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
-*/		
 
-		ModelAndView MV = new ModelAndView("financeiro/analitico/emprestimos");
-		/*MV.addObject("idAnalitico",idAnalitico);
-		MV.addObject(bancos[1], analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco));
-*/
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/emprestimos");
+		MV.addObject("idAnalitico",idAnalitico);
+		MV.addObject("emprestimosBancos", analiticoMovFinanceiroDAO.carregaEmprestimos(idAnalitico));
+
 		return MV;
 		}
 	
-	/*
-	@RequestMapping("editaTarifas")
+	
+	@RequestMapping("editaEmprestimo")
 	@ResponseBody
-	private ModelAndView editaTarifas(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
+	private ModelAndView editaEmprestimo(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
+		
+		Integer idAnalitico = analiticoMovFinanceiroDAO.editaEmprestimo(idTabela,valor,tipoCampo);
+
 		
 		MontaTiposbancos tipos = new MontaTiposbancos();
 		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
 		
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
 		
-		Integer idAnalitico = analiticoMovFinanceiroDAO.editaNovaTarifa(idTabela,valor,tipoCampo);
 		
 		MV.addObject("idAnalitico",idAnalitico);
 		List<MovimentacaoBancosTarifas> analitico2 = analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco);
@@ -182,7 +173,7 @@ public class MovimentacaoFinanceiroController {
 	}
 	
 	
-	*/
+	
 	
 	
 	

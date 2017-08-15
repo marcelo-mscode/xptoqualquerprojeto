@@ -206,18 +206,17 @@ function insereEmprestimos(data,desc,valor1,action, idAnalitico,idDivAjax,idBanc
 	});
 };
 //Edita Emprestimos
-function editaEmprestimos(campo,idAnalitico,tipoCampo,idBanco) {
+function editaEmprestimos(campo,idAnalitico,tipoCampo,idEmprestimo) {
 	
 	var valor = $("#"+campo).val();
 	
-	console.log(campo);
 	console.log(valor);
 	console.log(idAnalitico);
 	console.log(tipoCampo);
-	console.log(idBanco);
+	console.log(idEmprestimo);
 	
 	$.ajax({
-		url : "editaSaldosBancos?valor="+valor+"&idAnalitico="+idAnalitico+"&tipoCampo="+tipoCampo+"&idBanco="+idBanco,
+		url : "editaSaldosBancos?valor="+valor+"&idAnalitico="+idAnalitico+"&tipoCampo="+tipoCampo+"&idBanco="+idBanco+"&idEmprestimo="+idEmprestimo,
 		success : function(data) {
 			location.reload();
 		}

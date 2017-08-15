@@ -36,13 +36,14 @@
     <c:set var="totalSantander" value="0.00" />
     <c:forEach items="${emprestimosBancos}" var="emprestimosBancos">
        <tr>
-       	  <td class="tiraPaddingData"><input id="dataSantander${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${emprestimosBancos.dataPrimeiroPagamento}" pattern="dd/MM/yyyy"/>" type="text"
-                onclick="mudaCampoData('dataSantander${emprestimosBancos.idEmprestimo}');"
-                onblur="editaValoresSaidas('editaTarifas','dataSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'data','santanderTarifas','4');"
-                />
+       	  <td class="tiraPaddingData">
+       	  		<input id="dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${emprestimosBancos.dataPrimeiroPagamento}" pattern="dd/MM/yyyy"/>" type="text"
+                onclick="mudaCampoData('dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}');"
+                onblur="editaEmprestimos('dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}',${idAnalitico},'data',${emprestimosBancos.idEmprestimo});"/>
           </td>
        	  <td class="tiraPaddingData">
-	       	  <select id="emprestimoTipoBanco" class="form-control" onblur="editaValoresSaidas('editaTarifas','dataSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'data','santanderTarifas','4');" style="width: 120px;height: 50px;border: none;">
+	       	  <select id="emprestimoTipoBanco" class="form-control" onblur="editaEmprestimos('editaTarifas','dataSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'data','santanderTarifas','4');" style="width: 120px;height: 50px;border: none;">
+		       <option value="1">${emprestimosBancos.banco.nomebanco}</option>
 		       <option value="1">Itau</option>
 		       <option value="2">CEF</option>
 		       <option value="3">Bradesco</option>
@@ -51,12 +52,12 @@
           </td>
           <td class="tiraPaddingData" colspan="3">
              <input id="descricaoSantander${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData input-140px" value="${emprestimosBancos.descricao}"
-                onblur="editaValoresSaidas('editaTarifas','descricaoSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'descricao','santanderTarifas','4');"
+                onblur="editaEmprestimos('editaTarifas','descricaoSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'descricao','santanderTarifas','4');"
                 />
           </td>
           <td class="tiraPaddingData"  <c:if test = "${emprestimosBancos.valorParcela < 0}">style='color:red'</c:if> >
              <input id="valorSantander${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${emprestimosBancos.valorParcela}" pattern="#,##0.00"/>"
-             onblur="editaValoresSaidas('editaTarifas','valorSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'valor','santanderTarifas','4');"
+             onblur="editaEmprestimos('editaTarifas','valorSantander${emprestimosBancos.idEmprestimo}',${emprestimosBancos.idEmprestimo},'valor','santanderTarifas','4');"
              /> 
           </td>
           <td>	

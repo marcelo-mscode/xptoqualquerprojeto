@@ -397,10 +397,6 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		}
 	}
 	
-	
-	
-	
-	
 	private void setaCamposSaldaAnterior(String _valor, String _tipoCampo, MovimentacaoBancosSaldoAnterior _paraMerge) {
 		
 		if(_tipoCampo.equals("data")){
@@ -483,5 +479,64 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 		}
 		
 	}
+
+
+
+
+	public Integer editaEmprestimo(Integer idTabela, String valor,String tipoCampo) {
+
+		try {
+			
+		TypedQuery<EmprestimoBancario> query = manager.createQuery("", EmprestimoBancario.class);	
+		EmprestimoBancario emprestimo = query.getSingleResult();
+		
+		if(tipoCampo.equals("descricao")){
+			String valor2 = valor.replace("x1x2x3x", "%");
+			emprestimo.setDescricao(valor2);
+		}
+
+		if(tipoCampo.equals("data")){
+			try {
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+				Date data = new java.sql.Date(format.parse(valor).getTime());
+				emprestimo.setDataPrimeiroPagamento(data);
+			} catch (ParseException e) {
+				System.out.println(e);
+			}
+		}
+			
+		if(tipoCampo.equals("valor")){
+			
+			try {
+				if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
+					emprestimo.setValorParcela(new BigDecimal("0.00"));
+				}else{
+					emprestimo.setValorParcela(new BigDecimal(util.formataValores(valor)));
+				}
+			} catch (NumberFormatException e) {
+				emprestimo.setValorParcela(new BigDecimal("0.00"));
+			}
+		}
+			
+		return emprestimo.getAnalitico().getIdAnalitico();
+		
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
