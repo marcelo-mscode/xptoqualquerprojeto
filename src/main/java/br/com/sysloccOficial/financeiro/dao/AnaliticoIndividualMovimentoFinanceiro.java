@@ -390,6 +390,12 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 	public List<EmprestimoBancario> carregaEmprestimos(Integer idAnalitico) {
 		try {
 			TypedQuery<EmprestimoBancario> emp = manager.createQuery("from EmprestimoBancario f join fetch f.analitico where idAnalitico="+idAnalitico,EmprestimoBancario.class);
+			
+			
+			HashSet<EmprestimoBancario> movTarifas = new HashSet<EmprestimoBancario>(f.getResultList());
+			
+			
+			
 			return emp.getResultList();
 		} catch (Exception e) {
 			System.out.println("Não foi possível carregar a lista emprestimos. Motivo: "+e);
@@ -525,6 +531,15 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 				
 				BancosAnalitico banco = manager.getReference(BancosAnalitico.class, Integer.parseInt(valor));
 				emprestimo.setBanco(banco);
+			} catch (NumberFormatException e) {
+				System.out.println("Erro ao editar o banco em emprestimos: "+e);
+			}
+		}
+
+		if(tipoCampo.equals("pagar")){
+			
+			try {
+				emprestimo.setPago(true);
 			} catch (NumberFormatException e) {
 				System.out.println("Erro ao editar o banco em emprestimos: "+e);
 			}

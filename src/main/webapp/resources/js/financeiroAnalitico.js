@@ -206,7 +206,7 @@ function insereEmprestimos(data,desc,valor1,action, idAnalitico,idDivAjax,idBanc
 	});
 };
 //Edita Emprestimos
-function editaEmprestimos(campo,idAnalitico,tipoCampo,idEmprestimo) {
+function editaEmprestimos(campo,idAnalitico,tipoCampo,idEmprestimo,idDivAjax) {
 	
 	var valor = $("#"+campo).val();
 	
@@ -218,7 +218,7 @@ function editaEmprestimos(campo,idAnalitico,tipoCampo,idEmprestimo) {
 	$.ajax({
 		url : "editaEmprestimo?valor="+valor+"&idAnalitico="+idAnalitico+"&tipoCampo="+tipoCampo+"&idEmprestimo="+idEmprestimo,
 		success : function(data) {
-			location.reload();
+			$("#"+idDivAjax).html(data);
 		}
 	});
 };

@@ -3,7 +3,6 @@ package br.com.sysloccOficial.financeiro.analitico.individual;
 import java.text.ParseException;
 import java.util.List;
 
-import org.hibernate.boot.registry.selector.spi.StrategySelectionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.financeiro.analitico.individual.tiposBancos.MontaTiposbancos;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
+import br.com.sysloccOficial.financeiro.model.EmprestimoBancario;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
@@ -20,6 +20,7 @@ import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
 public class MovimentacaoFinanceiroController {
 
 	@Autowired private AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
+	
 	
 	@RequestMapping("salvaNovaEntrada")
 	@ResponseBody
@@ -159,17 +160,13 @@ public class MovimentacaoFinanceiroController {
 		
 		analiticoMovFinanceiroDAO.editaEmprestimo(idEmprestimo,valor,tipoCampo);
 
-		
-		
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/emprestimos");
 		
-/*		MontaTiposbancos tipos = new MontaTiposbancos();
-		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
-		
 		MV.addObject("idAnalitico",idAnalitico);
-		List<MovimentacaoBancosTarifas> analitico2 = analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco);
-		MV.addObject(bancos[1],analitico2);
-*/		return MV;
+		
+		List<EmprestimoBancario> emprestimos = analiticoMovFinanceiroDAO.carregaEmprestimos(idAnalitico);
+		MV.addObject("emprestimosBancos",emprestimos);
+		return MV;
 	}
 	
 	

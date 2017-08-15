@@ -59,7 +59,7 @@
             	<td colspan="3" align="center" class="verdeClaroFlat"><b>CEF</b></td>
             	<td colspan="3" align="center" class="corMarronEstranha"><b>BRADESCO</b></td>
             	<td colspan="3" align="center" class="corRosaEstranha"><b>SANTANDER</b></td>
-            	<td colspan="3" align="center" class="verdeClaroFlat"><b>EMPRÉSTIMOS</b></td>
+            	<td colspan="3" align="center" class="verdeClaroFlat"><b>EMPRÉSTIMOS BANCÁRIOS</b></td>
             </tr>
             <tr>
             	<td class="juntaColunas ajusteTelefone" id="impostos">

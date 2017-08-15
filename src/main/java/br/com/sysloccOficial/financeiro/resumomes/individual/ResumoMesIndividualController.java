@@ -10,8 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.analitico.individual.CarregaSaldosBancarios;
+import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
 import br.com.sysloccOficial.financeiro.dao.MontaContasPagarDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
+import br.com.sysloccOficial.financeiro.model.EmprestimoBancario;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
@@ -22,6 +24,7 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 	@Autowired DadosEventosMes dadosEvento;
 	@Autowired UtilitariaDatas utilDatas;
 	@Autowired MontaContasPagarDAO montaObjeto;
+	@Autowired AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
 	
 
 	@RequestMapping("resumoMesIndividual")
@@ -129,33 +132,22 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
 		BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
 		
-		
-		
 		MV.addObject("eventosContasPagar", somaTotal);
-		
 		//
 		MV.addObject("salarios", relatorioEventoDAO.salarios(anoMes));
-		
 		//
 		MV.addObject("outrosImpostos", relatorioEventoDAO.outrosImpostos(anoMes));
-		
 		
 		MV.addObject("totalPagar", dadosEvento.totalPagar(relatorioEventoDAO.contasReceber(ano.toString(),nomeMes),
 								   relatorioEventoDAO.salarios(anoMes),
 								   somaTotalCache, impostos, relatorioEventoDAO.outrosImpostos(anoMes)
 		));
 		
+		// Total conta Garantia Itau ( soma dos emprestimos cadastrados )
+		MV.addObject("outrosImpostos", relatorioEventoDAO.outrosImpostos(anoMes));
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		List<EmprestimoBancario> carregaEmprestimos = analiticoMovFinanceiroDAO.carregaEmprestimos(idAnalitico);
 		
 		
 		

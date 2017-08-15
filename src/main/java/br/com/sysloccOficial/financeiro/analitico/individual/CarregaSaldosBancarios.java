@@ -21,7 +21,6 @@ public class CarregaSaldosBancarios {
 		return analiticoMovFinanceiroDAO.pegaIdAnalitico(mes, ano);
 	}
 	
-	
 	public CarregaSaldosBancarios() {
 		super();
 	}
