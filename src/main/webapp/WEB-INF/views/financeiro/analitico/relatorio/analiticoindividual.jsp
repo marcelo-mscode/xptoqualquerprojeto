@@ -42,7 +42,7 @@
    </ol>
 </div>
 
-<div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 680%">
+<div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 720%">
    <div style="padding: 15px 0 55px 20px;;box-shadow: 0px 0px 30px 5px #ccc;margin-top: 42px;padding-right: 40px;">
       <h2>Analítico ${InfoAnalitico.mesA} ${InfoAnalitico.anoA}</h2>
 		
@@ -59,6 +59,7 @@
             	<td colspan="3" align="center" class="verdeClaroFlat"><b>CEF</b></td>
             	<td colspan="3" align="center" class="corMarronEstranha"><b>BRADESCO</b></td>
             	<td colspan="3" align="center" class="corRosaEstranha"><b>SANTANDER</b></td>
+            	<td colspan="3" align="center" class="verdeClaroFlat"><b>EMPRÉSTIMOS</b></td>
             </tr>
             <tr>
             	<td class="juntaColunas ajusteTelefone" id="impostos">
@@ -399,6 +400,11 @@
                </td>
 
 <!--  ------------------------------------------------------------------------  -->
+               
+               <td class="juntaColunas ajusteTelefone" id="emprestimos">
+                  <c:import url="emprestimos.jsp" />
+               </td>
+               
                
             </tr>
          </tbody>
