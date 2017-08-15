@@ -402,25 +402,21 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 	public BigDecimal pegaTotalEmprestimosSemParcelamento(Integer idAnalitico){
 		
 		try {
-			
 			BigDecimal valors = new BigDecimal("0");
+		
 			String consulta = "from EmprestimoBancario f join fetch f.analitico where idAnalitico="+idAnalitico;
 			TypedQuery<EmprestimoBancario> emp = manager.createQuery(consulta,EmprestimoBancario.class);
 
-			HashSet<EmprestimoBancario> total = emp.getResultList();
-			 
-			 for (int i = 0; i < total.size(); i++) {
-				valors = valors.add(total.get(i).getValorParcela());
+			HashSet<EmprestimoBancario> total = new HashSet<EmprestimoBancario>(emp.getResultList());
+				
+			for (EmprestimoBancario emprestimo: total) {
+				valors = valors.add(emprestimo.getValorParcela());
 			}
 			 
 			return valors;
 		} catch (Exception e) {
 			System.out.println("Erro ao pegar total de emprestimos: "+e);
-			
-		//	JOptionPane.showMessageDialog(null, "Erro ao pegar total de emprestimos"+e);
-			
 			BigDecimal valor = new BigDecimal("0");
-			
 			return valor;
 		}
 	}
