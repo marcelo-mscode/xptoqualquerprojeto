@@ -216,7 +216,7 @@ function editaEmprestimos(campo,idAnalitico,tipoCampo,idEmprestimo) {
 	console.log(idEmprestimo);
 	
 	$.ajax({
-		url : "editaSaldosBancos?valor="+valor+"&idAnalitico="+idAnalitico+"&tipoCampo="+tipoCampo+"&idBanco="+idBanco+"&idEmprestimo="+idEmprestimo,
+		url : "editaEmprestimo?valor="+valor+"&idAnalitico="+idAnalitico+"&tipoCampo="+tipoCampo+"&idEmprestimo="+idEmprestimo,
 		success : function(data) {
 			location.reload();
 		}

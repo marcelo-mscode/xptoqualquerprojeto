@@ -155,21 +155,21 @@ public class MovimentacaoFinanceiroController {
 	
 	@RequestMapping("editaEmprestimo")
 	@ResponseBody
-	private ModelAndView editaEmprestimo(Integer idTabela,String valor,String tipoCampo,Integer idBanco) throws ParseException{
+	private ModelAndView editaEmprestimo(String valor,Integer idAnalitico,String tipoCampo,Integer idEmprestimo) throws ParseException{
 		
-		Integer idAnalitico = analiticoMovFinanceiroDAO.editaEmprestimo(idTabela,valor,tipoCampo);
+		analiticoMovFinanceiroDAO.editaEmprestimo(idEmprestimo,valor,tipoCampo);
 
 		
-		MontaTiposbancos tipos = new MontaTiposbancos();
+		
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/emprestimos");
+		
+/*		MontaTiposbancos tipos = new MontaTiposbancos();
 		String bancos[] = tipos.montaTipoBancosTarifas(idBanco);
-		
-		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/movimentoFinanceiro"+bancos[0]);
-		
 		
 		MV.addObject("idAnalitico",idAnalitico);
 		List<MovimentacaoBancosTarifas> analitico2 = analiticoMovFinanceiroDAO.carregaAnaliticoTarifas(idAnalitico,idBanco);
 		MV.addObject(bancos[1],analitico2);
-		return MV;
+*/		return MV;
 	}
 	
 	

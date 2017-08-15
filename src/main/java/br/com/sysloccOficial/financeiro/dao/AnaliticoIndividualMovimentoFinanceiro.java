@@ -483,11 +483,12 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 
 
-	public Integer editaEmprestimo(Integer idTabela, String valor,String tipoCampo) {
+	public Integer editaEmprestimo(Integer idEmprestimo, String valor,String tipoCampo) {
 
 		try {
 			
-		TypedQuery<EmprestimoBancario> query = manager.createQuery("", EmprestimoBancario.class);	
+		TypedQuery<EmprestimoBancario> query = manager.createQuery("from EmprestimoBancario where idEmprestimo="+idEmprestimo, EmprestimoBancario.class);	
+
 		EmprestimoBancario emprestimo = query.getSingleResult();
 		
 		if(tipoCampo.equals("descricao")){
@@ -517,10 +518,23 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 				emprestimo.setValorParcela(new BigDecimal("0.00"));
 			}
 		}
+		
+		if(tipoCampo.equals("combo")){
 			
+			try {
+				
+				BancosAnalitico banco = manager.getReference(BancosAnalitico.class, Integer.parseInt(valor));
+				emprestimo.setBanco(banco);
+			} catch (NumberFormatException e) {
+				System.out.println("Erro ao editar o banco em emprestimos: "+e);
+			}
+		}
+		
 		return emprestimo.getAnalitico().getIdAnalitico();
 		
 		} catch (Exception e) {
+			
+			System.out.println("Houve um erro ao atualizar emprestimos:"+e);
 			return null;
 		}
 	}
