@@ -99,4 +99,43 @@
 	
 </div>
 
+<style>
+ .navegacaoResumoMes{padding-top: 8px;font-size: 12px;position: fixed;bottom: 0px;background-color: #fff;border: 2px solid #ccc;height: 55px;}
+ .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
+</style>
+
+<div class="col-md-12 navegacaoResumoMes">
+
+	<table class="table table-bordered">
+		<tr>
+			<td class="input-95px">
+				 <a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink">Resumo mês</a>	
+			</td>
+			<td class="input-95px">
+				 <a href="contasPagar" class="navegacaoLink">Contas a pagar</a>	
+			</td>
+			<td>
+				 <a href="contasReceber" class="navegacaoLink">Contas a receber</a>	
+			</td>
+		
+		</tr>
+	</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <c:import url="../../../_comum/footer.jsp" />

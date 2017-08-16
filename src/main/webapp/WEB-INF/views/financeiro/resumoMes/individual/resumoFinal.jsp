@@ -22,7 +22,7 @@
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
-		<th class="input-160px" style="border: 2px solid #000"><b></b></th>
+		<th class="input-160px" style="border: 0px solid #000"><b></b></th>
 		<th class="input-160px"></th>
 	</tr>
 
