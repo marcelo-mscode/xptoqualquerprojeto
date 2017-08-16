@@ -57,8 +57,8 @@
 			</tr>
 
 			<tr>
-				<th class="input-260px" style="background-color: red">Dissidio Fev ??</th>
-				<th class="fundoAmarelo" style="color: red"> - </th>
+				<th class="input-260px">Dissidio Fev</th>
+				<th> - </th>
 				<th></th>
 				<th></th>
 				<th></th>

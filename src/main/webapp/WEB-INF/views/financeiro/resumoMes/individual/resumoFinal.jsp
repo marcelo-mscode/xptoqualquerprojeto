@@ -22,7 +22,7 @@
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
-		<th class="input-160px" style="border: 2px solid #000"><b></b></th>
+		<th class="input-160px" style="border: 0px solid #000"><b></b></th>
 		<th class="input-160px"></th>
 	</tr>
 
@@ -102,7 +102,7 @@
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
-		<th class="input-160px" style="border: 2px solid #000"><b>217.549,38</b></th>
+		<th class="input-160px" style="border: 2px solid #000"><b><fmt:formatNumber value="${totalPagar + giroItau + totalEmprestimos}" pattern="#,##0.00"/></b></th>
 		<th class="input-160px"></th>
 	</tr>
 

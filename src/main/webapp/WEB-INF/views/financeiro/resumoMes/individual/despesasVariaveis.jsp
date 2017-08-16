@@ -50,7 +50,7 @@
 			
 			<tr>
 				<th class="input-260px"><b>Juros Simples Nacional</b></th>
-				<th style="background-color: red"> - </th>
+				<th> - </th>
 				<th></th>
 				<th></th>
 				<th></th>
