@@ -2,6 +2,7 @@ package br.com.sysloccOficial.financeiro.contaspagar;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +45,30 @@ public class ContasPagarController {
 		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
 		MV.addObject("listaAnteriores", listaAnteriores);
 		
+		
+		
+		
+		HashSet<Integer> numeros = new HashSet<Integer>();
+		
+		for (int i = 0; i < listaAnteriores.size(); i++) {
+			numeros.add((Integer) listaAnteriores.get(i)[3]);
+		}
+		
+		
 		for (int i = 0; i < idListasAnteriores.size(); i++) {
-			for (int j = 0; j < listaAnteriores.size(); j++) {
-				if(idListasAnteriores.get(i)[0] == listaAnteriores.get(j)[3]){
-				}else {
-					idListasAnteriores.remove(i);
+			
+			for (Integer integer : numeros) {
+				if(idListasAnteriores.get(i)[0] == integer){
+					
+				}else{
+					 idListasAnteriores.remove(i);
 				}
 			}
 		}
+		
+		
+		
+		
 		
 		MV.addObject("idListasAnteriores",idListasAnteriores);
 		
