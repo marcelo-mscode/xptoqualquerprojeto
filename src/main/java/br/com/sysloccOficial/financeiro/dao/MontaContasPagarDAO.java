@@ -32,7 +32,9 @@ public class MontaContasPagarDAO {
 	
 	public List<Object[]> constroiObjeto(){
 		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
+	
 		List<Integer> idListas =  pegaIdsListasIndividuais(); 
+		
 		for (int i = 0; i < idListas.size(); i++) {
 			List<Integer> idFornecedores = pegaIdsFornecedoresPorIdLista(idListas.get(i));
 			for (int j = 0; j < idFornecedores.size(); j++) {
@@ -89,9 +91,6 @@ public class MontaContasPagarDAO {
 	}
 	
 	
-
-
-
 	private List<Integer> pegaIdsFornecedoresPorIdLista(Integer idListas) {
 		String consulta = "select distinct(idEmpFornecedor.idEmpresa) from ProducaoP where idLista ="+idListas;
 		TypedQuery<Integer> conLista = manager.createQuery(consulta, Integer.class);
@@ -265,10 +264,10 @@ public class MontaContasPagarDAO {
 			int idDataPgto = 0;
 			
 			idDataPgto = listaValorPagamentoFornecedor.get(i).getDtPgotFornecedor().getDtPagtoForncedor();
-			DtPgtoFornecedor dataP = manager.find(DtPgtoFornecedor.class, idDataPgto);
+			DtPgtoFornecedor dataPagamentoFornecedor = manager.find(DtPgtoFornecedor.class, idDataPgto);
 			
-			dataP.setStatus(StatusFinanceiro.PAGO);
-			manager.merge(dataP);
+			dataPagamentoFornecedor.setStatus(StatusFinanceiro.PAGO);
+			manager.merge(dataPagamentoFornecedor);
 			manager.close();
 		}
 		
