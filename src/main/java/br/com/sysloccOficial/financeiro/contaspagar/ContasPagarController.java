@@ -57,17 +57,28 @@ public class ContasPagarController {
 		
 		for (int i = 0; i < idListasAnteriores.size(); i++) {
 			
-			for (Integer integer : numeros) {
-				if(idListasAnteriores.get(i)[0] == integer){
-					
-				}else{
-					 idListasAnteriores.remove(i);
+			boolean apaga = false;
+			
+			System.out.println("num loop: "+i);
+			
+			for (Integer compara : numeros) {
+
+				
+				if(idListasAnteriores.get(i)[0].equals(compara)){
+					apaga = true;
 				}
 			}
+			
+			if(apaga == false){
+			idListasAnteriores.remove(i);
+			System.out.println("Vou Remover");
+			}
+			
+			i++;
 		}
 		
 		
-		
+		System.out.println();
 		
 		
 		MV.addObject("idListasAnteriores",idListasAnteriores);
