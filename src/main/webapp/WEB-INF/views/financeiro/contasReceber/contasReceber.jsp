@@ -44,8 +44,6 @@
 			<td></td>
 		</tr>
 		
-
-	
 		<c:forEach items="${infoInterna}" var="infoInterna">
 			<c:forEach items="${listaReceber}" var="listaReceber">
 			  <c:if test="${infoInterna.lista.idLista == listaReceber.idLista}">
@@ -66,7 +64,7 @@
 								<option value="4">Santander</option>
 							</select>
 						</td>
-						<td><button type="submit" class="btn btn-success">Recebido</button></td>
+						<td><button type="submit" class="btn btn-success">Receber</button></td>
 					</form>
 				</tr>
 			  </c:if>

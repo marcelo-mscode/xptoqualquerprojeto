@@ -2539,8 +2539,6 @@ function mudaCampoData(id){
 
 function pagaContas(idLista,idFornecedor,qtdDias,idLinha) {
 	
-
-	
 	$.ajax({
 		url : "pagaConta?idLista="+idLista+"&idFornecedor="+idFornecedor+"&qtdDias="+qtdDias,
 		success : function(data) {

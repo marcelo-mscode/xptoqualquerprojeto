@@ -28,69 +28,33 @@ public class ContasPagarController {
 	public ModelAndView contasPagar(){
 		ModelAndView MV = new ModelAndView("financeiro/contasPagar/contasPagar");
 		
-		
-		
-		//Listas do Mes Atual
+// ---- Listas do Mes Atual
 		
 		List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
-		MV.addObject("idListas",idListas);
 		
 		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
 		MV.addObject("novaLista", listaAtual);
-
 		
-		//Listas de meses anteriores
+		removeIdsVazios(idListas, listaAtual);
+		MV.addObject("idListas",idListas);
+		
+// ---- Listas de meses anteriores
 		List<Object[]> idListasAnteriores = montaObjeto.pegaListasMesAnterior(); 
 		
 		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
 		MV.addObject("listaAnteriores", listaAnteriores);
 		
-		
-		
-		
-		HashSet<Integer> numeros = new HashSet<Integer>();
-		
-		for (int i = 0; i < listaAnteriores.size(); i++) {
-			numeros.add((Integer) listaAnteriores.get(i)[3]);
-		}
-		
-		
-		for (int i = 0; i < idListasAnteriores.size(); i++) {
-			
-			boolean apaga = false;
-			
-			System.out.println("num loop: "+i);
-			
-			for (Integer compara : numeros) {
-
-				
-				if(idListasAnteriores.get(i)[0].equals(compara)){
-					apaga = true;
-				}
-			}
-			
-			if(apaga == false){
-			idListasAnteriores.remove(i);
-			System.out.println("Vou Remover");
-			}
-			
-			i++;
-		}
-		
-		
-		System.out.println();
-		
-		
+		removeIdsVazios(idListasAnteriores, listaAnteriores);
 		MV.addObject("idListasAnteriores",idListasAnteriores);
-		
-		
+
+// ---- Soma Total		
 		BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
 	    MV.addObject("somaTotal", somaTotal);
 		
 		return MV;
 	}
-	
-	
+
+
 	@RequestMapping("contasTeste")
 	private ModelAndView contaTeste(){
 		ModelAndView MV = new ModelAndView("menuProducao/testeContas");
@@ -121,7 +85,26 @@ public class ContasPagarController {
 	}
 	
 	
-	
+	private void removeIdsVazios(List<Object[]> idListas, List<Object[]> listaAtual) {
+		HashSet<Integer> idsAtuais = new HashSet<Integer>();
+		
+		for (int i = 0; i < listaAtual.size(); i++) {
+			idsAtuais.add((Integer) listaAtual.get(i)[3]);
+		}
+		
+		for (int i = 0; i < idListas.size(); i++) {
+			boolean apaga = false;
+			for (Integer compara : idsAtuais) {
+				if(idListas.get(i)[0].equals(compara)){
+					apaga = true;
+				}
+			}
+			if(apaga == false){
+				idListas.remove(i);
+				i--;
+			}
+		}
+	}
 	
 	
 	
