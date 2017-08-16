@@ -47,7 +47,7 @@
 						<td><fmt:formatDate value="${novaLista[0]}"   pattern="dd/MM/yyyy" /></td>
 						<td>${novaLista[1]}</td>
 						<td style="width: 125px !important">
-						<select class="form-control" name="tipoBanco" id="tipoBanco">
+						<select class="form-control" name="tipoBanco" id="tipoBanco${loop.count}">
 							<option value="0">Banco</option>
 							<option value="1">Itau</option>
 							<option value="2">CEF</option>
@@ -56,7 +56,7 @@
 						</select>
 						</td>
 						<td><fmt:formatNumber value="${novaLista[4]}" pattern="#,##0.00" /></td>
-						<td><a onclick="pagaContas(${idListas[0]},${novaLista[5]},${novaLista[6]},valor${loop.count},'tipoBanco');" class="btn btn-success">PAGAR</a> </td>
+						<td><a onclick="pagaContas(${idListas[0]},${novaLista[5]},${novaLista[6]},valor${loop.count},'tipoBanco',${loop.count});" class="btn btn-success">PAGAR</a> </td>
 						<c:set var="valorTotal" value="${valorTotal+novaLista[4]}" />			
 					</tr>
 				</c:if>

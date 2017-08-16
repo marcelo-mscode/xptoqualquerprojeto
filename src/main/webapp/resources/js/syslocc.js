@@ -2507,14 +2507,6 @@ function editaCamposDespesas(id,action, idDesp, name) {
 	
 	var valor = $("#"+id).val();
 	
-
-	
-	
-	/*if(valor == " " || valor == "" || valor == null){
-		alert("Digite um valor para esse campo ou deixe em branco !");
-		return null;
-	}*/
-	
 	$.ajax({
 		url : action+"?valor="+valor+"&idDesp="+idDesp+"&name="+name,
 		success : function(data) {
@@ -2537,16 +2529,22 @@ function mudaCampoData(id){
 }
 
 
-function pagaContas(idLista,idFornecedor,qtdDias,idLinha,idbanco) {
+function pagaContas(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
 	
-	alert("#"+idbanco);
-	var banco = $("#"+idbanco).val();
+	var banco = $("#"+idbanco+contador).val();
+	
+	if(banco == 0){
+		$("#"+idbanco).css("border","1px solid red");
+		alert("Selecione um banco !");
+		return false;
+	}
 	
 	$.ajax({
 		url : "pagaConta?idLista="+idLista+"&idFornecedor="+idFornecedor+"&qtdDias="+qtdDias+"&idbanco="+banco,
 		success : function(data) {
 			$("#ConfirmaPagamento").fadeOut(500);
-			$("#contasPagarAjax").html(data);
+			location.reload();
+			/*$("#contasPagarAjax").html(data);*/
 		},
 		beforeSend : function() {
 			$("#ConfirmaPagamento").fadeIn(500);
