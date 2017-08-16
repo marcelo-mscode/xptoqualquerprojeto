@@ -156,6 +156,7 @@
  .acctive{background-color: #ddd !important;font-weight: bold;}	
  .tiraBordaTabela tr td a {text-decoration: none;}
  .tiraBordaTabela tr td a:hover{font-weight: bold;}
+  #toTop{display: none !important;}
  
 </style>
 

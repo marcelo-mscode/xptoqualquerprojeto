@@ -425,7 +425,8 @@
  .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
  .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
  .tiraBordaTabela tr td {border-top: none !important; border-left: 1px solid #ddd;background-color: #f5f5f5}
- .active{background-color: #ddd !important}	
+ .active{background-color: #ddd !important}
+  #toTop{display: none !important;}	
 </style>
 
 <div class="col-md-12 navegacaoResumoMes">
@@ -436,8 +437,8 @@
 			<td class="input-120px"><a href="contasPagar" class="navegacaoLink">Contas a pagar</a></td>
 			<td class=""><a href="contasReceber" class="navegacaoLink">Contas a receber</a></td>
 			
-			<c:forEach var="i" begin="1" end="30">
-				<td class="input-95px"><a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink">${i}</a></td>
+			<c:forEach var="i" begin="1" end="10">
+				<td style="width: 20px !important;padding: 0px;vertical-align: middle;text-align: center;"><a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink" style="padding:7px">${i}</a></td>
 			</c:forEach>
 			
 		</tr>

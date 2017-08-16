@@ -253,8 +253,7 @@ public class MontaContasPagarDAO {
 		
 		List<Integer> listaIdFornecedorEmFornecedorFinanceiroPorIdProducao = pegaIdFornecedorFornecedorFinanceiro(listaIdProducaoPorIdListaEIdFornecedor);
 		
-		List<ValorPagtoFornecedor> listaValorPagamentoFornecedor = pegaListaValoresPGTODoFornecedor(qtdDias,
-				listaIdFornecedorEmFornecedorFinanceiroPorIdProducao);
+		List<ValorPagtoFornecedor> listaValorPagamentoFornecedor = pegaListaValoresPGTODoFornecedor(qtdDias,listaIdFornecedorEmFornecedorFinanceiroPorIdProducao);
 		
 		efetivaPagamento(listaValorPagamentoFornecedor);
 	}

@@ -37,22 +37,20 @@ public class ContasPagarController {
 		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
 		MV.addObject("novaLista", listaAtual);
 
-		//Listas de meses anteriores
 		
+		//Listas de meses anteriores
 		List<Object[]> idListasAnteriores = montaObjeto.pegaListasMesAnterior(); 
 		MV.addObject("idListasAnteriores",idListasAnteriores);
+		
+		
+		
 		
 		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
 		MV.addObject("listaAnteriores", listaAnteriores);
 		
 	
-		
 		BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
 	    MV.addObject("somaTotal", somaTotal);
-		
-		
-		
-		
 		
 		return MV;
 	}

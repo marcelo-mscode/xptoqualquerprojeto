@@ -105,6 +105,7 @@
  .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
  .tiraBordaTabela tr td {border-top: none !important; border-left: 1px solid #ddd;background-color: #f5f5f5}
  .active{background-color: #ddd !important}	
+ #toTop{display: none !important;}
 </style>
 
 <div class="col-md-12 navegacaoResumoMes">
