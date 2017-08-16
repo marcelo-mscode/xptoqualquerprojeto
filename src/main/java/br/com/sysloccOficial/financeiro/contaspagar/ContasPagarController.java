@@ -63,10 +63,10 @@ public class ContasPagarController {
 	}
 	
 	@RequestMapping("pagaConta")
-	public ModelAndView pagaConta(Integer idLista,Integer idFornecedor,Integer qtdDias){
+	public ModelAndView pagaConta(Integer idLista,Integer idFornecedor,Integer qtdDias,Integer idbanco){
 		
 		
-		montaObjeto.pagaConta(idLista,idFornecedor,qtdDias);
+		montaObjeto.pagaConta(idLista,idFornecedor,qtdDias,idbanco);
 		
 		ModelAndView MV = new ModelAndView("financeiro/contasPagar/contasPagarAjax");
 	

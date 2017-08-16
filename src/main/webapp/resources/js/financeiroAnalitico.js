@@ -210,11 +210,6 @@ function editaEmprestimos(campo,idAnalitico,tipoCampo,idEmprestimo,idDivAjax) {
 	
 	var valor = $("#"+campo).val();
 	
-	console.log(valor);
-	console.log(idAnalitico);
-	console.log(tipoCampo);
-	console.log(idEmprestimo);
-	
 	$.ajax({
 		url : "editaEmprestimo?valor="+valor+"&idAnalitico="+idAnalitico+"&tipoCampo="+tipoCampo+"&idEmprestimo="+idEmprestimo,
 		success : function(data) {

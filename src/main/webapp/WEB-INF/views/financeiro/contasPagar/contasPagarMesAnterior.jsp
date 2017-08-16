@@ -56,7 +56,7 @@
 						</select>
 						</td>
 						<td><fmt:formatNumber value="${novaLista[4]}" pattern="#,##0.00" /></td>
-						<td><a onclick="pagaContas(${idListas[0]},${novaLista[5]},${novaLista[6]},valor${loop.count});" class="btn btn-success">PAGAR</a> </td>
+						<td><a onclick="pagaContas(${idListas[0]},${novaLista[5]},${novaLista[6]},valor${loop.count},'tipoBanco');" class="btn btn-success">PAGAR</a> </td>
 						<c:set var="valorTotal" value="${valorTotal+novaLista[4]}" />			
 					</tr>
 				</c:if>

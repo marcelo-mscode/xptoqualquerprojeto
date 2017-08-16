@@ -246,7 +246,7 @@ public class MontaContasPagarDAO {
 
 
 
-	public void pagaConta(Integer idLista, Integer idFornecedor, Integer qtdDias) {
+	public void pagaConta(Integer idLista, Integer idFornecedor, Integer qtdDias, Integer idbanco) {
 		
 		List<Integer> listaIdProducaoPorIdListaEIdFornecedor = pegaIdProducaoP(idLista, idFornecedor);
 		
@@ -256,11 +256,10 @@ public class MontaContasPagarDAO {
 		
 
 		MovimentacaoBancosSaidas registraSaida = new MovimentacaoBancosSaidas();
+		BancosAnalitico banco = manager.getReference(BancosAnalitico.class, idbanco);		
 
-		Lista lista = manager.find(Lista.class, idLista);
-		
 		registraSaida.setData(Calendar.getInstance().getTime());
-		//registraSaida.setDescricao(lista.getLista());
+		registraSaida.setBanco(banco);
 		
 		
 		efetivaPagamento(listaValorPagamentoFornecedor,registraSaida);
@@ -289,10 +288,8 @@ public class MontaContasPagarDAO {
 		
 		
 		FinancAnalitico analitico = manager.getReference(FinancAnalitico.class, 3);
-		BancosAnalitico banco = manager.getReference(BancosAnalitico.class, 1);		
 		registraSaida.setValor(valorFornecedor);
 		registraSaida.setAnalitico(analitico);
-		registraSaida.setBanco(banco);
 		registraSaida.setDescricao(nomeFornecedor);
 		manager.persist(registraSaida);
 		

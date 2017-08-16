@@ -2537,10 +2537,13 @@ function mudaCampoData(id){
 }
 
 
-function pagaContas(idLista,idFornecedor,qtdDias,idLinha) {
+function pagaContas(idLista,idFornecedor,qtdDias,idLinha,idbanco) {
+	
+	alert("#"+idbanco);
+	var banco = $("#"+idbanco).val();
 	
 	$.ajax({
-		url : "pagaConta?idLista="+idLista+"&idFornecedor="+idFornecedor+"&qtdDias="+qtdDias,
+		url : "pagaConta?idLista="+idLista+"&idFornecedor="+idFornecedor+"&qtdDias="+qtdDias+"&idbanco="+banco,
 		success : function(data) {
 			$("#ConfirmaPagamento").fadeOut(500);
 			$("#contasPagarAjax").html(data);
