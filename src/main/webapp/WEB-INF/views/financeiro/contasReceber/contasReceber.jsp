@@ -149,5 +149,26 @@
   </div>		
 </div>
 
+<style>
+ .navegacaoResumoMes{padding-top: 8px;font-size: 12px;position: fixed;bottom: 0px;background-color: #fff;border: 2px solid #ccc;height: 55px;}
+ .navegacaoLink{color: green;text-transform: uppercase;}	
+ .tiraBordaTabela tr td {border-top: none !important; border-left: 1px solid #ddd;background-color: #f5f5f5}
+ .acctive{background-color: #ddd !important;font-weight: bold;}	
+ .tiraBordaTabela tr td a {text-decoration: none;}
+ .tiraBordaTabela tr td a:hover{font-weight: bold;}
+ 
+</style>
+
+<div class="col-md-12 navegacaoResumoMes">
+	<table class="table tiraBordaTabela">
+		<tr>
+			<td class="input-95px"><a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink">Resumo mês</a></td>
+			<td class="input-120px"><a href="contasPagar" class="navegacaoLink">Contas a pagar</a></td>
+			<td class="input-140px acctive"><a href="contasReceber" class="navegacaoLink">Contas a receber</a></td>
+			<td class=""><a href="contasReceber" class="navegacaoLink"> - </a></td>
+		</tr>
+	</table>
+</div>
+
 
 <c:import url="../../_comum/footer.jsp" />

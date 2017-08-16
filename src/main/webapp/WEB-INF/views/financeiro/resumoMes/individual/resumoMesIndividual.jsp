@@ -102,40 +102,21 @@
 <style>
  .navegacaoResumoMes{padding-top: 8px;font-size: 12px;position: fixed;bottom: 0px;background-color: #fff;border: 2px solid #ccc;height: 55px;}
  .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
+ .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
+ .tiraBordaTabela tr td {border-top: none !important; border-left: 1px solid #ddd;background-color: #f5f5f5}
+ .active{background-color: #ddd !important}	
 </style>
 
 <div class="col-md-12 navegacaoResumoMes">
-
-	<table class="table table-bordered">
+	<table class="table tiraBordaTabela">
 		<tr>
-			<td class="input-95px">
-				 <a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink">Resumo mês</a>	
-			</td>
-			<td class="input-95px">
-				 <a href="contasPagar" class="navegacaoLink">Contas a pagar</a>	
-			</td>
-			<td>
-				 <a href="contasReceber" class="navegacaoLink">Contas a receber</a>	
-			</td>
-		
+			<td class="input-95px active"><a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink">Resumo mês</a></td>
+			<td class="input-80px"><a href="analiticoIndividual?idAnalitico=3" class="navegacaoLink">Analítico</a></td>
+			<td class="input-120px"><a href="contasPagar" class="navegacaoLink">Contas a pagar</a></td>
+			<td class=""><a href="contasReceber" class="navegacaoLink">Contas a receber</a></td>
 		</tr>
 	</table>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <c:import url="../../../_comum/footer.jsp" />

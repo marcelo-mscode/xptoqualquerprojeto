@@ -57,7 +57,7 @@
 		
   </div>		
 						
-<div class="col-md-4" style="padding:15px;font-size:30px;text-align:center ;position:fixed ;bottom: 0;background-color: #fff;border: 1px solid #ccc;height: 60px">
+<div class="col-md-4" style="padding:15px;font-size:30px;text-align:center ;position:fixed ;bottom: 54px;background-color: #fff;border: 1px solid #ccc;height: 60px">
  
  <fmt:formatNumber value="${somaTotal}" pattern="#,##0.00" />
  <a onclick="location.reload();"><i class="glyphicon glyphicon-refresh" style="font-size: 20px;float: right;top: 9px"></i></a>	
@@ -79,5 +79,37 @@
 	</div>
 	<div class="col-md-4"></div>
 </div>
+
+
+<style>
+ .navegacaoResumoMes{padding-top: 8px;font-size: 12px;position: fixed;bottom: 0px;background-color: #fff;border: 2px solid #ccc;height: 55px;}
+ .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
+ .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
+ .tiraBordaTabela tr td {border-top: none !important; border-left: 1px solid #ddd;background-color: #f5f5f5}
+ .active{background-color: #ddd !important}	
+</style>
+
+<div class="col-md-12 navegacaoResumoMes">
+	<table class="table tiraBordaTabela">
+		<tr>
+			<td class="input-95px"><a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink">Resumo mês</a></td>
+			<td class="input-120px active"><a href="contasPagar" class="navegacaoLink">Contas a pagar</a></td>
+			<td class=""><a href="contasReceber" class="navegacaoLink">Contas a receber</a></td>
+		</tr>
+	</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <c:import url="../../_comum/footer.jsp" />
