@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
+import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
+import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.producao.DtPgtoFornecedor;
@@ -258,10 +260,10 @@ public class MontaContasPagarDAO {
 		
 		System.out.println();
 		
-		/*	Lista lista = manager.find(Lista.class, idLista);
+		Lista lista = manager.find(Lista.class, idLista);
 		
 		registraSaida.setData(Calendar.getInstance().getTime());
-		registraSaida.setDescricao(lista.getLista());*/
+		registraSaida.setDescricao(lista.getLista());
 		
 		
 		efetivaPagamento(listaValorPagamentoFornecedor,registraSaida);
@@ -269,6 +271,8 @@ public class MontaContasPagarDAO {
 
 	
 	private void efetivaPagamento( List<ValorPagtoFornecedor> listaValorPagamentoFornecedor,MovimentacaoBancosSaidas registraSaida) {
+		
+		BigDecimal valorFornecedor = new BigDecimal("0");
 		
 		for (int i = 0; i < listaValorPagamentoFornecedor.size(); i++) {
 			int idDataPgto = 0;
@@ -279,7 +283,17 @@ public class MontaContasPagarDAO {
 			dataPagamentoFornecedor.setStatus(StatusFinanceiro.PAGO);
 			manager.merge(dataPagamentoFornecedor);
 			manager.close();
+			valorFornecedor = valorFornecedor.add(listaValorPagamentoFornecedor.get(i).getValor());
 		}
+		
+		
+		FinancAnalitico analitico = manager.getReference(FinancAnalitico.class, 3);
+		BancosAnalitico banco = manager.getReference(BancosAnalitico.class, 1);		
+		registraSaida.setValor(valorFornecedor);
+		registraSaida.setAnalitico(analitico);
+		registraSaida.setBanco(banco);
+		
+		manager.persist(registraSaida);
 		
 	}
 
