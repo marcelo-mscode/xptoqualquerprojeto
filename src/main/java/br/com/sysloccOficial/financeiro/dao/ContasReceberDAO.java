@@ -49,7 +49,7 @@ public class ContasReceberDAO {
 
 	public void recebeConta(Integer idLista, Integer tipoBanco) {
 		
-		MovimentacaoBancos bancoItau = new MovimentacaoBancos();
+		/*MovimentacaoBancos bancoItau = new MovimentacaoBancos();*/
 		
 		TypedQuery<InfoInterna> q = manager.createQuery("from InfoInterna where lista.idLista="+idLista,InfoInterna.class);
 		InfoInterna infoInterna = q.getSingleResult();
@@ -68,7 +68,7 @@ public class ContasReceberDAO {
 		 * Chamada ao método usado para registrar as contas recebidas no painél do Análitico
 		 * 
 		 */
-		salvaContasAnalitico(idLista, tipoBanco, bancoItau, infoInterna, relatorio);
+		salvaContasAnalitico(idLista, tipoBanco, infoInterna, relatorio);
 	}
 
 	/**
@@ -83,8 +83,10 @@ public class ContasReceberDAO {
 	 * @param infoInterna
 	 * @param relatorio
 	 */
-	private void salvaContasAnalitico(Integer idLista, Integer tipoBanco,MovimentacaoBancos bancoItau, InfoInterna infoInterna,
+	private void salvaContasAnalitico(Integer idLista, Integer tipoBanco,InfoInterna infoInterna,
 									  RelatorioEventos relatorio) {
+		
+		MovimentacaoBancos bancoItau = new MovimentacaoBancos();
 		
 		ArrayList<String> datasHoje = utilDatas.dataHojeFormatada();
 

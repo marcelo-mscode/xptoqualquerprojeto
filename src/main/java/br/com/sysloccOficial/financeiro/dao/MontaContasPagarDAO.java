@@ -1,8 +1,6 @@
 package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -17,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
+import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
+import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.producao.DtPgtoFornecedor;
 import br.com.sysloccOficial.model.producao.ProducaoP;
 import br.com.sysloccOficial.model.producao.StatusFinanceiro;
@@ -246,19 +246,29 @@ public class MontaContasPagarDAO {
 
 	public void pagaConta(Integer idLista, Integer idFornecedor, Integer qtdDias) {
 		
-		
-		
 		List<Integer> listaIdProducaoPorIdListaEIdFornecedor = pegaIdProducaoP(idLista, idFornecedor);
 		
 		List<Integer> listaIdFornecedorEmFornecedorFinanceiroPorIdProducao = pegaIdFornecedorFornecedorFinanceiro(listaIdProducaoPorIdListaEIdFornecedor);
 		
 		List<ValorPagtoFornecedor> listaValorPagamentoFornecedor = pegaListaValoresPGTODoFornecedor(qtdDias,listaIdFornecedorEmFornecedorFinanceiroPorIdProducao);
 		
-		efetivaPagamento(listaValorPagamentoFornecedor);
+
+		MovimentacaoBancosSaidas registraSaida = new MovimentacaoBancosSaidas();
+
+		
+		System.out.println();
+		
+		/*	Lista lista = manager.find(Lista.class, idLista);
+		
+		registraSaida.setData(Calendar.getInstance().getTime());
+		registraSaida.setDescricao(lista.getLista());*/
+		
+		
+		efetivaPagamento(listaValorPagamentoFornecedor,registraSaida);
 	}
 
 	
-	private void efetivaPagamento( List<ValorPagtoFornecedor> listaValorPagamentoFornecedor) {
+	private void efetivaPagamento( List<ValorPagtoFornecedor> listaValorPagamentoFornecedor,MovimentacaoBancosSaidas registraSaida) {
 		
 		for (int i = 0; i < listaValorPagamentoFornecedor.size(); i++) {
 			int idDataPgto = 0;
