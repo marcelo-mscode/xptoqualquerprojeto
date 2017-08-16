@@ -257,13 +257,10 @@ public class MontaContasPagarDAO {
 
 		MovimentacaoBancosSaidas registraSaida = new MovimentacaoBancosSaidas();
 
-		
-		System.out.println();
-		
 		Lista lista = manager.find(Lista.class, idLista);
 		
 		registraSaida.setData(Calendar.getInstance().getTime());
-		registraSaida.setDescricao(lista.getLista());
+		//registraSaida.setDescricao(lista.getLista());
 		
 		
 		efetivaPagamento(listaValorPagamentoFornecedor,registraSaida);
@@ -273,6 +270,7 @@ public class MontaContasPagarDAO {
 	private void efetivaPagamento( List<ValorPagtoFornecedor> listaValorPagamentoFornecedor,MovimentacaoBancosSaidas registraSaida) {
 		
 		BigDecimal valorFornecedor = new BigDecimal("0");
+		String nomeFornecedor = "";
 		
 		for (int i = 0; i < listaValorPagamentoFornecedor.size(); i++) {
 			int idDataPgto = 0;
@@ -284,6 +282,9 @@ public class MontaContasPagarDAO {
 			manager.merge(dataPagamentoFornecedor);
 			manager.close();
 			valorFornecedor = valorFornecedor.add(listaValorPagamentoFornecedor.get(i).getValor());
+			
+			nomeFornecedor = listaValorPagamentoFornecedor.get(i).getIdEmpresa().getEmpresa();
+			
 		}
 		
 		
@@ -292,7 +293,7 @@ public class MontaContasPagarDAO {
 		registraSaida.setValor(valorFornecedor);
 		registraSaida.setAnalitico(analitico);
 		registraSaida.setBanco(banco);
-		
+		registraSaida.setDescricao(nomeFornecedor);
 		manager.persist(registraSaida);
 		
 	}

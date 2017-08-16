@@ -14,9 +14,10 @@
 			<td colspan="5" style="text-align: center !important;color:red"><h4>Fornecedores - Relatórios Anteriores</h4></td>
 		</tr>
 		<tr style="background: #f1f1f1 !important;" class="cabecalhoLista">
-			<td align="left" class="pLeft">NF/ND</td>
-			<td align="left">Vencimento</td>
+			<td align="left" class="pLeft input-160px">NF/ND</td>
+			<td align="left" class="input-140px">Vencimento</td>
 			<td align="left">Descrição</td>
+			<td align="left">Banco</td>
 			<td align="left" colspan="2">Valor</td>
 		</tr>
 	
@@ -45,6 +46,15 @@
 	
 						<td><fmt:formatDate value="${novaLista[0]}"   pattern="dd/MM/yyyy" /></td>
 						<td>${novaLista[1]}</td>
+						<td style="width: 125px !important">
+						<select class="form-control" name="tipoBanco" id="tipoBanco">
+							<option value="0">Banco</option>
+							<option value="1">Itau</option>
+							<option value="2">CEF</option>
+							<option value="3">Bradesco</option>
+							<option value="4">Santander</option>
+						</select>
+						</td>
 						<td><fmt:formatNumber value="${novaLista[4]}" pattern="#,##0.00" /></td>
 						<td><a onclick="pagaContas(${idListas[0]},${novaLista[5]},${novaLista[6]},valor${loop.count});" class="btn btn-success">PAGAR</a> </td>
 						<c:set var="valorTotal" value="${valorTotal+novaLista[4]}" />			

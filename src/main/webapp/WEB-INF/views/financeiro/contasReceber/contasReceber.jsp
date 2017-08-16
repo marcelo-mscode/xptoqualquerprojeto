@@ -55,7 +55,7 @@
 					<form action="receberConta" method="post" >
 					<input type="hidden" value="${infoInterna.lista.idLista}" name="idLista">
 					
-						<td>
+						<td> 
 							<select class="form-control" name="tipoBanco">
 								<option value="0">Banco</option>
 								<option value="1">Itau</option>
