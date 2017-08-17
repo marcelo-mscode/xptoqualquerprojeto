@@ -2534,7 +2534,7 @@ function pagaContas(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
 	var banco = $("#"+idbanco+contador).val();
 	
 	if(banco == 0){
-		$("#"+idbanco).css("border","1px solid red");
+		$("#"+idbanco+contador).css("border","1px solid red");
 		alert("Selecione um banco !");
 		return false;
 	}
@@ -2543,14 +2543,14 @@ function pagaContas(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
 		url : "pagaConta?idLista="+idLista+"&idFornecedor="+idFornecedor+"&qtdDias="+qtdDias+"&idbanco="+banco,
 		success : function(data) {
 			$("#ConfirmaPagamento").fadeOut(500);
+			$("#sucesso"+contador).fadeIn(500);
 			location.reload();
-			/*$("#contasPagarAjax").html(data);*/
 		},
 		beforeSend : function() {
 			$("#ConfirmaPagamento").fadeIn(500);
 		},
 		complete : function() {
-			$("#ConfirmaPagamento").fadeOut(500);
+			/*$("#ConfirmaPagamento").fadeOut(500);*/
 		}
 	});
 	
