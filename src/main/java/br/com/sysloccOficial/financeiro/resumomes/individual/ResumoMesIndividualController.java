@@ -152,10 +152,6 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		BigDecimal totalEmprestimos = analiticoMovFinanceiroDAO.pegaTotalEmprestimosSemParcelamento(idAnalitico);
 		MV.addObject("totalEmprestimos", totalEmprestimos);
 		
-		
-		
-		
-		
 		return MV;
 	}
 	
