@@ -198,10 +198,15 @@
             onclick="mudaCampoData('dataSaldoFechamentoSANTANDER4');"
             onblur="editaSaldos('dataSaldoFechamentoSANTANDER4',${idAnalitico},'dataFechamento','4');"/>
       	</td>
-      	<td><fmt:formatNumber value="${movimentoSantander.valorAbertura -
+      	<td>
+      		<c:set var="saldoSantanderFinal"  value="${movimentoSantander.valorAbertura -
       								   movimentoSantander.totalTarifas + 
       								   movimentoSantander.totalCreditos - 
-      								   movimentoSantander.totalDebitos}" pattern="#,##0.00"/></td>
+      								   movimentoSantander.totalDebitos}"/>
+      	   <span <c:if test="${saldoSantanderFinal < 0 }"> style="color:red"</c:if> >
+      	   <fmt:formatNumber value="${saldoSantanderFinal}" pattern="#,##0.00"/></span>
+      	</td>
+      	
       	<td class="campoSaldos">
       		<input id="valorAlternativoSANTANDER4" style="border: none;padding: 8px;line-height: 13px;"
       		<c:if test="${movimentoSantander.valoresDefinir == null}">placeholder="$Valor definir" class="amareloFlat2"</c:if>
