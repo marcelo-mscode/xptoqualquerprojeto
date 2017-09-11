@@ -33,7 +33,7 @@ import br.com.sysloccOficial.model.RelatorioEventos;
 
 @Component
 @Transactional
-public class AtualizaRelatorioEventoApoio{
+public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 
 	@Autowired RelatorioEventoIndividualApoio relApoio;
 	@Autowired InternaIndividualDAO internaIndividualDAO;
@@ -213,37 +213,7 @@ public class AtualizaRelatorioEventoApoio{
 		
 	}
 	
-	
-	private BigDecimal calculoValorTelefone(BigDecimal giroSemTelefoneEvento, Integer idRelatorioAtual,String mes,String ano) {
 
-		BigDecimal razaoCalculoTelefone = new BigDecimal("0.00");
-		BigDecimal validador = new BigDecimal("0.00");
-		
-		// Pegar o soma de todos os giros
-		/**
-		 * Posso pegar o soma dos outros giros que estiverem cadastrados no banco o somar com o giro atual
-		 * assim teremos a soma de todos os giros do mes
-		 */
-		BigDecimal somaGirosEventosMes = relatorioDAO.somaGirosPorAnoMes(ano, mes, idRelatorioAtual);
-		
-		BigDecimal valorTelefone = analiticoDAO.somaValorTelefonePorMesAno(mes,ano);
-		
-		// Pegar o valor do giro sem telefone
-		BigDecimal valorGiroDesseEvento = giroSemTelefoneEvento;
-		
-		// Dividir o giro desse evento pela soma de todos os eventos
-		if(somaGirosEventosMes.equals(validador) || somaGirosEventosMes == null){
-			 razaoCalculoTelefone = valorGiroDesseEvento.divide( valorGiroDesseEvento,12,RoundingMode.UP);
-		}else{
-			 razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,12,RoundingMode.UP);
-		}
-		
-		// Pegar o resultado e multiplicar pelo valor mensal do telefone
-		BigDecimal valorTelefoneEvento = valorTelefone.multiply(razaoCalculoTelefone);
-		
-		return valorTelefoneEvento;
-		
-	}
 	
 	public BigDecimal calculaImpostoSobreValorLoccoAgencia(BigDecimal valorLoccoAgencia, BigDecimal porcentagemSobreImposto){
 		BigDecimal valorImposto = new BigDecimal("0");
@@ -268,6 +238,7 @@ public class AtualizaRelatorioEventoApoio{
 		}
 		return total;
 	}
+
 	
 	public BigDecimal totalDiferencaComTelefone(List<RelatorioBVS> relatorioBVS,
 			BigDecimal fee,
@@ -292,7 +263,40 @@ public class AtualizaRelatorioEventoApoio{
 		}
 		return totalPagar;
 	}
+
+// ---- REFATORAR- calculoValorTelefone	 
+	private BigDecimal calculoValorTelefone(BigDecimal giroSemTelefoneEvento, Integer idRelatorioAtual,String mes,String ano) {
+
+			BigDecimal razaoCalculoTelefone = new BigDecimal("0.00");
+			BigDecimal validador = new BigDecimal("0.00");
+			
+			// Pegar o soma de todos os giros
+			/**
+			 * Posso pegar o soma dos outros giros que estiverem cadastrados no banco o somar com o giro atual
+			 * assim teremos a soma de todos os giros do mes
+			 */
+			BigDecimal somaGirosEventosMes = relatorioDAO.somaGirosPorAnoMes(ano, mes, idRelatorioAtual);
+			
+			BigDecimal valorTelefone = analiticoDAO.somaValorTelefonePorMesAno(mes,ano);
+			
+			// Pegar o valor do giro sem telefone
+			BigDecimal valorGiroDesseEvento = giroSemTelefoneEvento;
+			
+			// Dividir o giro desse evento pela soma de todos os eventos
+			if(somaGirosEventosMes.equals(validador) || somaGirosEventosMes == null){
+				 razaoCalculoTelefone = valorGiroDesseEvento.divide( valorGiroDesseEvento,12,RoundingMode.UP);
+			}else{
+				 razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,12,RoundingMode.UP);
+			}
+			
+			// Pegar o resultado e multiplicar pelo valor mensal do telefone
+			BigDecimal valorTelefoneEvento = valorTelefone.multiply(razaoCalculoTelefone);
+			
+			return valorTelefoneEvento;
+			
+	}	
 	
+// ---- REFATORAR	
 	public BigDecimal calculacacheDiretoria(List<CachePadrao> listaRelatorioCaches, BigDecimal totalDiferencaComTelefone, TipoCache tipoCache) {
 		BigDecimal totalCache = new BigDecimal("0");
 		BigDecimal totalCacheFuncionarios = calculacacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone);
@@ -308,7 +312,7 @@ public class AtualizaRelatorioEventoApoio{
 		return totalCache;
 	}
 	
-	
+// ---- REFATORAR	
 	public BigDecimal calculacacheEquipeInterna(List<CachePadrao> listaRelatorioCaches, BigDecimal totalDiferencaComTelefone){
 		BigDecimal totalCache = new BigDecimal("0");
 		
@@ -321,32 +325,17 @@ public class AtualizaRelatorioEventoApoio{
 		}
 		return totalCache;
 	}
+
 	
+// ---- REFATORAR	
 	public BigDecimal caculaGiroSemTelefone(BigDecimal valorLiquido, BigDecimal cacheSemTelefone, BigDecimal externas) {
-		
 		
 		BigDecimal giroSemTelefone = new BigDecimal("0");
 		BigDecimal bvs = new BigDecimal("0");
 		BigDecimal internas = new BigDecimal("0");
 		giroSemTelefone = valorLiquido.subtract(cacheSemTelefone).subtract(externas).subtract(internas).add(bvs);
 		
-		
 		return giroSemTelefone;
 	}
-	
-	
-	
-	/*public BigDecimal calculacacheEquipeInterna(List<CachePadrao> listaRelatorioCaches, BigDecimal totalDiferencaComTelefone){
-		BigDecimal totalCache = new BigDecimal("0");
-		
-		for (int i = 0; i < listaRelatorioCaches.size(); i++) {
-			if(listaRelatorioCaches.get(i).getTipoCache() == TipoCache.FUNCIONARIO){
-				totalCache = totalCache.add(totalDiferencaComTelefone.multiply(
-						listaRelatorioCaches.get(i).getRazaoPorcentagem()));
-			}
-			
-		}
-		return totalCache;
-	}*/
 
 }
