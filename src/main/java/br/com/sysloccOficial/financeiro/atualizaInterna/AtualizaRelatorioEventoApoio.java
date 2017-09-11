@@ -33,7 +33,7 @@ import br.com.sysloccOficial.model.RelatorioEventos;
 
 @Component
 @Transactional
-public class AtualizaRelatorioEventoApoio extends CalculoGiraSemTelefone {
+public class AtualizaRelatorioEventoApoio{
 
 	@Autowired RelatorioEventoIndividualApoio relApoio;
 	@Autowired InternaIndividualDAO internaIndividualDAO;
@@ -292,6 +292,49 @@ public class AtualizaRelatorioEventoApoio extends CalculoGiraSemTelefone {
 		}
 		return totalPagar;
 	}
+	
+	public BigDecimal calculacacheDiretoria(List<CachePadrao> listaRelatorioCaches, BigDecimal totalDiferencaComTelefone, TipoCache tipoCache) {
+		BigDecimal totalCache = new BigDecimal("0");
+		BigDecimal totalCacheFuncionarios = calculacacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone);
+		BigDecimal totalCacheCalculo = totalDiferencaComTelefone.subtract(totalCacheFuncionarios);
+		
+		for (int i = 0; i < listaRelatorioCaches.size(); i++) {
+			if(listaRelatorioCaches.get(i).getTipoCache() == tipoCache){
+				totalCache = totalCache.add(totalCacheCalculo.multiply(
+						listaRelatorioCaches.get(i).getRazaoPorcentagem()));
+			}
+			
+		}
+		return totalCache;
+	}
+	
+	
+	public BigDecimal calculacacheEquipeInterna(List<CachePadrao> listaRelatorioCaches, BigDecimal totalDiferencaComTelefone){
+		BigDecimal totalCache = new BigDecimal("0");
+		
+		for (int i = 0; i < listaRelatorioCaches.size(); i++) {
+			if(listaRelatorioCaches.get(i).getTipoCache() == TipoCache.FUNCIONARIO){
+				totalCache = totalCache.add(totalDiferencaComTelefone.multiply(
+						listaRelatorioCaches.get(i).getRazaoPorcentagem()));
+			}
+			
+		}
+		return totalCache;
+	}
+	
+	public BigDecimal caculaGiroSemTelefone(BigDecimal valorLiquido, BigDecimal cacheSemTelefone, BigDecimal externas) {
+		
+		
+		BigDecimal giroSemTelefone = new BigDecimal("0");
+		BigDecimal bvs = new BigDecimal("0");
+		BigDecimal internas = new BigDecimal("0");
+		giroSemTelefone = valorLiquido.subtract(cacheSemTelefone).subtract(externas).subtract(internas).add(bvs);
+		
+		
+		return giroSemTelefone;
+	}
+	
+	
 	
 	/*public BigDecimal calculacacheEquipeInterna(List<CachePadrao> listaRelatorioCaches, BigDecimal totalDiferencaComTelefone){
 		BigDecimal totalCache = new BigDecimal("0");
