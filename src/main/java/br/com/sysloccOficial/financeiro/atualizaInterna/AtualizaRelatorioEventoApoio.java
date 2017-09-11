@@ -33,7 +33,7 @@ import br.com.sysloccOficial.model.RelatorioEventos;
 
 @Component
 @Transactional
-public class AtualizaRelatorioEventoApoio extends CalculoCacheDiretoria {
+public class AtualizaRelatorioEventoApoio extends CalculoGiraSemTelefone {
 
 	@Autowired RelatorioEventoIndividualApoio relApoio;
 	@Autowired InternaIndividualDAO internaIndividualDAO;
@@ -283,18 +283,6 @@ public class AtualizaRelatorioEventoApoio extends CalculoCacheDiretoria {
 		}
 		totalDiferenca = totalDiferenca.add(fee).add(feeReduzido).add(impostoClienteDiferenca).subtract(margemContribuicao).subtract(valorTelefone);
 		return totalDiferenca;
-	}
-	
-	public BigDecimal caculaGiroSemTelefone(BigDecimal valorLiquido, BigDecimal cacheSemTelefone, BigDecimal externas){
-		
-		
-		BigDecimal giroSemTelefone = new BigDecimal("0");
-		BigDecimal bvs = new BigDecimal("0");
-		BigDecimal internas = new BigDecimal("0");
-		giroSemTelefone = valorLiquido.subtract(cacheSemTelefone).subtract(externas).subtract(internas).add(bvs);
-		
-		
-		return giroSemTelefone;
 	}
 	
 	public BigDecimal totalApagar(List<RelatorioBVS> relatorioBVS){
