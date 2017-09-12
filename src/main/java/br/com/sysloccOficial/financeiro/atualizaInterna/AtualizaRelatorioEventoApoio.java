@@ -126,7 +126,7 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			
 			novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
 			
-//  ------  Calcula o Custo do Telefone
+//  ------  Calcula o Custo do Telefone do Mês corrente
 			// --- Verifica se Relatório existe
 			 
 			Integer idRelatorioParaGiroTelefone = null;
@@ -142,6 +142,7 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			novoRelatorio.setPgtoExternas(totalExterna);
 			
 			
+			
 			BigDecimal totalDiferencaComTelefone =  totalDiferencaComTelefone(relatorioBVS, novoRelatorio.getFee(),
 					   novoRelatorio.getFeeReduzido(),novoRelatorio.getImpostoClienteDiferenca(),
 					   novoRelatorio.getMargemContribuicao(), custoTelefone);
@@ -155,9 +156,9 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			novoRelatorio.setCacheEquipIn(totalCacheFuncComTelefone);
 
 			
-			BigDecimal pgtoExternasSemImpostossTESTE = novoRelatorio.getPgtoExternas().subtract(novoRelatorio.getMargemContribuicao()).
+			/*BigDecimal pgtoExternasSemImpostossTESTE = novoRelatorio.getPgtoExternas().subtract(novoRelatorio.getMargemContribuicao()).
 					subtract(novoRelatorio.getCustoTelefone());
-			
+			*/
 			
 			
 			//Calcula giro Com telefone
