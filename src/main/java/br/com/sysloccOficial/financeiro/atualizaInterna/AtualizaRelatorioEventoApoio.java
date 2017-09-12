@@ -52,24 +52,19 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 	public void montaObjetoRelatorio(Integer idLista,String mes,String ano){
 	
 		
-		Integer idRelatorioParaGiroTelefone = null;
-		Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
-		InfoInterna infoInterna = relatorioDAO.pegaInfoInterna(idLista);
-		
-		List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
-		List<CachePadrao> listaRelatorioCaches = relatorioDAO.listaRelatorioCaches();
-		
-		
-		BigDecimal custoTelefone = new BigDecimal("0");
-
-		RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdLista(idLista);
-		
-		RelatorioEventos novoRelatorio = new RelatorioEventos();
-		
-		//Verifica se Relatório existe
-		idRelatorioParaGiroTelefone = verificaSeRelatorioEventoExiste(relatorio, novoRelatorio);
-
-		
+			Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
+			InfoInterna infoInterna = relatorioDAO.pegaInfoInterna(idLista);
+			
+			List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
+			List<CachePadrao> listaRelatorioCaches = relatorioDAO.listaRelatorioCaches();
+			
+			
+			BigDecimal custoTelefone = new BigDecimal("0");
+	
+			RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdLista(idLista);
+			
+			RelatorioEventos novoRelatorio = new RelatorioEventos();
+			
 			novoRelatorio.setAnoEvento(ano);
 			novoRelatorio.setMesEvento(mes);
 			//
@@ -85,7 +80,7 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			
 			novoRelatorio.setServicos(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
 			
-// -------  FeeResuzido			
+// -------  FeeReduzido			
 			BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
 			novoRelatorio.setFee(infoLista.getAdministracaoValor().subtract(feeReduzido));
 			novoRelatorio.setFeeReduzido(feeReduzido);
@@ -112,7 +107,9 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			BigDecimal totalDiferencaSemTelefone = totalDiferencaSemTelefone(relatorioBVS,novoRelatorio.getFee(),novoRelatorio.getFeeReduzido(), novoRelatorio.getImpostoClienteDiferenca());
 			
 			
+			
 			BigDecimal totalCacheFuncionariosSemTelefone = relatorioDAO.calculaTotalCachesFuncionarios(totalDiferencaSemTelefone, listaRelatorioCaches);
+			
 			BigDecimal totalCacheDiretoriaSemTelefone = relatorioDAO.caculaValorSeDiretoria(listaRelatorioCaches,totalDiferencaSemTelefone,totalCacheFuncionariosSemTelefone);
 			
 			novoRelatorio.setTotalCachesSemTelefone(totalCacheDiretoriaSemTelefone.add(totalCacheFuncionariosSemTelefone));
@@ -127,6 +124,12 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
 			
 //  ------  Calcula o Custo do Telefone
+			/**
+			 * Verifica se Relatório existe
+			 */
+			Integer idRelatorioParaGiroTelefone = null;
+			idRelatorioParaGiroTelefone = verificaSeRelatorioEventoExiste(relatorio, novoRelatorio);
+
 			custoTelefone = calculoValorTelefone(giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
 			
 			novoRelatorio.setCustoTelefone(custoTelefone);
