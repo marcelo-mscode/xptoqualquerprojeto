@@ -34,9 +34,6 @@ public class IndexInternaIndividual {
 		
 		InfoInterna infoInterna =  internaIndividualDAO.infoInterna(idLista);
 		
-		
-		
-		
 		Set<ProducaoP> listaProducaoP = internaIndividualDAO.internaIndividual(idLista);
 		List<ProducaoP> listaProducaoPTeste = internaIndividualDAO.internaIndividualTeste(idLista);
 
