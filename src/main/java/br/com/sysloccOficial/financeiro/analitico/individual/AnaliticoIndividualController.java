@@ -60,9 +60,9 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 		MV.addObject("impostos",analiticoIndDAO.carregaAnaliticoIndividualFinancImpostos(idAnalitico));
 		MV.addObject("DemostrativoImpostos", dadosEvento.impostosSobreValorLoccoAgencia(infoEvento));
 		
-		//MV.addObject("somaCacheTotal", dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento)));
+		MV.addObject("somaCacheTotal", dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento)));
 		
-		//MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno());
+		MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno());
 		
 		// ---- Entradas/Saidas ITAU ---- //		
 		MV.addObject("entradasItau", analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,1));
