@@ -120,8 +120,16 @@ public class DadosEventosMes {
 
 	public BigDecimal SomaDespVariaveis(BigDecimal DespBancarias, BigDecimal despCaixaProjetos,
 			BigDecimal outrosVariaveis) {
-		BigDecimal soma = DespBancarias.add(despCaixaProjetos).add(outrosVariaveis);
-		return soma;
+		
+		BigDecimal soma = new BigDecimal("0.00");
+		
+		try {
+		 soma = DespBancarias.add(despCaixaProjetos).add(outrosVariaveis);
+		 return soma;
+			
+		} catch (Exception e) {
+			return soma;
+		}
 	}
 
 	public BigDecimal somaCreditosAplicacoes(BigDecimal despFixas,BigDecimal despVariaveis) {

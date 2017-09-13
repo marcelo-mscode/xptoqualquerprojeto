@@ -34,7 +34,7 @@ public class ResumoMesIndex {
 				      financAnalit.<String>get("mesReferencia").alias("analitico.mesReferencia")
 					  );
 	
-		c.orderBy(cb.desc(financAnalit.<String> get("anoA")));
+		c.orderBy(cb.desc(financAnalit.<String> get("mesReferencia")));
 		
 		
 		TypedQuery<Tuple> query = manager.createQuery(c);
