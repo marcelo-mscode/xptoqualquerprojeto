@@ -360,14 +360,4 @@ public class RelatorioEventoDAO {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
