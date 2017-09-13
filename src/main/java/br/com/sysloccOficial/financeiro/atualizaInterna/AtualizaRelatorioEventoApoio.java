@@ -2,11 +2,16 @@ package br.com.sysloccOficial.financeiro.atualizaInterna;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,10 +54,9 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 	
 	
 	
-	public void montaObjetoRelatorio(Integer idLista,String mes,String ano){
+	public void montaObjetoRelatorio(Integer idLista,Lista infoLista,String mes,String ano) throws ParseException{
 	
 		
-			Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
 			InfoInterna infoInterna = relatorioDAO.pegaInfoInterna(idLista);
 			
 			List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
