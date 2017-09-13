@@ -39,9 +39,24 @@ public class ResumoMesIndex {
 		
 		TypedQuery<Tuple> query = manager.createQuery(c);
 		List<Tuple> resultado = query.getResultList();
-		
-		
+
 		MV.addObject("analitico", resultado);
+		
+		
+		TypedQuery<String> aaa = manager.createQuery("select distinct(anoA) from FinancAnalitico order by anoA desc", String.class);
+		List<String> anos = aaa.getResultList();
+		
+		MV.addObject("anos", anos);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		return MV;
 	}
