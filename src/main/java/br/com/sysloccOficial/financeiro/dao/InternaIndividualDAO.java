@@ -74,7 +74,7 @@ public class InternaIndividualDAO {
 	}
 	
 	public BigDecimal totalImpostoDaLista(Integer _idLista){
-		String consulta = "SELECT sum(grupoImpostoValor) from Grupo where idlista ="+_idLista;
+		String consulta = "SELECT sum(grupoImpostoValor) from Grupo where idlista ="+_idLista+" and opcional <> 1";
 		Query q = manager.createQuery(consulta,BigDecimal.class);
 		return (BigDecimal) q.getSingleResult();
 	}
