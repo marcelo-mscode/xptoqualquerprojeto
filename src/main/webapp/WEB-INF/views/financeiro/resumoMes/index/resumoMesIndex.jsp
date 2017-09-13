@@ -35,14 +35,22 @@
 	 	<div class="col-md-5" style="padding-left: 0;">
 		  <table class="table table-hover table-bordered bordaDestaque" >
 		   <tbody id="prospeccaoFiltro">
-			 <tr>
-				<td class="input-140px" style="font-size: 25px; font-weight: bold">2016</td>
-			 </tr>
-			 <tr>
-				 <td>
-					<a href="resumoMesIndividual?mes=01&ano=2017">MAIO</a>
-				 </td> 	
-			 </tr>
+
+			<c:forEach items="${analitico}" var="analiticoAno">
+				<c:forEach items="${analitico}" var="analitico">
+				  <c:if test="${analiticoAno.get('analitico.ano') == analitico.get('analitico.ano')}">
+					 <tr>
+						<td class="input-140px" style="font-size: 25px; font-weight: bold">${analiticoAno.get('analitico.ano')}</td>
+					 </tr>
+					 <tr>
+						 <td>
+							<a href="resumoMesIndividual?mes=${analitico.get('analitico.mesReferencia')}&ano=${analitico.get('analitico.ano')}">${analitico.get("analitico.mes")}</a>
+						 </td> 	
+					 </tr>
+				  </c:if>	
+				</c:forEach>	 
+			</c:forEach>	 
+			
 			</tbody>
 		  </table>	
 		</div>
