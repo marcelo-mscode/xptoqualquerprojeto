@@ -45,7 +45,6 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 		
 		// --------------------------------------------------------------------- //
 		
-		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(01,2017);
 		
 		
 		FinancAnalitico analitico = analiticoIndDAO.carregaAnaliticoIndividual(idAnalitico);
@@ -58,12 +57,14 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 		MV.addObject("despesas",analiticoIndDAO.carregaAnaliticoIndividualDespesas(idAnalitico));
 		MV.addObject("outrasdespesas",analiticoIndDAO.carregaAnaliticoIndividualOutrasDespesas(idAnalitico));
 		MV.addObject("impostos",analiticoIndDAO.carregaAnaliticoIndividualFinancImpostos(idAnalitico));
-		MV.addObject("DemostrativoImpostos", dadosEvento.impostosSobreValorLoccoAgencia(infoEvento));
 		
+		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(01,2017);
+		
+		MV.addObject("DemostrativoImpostos", dadosEvento.impostosSobreValorLoccoAgencia(infoEvento));
 		MV.addObject("somaCacheTotal", dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento)));
+		MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno(idAnalitico));
 
 // ----------------------------------------------------->		
-		MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno());
 		
 		// ---- Entradas/Saidas ITAU ---- //		
 		MV.addObject("entradasItau", analiticoMovFinanceiroDAO.carregaAnaliticoEntradas(idAnalitico,1));

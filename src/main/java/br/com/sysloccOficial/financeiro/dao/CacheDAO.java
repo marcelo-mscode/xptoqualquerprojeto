@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sysloccOficial.conf.Utilitaria;
+import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.CachePadraoAnalitico;
@@ -55,40 +56,56 @@ public class CacheDAO {
 	}
 	
 	
-	public List<CachePadraoAnalitico> listaCachesPorMesAno(){
+	public List<CachePadraoAnalitico> listaCachesPorMesAno(Integer idAnalitico){
 		
-		List<Integer> idsRelatorios =  relatorioDAO.idsRelatoriosEventosPorMesAno(01, 2017);
-
-		String consultaCache =  util.limpaSqlComList("FROM CacheEvento where relatorioEvento in ("+idsRelatorios+")");
+		FinancAnalitico financAnalitico = manager.find(FinancAnalitico.class, idAnalitico);
 		
-		TypedQuery<CacheEvento> caches = manager.createQuery(consultaCache, CacheEvento.class);
-		List<CacheEvento> listaCaches = caches.getResultList();
+		int ano = Integer.valueOf(financAnalitico.getAnoA());
+		int mes = financAnalitico.getMesReferencia();
 		
-		
-		// CACHES EVENTO POR IDSRELATORIOS ORDERNADO POR CACHE PADRAO
-		String consultaIdsCachePadrao =  util.limpaSqlComList("SELECT distinct(cachePadrao.idCachePadrao) FROM CacheEvento where relatorioEvento in ("+idsRelatorios+")");
-		TypedQuery<Integer> ids = manager.createQuery(consultaIdsCachePadrao, Integer.class);
-		List<Integer> idsFuncionarioCache = ids.getResultList();
+		List<Integer> idsRelatorios =  relatorioDAO.idsRelatoriosEventosPorMesAno(ano, mes);
 		
 		
-		List<CachePadraoAnalitico> listaDeCachesMontada = new ArrayList<CachePadraoAnalitico>();
+		if (idsRelatorios.isEmpty()) {
+			return null;
+		}
+		else{
 		
-		for (int i = 0; i < idsFuncionarioCache.size(); i++) {
+			String consultaCache =  util.limpaSqlComList("FROM CacheEvento where relatorioEvento in ("+idsRelatorios+")");
 			
-			CachePadraoAnalitico padrao = new CachePadraoAnalitico();
-			BigDecimal valor = new BigDecimal("0");
+			TypedQuery<CacheEvento> caches = manager.createQuery(consultaCache, CacheEvento.class);
+		
+			List<CacheEvento> listaCaches = caches.getResultList();
 			
-			for (int j = 0; j < listaCaches.size(); j++) {
-				if(idsFuncionarioCache.get(i) ==  listaCaches.get(j).getCachePadrao().getIdCachePadrao()){
-					valor = valor.add(listaCaches.get(j).getValor());
-					padrao.setNomeFuncionario(listaCaches.get(j).getCachePadrao().getNomeFunc());
+			
+			// CACHES EVENTO POR IDSRELATORIOS ORDERNADO POR CACHE PADRAO
+			String consultaIdsCachePadrao =  util.limpaSqlComList("SELECT distinct(cachePadrao.idCachePadrao) FROM CacheEvento where relatorioEvento in ("+idsRelatorios+")");
+			TypedQuery<Integer> ids = manager.createQuery(consultaIdsCachePadrao, Integer.class);
+			List<Integer> idsFuncionarioCache = ids.getResultList();
+			
+			
+			List<CachePadraoAnalitico> listaDeCachesMontada = new ArrayList<CachePadraoAnalitico>();
+			
+			for (int i = 0; i < idsFuncionarioCache.size(); i++) {
+				
+				CachePadraoAnalitico padrao = new CachePadraoAnalitico();
+				BigDecimal valor = new BigDecimal("0");
+				
+				for (int j = 0; j < listaCaches.size(); j++) {
+					if(idsFuncionarioCache.get(i) ==  listaCaches.get(j).getCachePadrao().getIdCachePadrao()){
+						valor = valor.add(listaCaches.get(j).getValor());
+						padrao.setNomeFuncionario(listaCaches.get(j).getCachePadrao().getNomeFunc());
 				}
 			}
-			padrao.setIdCacheFuncionario(idsFuncionarioCache.get(i));
-			padrao.setValor(valor);
-			listaDeCachesMontada.add(padrao);
-		}
-		return listaDeCachesMontada;
+				padrao.setIdCacheFuncionario(idsFuncionarioCache.get(i));
+				padrao.setValor(valor);
+				listaDeCachesMontada.add(padrao);
+			}
+		    	return listaDeCachesMontada;
+		
+		}    
+		
+		
 	}
 	
 	
