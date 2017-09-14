@@ -197,8 +197,6 @@ public class RelatorioEventoDAO {
 		List<CachePadrao> cachePadrao =  listaRelatorioCaches();
 		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
 		
-		
-		
 		for (int i = 0; i < cachePadrao.size(); i++) {
 				CacheEvento novoCacheEvento = new CacheEvento();
 				if(cachePadrao.get(i).getTipoCache().equals(TipoCache.FUNCIONARIO)){

@@ -198,7 +198,9 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 
 			manager.persist(novoGiro);
 			
-		//	relatorioDAO.salvaCacheDoEvento(novoRelatorio);
+			
+// ------------------ > SALVA CACHE DO EVENTO 			
+			relatorioDAO.salvaCacheDoEvento(novoRelatorio);
 			
 			
 		}else{
@@ -216,6 +218,7 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			giro.setRelatorioEvento(novoRelatorio);
 			manager.merge(giro);
 			
+// ------------------ > SALVA CACHE DO EVENTO 			
 			relatorioDAO.salvaCacheDoEvento(novoRelatorio);
 			
 		}
