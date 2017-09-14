@@ -14,6 +14,7 @@ import java.util.List;
 
 
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -23,6 +24,7 @@ import javax.swing.JOptionPane;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancImpostos;
 import br.com.sysloccOficial.financeiro.relatorioeventos.Giro;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioCaches;
@@ -42,6 +44,12 @@ import br.com.sysloccOficial.model.producao.ProducaoP;
 public class RelatorioEventoDAO {
 
 	@PersistenceContext	private EntityManager manager;
+	
+	
+	
+	public FinancAnalitico pegaFinancAnalitico(Integer idAnalitico){
+		return manager.find(FinancAnalitico.class, idAnalitico);
+	}
 	
 	public List<Integer> idsFornecedoresPorLista(int idLista){
 		TypedQuery<Integer> q = manager.createQuery("SELECT distinct(idEmpFornecedor.idEmpresa) FROM ProducaoP p where idLista = "+idLista+" and p.produtoGrupo.imposto = 1 order by idEmpFornecedor.empresa",Integer.class);
@@ -98,6 +106,10 @@ public class RelatorioEventoDAO {
 	}
 
 	public List<RelatorioEventos> relatorioEventoPorMesReferencia(Integer mes, Integer ano){
+		
+		
+		
+		
 		try {
 			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where mesReferencia="+mes + " and anoEvento ="+ ano+"order by idRelatorioEvento", RelatorioEventos.class);
 			return q.getResultList();
@@ -352,7 +364,7 @@ public class RelatorioEventoDAO {
 	
 	public List<Integer> idsRelatoriosEventosPorMesAno(Integer mes, Integer anoEvento){
 		try {
-			String consultaRel = "select idRelatorioEvento from RelatorioEventos where anoEvento = '"+anoEvento+"' and mesEvento = 'JANEIRO'";
+			String consultaRel = "select idRelatorioEvento from RelatorioEventos where anoEvento = '"+anoEvento+"' and mesReferencia = '"+mes+"'";
 			TypedQuery<Integer> idsRelatorios = manager.createQuery(consultaRel, Integer.class);
 			return idsRelatorios.getResultList();
 		} catch (Exception e) {

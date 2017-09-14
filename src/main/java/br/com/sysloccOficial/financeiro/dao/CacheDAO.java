@@ -63,7 +63,7 @@ public class CacheDAO {
 		int ano = Integer.valueOf(financAnalitico.getAnoA());
 		int mes = financAnalitico.getMesReferencia();
 		
-		List<Integer> idsRelatorios =  relatorioDAO.idsRelatoriosEventosPorMesAno(ano, mes);
+		List<Integer> idsRelatorios =  relatorioDAO.idsRelatoriosEventosPorMesAno(mes,ano);
 		
 		
 		if (idsRelatorios.isEmpty()) {

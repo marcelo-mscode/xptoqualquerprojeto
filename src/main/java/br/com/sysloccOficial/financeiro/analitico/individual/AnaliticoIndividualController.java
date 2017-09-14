@@ -58,9 +58,16 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 		MV.addObject("outrasdespesas",analiticoIndDAO.carregaAnaliticoIndividualOutrasDespesas(idAnalitico));
 		MV.addObject("impostos",analiticoIndDAO.carregaAnaliticoIndividualFinancImpostos(idAnalitico));
 		
-		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(01,2017);
+		
+		FinancAnalitico financAnalitico = relatorioEventoDAO.pegaFinancAnalitico(idAnalitico);
+		
+		int ano = Integer.valueOf(financAnalitico.getAnoA());
+		int mes = financAnalitico.getMesReferencia();
+		
+		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(mes,ano);
 		
 		MV.addObject("DemostrativoImpostos", dadosEvento.impostosSobreValorLoccoAgencia(infoEvento));
+	
 		MV.addObject("somaCacheTotal", dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento)));
 		MV.addObject("ListaCacheTotal", cacheDAO.listaCachesPorMesAno(idAnalitico));
 
