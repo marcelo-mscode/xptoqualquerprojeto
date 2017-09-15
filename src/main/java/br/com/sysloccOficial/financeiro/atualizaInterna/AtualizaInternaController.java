@@ -33,6 +33,8 @@ public class AtualizaInternaController {
  		 //Depois que a data for inserida no lightbox, cadastrar a data e chamar essa action novamente.
  		 
  		 
+ 		 
+ 		 
 		return "redirect:internaIndividual?idLista="+idLista;
 		
 	}
