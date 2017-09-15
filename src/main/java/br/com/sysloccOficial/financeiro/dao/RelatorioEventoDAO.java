@@ -372,5 +372,15 @@ public class RelatorioEventoDAO {
 			return null;
 		}
 	}
+
+	public List<Integer> idsListaRelatoriosEventosPorMesAno(String mes,String anoEvento){
+		try {
+			String consultaRel = "select idLista from RelatorioEventos where mesEvento = '"+mes+"' and anoEvento = '"+anoEvento+"'";
+			TypedQuery<Integer> idsRelatorios = manager.createQuery(consultaRel, Integer.class);
+			return idsRelatorios.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 }
