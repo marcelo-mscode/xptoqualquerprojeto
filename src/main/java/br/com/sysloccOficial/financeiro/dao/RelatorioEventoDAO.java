@@ -176,7 +176,10 @@ public class RelatorioEventoDAO {
 	public BigDecimal somaGirosPorAnoMes(String ano, String mes, Integer idRelatorioAtual){
 		BigDecimal zero = new BigDecimal("0.00");
 		try {
-			String consulta = "select sum(giroSemTelefone) from GiroEvento where anoEvento ='"+ano+"' and mesEvento = '"+mes+"' and relatorioEvento <> "+idRelatorioAtual;
+//			String consulta = "select sum(giroSemTelefone) from GiroEvento where anoEvento ='"+ano+"' and mesEvento = '"+mes+"' and relatorioEvento <> "+idRelatorioAtual;
+			
+			// ------- > é a divisão do giro do evento pela soma de todos os giros
+			String consulta = "select sum(giroSemTelefone) from GiroEvento where anoEvento ='"+ano+"' and mesEvento = '"+mes+"'";
 			TypedQuery<BigDecimal> soma = manager.createQuery(consulta, BigDecimal.class);
 			
 			if(soma.getSingleResult() == null){
