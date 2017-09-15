@@ -3,21 +3,13 @@ package br.com.sysloccOficial.financeiro.atualizaInterna;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import br.com.sysloccOficial.calculos.CalculaFeeReduzido;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.daos.GrupoDAO;
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
@@ -29,10 +21,8 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventoIndividu
 import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.GiroEvento;
-import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.InfoInterna;
 import br.com.sysloccOficial.model.Lista;
-import br.com.sysloccOficial.model.ProdutoGrupo;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
 
@@ -60,6 +50,7 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			InfoInterna infoInterna = relatorioDAO.pegaInfoInterna(idLista);
 			
 			List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
+	
 			List<CachePadrao> listaRelatorioCaches = relatorioDAO.listaRelatorioCaches();
 			
 			

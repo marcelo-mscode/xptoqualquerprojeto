@@ -3,11 +3,8 @@ package br.com.sysloccOficial.financeiro.relatorioeventos;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.poi.hssf.record.PageBreakRecord.Break;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.model.DesIntFinanc;
 import br.com.sysloccOficial.model.producao.ProducaoP;
@@ -64,7 +61,6 @@ public class RelatorioEventoIndividualApoio {
 			for (int i = 0; i < despesasProjeto.size(); i++) {
 				
 			}
-			
 			System.out.println("Tem Valor !!!");
 		}
 

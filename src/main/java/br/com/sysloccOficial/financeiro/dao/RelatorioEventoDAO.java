@@ -2,32 +2,21 @@ package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.List;
-
-
-
-
-
-
-
-
-
-
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-import javax.swing.JOptionPane;
+import javax.persistence.criteria.CriteriaBuilder;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
-import br.com.sysloccOficial.financeiro.model.FinancImpostos;
-import br.com.sysloccOficial.financeiro.relatorioeventos.Giro;
-import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioCaches;
 import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
@@ -44,7 +33,7 @@ import br.com.sysloccOficial.model.producao.ProducaoP;
 public class RelatorioEventoDAO {
 
 	@PersistenceContext	private EntityManager manager;
-	
+	@Autowired UtilitariaDatas utildatas;
 	
 	
 	public FinancAnalitico pegaFinancAnalitico(Integer idAnalitico){
@@ -69,6 +58,18 @@ public class RelatorioEventoDAO {
 	}
 	
 	public Lista listaPorIdLista(Integer idLista){
+		
+		CriteriaBuilder cb = manager.getCriteriaBuilder();
+		
+		
+		
+		
+		
+		Date infoLista =  relatorioDAO.listaPorIdLista(idLista);
+		
+		ArrayList<String> datas = utildatas.converteDateParaStringNacional(infoLista.getDataDoEvento().getTime());
+		
+		
 		return manager.find(Lista.class, idLista);
 		
 	}
@@ -139,9 +140,10 @@ public class RelatorioEventoDAO {
 	
 	}
 	
-	public List<CacheEvento> listaCacheEventoPorEvento(Integer idRelatorioEvento){
-		Query q = manager.createQuery("FROM CacheEvento where relatorioEvento ="+idRelatorioEvento);
-		return q.getResultList();
+	public LinkedHashSet<CacheEvento> listaCacheEventoPorEvento(Integer idRelatorioEvento){
+		TypedQuery<CacheEvento> q = manager.createQuery("FROM CacheEvento where relatorioEvento ="+idRelatorioEvento, CacheEvento.class);
+		LinkedHashSet<CacheEvento> caches = new LinkedHashSet<CacheEvento>(q.getResultList());
+		return caches;
 	}
 	
 	public BigDecimal calculaTotalCachesFuncionarios(BigDecimal totalDif, List<CachePadrao> relatorio) {
@@ -267,7 +269,7 @@ public class RelatorioEventoDAO {
 	public BigDecimal despesasFixas(String nomeTabela, String data) {
 		
 		
-		String consulta = "select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'";
+//		String consulta = "select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'";
 		
 		try {
 			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'",BigDecimal.class);
@@ -373,11 +375,14 @@ public class RelatorioEventoDAO {
 		}
 	}
 
-	public List<Integer> idsListaRelatoriosEventosPorMesAno(String mes,String anoEvento){
+	public LinkedHashSet<Integer> idsListaRelatoriosEventosPorMesAno(String mes,String anoEvento){
 		try {
 			String consultaRel = "select idLista from RelatorioEventos where mesEvento = '"+mes+"' and anoEvento = '"+anoEvento+"'";
 			TypedQuery<Integer> idsRelatorios = manager.createQuery(consultaRel, Integer.class);
-			return idsRelatorios.getResultList();
+			
+			LinkedHashSet<Integer> ids = new LinkedHashSet<Integer>(idsRelatorios.getResultList());
+			
+			return ids;
 		} catch (Exception e) {
 			return null;
 		}

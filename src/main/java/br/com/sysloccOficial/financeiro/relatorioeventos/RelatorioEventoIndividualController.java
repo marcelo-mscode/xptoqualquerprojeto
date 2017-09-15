@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.financeiro.relatorioeventos;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class RelatorioEventoIndividualController {
 		
 		List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
 		
-	 	List<CacheEvento> relatorio = relatorioEventoDAO.listaCacheEventoPorEvento(relatorioEventos.getIdRelatorioEvento());
+	 	LinkedHashSet<CacheEvento> relatorio = relatorioEventoDAO.listaCacheEventoPorEvento(relatorioEventos.getIdRelatorioEvento());
 		
 	 	
 	 	InfoInterna infoInterna = relatorioEventoDAO.infoInterna(idLista);
