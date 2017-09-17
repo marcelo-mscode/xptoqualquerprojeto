@@ -22,9 +22,9 @@ public class AtualizaInternaController extends AtualizaInternaRelatoriosEmMassa 
 	@RequestMapping("atualizaInterna")
 	public String atualizaInterna(Integer idLista) throws ParseException{
 		
-		 Date infoLista =  relatorioDAO.listaPorIdLista(idLista);
+		ArrayList<String> datas =  relatorioDAO.dataRelatoriosEventosCadastrados(idLista);
 			
-		 ArrayList<String> datas = utildatas.converteDateParaStringNacional(infoLista.getDataDoEvento().getTime());
+		// ArrayList<String> datas = utildatas.converteDateParaStringNacional(infoLista.getDataDoEvento().getTime());
 		 
 		 String mes = datas.get(1).toUpperCase().toString();
 		 String ano = datas.get(2).toUpperCase().toString();

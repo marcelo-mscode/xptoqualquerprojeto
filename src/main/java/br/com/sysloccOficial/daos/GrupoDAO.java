@@ -81,7 +81,9 @@ public class GrupoDAO {
 			
 			return testes;
 		} catch (Exception e) {
-			System.out.println("Não tem grupo sem imposto: "+e);
+			
+			//System.out.println("Não tem grupo sem imposto: "+e);
+		
 			return new BigDecimal("0");
 		}
 	}

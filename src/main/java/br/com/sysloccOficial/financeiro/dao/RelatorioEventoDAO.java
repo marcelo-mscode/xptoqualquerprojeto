@@ -1,8 +1,9 @@
 package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -10,6 +11,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -58,20 +62,26 @@ public class RelatorioEventoDAO {
 	}
 	
 	public Lista listaPorIdLista(Integer idLista){
+		return manager.find(Lista.class, idLista);
+	}
+	
+	
+	
+	public ArrayList<String> dataRelatoriosEventosCadastrados(Integer idLista) throws ParseException{
 		
 		CriteriaBuilder cb = manager.getCriteriaBuilder();
+		CriteriaQuery<Calendar> c = cb.createQuery(Calendar.class);
+		Root<Lista> l = c.from(Lista.class);
+		c.select(l.<Calendar>get("dataDoEvento"));
 		
+		Predicate predicate = cb.equal(l.get("idLista"), idLista);
+		c.where(predicate);
 		
-		
-		
-		
-		Date infoLista =  relatorioDAO.listaPorIdLista(idLista);
-		
-		ArrayList<String> datas = utildatas.converteDateParaStringNacional(infoLista.getDataDoEvento().getTime());
-		
-		
-		return manager.find(Lista.class, idLista);
-		
+		TypedQuery<Calendar> dtEvento = manager.createQuery(c);
+		Calendar data =  dtEvento.getSingleResult();
+		ArrayList<String> datas = utildatas.converteDateParaStringNacional(data.getTime());
+
+		return datas;
 	}
 	
 	public RelatorioEventos relatorioEventoPorIdLista(Integer idLista){
@@ -267,10 +277,6 @@ public class RelatorioEventoDAO {
 	
 	
 	public BigDecimal despesasFixas(String nomeTabela, String data) {
-		
-		
-//		String consulta = "select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'";
-		
 		try {
 			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valor) from "+nomeTabela+" where data like '%"+data+"%'",BigDecimal.class);
 			return f.getSingleResult();

@@ -115,7 +115,7 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			BigDecimal giroSTelef = caculaGiroSemTelefone(novoRelatorio.getValorLiquido(),
 					   novoRelatorio.getTotalCachesSemTelefone(),totalApagar(relatorioBVS));
 			
-			System.out.println("Giro sem telefone: "+giroSTelef);
+			//System.out.println("Giro sem telefone: "+giroSTelef);
 
 //--------- Margem Contribuição ---------------- //
 			

@@ -25,11 +25,15 @@ public class AtualizaInternaRelatoriosEmMassa {
 				for (Integer integer : idsListas) {
 					
 					 Lista infoLista2 =  relatorioDAO.listaPorIdLista(integer);
+
+					 ArrayList<String> datas2 =  relatorioDAO.dataRelatoriosEventosCadastrados(integer);
 					 
-					 ArrayList<String> datas2 = utildatas.converteDateParaStringNacional(infoLista2.getDataDoEvento().getTime());
+					 //ArrayList<String> datas2 = utildatas.converteDateParaStringNacional(infoLista2.getDataDoEvento().getTime());
 					 
 					 String mes2 = datas2.get(1).toUpperCase().toString();
 					 String ano2 = datas2.get(2).toUpperCase().toString();
+				
+					 
 					 relatorioApoio.montaObjetoRelatorio(integer,infoLista2,mes2,ano2);
 					 
 				}
