@@ -180,8 +180,6 @@ public class RelatorioEventoDAO {
 				
 				}
 				
-				
-				
 			}else{
 				String consulta = "from CachePadrao order by idCachePadrao";
 				TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
