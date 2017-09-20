@@ -2,15 +2,13 @@ package br.com.sysloccOficial.financeiro.atualizaInterna;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedHashSet;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
+import br.com.sysloccOficial.model.Lista;
 
 @Controller
 public class AtualizaInternaController extends AtualizaInternaRelatoriosEmMassa {
@@ -22,20 +20,25 @@ public class AtualizaInternaController extends AtualizaInternaRelatoriosEmMassa 
 	@RequestMapping("atualizaInterna")
 	public String atualizaInterna(Integer idLista) throws ParseException{
 		
-		ArrayList<String> datas =  relatorioDAO.dataRelatoriosEventosCadastrados(idLista);
-			
-		// ArrayList<String> datas = utildatas.converteDateParaStringNacional(infoLista.getDataDoEvento().getTime());
-		 
+		 ArrayList<String> datas =  relatorioDAO.dataRelatoriosEventosCadastrados(idLista);
 		 String mes = datas.get(1).toUpperCase().toString();
 		 String ano = datas.get(2).toUpperCase().toString();
 		 
 	
-		 LinkedHashSet<Integer> idsListas = relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano);
-		 /**
-		  * 
-		  * Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
-		  */
-		 atualizaInternaRelatoriosEventosEmMassa(idsListas);
+		 //Verifica se tem algum relatório ja cadastrado no sistema
+		 LinkedHashSet<Integer> listaIdsRelatoriosEventosCadastrados = relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano);
+
+		 if(listaIdsRelatoriosEventosCadastrados.isEmpty()){
+			 Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
+			 relatorioApoio.montaObjetoRelatorio(idLista,infoLista,mes,ano);
+		 }else{
+			 /**
+			  * 
+			  * Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
+			  */
+			 atualizaInternaRelatoriosEventosEmMassa(listaIdsRelatoriosEventosCadastrados);
+		 }
+		 
 	
  		 //Se datas retornar erro, indica que não tem uma data do evento cadastrada na Lista
  		 //Criar lightbox pedindo para financeiro cadastrar uma data manualmente.

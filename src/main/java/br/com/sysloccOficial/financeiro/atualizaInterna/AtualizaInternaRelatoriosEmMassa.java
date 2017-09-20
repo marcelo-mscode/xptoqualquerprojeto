@@ -20,12 +20,11 @@ public class AtualizaInternaRelatoriosEmMassa {
 		super();
 	}
 
-	protected void atualizaInternaRelatoriosEventosEmMassa(LinkedHashSet<Integer> idsListas)
-			throws ParseException {
+	protected void atualizaInternaRelatoriosEventosEmMassa(LinkedHashSet<Integer> idsListas)throws ParseException {
+
 				for (Integer integer : idsListas) {
 					
 					 Lista infoLista2 =  relatorioDAO.listaPorIdLista(integer);
-
 					 ArrayList<String> datas2 =  relatorioDAO.dataRelatoriosEventosCadastrados(integer);
 					 
 					 //ArrayList<String> datas2 = utildatas.converteDateParaStringNacional(infoLista2.getDataDoEvento().getTime());

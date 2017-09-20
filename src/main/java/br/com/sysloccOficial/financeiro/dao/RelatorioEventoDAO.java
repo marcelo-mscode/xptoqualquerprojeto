@@ -14,6 +14,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -268,8 +269,10 @@ public class RelatorioEventoDAO {
 			String c2 = mes.replace("[", "").replace("]", "");
 			TypedQuery<Lista> q = manager.createQuery(c2, Lista.class);
 			return q.getResultList();
+		
+		
 		} catch (Exception e) {
-			//JOptionPane.showMessageDialog(null, "erro Listas: "+e);
+			JOptionPane.showMessageDialog(null, "erro Listas: "+e);
 			return null;
 		}
 	}
@@ -382,6 +385,7 @@ public class RelatorioEventoDAO {
 	}
 
 	public LinkedHashSet<Integer> idsListaRelatoriosEventosPorMesAno(String mes,String anoEvento){
+	
 		try {
 			String consultaRel = "select idLista from RelatorioEventos where mesEvento = '"+mes+"' and anoEvento = '"+anoEvento+"'";
 			TypedQuery<Integer> idsRelatorios = manager.createQuery(consultaRel, Integer.class);
