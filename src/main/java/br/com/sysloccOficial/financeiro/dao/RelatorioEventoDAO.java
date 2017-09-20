@@ -132,11 +132,22 @@ public class RelatorioEventoDAO {
 	}
 	
 	
-	public List<CachePadrao> listaRelatorioCaches(){
+	public List<CachePadrao> listaRelatorioCaches(/*Integer idLista*/){
+		
+	//	String 
+		
+		
+		
+		
 		String consulta = "from CachePadrao order by idCachePadrao";
 		TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
 		return q.getResultList();
 	}
+
+	
+	
+	
+	
 	
 	public GiroEvento giroPorIdLista(Integer idRelatorioEvento){
 	
@@ -269,7 +280,6 @@ public class RelatorioEventoDAO {
 			String c2 = mes.replace("[", "").replace("]", "");
 			TypedQuery<Lista> q = manager.createQuery(c2, Lista.class);
 			return q.getResultList();
-		
 		
 		} catch (Exception e) {
 			System.out.println("erro Listas: "+e);
