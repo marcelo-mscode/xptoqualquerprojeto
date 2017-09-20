@@ -268,12 +268,12 @@ public class RelatorioEventoDAO {
 	
 	public void salvaCacheDoEvento(RelatorioEventos relatorioEvento){
 		
+		manager.createQuery("DELETE FROM CacheEvento WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento()).executeUpdate();
 		
 		List<CachePadrao> cachePadrao =  listaRelatorioCaches(relatorioEvento.getIdLista());
 		
 		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
 
-//		manager.createQuery("DELETE FROM CacheEvento WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento()).executeUpdate();
 		
 		for (int i = 0; i < cachePadrao.size(); i++) {
 				CacheEvento novoCacheEvento = new CacheEvento();
