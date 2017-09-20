@@ -272,7 +272,7 @@ public class RelatorioEventoDAO {
 		
 		
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "erro Listas: "+e);
+			System.out.println("erro Listas: "+e);
 			return null;
 		}
 	}
