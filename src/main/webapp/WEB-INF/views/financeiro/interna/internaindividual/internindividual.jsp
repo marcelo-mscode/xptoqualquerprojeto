@@ -330,18 +330,22 @@
                
 <!-- FEE  -->               
                <tr>
-                  <th>Fee ${infoLista.administracao}%</th>
+                  <th>Fee ${infoLista.administracao}% ????</th>
                   <th class="servicos">
-                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
+                  <c:set var="free14" value="${calculadora.subContratados * (infoLista.administracao*0.01)}" />
+                     <fmt:formatNumber value="${free14}" pattern="#,##0.00"/>
+
+
+<%--                      <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/> --%>
                   </th>
                   <th></th>
                   <td class="colorRed"></td>
                   <td class="colorRed"></td>
                   <td class="textRight">
-                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
+                     <fmt:formatNumber value="${free14}" pattern="#,##0.00"/>
                   </td>
                   <td class="textRight">
-                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
+                     <fmt:formatNumber value="${free14}" pattern="#,##0.00"/>
                   </td>
                   <td colspan="6"></td>
                </tr>
