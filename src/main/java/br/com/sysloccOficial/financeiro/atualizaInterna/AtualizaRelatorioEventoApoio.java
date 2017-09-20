@@ -51,7 +51,7 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			
 			List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
 	
-			List<CachePadrao> listaRelatorioCaches = relatorioDAO.listaRelatorioCaches(/*idLista*/);
+			List<CachePadrao> listaRelatorioCaches = relatorioDAO.listaRelatorioCaches(idLista);
 			
 			
 			BigDecimal custoTelefone = new BigDecimal("0");

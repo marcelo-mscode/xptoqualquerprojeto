@@ -132,16 +132,38 @@ public class RelatorioEventoDAO {
 	}
 	
 	
-	public List<CachePadrao> listaRelatorioCaches(/*Integer idLista*/){
-		
-	//	String 
+	public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 		
 		
+		try {
+			
+			
+			String idRelatorioEvento = "select idRelatorioEvento from RelatorioEventos where idLista = " +idLista;
+			TypedQuery<Integer> query = manager.createQuery(idRelatorioEvento,Integer.class);
+			Integer id = query.getSingleResult();
+			
+			if(id != null){
+
+				TypedQuery<CacheEvento> cacheEvento = manager.createQuery("from CacheEvento where relatorioEvento = "+ id, CacheEvento.class);
+				List<CacheEvento> listaCaches = cacheEvento.getResultList();
+				
+				
+				String consulta = "from CachePadrao order by idCachePadrao";
+				TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
+				return q.getResultList();
+				
+				
+			
+			
+			}else{
+
+				return null;
+			}
 		
-		
-		String consulta = "from CachePadrao order by idCachePadrao";
-		TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
-		return q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Erro ao pegar cache Evento:" + e);
+			return null;
+		}
 	}
 
 	
@@ -221,7 +243,8 @@ public class RelatorioEventoDAO {
 		
 		manager.createQuery("DELETE FROM CacheEvento WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento()).executeUpdate();
 		
-		List<CachePadrao> cachePadrao =  listaRelatorioCaches();
+		List<CachePadrao> cachePadrao =  listaRelatorioCaches(relatorioEvento.getIdLista());
+		
 		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
 		
 		for (int i = 0; i < cachePadrao.size(); i++) {
