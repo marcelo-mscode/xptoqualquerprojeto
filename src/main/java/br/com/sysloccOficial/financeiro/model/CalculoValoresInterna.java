@@ -83,7 +83,7 @@ public class CalculoValoresInterna extends Calculadora{
 		try {
 			
 			BigDecimal feeGeral1 = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getAdministracaoValor();
-			BigDecimal feeReduzido1 = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getAdministracaoValor();
+			BigDecimal feeReduzido1 = getFeeReduzido();
 			
 			
 			feeGeral = listaDeProducaoP.get(0).getProdutoGrupo().getIdGrupo().getIdLista().getAdministracaoValor();
