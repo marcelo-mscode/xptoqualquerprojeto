@@ -143,21 +143,50 @@ public class RelatorioEventoDAO {
 			Integer id = query.getSingleResult();
 			
 			if(id != null){
-
+				
 				TypedQuery<CacheEvento> cacheEvento = manager.createQuery("from CacheEvento where relatorioEvento = "+ id, CacheEvento.class);
 				List<CacheEvento> listaCaches = cacheEvento.getResultList();
 				
+				if(listaCaches.isEmpty()){
+					
+					String consulta = "from CachePadrao order by idCachePadrao";
+					TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
+
+					return q.getResultList();
+					
+				}else{
+					
+					List<CachePadrao> cachePadrao = new ArrayList<CachePadrao>();
+					
+					for (int i = 0; i < listaCaches.size(); i++) {
+						
+						CachePadrao transfCache = new CachePadrao();
+						
+						
+						transfCache.setHabilitado(true);
+						transfCache.setNomeFunc(listaCaches.get(i).getCachePadrao().getNomeFunc());
+						transfCache.setRazaoPorcentagem(listaCaches.get(i).getRazaoPorcentagem());
+						transfCache.setTipoCache(listaCaches.get(i).getCachePadrao().getTipoCache());
+						
+						String porcentagem = listaCaches.get(i).getRazaoPorcentagem().multiply(new BigDecimal("100")).toString();
+						
+						transfCache.setPorcentagem(porcentagem);
+						
+						cachePadrao.add(transfCache);
+						
+					}
+					
+					return cachePadrao;
 				
+				}
+				
+				
+				
+			}else{
 				String consulta = "from CachePadrao order by idCachePadrao";
 				TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
-				return q.getResultList();
-				
-				
-			
-			
-			}else{
 
-				return null;
+				return q.getResultList();
 			}
 		
 		} catch (Exception e) {
@@ -241,11 +270,12 @@ public class RelatorioEventoDAO {
 	
 	public void salvaCacheDoEvento(RelatorioEventos relatorioEvento){
 		
-		manager.createQuery("DELETE FROM CacheEvento WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento()).executeUpdate();
 		
 		List<CachePadrao> cachePadrao =  listaRelatorioCaches(relatorioEvento.getIdLista());
 		
 		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
+
+//		manager.createQuery("DELETE FROM CacheEvento WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento()).executeUpdate();
 		
 		for (int i = 0; i < cachePadrao.size(); i++) {
 				CacheEvento novoCacheEvento = new CacheEvento();
