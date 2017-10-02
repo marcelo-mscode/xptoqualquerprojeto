@@ -17,7 +17,7 @@
 	 	
 	 	<c:forEach items="${relatorioCaches}" var="relatorioCaches">
 		 	<tr>
-				<td>${relatorioCaches.cachePadrao.nomeFunc}-${relatorioCaches.cachePadrao.idCachePadrao} </td>
+				<td>${relatorioCaches.cachePadrao.nomeFunc}-${relatorio.idRelatorioEvento}</td>
 				<td>${relatorioCaches.cachePadrao.porcentagem}%</td>
 				<td><fmt:formatNumber value="${relatorioCaches.valor}" pattern="#,##0.00"/></td>
 		 	</tr>	
