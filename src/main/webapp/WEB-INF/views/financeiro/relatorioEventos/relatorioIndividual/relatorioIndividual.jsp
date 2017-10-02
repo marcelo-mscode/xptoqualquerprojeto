@@ -71,12 +71,16 @@
 
 function mudaCache(idRelatorio, idCachePadrao){
 	
-	alert($("#mudaCacheFunc"+idCachePadrao).val());
+	var novoValorCache = $("#mudaCacheFunc"+idCachePadrao).val();
 	
-	alert(idRelatorio);
+	$.ajax({
+		url : "atualizaCacheRelatorioEvento?idRelatorio="+idRelatorio+"&idCachePadrao="+idCachePadrao+"&novoValorCache="+novoValorCache,
+		success : function(data) {
+			$("#"+idDivAjax).html(data);
+		}
+	});
 	
-	
-}
+}	
 
 </script>
 

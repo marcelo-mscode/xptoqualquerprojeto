@@ -49,5 +49,15 @@ public class RelatorioEventoIndividualController {
 		return MV;
 	}
 	
+	@RequestMapping("atualizaCacheRelatorioEvento")
+	public void atualizaCacheRelatorioEvento(Integer idRelatorio, Integer idCachePadrao, String novoValorCache){
+		
+		System.out.println(idRelatorio);
+		System.out.println(idCachePadrao);
+		System.out.println(novoValorCache);
+		
+	}
+	
+	
 	
 }
