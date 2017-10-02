@@ -66,3 +66,19 @@
 </div>
 
 <c:import url="../../../_comum/footer.jsp" />
+
+<script type="text/javascript">
+
+function mudaCache(idRelatorio, idCachePadrao){
+	
+	alert($("#mudaCacheFunc"+idCachePadrao).val());
+	
+	alert(idRelatorio);
+	
+	
+}
+
+</script>
+
+
+

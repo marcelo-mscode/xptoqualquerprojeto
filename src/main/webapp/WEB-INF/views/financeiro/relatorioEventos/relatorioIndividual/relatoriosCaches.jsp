@@ -5,6 +5,15 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<style>
+.ajusteInput {
+    border: none;
+    height: 20px;
+    padding: 18px;
+    width: 65px;
+    text-align: center;
+</style>
+
  <table class="table table-striped table-hover table-bordered bordaDestaque">
 	  <tbody id="prospeccaoFiltro">
 	  <tr>
@@ -12,13 +21,15 @@
 	  </tr>
 		<tr style="background: #f1f1f1 !important">
 			<td>Nome</td>
-			<td>%</td>
+			<td style="width: 50px;text-align: center;">%</td>
 			<td>Valor</td>
 	 	
 	 	<c:forEach items="${relatorioCaches}" var="relatorioCaches">
 		 	<tr>
 				<td>${relatorioCaches.cachePadrao.nomeFunc}-${relatorio.idRelatorioEvento}</td>
-				<td>${relatorioCaches.cachePadrao.porcentagem}%</td>
+				<td style="padding: 0;margin: 0;text-align: center;">
+					<input class="ajusteInput"  value="${relatorioCaches.cachePadrao.porcentagem}" onblur="mudaCache(${relatorio.idRelatorioEvento}, ${relatorioCaches.cachePadrao.idCachePadrao});" id="mudaCacheFunc${relatorioCaches.cachePadrao.idCachePadrao}"/>
+				</td>
 				<td><fmt:formatNumber value="${relatorioCaches.valor}" pattern="#,##0.00"/></td>
 		 	</tr>	
 	 	 </c:forEach>
