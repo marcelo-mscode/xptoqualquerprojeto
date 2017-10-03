@@ -467,8 +467,11 @@ public class RelatorioEventoDAO {
 		TypedQuery<CacheEvento> q = manager.createQuery(consulta, CacheEvento.class);
 		
 		CacheEvento cache = q.getSingleResult();
-			
-		cache.setRazaoPorcentagem(new BigDecimal(novoValorCache).divide(new BigDecimal("100"),12,RoundingMode.UP));
+		
+		BigDecimal rz = new BigDecimal(novoValorCache);
+		
+		cache.setRazaoPorcentagem(rz.divide(new BigDecimal("100"),12,RoundingMode.UP));
+
 		
 		manager.merge(cache);
 		
