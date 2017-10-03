@@ -1,6 +1,7 @@
 package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -462,13 +463,16 @@ public class RelatorioEventoDAO {
 	
 	public void atualizaCacheEvento(Integer idRelatorio, Integer idCachePadrao, String novoValorCache){
 		
-		String consulta = "";
+		String consulta = "from CacheEvento where relatorioEvento = "+idRelatorio+" and cachePadrao = "+idCachePadrao;
+		TypedQuery<CacheEvento> q = manager.createQuery(consulta, CacheEvento.class);
 		
+		CacheEvento cache = q.getSingleResult();
+			
+		cache.setRazaoPorcentagem(new BigDecimal(novoValorCache).divide(new BigDecimal("100"),12,RoundingMode.UP));
 		
-		System.out.println(idRelatorio);
-		System.out.println(idCachePadrao);
-		System.out.println(novoValorCache);
+		manager.merge(cache);
 		
+		System.out.println("Feito !!!");
 		
 	}
 	
