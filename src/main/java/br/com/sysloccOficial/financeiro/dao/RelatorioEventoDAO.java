@@ -462,6 +462,8 @@ public class RelatorioEventoDAO {
 	
 	public void atualizaCacheEvento(Integer idRelatorio, Integer idCachePadrao, String novoValorCache){
 		
+		String consulta = "";
+		
 		
 		System.out.println(idRelatorio);
 		System.out.println(idCachePadrao);

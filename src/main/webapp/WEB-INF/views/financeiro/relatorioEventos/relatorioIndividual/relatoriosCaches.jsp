@@ -10,7 +10,7 @@
     border: none;
     height: 20px;
     padding: 18px;
-    width: 65px;
+    width: 75px;
     text-align: center;
 </style>
 
@@ -28,7 +28,7 @@
 		 	<tr>
 				<td>${relatorioCaches.cachePadrao.nomeFunc}-${relatorio.idRelatorioEvento}</td>
 				<td style="padding: 0;margin: 0;text-align: center;">
-					<input class="ajusteInput"  value="${relatorioCaches.cachePadrao.porcentagem}" onblur="mudaCache(${relatorio.idRelatorioEvento}, ${relatorioCaches.cachePadrao.idCachePadrao});" id="mudaCacheFunc${relatorioCaches.cachePadrao.idCachePadrao}"/>
+					<input class="ajusteInput"  value="${relatorioCaches.razaoPorcentagem*100}" onblur="mudaCache(${relatorio.idRelatorioEvento}, ${relatorioCaches.cachePadrao.idCachePadrao});" id="mudaCacheFunc${relatorioCaches.cachePadrao.idCachePadrao}"/>
 				</td>
 				<td><fmt:formatNumber value="${relatorioCaches.valor}" pattern="#,##0.00"/></td>
 		 	</tr>	
