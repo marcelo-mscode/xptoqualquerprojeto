@@ -69,12 +69,12 @@
 
 <script type="text/javascript">
 
-function mudaCache(idRelatorio, idCachePadrao){
+function mudaCache(idRelatorio, idCachePadrao, idLista){
 	
 	var novoValorCache = $("#mudaCacheFunc"+idCachePadrao).val();
 	
 	$.ajax({
-		url : "atualizaCacheRelatorioEvento?idRelatorio="+idRelatorio+"&idCachePadrao="+idCachePadrao+"&novoValorCache="+novoValorCache,
+		url : "atualizaCacheRelatorioEvento?idRelatorio="+idRelatorio+"&idCachePadrao="+idCachePadrao+"&novoValorCache="+novoValorCache+"&idLista="+idLista,
 		success : function(data) {
 			$("#"+idDivAjax).html(data);
 		}

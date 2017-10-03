@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.financeiro.relatorioeventos;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.financeiro.atualizaInterna.AtualizaInternaRelatoriosEmMassa;
+import br.com.sysloccOficial.financeiro.atualizaInterna.AtualizaRelatorioEventoApoio;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
@@ -24,6 +26,7 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 	@Autowired RelatorioEventoIndividualApoio relApoio;
 	@Autowired RelatorioEventoDAO relatorioEventoDAO;
 	@Autowired RelatorioEventoDAO relatorioDAO;
+	@Autowired AtualizaRelatorioEventoApoio relatorioApoio;
 	
 	@RequestMapping("relatorioEventoIndividual")
 	public ModelAndView relatorioEventoIndividual(Integer idLista){
@@ -53,15 +56,12 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 	}
 	
 	@RequestMapping("atualizaCacheRelatorioEvento")
-	public void atualizaCacheRelatorioEvento(Integer idRelatorio, Integer idCachePadrao, String novoValorCache){
+	public String atualizaCacheRelatorioEvento(Integer idRelatorio, Integer idCachePadrao, String novoValorCache,Integer idLista) throws ParseException{
 		
 		relatorioEventoDAO.atualizaCacheEvento(idRelatorio, idCachePadrao, novoValorCache);
 		
 		
-		
-		
-		
-		ArrayList<String> datas =  relatorioDAO.dataRelatoriosEventosCadastrados(idLista);
+		/*ArrayList<String> datas =  relatorioDAO.dataRelatoriosEventosCadastrados(idLista);
 		 String mes = datas.get(1).toUpperCase().toString();
 		 String ano = datas.get(2).toUpperCase().toString();
 		 
@@ -73,10 +73,10 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 			 Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
 			 relatorioApoio.montaObjetoRelatorio(idLista,infoLista,mes,ano);
 		 }else{
-			 /**
+			 *//**
 			  * 
 			  * Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
-			  */
+			  *//*
 			 atualizaInternaRelatoriosEventosEmMassa(listaIdsRelatoriosEventosCadastrados);
 		 }
 		 
@@ -84,8 +84,8 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 		 //Se datas retornar erro, indica que não tem uma data do evento cadastrada na Lista
 		 //Criar lightbox pedindo para financeiro cadastrar uma data manualmente.
 		 //Depois que a data for inserida no lightbox, cadastrar a data e chamar essa action novamente.
-		
-		
+*/		
+		 return "redirect:relatorioEventoIndividual?idLista="+idLista;
 		
 	}
 	

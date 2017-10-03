@@ -474,8 +474,9 @@ public class RelatorioEventoDAO {
 
 		
 		manager.merge(cache);
+		manager.flush();
 		
-		System.out.println("Feito !!!");
+		System.out.println(rz);
 		
 	}
 	
