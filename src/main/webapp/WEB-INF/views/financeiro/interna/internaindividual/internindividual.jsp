@@ -150,34 +150,23 @@
 	                  </c:if>
                   </td>
                   
-                  <!-- Valor fornecedor -->	
+               <!-- Valor fornecedor -->	
                   <td class="colorRed" style="padding: 0px">
 	            
-	            		<c:if test="${itensInterna.diferenca == itensInterna.valorItem}">
+	            		<c:if test="${itensInterna.diferenca == itensInterna.valorItem || itensInterna.valorContratacao != '0.00'}">
 	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorContratacao}" pattern="#,##0.00"/>"
 	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
 	            		</c:if>
 	            
-	            
-	                  <%-- <c:if test="${itensInterna.valorContratacao == '0.00' && itensInterna.idEmpFornecedor.idEmpresa != 6961}">
-	                	  <input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>"
-	                      onblur="valorF('valorF',${itensInterna.idProducao});" />
-	                  </c:if>
-	            
-	            
-	            
-	                  <c:if test="${itensInterna.valorContratacao != '0.00'}">
-		                  <input name="" id="valorF${itensInterna.idProducao}"  class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorContratacao}" pattern="#,##0.00"/>"
-		                  onblur="valorF('valorF',${itensInterna.idProducao});" />
-	                  </c:if> --%>
-                
-                
+	            		<c:if test="${itensInterna.diferenca != itensInterna.valorItem && itensInterna.valorContratacao == '0.00'}">
+	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>"
+	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
+	            		</c:if>
                   </td>
-                  <!-- Valor NF -->	
+               <!-- Valor NF -->	
                   <td class="textRight"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/></td>
-                  <!-- Diferenca -->
-                 
-                 
+
+               <!-- Diferenca -->
                   <c:if test="${itensInterna.diferenca < 0}">
              	     <td class="colorRed">
                   </c:if>				
@@ -185,21 +174,15 @@
                	   <td class="colorBlue">
                   </c:if>				
                  
+                  <c:if test="${itensInterna.diferenca == itensInterna.valorItem || itensInterna.valorContratacao != '0.00'}">
+                  	<fmt:formatNumber value="${itensInterna.diferenca}" pattern="#,##0.00"/>
+                  </c:if>
                  
                   <c:if test="${itensInterna.valorContratacao == '0.00'}"></c:if>
-           
-                  <%-- <c:if test="${itensInterna.idEmpFornecedor.idEmpresa == 6961 && itensInterna.valorContratacao != '0.00'}">
-                	 Valor locco <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
-                  </c:if> --%>
-           
-                  <c:if test="${itensInterna.valorContratacao != '0.00'}">
-                	   <fmt:formatNumber value="${itensInterna.diferenca}" pattern="#,##0.00"/>
-                  </c:if>
-           
                </td>
+
                   <!-- Focar os esforços aqui !!!!!!!!!!!!!!!!!!!!  -->
-             
-             
+
  <%--             <c:if test="${itensInterna.rowSpan != null}">
 	              <td rowspan="${itensInterna.rowSpan}" style="vertical-align: middle;font-size: 12px">${itensInterna.idEmpFornecedor.empresa}</td>
 	                  <td rowspan="${itensInterna.rowSpan}" style="text-align: center;vertical-align: middle;padding: 0">--%>
