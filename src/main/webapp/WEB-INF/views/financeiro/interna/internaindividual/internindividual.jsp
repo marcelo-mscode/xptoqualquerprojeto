@@ -178,7 +178,7 @@
                   	<fmt:formatNumber value="${itensInterna.diferenca}" pattern="#,##0.00"/>
                   </c:if>
                  
-                  <c:if test="${itensInterna.valorContratacao == '0.00'}"></c:if>
+                  <c:if test="${itensInterna.valorContratacao == '0.00' && itensInterna.diferenca == '0.00'}">0,00</c:if>
                </td>
 
                   <!-- Focar os esforços aqui !!!!!!!!!!!!!!!!!!!!  -->
