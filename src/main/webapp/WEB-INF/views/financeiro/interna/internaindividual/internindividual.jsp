@@ -327,7 +327,7 @@
                   </c:if>
                   
                   <c:if test="${totalDepesas != null }">
-                     <fmt:formatNumber value="${calculadora.subDiferenca-totalDepesas}" pattern="#,##0.00"/>
+                    !!!!! <fmt:formatNumber value="${calculadora.subDiferenca-totalDepesas}" pattern="#,##0.00"/>
                   </c:if>
                   
                   </td>

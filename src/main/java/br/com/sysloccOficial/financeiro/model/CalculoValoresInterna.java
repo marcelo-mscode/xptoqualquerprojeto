@@ -268,10 +268,16 @@ public class CalculoValoresInterna extends Calculadora{
 	public BigDecimal getSubDiferenca() {
 		List<BigDecimal> valoresDeDiferencaELoCCoAgencia = new ArrayList<BigDecimal>();
 		BigDecimal somaValores;
+	
 		for (int i = 0; i < listaDeProducaoP.size(); i++) {
+			
 			somaValores = listaDeProducaoP.get(i).getDiferenca();
-			if(listaDeProducaoP.get(i).getIdEmpFornecedor().getIdEmpresa() == 6961)	
-				somaValores = somaValores.add(listaDeProducaoP.get(i).getValorItem());
+			
+			/*if(listaDeProducaoP.get(i).getIdEmpFornecedor().getIdEmpresa() == 6961)	{
+				somaValores = listaDeProducaoP.get(i).getDiferenca();
+				//somaValores = somaValores.add(listaDeProducaoP.get(i).getValorItem());
+				//somaValores = new BigDecimal("0.00");
+			}*/
 			valoresDeDiferencaELoCCoAgencia.add(somaValores);
 		}
 		subDiferenca = somaListaDeValores(valoresDeDiferencaELoCCoAgencia);
@@ -291,9 +297,10 @@ public class CalculoValoresInterna extends Calculadora{
 
 	public BigDecimal getSubValorFornecedor() {
 		BigDecimal valorNF = new BigDecimal("0");
+
 		for (int i = 0; i < listaDeProducaoP.size(); i++) {
-			if(listaDeProducaoP.get(i).getIdEmpFornecedor().getIdEmpresa() != 6961)
-			valorNF = valorNF.add(listaDeProducaoP.get(i).getValorItem()).subtract(listaDeProducaoP.get(i).getDiferenca());
+		   /* if(listaDeProducaoP.get(i).getIdEmpFornecedor().getIdEmpresa() != 6961)*/
+		   valorNF = valorNF.add(listaDeProducaoP.get(i).getValorItem()).subtract(listaDeProducaoP.get(i).getDiferenca());
 		}
 		subValorFornecedor = valorNF;
 		return subValorFornecedor;
