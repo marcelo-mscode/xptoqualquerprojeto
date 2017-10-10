@@ -112,9 +112,24 @@ public class InternaIndividualDAO {
 
 	public void editaValorF(String valor, Integer idProducao) {
 		ProducaoP producao = manager.find(ProducaoP.class, idProducao);
-		producao.setValorContratacao(new BigDecimal(util.formataValores(valor)));
-		producao.setDiferenca(producao.getValorItem().subtract(producao.getValorContratacao()));
+		
+		BigDecimal zero = new BigDecimal("0.00");
+		
+		BigDecimal valorCont = new BigDecimal(util.formataValores(valor));
+			
+		System.out.println(valorCont);
+		
+		if(valorCont.equals(zero)){
+			producao.setValorContratacao(zero);
+		}else{
+			producao.setValorContratacao(valorCont);
+		}
+		
+		
+		producao.setDiferenca(producao.getValorItem().subtract(valorCont));
+		
 		manager.merge(producao);
+		manager.flush();
 	}
 	
 	public void editaObservacao(String texto, Integer idProducao){
