@@ -28,17 +28,23 @@
    .tiraPaddingData{padding: 0px 0px 0px 5px  !important;height: 50px !important}
    .corMarronEstranha{background-color: rgb(255,204,153);}	
    .corRosaEstranha{background-color: rgb(255,153,204);}	
-   ::-webkit-scrollbar { width: 15px; height: 15px; }
+   
+   ::-webkit-scrollbar { width: 15px; height: 20px;}
    ::-webkit-scrollbar-track:enabled { background-color: #FFF; }
-   ::-webkit-scrollbar-thumb:vertical { background-color: #ccc; }
-   ::-webkit-scrollbar-thumb:horizontal { background-color: #ccc; }
+   ::-webkit-scrollbar-thumb:vertical { background-color: #e74c3c; }
+   ::-webkit-scrollbar-thumb:horizontal { background-color: #e74c3c; }
+   
+   /* ::-webkit-scrollbar-track {background-color: #F4F4F4;}
+   ::-webkit-scrollbar-thumb {background: #dad7d7;} */
+   
+   
 	
 </style>
 <div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;margin-top: 50px">
    <ol class="breadcrumb">
-      <li><a href="index.html">Menu</a></li>
+      <li><a href="index.html">Menus</a></li>
       <li><a href="indexAnalitico">Relatorios Analítico</a></li>
-      <li class="active">Analítico ${InfoAnalitico.mesA} ${InfoAnalitico.anoA}</li>
+      <li>Analítico ${InfoAnalitico.mesA} ${InfoAnalitico.anoA}</li>
    </ol>
 </div>
 

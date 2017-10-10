@@ -31,6 +31,10 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 	@RequestMapping("resumoMesIndividual")
 	public ModelAndView resumoMesIndex(Integer mes, Integer ano){
 		
+		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(mes,ano);
+
+		if(!infoEvento.isEmpty()){
+			
 		ModelAndView MV = new ModelAndView("financeiro/resumoMes/individual/resumoMesIndividual");
 		
 		String anoMes = ( mes < 10 ) ? ano+"-0"+mes  : ano+"-"+mes;
@@ -49,7 +53,6 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		
 		
 		
-		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(mes,ano);
 		
 		List<Lista> infoLista = relatorioEventoDAO.relatorioListasIdLista(infoEvento);
 		
@@ -153,6 +156,14 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		MV.addObject("totalEmprestimos", totalEmprestimos);
 		
 		return MV;
+	    }
+		 else{
+			
+			ModelAndView MV = new ModelAndView("financeiro/resumoMes/individual/pageErroInfoIncompletas");
+
+			return MV;
+		}
+		
 	}
 	
 	

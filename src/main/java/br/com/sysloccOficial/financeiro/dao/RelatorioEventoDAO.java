@@ -124,7 +124,7 @@ public class RelatorioEventoDAO {
 		
 		
 		try {
-			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where mesReferencia="+mes + " and anoEvento ="+ ano+"order by idRelatorioEvento", RelatorioEventos.class);
+			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where mesReferencia= "+ mes + " and anoEvento ="+ ano +"order by idRelatorioEvento", RelatorioEventos.class);
 			return q.getResultList();
 		} catch (Exception e) {
 			System.out.println("Ocorreu um erro Em RelatorioEventoDAO\nMétodo -- > relatorioEventoPorMesReferencia:" +e);

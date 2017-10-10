@@ -164,20 +164,27 @@
                   <!-- Valor NF -->	
                   <td class="textRight"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/></td>
                   <!-- Diferenca -->
+                 
+                 
                   <c:if test="${itensInterna.diferenca < 0}">
              	     <td class="colorRed">
                   </c:if>				
                   <c:if test="${itensInterna.diferenca >= 0}">
                	   <td class="colorBlue">
                   </c:if>				
+                 
+                 
                   <c:if test="${itensInterna.valorContratacao == '0.00'}"></c:if>
-                  <c:if test="${itensInterna.idEmpFornecedor.idEmpresa == 6961}">
-                	  <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
-                  </c:if>
+           
+                  <%-- <c:if test="${itensInterna.idEmpFornecedor.idEmpresa == 6961 && itensInterna.valorContratacao != '0.00'}">
+                	 Valor locco <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
+                  </c:if> --%>
+           
                   <c:if test="${itensInterna.valorContratacao != '0.00'}">
-                	  <fmt:formatNumber value="${itensInterna.diferenca}" pattern="#,##0.00"/>
+                	   <fmt:formatNumber value="${itensInterna.diferenca}" pattern="#,##0.00"/>
                   </c:if>
-                  </td>
+           
+               </td>
                   <!-- Focar os esforços aqui !!!!!!!!!!!!!!!!!!!!  -->
              
              
