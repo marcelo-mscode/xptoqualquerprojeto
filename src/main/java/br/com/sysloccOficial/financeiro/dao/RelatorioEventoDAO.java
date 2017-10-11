@@ -135,61 +135,34 @@ public class RelatorioEventoDAO {
 	
 	public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 		
-		Integer id = null;
-		
-		
 		try {
 			
-			   
-			String idRelatorioEvento = "select idRelatorioEvento from RelatorioEventos where idLista = " +idLista;
-			TypedQuery<Integer> query = manager.createQuery(idRelatorioEvento,Integer.class);
-			id = query.getSingleResult();
+			// Verificar se tem relatorio evento
+			Integer id = verificaSeTemRelatorioEventoPorIdLista(idLista);
 			
+			// Se tiver o relatorio 
+			if(id != null){
 
-			if(query.getSingleResult() != null){
-
+			List<CacheEvento> listaCaches = pegaCacheExistenteDoRelatorio(id);
+			// Verificar se tem cacheEvento desse relatorio
 				
-				TypedQuery<CacheEvento> cacheEvento = manager.createQuery("from CacheEvento where relatorioEvento = "+ id, CacheEvento.class);
-				List<CacheEvento> listaCaches = cacheEvento.getResultList();
-				
+				// Se não tiver
+				// Pega Cache Padrão
 				if(listaCaches.isEmpty()){
 					
-					String consulta = "from CachePadrao order by idCachePadrao";
-					TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
-
-					return q.getResultList();
+					return pegaCachePadrao();
 					
+				// Se tiver
+				// Se tiver pega caches do evento	
 				}else{
 					
-					List<CachePadrao> cachePadrao = new ArrayList<CachePadrao>();
-					
-					for (int i = 0; i < listaCaches.size(); i++) {
-						
-						CachePadrao transfCache = new CachePadrao();
-						
-						
-						transfCache.setHabilitado(true);
-						transfCache.setNomeFunc(listaCaches.get(i).getCachePadrao().getNomeFunc());
-						transfCache.setRazaoPorcentagem(listaCaches.get(i).getRazaoPorcentagem());
-						transfCache.setTipoCache(listaCaches.get(i).getCachePadrao().getTipoCache());
-						
-						String porcentagem = listaCaches.get(i).getRazaoPorcentagem().multiply(new BigDecimal("100")).toString();
-						
-						transfCache.setPorcentagem(porcentagem);
-						
-						cachePadrao.add(transfCache);
-						
-					}
-					
-					return cachePadrao;
+					return preencheListaCacheComCacheRelatorioEventoExistente(listaCaches);
 				
 				}
 				
 			}else{
-				String consulta = "from CachePadrao order by idCachePadrao";
-				TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
-
-				return q.getResultList();
+				
+				return pegaCachePadrao();
 			}
 		
 			
@@ -201,10 +174,55 @@ public class RelatorioEventoDAO {
 		}
 	}
 
-	
-	
-	
-	
+	private List<CacheEvento> pegaCacheExistenteDoRelatorio(Integer id) {
+		TypedQuery<CacheEvento> cacheEvento = manager.createQuery("from CacheEvento where relatorioEvento = "+ id, CacheEvento.class);
+		List<CacheEvento> listaCaches = cacheEvento.getResultList();
+		return listaCaches;
+	}
+
+	private List<CachePadrao> preencheListaCacheComCacheRelatorioEventoExistente(List<CacheEvento> listaCaches) {
+		List<CachePadrao> cachePadrao = new ArrayList<CachePadrao>();
+		
+		for (int i = 0; i < listaCaches.size(); i++) {
+			
+			CachePadrao transfCache = new CachePadrao();
+			
+			
+			transfCache.setHabilitado(true);
+			transfCache.setNomeFunc(listaCaches.get(i).getCachePadrao().getNomeFunc());
+			transfCache.setRazaoPorcentagem(listaCaches.get(i).getRazaoPorcentagem());
+			transfCache.setTipoCache(listaCaches.get(i).getCachePadrao().getTipoCache());
+			
+			String porcentagem = listaCaches.get(i).getRazaoPorcentagem().multiply(new BigDecimal("100")).toString();
+			
+			transfCache.setPorcentagem(porcentagem);
+			
+			cachePadrao.add(transfCache);
+			
+		}
+		
+		return cachePadrao;
+	}
+
+	private Integer verificaSeTemRelatorioEventoPorIdLista(Integer idLista) {
+		
+		try {
+			String idRelatorioEvento = "select idRelatorioEvento from RelatorioEventos where idLista = " +idLista;
+			TypedQuery<Integer> query = manager.createQuery(idRelatorioEvento,Integer.class);
+			Integer id = query.getSingleResult();
+			return id;
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
+
+	private List<CachePadrao> pegaCachePadrao() {
+		String consulta = "from CachePadrao order by idCachePadrao";
+		TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
+
+		return q.getResultList();
+	}
 	
 	public GiroEvento giroPorIdLista(Integer idRelatorioEvento){
 	
