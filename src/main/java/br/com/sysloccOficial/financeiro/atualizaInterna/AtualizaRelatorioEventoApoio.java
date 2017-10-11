@@ -5,17 +5,21 @@ import java.math.RoundingMode;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.daos.GrupoDAO;
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
+import br.com.sysloccOficial.financeiro.relatorioeventos.CacheDoEventoApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioBVS;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventoIndividualApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
@@ -37,6 +41,7 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 	@Autowired UtilitariaDatas utildatas;
 	@Autowired GrupoDAO grupoDAO;
 	@Autowired ProdutoGrupoDAO produtoGrupoDAO;
+	@Autowired CacheDoEventoApoio cacheEvento;
 	
 	
 	
@@ -51,7 +56,7 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			
 			List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
 	
-			List<CachePadrao> listaRelatorioCaches = relatorioDAO.listaRelatorioCaches(idLista);
+			List<CachePadrao> listaRelatorioCaches = cacheEvento.listaRelatorioCaches(idLista);
 			
 			
 			BigDecimal custoTelefone = new BigDecimal("0");

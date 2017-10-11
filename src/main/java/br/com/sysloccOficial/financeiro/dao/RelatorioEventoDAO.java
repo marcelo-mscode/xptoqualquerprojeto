@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
+import br.com.sysloccOficial.financeiro.relatorioeventos.CacheDoEventoApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
@@ -39,7 +40,9 @@ import br.com.sysloccOficial.model.producao.ProducaoP;
 public class RelatorioEventoDAO {
 
 	@PersistenceContext	private EntityManager manager;
+	@Autowired CacheDoEventoApoio cacheEvento;
 	@Autowired UtilitariaDatas utildatas;
+	
 	
 	
 	public FinancAnalitico pegaFinancAnalitico(Integer idAnalitico){
@@ -295,7 +298,7 @@ public class RelatorioEventoDAO {
 		
 		manager.createQuery("DELETE FROM CacheEvento WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento()).executeUpdate();
 		
-		List<CachePadrao> cachePadrao =  listaRelatorioCaches(relatorioEvento.getIdLista());
+		List<CachePadrao> cachePadrao =  cacheEvento.listaRelatorioCaches(relatorioEvento.getIdLista());
 		
 		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
 
