@@ -135,15 +135,19 @@ public class RelatorioEventoDAO {
 	
 	public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 		
+		Integer id = null;
+		
 		
 		try {
 			
-			
+			   
 			String idRelatorioEvento = "select idRelatorioEvento from RelatorioEventos where idLista = " +idLista;
 			TypedQuery<Integer> query = manager.createQuery(idRelatorioEvento,Integer.class);
-			Integer id = query.getSingleResult();
+			id = query.getSingleResult();
 			
-			if(id != null){
+
+			if(query.getSingleResult() != null){
+
 				
 				TypedQuery<CacheEvento> cacheEvento = manager.createQuery("from CacheEvento where relatorioEvento = "+ id, CacheEvento.class);
 				List<CacheEvento> listaCaches = cacheEvento.getResultList();
@@ -188,6 +192,9 @@ public class RelatorioEventoDAO {
 				return q.getResultList();
 			}
 		
+			
+			
+			
 		} catch (Exception e) {
 			System.out.println("Erro ao pegar cache Evento:" + e);
 			return null;
@@ -219,7 +226,6 @@ public class RelatorioEventoDAO {
 	}
 	
 	public BigDecimal calculaTotalCachesFuncionarios(BigDecimal totalDif, List<CachePadrao> relatorio) {
-		
 		
 		BigDecimal totalCachesFunc = new BigDecimal("0");
 	
