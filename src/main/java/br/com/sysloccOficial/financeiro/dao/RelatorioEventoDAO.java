@@ -133,7 +133,7 @@ public class RelatorioEventoDAO {
 	}
 	
 	
-	public List<CachePadrao> listaRelatorioCaches(Integer idLista){
+	/*public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 		
 		try {
 			
@@ -172,15 +172,15 @@ public class RelatorioEventoDAO {
 			System.out.println("Erro ao pegar cache Evento:" + e);
 			return null;
 		}
-	}
+	}*/
 
-	private List<CacheEvento> pegaCacheExistenteDoRelatorio(Integer id) {
+	/*private List<CacheEvento> pegaCacheExistenteDoRelatorio(Integer id) {
 		TypedQuery<CacheEvento> cacheEvento = manager.createQuery("from CacheEvento where relatorioEvento = "+ id, CacheEvento.class);
 		List<CacheEvento> listaCaches = cacheEvento.getResultList();
 		return listaCaches;
-	}
+	}*/
 
-	private List<CachePadrao> preencheListaCacheComCacheRelatorioEventoExistente(List<CacheEvento> listaCaches) {
+	/*private List<CachePadrao> preencheListaCacheComCacheRelatorioEventoExistente(List<CacheEvento> listaCaches) {
 		List<CachePadrao> cachePadrao = new ArrayList<CachePadrao>();
 		
 		for (int i = 0; i < listaCaches.size(); i++) {
@@ -202,9 +202,9 @@ public class RelatorioEventoDAO {
 		}
 		
 		return cachePadrao;
-	}
+	}*/
 
-	private Integer verificaSeTemRelatorioEventoPorIdLista(Integer idLista) {
+	/*private Integer verificaSeTemRelatorioEventoPorIdLista(Integer idLista) {
 		
 		try {
 			String idRelatorioEvento = "select idRelatorioEvento from RelatorioEventos where idLista = " +idLista;
@@ -215,14 +215,14 @@ public class RelatorioEventoDAO {
 			return null;
 		}
 		
-	}
+	}*/
 
-	private List<CachePadrao> pegaCachePadrao() {
+	/*private List<CachePadrao> pegaCachePadrao() {
 		String consulta = "from CachePadrao order by idCachePadrao";
 		TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
 
 		return q.getResultList();
-	}
+	}*/
 	
 	public GiroEvento giroPorIdLista(Integer idRelatorioEvento){
 	
