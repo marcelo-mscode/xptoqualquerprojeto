@@ -151,10 +151,11 @@
                   </td>
                   
                <!-- Valor fornecedor -->	
+                 
                   <td class="colorRed" style="padding: 0px">
 	            
 	            		<c:if test="${itensInterna.diferenca == itensInterna.valorItem || itensInterna.valorContratacao != '0.00'}">
-	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorContratacao}" pattern="#,##0.00"/>"
+	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorDePagamentoContratacao}" pattern="#,##0.00"/>"
 	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
 	            		</c:if>
 	            
@@ -163,6 +164,7 @@
 	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
 	            		</c:if>
                   </td>
+                  
                <!-- Valor NF -->	
                   <td class="textRight"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/></td>
 

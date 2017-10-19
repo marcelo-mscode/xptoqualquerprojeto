@@ -42,6 +42,7 @@ import br.com.sysloccOficial.controllerProducao.salvaItem.ControllerSalvaItem;
 import br.com.sysloccOficial.criacao.controllerCriacao.dao.CriacaoDAO;
 import br.com.sysloccOficial.daos.UsuarioDAO;
 import br.com.sysloccOficial.financeiro.contaspagar.InternaAuxiliar;
+import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioCaches;
 import br.com.sysloccOficial.model.NotificaEquipe;
 
@@ -78,6 +79,7 @@ AbstractAnnotationConfigDispatcherServletInitializer {
 							   AuxDAOProducao.class,
 							   GeraCartaWord.class,
 							   UsuarioDAO.class,
+							   RelatorioEventoDAO.class,
 							   CriacaoDAO.class,
 							   ApoioCartaSalvaItem.class,
 							   InternaAuxiliar.class,

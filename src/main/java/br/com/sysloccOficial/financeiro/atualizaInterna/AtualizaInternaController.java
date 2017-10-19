@@ -13,7 +13,7 @@ import br.com.sysloccOficial.model.Lista;
 @Controller
 public class AtualizaInternaController extends AtualizaInternaRelatoriosEmMassa {
 
-	@Autowired RelatorioEventoDAO relatorioDAO;
+//	@Autowired RelatorioEventoDAO relatorioDAO;
 //	@Autowired AtualizaRelatorioEventoApoio relatorioApoio;
 	@Autowired UtilitariaDatas utildatas;
 	

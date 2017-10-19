@@ -297,10 +297,18 @@ public class CalculoValoresInterna extends Calculadora{
 
 	public BigDecimal getSubValorFornecedor() {
 		BigDecimal valorNF = new BigDecimal("0");
+		BigDecimal zero = new BigDecimal("0");
 
 		for (int i = 0; i < listaDeProducaoP.size(); i++) {
-		   /* if(listaDeProducaoP.get(i).getIdEmpFornecedor().getIdEmpresa() != 6961)*/
-		   valorNF = valorNF.add(listaDeProducaoP.get(i).getValorItem()).subtract(listaDeProducaoP.get(i).getDiferenca());
+			
+			System.out.println(listaDeProducaoP.get(i).getIdProducao());
+			
+			if (listaDeProducaoP.get(i).getDiferenca() != zero ) {
+				valorNF = valorNF.add(listaDeProducaoP.get(i).getValorDePagamentoContratacao());
+			}else{
+				valorNF = valorNF.add(listaDeProducaoP.get(i).getValorItem()).subtract(listaDeProducaoP.get(i).getDiferenca());
+			}
+			
 		}
 		subValorFornecedor = valorNF;
 		return subValorFornecedor;
