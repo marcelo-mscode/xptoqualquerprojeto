@@ -187,7 +187,7 @@
                   <c:if test="${itensInterna.diferenca == itensInterna.valorItem || itensInterna.valorContratacao != '0.00'}">
                   	<fmt:formatNumber value="${itensInterna.valorItem - itensInterna.valorDePagamentoContratacao}" pattern="#,##0.00"/>
                   </c:if>
-
+					OKOKOKOKOKOKOOOOOOOOOOOOKOKOKOKOKOKOKok
                  <%--  <c:if test="${itensInterna.diferenca == '0.00'}">
                   	0,00
                   </c:if>
