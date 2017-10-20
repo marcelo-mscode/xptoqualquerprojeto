@@ -301,13 +301,16 @@ public class CalculoValoresInterna extends Calculadora{
 
 		for (int i = 0; i < listaDeProducaoP.size(); i++) {
 			
-			System.out.println(listaDeProducaoP.get(i).getIdProducao());
-			System.out.println(listaDeProducaoP.get(i).getDiferenca());
+			if (listaDeProducaoP.get(i).getDiferenca().equals(zero) && listaDeProducaoP.get(i).getValorDePagamentoContratacao().equals(zero)) {
+				valorNF = valorNF.add(listaDeProducaoP.get(i).getValorItem());
+			}
 			
-			if (listaDeProducaoP.get(i).getDiferenca().equals(zero)) {
+			if (listaDeProducaoP.get(i).getDiferenca().compareTo(BigDecimal.ZERO) == 1 && listaDeProducaoP.get(i).getDiferenca() != listaDeProducaoP.get(i).getValorItem()) {
 				valorNF = valorNF.add(listaDeProducaoP.get(i).getValorDePagamentoContratacao());
-			}else{
-				valorNF = valorNF.add(listaDeProducaoP.get(i).getValorItem()).subtract(listaDeProducaoP.get(i).getDiferenca());
+			}
+
+			if (listaDeProducaoP.get(i).getDiferenca().compareTo(listaDeProducaoP.get(i).getValorItem()) == 0 && listaDeProducaoP.get(i).getValorContratacao().compareTo(BigDecimal.ZERO) == 0) {
+				valorNF = valorNF.add(listaDeProducaoP.get(i).getValorDePagamentoContratacao());
 			}
 			
 		}
