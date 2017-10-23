@@ -9,4 +9,3 @@ Caused by: java.lang.ArithmeticException: / by zero
 	at br.com.sysloccOficial.log4j.TesteLog4j.divide(TesteLog4j.java:35)
 	at br.com.sysloccOficial.log4j.TesteLog4j.main(TesteLog4j.java:18)
 
-	sdlçjsdfsjdfj
