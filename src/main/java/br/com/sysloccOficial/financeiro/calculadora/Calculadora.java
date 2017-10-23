@@ -29,6 +29,9 @@ public class Calculadora {
 		
 		return somaListaDeValores;
 	}
+	
+	
+	
 	protected double multiplicaQuantPorDiarias(double quant1, double quant2, double diaria){
 		return quant1*quant2*diaria;
 	}

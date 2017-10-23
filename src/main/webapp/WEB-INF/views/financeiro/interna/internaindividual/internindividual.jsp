@@ -183,18 +183,13 @@
                   <c:if test="${itensInterna.diferenca >= 0}">
                	   <td class="colorBlue">
                   </c:if>				
-                 
-                  <c:if test="${itensInterna.diferenca == itensInterna.valorItem || itensInterna.valorContratacao != '0.00'}">
-                  	<fmt:formatNumber value="${itensInterna.valorItem - itensInterna.valorDePagamentoContratacao}" pattern="#,##0.00"/>
-                  </c:if>
-
-                 <%--  <c:if test="${itensInterna.diferenca == '0.00'}">
+                  <c:if test="${itensInterna.diferenca == '0.00'}">
                   	0,00
                   </c:if>
-                 
-                  <c:if test="${itensInterna.valorContratacao == '0.00' && itensInterna.diferenca == '0.00'}">0,00</c:if>
-                 --%>
-             
+                  
+                  <c:if test="${itensInterna.diferenca != '0.00' || itensInterna.diferenca == itensInterna.valorItem}">
+                  	<fmt:formatNumber value="${itensInterna.valorItem - itensInterna.valorDePagamentoContratacao}" pattern="#,##0.00"/>
+                  </c:if>
                </td>
 
                   <!-- Focar os esforços aqui !!!!!!!!!!!!!!!!!!!!  -->
@@ -337,10 +332,10 @@
                      <fmt:formatNumber value="${calculadora.subDiferenca}" pattern="#,##0.00"/>
                   </c:if>
                   
-                  <c:if test="${totalDepesas != null }">
-                    !!!!! <fmt:formatNumber value="${calculadora.subDiferenca-totalDepesas}" pattern="#,##0.00"/>
+                 <%--  <c:if test="${totalDepesas != null }">
+                    <fmt:formatNumber value="${calculadora.subDiferenca-totalDepesas}" pattern="#,##0.00"/>
                   </c:if>
-                  
+                  --%> 
                   </td>
                   
                   <td colspan="6"></td>

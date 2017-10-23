@@ -256,7 +256,6 @@ public class CalculoValoresInterna extends Calculadora{
 	public BigDecimal getTotal1Diferenca() {
 		try {
 			total1Diferenca = total1Diferenca.add(subDiferenca);
-			/*total1Diferenca = total1Diferenca.add(despesasDiferenca);*/
 			total1Diferenca = total1Diferenca.add(feeGeral);
 			total1Diferenca = total1Diferenca.add(impostoDiferenca);
 		} catch (Exception e) {
@@ -266,21 +265,16 @@ public class CalculoValoresInterna extends Calculadora{
 	}
 
 	public BigDecimal getSubDiferenca() {
-		List<BigDecimal> valoresDeDiferencaELoCCoAgencia = new ArrayList<BigDecimal>();
-		BigDecimal somaValores;
+		BigDecimal somaValores = new BigDecimal("0.00");
 	
 		for (int i = 0; i < listaDeProducaoP.size(); i++) {
-			
-			somaValores = listaDeProducaoP.get(i).getDiferenca();
-			
-			/*if(listaDeProducaoP.get(i).getIdEmpFornecedor().getIdEmpresa() == 6961)	{
-				somaValores = listaDeProducaoP.get(i).getDiferenca();
-				//somaValores = somaValores.add(listaDeProducaoP.get(i).getValorItem());
-				//somaValores = new BigDecimal("0.00");
-			}*/
-			valoresDeDiferencaELoCCoAgencia.add(somaValores);
+			if(listaDeProducaoP.get(i).getDiferenca().compareTo(listaDeProducaoP.get(i).getValorItem()) == 0 ||
+			   listaDeProducaoP.get(i).getDiferenca().compareTo(BigDecimal.ZERO )== 1){
+				somaValores = somaValores.add(listaDeProducaoP.get(i).getValorItem()
+						                 .subtract(listaDeProducaoP.get(i).getValorDePagamentoContratacao()));
+			}
 		}
-		subDiferenca = somaListaDeValores(valoresDeDiferencaELoCCoAgencia);
+		subDiferenca = somaValores;
 		return subDiferenca;
 	}
 	
