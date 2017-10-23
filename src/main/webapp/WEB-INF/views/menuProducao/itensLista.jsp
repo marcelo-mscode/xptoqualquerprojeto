@@ -130,7 +130,7 @@
                                       <td>
                                         Esse item dessa Lista é anterior a criação do Módulo Produção OU não existe
                                         fornecedor associado com esse item.
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalFornecedores">
                                           Entenda essa mensagem
                                         </button>
                                       </td>
@@ -290,4 +290,54 @@
             </div>
           </div>
         </div>
+        
+        <!-- Modal Fornecedores-->
+        <div class="modal fade" id="myModalFornecedores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                style="margin-top: -12px;">
+                  <span aria-hidden="true" style="font-size: 50px;font-family: 'OpenSansLight';font-weight: normal;">
+                    &times;
+                  </span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel" style="font-family: 'OpenSansLight'">
+                  Trocar de Fornecedor
+                </h4>
+              </div>
+              <div class="modal-body">
+                <b>
+                  Esse item dessa Lista é anterior a criação do Módulo de Produção OU não
+                  existe fornecedor associado com esse item
+                </b>
+                <br>
+                <br>
+                <b>
+                  Entenda:
+                </b>
+                antes da criação do Módulo de Produção não era obrigatório associar um
+                fornecedor à um produto, agora é totalmente necessário, uma vez que a carta
+                de contratação e as negociações com os fornecedores serão geradas com base
+                nessa associação.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <c:import url="../_comum/footer.jsp" />
