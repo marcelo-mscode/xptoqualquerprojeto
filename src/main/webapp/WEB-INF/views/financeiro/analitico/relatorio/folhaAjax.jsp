@@ -6,21 +6,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <table class="table table-hover table-bordered">
                      <tr class="input-140px">
-                        <td colspan="4" align="center" class="corFolhaPgto"><b>FOLHA PGTO</b></td>
+                        <td colspan="5" align="center" class="corFolhaPgto"><b>FOLHA PGTO</b></td>
                      </tr>
                      <tr>
                         <td class="tiraPaddingData"><input id="descFolha" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorFolha" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiro('descFolha','valorFolha','salvaNovoFolha',${idAnalitico},'folha');" class="btn btn-default botaoMais">+</button> </td>
                         <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+                        <td></td>
                      </tr>
                      <tr>
                         <td class="input-180px" colspan="2">Descrição</td>
                         <td class="input-30px">Valor</td>
                         <td>Fixo</td>
+                        <td>Excluir</td>
                      </tr>
                      <tr>
-                        <td colspan="3"></td>
+                        <td colspan="5"></td>
                      </tr>
                      <c:set var="totalFolha" value="0.00" />
                      <c:forEach items="${folha}" var="folha">
@@ -35,14 +37,13 @@
                               onblur="editaCamposAnalitico('editaFolha','valorFolha${folha.idFinancFolha}',${folha.idFinancFolha},'valor','folha');"
                               /> 
                            </td>
-                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
+                           <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>	
                         </tr>
                         <c:set var="totalFolha" value="${totalFolha+folha.valor}" />
                      </c:forEach>
                      <tr>
-                     
-                     
-                     
+
                      <tr>
                         <td colspan="2"></td>
                         <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">

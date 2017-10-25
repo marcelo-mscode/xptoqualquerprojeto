@@ -14,11 +14,14 @@
        <td class="tiraPaddingData" colspan="3"><input id="descMovSaidaSantander" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
        <td class="tiraPaddingData"><input id="valorMovSaidaSantander" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
        <td><button onclick="insereDadosMovimentacaoSaidas('dataMovSaidaSantander','descMovSaidaSantander','valorMovSaidaSantander','salvaNovaSaida',${idAnalitico},'saidasItau','1');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td></td>
     </tr>
     <tr>
        <td>DATA</td>
        <td colspan="3">Descrição</td>
        <td colspan="1">Valor</td>
+       <td>Fixo</td>
+	   <td>Excluir</td>
     </tr>
     <tr>
        <td colspan="7"></td>
@@ -42,6 +45,8 @@
              onblur="editaValoresSaidas('editaMovimentacaoFinanceiraSaidas','valorSaidaItau${saidasItau.idMovBancos}',${saidasItau.idMovBancos},'valor','saidasItau','1');"
              /> 
           </td>
+          <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+		  <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
        </tr>
        <c:set var="totalsaidasItau" value="${totalsaidasItau+saidasItau.valor}" />
     </c:forEach>

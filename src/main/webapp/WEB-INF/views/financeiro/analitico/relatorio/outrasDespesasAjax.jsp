@@ -6,21 +6,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <table class="table table-hover table-bordered">
                      <tr>
-                        <td colspan="4" align="center" class="corFolhaPgto"><b>OUTRAS DESPESAS</b></td>
+                        <td colspan="5" align="center" class="corFolhaPgto"><b>OUTRAS DESPESAS</b></td>
                      </tr>
                      <tr>
                      	<td class="tiraPaddingData"><input id="dataOutrasDespesas" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
                         <td class="tiraPaddingData"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+                    	<td></td>
                      </tr>
                      <tr>
                      	<td>Data</td>
                         <td>Descrição</td>
-                        <td colspan="2">Valor</td>
+                        <td colspan="1">Valor</td>
+                        <td>Fixo</td>
+                        <td>Excluir</td>
                      </tr>
                      <tr>
-                        <td colspan="4"></td>
+                        <td colspan="5"></td>
                      </tr>
                      <c:set var="totalOutrasdespesas" value="0.00" />
                      <c:forEach items="${outrasdespesas}" var="outrasdespesas">
@@ -34,11 +37,13 @@
                                  onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','descricaoOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'descricao','outrasdespesas');"
                                  />
                            </td>
-                           <td colspan="2" class="tiraPaddingData">
+                           <td colspan="1" class="tiraPaddingData">
                               <input id="valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${outrasdespesas.valor}" pattern="#,##0.00"/>"
                               onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'valor','outrasdespesas');"
                               /> 
                            </td>
+                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+						   <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
                         </tr>
                         <c:set var="totalOutrasdespesas" value="${totalOutrasdespesas+outrasdespesas.valor}" />
                      </c:forEach>
