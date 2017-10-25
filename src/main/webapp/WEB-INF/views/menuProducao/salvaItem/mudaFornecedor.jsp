@@ -21,16 +21,15 @@
 	                     <div id="fornecedorMuda${produtoGrupo.idProdutoGrupo}" class="col-md-12 form-inline display-none"
 	                     style="height: 117px; border: 1px solid #ddd; padding: 20px 20px 20px 10px; margin-bottom: 10px; border-radius: 5px;">
 	                       <p>
-	                         Trocar de Fornecedor
+	                         Trocar de Fornecedor !!!!!!!!!!
 	                       </p>
 	                       <select class="form-control input-180px" id="idEmpresa${produtoGrupo.idProdutoGrupo}">
 	                                        
-	                          <%-- <c:forEach items="${fornecedoresLista}" var="fornecedoresLista">
+	                          <c:forEach items="${fornecedoresLista}" var="fornecedoresLista">
 	                            <option value="${fornecedoresLista[0]}">
 	                              ${fornecedoresLista[1]}
 	                            </option>
-	                          </c:forEach> --%>
-	                          
+	                          </c:forEach>
 	                          
 	                       </select>
 	                       &nbsp&nbsp&nbsp

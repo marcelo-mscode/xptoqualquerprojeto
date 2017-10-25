@@ -327,7 +327,7 @@ public class MenuProducaoController extends AuxProducao{
 		
 		MV.setViewName("menuProducao/salvaItem/mudaFornecedor");
 		
-		System.out.println("To aqui !!!!!!!!!!!!!!!!!!!!");
+		MV.addObject("fornecedoresLista", empresaDAO.listaFornecedores());
 		
 /*		MV.addObject("fornecedor", empresaDAO.infoEmpresaProducao(idEmpresa));
 		

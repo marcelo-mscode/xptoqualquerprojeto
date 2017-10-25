@@ -1840,10 +1840,12 @@ function trocarFornecedor(idEmpresa,idProduto){
 		method : "POST",
 		url : "modalTrocarFornecedor?idEmpresa="+idEmpresa+"&idProduto="+idProduto,
 		success : function(data) {
+
+			$("#myModalFornecedores").html(data);
 			/*$("#fornecedorAtual").fadeIn(300).html(data);
 				$("#sucessFornecedor").fadeIn(500);*/
 			
-			$('#myModalFornecedores').fadeIn();
+			$('#myModalFornecedores').modal();
 			
 		}
 	});
