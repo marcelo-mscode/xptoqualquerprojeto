@@ -14,7 +14,7 @@
        <td class="tiraPaddingData" colspan="3"><input id="descItauTarifas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
        <td class="tiraPaddingData"><input id="valorItauTarifas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
        <td><button onclick="insereDadosMovimentacaoSaidas('dataItauTarifas','descItauTarifas','valorItauTarifas','salvaNovaTarifa',${idAnalitico},'itauTarifas','1');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
-       <td></td>	
+       <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
     </tr>
     <tr>
        <td>DATA</td>

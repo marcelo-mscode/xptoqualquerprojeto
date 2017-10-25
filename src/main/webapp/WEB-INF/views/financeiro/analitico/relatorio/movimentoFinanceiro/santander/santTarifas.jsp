@@ -14,14 +14,17 @@
        <td class="tiraPaddingData" colspan="3"><input id="descSantander" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
        <td class="tiraPaddingData"><input id="valorSantander" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
        <td><button onclick="insereDadosMovimentacaoSaidas('dataSantander','descSantander','valorSantander','salvaNovaTarifa',${idAnalitico},'santanderTarifas','4');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
+       <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>		
     </tr>
     <tr>
        <td>DATA</td>
        <td colspan="3">Descrição</td>
        <td colspan="1">Valor</td>
+       <td>Fixo</td>
+	   <td>Excluir</td>
     </tr>
     <tr>
-       <td colspan="7"></td>
+       <td colspan="8"></td>
     </tr>
     
     <c:set var="totalSantander" value="0.00" />
@@ -42,6 +45,8 @@
              onblur="editaValoresSaidas('editaTarifas','valorSantander${tarifasSantander.idMovBancos}',${tarifasSantander.idMovBancos},'valor','santanderTarifas','4');"
              /> 
           </td>
+          <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+		  <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
        </tr>
        <c:set var="totalSantander" value="${totalSantander+tarifasSantander.valor}" />
     </c:forEach>

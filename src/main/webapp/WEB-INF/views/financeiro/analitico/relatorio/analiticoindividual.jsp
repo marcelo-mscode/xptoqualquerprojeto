@@ -284,7 +284,8 @@
                      <tr>
                      	<td>Data</td>
                         <td>Descrição</td>
-                        <td colspan="2">Valor</td>
+                        <td colspan="1">Valor</td>
+                        <td>Excluir</td>
                      </tr>
                      <tr>
                         <td colspan="4"></td>
@@ -306,6 +307,7 @@
                               onblur="editaCamposAnaliticoDespesas('editaDespesas','valorDespesas${despesas.idFinancDespesas}',${despesas.idFinancDespesas},'valor','despesas');"
                               /> 
                            </td>
+                           <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>	
                         </tr>
                         <c:set var="totalDespesas" value="${totalDespesas+despesas.valor}" />
                      </c:forEach>
@@ -322,14 +324,15 @@
                <td class="juntaColunas ajusteTelefone" id="outrasdespesas">
                   <table class="table table-hover table-bordered">
                      <tr>
-                        <td colspan="5" align="center" class="corFolhaPgto"><b>OUTRAS DESPESAS</b></td>
+                        <td colspan="6" align="center" class="corFolhaPgto"><b>OUTRAS DESPESAS</b></td>
                      </tr>
                      <tr>
                      	<td class="tiraPaddingData"><input id="dataOutrasDespesas" type="date"  class="ajusteInput2 tiraPaddingData input-140px" /></td>		
                         <td class="tiraPaddingData"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${InfoAnalitico.idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
-                        <td></td>
+                       	<td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+                        
                      </tr>
                      <tr>
                      	<td>Data</td>
