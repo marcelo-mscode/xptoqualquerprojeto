@@ -325,21 +325,13 @@ public class MenuProducaoController extends AuxProducao{
 	@RequestMapping("/modalTrocarFornecedor")
 	public ModelAndView modalTrocarFornecedor(Integer idProdutoGrupo){
 		
-		System.out.println(idProdutoGrupo);
+		ModelAndView MVv = new ModelAndView("menuProducao/salvaItem/mudaFornecedor");
 		
-		MV.setViewName("menuProducao/salvaItem/mudaFornecedor");
+		MVv.addObject("fornecedoresLista", empresaDAO.listaFornecedores());
+		MVv.addObject("idProdutoGrupo", idProdutoGrupo);
 		
-		MV.addObject("fornecedoresLista", empresaDAO.listaFornecedores());
-		MV.addObject("idProdutoGrupo", idProdutoGrupo);
-		
-/*		MV.addObject("fornecedor", empresaDAO.infoEmpresaProducao(idEmpresa));
-		
-		ProdutoGrupo produtoGrupo = manager.find(ProdutoGrupo.class, idProduto);
-		Empresa empresa = manager.getReference(Empresa.class, idEmpresa);
-		produtoGrupo.setEmpresa(empresa);
-		manager.merge(produtoGrupo);
-*/		
-	   return MV;	
+	
+	   return MVv;	
 	}
 	@RequestMapping("/trocarFornecedor")
 	public ModelAndView trocarFornecedor(Integer idFornecedor,Integer idProdutoGrupo){
