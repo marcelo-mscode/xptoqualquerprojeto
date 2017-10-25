@@ -37,7 +37,7 @@
           </div>
         </div>
 		
-		                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalFornecedores">
+		                <button type="button" class="btn btn-primary" data-toggle="modal" onclick="trocarFornecedor(15,1522)">
                               Entenda essa mensagem
                         </button>
 		

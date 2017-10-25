@@ -1830,21 +1830,21 @@ function carregaListaFornecedor(idProduto){
 }*/
 
 
-function trocarFornecedor(idProduto){
+function trocarFornecedor(idEmpresa,idProduto){
 	/*var idProduto = $("#idProdutoGrupo").val();*/
-	var idEmpresa = $("#idEmpresa"+idProduto).val();
+	/*var idEmpresa = '15';*/
+/*	var idEmpresa = $("#idEmpresa"+idProduto).val();
+*/	
 	
 	$.ajax({
 		method : "POST",
-		url : "trocarFornecedor?idEmpresa="+idEmpresa+"&idProduto="+idProduto,
+		url : "modalTrocarFornecedor?idEmpresa="+idEmpresa+"&idProduto="+idProduto,
 		success : function(data) {
 			/*$("#fornecedorAtual").fadeIn(300).html(data);
 				$("#sucessFornecedor").fadeIn(500);*/
 			
-			$('#myModal').modal(options)
+			$('#myModalFornecedores').fadeIn();
 			
-			
-			location.reload();
 		}
 	});
 }

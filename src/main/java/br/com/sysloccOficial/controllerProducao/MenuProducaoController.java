@@ -325,7 +325,10 @@ public class MenuProducaoController extends AuxProducao{
 	@RequestMapping("/modalTrocarFornecedor")
 	public ModelAndView modalTrocarFornecedor(Integer idEmpresa,Integer idProduto){
 		
-		MV.setViewName("menuProducao/mudaFornecedor");
+		MV.setViewName("menuProducao/salvaItem/mudaFornecedor");
+		
+		System.out.println("To aqui !!!!!!!!!!!!!!!!!!!!");
+		
 /*		MV.addObject("fornecedor", empresaDAO.infoEmpresaProducao(idEmpresa));
 		
 		ProdutoGrupo produtoGrupo = manager.find(ProdutoGrupo.class, idProduto);
