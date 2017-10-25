@@ -1814,20 +1814,22 @@ function carregaListaFornecedor(idProduto){
 		});
 }
 
-/*function trocarFornecedor(idProduto){
-	var idProduto = $("#idProdutoGrupo").val();
-	var idEmpresa = $("#idEmpresa"+idProduto).val();
+function trocarFornecedor(idProdutoGrupo, idEmpresa){
+	
+	var idFornecedor = $("#selectFornecedor").val();
 	
 	$.ajax({
 		method : "POST",
-		url : "trocarFornecedor?idEmpresa="+idEmpresa+"&idProduto="+idProduto,
+		url : "trocarFornecedor?idFornecedor="+idFornecedor+"&idProdutoGrupo="+idProdutoGrupo,
 		success : function(data) {
-			$("#fornecedorAtual").fadeIn(300).html(data);
-				$("#sucessFornecedor").fadeIn(500);
+			/*$("#fornecedorAtual").fadeIn(300).html(data);*/
 			location.reload();
+		},
+		beforeSend : function() {
+			$("#loadFornecedor").fadeIn(500);
 		}
 	});
-}*/
+}
 
 
 function trocarModalFornecedor(idProdutoGrupo){

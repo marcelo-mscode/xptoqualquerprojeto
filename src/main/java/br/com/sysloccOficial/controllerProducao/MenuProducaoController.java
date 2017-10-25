@@ -330,6 +330,7 @@ public class MenuProducaoController extends AuxProducao{
 		MV.setViewName("menuProducao/salvaItem/mudaFornecedor");
 		
 		MV.addObject("fornecedoresLista", empresaDAO.listaFornecedores());
+		MV.addObject("idProdutoGrupo", idProdutoGrupo);
 		
 /*		MV.addObject("fornecedor", empresaDAO.infoEmpresaProducao(idEmpresa));
 		
@@ -341,13 +342,13 @@ public class MenuProducaoController extends AuxProducao{
 	   return MV;	
 	}
 	@RequestMapping("/trocarFornecedor")
-	public ModelAndView trocarFornecedor(Integer idEmpresa,Integer idProduto){
+	public ModelAndView trocarFornecedor(Integer idFornecedor,Integer idProdutoGrupo){
 		
 		MV.setViewName("menuProducao/fornecedorAjax");
-		MV.addObject("fornecedor", empresaDAO.infoEmpresaProducao(idEmpresa));
+		MV.addObject("fornecedor", empresaDAO.infoEmpresaProducao(idFornecedor));
 		
-		ProdutoGrupo produtoGrupo = manager.find(ProdutoGrupo.class, idProduto);
-		Empresa empresa = manager.getReference(Empresa.class, idEmpresa);
+		ProdutoGrupo produtoGrupo = manager.find(ProdutoGrupo.class, idProdutoGrupo);
+		Empresa empresa = manager.getReference(Empresa.class, idFornecedor);
 		produtoGrupo.setEmpresa(empresa);
 		manager.merge(produtoGrupo);
 		
