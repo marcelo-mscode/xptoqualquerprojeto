@@ -322,6 +322,19 @@ public class MenuProducaoController extends AuxProducao{
 		return "redirect:itensProducao?idLIsta="+idLista;
 	}
 
+	@RequestMapping("/modalTrocarFornecedor")
+	public ModelAndView modalTrocarFornecedor(Integer idEmpresa,Integer idProduto){
+		
+		MV.setViewName("menuProducao/mudaFornecedor");
+/*		MV.addObject("fornecedor", empresaDAO.infoEmpresaProducao(idEmpresa));
+		
+		ProdutoGrupo produtoGrupo = manager.find(ProdutoGrupo.class, idProduto);
+		Empresa empresa = manager.getReference(Empresa.class, idEmpresa);
+		produtoGrupo.setEmpresa(empresa);
+		manager.merge(produtoGrupo);
+*/		
+	   return MV;	
+	}
 	@RequestMapping("/trocarFornecedor")
 	public ModelAndView trocarFornecedor(Integer idEmpresa,Integer idProduto){
 		
@@ -335,6 +348,9 @@ public class MenuProducaoController extends AuxProducao{
 		
 	   return MV;	
 	}
+	
+	
+	
 	
 	@RequestMapping("/calculaPrazo")
 	public ModelAndView calculaPrazo(Integer diasPrazo,Integer idLista,String nameInput){

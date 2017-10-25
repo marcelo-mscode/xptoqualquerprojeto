@@ -1814,6 +1814,22 @@ function carregaListaFornecedor(idProduto){
 		});
 }
 
+/*function trocarFornecedor(idProduto){
+	var idProduto = $("#idProdutoGrupo").val();
+	var idEmpresa = $("#idEmpresa"+idProduto).val();
+	
+	$.ajax({
+		method : "POST",
+		url : "trocarFornecedor?idEmpresa="+idEmpresa+"&idProduto="+idProduto,
+		success : function(data) {
+			$("#fornecedorAtual").fadeIn(300).html(data);
+				$("#sucessFornecedor").fadeIn(500);
+			location.reload();
+		}
+	});
+}*/
+
+
 function trocarFornecedor(idProduto){
 	/*var idProduto = $("#idProdutoGrupo").val();*/
 	var idEmpresa = $("#idEmpresa"+idProduto).val();
@@ -1824,10 +1840,16 @@ function trocarFornecedor(idProduto){
 		success : function(data) {
 			/*$("#fornecedorAtual").fadeIn(300).html(data);
 				$("#sucessFornecedor").fadeIn(500);*/
+			
+			$('#myModal').modal(options)
+			
+			
 			location.reload();
 		}
 	});
 }
+
+
 
 
 function calculaPrazo(qtdParcela,nameInput){
