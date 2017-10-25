@@ -323,7 +323,9 @@ public class MenuProducaoController extends AuxProducao{
 	}
 
 	@RequestMapping("/modalTrocarFornecedor")
-	public ModelAndView modalTrocarFornecedor(Integer idEmpresa,Integer idProduto){
+	public ModelAndView modalTrocarFornecedor(Integer idProdutoGrupo){
+		
+		System.out.println(idProdutoGrupo);
 		
 		MV.setViewName("menuProducao/salvaItem/mudaFornecedor");
 		

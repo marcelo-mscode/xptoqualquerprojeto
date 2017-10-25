@@ -150,7 +150,7 @@
                                <!-- ----------------------------  -->      
                                       <c:if test="${empty produtoGrupo.producaop}">
   	                                      <td style="width: 52px;border-left: 1px solid #ccc !important;border-right: 0px solid #ccc !important;">
-	                                          <i class="glyphicon glyphicon-pencil cor-lapis" onclick="efeitoToogle(fornecedorMuda${produtoGrupo.idProdutoGrupo});"
+	                                          <i class="glyphicon glyphicon-pencil cor-lapis" onclick="trocarModalFornecedor(${produtoGrupo.idProdutoGrupo});"
 	                                          style="cursor: pointer; font-size: 16px; margin-left: 15px; margin-top: -5px;">
 	                                          </i>
 	                                      </td>

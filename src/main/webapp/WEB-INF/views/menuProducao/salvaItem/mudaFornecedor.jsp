@@ -18,10 +18,10 @@
               </div>
               <div class="modal-body">
                 <div class="row">
-	                     <div id="fornecedorMuda${produtoGrupo.idProdutoGrupo}" class="col-md-12 form-inline display-none"
+	                     <div class="col-md-12 form-inline"
 	                     style="height: 117px; border: 1px solid #ddd; padding: 20px 20px 20px 10px; margin-bottom: 10px; border-radius: 5px;">
 	                       <p>
-	                         Trocar de Fornecedor !!!!!!!!!!
+	                         Trocar de Fornecedor
 	                       </p>
 	                       <select class="form-control input-180px" id="idEmpresa${produtoGrupo.idProdutoGrupo}">
 	                                        

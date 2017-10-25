@@ -1830,7 +1830,7 @@ function carregaListaFornecedor(idProduto){
 }*/
 
 
-function trocarFornecedor(idEmpresa,idProduto){
+function trocarModalFornecedor(idProdutoGrupo){
 	/*var idProduto = $("#idProdutoGrupo").val();*/
 	/*var idEmpresa = '15';*/
 /*	var idEmpresa = $("#idEmpresa"+idProduto).val();
@@ -1838,7 +1838,7 @@ function trocarFornecedor(idEmpresa,idProduto){
 	
 	$.ajax({
 		method : "POST",
-		url : "modalTrocarFornecedor?idEmpresa="+idEmpresa+"&idProduto="+idProduto,
+		url : "modalTrocarFornecedor?idProdutoGrupo="+idProdutoGrupo,
 		success : function(data) {
 
 			$("#myModalFornecedores").html(data);
