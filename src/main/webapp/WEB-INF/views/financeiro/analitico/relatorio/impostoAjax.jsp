@@ -6,19 +6,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <table class="table table-hover table-bordered">
    <tr>
-      <td colspan="3" align="center" class="corEscritorio"><b>OUTROS IMPOSTOS</b></td>
+      <td colspan="4" align="center" class="corEscritorio"><b>OUTROS IMPOSTOS</b></td>
    </tr>
    <tr>
       <td class="tiraPaddingData"><input id="descImpostos" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
       <td class="tiraPaddingData"><input id="valorImpostos" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
       <td><button onclick="editaCamposFinanceiro('descImpostos','valorImpostos','salvaNovoImposto',${idAnalitico},'impostos');" class="btn btn-default botaoMais">+</button> </td>
+   	  <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/> </td>	
    </tr>
    <tr>
       <td colspan="2">Descrição</td>
       <td>Valor</td>
+      <td>Fixo</td>
    </tr>
    <tr>
-      <td colspan="3"></td>
+      <td colspan="4"></td>
    </tr>
    <c:set var="totalImpostos" value="0.00" />
    <c:forEach items="${impostos}" var="impostos">
@@ -33,6 +35,7 @@
             onblur="editaCamposAnalitico('editaFinancImposto','valorImpostos${impostos.idFinancImpostos}',${impostos.idFinancImpostos},'valor','impostos');"
             /> 
          </td>
+         <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
       </tr>
       <c:set var="totalImpostos" value="${totalImpostos+impostos.valor}" />
    </c:forEach>

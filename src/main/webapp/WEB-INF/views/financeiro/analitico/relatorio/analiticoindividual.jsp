@@ -71,19 +71,21 @@
             	<td class="juntaColunas ajusteTelefone" id="impostos">
                   <table class="table table-hover table-bordered">
                      <tr>
-                        <td colspan="3" align="center" class="corEscritorio"><b>OUTROS IMPOSTOS</b></td>
+                        <td colspan="4" align="center" class="corEscritorio"><b>OUTROS IMPOSTOS</b></td>
                      </tr>
                      <tr>
                         <td class="tiraPaddingData"><input id="descImpostos" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorImpostos" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiro('descImpostos','valorImpostos','salvaNovoImposto',${InfoAnalitico.idAnalitico},'impostos');" class="btn btn-default botaoMais">+</button> </td>
+	                    <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
                      </tr>
                      <tr>
                         <td colspan="2">Descrição</td>
                         <td>Valor</td>
+                        <td>Fixo</td>
                      </tr>
                      <tr>
-                        <td colspan="3"></td>
+                        <td colspan="4"></td>
                      </tr>
                      <c:set var="totalImpostos" value="0.00" />
                      <c:forEach items="${impostos}" var="impostos">
@@ -98,6 +100,8 @@
                               onblur="editaCamposAnalitico('editaFinancImposto','valorImpostos${impostos.idFinancImpostos}',${impostos.idFinancImpostos},'valor','impostos');"
                               /> 
                            </td>
+                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
+                           
                         </tr>
                         <c:set var="totalImpostos" value="${totalImpostos+impostos.valor}" />
                      </c:forEach>
@@ -115,19 +119,21 @@
                <td class="juntaColunas ajusteTelefone" id="escritorio">
                   <table class="table table-hover table-bordered">
                      <tr>
-                        <td colspan="3" align="center" class="corEscritorio"><b>ESCRITÓRIO</b></td>
+                        <td colspan="4" align="center" class="corEscritorio"><b>ESCRITÓRIO</b></td>
                      </tr>
                      <tr>
                         <td class="tiraPaddingData"><input id="descEscritorio" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorEscritorio" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiro('descEscritorio','valorEscritorio','salvaNovoEscritorio',${InfoAnalitico.idAnalitico},'escritorio');" class="btn btn-default botaoMais">+</button> </td>
+                    	<td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
                      </tr>
                      <tr>
                         <td colspan="2">Descrição</td>
                         <td>Valor</td>
+                        <td>Fixo</td>
                      </tr>
                      <tr>
-                        <td colspan="3"></td>
+                        <td colspan="4"></td>
                      </tr>
                      <c:set var="totalEscritorio" value="0.00" />
                      <c:forEach items="${escritorio}" var="escritorio">
@@ -142,6 +148,7 @@
                               onblur="editaCamposAnalitico('editaEscritorio','valor${escritorio.idFinancEscritorio}',${escritorio.idFinancEscritorio},'valor','escritorio');"
                               /> 
                            </td>
+                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
                         </tr>
                         <c:set var="totalEscritorio" value="${totalEscritorio+escritorio.valor}" />
                      </c:forEach>
@@ -158,19 +165,21 @@
                <td class="juntaColunas ajusteTelefone" id="telefones">
                   <table class="table table-hover table-bordered">
                      <tr class="input-140px">
-                        <td colspan="3" align="center" class="corTelefone"><b>TELEFONES</b></td>
+                        <td colspan="4" align="center" class="corTelefone"><b>TELEFONES</b></td>
                      </tr>
                      <tr>
                         <td class="tiraPaddingData"><input id="descTelefone" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorTelefone" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiro('descTelefone','valorTelefone','salvaNovoTelefone',${InfoAnalitico.idAnalitico},'telefones');" class="btn btn-default botaoMais">+</button> </td>
+                     	<td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
                      </tr>
                      <tr>
                         <td class="input-180px" colspan="2">Descrição</td>
                         <td class="input-30px">Valor</td>
+                        <td>Fixo</td>
                      </tr>
                      <tr>
-                        <td colspan="3"></td>
+                        <td colspan="4"></td>
                      </tr>
                      <c:set var="totalTelefone" value="0.00" />
                      <c:forEach items="${telefone}" var="telefone">
@@ -185,6 +194,7 @@
                               onblur="editaCamposAnalitico('editaTelefone','valorTelefone${telefone.idFinancTelefone}',${telefone.idFinancTelefone},'valor','telefones');"
                               /> 
                            </td>
+                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
                         </tr>
                         <c:set var="totalTelefone" value="${totalTelefone+telefone.valor}" />
                      </c:forEach>
@@ -202,19 +212,21 @@
                <td class="juntaColunas ajusteTelefone" id="folha">
                   <table class="table table-hover table-bordered">
                      <tr class="input-140px">
-                        <td colspan="3" align="center" class="corFolhaPgto"><b>FOLHA PGTO</b></td>
+                        <td colspan="4" align="center" class="corFolhaPgto"><b>FOLHA PGTO</b></td>
                      </tr>
                      <tr>
                         <td class="tiraPaddingData"><input id="descFolha" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorFolha" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiro('descFolha','valorFolha','salvaNovoFolha',${InfoAnalitico.idAnalitico},'folha');" class="btn btn-default botaoMais">+</button> </td>
+                     	<td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
                      </tr>
                      <tr>
                         <td class="input-180px" colspan="2">Descrição</td>
                         <td class="input-30px">Valor</td>
+                        <td>Fixo</td>
                      </tr>
                      <tr>
-                        <td colspan="3"></td>
+                        <td colspan="4"></td>
                      </tr>
                      <c:set var="totalFolha" value="0.00" />
                      <c:forEach items="${folha}" var="folha">
@@ -229,6 +241,7 @@
                               onblur="editaCamposAnalitico('editaFolha','valorFolha${folha.idFinancFolha}',${folha.idFinancFolha},'valor','folha');"
                               /> 
                            </td>
+                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
                         </tr>
                         <c:set var="totalFolha" value="${totalFolha+folha.valor}" />
                      </c:forEach>

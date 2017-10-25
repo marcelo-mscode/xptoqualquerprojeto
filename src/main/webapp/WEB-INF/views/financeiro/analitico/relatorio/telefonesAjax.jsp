@@ -6,16 +6,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <table class="table table-hover table-bordered">
                      <tr class="input-140px">
-                        <td colspan="3" align="center" class="corTelefone"><b>TELEFONES</b></td>
+                        <td colspan="4" align="center" class="corTelefone"><b>TELEFONES</b></td>
                      </tr>
                      <tr>
                         <td class="tiraPaddingData"><input id="descTelefone" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorTelefone" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiro('descTelefone','valorTelefone','salvaNovoTelefone',${idAnalitico},'telefones');" class="btn btn-default botaoMais">+</button> </td>
+                        <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
                      </tr>
                      <tr>
                         <td class="input-180px" colspan="2">Descrição</td>
                         <td class="input-30px">Valor</td>
+					    <td>Fixo</td>
                      </tr>
                      <tr>
                         <td colspan="3"></td>
@@ -33,6 +35,7 @@
                               onblur="editaCamposAnalitico('editaTelefone','valorTelefone${telefone.idFinancTelefone}',${telefone.idFinancTelefone},'valor','telefones');"
                               /> 
                            </td>
+                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
                         </tr>
                         <c:set var="totalTelefone" value="${totalTelefone+telefone.valor}" />
                      </c:forEach>
