@@ -36,13 +36,7 @@
             </span>
           </div>
         </div>
-		
-		                <button type="button" class="btn btn-primary" data-toggle="modal" onclick="trocarFornecedor(15,1522)">
-                              Entenda essa mensagem
-                        </button>
-		
-		
-		
+
         <div class="col-md-12" style="color:#fff !important">
           <ol class="breadcrumb">
             <li>
