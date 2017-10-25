@@ -13,8 +13,8 @@
 
 .line {
     display: inline-block;
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     border-radius: 15px;
     background-color: #4b9cdb;
 }
@@ -245,18 +245,15 @@
 	                       </select>
 	                       &nbsp&nbsp&nbsp
 	                       <a class="btn btn-danger" onclick="trocarFornecedor(${idProdutoGrupo});">Trocar Agora</a>
-
-							<div class="load-wrapp">
+							
+							<div class="load-wrapp display-none" id="loadFornecedor">
 								<div class="load-3">
 									<div class="line"></div>
 									<div class="line"></div>
 									<div class="line"></div>
 								</div>
 							</div>
-							<span class=""  > Trocando ...</span>
-	                       
-	                       
-	                       <br>
+							
 	                     </div>
                     </div>
               </div>
