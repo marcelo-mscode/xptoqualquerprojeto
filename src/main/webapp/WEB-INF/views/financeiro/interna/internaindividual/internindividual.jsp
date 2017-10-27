@@ -160,8 +160,22 @@
 	            		</c:if>
 						
 	            		<!-- Valor com negociação  -->
-	            		<c:if test="${itensInterna.diferenca > '0.00' && itensInterna.diferenca != itensInterna.valorItem}">
-	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorDePagamentoContratacao}" pattern="#,##0.00"/>"
+	            		<c:if test="${itensInterna.diferenca > '0.00' &&
+	            					  itensInterna.diferenca != itensInterna.valorItem &&
+	            					  itensInterna.valorDePagamentoContratacao != '0.00'}">
+	            			
+	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" 
+	            			value="<fmt:formatNumber value="${itensInterna.valorDePagamentoContratacao}" pattern="#,##0.00"/>"
+	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
+	            		</c:if>
+
+	            		<!-- ******* Valor com negociação  alterado manualmente em Interna-->
+	            		<c:if test="${itensInterna.diferenca > '0.00' && 
+	            		              itensInterna.diferenca != itensInterna.valorItem &&
+	            		              itensInterna.valorDePagamentoContratacao == '0.00'
+	            		              }">
+	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" 
+	            			value="<fmt:formatNumber value="${itensInterna.valorContratacao}" pattern="#,##0.00"/>"
 	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
 	            		</c:if>
 	            		
