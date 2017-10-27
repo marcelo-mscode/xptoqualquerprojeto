@@ -343,11 +343,5 @@ public class MontaGruposCategoriasGalderma{
 		String tipoCategoriaImposto =  verificaTipoDespesa.verifica(imposto,incideAdministracao,feeReduzido);
 		return tipoCategoriaImposto;
 	}
-
-	
-	
-	
-	
-	
 	
 }
