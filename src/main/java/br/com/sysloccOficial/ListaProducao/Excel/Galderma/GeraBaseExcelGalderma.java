@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.sysloccOficial.Excel.BaseGeraExcel;
+import br.com.sysloccOficial.model.Categoria;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
 import br.com.sysloccOficial.model.Job;
@@ -72,12 +73,18 @@ public class GeraBaseExcelGalderma {
 			 */
 			List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(pegaIdsCenarios.get(i));
 			
+			List<Categoria> categoriasDaLista = montaGrupos.categoriasDaLista(pegaIdsCenarios.get(i));
+			
+			
+			
+			
 			/**
 			 * Retorna lista de Grupos com categorias Galderma selecionada
 			 */
 			List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(pegaIdsCenarios.get(i));
 			
-			removeGruposVazios(categoriasGalderma, listaGrupos);
+			//removeGruposVazios(categoriasGalderma, listaGrupos);
+			removeGruposVazios(categoriasDaLista, listaGrupos);
 			
 			/**
 			 * Monta os Grupos com as informações necessárias para o Excel da Galderma
@@ -86,8 +93,14 @@ public class GeraBaseExcelGalderma {
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
 			
 			
-			//Cria o Cenários passando os dados		
-			int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 0"+numCenario,montaGruposParaExcel,categoriasGalderma,jobDaLista);
+			//Cria o Cenários passando os dados	
+			/**
+			 * Não recebe mais categorias Galderma, recebe agora as categorias da lista
+			 */
+			//int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 0"+numCenario,montaGruposParaExcel,categoriasGalderma,jobDaLista);
+			int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 0"+numCenario,montaGruposParaExcel,categoriasDaLista,jobDaLista);
+			
+			
 			//Monta dados para Consolidado
 			LinhasConsolidado linhas = new LinhasConsolidado();
 			linhas.setNomeAba("Cenário ");
@@ -157,8 +170,7 @@ public class GeraBaseExcelGalderma {
 	
 	
 	
-	private void removeGruposVazios(List<GrupoCategoriaGalderma> categoriasGalderma,
-			List<Grupo> listaGrupos) {
+	private void removeGruposVaziosGalderma(List<GrupoCategoriaGalderma> categoriasGalderma, List<Grupo> listaGrupos) {
 		for (int j = 0; j < listaGrupos.size(); j++) {
 			if(listaGrupos.get(j).getProdutoGrupo().size() == 0){
 							listaGrupos.remove(j); 
@@ -169,6 +181,26 @@ public class GeraBaseExcelGalderma {
 			boolean verifica = false;
 			for (int j2 = 0; j2 < listaGrupos.size(); j2++) {
 				if(categoriasGalderma.get(j).getIdCategoriaGalderma() == listaGrupos.get(j2).getGrupoCategoriaGalderma().getIdCategoriaGalderma()){
+					verifica = true;
+				}
+			}
+			if(verifica == false){
+				categoriasGalderma.remove(j);
+			}
+		}
+	}
+
+	private void removeGruposVazios(List<Categoria> categoriasGalderma, List<Grupo> listaGrupos) {
+		for (int j = 0; j < listaGrupos.size(); j++) {
+			if(listaGrupos.get(j).getProdutoGrupo().size() == 0){
+				listaGrupos.remove(j); 
+			}
+		}
+		
+		for (int j = 0; j < categoriasGalderma.size(); j++) {
+			boolean verifica = false;
+			for (int j2 = 0; j2 < listaGrupos.size(); j2++) {
+				if(categoriasGalderma.get(j).getIdcategoria() == listaGrupos.get(j2).getGrupoCategoriaGalderma().getIdCategoriaGalderma()){
 					verifica = true;
 				}
 			}

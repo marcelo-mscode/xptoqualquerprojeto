@@ -6,13 +6,12 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 
 import br.com.sysloccOficial.Excel.ExcelImagem;
+import br.com.sysloccOficial.model.Categoria;
 import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
 import br.com.sysloccOficial.model.Job;
 
@@ -31,7 +30,7 @@ public class GeraCorpoCenarios {
 	}*/
 	
 	public static int geraCorpoAbaCenarios(XSSFSheet cenario,XSSFWorkbook excelGalderma,String nomeAba,
-											List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma,Job job)
+											List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<Categoria> categoriasDaLista,Job job)
 											throws FileNotFoundException, IOException, ParseException{
 		
 		cenario = excelGalderma.createSheet(nomeAba); /** Cria Aba Cenarios da planilha */
@@ -45,8 +44,7 @@ public class GeraCorpoCenarios {
 		//Não precisa mexer mais
 		CorpoCenarioGaldermaTopo.geraTopoEstatico(excelGalderma, cenario, 17);
 		
-//		int linhasParaConsolidado = passaInformacoesCorpoExcel(cenario, excelGalderma, gruposParaExcel, categoriasGalderma);
-		int linhasParaConsolidado = passaInformacoesGerarCorpoExcelNovo(cenario, excelGalderma, gruposParaExcel, categoriasGalderma);
+		int linhasParaConsolidado = passaInformacoesGerarCorpoExcelNovo(cenario, excelGalderma, gruposParaExcel, categoriasDaLista);
 		
 		//Não mexer mais
 		if(nomeAba.equals("Opcionais")){
@@ -164,7 +162,7 @@ public class GeraCorpoCenarios {
 		return linhasConsolidado;
 	}
 
-	private static int passaInformacoesGerarCorpoExcelNovo(XSSFSheet cenario, XSSFWorkbook excelGalderma, List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<GrupoCategoriaGalderma> categoriasGalderma) {
+	private static int passaInformacoesGerarCorpoExcelNovo(XSSFSheet cenario, XSSFWorkbook excelGalderma, List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<Categoria> categoriasDaLista) {
 		
 		int linhaComecoCategorias = 20;
 		int linhaComecoInfoCategorias = 21;
@@ -180,7 +178,7 @@ public class GeraCorpoCenarios {
 		int primeiraLinhaGrupoCategoria = 0;
 		
 		//Para cada categoria Galderma
-		for (int i = 0; i < gruposParaExcel.size(); i++) {
+		for (int i = 0; i < categoriasDaLista.size(); i++) {
 			
 			if(qtdInfoGrupo2 == 0){
 				
@@ -202,7 +200,7 @@ public class GeraCorpoCenarios {
 			if(cenario.getSheetName().equals("Opcionais")){
 				
 			}else{
-				GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, qtdInfoGrupo3,gruposParaExcel.get(i).getInfoGrupo()); // ok
+				GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, qtdInfoGrupo3,categoriasDaLista.get(i).getCategoria()); // ok
 			}
 			
 			
@@ -210,18 +208,22 @@ public class GeraCorpoCenarios {
 			double taxaISS = 0;
 			double taxaServico = 0;
 			
-			
-			CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(i)); //Chama método para gerar o corpo
-			
-			qtdInfoGrupo2 = linhaComecoInfoCategorias + 1;
-			
-			
-			
-			linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
-			taxaISS = gruposParaExcel.get(i).getTxISS();
-			taxaServico = gruposParaExcel.get(i).getTxServico();
+			for (int j = 0; j < gruposParaExcel.size(); j++) {
+				
+				if(categoriasDaLista.get(i).getIdcategoria() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
 					
-			
+					CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j)); //Chama método para gerar o corpo
+					
+					qtdInfoGrupo2 = linhaComecoInfoCategorias + 1;
+					
+					
+					
+					linhaComecoInfoCategorias = linhaComecoInfoCategorias + 1;
+					taxaISS = gruposParaExcel.get(j).getTxISS();
+					taxaServico = gruposParaExcel.get(j).getTxServico();
+					
+				}
+			}
 			
 			
 			
@@ -229,7 +231,7 @@ public class GeraCorpoCenarios {
 			
 			Integer[] linhas = new Integer[2];
 			
-			if(categoriasGalderma.get(i).getIdCategoriaGalderma() == 8){
+			if(categoriasDaLista.get(i).getIdcategoria() == 8){
 				linhas[0] = ultimaLinhaGrupoCategoria+4;
 				linhas[1] = 8;
 				linhasSubtotais.add(linhas);

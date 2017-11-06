@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
+import br.com.sysloccOficial.model.Categoria;
 import br.com.sysloccOficial.model.CenariosGalderma;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
@@ -89,6 +90,38 @@ public class AuxCarregaGrupos {
 			return null;
 		}
 	}
+	
+	/**
+	 * Novo método para pegar as categorias dos Grupos
+	 * 
+	 * 
+	 * @param integer
+	 * @return
+	 */
+	public List<Categoria> categoriasDaLista(Integer idLista) {
+		try {
+			
+			TypedQuery<Integer> gruposIds = manager.createQuery(
+					"SELECT distinct(g.idCategoria.idCategoria) FROM Grupo g where idlista= "+idLista+" and opcional = 0 order by categoriaGalderma", Integer.class);
+			List<Integer> gruposIdsGalderma = gruposIds.getResultList();
+			
+			String consulta =  Utilitaria.limpaSqlComListStastico("from Categoria where idCategoria in ("+gruposIdsGalderma+")");
+			
+			TypedQuery<Categoria> grupos = manager.createQuery(consulta, Categoria.class);
+			
+			return grupos.getResultList();
+			
+		} catch (Exception e) {
+			
+			return null;
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * Pega lista de todas as categorias
@@ -179,7 +212,5 @@ public class AuxCarregaGrupos {
 			}
 			
 	}
-	
-	
 
 }
