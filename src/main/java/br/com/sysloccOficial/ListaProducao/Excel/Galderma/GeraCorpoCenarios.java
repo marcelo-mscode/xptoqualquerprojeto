@@ -159,13 +159,6 @@ public class GeraCorpoCenarios {
 		}
 		linhasConsolidado = qtdInfoGrupo2;
 		
-		/*
-		for (int j = 0; j < linhasSubtotais.size(); j++) {
-			System.out.println("Linhas: "+linhasSubtotais.get(j)[0]);
-		}*/
-		
-		
-		
 		CalculoRodapeCenario.calculosRodapePlanilha(excelGalderma, cenario, qtdInfoGrupo2,linhasSubtotais);
 		return linhasConsolidado;
 	}

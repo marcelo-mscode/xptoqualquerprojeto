@@ -37,7 +37,7 @@ public class AuxCarregaGrupos {
 	
 	/**
 	 * Método para retornar uma lista de Grupos de acordo com o idLista da Lista
-	 * não Opcionais
+	 * não Opcionais com Categorias Galderma selecionadas
 	 */
 	public List<Grupo> retornaGruposGalderma(Integer idLista){
 		

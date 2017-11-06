@@ -67,13 +67,24 @@ public class GeraBaseExcelGalderma {
 			int numCenario = i +1;
 			
 			// Monta dados para um cenário por idLista
+			/**
+			 * Pega as Categorias Galderma usadas nos Grupos
+			 */
 			List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(pegaIdsCenarios.get(i));
-		
+			
+			/**
+			 * Retorna lista de Grupos com categorias Galderma selecionada
+			 */
 			List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(pegaIdsCenarios.get(i));
 			
 			removeGruposVazios(categoriasGalderma, listaGrupos);
 			
+			/**
+			 * Monta os Grupos com as informações necessárias para o Excel da Galderma
+			 * 
+			 */
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel = montaCorpoCategorias.montaGruposParaExcel(listaGrupos);
+			
 			
 			//Cria o Cenários passando os dados		
 			int linhasConsolidado = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Cenário 0"+numCenario,montaGruposParaExcel,categoriasGalderma,jobDaLista);
