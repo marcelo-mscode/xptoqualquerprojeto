@@ -92,7 +92,6 @@ public class MontaGruposCategoriasGalderma{
 	
 	public List<CorpoGrupoCategoriaGalderma> montaGruposParaExcel(List<Grupo> listaGrupos){
 		
-		
 		List<CorpoGrupoCategoriaGalderma> corpoGrupos = new ArrayList<CorpoGrupoCategoriaGalderma>();
 		
 		for (int i = 0; i < listaGrupos.size(); i++) {

@@ -68,6 +68,7 @@ public class GeraBaseExcelGalderma {
 			
 			// Monta dados para um cenário por idLista
 			List<GrupoCategoriaGalderma> categoriasGalderma = montaGrupos.categoriasGalderma(pegaIdsCenarios.get(i));
+		
 			List<Grupo> listaGrupos  = montaGrupos.listaGruposNAOOpcionais(pegaIdsCenarios.get(i));
 			
 			removeGruposVazios(categoriasGalderma, listaGrupos);

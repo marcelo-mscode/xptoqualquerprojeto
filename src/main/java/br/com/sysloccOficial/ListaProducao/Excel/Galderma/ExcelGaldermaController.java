@@ -32,22 +32,15 @@ public class ExcelGaldermaController {
 		long tempoInicio = System.currentTimeMillis();
 		
 		String downloadExcel = excel.constroiExcel(idLista);
+	
 		System.out.println(downloadExcel);
-		
 		System.out.println("Tempo Total: "+( System.currentTimeMillis()-tempoInicio));
-		
+
 		ModelAndView MV = new ModelAndView("producao/geraExcel/ExcelGalderma");
 		MV.addObject("nomeArquivo", downloadExcel);
 		
 		return MV;
-/*		try {
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null,"ExcelGaldermaController: "+e);
-			ModelAndView MV = new ModelAndView("producao/geraExcel/ExcelErro");
-			MV.addObject("idLista", idLista);
-			return MV;
-		}
-*/
+
 	}
 	
 
