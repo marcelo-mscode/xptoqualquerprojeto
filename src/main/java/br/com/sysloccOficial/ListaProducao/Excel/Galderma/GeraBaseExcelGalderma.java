@@ -127,8 +127,10 @@ public class GeraBaseExcelGalderma {
 			List<GrupoCategoriaGalderma> catOpc3 =  removeCategoriasOpcionais(catOpc2, listaGruposOpcionais);
 			
 			List<CorpoGrupoCategoriaGalderma> montaGruposParaExcelOpcionais = montaCorpoCategorias.montaGruposParaExcel(listaGruposOpcionais);
+
 			
-			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenarios(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,catOpc3,jobDaLista);
+/////////// MUDAR ESSE MÉTODO DEPOIS			
+			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenariosTESTE(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,catOpc3,jobDaLista);
 			
 			
 			linhas2.setNomeAba("Opcionais");

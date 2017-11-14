@@ -56,7 +56,53 @@ public class GeraCorpoCenarios {
 		return linhasParaConsolidado;
 		
 	}
+	
+	
+	////////////////////////////////////////////////
+	
+	public static int geraCorpoAbaCenariosTESTE(XSSFSheet cenario, XSSFWorkbook excelGalderma, String nomeAba,
+			List<CorpoGrupoCategoriaGalderma> gruposParaExcel,
+			List<GrupoCategoriaGalderma> categoriasDaLista, Job job)
+			throws FileNotFoundException, IOException, ParseException {
 
+		cenario = excelGalderma.createSheet(nomeAba);
+		/** Cria Aba Cenarios da planilha */
+		cenario.setZoom(80);
+
+		ExcelImagem.InsereImagem(excelGalderma, cenario,
+				"C:/SYSLOC/upload/logoEmpresas/logoExcelAgencia2.png", 0.67);
+
+		GeraCabecalhoExcelGalderma.geraCabecalhoFormula(cenario, excelGalderma,
+				nomeAba, job);
+
+		// Não precisa mexer mais
+		CorpoCenarioGaldermaTopo.geraTopoEstatico(excelGalderma, cenario, 17);
+
+		int linhasParaConsolidado = passaInformacoesCorpoExcel(
+				cenario, excelGalderma, gruposParaExcel, categoriasDaLista);
+
+		// Não mexer mais
+		if (nomeAba.equals("Opcionais")) {
+			GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma,
+					cenario, linhasParaConsolidado + 7);
+		} else {
+			GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,
+					linhasParaConsolidado + 7);
+		}
+
+		return linhasParaConsolidado;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Separa por Categoria 
 	 * 
@@ -259,7 +305,15 @@ public class GeraCorpoCenarios {
 		CalculoRodapeCenario.calculosRodapePlanilha(excelGalderma, cenario, qtdInfoGrupo2,linhasSubtotais);
 		return linhasConsolidado;
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * Método para gerar rodapé da aba
@@ -275,57 +329,4 @@ public class GeraCorpoCenarios {
 		CorpoCenarioGalderma.corpoCenarioOpcionais(excelGalderma, cenario,infoGrupo,250,450, new BigDecimal("3596.00"), new BigDecimal("3596.00"));
 		GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma,18,cenario);
 	}*/
-
-
-
-
-	
-	
-	public static int geraCorpoAbaCenarios(XSSFSheet cenario,XSSFWorkbook excelGalderma,String nomeAba,
-			List<CorpoGrupoCategoriaGalderma> gruposParaExcel,List<Categoria> categoriasDaLista,Job job)
-			throws FileNotFoundException, IOException, ParseException{
-
-cenario = excelGalderma.createSheet(nomeAba); /** Cria Aba Cenarios da planilha */
-cenario.setZoom(80);
-
-ExcelImagem.InsereImagem(excelGalderma, cenario, "C:/SYSLOC/upload/logoEmpresas/logoExcelAgencia2.png",0.67);
-
-GeraCabecalhoExcelGalderma.geraCabecalhoFormula(cenario, excelGalderma, nomeAba, job);
-
-
-//Não precisa mexer mais
-CorpoCenarioGaldermaTopo.geraTopoEstatico(excelGalderma, cenario, 17);
-
-int linhasParaConsolidado = passaInformacoesGerarCorpoExcelNovo(cenario, excelGalderma, gruposParaExcel, categoriasDaLista);
-
-//Não mexer mais
-if(nomeAba.equals("Opcionais")){
-GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario,linhasParaConsolidado+7);
-}else{
-GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,linhasParaConsolidado+7);
-}
-
-return linhasParaConsolidado;
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
