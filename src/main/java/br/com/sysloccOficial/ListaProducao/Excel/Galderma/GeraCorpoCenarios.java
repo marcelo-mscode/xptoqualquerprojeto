@@ -61,9 +61,8 @@ public class GeraCorpoCenarios {
 	////////////////////////////////////////////////
 	
 	public static int geraCorpoAbaCenariosTESTE(XSSFSheet cenario, XSSFWorkbook excelGalderma, String nomeAba,
-			List<CorpoGrupoCategoriaGalderma> gruposParaExcel,
-			List<GrupoCategoriaGalderma> categoriasDaLista, Job job)
-			throws FileNotFoundException, IOException, ParseException {
+												List<CorpoGrupoCategoriaGalderma> gruposParaExcel,
+												List<GrupoCategoriaGalderma> categoriasDaLista, Job job)throws FileNotFoundException, IOException, ParseException {
 
 		cenario = excelGalderma.createSheet(nomeAba);
 		/** Cria Aba Cenarios da planilha */
@@ -78,16 +77,13 @@ public class GeraCorpoCenarios {
 		// Não precisa mexer mais
 		CorpoCenarioGaldermaTopo.geraTopoEstatico(excelGalderma, cenario, 17);
 
-		int linhasParaConsolidado = passaInformacoesCorpoExcel(
-				cenario, excelGalderma, gruposParaExcel, categoriasDaLista);
+		int linhasParaConsolidado = passaInformacoesCorpoExcel( cenario, excelGalderma, gruposParaExcel, categoriasDaLista);
 
 		// Não mexer mais
 		if (nomeAba.equals("Opcionais")) {
-			GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma,
-					cenario, linhasParaConsolidado + 7);
+			GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario, linhasParaConsolidado + 7);
 		} else {
-			GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,
-					linhasParaConsolidado + 7);
+			GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario, linhasParaConsolidado + 7);
 		}
 
 		return linhasParaConsolidado;
@@ -158,7 +154,7 @@ public class GeraCorpoCenarios {
 			
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
 				
-						if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
+						/*if(categoriasGalderma.get(i).getIdCategoriaGalderma() == gruposParaExcel.get(j).getIdCategoriaGalderma()){*/
 						
 							CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j)); //Chama método para gerar o corpo
 	
@@ -170,7 +166,7 @@ public class GeraCorpoCenarios {
 							taxaISS = gruposParaExcel.get(j).getTxISS();
 							taxaServico = gruposParaExcel.get(j).getTxServico();
 							
-					}
+					/*}*/
 			}
 			
 			

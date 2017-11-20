@@ -43,8 +43,14 @@ public class AuxCarregaGrupos {
 	public List<Grupo> retornaGruposGalderma(Integer idLista){
 		
 		try {
-			TypedQuery<Grupo> grupos = manager.createQuery(
+/*			TypedQuery<Grupo> grupos = manager.createQuery(
 					"from Grupo g where idLista ="+idLista+" and opcional = 0 and g.grupoCategoriaGalderma.idCategoriaGalderma > 1 order by g.ordemGrupo", Grupo.class);
+*/		
+			TypedQuery<Grupo> grupos = manager.createQuery(
+					"from Grupo g where idLista ="+idLista+" and opcional = 0 order by g.ordemGrupo", Grupo.class);
+			
+			
+			
 			return grupos.getResultList();
 		} catch (Exception e) {
 			System.out.println(e);

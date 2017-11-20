@@ -274,12 +274,17 @@ public class MontaGruposCategoriasGalderma{
 			
 			/**
 			 * Setas as categorias
-			 */
+			 
 			if(listaGrupos.get(i).getGrupoCategoriaGalderma().getIdCategoriaGalderma() < 1){
 				corpoGrupoGalderma.setIdCategoriaGalderma(1);
 			}else{
 				corpoGrupoGalderma.setIdCategoriaGalderma(listaGrupos.get(i).getGrupoCategoriaGalderma().getIdCategoriaGalderma());
 			}
+			*/
+			
+			corpoGrupoGalderma.setIdCategoriaGalderma(listaGrupos.get(i).getIdCategoria().getIdcategoria());
+			
+			
 			
 			corpoGrupoGalderma.setIdGrupo(listaGrupos.get(i).getIdgrupo());
 			corpoGrupoGalderma.setInfoGrupo(listaGrupos.get(i).getInformacoes());
