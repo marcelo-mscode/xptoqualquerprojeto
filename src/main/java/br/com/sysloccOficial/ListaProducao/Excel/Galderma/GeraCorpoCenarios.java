@@ -61,8 +61,8 @@ public class GeraCorpoCenarios {
 	////////////////////////////////////////////////
 	
 	public static int geraCorpoAbaCenariosTESTE(XSSFSheet cenario, XSSFWorkbook excelGalderma, String nomeAba,
-												List<CorpoGrupoCategoriaGalderma> gruposParaExcel,
-												List<GrupoCategoriaGalderma> categoriasDaLista, Job job)throws FileNotFoundException, IOException, ParseException {
+													List<CorpoGrupoCategoriaGalderma> gruposParaExcel,
+											List<GrupoCategoriaGalderma> categoriasDaLista, Job job)throws FileNotFoundException, IOException, ParseException {
 
 		cenario = excelGalderma.createSheet(nomeAba);
 		/** Cria Aba Cenarios da planilha */
