@@ -45,15 +45,6 @@ public class CorpoConsolidadoGalderma {
 			
 			String dataProposta = " ";
 			
-			/*			
-			 * DeadLine
-			 * if(job.getPropostaData() == null){
-							dataProposta = " ";
-						}else{
-							dataProposta = UtilitariaDatas.converteDateParaStringStatic(job.getPropostaData());
-						}
-			*/			
-			
 			GeraConteudoConsolidado.geraConteudo(excelGalderma, cenario,linhasParaConsolidado.get(i).getNomeAba(),linhaComecaConteudo,
 												 linhasParaConsolidado.get(i).getUltimaLinhaCalculos(),numCenario
 												 ,qtsPessoasDias,infoLista, dataProposta );

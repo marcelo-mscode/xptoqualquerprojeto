@@ -64,7 +64,9 @@ public class AuxCarregaGrupos {
 	 */
 	public List<Grupo> retornaGruposOpcionais(List<Integer> idLista){
 		try {
-			String consulta =  Utilitaria.limpaSqlComListStastico("from Grupo g where idLista in ("+idLista+") and opcional = 1 and categoriaGalderma != null order by idLista");
+//			String consulta =  Utilitaria.limpaSqlComListStastico("from Grupo g where idLista in ("+idLista+") and opcional = 1 and categoriaGalderma != null order by idLista");
+			String consulta =  Utilitaria.limpaSqlComListStastico("from Grupo g where idLista in ("+idLista+") and opcional = 1 order by idLista");
+			
 			TypedQuery<Grupo> grupos = manager.createQuery(consulta, Grupo.class);
 			return grupos.getResultList();
 		} catch (Exception e) {
