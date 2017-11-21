@@ -433,7 +433,7 @@
 							</div>
 						</div>
 
-						<%-- <div class="control-group">
+						<div class="control-group">
 							<label class="control-label" for="categoria">Categoria Galderma</label>
 							<div class="controls margim-bottom5">
 								<select id="categoriaBayer" name="idCategoriaGaldermaTransiente" class="form-control">
@@ -446,7 +446,7 @@
 									</c:forEach>
 								</select>
 							</div>
-						</div> --%>
+						</div>
 						
 						
 					<!-- Multiple Checkboxes -->
@@ -490,7 +490,7 @@
 						      
 						    Opcional
    					        
-   					        <%-- <c:if test="${grupo.opcionalGalderma == true}">
+   					        <c:if test="${grupo.opcionalGalderma == true}">
 						    	  <input type="checkbox" name="opcionalGalderma" checked="checked" style="margin-left:23px;width: 20px;height: 17px">
 						    </c:if>
 						
@@ -498,7 +498,7 @@
 						    	  <input type="checkbox" name="opcionalGalderma" style="margin-left:23px;width: 20px;height: 17px">
 						    </c:if>
 						      <span style="margin-left:48px;">Opcional Galderma</span>
-						    </label> --%>
+						    </label>
 						    	<%-- <div style="margin-top: 15px;">
 						    	  Taxa Serviço Galderma<input type="text" name="txServico" class="form-control" style="margin-bottom:10px;width: 60px;height:35px" value="${grupo.txServico}">
 						    	  Taxa ISS Galderma<input type="text" name="txISS" class="form-control" style="width: 60px;height:35px" value="${grupo.txISS}">
