@@ -55,7 +55,7 @@
 
 <div>
 	<div class="row col-md-12" style="margin: 15px 0 10px 0;">
-		<button id="animaPainelGalderma" class="btn btn-default" style="float: right">Galderma</button>
+		<button id="animaPainelGalderma" class="btn btn-default" style="float: right">Consolidado</button>
 	</div>
 	
 	<div class="row display-none" id="painelGalderma">
@@ -711,7 +711,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				              <div class="checkbox col-md-offset-1 tira-padding ajustaDivChecked">
 				                <input type="checkbox" class="form-group ajustaCheckBox" name="opcional"> Opcional da Planilha            
 				              
-				                <input type="checkbox" class="form-group ajustaCheckBox" name="opcionalGalderma" style="margin-left: 20px"><b style="margin-left: 45px">Opcional Galderma</b>           
+				                <!-- <input type="checkbox" class="form-group ajustaCheckBox" name="opcionalGalderma" style="margin-left: 20px"><b style="margin-left: 45px">Opcional Galderma</b> -->           
 				              </div>
 				          </div>
 				
