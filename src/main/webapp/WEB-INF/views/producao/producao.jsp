@@ -726,7 +726,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				              </div>
 				          </div>
 				          
-				          <div class="col-md-7 categoriaEmpresasLista categoriaGaldermaLateral">
+				          <%-- <div class="col-md-7 categoriaEmpresasLista categoriaGaldermaLateral">
 				          	<span>CATEGORIAS GALDERMA</span>
 				              <div class="checkbox col-md-offset-1 tira-padding" style="margin: 8px 0;">
 				                <select name="idCategoriaGaldermaTransiente" class="form-control">
@@ -735,7 +735,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				                	</c:forEach>
 				                </select>
 				              </div>
-				          </div>
+				          </div> --%>
 				          
 				          <div class="col-md-7">
 				              <div class="form-group">
