@@ -28,6 +28,9 @@ public class GeraConteudoConsolidado {
 		XSSFCell cell = linha2.createCell(0);
 		
 		if(nomeAba.equals("Opcionais")){
+			
+			System.out.println();
+			
 		}else{
 			nomeAba = nomeAba+"0"+numCenario;
 		}
