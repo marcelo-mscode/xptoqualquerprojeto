@@ -138,12 +138,12 @@
 
 			<a onclick="exportaExcelAjaxNovoBayer(${idLista});" class="btn btn-default" id="planilhaGerarNovoExcelBayer">
 				<img alt="" src="<c:url value="resources/images/excel.png" />" width="18"  height="18" > 
-				Excel Novo Bayer
+				Excel Bayer
 			</a>
 
 			<a onclick="exportaExcelGalderma(${idLista});" class="btn btn-default" id="planilhaNovaGalderma" >
 			  	<img alt="" src="<c:url value="resources/images/excel.png" />" width="18"  height="18">
-			  	<b>Excel Galderma (betha)</b>
+			  	<b>Excel Consolidado</b>
 		    </a>
 			
 			
