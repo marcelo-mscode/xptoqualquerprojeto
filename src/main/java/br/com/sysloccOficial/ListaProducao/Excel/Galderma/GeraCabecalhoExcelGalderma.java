@@ -33,17 +33,17 @@ public class GeraCabecalhoExcelGalderma {
 			}
 		}
 		
-		textoContato(aba, excelGalderma, "Gestor: "+nomeContato, 1);
+		textoContato(aba, excelGalderma, "Contato: "+nomeContato, 1);
 		textoContato(aba, excelGalderma, "Telefone: "+telefone, 2);
 		textoContato(aba, excelGalderma, "Email: "+email, 3);
 		
-		textoContato(aba, excelGalderma, "Compras: Paula Samora", 4);
+		/*textoContato(aba, excelGalderma, "Compras: Paula Samora", 4);
 		textoContato(aba, excelGalderma, "Telefone: 11 3524-6498", 5);
-		textoContato(aba, excelGalderma, "Email: paula.samora@galderma.com", 6);
+		textoContato(aba, excelGalderma, "Email: paula.samora@galderma.com", 6);*/
 		
-		textoContato(aba, excelGalderma, "Fornecedor: LOCCO Agencia", 7, new int[]{247, 255, 0});
-		textoContato(aba, excelGalderma, "Telefone: 11 - 3938-3250", 8, new int[]{247, 255, 0});
-		textoContato(aba, excelGalderma, "Email: celia@loccoagencia.com.br; pedro@loccoagencia.com.br", 9, new int[]{247, 255, 0});
+		textoContato(aba, excelGalderma, "Fornecedor: LOCCO Agencia", 4, new int[]{247, 255, 0});
+		textoContato(aba, excelGalderma, "Telefone: 11 - 3938-3250", 5, new int[]{247, 255, 0});
+		textoContato(aba, excelGalderma, "Email: celia@loccoagencia.com.br; pedro@loccoagencia.com.br", 6, new int[]{247, 255, 0});
 		
 		geraCabecalhoEvento(aba, excelGalderma, nomeAba, job);
 	}
@@ -58,13 +58,13 @@ public class GeraCabecalhoExcelGalderma {
 		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C3", 2, corCinza);
 		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C4", 3, corCinza);
 		
-		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C5", 4, corCinza);
-		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C6", 5, corCinza);
-		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C7", 6, corCinza);
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C5", 4, corAmarelo);
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C6", 5, corAmarelo);
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C7", 6, corAmarelo);
 
-		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C8", 7, corAmarelo);
+		/*textoContatoFormula(aba, excelGalderma, "'Consolidado'!C8", 7, corAmarelo);
 		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C9", 8, corAmarelo);
-		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C10", 9, corAmarelo);
+		textoContatoFormula(aba, excelGalderma, "'Consolidado'!C10", 9, corAmarelo);*/
 		
 /*		
 		

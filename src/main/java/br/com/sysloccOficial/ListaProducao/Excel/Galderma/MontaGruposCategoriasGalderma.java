@@ -285,7 +285,7 @@ public class MontaGruposCategoriasGalderma{
 			
 			
 			int idCategoriaPega = listaGrupos.get(i).getIdCategoria().getIdcategoria();
-			System.out.println("-----> " + idCategoriaPega);
+//			System.out.println("-----> " + idCategoriaPega);
 			
 			corpoGrupoGalderma.setIdCategoriaGalderma(idCategoriaPega);
 			

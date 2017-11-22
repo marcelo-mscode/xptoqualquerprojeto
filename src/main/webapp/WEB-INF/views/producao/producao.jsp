@@ -449,7 +449,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				         </c:forEach>
 				      </select>
 				   </div>
-				   <div class="col-md-7 categoriaEmpresasLista input-420px">
+				  <!--  <div class="col-md-7 categoriaEmpresasLista input-420px">
 				      <p style="margin: 0 0 -10px;">TAXAS GALDERMA</p>
 				      <div class="col-md-4 col-md-offset-1 tira-padding">
 				         Taxa de Serviço
@@ -458,7 +458,7 @@ style="border-top: 3px solid #ccc;border-bottom: 0px solid #ccc;padding-bottom: 
 				      <div class="col-md-4 col-md-offset-1 tira-padding" style="margin: 0px 15px;">
 				         Taxa de ISS<input class="form-control" value="0" name="txISS" />
 				      </div>
-				   </div>
+				   </div> -->
 				   <div class="col-md-6 tira-padding">
 				      <input class="btn btn-danger" type="submit"	value="Criar Categoria" name="criaCategoriaBotao">
 				   </div>

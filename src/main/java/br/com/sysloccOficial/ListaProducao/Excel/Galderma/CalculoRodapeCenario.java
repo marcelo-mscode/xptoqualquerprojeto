@@ -28,7 +28,7 @@ public class CalculoRodapeCenario {
 		
 		if(cenario.getSheetName().equals("Opcionais")){
 			
-			System.out.println(linhasSubtotais.get(0)[0] - 8);
+//			System.out.println(linhasSubtotais.get(0)[0] - 8);
 			
 //			int i = linhasSubtotais.get(0)[0] - 8;
 			int i = 21;
