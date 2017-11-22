@@ -60,7 +60,7 @@
 	
 	<div class="row display-none" id="painelGalderma">
 		<div class="col-md-6">
-			<p style="margin: 0px;">Nova Categoria Galderma (somente em caso de exceção)</p>
+			<%-- <p style="margin: 0px;">Nova Categoria Galderma (somente em caso de exceção)</p>
 			<i class="glyphicon glyphicon-ok display-none" id="editaOk" style="color: green;">&nbsp&nbspSalvo com sucesso !</i>
 			<input id="novaCategoriaGalderma" class="form-control input-360px"  style="margin: 5px 0 10px 0;" onblur="criaNovaCategoria();" />
 			<i class="glyphicon glyphicon-error display-none" id="editaError" style="color: red;margin-top: -10px;margin-bottom: 11px;">&nbsp&nbspColoque um nome para a categoria</i>
@@ -69,7 +69,7 @@
                 	<c:forEach items="${categoriasGalderma}" var="galderma">
 	                	<option value="${galderma.idCategoriaGalderma}"> ${galderma.categoria}</option>
                 	</c:forEach>
-            </select>
+            </select> --%>
 		
 		
 		
