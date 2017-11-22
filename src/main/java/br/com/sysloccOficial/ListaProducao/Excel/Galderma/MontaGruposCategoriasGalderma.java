@@ -284,7 +284,10 @@ public class MontaGruposCategoriasGalderma{
 			
 			corpoGrupoGalderma.setIdCategoriaGalderma(listaGrupos.get(i).getIdCategoria().getIdcategoria());
 			
-			System.out.println(listaGrupos.get(i).getIdCategoria().getIdcategoria());
+			corpoGrupoGalderma.setIdCategoria(listaGrupos.get(i).getIdCategoria().getIdcategoria());
+			
+			
+			System.out.println(corpoGrupoGalderma.getIdCategoria());
 			
 			
 			corpoGrupoGalderma.setIdGrupo(listaGrupos.get(i).getIdgrupo());

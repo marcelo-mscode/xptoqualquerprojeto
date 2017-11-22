@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 public class CorpoGrupoCategoriaGalderma {
 	
 	private int idCategoriaGalderma;
+	private Integer idCategoria;
 	private int idGrupo;
 	private String infoGrupo;
 	private String tipoServico;
@@ -23,6 +24,12 @@ public class CorpoGrupoCategoriaGalderma {
 
 	public String getTipoServico() {
 		return tipoServico;
+	}
+	public Integer getIdCategoria() {
+		return idCategoria;
+	}
+	public void setIdCategoria(Integer idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 	public double getTxServico() {
 		return txServico;
