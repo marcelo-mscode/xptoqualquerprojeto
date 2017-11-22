@@ -284,9 +284,12 @@ public class MontaGruposCategoriasGalderma{
 			
 			corpoGrupoGalderma.setIdCategoriaGalderma(listaGrupos.get(i).getIdCategoria().getIdcategoria());
 			
+			System.out.println(listaGrupos.get(i).getIdCategoria().getIdcategoria());
 			
 			
 			corpoGrupoGalderma.setIdGrupo(listaGrupos.get(i).getIdgrupo());
+			
+			
 			corpoGrupoGalderma.setInfoGrupo(listaGrupos.get(i).getInformacoes());
 			corpoGrupoGalderma.setTemImposto(true);
 			

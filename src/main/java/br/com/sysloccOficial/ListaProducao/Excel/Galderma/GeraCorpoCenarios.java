@@ -252,7 +252,10 @@ public class GeraCorpoCenarios {
 			
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
 				
-				if(categoriasDaLista.get(i).getIdcategoria() == gruposParaExcel.get(j).getIdCategoriaGalderma()){
+				int idcategoria = categoriasDaLista.get(i).getIdcategoria();
+				int idcategoriaNoGrupo = gruposParaExcel.get(j).getIdCategoriaGalderma();
+				
+				if(idcategoria == idcategoriaNoGrupo){
 					
 					CorpoCenarioGalderma.corpoCenario(excelGalderma, cenario,linhaComecoInfoCategorias,gruposParaExcel.get(j)); //Chama método para gerar o corpo
 					

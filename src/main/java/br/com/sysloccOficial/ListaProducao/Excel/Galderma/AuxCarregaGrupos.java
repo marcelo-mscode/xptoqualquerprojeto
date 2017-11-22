@@ -52,6 +52,9 @@ public class AuxCarregaGrupos {
 			
 			
 			return grupos.getResultList();
+			
+			
+			
 		} catch (Exception e) {
 			System.out.println(e);
 			return null;
