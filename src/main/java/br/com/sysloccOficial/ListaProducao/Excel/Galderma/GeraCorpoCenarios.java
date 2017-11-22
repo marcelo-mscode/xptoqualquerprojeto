@@ -274,11 +274,13 @@ public class GeraCorpoCenarios {
 			Integer[] linhas = new Integer[2];
 			
 			if(categoriasDaLista.get(i).getIdcategoria() == 8){
-				linhas[0] = ultimaLinhaGrupoCategoria+4;
+				//linhas[0] = ultimaLinhaGrupoCategoria+4; //Alterado
+				linhas[0] = ultimaLinhaGrupoCategoria+1; //Alterado
 				linhas[1] = 8;
 				linhasSubtotais.add(linhas);
 			}else{
-				linhas[0] = ultimaLinhaGrupoCategoria+4;
+				// linhas[0] = ultimaLinhaGrupoCategoria+4; //Alterado
+				linhas[0] = ultimaLinhaGrupoCategoria+1;
 				linhas[1] = 0;
 				linhasSubtotais.add(linhas);
 			}

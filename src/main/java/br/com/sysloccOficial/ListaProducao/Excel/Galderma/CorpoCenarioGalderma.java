@@ -41,8 +41,8 @@ public class CorpoCenarioGalderma {
 		int subTotal = ultimaLinhaConteudoCategoria+1;
 		int porcentagem = ultimaLinhaConteudoCategoria+2;
 		
-		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1,"Taxa de Serviço",txServico, txServico,subTotal,porcentagem);
-	    CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+2,"Taxa de ISS",txIss,txIss,subTotal,porcentagem+1);
+//		CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+1,"Taxa de Serviço",txServico, txServico,subTotal,porcentagem);
+//	    CalculoSubTotalCategoriaTaxaServico.calculoSubTotalCategoriaTaxas(excelGalderma, cenario, ultimaLinhaConteudoCategoria+2,"Taxa de ISS",txIss,txIss,subTotal,porcentagem+1);
 		CalculoSubtotalServico.totalDeServico(excelGalderma,cenario, ultimaLinhaConteudoCategoria+3, subTotal,ultimaLinhaConteudoCategoria+3);
 		
 	}
