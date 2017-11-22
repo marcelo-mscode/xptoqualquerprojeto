@@ -242,6 +242,7 @@ public class GeraCorpoCenarios {
 			if(cenario.getSheetName().equals("Opcionais")){
 				
 			}else{
+				//Gera a linha com o nome da Categoria
 				GeraTextoCategorias.geratextoCategorias(excelGalderma, cenario, qtdInfoGrupo3,categoriasDaLista.get(i).getCategoria()); // ok
 			}
 			
@@ -298,7 +299,8 @@ public class GeraCorpoCenarios {
 				
 				
 				
-				qtdInfoGrupo2 = qtdInfoGrupo2+4;
+				// qtdInfoGrupo2 = qtdInfoGrupo2+4; Alterado
+				qtdInfoGrupo2 = qtdInfoGrupo2+1;
 			}
 		}
 		linhasConsolidado = qtdInfoGrupo2;
