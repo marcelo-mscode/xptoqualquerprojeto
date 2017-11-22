@@ -211,9 +211,9 @@ public class GeraBaseExcelGalderma {
 			boolean verifica = false;
 			for (int j2 = 0; j2 < listaGruposDaCategoria.size(); j2++) {
 				
-				System.out.println(categoriasDaLista.get(j).getIdcategoria());
+				/*System.out.println(categoriasDaLista.get(j).getIdcategoria());
 				System.out.println(listaGruposDaCategoria.get(j2).getIdCategoria().getIdcategoria());
-				
+				*/
 				if(categoriasDaLista.get(j).getIdcategoria() == listaGruposDaCategoria.get(j2).getIdCategoria().getIdcategoria()){
 					verifica = true;
 				}
