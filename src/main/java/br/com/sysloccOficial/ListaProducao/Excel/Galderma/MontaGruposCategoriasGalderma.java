@@ -282,12 +282,17 @@ public class MontaGruposCategoriasGalderma{
 			}
 			*/
 			
-			corpoGrupoGalderma.setIdCategoriaGalderma(listaGrupos.get(i).getIdCategoria().getIdcategoria());
-			
-			corpoGrupoGalderma.setIdCategoria(listaGrupos.get(i).getIdCategoria().getIdcategoria());
 			
 			
-			System.out.println(corpoGrupoGalderma.getIdCategoria());
+			int idCategoriaPega = listaGrupos.get(i).getIdCategoria().getIdcategoria();
+			System.out.println("-----> " + idCategoriaPega);
+			
+			corpoGrupoGalderma.setIdCategoriaGalderma(idCategoriaPega);
+			
+			corpoGrupoGalderma.setIdCategoria(idCategoriaPega);
+			
+			
+			//System.out.println(corpoGrupoGalderma.getIdCategoria());
 			
 			
 			corpoGrupoGalderma.setIdGrupo(listaGrupos.get(i).getIdgrupo());
@@ -317,7 +322,7 @@ public class MontaGruposCategoriasGalderma{
 			if(listaGrupos.get(i).getGrupoCategoriaGalderma() == null){
 				corpoGrupoBayerSemImposto.setIdCategoriaGalderma(1);
 			}else{
-				corpoGrupoBayerSemImposto.setIdCategoriaGalderma(listaGrupos.get(i).getGrupoCategoriaGalderma().getIdCategoriaGalderma());
+				corpoGrupoBayerSemImposto.setIdCategoriaGalderma(listaGrupos.get(i).getIdCategoria().getIdcategoria());
 			}
 			
 			corpoGrupoBayerSemImposto.setIdGrupo(listaGrupos.get(i).getIdgrupo());

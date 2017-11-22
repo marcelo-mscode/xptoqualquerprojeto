@@ -253,7 +253,7 @@ public class GeraCorpoCenarios {
 			for (int j = 0; j < gruposParaExcel.size(); j++) {
 				
 				int idcategoria = categoriasDaLista.get(i).getIdcategoria();
-				int idcategoriaNoGrupo = gruposParaExcel.get(j).getIdCategoria();
+				int idcategoriaNoGrupo = gruposParaExcel.get(j).getIdCategoriaGalderma();
 				
 				if(idcategoria == idcategoriaNoGrupo){
 					
