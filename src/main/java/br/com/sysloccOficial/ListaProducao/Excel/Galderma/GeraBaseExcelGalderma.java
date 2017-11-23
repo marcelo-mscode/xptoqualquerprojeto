@@ -152,12 +152,17 @@ public class GeraBaseExcelGalderma {
 			boolean confere = false;
 			
 			int g = categoriasGaldermaOpc.get(i).getIdCategoriaGalderma();
+	
 			for (int j = 0; j < listaGruposOpcionais.size(); j++) {
 				
 				int l = 1;
 				
 				if(listaGruposOpcionais.get(j).getGrupoCategoriaGalderma() == null){
 				
+					System.out.println("Sou nulão !!!");
+					
+					listaGruposOpcionais.get(j).setGrupoCategoriaGalderma(0);
+					
 				}else{
 					l = listaGruposOpcionais.get(j).getGrupoCategoriaGalderma().getIdCategoriaGalderma();
 				}
