@@ -36,10 +36,10 @@ public class CalculoRodapeCenario {
 			String formulaNegociadoOpc = "SUM(G"+i+":G"+ultimaLinhaCorpo+")";
 			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicialOpc,formulaNegociadoOpc);
 
-			String NTformulaInicialOpc = "E"+(ultimaLinhaCorpo+2);
+			/*String NTformulaInicialOpc = "E"+(ultimaLinhaCorpo+2);
 			String NTformulaNegociadoOpc = "G"+(ultimaLinhaCorpo+2);
 			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+2, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219},NTformulaInicialOpc,NTformulaNegociadoOpc);
-			
+			*/
 			/*String ServicosAgenciaformulaInicialOpc = "D29";
 			String ServicosAgenciaformulaNegociadoOpc = "D29";
 			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+3, "Investimento - Serviços Agência",new int[]{219,219,219},ServicosAgenciaformulaInicialOpc,ServicosAgenciaformulaNegociadoOpc	);*/
@@ -49,15 +49,15 @@ public class CalculoRodapeCenario {
 			String formulaNegociado = montaFormulaParaCalculoSutotalGeral(linhasSubtotais, "G");
  			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+1, "Subtotal Geral",new int[]{0,176,240},formulaInicial,formulaNegociado);
 
-			String NTformulaInicial = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "E");
+			/*String NTformulaInicial = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "E");
 			String NTformulaNegociado = montaFormulaParaPGTOVIANTDebito(linhasSubtotais, "G");
-			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+2, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219},NTformulaInicial,NTformulaNegociado);
+			CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+2, "Investimento - Serviços Terceiros - PGTO VIA NOTA DE DÉBITO",new int[]{219,219,219},NTformulaInicial,NTformulaNegociado);*/
 		}
 		
 		
 		String ServicosAgenciaformulaInicial = montaFormulaServicosAgencia(linhasSubtotais, "E");
 		String ServicosAgenciaformulaNegociado = montaFormulaServicosAgencia(linhasSubtotais, "G");
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+3, "Investimento - Serviços Agência",new int[]{219,219,219},ServicosAgenciaformulaInicial,ServicosAgenciaformulaNegociado);
+		//CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+3, "Investimento - Serviços Agência",new int[]{219,219,219},ServicosAgenciaformulaInicial,ServicosAgenciaformulaNegociado);
 		
 		//(E82+E83)*D84
 		
@@ -67,11 +67,11 @@ public class CalculoRodapeCenario {
 */	
 		String feeAgenciaInicial = "E"+(ultimaLinhaCorpo+3)+"*D"+(ultimaLinhaCorpo+5);
 		String feeAgenciaNegociado = "G"+(ultimaLinhaCorpo+3)+"*F"+(ultimaLinhaCorpo+5);
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+4, "FEE Agência",new int[]{219,219,219},5.2,feeAgenciaInicial,feeAgenciaNegociado);
+		//CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+4, "FEE Agência",new int[]{219,219,219},5.2,feeAgenciaInicial,feeAgenciaNegociado);
 		
 		String ImpostoInicial = "((E"+(ultimaLinhaCorpo+4)+")/0.771)-(E"+(ultimaLinhaCorpo+4)+")";
 		String ImpostoNegociado ="((G"+(ultimaLinhaCorpo+4)+")/0.771)-(G"+(ultimaLinhaCorpo+4)+")";
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+5, "Impostos Emissão NF - Serviços Agência",new int[]{219,219,219},22.9,ImpostoInicial,ImpostoNegociado);
+		//CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+5, "Impostos Emissão NF - Serviços Agência",new int[]{219,219,219},22.9,ImpostoInicial,ImpostoNegociado);
 
 /*		String ImpostoInicial = "E"+(ultimaLinhaCorpo+4)+"*D"+(ultimaLinhaCorpo+6);
 		String ImpostoNegociado = "G"+(ultimaLinhaCorpo+4)+"*F"+(ultimaLinhaCorpo+6);
@@ -79,7 +79,7 @@ public class CalculoRodapeCenario {
 */		
 		String TotalPrevistoInicial = "SUM(E"+(ultimaLinhaCorpo+3)+":E"+(ultimaLinhaCorpo+6)+")";
 		String TotalPrevistoNegociado = "SUM(G"+(ultimaLinhaCorpo+3)+":G"+(ultimaLinhaCorpo+6)+")";
-		CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+6, "TOTAL PREVISTO",new int[]{0,176,240},TotalPrevistoInicial,TotalPrevistoNegociado);
+		//CalculoRodapeCenario.calculoRodapeCenario(excelGalderma, cenario, ultimaLinhaCorpo+6, "TOTAL PREVISTO",new int[]{0,176,240},TotalPrevistoInicial,TotalPrevistoNegociado);
 		
 	}
 

@@ -48,9 +48,9 @@ public class GeraCorpoCenarios {
 		
 		//Não mexer mais
 		if(nomeAba.equals("Opcionais")){
-			GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario,linhasParaConsolidado+7);
+			GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario,linhasParaConsolidado+2);
 		}else{
-			GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,linhasParaConsolidado+7);
+			GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario,linhasParaConsolidado+2);
 		}
 	
 		return linhasParaConsolidado;
@@ -81,9 +81,9 @@ public class GeraCorpoCenarios {
 
 		// Não mexer mais
 		if (nomeAba.equals("Opcionais")) {
-			GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario, linhasParaConsolidado + 7);
+			GeraTextoRodapeCenarios.geraTextoRodapeOpcionais(excelGalderma, cenario, linhasParaConsolidado + 2);
 		} else {
-			GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario, linhasParaConsolidado + 7);
+			GeraTextoRodapeCenarios.geraTextoRodape(excelGalderma, cenario, linhasParaConsolidado + 2);
 		}
 
 		return linhasParaConsolidado;
