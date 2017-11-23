@@ -130,7 +130,7 @@ public class GeraBaseExcelGalderma {
 
 			
 /////////// MUDAR ESSE MÉTODO DEPOIS			
-			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenariosTESTE(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,catOpc3,jobDaLista);
+			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenariosTESTE(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,catOpc,jobDaLista);
 			
 			
 			linhas2.setNomeAba("Opcionais");
@@ -161,7 +161,10 @@ public class GeraBaseExcelGalderma {
 				
 					System.out.println("Sou nulão !!!");
 					
-					listaGruposOpcionais.get(j).setGrupoCategoriaGalderma(0);
+					GrupoCategoriaGalderma novo = new GrupoCategoriaGalderma();
+					novo.setCategoria("SEM CATEGORIA");
+					novo.setIdCategoriaGalderma(1);
+					listaGruposOpcionais.get(j).setGrupoCategoriaGalderma(novo);
 					
 				}else{
 					l = listaGruposOpcionais.get(j).getGrupoCategoriaGalderma().getIdCategoriaGalderma();
