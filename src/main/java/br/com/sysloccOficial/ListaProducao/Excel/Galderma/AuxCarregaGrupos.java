@@ -144,7 +144,8 @@ public class AuxCarregaGrupos {
 	 * 
 	 */
 	public List<GrupoCategoriaGalderma> pegaTodasCategoriasGalderma(){
-		TypedQuery<GrupoCategoriaGalderma> categorias = manager.createQuery("from GrupoCategoriaGalderma where idCategoriaGalderma > 1 order by idCategoriaGalderma",GrupoCategoriaGalderma.class);
+		//TypedQuery<GrupoCategoriaGalderma> categorias = manager.createQuery("from GrupoCategoriaGalderma where idCategoriaGalderma > 1 order by idCategoriaGalderma",GrupoCategoriaGalderma.class);
+		TypedQuery<GrupoCategoriaGalderma> categorias = manager.createQuery("from GrupoCategoriaGalderma order by idCategoriaGalderma",GrupoCategoriaGalderma.class);
 		return categorias.getResultList();
 	}
 	
