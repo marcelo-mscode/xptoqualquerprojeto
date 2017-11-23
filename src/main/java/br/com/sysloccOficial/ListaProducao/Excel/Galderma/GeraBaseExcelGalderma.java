@@ -122,6 +122,19 @@ public class GeraBaseExcelGalderma {
 			
 		}else{
 			
+			
+			for (int j = 0; j < listaGruposOpcionais.size(); j++) {
+				
+				GrupoCategoriaGalderma novo = new GrupoCategoriaGalderma();
+				novo.setCategoria("SEM CATEGORIA");
+				novo.setIdCategoriaGalderma(1);
+
+				if(listaGruposOpcionais.get(j).getGrupoCategoriaGalderma() == null){
+					System.out.println("Sou nulão !!!");
+					listaGruposOpcionais.get(j).setGrupoCategoriaGalderma(novo);
+				}
+			}
+			
 			List<GrupoCategoriaGalderma> catOpc =  removeCategoriasOpcionaisGaldermaNaoUsadas(categoriasGaldermaOpc, listaGruposOpcionais);
 			List<GrupoCategoriaGalderma> catOpc2 =  removeCategoriasOpcionaisGaldermaNaoUsadas(catOpc, listaGruposOpcionais);
 			List<GrupoCategoriaGalderma> catOpc3 =  removeCategoriasOpcionaisGaldermaNaoUsadas(catOpc2, listaGruposOpcionais);
@@ -130,7 +143,7 @@ public class GeraBaseExcelGalderma {
 
 			
 /////////// MUDAR ESSE MÉTODO DEPOIS			
-			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenariosTESTE(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,catOpc,jobDaLista);
+			int linhasConsolidado3 = GeraCorpoCenarios.geraCorpoAbaCenariosTESTE(cenario, excelGalderma,"Opcionais",montaGruposParaExcelOpcionais,catOpc3,jobDaLista);
 			
 			
 			linhas2.setNomeAba("Opcionais");
@@ -158,13 +171,6 @@ public class GeraBaseExcelGalderma {
 				int l = 1;
 				
 				if(listaGruposOpcionais.get(j).getGrupoCategoriaGalderma() == null){
-				
-					System.out.println("Sou nulão !!!");
-					
-					GrupoCategoriaGalderma novo = new GrupoCategoriaGalderma();
-					novo.setCategoria("SEM CATEGORIA");
-					novo.setIdCategoriaGalderma(1);
-					listaGruposOpcionais.get(j).setGrupoCategoriaGalderma(novo);
 					
 				}else{
 					l = listaGruposOpcionais.get(j).getGrupoCategoriaGalderma().getIdCategoriaGalderma();
