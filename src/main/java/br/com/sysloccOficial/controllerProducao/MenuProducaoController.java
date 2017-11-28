@@ -97,11 +97,15 @@ public class MenuProducaoController extends AuxProducao{
 		
 		
 		
+		Iterator<Lista> iterador = listas.iterator();
 		
-		for (int i = 0; i < listas.size(); i++) {
-			
-			
+		while(iterador.hasNext()){
+			System.out.println(iterador.next().getDataDoEvento());
+				datas.add(iterador.next().getDataDoEvento());
 		}
+		
+		
+	
 		
 		
 		MV.addObject("lista", listas);
