@@ -190,13 +190,9 @@ public class ListaDAO {
 		return categoria;
 	}
 	
-	
-	
-	
-	
 	public List<Lista> listaMenuProducao(){
 		String consulta = "select distinct(l) from Lista l where idlistaEstatus = 5 order by dataDoEvento desc";
-		Query query = manager.createQuery(consulta, Lista.class); 
+		TypedQuery<Lista> query = manager.createQuery(consulta, Lista.class); 
 		return query.getResultList();
 	}
 	
@@ -206,7 +202,7 @@ public class ListaDAO {
 		return lista.getResultList();
 	}
 	
-public Object listadeCategoriaPorId(Integer idcategoria){
+	public Object listadeCategoriaPorId(Integer idcategoria){
 		
 		String consulta = "select c from Categoria c where idcategoria="+idcategoria;
 		Query query = manager.createQuery(consulta, Categoria.class);
