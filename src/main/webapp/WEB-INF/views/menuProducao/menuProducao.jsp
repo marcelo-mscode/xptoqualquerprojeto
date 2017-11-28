@@ -28,6 +28,14 @@
 
 <div class="container"> 
 
+
+<c:forEach var="datas" items="${datas}">
+
+<p></p>
+<fmt:formatDate value="${datas}" pattern="dd/MM/yyyy HH:mm:ss"/>
+</c:forEach>
+
+
 <div>
 	<div class="row">
 			<div class="col-md-12 painel ajuste-left">

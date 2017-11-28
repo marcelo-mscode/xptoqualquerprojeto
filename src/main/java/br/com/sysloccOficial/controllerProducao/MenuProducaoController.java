@@ -91,7 +91,7 @@ public class MenuProducaoController extends AuxProducao{
 	public ModelAndView menuProducao() {
 		ModelAndView MV = new ModelAndView("menuProducao/menuProducao");
 		
-		LinkedHashSet<Calendar> datas = new LinkedHashSet<Calendar>();
+		List<Date> datas = new ArrayList<Date>();
 		
 		LinkedHashSet<Lista> listas = new LinkedHashSet<Lista>(listaDAO.listaMenuProducao());
 		
@@ -100,8 +100,9 @@ public class MenuProducaoController extends AuxProducao{
 		Iterator<Lista> iterador = listas.iterator();
 		
 		while(iterador.hasNext()){
-			System.out.println(iterador.next().getDataDoEvento());
-				datas.add(iterador.next().getDataDoEvento());
+			
+			if(iterador.next().getDataDoEvento() != null)
+				datas.add(iterador.next().getDataDoEvento().getTime());
 		}
 		
 		
@@ -109,6 +110,7 @@ public class MenuProducaoController extends AuxProducao{
 		
 		
 		MV.addObject("lista", listas);
+		MV.addObject("datas", datas);
 		
 		
 		
