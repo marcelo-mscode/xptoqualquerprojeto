@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -89,7 +90,25 @@ public class MenuProducaoController extends AuxProducao{
 	@RequestMapping("/menuProducao")
 	public ModelAndView menuProducao() {
 		ModelAndView MV = new ModelAndView("menuProducao/menuProducao");
-		MV.addObject("lista", listaDAO.listaMenuProducao());
+		
+		LinkedHashSet<Calendar> datas = new LinkedHashSet<Calendar>();
+		
+		LinkedHashSet<Lista> listas = new LinkedHashSet<Lista>(listaDAO.listaMenuProducao());
+		
+		
+		
+		
+		for (int i = 0; i < listas.size(); i++) {
+			
+			
+		}
+		
+		
+		MV.addObject("lista", listas);
+		
+		
+		
+		
 		return MV;
 	}
 	
