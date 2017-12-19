@@ -259,6 +259,7 @@ public class RelatorioEventoDAO {
 	}
 	
 	public BigDecimal caculaValorSeDiretoria(List<CachePadrao> relatorio, BigDecimal totalDifCaches, BigDecimal totalCacheFuncionarios) {
+		
 		BigDecimal totalCalculoParaDiretoria = totalDifCaches.subtract(totalCacheFuncionarios);
 		
 		BigDecimal totalCachesDiretoria = new BigDecimal("0");

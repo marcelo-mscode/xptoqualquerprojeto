@@ -19,6 +19,8 @@ import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
+import br.com.sysloccOficial.financeiro.funcionario.cacheCalculos.CacheFuncionarioSTelefone;
+import br.com.sysloccOficial.financeiro.funcionario.cacheCalculos.CacheFuncionarios;
 import br.com.sysloccOficial.financeiro.relatorioeventos.CacheDoEventoApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioBVS;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventoIndividualApoio;
@@ -105,11 +107,16 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			
 // -------- Calculo de Caches sem telefone	---- //		
 	
-			BigDecimal totalCacheFuncionariosSemTelefone = relatorioDAO.calculaTotalCachesFuncionarios(totalDiferencaSemTelefone, listaRelatorioCaches);
+			//BigDecimal totalCacheFuncionariosSemTelefone = relatorioDAO.calculaTotalCachesFuncionarios(totalDiferencaSemTelefone, listaRelatorioCaches);
 			
-			BigDecimal totalCacheDiretoriaSemTelefone = relatorioDAO.caculaValorSeDiretoria(listaRelatorioCaches,totalDiferencaSemTelefone,totalCacheFuncionariosSemTelefone);
+			CacheFuncionarios funcionarioSTelefone = new CacheFuncionarioSTelefone();
+			BigDecimal totalCacheFuncionariosSemTelefoneTESTE = funcionarioSTelefone.calculaCacheSemtelefone(listaRelatorioCaches, totalDiferencaSemTelefone);
+
+			BigDecimal totalCacheDiretoriaSemTelefone = relatorioDAO.caculaValorSeDiretoria(listaRelatorioCaches,totalDiferencaSemTelefone,totalCacheFuncionariosSemTelefoneTESTE);
 			
-			novoRelatorio.setTotalCachesSemTelefone(totalCacheDiretoriaSemTelefone.add(totalCacheFuncionariosSemTelefone));
+			
+			
+			novoRelatorio.setTotalCachesSemTelefone(totalCacheDiretoriaSemTelefone.add(totalCacheFuncionariosSemTelefoneTESTE));
 			
 //--------- Giro Sem Telefone ------------------ //
 		
