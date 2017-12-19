@@ -73,9 +73,6 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			novoRelatorio.setBvs(new BigDecimal("0.00"));
 			novoRelatorio.setCacheEquipEx(new BigDecimal("0.00"));
 			
-			
-			//BigDecimal valorGrupoSemImposto = grupoDAO.valorGrupoSemImposto(idLista);
-			
 			novoRelatorio.setValorLoccoAgenc(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
 			
 			novoRelatorio.setServicos(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
@@ -84,7 +81,6 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
 			novoRelatorio.setFee(infoLista.getAdministracaoValor().subtract(feeReduzido));
 			novoRelatorio.setFeeReduzido(feeReduzido);
-			
 // ------- //			
 			
 			novoRelatorio.setImpostoCliente(infoLista.getImpostoValor());
