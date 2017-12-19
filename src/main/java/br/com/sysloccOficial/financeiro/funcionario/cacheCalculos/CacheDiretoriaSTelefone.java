@@ -10,12 +10,8 @@ public class CacheDiretoriaSTelefone implements CacheFuncionarios {
 
 	@Override
 	public BigDecimal calculaCacheSemtelefone(List<CachePadrao> relatorio,BigDecimal totalDiferencaSTelefone) {
-		
-		
 		CacheFuncionarios totalCacheFuncionarios = new CacheFuncionarioSTelefone();
-		
 		BigDecimal totalCalculoParaDiretoria = totalDiferencaSTelefone.subtract(totalCacheFuncionarios.calculaCacheSemtelefone(relatorio, totalDiferencaSTelefone));
-		
 		BigDecimal totalCachesDiretoria = new BigDecimal("0");
 		for (int i = 0; i < relatorio.size(); i++) {
 			if(relatorio.get(i).getTipoCache() == TipoCache.DIRETORIA1 || relatorio.get(i).getTipoCache() == TipoCache.DIRETORIA2){
@@ -24,8 +20,6 @@ public class CacheDiretoriaSTelefone implements CacheFuncionarios {
 						.divide(   new BigDecimal("100"))));
 			}
 		}
-		
 		return totalCachesDiretoria;
 	}
-
 }

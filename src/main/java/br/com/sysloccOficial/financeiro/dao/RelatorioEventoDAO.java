@@ -245,7 +245,7 @@ public class RelatorioEventoDAO {
 		return caches;
 	}
 	
-	public BigDecimal calculaTotalCachesFuncionarios(BigDecimal totalDif, List<CachePadrao> relatorio) {
+	/*public BigDecimal calculaTotalCachesFuncionarios(BigDecimal totalDif, List<CachePadrao> relatorio) {
 		
 		BigDecimal totalCachesFunc = new BigDecimal("0");
 	
@@ -256,7 +256,7 @@ public class RelatorioEventoDAO {
 			}
 		}
 		return totalCachesFunc;
-	}
+	}*/
 	
 	public BigDecimal caculaValorSeDiretoria(List<CachePadrao> relatorio, BigDecimal totalDifCaches, BigDecimal totalCacheFuncionarios) {
 		
