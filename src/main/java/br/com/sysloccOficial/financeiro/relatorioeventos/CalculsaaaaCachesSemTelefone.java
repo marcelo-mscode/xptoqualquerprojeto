@@ -1,27 +1,22 @@
 package br.com.sysloccOficial.financeiro.relatorioeventos;
 
-import java.math.BigDecimal;
-import java.util.List;
-import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Repository;
-import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
-import br.com.sysloccOficial.model.CachePadrao;
 
 @Repository
 @Transactional
-public class CalculaCachesSemTelefone {
+public class CalculsaaaaCachesSemTelefone {
 	
-	@Autowired RelatorioEventoDAO relatorioDAO;
+	/*@Autowired RelatorioEventoDAO relatorioDAO;
 	
 	private BigDecimal totalDiferencaSemTelefone;
 
 	private List<CachePadrao> listaRelatorioCaches;
 
-	public CalculaCachesSemTelefone(){}
+	public CalculsaaaaCachesSemTelefone(){}
 	
-	public CalculaCachesSemTelefone(BigDecimal totalDiferencaSemTelefone,List<CachePadrao> listaRelatorioCaches){
+	public CalculsaaaaCachesSemTelefone(BigDecimal totalDiferencaSemTelefone,List<CachePadrao> listaRelatorioCaches){
 		this.totalDiferencaSemTelefone = totalDiferencaSemTelefone;
 		this.listaRelatorioCaches = listaRelatorioCaches;
 	}
@@ -33,7 +28,7 @@ public class CalculaCachesSemTelefone {
 		return totalCacheFuncionarios;
 	}
 	
-	
+	*/
 	
 	
 	

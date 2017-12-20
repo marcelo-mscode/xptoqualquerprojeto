@@ -161,12 +161,8 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			
 			
 			
-//			BigDecimal totalCacheFuncComTelefone = relatorioDAO.calculaTotalCachesFuncionarios(totalDiferencaComTelefone, listaRelatorioCaches);
 			BigDecimal totalCacheFuncComTelefone = CalculadoraCaches.totalCacheFuncionario(listaRelatorioCaches, totalDiferencaSemTelefone);
-			
-			
-			
-			BigDecimal totalCacheDiretoriaComTelefone = relatorioDAO.caculaValorSeDiretoria(listaRelatorioCaches,totalDiferencaComTelefone,totalCacheFuncComTelefone);
+			BigDecimal totalCacheDiretoriaComTelefone = CalculadoraCaches.totalCacheDiretoria(listaRelatorioCaches, totalDiferencaSemTelefone);
 			
 			novoRelatorio.setTotalCachesComTelefone(totalCacheDiretoriaComTelefone.add(totalCacheFuncComTelefone));
 			novoRelatorio.setCacheEquipIn(totalCacheFuncComTelefone);

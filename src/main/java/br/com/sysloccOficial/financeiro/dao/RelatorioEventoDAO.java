@@ -258,7 +258,7 @@ public class RelatorioEventoDAO {
 		return totalCachesFunc;
 	}*/
 	
-	public BigDecimal caculaValorSeDiretoria(List<CachePadrao> relatorio, BigDecimal totalDifCaches, BigDecimal totalCacheFuncionarios) {
+	/*public BigDecimal caculaValorSeDiretoria(List<CachePadrao> relatorio, BigDecimal totalDifCaches, BigDecimal totalCacheFuncionarios) {
 		
 		BigDecimal totalCalculoParaDiretoria = totalDifCaches.subtract(totalCacheFuncionarios);
 		
@@ -272,7 +272,7 @@ public class RelatorioEventoDAO {
 		}
 		
 		return totalCachesDiretoria;
-	}
+	}*/
 	
 	public BigDecimal somaGirosPorAnoMes(String ano, String mes, Integer idRelatorioAtual){
 		BigDecimal zero = new BigDecimal("0.00");

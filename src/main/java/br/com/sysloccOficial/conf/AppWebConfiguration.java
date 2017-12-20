@@ -58,7 +58,6 @@ import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.financeiro.funcionario.cache.CachePadraoController;
 import br.com.sysloccOficial.financeiro.indexlistainternaindividual.IndexInternaIndividual;
 import br.com.sysloccOficial.financeiro.indexlistasinternas.IndexInterna;
-import br.com.sysloccOficial.financeiro.relatorioeventos.CalculaCachesSemTelefone;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioCaches;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventoIndividualApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventoIndividualController;
@@ -119,7 +118,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          ExcelNovoBayerController.class,
 								          ExcelGaldermaController.class,
 								          EmpresaExcelController.class,
-								          CalculaCachesSemTelefone.class,
+								     //    CalculaaaaCachesSemTelefone.class,
 								          CachePadraoController.class,
 								          RelatorioEventoDAO.class,
 								          AnaliticoIndividualController.class,

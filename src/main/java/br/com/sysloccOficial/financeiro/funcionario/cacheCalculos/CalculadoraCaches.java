@@ -28,6 +28,12 @@ public class CalculadoraCaches {
 		CacheFuncionarios funcionarioSemTelefone = new CacheFuncionarioSTelefone();
 		return funcionarioSemTelefone.calculaCacheSemtelefone(relatorio, totalDiferencaSemTelefone);
 	}
+
+	public static BigDecimal totalCacheDiretoria(List<CachePadrao> relatorio,BigDecimal totalDiferencaSemTelefone){
+		CacheFuncionarios diretoriaSemTelefone = new CacheDiretoriaSTelefone();
+		return diretoriaSemTelefone.calculaCacheSemtelefone(relatorio, totalDiferencaSemTelefone);
+	}
+	
 	
 	
 
