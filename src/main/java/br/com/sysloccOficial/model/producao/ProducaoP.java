@@ -62,6 +62,8 @@ public class ProducaoP {
 	private String nfRecibo;
 	private String dadosBancarios;
 	
+	
+	
 // ------------------- Relacionamentos  ---------------------//	
 
 	@OneToOne @JoinColumn(name="idProdutoGrupo", referencedColumnName="idProdutoGrupo") private ProdutoGrupo produtoGrupo;
@@ -112,6 +114,10 @@ public class ProducaoP {
 	@Transient private List<Integer> prazo;
 	@Transient private List<String> data;
 	@Transient private List<String> valor;
+	@Transient private BigDecimal valorFornecedor;
+	@Transient private BigDecimal diferencaParaLocco;
+	
+	
 	
 // ------------------- Datas  ---------------------//	
 
@@ -121,10 +127,20 @@ public class ProducaoP {
 	
 // -------------------------------------------------//	
 	
-	
-	
 	public Integer getIdProducao() {
 		return idProducao;
+	}
+	public BigDecimal getDiferencaParaLocco() {
+		return diferencaParaLocco;
+	}
+	public void setDiferencaParaLocco(BigDecimal diferencaParaLocco) {
+		this.diferencaParaLocco = diferencaParaLocco;
+	}
+	public BigDecimal getValorFornecedor() {
+		return valorFornecedor;
+	}
+	public void setValorFornecedor(BigDecimal valorFornecedor) {
+		this.valorFornecedor = valorFornecedor;
 	}
 	public InfoInterna getInfoInterna() {
 		return infoInterna;
@@ -513,11 +529,6 @@ public class ProducaoP {
 		this.dataConsolidado = dataConsolidado;
 	}
 	
-	
 // -----------------------------------------------//	
-	
-	
-	
-	
 
 }

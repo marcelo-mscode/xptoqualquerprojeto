@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sysloccOficial.conf.Utilitaria;
+import br.com.sysloccOficial.financeiro.InternaValorFornecedorDiferenca;
 import br.com.sysloccOficial.financeiro.indexlistainternaindividual.VerificaTipoDespesa;
 import br.com.sysloccOficial.model.DesIntFinanc;
 import br.com.sysloccOficial.model.Empresa;
@@ -49,6 +50,16 @@ public class InternaIndividualDAO {
 		List<ProducaoP> internIndividual= q.getResultList();
 		internIndividual = removerDuplicados(internIndividual);
 		manager.close();
+		
+		
+		for (int i = 0; i < internIndividual.size(); i++) {
+			
+			BigDecimal valorFornecedor = InternaValorFornecedorDiferenca.calculaValores(internIndividual.get(i));
+			System.out.println(valorFornecedor);
+			
+		}
+		
+		
 		return internIndividual;
 	}
 	

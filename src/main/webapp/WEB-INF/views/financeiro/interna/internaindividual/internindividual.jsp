@@ -188,7 +188,11 @@
                   </td>
                   
                <!-- Valor NF -->	
-                  <td class="textRight"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/></td>
+                  <td class="textRight"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
+                  - ${itensInterna.diferencaParaLocco}
+                  
+                  
+                  </td>
 
                <!-- Diferenca -->
                   <c:if test="${itensInterna.diferenca < 0}">

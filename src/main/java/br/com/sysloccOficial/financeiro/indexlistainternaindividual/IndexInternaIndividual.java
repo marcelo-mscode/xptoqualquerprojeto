@@ -53,7 +53,11 @@ public class IndexInternaIndividual {
 			if(listaProducaoPTeste.get(i).getRowSpan() != null){
 				verif = true;
 			}
+			listaProducaoPTeste.get(i).setValorFornecedor(new BigDecimal("100.54459"));
+			listaProducaoPTeste.get(i).setDiferencaParaLocco(new BigDecimal("54.459"));
 		}
+		
+		
 		
 		if(verif == false){
 			internaIndividualDAO.logicaCalculaRowSpanTabela(listaProducaoPTeste, listaDeIdsFornecedores);
