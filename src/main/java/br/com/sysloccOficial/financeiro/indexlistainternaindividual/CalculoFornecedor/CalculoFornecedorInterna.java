@@ -10,11 +10,4 @@ public interface CalculoFornecedorInterna {
 	public BigDecimal calculaDiferenca(ProducaoP producaoP);
 	
 	void setProximo(CalculoFornecedorInterna proximo);
-	
-	
-	
-	
-	
-	
-	
 }
