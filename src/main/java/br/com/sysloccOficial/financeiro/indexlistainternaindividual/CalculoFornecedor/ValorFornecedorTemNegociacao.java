@@ -10,7 +10,7 @@ public class ValorFornecedorTemNegociacao implements CalculoFornecedorInterna {
 
 
 	@Override
-	public ProducaoP calculaValorFornecedor(ProducaoP producaoP) {
+	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
 		
 		int verifica = producaoP.getValorItem().compareTo(producaoP.getValorContratacao());
 		
@@ -25,7 +25,7 @@ public class ValorFornecedorTemNegociacao implements CalculoFornecedorInterna {
 			producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
 			
 			
-			return producaoP;
+			return valorFinal;
 		}else{
 			return proximo.calculaValorFornecedor(producaoP);
 		}

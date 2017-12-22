@@ -53,7 +53,7 @@ public class InternaIndividualDAO {
 		
 		
 		for (int i = 0; i < internIndividual.size(); i++) {
-			CalculaValorFornecedor.calculaValores(internIndividual.get(i));
+			BigDecimal teste =  CalculaValorFornecedor.calculaValores(internIndividual.get(i));
 		}
 		
 		return internIndividual;

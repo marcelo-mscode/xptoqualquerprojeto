@@ -7,7 +7,7 @@ import br.com.sysloccOficial.model.producao.ProducaoP;
 public class ValorFornecedorSemNegociacao implements CalculoFornecedorInterna {
 
 	@Override
-	public ProducaoP calculaValorFornecedor(ProducaoP producaoP) {
+	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
 		return null;
 	}
 
