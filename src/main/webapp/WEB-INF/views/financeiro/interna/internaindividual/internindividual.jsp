@@ -153,11 +153,22 @@
                <!-- Valor fornecedor -->	
                  
                   <td class="colorRed" style="padding: 0px">
-	            		<!-- Valor sem negociação  -->
+	            		
+	            		
+	            	<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text"
+	            	value="<fmt:formatNumber value="${itensInterna.valorFornecedor}" pattern="#,##0.00"/>"
+	                onblur="valorF('valorF',${itensInterna.idProducao});" />
+	            		
+	            		
+	            		
+<%-- 	            		<!-- Valor sem negociação  -->
 	            		<c:if test="${itensInterna.diferenca == '0.00' && itensInterna.valorDePagamentoContratacao == '0.00'}">
 	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>"
 	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
 	            		</c:if>
+						
+						
+						
 						
 	            		<!-- Valor com negociação  -->
 	            		<c:if test="${itensInterna.diferenca > '0.00' &&
@@ -184,15 +195,11 @@
 	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorContratacao}" pattern="#,##0.00"/>"
 	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
 	            		</c:if>
-
+ --%>
                   </td>
                   
                <!-- Valor NF -->	
-                  <td class="textRight"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
-                  - ${itensInterna.diferencaParaLocco}
-                  
-                  
-                  </td>
+                  <td class="textRight"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/></td>
 
                <!-- Diferenca -->
                   <c:if test="${itensInterna.diferenca < 0}">

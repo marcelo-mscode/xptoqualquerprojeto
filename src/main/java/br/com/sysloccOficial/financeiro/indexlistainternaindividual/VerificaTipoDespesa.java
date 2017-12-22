@@ -13,7 +13,7 @@ public class VerificaTipoDespesa {
 	
 	
 	
-public boolean verifica(boolean tipo){
+    public boolean verifica(boolean tipo){
 		
 	ChainDespesaInterface T1 = new ChainComImposto(despesa);
 	ChainDespesaInterface T2 = new ChainSemImposto(despesa);

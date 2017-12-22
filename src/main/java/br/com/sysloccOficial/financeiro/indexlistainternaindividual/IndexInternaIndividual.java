@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
+import br.com.sysloccOficial.financeiro.indexlistainternaindividual.CalculoFornecedor.CalculaValorFornecedor;
 import br.com.sysloccOficial.financeiro.model.CalculoValoresInterna;
 import br.com.sysloccOficial.model.DesIntFinanc;
 import br.com.sysloccOficial.model.InfoInterna;
@@ -53,8 +54,8 @@ public class IndexInternaIndividual {
 			if(listaProducaoPTeste.get(i).getRowSpan() != null){
 				verif = true;
 			}
-			listaProducaoPTeste.get(i).setValorFornecedor(new BigDecimal("100.54459"));
-			listaProducaoPTeste.get(i).setDiferencaParaLocco(new BigDecimal("54.459"));
+			//listaProducaoPTeste.get(i).setValorFornecedor(CalculaValorFornecedor.calculaValores(listaProducaoPTeste.get(i)));
+			//listaProducaoPTeste.get(i).setDiferencaParaLocco(new BigDecimal("54.459"));
 		}
 		
 		
