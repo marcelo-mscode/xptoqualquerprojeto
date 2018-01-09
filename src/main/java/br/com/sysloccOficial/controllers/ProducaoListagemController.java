@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,6 @@ import br.com.sysloccOficial.daos.UnidadeDAO;
 import br.com.sysloccOficial.model.DeterQuantpadrao;
 import br.com.sysloccOficial.model.DeterminaQuantidades;
 import br.com.sysloccOficial.model.Grupo;
-import br.com.sysloccOficial.model.GrupoCategoriaGalderma;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.ListaConsulta;
 import br.com.sysloccOficial.model.Produto;
@@ -221,6 +220,23 @@ public class ProducaoListagemController {
 			
 			MV.addObject("lista", lista);
 			MV.setViewName("producao/printProducao");
+			
+			Date data = new Date();
+		
+			
+			int idEmpresa = lista.get(0).getIdJob().getEmpresa().getIdEmpresa();
+			
+			System.out.println(idEmpresa);
+			
+			MV.addObject("data", data);
+			
+			if( idEmpresa == 71 || idEmpresa == 237)
+			{
+				MV.addObject("contrato", " - N° Contrato: 4400170528");
+			}
+			
+			
+			
 			return MV;
 
 		}

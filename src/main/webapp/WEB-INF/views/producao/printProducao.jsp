@@ -290,7 +290,7 @@
 
 	</table>
 
-
+<p><fmt:formatDate value="${data}" pattern="dd/MM/yyyy HH:mm"/> ${contrato}</p>
   
 
  </div>
@@ -299,7 +299,6 @@
 <div class="row tira-conteudo" style="height: 100px;">
 
 </div>
-
 
  
 <!-- Fim Edição Planilha -->
