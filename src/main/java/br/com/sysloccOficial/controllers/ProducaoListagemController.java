@@ -232,7 +232,7 @@ public class ProducaoListagemController {
 			
 			if( idEmpresa == 71 || idEmpresa == 237)
 			{
-				MV.addObject("contrato", " - N° Contrato: 4400170528000000000000000");
+				MV.addObject("contrato", " - N° Contrato: 4400170528");
 			}
 			
 			return MV;
