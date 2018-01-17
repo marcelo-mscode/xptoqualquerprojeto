@@ -50,7 +50,7 @@ pageEncoding="UTF-8"%>
 
                 <c:if
                     test="${empty InfoJobs.localEventoDataTermino}">
-                    <span style="color: red">Local e Data do evento não cadastrados</span>
+                    <strong><span style="color: red">Local e Data do evento não cadastrados</span></strong>
                 </c:if>
                 <c:if test="${not empty InfoJobs.localEventoDataTermino}">
                     <fmt:formatDate value="${InfoJobs.localEventoDataTermino}"
@@ -104,7 +104,7 @@ pageEncoding="UTF-8"%>
 <div class="container">
     <div class="col-md-12" style="padding: 0 25px 25px 0">
 
-        <div class="row" style="border-bottom: 1px solid #ccc">
+        <%-- <div class="row" style="border-bottom: 1px solid #ccc">
             <div class="col-md-12" style="margin-left: 43px;">
                 <h4 style="font-family: 'OpenSansLight'">
                     Data do Evento: 
@@ -121,7 +121,7 @@ pageEncoding="UTF-8"%>
                     </strong>
                 </h4>
             </div>
-        </div>
+        </div> --%>
 
         <form action="salvaItem" method="post" id="salvaItemProducao">
 
@@ -142,12 +142,12 @@ pageEncoding="UTF-8"%>
 				 </div>
 		    </td>               
 			<td>               
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <h4 style="font-family: 'OpenSansLight'">
-                        Fornecedor: <strong>${fornecedor.empresa}</strong>
+                       <strong> Fornecedor: ${fornecedor.empresa}</strong>
                     </h4>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <h4 style="font-family: 'OpenSansLight'">
                         CNPJ: <strong>${fornecedor.cnpj}</strong>
                     </h4>
@@ -178,7 +178,7 @@ pageEncoding="UTF-8"%>
 		    </td>               
 			<td style="width: 850px"> 
                 <h4 style="font-family: 'OpenSansLight';margin-left: 20px">
-               		 Informações de entrega
+               		 <strong> Informações de entrega</strong>
                 </h4>
                 
                 <div class="col-md-12 tira-padding" style="padding: 10px 0px">
@@ -225,7 +225,7 @@ pageEncoding="UTF-8"%>
 		    </td>               
 			<td style="width: 850px"> 
                 <h4 style="font-family: 'OpenSansLight';margin-left: 20px">
-               		 Informações de Pagamento
+               		 <strong>Informações de Pagamento</strong>
                 </h4>
 			
                 <div class="col-md-12 tira-padding" style="padding: 15px 0">
@@ -292,7 +292,7 @@ pageEncoding="UTF-8"%>
             <!-- -----------------------------------------------------------------------------------------------------  -->
             <!-- Parcelamentos -->            
             <div class="row">
-                <div class="col-md-7" style="background: #fff;padding: 0 20px;margin: 10px 0 20px 0;padding: 20px 10px;margin-left: 20px;" id="tableParcelas">
+                <div class="col-md-7" style="background: #fff;padding: 0 20px;margin: 10px 0 20px 0;padding: 0px 10px;margin-left: 20px;box-shadow: 5px 5px 16px 2px #c7ccd6;" id="tableParcelas">
                     <table class="table table-bordered table-hover" style="margin-top: 20px;">
 
                         <tr>
@@ -323,7 +323,7 @@ pageEncoding="UTF-8"%>
 			<td>               
                 <div class="col-md-8">
                     <h4 style="font-family: 'OpenSansLight'">
-                        Responsável Contratação *&nbsp&nbsp&nbsp  
+                        <strong> Responsável Contratação *&nbsp&nbsp&nbsp  </strong>
                     </h4>
                 </div>
     		
@@ -340,19 +340,17 @@ pageEncoding="UTF-8"%>
                         <p>&bull;&nbsp<!-- ${responsavel} --></p>
                     </div>
                 </div>
-    </div>
- 
-   <div class="row">
            <div class="col-md-12 tira-padding">
-                    <div class="col-md-3">
+                    <div class="col-md-3" style="margin: 10px;">
                         Observações:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     </div>
-                    <div class="col-md-5">
+                    <br>
+                    <br>
+                    <div class="col-md-5" style="margin: 0px 0px 10px 6px;">
                         <textarea class="form-control" rows="5" cols="35" name="obs"></textarea>
                     </div>
-                </div>
-            </div>
-            <div class="row">
+          </div>
+          <div class="row">
                 <div class="col-md-12 tira-padding">
                     <div class="col-md-5">
 
@@ -362,7 +360,7 @@ pageEncoding="UTF-8"%>
                         </c:if>
                         <c:if test="${not empty InfoJobs.localEventoDataTermino && produtoGrupo.status != 1}">
                             
-                             <input type="submit" class="btn btn-danger consolidaBotao" value="Consolidar Item" id="">
+                             <input type="submit" class="btn btn-danger consolidaBotao" value="Consolidar Item" id="" style="margin-left: 11px;padding: 16px;box-shadow: 5px 5px 16px 2px #c7ccd6;">
  		                     <span id="itemImage" style="margin-left: 15px"></span>
  		                     <span id="itemMsg" style="margin-left: 15px"></span>
                             
@@ -375,14 +373,12 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
             </div>
-            
-            				</td>
-			</tr>
+    		</td>
+	  	</tr>
 	 	</table>	 
-            
-            
-        </form>
-    </div>
+	   </div>
+      </form>
+   </div>
 </div>
 <div class="divisor" style="border-bottom: 1px solid #ddd"></div>
 
