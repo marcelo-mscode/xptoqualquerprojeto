@@ -168,7 +168,7 @@ pageEncoding="UTF-8"%>
 		 </table>	                
      </div>
 
-     <div class="row">
+     <div class="row col-md-12" style="border-bottom: 1px solid #ccc;">
      	<table>
 		 <tr>
 			<td>
@@ -176,49 +176,59 @@ pageEncoding="UTF-8"%>
 					<span class="numberBox">2</span>
 				 </div>
 		    </td>               
-			<td> 
+			<td style="width: 850px"> 
                 <h4 style="font-family: 'OpenSansLight';margin-left: 20px">
                		 Informações de entrega
                 </h4>
                 
-                <div class="col-md-12 tira-padding" style="padding-top: 10px">
-                    <div class="col-md-12">Data de Entrega *</div>
-                    <div class="col-md-8">
+                <div class="col-md-12 tira-padding" style="padding: 10px 0px">
+                    <div class="col-md-3">Data Entrega *</div>
+                    <div class="col-md-7">
                         <input type="text" class="form-control data" style="width: 110px" name="pEntrega" />
                     </div>
                 </div>
-		      </td>
-		 	</tr>
-		 </table>	
-      </div>
-           <div class="row" style="border-bottom: 1px solid #ccc;padding-bottom: 20px">
-                <div class="col-md-12 tira-padding">
-                    <div class="col-md-3">Local de Entrega *</div>
-                    <div class="col-md-3">
-                        <select class="form-control input-180px" name="localEntrega" onchange="localentrega();" id="localEntrega">
-                            <option value="agencia">Agência Locco</option>
-                            <option value="localevento">Local do Evento</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6" style="padding-top: 7px; height: 34px;">
-
-                        <p id="localEvento">&bull; Rua Barão de Jaceguai, 418-São
-                            Paulo/SP - CEP 04606-000
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-
+		      
+       
+	            <div class="row" style="padding-bottom: 20px">
+	                <div class="col-md-12 tira-padding" style="margin-left: 7px;">
+	                    <div class="col-md-3">Local de Entrega *</div>
+	                    <div class="col-md-3" style="margin-left: -5px;">
+	                        <select class="form-control input-180px" name="localEntrega" onchange="localentrega();" id="localEntrega">
+	                            <option value="agencia">Agência Locco</option>
+	                            <option value="localevento">Local do Evento</option>
+	                        </select>
+	                    </div>
+	                    <div class="col-md-6" style="padding-top: 7px; height: 34px;">
+	
+	                        <p id="localEvento">&bull; Rua Barão de Jaceguai, 418-São
+	                            Paulo/SP - CEP 04606-000
+	                        </p>
+	
+	                    </div>
+	                </div>
+	            </div>
+            </td>
+		  </tr>
+	    </table>	
+	 </div>	
 
             <!-- ---------------------------------------------------------------------------------------------------- -->
 
-            <div class="row">
-                <span>Informações de pagamento</span>
-                <br>
-                <br>
-
-                <div class="col-md-12 tira-padding" style="padding-bottom: 20px">
+     <div class="row col-md-12" style="border-bottom: 1px solid #ccc;">
+     
+	   <table>
+		 <tr>
+			<td>
+		         <div class="col-md-1" style="padding: 0;">
+					<span class="numberBox">3</span>
+				 </div>
+		    </td>               
+			<td style="width: 850px"> 
+                <h4 style="font-family: 'OpenSansLight';margin-left: 20px">
+               		 Informações de Pagamento
+                </h4>
+			
+                <div class="col-md-12 tira-padding" style="padding: 15px 0">
                     <div class="col-md-3">
                         <input type="radio" name="infoPag" checked="checked" value="0" onclick="efeitoHide(divValorContratacao);">&nbsp&nbspSem CL
                     </div>
@@ -227,24 +237,24 @@ pageEncoding="UTF-8"%>
                     </div>
 
                 </div>
-            </div>
+                
             <!-- ---------------------------------------------------------------------------------------------------- -->
 
-            <div class="row" style="border: 1px solid gray;padding: 15px;margin-bottom: 20px;display:none" id="divValorContratacao">
+     <div class="row" style="border: 1px solid gray;padding: 15px;margin-bottom: 20px;display:none" id="divValorContratacao">
 
-                <c:if test="${produtoGrupo.imposto == true}">
-                    <c:set value="${fatLocco}" var="valorItem" />
-                </c:if>
-                <c:if test="${produtoGrupo.imposto == false}">
-                    <c:set value="${fatDireto}" var="valorItem" />
-                </c:if>
+         <c:if test="${produtoGrupo.imposto == true}">
+             <c:set value="${fatLocco}" var="valorItem" />
+         </c:if>
+         <c:if test="${produtoGrupo.imposto == false}">
+             <c:set value="${fatDireto}" var="valorItem" />
+         </c:if>
 
-                <c:import url="salvaFornFinanc/salvaValorContratacao.jsp">
-                    <c:param name="valorItem" value="${valorItem}" />
-                    <c:param name="valorContratacao" value="${valorContratacao}" />
-                </c:import>
+         <c:import url="salvaFornFinanc/salvaValorContratacao.jsp">
+             <c:param name="valorItem" value="${valorItem}" />
+             <c:param name="valorContratacao" value="${valorContratacao}" />
+         </c:import>
 
-            </div>
+     </div>
 
             <!-- ---------------------------------------------------------------------------------------------------- -->
 
@@ -295,6 +305,10 @@ pageEncoding="UTF-8"%>
                     </table>
                 </div>
             </div>
+			</td>
+		</tr>
+	</table>		
+ </div>
 
             <!-- ----------------------------------------------------------------------------------------------------------------  -->
 
