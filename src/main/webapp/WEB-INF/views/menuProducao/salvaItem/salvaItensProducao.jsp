@@ -56,8 +56,6 @@ pageEncoding="UTF-8"%>
 
             </h4>
 
-
-
         </div>
     </div>	
 </div>
@@ -101,7 +99,7 @@ pageEncoding="UTF-8"%>
 </div>
 
 <div class="container">
-    <div class="col-md-12" style="padding: 25px">
+    <div class="col-md-12" style="padding: 0 25px 25px 0">
 
         <div class="row" style="border-bottom: 1px solid #ccc">
             <div class="col-md-12">
