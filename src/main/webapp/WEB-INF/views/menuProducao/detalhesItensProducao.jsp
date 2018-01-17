@@ -436,11 +436,15 @@ pageEncoding="UTF-8"%>
 
     <div class="row"  style="border-top: 1px solid #ccc;padding-top: 20px">
         <div class="col-md-12 tira-padding">
-            <div class="col-md-3">Responsável Contratação *&nbsp&nbsp&nbsp
+            <div class="col-md-3">Responsável Contraaaatação *&nbsp&nbsp&nbsp ${user.usuario.nome}
             </div>
             <div class="col-md-3">
                 <select class="form-control" style="width: 230px" name="idUsuario">
+                    
+                    <option value="">${user.usuario.nome}</option>
+                    
                     <c:forEach items="${usuarios}" var="usuarios">
+                    
                         <option value="${usuarios[0]}">${usuarios[1]}</option>
                     </c:forEach>
                 </select>
