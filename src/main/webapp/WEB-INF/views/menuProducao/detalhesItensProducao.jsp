@@ -46,7 +46,7 @@ pageEncoding="UTF-8"%>
 <div style="height: 80px;background: #e74c3c" class="">
     <div class="row" style="margin-top: 0px;margin-left: 5px">
         <div class="col-md-12" style="margin-top: 10px">
-            <span style="font-size: 25px;color: #fff;font-family:'OpenSansLight' ">PRODUÇÃO</span>
+            <span style="font-size: 25px;color: #fff;font-family:'OpenSansLight' ">PRODUÇÃOffffffff</span>
         </div>
     </div>
     <div class="col-md-12" style="color:#fff !important">
@@ -54,12 +54,12 @@ pageEncoding="UTF-8"%>
             <li><a href="#" style="color:#ecf0f1 !important">Menu</a></li>
             <li class="active" style="color:#ecf0f1 !important"><a href="menuProducao" style="color:#ecf0f1 !important">Listas de Produção Aprovadas</a></li>
             <li class="active" style="color:#ecf0f1 !important"><a href="itensProducao?idLIsta=${idLista}" style="color:#ecf0f1 !important">Itens da Lista</a></li>
-            <li class="active" style="color:#bdc3c7">Detalhes do Item</li>
+            <li class="active" style="color:#bdc3c7">Detalhes do Itemwwwww</li>
         </ol>
     </div>
 </div>
 
-<div style="height: 150px;background: #fff" class="">
+<%-- <div style="height: 150px;background: #fff" class="">
     <div class="row" style="margin-top: 0px;margin-left: 5px">
 
         <div class="col-md-2" style="margin-right:50px;margin-top: 10px;font-family:'OpenSansLight';font-weight: bolder; ">
@@ -99,7 +99,7 @@ pageEncoding="UTF-8"%>
         
         
     </div>	
-</div>
+</div> --%>
 <div style="height: 170px;background: #fff;border-bottom:1px solid #ddd; " class="">
     <div class="row" style="margin-top: 0px;margin-left: 5px">
 
