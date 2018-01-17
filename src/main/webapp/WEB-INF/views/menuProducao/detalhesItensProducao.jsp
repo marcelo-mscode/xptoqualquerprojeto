@@ -46,7 +46,7 @@ pageEncoding="UTF-8"%>
 <div style="height: 80px;background: #e74c3c" class="">
     <div class="row" style="margin-top: 0px;margin-left: 5px">
         <div class="col-md-12" style="margin-top: 10px">
-            <span style="font-size: 25px;color: #fff;font-family:'OpenSansLight' ">PRODUÇÃOffffffff</span>
+            <span style="font-size: 25px;color: #fff;font-family:'OpenSansLight' ">PRODUÇÃO</span>
         </div>
     </div>
     <div class="col-md-12" style="color:#fff !important">
@@ -54,7 +54,7 @@ pageEncoding="UTF-8"%>
             <li><a href="#" style="color:#ecf0f1 !important">Menu</a></li>
             <li class="active" style="color:#ecf0f1 !important"><a href="menuProducao" style="color:#ecf0f1 !important">Listas de Produção Aprovadas</a></li>
             <li class="active" style="color:#ecf0f1 !important"><a href="itensProducao?idLIsta=${idLista}" style="color:#ecf0f1 !important">Itens da Lista</a></li>
-            <li class="active" style="color:#bdc3c7">Detalhes do Itemwwwww</li>
+            <li class="active" style="color:#bdc3c7">Detalhes do Item</li>
         </ol>
     </div>
 </div>
@@ -441,7 +441,7 @@ pageEncoding="UTF-8"%>
             <div class="col-md-3">
                 <select class="form-control" style="width: 230px" name="idUsuario">
                     
-                    <option value="">${user.usuario.nome}</option>
+                    <option value="${userLogado.idUsuario}">${userLogado.nome}</option>
                     
                     <c:forEach items="${usuarios}" var="usuarios">
                     

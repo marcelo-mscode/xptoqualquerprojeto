@@ -131,7 +131,7 @@ public class MenuProducaoController extends AuxProducao{
 		Lista lista = manager.find(Lista.class, idLista);
 		
 		ProdutoGrupo produtoGrupo = manager.find(ProdutoGrupo.class, idProdutoGrupo);
-		
+		 
 		MV.addObject("fornecedor", empresaDAO.infoEmpresaProducao(produtoGrupo.getEmpresa().getIdEmpresa()));
 		MV.addObject("contatoFornecedor", empresaDAO.listaContatoEmpresa(idFornecedor));
 		MV.addObject("tipoPagamento", pagamentoDAO.listaTipoPagamento());
@@ -143,7 +143,11 @@ public class MenuProducaoController extends AuxProducao{
 	    MV.addObject("fornecedoresLista", empresaDAO.listaFornecedores());
 	    MV.addObject("InfoJobs",localEventoDAO.ultimoLocalEvento(lista.getIdJob().getIdJob()));
 	    MV.addObject("lista", lista);
+	    MV.addObject("userLogado", util.retornaUsuarioLogado());
 		
+	    
+	    
+	    
 		verificaSeItemSeraSalvoOuAtualizado(idFornecedor, idLista, idProdutoGrupo);
 	    
 		return MV;
