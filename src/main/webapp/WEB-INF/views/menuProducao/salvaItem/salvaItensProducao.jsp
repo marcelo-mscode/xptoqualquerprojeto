@@ -7,6 +7,9 @@ pageEncoding="UTF-8"%>
 
 <style>
     .producao{background: #f1f1f1;}
+    
+    .numberBox{font-size: 75px;color: #c7ccd6;}
+    
 </style>
 <c:import url="../../_comum/header.jsp" />
 
@@ -102,7 +105,7 @@ pageEncoding="UTF-8"%>
     <div class="col-md-12" style="padding: 0 25px 25px 0">
 
         <div class="row" style="border-bottom: 1px solid #ccc">
-            <div class="col-md-12">
+            <div class="col-md-12" style="margin-left: 43px;">
                 <h4 style="font-family: 'OpenSansLight'">
                     Data do Evento: 
                     <strong>
@@ -130,8 +133,15 @@ pageEncoding="UTF-8"%>
 
 
 
-
-            <div class="row" id="fornecedorAtual" style="border-bottom: 1px solid #ccc;padding-bottom: 10px;">
+    <div class="row" id="fornecedorAtual" style="border-bottom: 1px solid #ccc;padding-bottom: 10px;">
+   	   <table>
+		 <tr>
+			<td>
+		         <div class="col-md-1" style="padding: 0;">
+					<span class="numberBox">1</span>
+				 </div>
+		    </td>               
+			<td>               
                 <div class="col-md-8">
                     <h4 style="font-family: 'OpenSansLight'">
                         Fornecedor: <strong>${fornecedor.empresa}</strong>
@@ -146,26 +156,42 @@ pageEncoding="UTF-8"%>
                 <div class="col-md-4">
                     <h4 style="font-family: 'OpenSansLight'">
                         Contato no Fornecedor:
-                        <select class="form-control input-180px" name="contatoFornecedor">
+                        <select class="form-control input-180px" name="contatoFornecedor" style="margin-top: 5px">
                             <c:forEach items="${contatoFornecedor}" var="contato">
                                 <option value="${contato[0]}">${contato[1]}</option>
                             </c:forEach>
                         </select>
                     </h4>
                 </div>
+		 		</td>
+		 	</tr>
+		 </table>	                
+     </div>
 
-            </div>
-
-            <div class="row">
-                <label style="margin-left: 13px;padding-top: 10px">Informações de entrega</label>
+     <div class="row">
+     	<table>
+		 <tr>
+			<td>
+		         <div class="col-md-1" style="padding: 0;">
+					<span class="numberBox">2</span>
+				 </div>
+		    </td>               
+			<td> 
+                <h4 style="font-family: 'OpenSansLight';margin-left: 20px">
+               		 Informações de entrega
+                </h4>
+                
                 <div class="col-md-12 tira-padding" style="padding-top: 10px">
-                    <div class="col-md-3">Data de Entrega *</div>
-                    <div class="col-md-5">
+                    <div class="col-md-12">Data de Entrega *</div>
+                    <div class="col-md-8">
                         <input type="text" class="form-control data" style="width: 110px" name="pEntrega" />
                     </div>
                 </div>
-            </div>
-            <div class="row" style="border-bottom: 1px solid #ccc;padding-bottom: 20px">
+		      </td>
+		 	</tr>
+		 </table>	
+      </div>
+           <div class="row" style="border-bottom: 1px solid #ccc;padding-bottom: 20px">
                 <div class="col-md-12 tira-padding">
                     <div class="col-md-3">Local de Entrega *</div>
                     <div class="col-md-3">
