@@ -147,7 +147,7 @@
 	                                          <i class="glyphicon glyphicon-pencil cor-lapis" onclick="trocarModalFornecedor(${produtoGrupo.idProdutoGrupo});"
 	                                          style="cursor: pointer; font-size: 16px; margin-left: 15px; margin-top: -5px;">
 	                                          </i>
-	                                          <span>Trocar fornecedor</span>
+	                                          <span style="margin-left: 25px;font-size: 12px;">Trocar fornecedor</span>
 	                                          
 	                                      </td>
                                       </c:if>
