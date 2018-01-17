@@ -133,7 +133,7 @@ pageEncoding="UTF-8"%>
 
 
 
-    <div class="row" id="fornecedorAtual" style="border-bottom: 1px solid #ccc;padding-bottom: 10px;">
+    <div class="row" id="fornecedorAtual" style="padding-bottom: 10px;">
    	   <table>
 		 <tr>
 			<td>
@@ -240,21 +240,21 @@ pageEncoding="UTF-8"%>
                 
             <!-- ---------------------------------------------------------------------------------------------------- -->
 
-     <div class="row" style="border: 1px solid gray;padding: 15px;margin-bottom: 20px;display:none" id="divValorContratacao">
-
-         <c:if test="${produtoGrupo.imposto == true}">
-             <c:set value="${fatLocco}" var="valorItem" />
-         </c:if>
-         <c:if test="${produtoGrupo.imposto == false}">
-             <c:set value="${fatDireto}" var="valorItem" />
-         </c:if>
-
-         <c:import url="salvaFornFinanc/salvaValorContratacao.jsp">
-             <c:param name="valorItem" value="${valorItem}" />
-             <c:param name="valorContratacao" value="${valorContratacao}" />
-         </c:import>
-
-     </div>
+		     <div class="row" style="border: 1px solid #c7ccd6;padding: 15px;margin: 0px 0px 20px 10px;display:none" id="divValorContratacao">
+		
+		         <c:if test="${produtoGrupo.imposto == true}">
+		             <c:set value="${fatLocco}" var="valorItem" />
+		         </c:if>
+		         <c:if test="${produtoGrupo.imposto == false}">
+		             <c:set value="${fatDireto}" var="valorItem" />
+		         </c:if>
+		
+		         <c:import url="salvaFornFinanc/salvaValorContratacao.jsp">
+		             <c:param name="valorItem" value="${valorItem}" />
+		             <c:param name="valorContratacao" value="${valorContratacao}" />
+		         </c:import>
+		
+		     </div>
 
             <!-- ---------------------------------------------------------------------------------------------------- -->
 
@@ -292,7 +292,7 @@ pageEncoding="UTF-8"%>
             <!-- -----------------------------------------------------------------------------------------------------  -->
             <!-- Parcelamentos -->            
             <div class="row">
-                <div class="col-md-6" style="background: #fff;padding: 0 20px;margin-top: 10px;padding: 20px 10px;border: 1px solid #ccc" id="tableParcelas">
+                <div class="col-md-7" style="background: #fff;padding: 0 20px;margin: 10px 0 20px 0;padding: 20px 10px;margin-left: 20px;" id="tableParcelas">
                     <table class="table table-bordered table-hover" style="margin-top: 20px;">
 
                         <tr>
@@ -312,11 +312,23 @@ pageEncoding="UTF-8"%>
 
             <!-- ----------------------------------------------------------------------------------------------------------------  -->
 
-            <div class="row"  style="border-top: 1px solid #ccc;padding-top: 20px">
+  <div class="row"  style="border-top: 1px solid #ccc;padding-top: 20px">
+       <table>
+		 <tr>
+			<td>
+		         <div class="col-md-1" style="padding: 0;">
+					<span class="numberBox">4</span>
+				 </div>
+		    </td>               
+			<td>               
+                <div class="col-md-8">
+                    <h4 style="font-family: 'OpenSansLight'">
+                        Responsável Contratação *&nbsp&nbsp&nbsp  
+                    </h4>
+                </div>
+    		
                 <div class="col-md-12 tira-padding">
-                    <div class="col-md-3">Responsável Contratação *&nbsp&nbsp&nbsp  
-                    </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <select class="form-control" style="width: 230px" name="idUsuario">
                                 <option value="${userLogado.idUsuario}">${userLogado.nome}</option>
                             <c:forEach items="${usuarios}" var="usuarios">
@@ -328,9 +340,10 @@ pageEncoding="UTF-8"%>
                         <p>&bull;&nbsp<!-- ${responsavel} --></p>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 tira-padding">
+    </div>
+ 
+   <div class="row">
+           <div class="col-md-12 tira-padding">
                     <div class="col-md-3">
                         Observações:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     </div>
@@ -362,6 +375,12 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
             </div>
+            
+            				</td>
+			</tr>
+	 	</table>	 
+            
+            
         </form>
     </div>
 </div>

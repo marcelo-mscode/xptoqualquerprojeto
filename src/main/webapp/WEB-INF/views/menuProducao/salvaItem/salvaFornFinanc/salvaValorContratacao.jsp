@@ -4,13 +4,13 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>      
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<div class="col-md-12 tira-padding" style="padding-bottom: 20px">
+<div class="col-md-12 tira-padding" style="padding-bottom: 10px">
     <div class="col-md-12 tira-padding">
         <div class="col-md-3">Valor do Item</div>
         <div class="col-md-2">
 
             <!--  -->
-            <input name="valorItemTrans" id="itemValor1" type="text" class="form-control" style="width: 110px" value='<fmt:formatNumber value="${param.valorItem}" pattern="#,##0.00"/>' onblur="calculaDiferenca();" />
+            <input name="valorItemTrans" id="itemValor1" type="text" class="form-control" style="width: 110px;margin-left: -3px" value='<fmt:formatNumber value="${param.valorItem}" pattern="#,##0.00"/>' onblur="calculaDiferenca();" />
             <!--  -->
 
         </div>
@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
 <div class="row">
     <div class="col-md-12 tira-padding">
         <div class="col-md-3">Valor da
-            Contratação&nbsp*&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
+            Contratação&nbsp*&nbsp&nbsp&nbsp</div>
         <div class="col-md-2">
 
             <!--  -->
@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
 </div>
 
 <div class="row">
-    <div class="col-md-12 tira-padding">
+    <div class="col-md-12 tira-padding" style="margin-top: 5px;">
         <div class="col-md-3" style="padding: 6px 0 6px 20px;">
             Diferença&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
         <div class="col-md-3" id="diferenca" style="padding: 8px 0 8px 14px; width: 110px; background: #ddd; margin-left: 15px; border-radius: 5px; height: 34px">
@@ -45,8 +45,10 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
     <div class="col-md-5 form-inline" style="padding: 6px 0 6px 20px;">
-        Atribuir diferença
-        <br />
+       
+       <h4>
+	        Atribuir diferença
+       </h4>
         <br />
         <input type="radio" name="infoForn" checked="checked" value="0" onclick="atribuirFornecedor()">&nbsp&nbspMesmo Fornecedor
         &nbsp&nbsp&nbsp&nbsp
