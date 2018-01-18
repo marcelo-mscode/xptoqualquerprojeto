@@ -33,7 +33,7 @@ public class ValorFornecedorTemNegociacao implements CalculoFornecedorInterna {
 
 	@Override
 	public BigDecimal calculaDiferenca(ProducaoP producaoP) {
-		BigDecimal valorDiferencaCalculado = producaoP.getValorFornecedor().subtract(producaoP.getValorItem());
+		BigDecimal valorDiferencaCalculado = producaoP.getValorItem().subtract(producaoP.getValorFornecedor());
 //		producaoP.setDiferencaParaLocco(valorDiferencaCalculado);
 		
 		return valorDiferencaCalculado;

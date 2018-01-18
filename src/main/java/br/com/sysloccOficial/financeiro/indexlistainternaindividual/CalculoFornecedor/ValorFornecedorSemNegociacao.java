@@ -13,13 +13,19 @@ public class ValorFornecedorSemNegociacao implements CalculoFornecedorInterna {
 		
 		producaoP.setValorFornecedor(valorFinal);
 		
-		return null;
+		
+		if(producaoP.getIdProdutoGrupo() == 98723){
+			System.out.println("Valor do Fornecedor sem negociação: "+producaoP.getValorFornecedor());
+		}
+		
+		
+		return valorFinal;
 	}
 
 	@Override
 	public BigDecimal calculaDiferenca(ProducaoP producaoP) {
 		
-		BigDecimal diferencaCalculada = new BigDecimal("50.00");
+		BigDecimal diferencaCalculada = new BigDecimal("0.00");
 		
 		return diferencaCalculada;
 	}
