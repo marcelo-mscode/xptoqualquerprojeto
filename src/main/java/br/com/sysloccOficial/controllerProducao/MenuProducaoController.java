@@ -97,20 +97,26 @@ public class MenuProducaoController extends AuxProducao{
 		
 		
 		
-		Iterator<Lista> iterador = listas.iterator();
+/*		Iterator<Lista> iterador = listas.iterator();
 		
 		while(iterador.hasNext()){
 			
-			if(iterador.next().getDataDoEvento() != null)
+			System.out.println(iterador.next().getIdLista());
+			
+			if(iterador.next().getDataDoEvento() != null){
 				datas.add(iterador.next().getDataDoEvento().getTime());
+			}else{
+				System.out.println(iterador.next().getDataDoEvento());
+			}
+				
 		}
-		
+		*/
 		
 	
 		
 		
 		MV.addObject("lista", listas);
-		MV.addObject("datas", datas);
+//		MV.addObject("datas", datas);
 		
 		
 		
