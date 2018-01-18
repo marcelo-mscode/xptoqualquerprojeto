@@ -20,7 +20,7 @@ public class ValorFornecedorTemNegociacao implements CalculoFornecedorInterna {
 			BigDecimal diferencaComImposto = diferenca.multiply(new BigDecimal(producaoP.getImposto())
 					                                  .divide(new BigDecimal("100")));
 			BigDecimal valorFinal = diferencaComImposto.add(producaoP.getValorContratacao());
-
+			
 			producaoP.setValorFornecedor(valorFinal);
 			producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
 			
@@ -34,6 +34,8 @@ public class ValorFornecedorTemNegociacao implements CalculoFornecedorInterna {
 	@Override
 	public BigDecimal calculaDiferenca(ProducaoP producaoP) {
 		BigDecimal valorDiferencaCalculado = producaoP.getValorFornecedor().subtract(producaoP.getValorItem());
+//		producaoP.setDiferencaParaLocco(valorDiferencaCalculado);
+		
 		return valorDiferencaCalculado;
 	}
 

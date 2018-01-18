@@ -212,8 +212,8 @@
                   	0,00
                   </c:if>
                   
-                  <c:if test="${itensInterna.diferenca != '0.00' || itensInterna.diferenca == itensInterna.valorItem}">
-                  	<fmt:formatNumber value="${itensInterna.valorItem - itensInterna.valorDePagamentoContratacao}" pattern="#,##0.00"/>
+                  <c:if test="${itensInterna.diferenca != '0.00'}">
+                  	<fmt:formatNumber value="${itensInterna.diferencaParaLocco}" pattern="#,##0.00"/>
                   </c:if>
                </td>
 

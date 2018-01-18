@@ -10,11 +10,12 @@ public class CalculaValorFornecedor {
 	
 	public static BigDecimal calculaValores(ProducaoP producaoP){
 		
-		CalculoFornecedorInterna c1 = new ValorFornecedorTemNegociacao();
+		//Sempre o último
+		CalculoFornecedorInterna c1 = new ValorFornecedorSemNegociacao();
+
+		CalculoFornecedorInterna c2 = new ValorFornecedorTemNegociacao();
 
 		
-		//Sempre o último
-		CalculoFornecedorInterna c2 = new ValorFornecedorSemNegociacao();
 		
 		c1.setProximo(c2);
 		

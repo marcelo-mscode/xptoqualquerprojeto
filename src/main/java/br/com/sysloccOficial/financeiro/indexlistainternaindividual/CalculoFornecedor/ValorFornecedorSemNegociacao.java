@@ -8,12 +8,19 @@ public class ValorFornecedorSemNegociacao implements CalculoFornecedorInterna {
 
 	@Override
 	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
+		
+		BigDecimal valorFinal = producaoP.getValorItem();
+		
+		producaoP.setValorFornecedor(valorFinal);
+		
 		return null;
 	}
 
 	@Override
 	public BigDecimal calculaDiferenca(ProducaoP producaoP) {
-		BigDecimal diferencaCalculada = new BigDecimal("500");
+		
+		BigDecimal diferencaCalculada = new BigDecimal("50.00");
+		
 		return diferencaCalculada;
 	}
 
