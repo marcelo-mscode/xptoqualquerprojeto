@@ -12,6 +12,15 @@ public class ValorFornecedorTemNegociacao implements CalculoFornecedorInterna {
 	@Override
 	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
 		
+		
+		int prdo = producaoP.getProdutoGrupo().getIdProdutoGrupo() ;
+		int pro = 98723;
+		
+		if(prdo == pro){
+			System.out.println(producaoP.getValorFornecedor());
+		}
+		
+		
 		int verifica = producaoP.getValorItem().compareTo(producaoP.getValorContratacao());
 		
 		if(verifica == -1 || verifica == 1){

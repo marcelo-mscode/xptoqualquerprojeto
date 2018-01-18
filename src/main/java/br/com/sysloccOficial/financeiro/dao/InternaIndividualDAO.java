@@ -53,9 +53,8 @@ public class InternaIndividualDAO {
 		
 		
 		for (int i = 0; i < internIndividual.size(); i++) {
-			BigDecimal teste =  CalculaValorFornecedor.calculaValores(internIndividual.get(i));
 			
-			System.out.println(internIndividual.get(i).getValorFornecedor());
+			BigDecimal teste =  CalculaValorFornecedor.calculaValores(internIndividual.get(i));
 			
 		}
 		
