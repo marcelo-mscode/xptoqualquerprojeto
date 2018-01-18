@@ -36,8 +36,12 @@ public class IndexInternaIndividual {
 		InfoInterna infoInterna =  internaIndividualDAO.infoInterna(idLista);
 		
 		Set<ProducaoP> listaProducaoP = internaIndividualDAO.internaIndividual(idLista);
+
+		
 		List<ProducaoP> listaProducaoPTeste = internaIndividualDAO.internaIndividualTeste(idLista);
 
+		
+		
 		BigDecimal impostoDaLista = internaIndividualDAO.totalImpostoDaLista(idLista);
 		
 		List<ProducaoP> listaItensIndividuais = new ArrayList<ProducaoP>(listaProducaoP);
@@ -68,7 +72,16 @@ public class IndexInternaIndividual {
 		
 		MV.addObject("infoColunas", listaDeIdsFornecedores);
 		
+
+		
+		
+		
 		MV.addObject("itensInterna",listaProducaoPTeste);
+
+	
+		
+		
+		
 		MV.addObject("infoLista",internaIndividualDAO.infoLista(idLista));
 		MV.addObject("calculadora",calculaValoresListaIndividual);
 		MV.addObject("impostoLista",impostoDaLista);
