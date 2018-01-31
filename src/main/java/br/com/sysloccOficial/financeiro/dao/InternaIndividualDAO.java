@@ -52,11 +52,12 @@ public class InternaIndividualDAO {
 		manager.close();
 		
 		
-		for (int i = 0; i < internIndividual.size(); i++) {
+		
+		/*for (int i = 0; i < internIndividual.size(); i++) {
 			
-			BigDecimal teste =  CalculaValorFornecedor.calculaValores(internIndividual.get(i));
+			CalculaValorFornecedor.calculaValores(internIndividual.get(i));
 			
-		}
+		}*/
 		
 		return internIndividual;
 	}
