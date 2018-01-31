@@ -12,15 +12,6 @@ public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements C
 	@Override
 	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
 		
-		
-		int prdo = producaoP.getProdutoGrupo().getIdProdutoGrupo() ;
-		int pro = 98723;
-		
-		if(prdo == pro){
-			System.out.println(producaoP.getValorFornecedor());
-		}
-		
-		
 		int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
 		
 		/*  Obs compareTo:
@@ -31,7 +22,7 @@ public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements C
 		 *  
 		 *  */
 		
-		if(verifica == 1){
+		if(verifica == -1){
 			
 			CalculaImpostoValorFornecedor calculaValorFornecedor = 
 				new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao() );

@@ -19,8 +19,7 @@ public class CalculadoraImpostoValorFornecedor implements CalculaImpostoValorFor
 	public BigDecimal calculaImpostoValorFornecedor() {
 		
 		BigDecimal diferenca = valorItem.subtract(valorContratacao);
-		BigDecimal diferencaComImposto = diferenca.multiply(new BigDecimal(imposto)
-				                                  .divide(new BigDecimal("100")));
+		BigDecimal diferencaComImposto = diferenca.multiply(new BigDecimal(imposto).divide(new BigDecimal("100")));
 		BigDecimal valorFinal = diferencaComImposto.add(valorContratacao);
 		
 		return valorFinal;
