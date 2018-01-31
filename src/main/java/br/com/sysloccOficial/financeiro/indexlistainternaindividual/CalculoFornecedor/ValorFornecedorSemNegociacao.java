@@ -13,12 +13,6 @@ public class ValorFornecedorSemNegociacao implements CalculoFornecedorInterna {
 		
 		producaoP.setValorFornecedor(valorFinal);
 		
-		
-		if(producaoP.getProdutoGrupo().getIdProdutoGrupo() == 98723){
-			System.out.println("Valor do Fornecedor sem negociação: "+producaoP.getValorFornecedor());
-		}
-		
-		
 		return valorFinal;
 	}
 

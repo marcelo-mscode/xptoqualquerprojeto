@@ -8,7 +8,17 @@ import br.com.sysloccOficial.model.producao.ProducaoP;
 public class CalculaValorFornecedor {
 	
 	
+	
+	public CalculaValorFornecedor(List<ProducaoP> internIndividual){
+		
+	}
+
+	
 	public static BigDecimal calculaValores(ProducaoP producaoP){
+		
+		
+				
+		
 		
 		CalculoFornecedorInterna c1 = new ValorFornecedorTemNegociacao();
 

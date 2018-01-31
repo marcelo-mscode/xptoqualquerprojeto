@@ -40,6 +40,11 @@ public class IndexInternaIndividual {
 		
 		List<ProducaoP> listaProducaoPTeste = internaIndividualDAO.internaIndividualTeste(idLista);
 
+		//Calcula Valores do fornecedor e diferença
+		for (int i = 0; i < listaProducaoPTeste.size(); i++) {
+					CalculaValorFornecedor.calculaValores(listaProducaoPTeste.get(i));
+		}
+		
 		
 		
 		BigDecimal impostoDaLista = internaIndividualDAO.totalImpostoDaLista(idLista);

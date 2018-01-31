@@ -51,14 +51,6 @@ public class InternaIndividualDAO {
 		internIndividual = removerDuplicados(internIndividual);
 		manager.close();
 		
-		
-		
-		/*for (int i = 0; i < internIndividual.size(); i++) {
-			
-			CalculaValorFornecedor.calculaValores(internIndividual.get(i));
-			
-		}*/
-		
 		return internIndividual;
 	}
 	
