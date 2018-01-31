@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
-public class ValorFornecedorTemNegociacao implements CalculoFornecedorInterna {
+public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements CalculoFornecedorInterna {
 
 	private CalculoFornecedorInterna proximo;
 
@@ -21,18 +21,31 @@ public class ValorFornecedorTemNegociacao implements CalculoFornecedorInterna {
 		}
 		
 		
-		int verifica = producaoP.getValorItem().compareTo(producaoP.getValorContratacao());
+		int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
 		
-		if(verifica == -1 || verifica == 1){
+		/*  Obs compareTo:
+		 * 
+		 *  -1 menor que
+		 *   0 igual a 
+		 *   1 maior que
+		 *  
+		 *  */
+		
+		if(verifica == 1){
 			
+			CalculaImpostoValorFornecedor calculaValorFornecedor = 
+				new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao() );
+			
+			/*
 			BigDecimal diferenca = producaoP.getValorItem().subtract(producaoP.getValorContratacao());
 			BigDecimal diferencaComImposto = diferenca.multiply(new BigDecimal(producaoP.getImposto())
 					                                  .divide(new BigDecimal("100")));
-			BigDecimal valorFinal = diferencaComImposto.add(producaoP.getValorContratacao());
+			*/
 			
+			BigDecimal valorFinal = calculaValorFornecedor.calculaImpostoValorFornecedor();
 			producaoP.setValorFornecedor(valorFinal);
-			producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
 			
+			producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
 			
 			return valorFinal;
 		}else{

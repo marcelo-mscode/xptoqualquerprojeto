@@ -20,7 +20,7 @@ public class CalculaValorFornecedor {
 				
 		
 		
-		CalculoFornecedorInterna c1 = new ValorFornecedorTemNegociacao();
+		CalculoFornecedorInterna c1 = new FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem();
 
 		
 		//Sempre o último
