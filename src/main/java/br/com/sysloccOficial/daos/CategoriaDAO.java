@@ -19,12 +19,23 @@ public class CategoriaDAO {
 	public Categoria clonaUMACategoria(Lista _listaNova, Categoria _umaCategorias, int _i) { 
 		 Categoria umaCategoria;
 		
-		 umaCategoria = _umaCategorias;
-		 umaCategoria.setIdcategoria(null);
-		 umaCategoria.setIdLista(_listaNova);
-		 manager.detach(umaCategoria);
-		 manager.persist(umaCategoria);
-		 return umaCategoria;
+		 try {
+			 umaCategoria = _umaCategorias;
+			 umaCategoria.setIdcategoria(null);
+			 umaCategoria.setIdLista(_listaNova);
+			 manager.detach(umaCategoria);
+			 manager.persist(umaCategoria);
+			 return umaCategoria;
+			
+		} catch (Exception e) {
+			System.out.println("Deu Erro ao Clonar Cateogira:" + e);
+			return null;
+		}
+		 
+		 
+		 
+		 
+		 
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -33,7 +44,18 @@ public class CategoriaDAO {
 		try {
 			String consulta = "select c from Categoria c where idLista="+_idLista;
 			Query query = manager.createQuery(consulta);
+			
+			List<Categoria> categorias = query.getResultList();
+			
+			for (int i = 0; i < categorias.size(); i++) {
+				System.out.println("Categoria: "+categorias.get(i).getCategoria());
+			}
+			
 			return query.getResultList();
+			
+			
+			
+			
 		} catch (Exception e) {
 			System.out.println("Ero em categoria:" + e);// TODO: handle exception
 			
