@@ -167,7 +167,8 @@ public class ProducaoDAO {
 
 		
 		for(int i =0; i < variasCategorias.size(); i++){
-		   umaCategoria = categoriaDAO.clonaUMACategoria(_listaNova, variasCategorias.get(i), i);
+		 
+			umaCategoria = categoriaDAO.clonaUMACategoria(_listaNova, variasCategorias.get(i), i);
 		  
 			 grupos = umaCategoria.getGrupo();
 

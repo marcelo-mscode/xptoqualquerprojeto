@@ -32,10 +32,6 @@ public class CategoriaDAO {
 			return null;
 		}
 		 
-		 
-		 
-		 
-		 
 	}
 	
 	@SuppressWarnings("unchecked")
