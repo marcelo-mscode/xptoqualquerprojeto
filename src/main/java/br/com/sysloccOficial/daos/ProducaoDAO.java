@@ -202,20 +202,36 @@ public class ProducaoDAO {
 		
 		ProdutoGrupo umProdutoGrupo = produtoGrupoDAO.persisteUMProdutoGrupoClonado(prodGrupo, umGrupo);
 		
-		if(umGrupo.getDeterm() != null) {
-			if(umGrupo.getDeterm().getProdutoGrupo().getIdProdutoGrupo() == prodGrupo.getIdProdutoGrupo())
-				deterQuantDAO.clonaDeterminaQuantidades(umGrupo, umProdutoGrupo);
-		}  
+		try {
+			
+			if(umGrupo.getDeterm() != null) {
+				if(umGrupo.getDeterm().getProdutoGrupo().getIdProdutoGrupo() == prodGrupo.getIdProdutoGrupo())
+					deterQuantDAO.clonaDeterminaQuantidades(umGrupo, umProdutoGrupo);
+			}  
+		} catch (Exception e) {
+			System.out.println("Erro: " + e);
+		}
+		
+		
 	}
 
 	private Grupo clonaUMGrupo(Lista _listaNova, Categoria umaCategoria, List<Grupo> grupos, int j) {
 		Grupo umGrupo = grupoDAO.persistiUMGrupoClonado(_listaNova, umaCategoria, grupos, j);
 
-		if(umGrupo.getDeterm() == null){
-		   if(umGrupo.getDetermPadrao() != null)
-			deterQuantDAO.clonaDeterminaQuantPadrao(umGrupo);
-		 }
-		 return umGrupo;
+		try {
+			if(umGrupo.getDeterm() == null){
+				if(umGrupo.getDetermPadrao() != null)
+					deterQuantDAO.clonaDeterminaQuantPadrao(umGrupo);
+			}
+			return umGrupo;
+			
+		} catch (Exception e) {
+			
+			System.out.println("Deu um erro: "+e);
+			
+			return null;
+		}
+		
 	}
     
     public void mudaEstatusLista(Integer idLista){

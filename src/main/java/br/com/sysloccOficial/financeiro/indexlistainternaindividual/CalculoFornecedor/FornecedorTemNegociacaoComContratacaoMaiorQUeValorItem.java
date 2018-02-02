@@ -22,7 +22,7 @@ public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements C
 		 *  
 		 *  */
 		
-		if(verifsica == -1){
+		if(verifica == -1){
 			
 			CalculaImpostoValorFornecedor calculaValorFornecedor = 
 				new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao() );

@@ -434,22 +434,38 @@ public class ProducaoController {
 		// Código Modificado para o modelo de
 		// Quando for duplicar a lista ele assumirá o codigo do job
 		// mais regra para LP normalmente.
+	
+		
 		String codLista = util.montaCodigoDuplicaLista(lista.getIdJob().getIdJob(), lista.getIdJob().getCodJob());
 		
 		Lista listaDuplicada = new Lista();
 		
-		listaDuplicada = lista;
-		listaDuplicada.setRevisao(0);
-		listaDuplicada.setIdLista(null);
-		listaDuplicada.setIdlistaEstatus(listaEstatus);
-	    listaDuplicada.setListaCod(codLista);
-
-		manager.detach(listaDuplicada);
-		manager.persist(listaDuplicada);
+		try {
+			
+			listaDuplicada = lista;
+			listaDuplicada.setRevisao(0);
+			listaDuplicada.setIdLista(null);
+			listaDuplicada.setIdlistaEstatus(listaEstatus);
+			listaDuplicada.setListaCod(codLista);
+			
+			manager.detach(listaDuplicada);
+			manager.persist(listaDuplicada);
+		} catch (Exception e) {
+			
+			System.out.println("Erro ao duplicar Lista:" +e);
+		
+		}
+		
 		Integer  idNovaLista = listaDuplicada.getIdLista();
-		producaoDAO.clonaCategoria(idLista,listaDuplicada);
-
-		manager.clear();
+		try {
+			producaoDAO.clonaCategoria(idLista,listaDuplicada);
+			
+			manager.clear();
+		} catch (Exception e) {
+			System.out.println("Erro ao Clonar Categorias: " +e);
+		}
+		
+		
 		Lista novalista = manager.find(Lista.class, idNovaLista);
 		
         MV.setViewName("producao/listaDuplicada");
