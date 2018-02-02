@@ -209,7 +209,7 @@ public class ProducaoDAO {
 					deterQuantDAO.clonaDeterminaQuantidades(umGrupo, umProdutoGrupo);
 			}  
 		} catch (Exception e) {
-			System.out.println("Erro: " + e);
+			System.out.println("Erro clonaUMProdutoGrupo: " + e);
 		}
 		
 		

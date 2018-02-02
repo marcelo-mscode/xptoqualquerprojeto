@@ -29,9 +29,18 @@ public class CategoriaDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<Categoria> categoria(Integer _idLista){
-		String consulta = "select c from Categoria c where idLista="+_idLista;
-		Query query = manager.createQuery(consulta);
-		return query.getResultList();
+		
+		try {
+			String consulta = "select c from Categoria c where idLista="+_idLista;
+			Query query = manager.createQuery(consulta);
+			return query.getResultList();
+		} catch (Exception e) {
+			System.out.println("Ero em categoria:" + e);// TODO: handle exception
+			
+			return null;
+			
+		}
+		
     }
 	
 	

@@ -436,7 +436,7 @@ public class ProducaoController {
 		// mais regra para LP normalmente.
 	
 		
-		String codLista = util.montaCodigoDuplicaLista(lista.getIdJob().getIdJob(), lista.getIdJob().getCodJob());
+		String codLista = util.montaCodigoDuplicaLista2(lista.getIdJob().getIdJob(), lista.getIdJob().getCodJob());
 		
 		Lista listaDuplicada = new Lista();
 		
@@ -451,12 +451,11 @@ public class ProducaoController {
 			manager.detach(listaDuplicada);
 			manager.persist(listaDuplicada);
 		} catch (Exception e) {
-			
 			System.out.println("Erro ao duplicar Lista:" +e);
-		
 		}
 		
 		Integer  idNovaLista = listaDuplicada.getIdLista();
+
 		try {
 			producaoDAO.clonaCategoria(idLista,listaDuplicada);
 			
@@ -468,9 +467,19 @@ public class ProducaoController {
 		
 		Lista novalista = manager.find(Lista.class, idNovaLista);
 		
-        MV.setViewName("producao/listaDuplicada");
-		MV.addObject("idNovaLista", novalista.getIdLista());
-        return MV;
+		try {
+			MV.setViewName("producao/listaDuplicada");
+			MV.addObject("idNovaLista", novalista.getIdLista());
+			return MV;
+		} catch (Exception e) {
+			System.out.println("Erro ao retornar aqui: " +e);
+			return null;
+		}
+		
+        
+        
+        
+        
 	}
 
 // ----------------------------------------------------- Revisar Planilha  ----------------------------------------------------------------------------------- //

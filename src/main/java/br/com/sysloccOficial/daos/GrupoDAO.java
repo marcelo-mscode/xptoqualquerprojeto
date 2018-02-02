@@ -34,18 +34,25 @@ public class GrupoDAO {
 	
 	public Grupo persistiUMGrupoClonado(Lista _listaNova, Categoria umaCategoria,List<Grupo> grupos, int j) {
 		 Grupo umGrupo;
-		 
-		 umGrupo = grupos.get(j);
-		 umGrupo.setIdgrupo(null);
-		 umGrupo.setCriacao(false);
-		 umGrupo.setIdLista(_listaNova);
-		 umGrupo.setIdCategoria(umaCategoria);
 		
-		 manager.detach(umGrupo);
-		 manager.persist(umGrupo);
-		 manager.close();
-		 
-		return umGrupo;
+		try {
+			umGrupo = grupos.get(j);
+			umGrupo.setIdgrupo(null);
+			umGrupo.setCriacao(false);
+			umGrupo.setIdLista(_listaNova);
+			umGrupo.setIdCategoria(umaCategoria);
+			
+			manager.detach(umGrupo);
+			manager.persist(umGrupo);
+			manager.close();
+			
+			return umGrupo;
+		} catch (Exception e) {
+			
+			System.out.println("Deu erro ao salvar um grupo clonado:" + e);
+			return null;
+		} 
+		
 	}
 	
 	public List<OrcamentoFornecedor> orcamentoFornecedor(Integer idGrupo){

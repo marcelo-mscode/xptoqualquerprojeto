@@ -287,6 +287,29 @@ public class Utilitaria {
 		
 		return codJobDuplicado;
 	}			
+
+	public String montaCodigoDuplicaLista2(Integer idJob,Integer codJob){
+		
+		try {
+			Number codigoLista = listaDAO.qtdJobsPorLista(idJob);
+			codigoLista = codigoLista.intValue();
+			
+			String numero = String.valueOf(codigoLista);
+			
+			Integer f = Integer.parseInt(numero);
+			Integer numFinal = f +1 ;
+			
+			String ff = String.valueOf(numeroMaiorQue(f));
+			
+			String codJobDuplicado = listaDAO.pegaCodigoJob(idJob)+"-LP"+ff+numFinal;
+			
+			return codJobDuplicado;
+		} catch (Exception e) {
+			System.out.println("Deu erro ao Montar um código !"+e);
+			return null;
+
+		}
+	}			
 	
 	public String numeroMaiorQue(Integer numero){
 		
