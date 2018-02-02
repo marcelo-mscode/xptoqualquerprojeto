@@ -57,10 +57,9 @@ public class CategoriaDAO {
 			
 			
 		} catch (Exception e) {
-			System.out.println("Ero em categoria:" + e);// TODO: handle exception
+			System.out.println("Erro em categoria:" + e);
 			
 			return null;
-			
 		}
 		
     }
