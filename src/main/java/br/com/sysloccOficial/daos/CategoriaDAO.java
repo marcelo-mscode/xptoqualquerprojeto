@@ -17,7 +17,7 @@ public class CategoriaDAO {
 	@PersistenceContext	private EntityManager manager;
 	
 	public Categoria clonaUMACategoria(Lista _listaNova, Categoria _umaCategorias, int _i) { 
-		 Categoria umaCategoria;
+		 Categoria umaCategoria = new Categoria();
 		
 		 try {
 			 umaCategoria = _umaCategorias;
@@ -42,16 +42,16 @@ public class CategoriaDAO {
 	public List<Categoria> categoria(Integer _idLista){
 		
 		try {
-			String consulta = "select c from Categoria c where idLista="+_idLista;
+			String consulta = "select c from Categoria c where c.idLista.idLista="+_idLista;
 			Query query = manager.createQuery(consulta);
 			
 			List<Categoria> categorias = query.getResultList();
 			
-			for (int i = 0; i < categorias.size(); i++) {
+			/*for (int i = 0; i < categorias.size(); i++) {
 				System.out.println("Categoria: "+categorias.get(i).getCategoria());
-			}
+			}*/
 			
-			return query.getResultList();
+			return categorias;
 			
 			
 			
