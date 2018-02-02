@@ -17,7 +17,8 @@ public class CategoriaDAO {
 	@PersistenceContext	private EntityManager manager;
 	
 	public Categoria clonaUMACategoria(Lista _listaNova, Categoria _umaCategorias, int _i) { 
-		 Categoria umaCategoria = new Categoria();
+		
+		Categoria umaCategoria = new Categoria();
 		
 		 try {
 			 umaCategoria = _umaCategorias;
