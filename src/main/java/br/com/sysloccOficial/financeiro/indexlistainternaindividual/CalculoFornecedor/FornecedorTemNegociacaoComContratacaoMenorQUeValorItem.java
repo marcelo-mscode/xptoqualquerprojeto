@@ -27,9 +27,6 @@ public class FornecedorTemNegociacaoComContratacaoMenorQUeValorItem implements C
 		}else{
 			return proximo.calculaValorFornecedor(producaoP);
 		}
-		
-		
-		
 	}
 
 	@Override

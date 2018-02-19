@@ -15,11 +15,8 @@ public class FornecedorTemNegociacaoComContratacaoIgualQUeValorItem implements
 		int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
 		
 		if(verifica == 0){
-			
 			BigDecimal valorFinal = producaoP.getValorItem();
-			
 			producaoP.setValorFornecedor(valorFinal);
-			
 			return valorFinal;
 			
 		}else{
@@ -30,7 +27,6 @@ public class FornecedorTemNegociacaoComContratacaoIgualQUeValorItem implements
 	@Override
 	public BigDecimal calculaDiferenca(ProducaoP producaoP) {
 		BigDecimal diferencaCalculada = new BigDecimal("0.00");
-		
 		return diferencaCalculada;
 	}
 

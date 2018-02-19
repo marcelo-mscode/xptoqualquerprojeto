@@ -22,15 +22,10 @@ public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements C
 		
 		int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
 		
-		if(verifica == 1){
+ 		if(verifica == 1){
 			
-			/*CalculaImpostoValorFornecedor calculaValorFornecedor = 
-				new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao() );
-			*/
-			//BigDecimal valorFinal = calculaValorFornecedor.calculaImpostoValorFornecedor();
 			BigDecimal valorFinal =   producaoP.getValorContratacao();
-		
-			
+
 			producaoP.setValorFornecedor(valorFinal);
 			
 			producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
@@ -46,12 +41,9 @@ public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements C
 		BigDecimal valorDiferencaCalculado = producaoP.getValorItem().subtract(producaoP.getValorFornecedor());
 		return valorDiferencaCalculado;
 	}
-
 	
 	@Override
 	public void setProximo(CalculoFornecedorInterna proximo) {
 		this.proximo = proximo;
 	}
-	
-	
 }
