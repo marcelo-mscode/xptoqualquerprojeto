@@ -63,10 +63,7 @@ public class IndexInternaIndividual {
 			if(listaProducaoPTeste.get(i).getRowSpan() != null){
 				verif = true;
 			}
-			//listaProducaoPTeste.get(i).setValorFornecedor(CalculaValorFornecedor.calculaValores(listaProducaoPTeste.get(i)));
-			//listaProducaoPTeste.get(i).setDiferencaParaLocco(new BigDecimal("54.459"));
 		}
-		
 		
 		
 		if(verif == false){
@@ -91,8 +88,9 @@ public class IndexInternaIndividual {
 		MV.addObject("calculadora",calculaValoresListaIndividual);
 		MV.addObject("impostoLista",impostoDaLista);
 		
-		List<ProducaoPDespesas> lista = internaIndividualDAO.listaDespesasPorIdLista();
-		MV.addObject("despesas", lista);
+		List<ProducaoPDespesas> listaDeDespesas = internaIndividualDAO.listaDespesasPorIdLista();
+	
+		MV.addObject("despesas", listaDeDespesas);
 		
 		BigDecimal totalDespesas = internaIndividualDAO.totalDespesas(idLista);
 		MV.addObject("totalDepesas", totalDespesas);
