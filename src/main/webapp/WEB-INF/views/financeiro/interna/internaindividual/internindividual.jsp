@@ -117,7 +117,11 @@
                   <th class="infFornecedores" >Dados</th>
                </tr>
  
-               <c:forEach items="${itensInterna}" var ="itensInterna" varStatus="status">
+ 	
+				<c:set value="0.00" var="totalValorFornecedor" /> 	
+				<c:set value="0.00" var="totalValorDiferenca" />  	
+ 	
+ <c:forEach items="${itensInterna}" var ="itensInterna" varStatus="status">
 
                   <c:if test="${itensInterna.statusProducao != 'ITEMFECHADO'}">
                      <tr style="opacity: 0.5;background-color: #CDE;">
@@ -159,44 +163,11 @@
 	            	value="<fmt:formatNumber value="${itensInterna.valorFornecedor}" pattern="#,##0.00"/>"
 	                onblur="valorF('valorF',${itensInterna.idProducao});" />
 	            		
-	            		
-	            		
-<%-- 	            		<!-- Valor sem negociação  -->
-	            		<c:if test="${itensInterna.diferenca == '0.00' && itensInterna.valorDePagamentoContratacao == '0.00'}">
-	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>"
-	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
-	            		</c:if>
-						
-						
-						
-						
-	            		<!-- Valor com negociação  -->
-	            		<c:if test="${itensInterna.diferenca > '0.00' &&
-	            					  itensInterna.diferenca != itensInterna.valorItem &&
-	            					  itensInterna.valorDePagamentoContratacao != '0.00'}">
-	            			
-	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" 
-	            			value="<fmt:formatNumber value="${itensInterna.valorDePagamentoContratacao}" pattern="#,##0.00"/>"
-	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
-	            		</c:if>
-
-	            		<!-- ******* Valor com negociação  alterado manualmente em Interna-->
-	            		<c:if test="${itensInterna.diferenca > '0.00' && 
-	            		              itensInterna.diferenca != itensInterna.valorItem &&
-	            		              itensInterna.valorDePagamentoContratacao == '0.00'
-	            		              }">
-	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" 
-	            			value="<fmt:formatNumber value="${itensInterna.valorContratacao}" pattern="#,##0.00"/>"
-	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
-	            		</c:if>
-	            		
-	            		<!-- Fornecedor não recebe nada -->
-	            		<c:if test="${itensInterna.diferenca == itensInterna.valorItem && itensInterna.valorContratacao == '0.00'}">
-	            			<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" value="<fmt:formatNumber value="${itensInterna.valorContratacao}" pattern="#,##0.00"/>"
-	                        onblur="valorF('valorF',${itensInterna.idProducao});" />
-	            		</c:if>
- --%>
                   </td>
+                  
+                  <c:set var="totalValorFornecedor" value="${totalValorFornecedor + itensInterna.valorFornecedor}"/>
+                  
+                  
                   
                <!-- Valor NF -->	
                   <td class="textRight"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/></td>
@@ -214,8 +185,12 @@
                   
                   <c:if test="${itensInterna.diferenca != '0.00'}">
                   	<fmt:formatNumber value="${itensInterna.diferencaParaLocco}" pattern="#,##0.00"/>
+ 	                <c:set value="${totalValorDiferenca + itensInterna.diferencaParaLocco}" var="totalValorDiferenca" />  
                   </c:if>
+               
                </td>
+               
+               
 
                   <!-- Focar os esforços aqui !!!!!!!!!!!!!!!!!!!!  -->
 
@@ -267,11 +242,8 @@
 		                  text-align: center;"><c:if test="${itensInterna.dadosBancarios == null}"><c:forEach items="${itensInterna.idEmpFornecedor.pagamento}" var="pagamento">${pagamento.banco}&#10; Ag:${pagamento.agencia}&#10;c/c:${pagamento.conta}</c:forEach></c:if><c:if test="${itensInterna.dadosBancarios != ''}">${itensInterna.dadosBancarios}</c:if></textarea>
 		                  
 	                  </td>
- <%--                  </c:if> --%>
-                  
-                  
                   </tr>		
-               </c:forEach>
+     </c:forEach>
                
               <c:if test="${totalDepesas != null }">
 	               <tr>
@@ -314,14 +286,7 @@
                      <td>${despesas.dadosBancarios}</td>
                   </tr>
                </c:forEach>
-               <!-- <tr>
-                  <td colspan="12" style="height: 20px;">
-                     <a data-toggle="modal" data-target=".bs-example-modal-lg" style="float: right;cursor: pointer;cursor: pointer;padding: 5px;margin-right: 10px;">
-                     <i class="glyphicon glyphicon-pencil" style="top: 2px;margin-right: 5px;"></i>
-                     Incluir linha
-                     </a>
-                  </td>
-               </tr> -->
+
                <tr>
                   <td colspan="13" style="height: 20px;"></td>
                </tr>
@@ -331,38 +296,28 @@
                   <th class="servicos">
                      <fmt:formatNumber value="${calculadora.subLoCCo}" pattern="#,##0.00"/>
                   </th>
-
                   <th class="servicos">
 						<fmt:formatNumber value="${calculadora.subContratados}" pattern="#,##0.00"/>
                   </th>
-
                   <th class="servicos">
                      <fmt:formatNumber value="${calculadora.subDireto}" pattern="#,##0.00"/>
                   </th>
-
                   <td class="colorRed">
-	                  	<c:if test="${totalDepesas != null }">
-	                     <fmt:formatNumber value="${calculadora.subValorFornecedor+totalDepesas}" pattern="#,##0.00"/>
-	                  	</c:if>
-	                  	<c:if test="${totalDepesas == null }">
-	                     <fmt:formatNumber value="${calculadora.subValorFornecedor}" pattern="#,##0.00"/>
-	                  	</c:if>
+                  	<c:if test="${totalDepesas != null }">
+                     <fmt:formatNumber value="${totalValorFornecedor+totalDepesas}" pattern="#,##0.00"/>
+                  	</c:if>
+                  	<c:if test="${totalDepesas == null }">
+                     <fmt:formatNumber value="${totalValorFornecedor}" pattern="#,##0.00"/>
+                  	</c:if>
                   </td>
                   <td class="textRight">
                      <fmt:formatNumber value="${calculadora.subValorNf}" pattern="#,##0.00"/>
                   </td>
-                  
                   <td class="textRight">
-                  <c:if test="${totalDepesas == null }">
-                     <fmt:formatNumber value="${calculadora.subDiferenca}" pattern="#,##0.00"/>
-                  </c:if>
-                  
-                 <%--  <c:if test="${totalDepesas != null }">
-                    <fmt:formatNumber value="${calculadora.subDiferenca-totalDepesas}" pattern="#,##0.00"/>
-                  </c:if>
-                  --%> 
+	                  <c:if test="${totalDepesas == null }">
+	                     <fmt:formatNumber value="${totalValorDiferenca}" pattern="#,##0.00"/>
+	                  </c:if>
                   </td>
-                  
                   <td colspan="6"></td>
                </tr>
                
@@ -378,10 +333,10 @@
                   <td class="colorRed"></td>
                   <td class="colorRed"></td>
                   <td class="textRight">
-                     <fmt:formatNumber value="${free14}" pattern="#,##0.00"/>
+                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
                   </td>
                   <td class="textRight">
-                     <fmt:formatNumber value="${free14}" pattern="#,##0.00"/>
+                     <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
                   </td>
                   <td colspan="6"></td>
                </tr>
@@ -457,7 +412,7 @@
                   <th class="servicos">
                   	
                   	<c:if test="${totalDepesas == null }">
-                  		<fmt:formatNumber value="${calculadora.total1Diferenca}" pattern="#,##0.00"/>
+                  		<fmt:formatNumber value="${calculadora.feeGeral+calculadora.impostoDiferenca+totalValorDiferenca}" pattern="#,##0.00"/>
                   	</c:if>	
                   	<c:if test="${totalDepesas != null }">
                   		<fmt:formatNumber value="${calculadora.total1Diferenca-totalDepesas}" pattern="#,##0.00"/>
