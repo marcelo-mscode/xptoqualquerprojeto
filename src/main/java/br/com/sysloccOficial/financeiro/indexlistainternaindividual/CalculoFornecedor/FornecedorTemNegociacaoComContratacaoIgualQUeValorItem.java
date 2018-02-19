@@ -16,15 +16,12 @@ public class FornecedorTemNegociacaoComContratacaoIgualQUeValorItem implements
 		
 		if(verifica == 0){
 			
-			CalculaImpostoValorFornecedor calculaValorFornecedor = 
-				new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao() );
+			BigDecimal valorFinal = producaoP.getValorItem();
 			
-			BigDecimal valorFinal = calculaValorFornecedor.calculaImpostoValorFornecedor();
 			producaoP.setValorFornecedor(valorFinal);
 			
-			producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
-			
 			return valorFinal;
+			
 		}else{
 			return proximo.calculaValorFornecedor(producaoP);
 		}
@@ -32,8 +29,9 @@ public class FornecedorTemNegociacaoComContratacaoIgualQUeValorItem implements
 
 	@Override
 	public BigDecimal calculaDiferenca(ProducaoP producaoP) {
-		BigDecimal valorDiferencaCalculado = producaoP.getValorItem().subtract(producaoP.getValorFornecedor());
-		return valorDiferencaCalculado;
+		BigDecimal diferencaCalculada = new BigDecimal("0.00");
+		
+		return diferencaCalculada;
 	}
 
 	@Override
