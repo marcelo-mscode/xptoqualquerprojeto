@@ -4,6 +4,14 @@ import java.math.BigDecimal;
 
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
+/*  Obs compareTo:
+ * 
+ *  -1 menor que
+ *   0 igual a 
+ *   1 maior que
+ *  
+ *  */
+
 public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements CalculoFornecedorInterna {
 
 	private CalculoFornecedorInterna proximo;
@@ -14,24 +22,10 @@ public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements C
 		
 		int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
 		
-		/*  Obs compareTo:
-		 * 
-		 *  -1 menor que
-		 *   0 igual a 
-		 *   1 maior que
-		 *  
-		 *  */
-		
 		if(verifica == -1){
 			
 			CalculaImpostoValorFornecedor calculaValorFornecedor = 
 				new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao() );
-			
-			/*
-			BigDecimal diferenca = producaoP.getValorItem().subtract(producaoP.getValorContratacao());
-			BigDecimal diferencaComImposto = diferenca.multiply(new BigDecimal(producaoP.getImposto())
-					                                  .divide(new BigDecimal("100")));
-			*/
 			
 			BigDecimal valorFinal = calculaValorFornecedor.calculaImpostoValorFornecedor();
 			producaoP.setValorFornecedor(valorFinal);

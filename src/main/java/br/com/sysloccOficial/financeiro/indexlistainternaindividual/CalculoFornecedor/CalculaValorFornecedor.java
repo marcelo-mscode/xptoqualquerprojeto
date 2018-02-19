@@ -16,10 +16,6 @@ public class CalculaValorFornecedor {
 	
 	public static BigDecimal calculaValores(ProducaoP producaoP){
 		
-		
-				
-		
-		
 		CalculoFornecedorInterna c1 = new FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem();
 
 		
