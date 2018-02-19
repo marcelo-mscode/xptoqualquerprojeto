@@ -28,7 +28,7 @@ public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements C
 				new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao() );
 			*/
 			//BigDecimal valorFinal = calculaValorFornecedor.calculaImpostoValorFornecedor();
-			BigDecimal valorFinal =   producaoP.getValorItem().subtract(producaoP.getValorContratacao());
+			BigDecimal valorFinal =   producaoP.getValorContratacao();
 		
 			
 			producaoP.setValorFornecedor(valorFinal);
