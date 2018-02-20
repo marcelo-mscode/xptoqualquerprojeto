@@ -272,10 +272,6 @@ public class InternaIndividualDAO {
 		}
 		return combinacoes;
 	}
-
-	
-	
-	
 	
 // ----------------------------------------------------------------------------------------------------------------------- //
 // Métodos para calcular quantidade de RowSpan 

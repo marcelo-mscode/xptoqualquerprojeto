@@ -83,8 +83,9 @@
             <h5>Planilha Interna</h5>
          </a>
       </li>
-      <li role="presentation" class="" style="z-index: 9;border-bottom: 1px solid #ccc;">
-         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true">
+      <li role="presentation" class="" style="z-index: 9;background: #fff;border-radius: 4px;margin-left: -2px;margin-left: -2px;
+    	  border-right: 1px solid #ccc;border-top: 1px solid #ccc;">
+         <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" aria-expanded="true" style="border: 0px">
             <h5>Despesas</h5>
          </a>
       </li>
@@ -260,7 +261,7 @@
                
                <c:forEach items="${despesas}" var="despesas">
                   <tr>
-                     <td>${despesas.servicos}</td>
+                    <td>${despesas.servicos}</td>
                      <td>
                         <fmt:formatNumber value="${despesas.fatLocco}" pattern="#,##0.00"/>
                      </td>
@@ -304,7 +305,7 @@
                   </th>
                   <td class="colorRed">
                   	<c:if test="${totalDepesas != null }">
-                     <fmt:formatNumber value="${totalValorFornecedor+totalDepesas}" pattern="#,##0.00"/>
+                     <fmt:formatNumber value="${totalValorFornecedor + totalDepesas}" pattern="#,##0.00"/>
                   	</c:if>
                   	<c:if test="${totalDepesas == null }">
                      <fmt:formatNumber value="${totalValorFornecedor}" pattern="#,##0.00"/>
@@ -317,6 +318,13 @@
 	                  <c:if test="${totalDepesas == null }">
 	                     <fmt:formatNumber value="${totalValorDiferenca}" pattern="#,##0.00"/>
 	                  </c:if>
+	                  
+	                  <c:if test="${totalDepesas != null }">
+	                   <fmt:formatNumber value="${totalValorDiferenca - totalDepesas}" pattern="#,##0.00"/>
+	                  </c:if>
+	                  
+	                  
+	                  
                   </td>
                   <td colspan="6"></td>
                </tr>
@@ -415,7 +423,7 @@
                   		<fmt:formatNumber value="${calculadora.feeGeral+calculadora.impostoDiferenca+totalValorDiferenca}" pattern="#,##0.00"/>
                   	</c:if>	
                   	<c:if test="${totalDepesas != null }">
-                  		<fmt:formatNumber value="${calculadora.total1Diferenca-totalDepesas}" pattern="#,##0.00"/>
+                  		<fmt:formatNumber value="${(calculadora.feeGeral + calculadora.impostoDiferenca + totalValorDiferenca) - totalDepesas}" pattern="#,##0.00"/>
                   	</c:if>	
                   
                   
