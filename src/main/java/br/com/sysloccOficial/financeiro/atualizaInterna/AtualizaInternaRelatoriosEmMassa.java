@@ -20,10 +20,6 @@ public class AtualizaInternaRelatoriosEmMassa {
 		super();
 	}
 
-	
-	
-	
-	
 	protected void atualizaInternaRelatoriosEventosEmMassa(LinkedHashSet<Integer> idsListas)throws ParseException {
 
 				for (Integer integer : idsListas) {
