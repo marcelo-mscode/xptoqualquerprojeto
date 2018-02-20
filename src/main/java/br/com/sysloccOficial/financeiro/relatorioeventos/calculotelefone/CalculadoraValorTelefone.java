@@ -3,6 +3,7 @@ package br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
@@ -11,13 +12,20 @@ import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 
 @Component
 public class CalculadoraValorTelefone implements CalculoValorTelefone {
+
+	private AnaliticoIndividualDAO analiticoDAO;
+	private RelatorioEventoDAO relatorioDAO;
+
+	public CalculadoraValorTelefone(AnaliticoIndividualDAO analiticoDAO,RelatorioEventoDAO relatorioDAO) {
+		this.analiticoDAO = analiticoDAO;
+		this.relatorioDAO = relatorioDAO;
+	}
+	
+	
 	
 	@Override
 	public BigDecimal calculoValorTelefone(BigDecimal giroSemTelefoneEvento,Integer idRelatorioAtual, String mes, String ano) {
 	
-		AnaliticoIndividualDAO analiticoDAO = new AnaliticoIndividualDAO();
-		RelatorioEventoDAO relatorioDAO = new RelatorioEventoDAO();
-		
 		BigDecimal razaoCalculoTelefone = new BigDecimal("0.00");
 		BigDecimal validador = new BigDecimal("0.00");
 		
