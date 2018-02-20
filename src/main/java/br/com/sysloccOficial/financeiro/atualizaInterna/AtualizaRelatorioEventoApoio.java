@@ -312,21 +312,24 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			
 			BigDecimal valorTelefone = analiticoDAO.somaValorTelefonePorMesAno(mes,ano);
 			
-			// Pegar o valor do giro sem telefone
-			BigDecimal valorGiroDesseEvento = giroSemTelefoneEvento;
-			
-			// Dividir o giro desse evento pela soma de todos os eventos
-			if(somaGirosEventosMes.equals(validador) || somaGirosEventosMes == null){
-				 razaoCalculoTelefone = valorGiroDesseEvento.divide( valorGiroDesseEvento,12,RoundingMode.UP);
+			if(valorTelefone.equals(new BigDecimal("0.00"))){
+				return valorTelefone;
 			}else{
-				 razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,12,RoundingMode.UP);
+				// Pegar o valor do giro sem telefone
+				BigDecimal valorGiroDesseEvento = giroSemTelefoneEvento;
+				
+				// Dividir o giro desse evento pela soma de todos os eventos
+				if(somaGirosEventosMes.equals(validador) || somaGirosEventosMes == null){
+					razaoCalculoTelefone = valorGiroDesseEvento.divide( valorGiroDesseEvento,12,RoundingMode.UP);
+				}else{
+					razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,12,RoundingMode.UP);
+				}
+				
+				// Pegar o resultado e multiplicar pelo valor mensal do telefone
+				BigDecimal valorTelefoneEvento = valorTelefone.multiply(razaoCalculoTelefone);
+				
+				return valorTelefoneEvento;
 			}
-			
-			// Pegar o resultado e multiplicar pelo valor mensal do telefone
-			BigDecimal valorTelefoneEvento = valorTelefone.multiply(razaoCalculoTelefone);
-			
-			return valorTelefoneEvento;
-			
 	}	
 	
 // ---- REFATORAR	
