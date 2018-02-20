@@ -27,6 +27,8 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.CacheDoEventoApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioBVS;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioEventoIndividualApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
+import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculadoraValorTelefone;
+import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculoValorTelefone;
 import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.GiroEvento;
 import br.com.sysloccOficial.model.InfoInterna;
@@ -36,7 +38,7 @@ import br.com.sysloccOficial.model.RelatorioEventos;
 
 @Component
 @Transactional
-public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
+public class AtualizaRelatorioEventoApoio{
 
 	@Autowired RelatorioEventoIndividualApoio relApoio;
 	@Autowired InternaIndividualDAO internaIndividualDAO;
@@ -143,7 +145,8 @@ public class AtualizaRelatorioEventoApoio implements CalculoValorTelefone{
 			idRelatorioParaGiroTelefone = verificaSeRelatorioEventoExiste(relatorio, novoRelatorio);
 			
 			//Custo 
-			custoTelefone = calculoValorTelefone(giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
+			CalculoValorTelefone calculaTelefone = new CalculadoraValorTelefone();
+			custoTelefone = calculaTelefone.calculoValorTelefone(giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
 			
 			novoRelatorio.setCustoTelefone(custoTelefone);
 			
