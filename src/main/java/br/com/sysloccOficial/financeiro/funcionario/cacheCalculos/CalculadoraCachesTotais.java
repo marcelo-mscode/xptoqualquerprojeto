@@ -5,9 +5,7 @@ import java.util.List;
 
 import br.com.sysloccOficial.model.CachePadrao;
 
-public class CalculadoraCaches {
-	
-	
+public class CalculadoraCachesTotais {
 	
 	
 	public static BigDecimal totalCachesSemTelefone(List<CachePadrao> listaRelatorioCaches,BigDecimal totalDiferencaSemTelefone){
