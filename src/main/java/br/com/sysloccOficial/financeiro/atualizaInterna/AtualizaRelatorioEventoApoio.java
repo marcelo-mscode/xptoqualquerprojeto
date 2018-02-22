@@ -33,6 +33,8 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.calculoimposto.Calculad
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculaValorTelefone;
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculadoraTelefone;
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculoValorTelefone;
+import br.com.sysloccOficial.financeiro.relatorioeventos.totalDiferencaTelefone.CalculadoraDiferencaTelefone;
+import br.com.sysloccOficial.financeiro.relatorioeventos.totalPagarFornecedores.CalculadoraTotalPagarFornecedores;
 import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.GiroEvento;
 import br.com.sysloccOficial.model.InfoInterna;
@@ -95,10 +97,13 @@ public class AtualizaRelatorioEventoApoio{
 			novoRelatorio.setValorLiquido(novoRelatorio.getValorLoccoAgenc().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
 			novoRelatorio.setImpostoClienteDiferenca(novoRelatorio.getImpostoCliente().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
 			novoRelatorio.setLiquidoImposto(novoRelatorio.getValorLoccoAgenc().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
-			novoRelatorio.setTotalAPagarFornecedores(totalAPagarFornecedores(relatorioBVS));
+			novoRelatorio.setTotalAPagarFornecedores(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
 			
-			BigDecimal totalDiferencaSemTelefone = totalDiferencaSemTelefone(relatorioBVS,novoRelatorio.getFee(),novoRelatorio.getFeeReduzido(), novoRelatorio.getImpostoClienteDiferenca());
-			
+			BigDecimal totalDiferencaSemTelefone = CalculadoraDiferencaTelefone.totalDiferencaSemTelefone(
+														relatorioBVS,
+														novoRelatorio.getFee(),
+														novoRelatorio.getFeeReduzido(), 
+														novoRelatorio.getImpostoClienteDiferenca());
 			
 // -------- Calculo de Caches sem telefone	---- //		
 			novoRelatorio.setTotalCachesSemTelefone(CalculadoraCachesTotais.totalCachesSemTelefone(listaRelatorioCaches, totalDiferencaSemTelefone));
@@ -106,7 +111,7 @@ public class AtualizaRelatorioEventoApoio{
 //--------- Giro Sem Telefone ------------------ //
 			BigDecimal giroSTelef = CalculadoraGiro.calculadoraGiroSemTelefone(novoRelatorio.getValorLiquido(),
 	                          												   novoRelatorio.getTotalCachesSemTelefone(),
-	                          												   totalAPagarFornecedores(relatorioBVS));
+	                          												   CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
 //--------- Margem Contribuição ---------------- //
 			novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
 			
@@ -123,18 +128,15 @@ public class AtualizaRelatorioEventoApoio{
 			novoRelatorio.setCustoTelefone(custoTelefone);
 			
 // -------  Calcula totalExternas
-			BigDecimal totalExterna = novoRelatorio.getMargemContribuicao().add(novoRelatorio.getCustoTelefone().add(totalAPagarFornecedores(relatorioBVS)));
+			BigDecimal totalExterna = novoRelatorio.getMargemContribuicao().add(novoRelatorio.getCustoTelefone().add(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS)));
 			novoRelatorio.setPgtoExternas(totalExterna);
 			
-			
-			
-			BigDecimal totalDiferencaComTelefone =  totalDiferencaComTelefone(relatorioBVS, novoRelatorio.getFee(),
-					   novoRelatorio.getFeeReduzido(),novoRelatorio.getImpostoClienteDiferenca(),
-					   novoRelatorio.getMargemContribuicao(), custoTelefone);
-		
+			BigDecimal totalDiferencaComTelefone =  CalculadoraDiferencaTelefone.totalDiferencaComTelefone(
+													   relatorioBVS, novoRelatorio.getFee(),
+													   novoRelatorio.getFeeReduzido(),novoRelatorio.getImpostoClienteDiferenca(),
+													   novoRelatorio.getMargemContribuicao(), custoTelefone);
+
 			novoRelatorio.setTotalDiferenca(totalDiferencaComTelefone);
-			
-			
 			
 			BigDecimal totalCacheFuncComTelefone = CalculadoraCachesTotais.totalCacheFuncionario(listaRelatorioCaches, totalDiferencaSemTelefone);
 			BigDecimal totalCacheDiretoriaComTelefone = CalculadoraCachesTotais.totalCacheDiretoria(listaRelatorioCaches, totalDiferencaSemTelefone);
@@ -142,18 +144,12 @@ public class AtualizaRelatorioEventoApoio{
 			novoRelatorio.setTotalCachesComTelefone(totalCacheDiretoriaComTelefone.add(totalCacheFuncComTelefone));
 			novoRelatorio.setCacheEquipIn(totalCacheFuncComTelefone);
 
-			
-			/*BigDecimal pgtoExternasSemImpostossTESTE = novoRelatorio.getPgtoExternas().subtract(novoRelatorio.getMargemContribuicao()).
-					subtract(novoRelatorio.getCustoTelefone());
-			*/
-			
-			
 			//Calcula giro Com telefone
 			BigDecimal giroComTelefone = novoRelatorio.getValorLiquido()
 					.subtract(novoRelatorio.getTotalCachesComTelefone())
 			// Esse valor agora !!!!!
-			.subtract(novoRelatorio.getPgtoExternas());
-			//.subtract(novoRelatorio.getPgtoExternas());
+					.subtract(novoRelatorio.getPgtoExternas());
+				  //.subtract(novoRelatorio.getPgtoExternas());
 			
 			novoRelatorio.setCacheEquipIn(CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
 			novoRelatorio.setTotalCachesIntExt(CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
@@ -207,8 +203,7 @@ public class AtualizaRelatorioEventoApoio{
 		
 	}
 
-
-	private Integer verificaSeRelatorioEventoExiste(RelatorioEventos relatorio, RelatorioEventos novoRelatorio) {
+	private Integer verificaSeRelaStorioEventoExiste(RelatorioEventos relatorio, RelatorioEventos novoRelatorio) {
 		Integer idRelatorioParaGiroTelefone;
 
 		if(relatorio == null){
@@ -218,49 +213,4 @@ public class AtualizaRelatorioEventoApoio{
 		}
 		return idRelatorioParaGiroTelefone;
 	}
-	
-
-	public BigDecimal totalDiferencaSemTelefone(List<RelatorioBVS> relatorioBVS,BigDecimal fee,BigDecimal feeReduzido, BigDecimal impostoClienteDiferenca){
-		BigDecimal totalDiferenca = new BigDecimal("0");
-		
-		for (int i = 0; i < relatorioBVS.size(); i++) {
-			totalDiferenca = totalDiferenca.add(relatorioBVS.get(i).getDiferenca());
-		}
-		totalDiferenca = totalDiferenca.add(fee).add(impostoClienteDiferenca).add(feeReduzido);
-		return totalDiferenca;
-	}
-	
-	public BigDecimal totalDiferencaComTelefone(List<RelatorioBVS> relatorioBVS,
-			BigDecimal fee,
-			BigDecimal feeReduzido,
-			BigDecimal impostoClienteDiferenca,
-			BigDecimal margemContribuicao,
-			BigDecimal valorTelefone){
-		
-		BigDecimal totalDiferenca = new BigDecimal("0");
-		
-		for (int i = 0; i < relatorioBVS.size(); i++) {
-			totalDiferenca = totalDiferenca.add(relatorioBVS.get(i).getDiferenca());
-		}
-		totalDiferenca = totalDiferenca.add(fee).add(feeReduzido).add(impostoClienteDiferenca).subtract(margemContribuicao).subtract(valorTelefone);
-		return totalDiferenca;
-	}
-	
-	public BigDecimal totalAPagarFornecedores(List<RelatorioBVS> relatorioBVS){
-		BigDecimal total = new BigDecimal("0");
-		for (int i = 0; i < relatorioBVS.size(); i++) {
-			total =          total.add(relatorioBVS.get(i).getValorFornecedor()).subtract(relatorioBVS.get(i).getDiferenca());
-		}
-		return total;
-	}
-	
-	
-/*	public BigDecimal totalApagar(List<RelatorioBVS> relatorioBVS){
-		BigDecimal totalPagar = new BigDecimal("0");
-		for (int i = 0; i < relatorioBVS.size(); i++) {
-			totalPagar = totalPagar.add(relatorioBVS.get(i).getValorFornecedor()).subtract(relatorioBVS.get(i).getDiferenca());
-		}
-		return totalPagar;
-	}
-*/
 }
