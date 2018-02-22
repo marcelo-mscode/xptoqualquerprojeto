@@ -10,13 +10,12 @@ import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 
 
-@Component
-public class CalculadoraValorTelefone implements CalculoValorTelefone {
+public class CalculaValorTelefone implements CalculoValorTelefone {
 
 	private AnaliticoIndividualDAO analiticoDAO;
 	private RelatorioEventoDAO relatorioDAO;
 
-	public CalculadoraValorTelefone(AnaliticoIndividualDAO analiticoDAO,RelatorioEventoDAO relatorioDAO) {
+	public CalculaValorTelefone(AnaliticoIndividualDAO analiticoDAO,RelatorioEventoDAO relatorioDAO) {
 		this.analiticoDAO = analiticoDAO;
 		this.relatorioDAO = relatorioDAO;
 	}

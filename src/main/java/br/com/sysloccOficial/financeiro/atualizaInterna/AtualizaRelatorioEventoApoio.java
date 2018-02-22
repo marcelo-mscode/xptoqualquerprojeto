@@ -30,7 +30,8 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculocache.CalculadoraCaches;
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculogiro.CalculadoraGiro;
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculoimposto.CalculadoraImposto;
-import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculadoraValorTelefone;
+import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculaValorTelefone;
+import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculadoraTelefone;
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculoValorTelefone;
 import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.GiroEvento;
@@ -66,9 +67,6 @@ public class AtualizaRelatorioEventoApoio{
 			List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
 	
 			List<CachePadrao> listaRelatorioCaches = cacheEvento.listaRelatorioCaches(idLista);
-			
-			
-			BigDecimal custoTelefone = new BigDecimal("0");
 	
 			RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdLista(idLista);
 			
@@ -103,16 +101,13 @@ public class AtualizaRelatorioEventoApoio{
 			
 			
 // -------- Calculo de Caches sem telefone	---- //		
-
 			novoRelatorio.setTotalCachesSemTelefone(CalculadoraCachesTotais.totalCachesSemTelefone(listaRelatorioCaches, totalDiferencaSemTelefone));
 			
 //--------- Giro Sem Telefone ------------------ //
-		
 			BigDecimal giroSTelef = CalculadoraGiro.calculadoraGiroSemTelefone(novoRelatorio.getValorLiquido(),
 	                          												   novoRelatorio.getTotalCachesSemTelefone(),
 	                          												   totalApagar(relatorioBVS));
 //--------- Margem Contribuição ---------------- //
-			
 			novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
 			
 //  ------  Calcula o Custo do Telefone do Mês corrente
@@ -122,8 +117,8 @@ public class AtualizaRelatorioEventoApoio{
 			idRelatorioParaGiroTelefone = verificaSeRelatorioEventoExiste(relatorio, novoRelatorio);
 			
 			//Custo 
-			CalculoValorTelefone calculaTelefone = new CalculadoraValorTelefone(analiticoDAO,relatorioDAO);
-			custoTelefone = calculaTelefone.calculoValorTelefone(giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
+
+			BigDecimal custoTelefone = CalculadoraTelefone.calculaValorTelefone(analiticoDAO, relatorioDAO,giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
 			
 			novoRelatorio.setCustoTelefone(custoTelefone);
 			
