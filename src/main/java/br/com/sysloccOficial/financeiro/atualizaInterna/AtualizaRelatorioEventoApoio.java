@@ -1,27 +1,20 @@
 package br.com.sysloccOficial.financeiro.atualizaInterna;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.daos.GrupoDAO;
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
-import br.com.sysloccOficial.financeiro.funcionario.cacheCalculos.CacheDiretoriaSTelefone;
-import br.com.sysloccOficial.financeiro.funcionario.cacheCalculos.CacheFuncionarioSTelefone;
-import br.com.sysloccOficial.financeiro.funcionario.cacheCalculos.CacheFuncionarios;
 import br.com.sysloccOficial.financeiro.funcionario.cacheCalculos.CalculadoraCachesTotais;
 import br.com.sysloccOficial.financeiro.relatorioeventos.CacheDoEventoApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioBVS;
@@ -30,9 +23,7 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculocache.CalculadoraCaches;
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculogiro.CalculadoraGiro;
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculoimposto.CalculadoraImposto;
-import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculaValorTelefone;
 import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculadoraTelefone;
-import br.com.sysloccOficial.financeiro.relatorioeventos.calculotelefone.CalculoValorTelefone;
 import br.com.sysloccOficial.financeiro.relatorioeventos.totalDiferencaTelefone.CalculadoraDiferencaTelefone;
 import br.com.sysloccOficial.financeiro.relatorioeventos.totalPagarFornecedores.CalculadoraTotalPagarFornecedores;
 import br.com.sysloccOficial.model.CachePadrao;
@@ -119,7 +110,7 @@ public class AtualizaRelatorioEventoApoio{
 			// --- Verifica se Relatório existe
 			 
 			Integer idRelatorioParaGiroTelefone = null;
-			idRelatorioParaGiroTelefone = verificaSeRelatorioEventoExiste(relatorio, novoRelatorio);
+			idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelaStorioEventoExiste(relatorio, novoRelatorio);
 			
 			//Custo 
 
@@ -176,10 +167,8 @@ public class AtualizaRelatorioEventoApoio{
 
 			manager.persist(novoGiro);
 			
-			
 // ------------------ > SALVA CACHE DO EVENTO 			
 			relatorioDAO.salvaCacheDoEvento(novoRelatorio);
-			
 			
 		}else{
 			novoRelatorio.setIdRelatorioEvento(relatorio.getIdRelatorioEvento());
@@ -201,16 +190,5 @@ public class AtualizaRelatorioEventoApoio{
 			
 		}
 		
-	}
-
-	private Integer verificaSeRelaStorioEventoExiste(RelatorioEventos relatorio, RelatorioEventos novoRelatorio) {
-		Integer idRelatorioParaGiroTelefone;
-
-		if(relatorio == null){
-			idRelatorioParaGiroTelefone = novoRelatorio.getIdRelatorioEvento();
-		}else{
-			idRelatorioParaGiroTelefone = relatorio.getIdRelatorioEvento();
-		}
-		return idRelatorioParaGiroTelefone;
 	}
 }
