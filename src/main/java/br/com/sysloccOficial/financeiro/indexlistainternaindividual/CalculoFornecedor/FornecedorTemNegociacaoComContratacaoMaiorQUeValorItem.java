@@ -20,20 +20,25 @@ public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements C
 	@Override
 	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
 		
-		int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
 		
- 		if(verifica == 1){
-			
-			BigDecimal valorFinal =   producaoP.getValorContratacao();
-
-			producaoP.setValorFornecedor(valorFinal);
-			
-			producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
-			
-			return valorFinal;
-		}else{
+		if(producaoP.isTemContratacao() == false){
 			return proximo.calculaValorFornecedor(producaoP);
-		}
+		}else{
+				int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
+				
+		 		if(verifica == 1){
+					
+					BigDecimal valorFinal =   producaoP.getValorContratacao();
+		
+					producaoP.setValorFornecedor(valorFinal);
+					
+					producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
+					
+					return valorFinal;
+				}else{
+					return proximo.calculaValorFornecedor(producaoP);
+				}
+		}	
 	}
 
 	@Override

@@ -11,22 +11,27 @@ public class FornecedorTemNegociacaoComContratacaoMenorQUeValorItem implements C
 	@Override
 	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
 		
-		int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
-		
-		if(verifica == -1){
-			
-			CalculaImpostoValorFornecedor calculaValorFornecedor = 
-				new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao());
-			
-			BigDecimal valorFinal = calculaValorFornecedor.calculaImpostoValorFornecedor();
-			producaoP.setValorFornecedor(valorFinal);
-			
-			producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
-			
-			return valorFinal;
-		}else{
+
+		if(producaoP.isTemContratacao() == false){
 			return proximo.calculaValorFornecedor(producaoP);
-		}
+		}else{
+			 int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
+			
+			if(verifica == -1){
+				
+				CalculaImpostoValorFornecedor calculaValorFornecedor = 
+					new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao());
+				
+				BigDecimal valorFinal = calculaValorFornecedor.calculaImpostoValorFornecedor();
+				producaoP.setValorFornecedor(valorFinal);
+				
+				producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
+				
+				return valorFinal;
+			}else{
+				return proximo.calculaValorFornecedor(producaoP);
+			}
+		}	
 	}
 
 	@Override

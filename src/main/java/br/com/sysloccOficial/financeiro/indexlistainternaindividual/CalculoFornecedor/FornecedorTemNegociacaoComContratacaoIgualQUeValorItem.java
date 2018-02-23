@@ -11,17 +11,21 @@ public class FornecedorTemNegociacaoComContratacaoIgualQUeValorItem implements
 	
 	@Override
 	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
-		
-		int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
-		
-		if(verifica == 0){
-			BigDecimal valorFinal = producaoP.getValorItem();
-			producaoP.setValorFornecedor(valorFinal);
-			return valorFinal;
-			
-		}else{
+
+		if(producaoP.isTemContratacao() == false){
 			return proximo.calculaValorFornecedor(producaoP);
-		}
+		}else{
+		
+			int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
+			if(verifica == 0){
+				BigDecimal valorFinal = producaoP.getValorItem();
+				producaoP.setValorFornecedor(valorFinal);
+				return valorFinal;
+				
+			}else{
+				return proximo.calculaValorFornecedor(producaoP);
+			}
+		}	
 	}
 
 	@Override
