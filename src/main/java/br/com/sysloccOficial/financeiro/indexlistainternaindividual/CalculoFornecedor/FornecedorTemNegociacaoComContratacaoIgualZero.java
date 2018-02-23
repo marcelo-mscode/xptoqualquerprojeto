@@ -4,33 +4,24 @@ import java.math.BigDecimal;
 
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
-/*  Obs compareTo:
- * 
- *  -1 menor que
- *   0 igual a 
- *   1 maior que
- *  
- *  */
-
-public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements CalculoFornecedorInterna {
+public class FornecedorTemNegociacaoComContratacaoIgualZero implements CalculoFornecedorInterna {
 
 	private CalculoFornecedorInterna proximo;
-
-
+	
 	@Override
 	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
 		
-		int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
+		/*BigDecimal valorFinal = producaoP.getValorItem();
+		producaoP.setValorFornecedor(valorFinal);
+		return valorFinal;*/
 		
- 		if(verifica == 1){
-			
-			BigDecimal valorFinal =   producaoP.getValorContratacao();
-
+		//int verifica = producaoP.getValorContratacao().equals(new BigDecimal("0.00")));
+		
+		if(producaoP.getValorContratacao().equals(new BigDecimal("0.00"))){
+			BigDecimal valorFinal = producaoP.getValorItem();
 			producaoP.setValorFornecedor(valorFinal);
-			
-			producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
-			
 			return valorFinal;
+			
 		}else{
 			return proximo.calculaValorFornecedor(producaoP);
 		}
@@ -41,9 +32,10 @@ public class FornecedorTemNegociacaoComContratacaoMaiorQUeValorItem implements C
 		BigDecimal valorDiferencaCalculado = producaoP.getValorItem().subtract(producaoP.getValorFornecedor());
 		return valorDiferencaCalculado;
 	}
-	
+
 	@Override
 	public void setProximo(CalculoFornecedorInterna proximo) {
 		this.proximo = proximo;
 	}
+
 }

@@ -11,11 +11,7 @@ public class FornecedorTemNegociacaoComContratacaoMenorQUeValorItem implements C
 	@Override
 	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
 		
-
-		if(producaoP.isTemContratacao() == false){
-			return proximo.calculaValorFornecedor(producaoP);
-		}else{
-			 int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
+			int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
 			
 			if(verifica == -1){
 				
@@ -31,7 +27,7 @@ public class FornecedorTemNegociacaoComContratacaoMenorQUeValorItem implements C
 			}else{
 				return proximo.calculaValorFornecedor(producaoP);
 			}
-		}	
+			
 	}
 
 	@Override
