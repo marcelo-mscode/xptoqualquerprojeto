@@ -2,6 +2,8 @@ package br.com.sysloccOficial.financeiro.indexlistainternaindividual.CalculoForn
 
 import java.math.BigDecimal;
 
+import javax.swing.JOptionPane;
+
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
 public class FornecedorTemNegociacaoComContratacaoMenorQUeValorItem implements CalculoFornecedorInterna {
@@ -13,7 +15,10 @@ public class FornecedorTemNegociacaoComContratacaoMenorQUeValorItem implements C
 		
 			int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
 			
-			if(verifica == -1){
+			
+			JOptionPane.showMessageDialog(null, "Valor: "+ producaoP.getValorContratacao());
+			
+			if(verifica == -1 && producaoP.isTemContratacao() == true){
 				
 				CalculaImpostoValorFornecedor calculaValorFornecedor = 
 					new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao());
