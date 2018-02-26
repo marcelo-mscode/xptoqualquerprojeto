@@ -2,6 +2,8 @@ package br.com.sysloccOficial.financeiro.indexlistainternaindividual.CalculoForn
 
 import java.math.BigDecimal;
 
+import javax.swing.JOptionPane;
+
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
 public class FornecedorTemNegociacaoComContratacaoIgualZero implements CalculoFornecedorInterna {
@@ -18,7 +20,10 @@ public class FornecedorTemNegociacaoComContratacaoIgualZero implements CalculoFo
 		boolean verifica = producaoP.getValorContratacao().equals(new BigDecimal("0.00"));
 		
 		if(verifica == true && producaoP.isTemContratacao() == false){
-			BigDecimal valorFinal = producaoP.getValorItem();
+			
+			JOptionPane.showMessageDialog(null, "Valor: "+ producaoP.getValorContratacao());
+			
+			BigDecimal valorFinal =  producaoP.getValorItem().subtract(producaoP.getValorContratacao());
 			producaoP.setValorFornecedor(valorFinal);
 			return valorFinal;
 			

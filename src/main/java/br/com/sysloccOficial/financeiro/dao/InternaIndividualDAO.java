@@ -118,8 +118,10 @@ public class InternaIndividualDAO {
 		BigDecimal zero = new BigDecimal("0.00");
 		
 		BigDecimal valorCont = new BigDecimal(util.formataValores(valor));
+		
+		producao.setTemContratacao(true);
 			
-		System.out.println(valorCont);
+//		System.out.println(valorCont);
 		
 		if(valorCont.equals(zero)){
 			producao.setValorContratacao(zero);

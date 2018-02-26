@@ -2482,7 +2482,7 @@ function valorF(action, idProducao) {
 		alert("Digite um valor");
 		return null;
 	}
-	
+
 	$.ajax({
 		url : action+"?valor="+valor+"&idProducao="+idProducao,
 		success : function(data) {

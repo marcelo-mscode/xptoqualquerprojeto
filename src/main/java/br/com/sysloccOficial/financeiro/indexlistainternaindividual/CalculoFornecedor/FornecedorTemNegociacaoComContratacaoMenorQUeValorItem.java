@@ -15,10 +15,7 @@ public class FornecedorTemNegociacaoComContratacaoMenorQUeValorItem implements C
 		
 			int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
 			
-			
-			JOptionPane.showMessageDialog(null, "Valor: "+ producaoP.getValorContratacao());
-			
-			if(verifica == -1 && producaoP.isTemContratacao() == true){
+			if(verifica == -1 && producaoP.getValorContratacao() != new BigDecimal("0.00")){
 				
 				CalculaImpostoValorFornecedor calculaValorFornecedor = 
 					new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao());
