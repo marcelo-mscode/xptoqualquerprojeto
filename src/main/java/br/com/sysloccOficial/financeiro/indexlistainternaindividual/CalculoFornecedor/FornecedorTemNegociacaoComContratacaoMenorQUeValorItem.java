@@ -13,7 +13,7 @@ public class FornecedorTemNegociacaoComContratacaoMenorQUeValorItem implements C
 	@Override
 	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
 		
-			BigDecimal zero = new BigDecimal("0.00");
+			boolean zero = producaoP.getValorContratacao().compareTo(BigDecimal.ZERO) <= 0;
 		
 		
 			int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
@@ -21,7 +21,7 @@ public class FornecedorTemNegociacaoComContratacaoMenorQUeValorItem implements C
 			
 			System.out.println(producaoP.getValorContratacao());
 			
-			if(verifica == -1 && producaoP.getValorContratacao() != zero){
+			if(verifica == -1 && zero != true){
 				
 				CalculaImpostoValorFornecedor calculaValorFornecedor = 
 					new CalculadoraImpostoValorFornecedor(producaoP.getValorItem(),producaoP.getImposto(),producaoP.getValorContratacao());
