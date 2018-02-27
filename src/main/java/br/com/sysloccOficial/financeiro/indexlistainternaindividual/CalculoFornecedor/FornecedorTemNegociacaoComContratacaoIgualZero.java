@@ -21,7 +21,7 @@ public class FornecedorTemNegociacaoComContratacaoIgualZero implements CalculoFo
 		
 		if(verifica == true && producaoP.isTemContratacao() == false){
 			
-			JOptionPane.showMessageDialog(null, "Valor: "+ producaoP.getValorContratacao());
+		//	JOptionPane.showMessageDialog(null, "Valor: "+ producaoP.getValorContratacao());
 			
 			BigDecimal valorFinal =  producaoP.getValorItem().subtract(producaoP.getValorContratacao());
 			producaoP.setValorFornecedor(valorFinal);
