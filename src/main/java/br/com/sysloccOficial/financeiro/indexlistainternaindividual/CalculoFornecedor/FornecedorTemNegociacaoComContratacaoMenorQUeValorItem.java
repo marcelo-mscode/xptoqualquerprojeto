@@ -15,11 +15,7 @@ public class FornecedorTemNegociacaoComContratacaoMenorQUeValorItem implements C
 		
 			boolean zero = producaoP.getValorContratacao().compareTo(BigDecimal.ZERO) <= 0;
 		
-		
 			int verifica = producaoP.getValorContratacao().compareTo(producaoP.getValorItem());
-			
-			
-			System.out.println(producaoP.getValorContratacao());
 			
 			if(verifica == -1 && zero != true){
 				

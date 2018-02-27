@@ -758,4 +758,10 @@ public Integer novoCodJob(){
 		return formulaInicial;
 	}
 	
+	public static int comparaBigDecimal (BigDecimal um, BigDecimal dois){
+		return um.compareTo(dois);
+	}
+	
+	
+	
 }
