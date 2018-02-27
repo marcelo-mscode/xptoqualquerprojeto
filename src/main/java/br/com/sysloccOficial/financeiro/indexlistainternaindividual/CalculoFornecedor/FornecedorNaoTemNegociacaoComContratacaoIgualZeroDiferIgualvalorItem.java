@@ -16,12 +16,12 @@ public class FornecedorNaoTemNegociacaoComContratacaoIgualZeroDiferIgualvalorIte
 		
 		if(verificaContratacao == true && producaoP.isTemContratacao() == false && diferencaIgualItem == 0 ){
 			
-			BigDecimal valorFinal = producaoP.getValorItem();
-			producaoP.setValorFornecedor(valorFinal);
+			BigDecimal valorFornecedor = new BigDecimal("0.00");
+			producaoP.setValorFornecedor(valorFornecedor);
 			
 			producaoP.setDiferencaParaLocco(calculaDiferenca(producaoP));
 			
-			return valorFinal;
+			return valorFornecedor;
 		}else{
 			return proximo.calculaValorFornecedor(producaoP);
 		}
@@ -29,7 +29,7 @@ public class FornecedorNaoTemNegociacaoComContratacaoIgualZeroDiferIgualvalorIte
 
 	@Override
 	public BigDecimal calculaDiferenca(ProducaoP producaoP) {
-		BigDecimal valorDiferencaCalculado = new BigDecimal("0.00");
+		BigDecimal valorDiferencaCalculado = producaoP.getValorItem();
 		return valorDiferencaCalculado;
 	}
 
