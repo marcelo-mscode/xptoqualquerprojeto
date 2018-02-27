@@ -4,19 +4,17 @@ import java.math.BigDecimal;
 
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
-public class FornecedorNaoTemNegociacaoComContratacaoIgualZero implements CalculoFornecedorInterna {
+public class FornecedorNaoTemNegociacaoComContratacaoIgualZeroDiferIgualvalorItem
+		implements CalculoFornecedorInterna {
 
 	private CalculoFornecedorInterna proximo;
 	
 	@Override
 	public BigDecimal calculaValorFornecedor(ProducaoP producaoP) {
-
 		boolean verificaContratacao = producaoP.getValorContratacao().equals(new BigDecimal("0.00"));
-		boolean diferencaIgualZero = producaoP.getDiferenca().equals(new BigDecimal("0.00"));
+		int diferencaIgualItem = producaoP.getDiferenca().compareTo(producaoP.getValorItem());
 		
-		
-		
-		if(verificaContratacao == true && diferencaIgualZero == true && producaoP.isTemContratacao() == false){
+		if(verificaContratacao == true && producaoP.isTemContratacao() == false && diferencaIgualItem == 0 ){
 			
 			BigDecimal valorFinal = producaoP.getValorItem();
 			producaoP.setValorFornecedor(valorFinal);
