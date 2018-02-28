@@ -488,11 +488,12 @@ public class RelatorioEventoDAO {
 	}
 	
 	
-	public void atualizaCacheEvento(Integer idRelatorio, Integer idCachePadrao, String novoValorCache){
+	public void atualizaCacheEvento(Integer idRelatorio, Integer idCachePadrao, String novaPorcentagemCache){
 		
 		
-		System.out.println(idRelatorio);
-		System.out.println(idCachePadrao);
+		/*System.out.println(idRelatorio);
+		System.out.println(idCachePadrao);*/
+		//System.out.println(novaPorcentagemCache);
 		
 		
 		String consulta = "from CacheEvento where relatorioEvento = "+idRelatorio+" and cachePadrao = "+idCachePadrao;
@@ -500,15 +501,15 @@ public class RelatorioEventoDAO {
 		
 		CacheEvento cache = q.getSingleResult();
 		
-		BigDecimal rz = new BigDecimal(novoValorCache);
+		BigDecimal porcentatemNova = new BigDecimal(novaPorcentagemCache);
 		
-		cache.setRazaoPorcentagem(rz.divide(new BigDecimal("100"),12,RoundingMode.UP));
+		cache.setRazaoPorcentagem(porcentatemNova.divide(new BigDecimal("100"),12,RoundingMode.UP));
 
-		
 		manager.merge(cache);
 		manager.flush();
 		
-		System.out.println(rz);
+
+		System.out.println(porcentatemNova);
 		
 	}
 	
