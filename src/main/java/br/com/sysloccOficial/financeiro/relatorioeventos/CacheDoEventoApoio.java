@@ -32,22 +32,22 @@ public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 			// Se tiver o relatorio 
 			if(id != null){
 
-			List<CacheEvento> listaCaches = pegaCacheExistenteDoRelatorio(id);
-			// Verificar se tem cacheEvento desse relatorio
-				
-				// Se não tiver
-				// Pega Cache Padrão
-				if(listaCaches.isEmpty()){
+				List<CacheEvento> listaCaches = pegaCacheExistenteDoRelatorio(id);
+				// Verificar se tem cacheEvento desse relatorio
 					
-					return pegaCachePadrao();
+					// Se não tiver
+					// Pega Cache Padrão
+					if(listaCaches.isEmpty()){
+						
+						return pegaCachePadrao();
+						
+					// Se tiver
+					// Se tiver pega caches do evento	
+					}else{
+						
+						return preencheListaCacheComCacheRelatorioEventoExistente(listaCaches);
 					
-				// Se tiver
-				// Se tiver pega caches do evento	
-				}else{
-					
-					return preencheListaCacheComCacheRelatorioEventoExistente(listaCaches);
-				
-				}
+					}
 				
 			}else{
 				
