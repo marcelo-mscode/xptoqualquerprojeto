@@ -60,25 +60,30 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 		
 		relatorioEventoDAO.atualizaCacheEvento(idRelatorio, idCachePadrao, novoValorCache);
 		
-		 ArrayList<String> datas =  relatorioDAO.dataRelatoriosEventosCadastrados(idLista);
-		 String mes = datas.get(1).toUpperCase().toString();
-		 String ano = datas.get(2).toUpperCase().toString();
-		 
-	
-		 //Verifica se tem algum relatório ja cadastrado no sistema
-		 LinkedHashSet<Integer> listaIdsRelatoriosEventosCadastrados = relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano);
-
-		 if(listaIdsRelatoriosEventosCadastrados.isEmpty()){
-			 Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
-			 relatorioApoio.montaObjetoRelatorio(idLista,infoLista,mes,ano);
-		 }else{
-			 /**
-			  * 
-			  * Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
-			  */
-			 atualizaInternaRelatoriosEventosEmMassa(listaIdsRelatoriosEventosCadastrados);
-		 }
+		int contador = 2;
 		
+		for (int i = 0; i < contador; i++) {
+			
+			 ArrayList<String> datas =  relatorioDAO.dataRelatoriosEventosCadastrados(idLista);
+			 String mes = datas.get(1).toUpperCase().toString();
+			 String ano = datas.get(2).toUpperCase().toString();
+		
+			 //Verifica se tem algum relatório ja cadastrado no sistema
+			 LinkedHashSet<Integer> listaIdsRelatoriosEventosCadastrados = relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano);
+	
+			 if(listaIdsRelatoriosEventosCadastrados.isEmpty()){
+				 Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
+				 relatorioApoio.montaObjetoRelatorio(idLista,infoLista,mes,ano);
+			 }else{
+				 /**
+				  * 
+				  * Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
+				  */
+				 atualizaInternaRelatoriosEventosEmMassa(listaIdsRelatoriosEventosCadastrados);
+			 }
+		}
+		 
+		 
 		 return "redirect:relatorioEventoIndividual?idLista="+idLista;
 	}
 	

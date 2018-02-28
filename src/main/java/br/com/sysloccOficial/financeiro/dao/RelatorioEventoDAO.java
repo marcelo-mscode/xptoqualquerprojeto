@@ -245,35 +245,6 @@ public class RelatorioEventoDAO {
 		return caches;
 	}
 	
-	/*public BigDecimal calculaTotalCachesFuncionarios(BigDecimal totalDif, List<CachePadrao> relatorio) {
-		
-		BigDecimal totalCachesFunc = new BigDecimal("0");
-	
-		for (int i = 0; i < relatorio.size(); i++) {
-			if(relatorio.get(i).getTipoCache() == TipoCache.FUNCIONARIO){
-				totalCachesFunc = totalCachesFunc.add(totalDif
-						.multiply(relatorio.get(i).getRazaoPorcentagem()));
-			}
-		}
-		return totalCachesFunc;
-	}*/
-	
-	/*public BigDecimal caculaValorSeDiretoria(List<CachePadrao> relatorio, BigDecimal totalDifCaches, BigDecimal totalCacheFuncionarios) {
-		
-		BigDecimal totalCalculoParaDiretoria = totalDifCaches.subtract(totalCacheFuncionarios);
-		
-		BigDecimal totalCachesDiretoria = new BigDecimal("0");
-		for (int i = 0; i < relatorio.size(); i++) {
-			if(relatorio.get(i).getTipoCache() == TipoCache.DIRETORIA1 || relatorio.get(i).getTipoCache() == TipoCache.DIRETORIA2){
-				totalCachesDiretoria = totalCachesDiretoria.add(totalCalculoParaDiretoria
-						.multiply( new BigDecimal(relatorio.get(i).getPorcentagem())
-						.divide(   new BigDecimal("100"))));
-			}
-		}
-		
-		return totalCachesDiretoria;
-	}*/
-	
 	public BigDecimal somaGirosPorAnoMes(String ano, String mes, Integer idRelatorioAtual){
 		BigDecimal zero = new BigDecimal("0.00");
 		try {
