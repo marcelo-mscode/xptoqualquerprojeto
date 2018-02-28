@@ -33,10 +33,10 @@ public class SalvaCacheDoEvento {
 		
 		// ----------- Porque estou deletando a tabela e criando outra ?
 		
-		TypedQuery<CacheEvento> cacheTeste = manager.createQuery("SELECT c FROM CacheEvento c WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento(), CacheEvento.class);
+	/*	TypedQuery<CacheEvento> cacheTeste = manager.createQuery("SELECT c FROM CacheEvento c WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento(), CacheEvento.class);
 		
 		List<CacheEvento> caches = cacheTeste.getResultList();
-		
+		*/
 		
 		manager.createQuery("DELETE FROM CacheEvento WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento()).executeUpdate();
 		

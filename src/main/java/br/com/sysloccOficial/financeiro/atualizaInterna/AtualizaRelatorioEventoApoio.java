@@ -181,8 +181,8 @@ public class AtualizaRelatorioEventoApoio{
 			manager.merge(giro);
 			
 // ------------------ > SALVA CACHE DO EVENTO 			
-			//relatorioDAO.salvaCacheDoEvento(novoRelatorio);
-			SalvaCacheDoEvento.salvaCacheDoEvento(novoRelatorio);
+			relatorioDAO.salvaCacheDoEvento(novoRelatorio);
+			
 		}
 		
 	}
