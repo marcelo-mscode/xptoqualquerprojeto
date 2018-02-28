@@ -132,7 +132,11 @@ public class AtualizaRelatorioEventoApoio{
 			BigDecimal totalCacheFuncComTelefone = CalculadoraCachesTotais.totalCacheFuncionario(listaRelatorioCaches, totalDiferencaSemTelefone);
 			BigDecimal totalCacheDiretoriaComTelefone = CalculadoraCachesTotais.totalCacheDiretoria(listaRelatorioCaches, totalDiferencaSemTelefone);
 			
+			System.out.println(totalCacheDiretoriaComTelefone);
+			System.out.println(totalCacheFuncComTelefone);
+
 			novoRelatorio.setTotalCachesComTelefone(totalCacheDiretoriaComTelefone.add(totalCacheFuncComTelefone));
+			
 			novoRelatorio.setCacheEquipIn(totalCacheFuncComTelefone);
 
 			//Calcula giro Com telefone
@@ -141,6 +145,9 @@ public class AtualizaRelatorioEventoApoio{
 			// Esse valor agora !!!!!
 					.subtract(novoRelatorio.getPgtoExternas());
 				  //.subtract(novoRelatorio.getPgtoExternas());
+			
+			System.out.println(novoRelatorio.getTotalCachesComTelefone());
+			
 			
 			novoRelatorio.setCacheEquipIn(CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
 			novoRelatorio.setTotalCachesIntExt(CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
