@@ -45,9 +45,9 @@ public class CalculaValorTelefone implements CalculoValorTelefone {
 			
 			// Dividir o giro desse evento pela soma de todos os eventos
 			if(somaGirosEventosMes.equals(validador) || somaGirosEventosMes == null){
-				razaoCalculoTelefone = valorGiroDesseEvento.divide( valorGiroDesseEvento,12,RoundingMode.UP);
+				razaoCalculoTelefone = valorGiroDesseEvento.divide( valorGiroDesseEvento,3,RoundingMode.UP);
 			}else{
-				razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,12,RoundingMode.UP);
+				razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,3,RoundingMode.UP);
 			}
 			
 			// Pegar o resultado e multiplicar pelo valor mensal do telefone
