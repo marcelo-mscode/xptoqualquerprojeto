@@ -58,35 +58,20 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 	@RequestMapping("atualizaCacheRelatorioEvento")
 	public String atualizaCacheRelatorioEvento(Integer idRelatorio, Integer idCachePadrao, String novoValorCache,Integer idLista) throws ParseException{
 		
-		relatorioEventoDAO.atualizaCacheEvento(idRelatorio, idCachePadrao, novoValorCache);
-		
-		int contador = 2;
-		
-		for (int i = 0; i < contador; i++) {
+		    relatorioEventoDAO.atualizaCacheEvento(idRelatorio, idCachePadrao, novoValorCache);
+
 			
 			 ArrayList<String> datas =  relatorioDAO.dataRelatoriosEventosCadastrados(idLista);
 			 String mes = datas.get(1).toUpperCase().toString();
 			 String ano = datas.get(2).toUpperCase().toString();
 		
-			 //Verifica se tem algum relatório ja cadastrado no sistema
-			 LinkedHashSet<Integer> listaIdsRelatoriosEventosCadastrados = relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano);
-	
-			 if(listaIdsRelatoriosEventosCadastrados.isEmpty()){
-				 Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
-				 relatorioApoio.montaObjetoRelatorio(idLista,infoLista,mes,ano);
-			 }else{
-				 /**
-				  * 
-				  * Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
-				  */
-				 atualizaInternaRelatoriosEventosEmMassa(listaIdsRelatoriosEventosCadastrados);
-			 }
-		}
-		 
+			 /**
+			  * 
+			  * Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
+			  */
+			 atualizaInternaRelatoriosEventosEmMassa(relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano));
 		 
 		 return "redirect:relatorioEventoIndividual?idLista="+idLista;
 	}
-	
-	
 	
 }

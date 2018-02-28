@@ -107,7 +107,6 @@ public class AtualizaRelatorioEventoApoio{
 			novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
 			
 //  ------  Calcula o Custo do Telefone do Mês corrente
-			// --- Verifica se Relatório existe
 			 
 			Integer idRelatorioParaGiroTelefone = null;
 			idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelaStorioEventoExiste(relatorio, novoRelatorio);
@@ -127,7 +126,8 @@ public class AtualizaRelatorioEventoApoio{
 													   novoRelatorio.getMargemContribuicao(), custoTelefone);
 
 			novoRelatorio.setTotalDiferenca(totalDiferencaComTelefone);
-			
+
+// -------  Total Cache			
 			novoRelatorio.setCacheEquipIn(CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
 			novoRelatorio.setTotalCachesIntExt(CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
 			
