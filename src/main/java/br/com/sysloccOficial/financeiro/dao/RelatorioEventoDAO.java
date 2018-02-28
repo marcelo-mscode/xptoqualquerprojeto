@@ -490,12 +490,6 @@ public class RelatorioEventoDAO {
 	
 	public void atualizaCacheEvento(Integer idRelatorio, Integer idCachePadrao, String novaPorcentagemCache){
 		
-		
-		/*System.out.println(idRelatorio);
-		System.out.println(idCachePadrao);*/
-		//System.out.println(novaPorcentagemCache);
-		
-		
 		String consulta = "from CacheEvento where relatorioEvento = "+idRelatorio+" and cachePadrao = "+idCachePadrao;
 		TypedQuery<CacheEvento> q = manager.createQuery(consulta, CacheEvento.class);
 		
@@ -507,9 +501,6 @@ public class RelatorioEventoDAO {
 
 		manager.merge(cache);
 		manager.flush();
-		
-
-		System.out.println(porcentatemNova);
 		
 	}
 	
