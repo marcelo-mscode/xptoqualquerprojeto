@@ -497,7 +497,7 @@ public class RelatorioEventoDAO {
 		
 		BigDecimal porcentatemNova = new BigDecimal(novaPorcentagemCache);
 		
-		cache.setRazaoPorcentagem(porcentatemNova.divide(new BigDecimal("100"),12,RoundingMode.UP));
+		cache.setRazaoPorcentagem(porcentatemNova.divide(new BigDecimal("100"),3,RoundingMode.UP));
 
 		manager.merge(cache);
 		manager.flush();

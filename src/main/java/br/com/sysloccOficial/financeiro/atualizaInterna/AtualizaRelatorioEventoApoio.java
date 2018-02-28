@@ -113,7 +113,6 @@ public class AtualizaRelatorioEventoApoio{
 			idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelaStorioEventoExiste(relatorio, novoRelatorio);
 			
 			//Custo 
-
 			BigDecimal custoTelefone = CalculadoraTelefone.calculaValorTelefone(analiticoDAO, relatorioDAO,giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
 			
 			novoRelatorio.setCustoTelefone(custoTelefone);
@@ -129,26 +128,6 @@ public class AtualizaRelatorioEventoApoio{
 
 			novoRelatorio.setTotalDiferenca(totalDiferencaComTelefone);
 			
-			BigDecimal totalCacheFuncComTelefone = CalculadoraCachesTotais.totalCacheFuncionario(listaRelatorioCaches, totalDiferencaSemTelefone);
-			BigDecimal totalCacheDiretoriaComTelefone = CalculadoraCachesTotais.totalCacheDiretoria(listaRelatorioCaches, totalDiferencaSemTelefone);
-			
-			System.out.println(totalCacheDiretoriaComTelefone);
-			System.out.println(totalCacheFuncComTelefone);
-
-			novoRelatorio.setTotalCachesComTelefone(totalCacheDiretoriaComTelefone.add(totalCacheFuncComTelefone));
-			
-			novoRelatorio.setCacheEquipIn(totalCacheFuncComTelefone);
-
-			//Calcula giro Com telefone
-			BigDecimal giroComTelefone = novoRelatorio.getValorLiquido()
-					.subtract(novoRelatorio.getTotalCachesComTelefone())
-			// Esse valor agora !!!!!
-					.subtract(novoRelatorio.getPgtoExternas());
-				  //.subtract(novoRelatorio.getPgtoExternas());
-			
-			System.out.println(novoRelatorio.getTotalCachesComTelefone());
-			
-			
 			novoRelatorio.setCacheEquipIn(CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
 			novoRelatorio.setTotalCachesIntExt(CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
 			
@@ -159,7 +138,12 @@ public class AtualizaRelatorioEventoApoio{
 					novoRelatorio.getTotalDiferenca().subtract(novoRelatorio.getTotalCachesIntExt()));
 			
 			novoRelatorio.setTotalCache(novoRelatorio.getDiretoria1().add(novoRelatorio.getDiretoria2().add(novoRelatorio.getTotalCachesIntExt())));
+			novoRelatorio.setTotalCachesComTelefone(novoRelatorio.getCacheEquipIn().add(novoRelatorio.getDiretoria1().add(novoRelatorio.getDiretoria2())));
 			
+			//Calcula giro Com telefone
+			BigDecimal giroComTelefone = novoRelatorio.getValorLiquido()
+									    .subtract(novoRelatorio.getTotalCachesComTelefone())
+					                    .subtract(novoRelatorio.getPgtoExternas());
 			
 		if(relatorio == null){	
 		
