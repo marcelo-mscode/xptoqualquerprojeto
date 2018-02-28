@@ -4,17 +4,21 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.daos.GrupoDAO;
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
+import br.com.sysloccOficial.financeiro.dao.SalvaCacheDoEvento;
 import br.com.sysloccOficial.financeiro.funcionario.cacheCalculos.CalculadoraCachesTotais;
 import br.com.sysloccOficial.financeiro.relatorioeventos.CacheDoEventoApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioBVS;
@@ -177,8 +181,8 @@ public class AtualizaRelatorioEventoApoio{
 			manager.merge(giro);
 			
 // ------------------ > SALVA CACHE DO EVENTO 			
-			relatorioDAO.salvaCacheDoEvento(novoRelatorio);
-			
+			//relatorioDAO.salvaCacheDoEvento(novoRelatorio);
+			SalvaCacheDoEvento.salvaCacheDoEvento(novoRelatorio);
 		}
 		
 	}
