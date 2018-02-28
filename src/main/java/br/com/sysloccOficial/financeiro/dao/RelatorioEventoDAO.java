@@ -490,6 +490,11 @@ public class RelatorioEventoDAO {
 	
 	public void atualizaCacheEvento(Integer idRelatorio, Integer idCachePadrao, String novoValorCache){
 		
+		
+		System.out.println(idRelatorio);
+		System.out.println(idCachePadrao);
+		
+		
 		String consulta = "from CacheEvento where relatorioEvento = "+idRelatorio+" and cachePadrao = "+idCachePadrao;
 		TypedQuery<CacheEvento> q = manager.createQuery(consulta, CacheEvento.class);
 		
