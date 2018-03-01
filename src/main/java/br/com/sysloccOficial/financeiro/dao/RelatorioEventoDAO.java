@@ -268,12 +268,12 @@ public class RelatorioEventoDAO {
 	public void salvaCacheDoEvento(RelatorioEventos relatorioEvento){
 		
 		
-		TypedQuery<CacheEvento> cacheTeste = manager.createQuery("SELECT c FROM CacheEvento c WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento(), CacheEvento.class);
+	/*	TypedQuery<CacheEvento> cacheTeste = manager.createQuery("SELECT c FROM CacheEvento c WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento(), CacheEvento.class);
 		
 		List<CacheEvento> caches = cacheTeste.getResultList();
 		
 		
-		
+		*/
 		
 		
 		
