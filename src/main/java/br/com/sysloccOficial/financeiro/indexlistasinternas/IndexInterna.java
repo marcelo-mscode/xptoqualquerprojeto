@@ -24,15 +24,4 @@ public class IndexInterna {
 		return MV;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

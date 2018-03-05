@@ -21,7 +21,8 @@ public class InternaListasDAO {
 	public List<Lista> listasInternasComItensFechados() {
 		try {
 		
-			TypedQuery<Integer> q = manager.createQuery("select distinct(p.lista.idLista) from ProducaoP p where idlista <> 1932 and dataConsolidado > '2018-01-01 00:00:00'",Integer.class);
+			//TypedQuery<Integer> q = manager.createQuery("select distinct(p.lista.idLista) from ProducaoP p where idlista <> 1932 and dataConsolidado > '2018-01-01 00:00:00'",Integer.class);
+			TypedQuery<Integer> q = manager.createQuery("select distinct(p.lista.idLista) from ProducaoP p where p.lista.dataDoEvento > '2018-01-01 00:00:00'",Integer.class);
 			List<Integer> ids = q.getResultList();
 			
 			String consulta = "select l from Lista l where idLista in ("+ids+") order by dataDoEvento desc";
