@@ -53,9 +53,6 @@ public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 				
 				return pegaCachePadrao();
 			}
-		
-			
-			
 			
 		} catch (Exception e) {
 			System.out.println("Erro ao pegar cache Evento:" + e);
@@ -88,6 +85,8 @@ public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 		for (int i = 0; i < listaCaches.size(); i++) {
 			
 			CachePadrao transfCache = new CachePadrao();
+			
+			System.out.println(listaCaches.get(i).getCachePadrao().getNomeFunc());
 			
 			
 			transfCache.setHabilitado(true);
