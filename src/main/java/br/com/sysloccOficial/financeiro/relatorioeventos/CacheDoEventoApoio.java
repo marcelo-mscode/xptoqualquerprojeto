@@ -24,7 +24,7 @@ public class CacheDoEventoApoio {
 	@PersistenceContext	private EntityManager manager;
 	
 	
-	public List<CachePadrao> listaRelatorioCaches(Integer idLista, RelatorioEventos relatorioEvento){
+	public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 		
 		try {
 			// Verificar se tem relatorio evento
@@ -51,11 +51,7 @@ public class CacheDoEventoApoio {
 					}
 				
 			}else{
-				
-				MontaCacheEvento.salvaCache(relatorioEvento);
-				
-				pegaCachePadrao();
-				
+
 				return pegaCachePadrao();
 			}
 			

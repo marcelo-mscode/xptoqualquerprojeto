@@ -277,7 +277,7 @@ public class RelatorioEventoDAO {
 		//manager.clear();
 		
 		
-		List<CachePadrao> cachePadrao =  cacheEvento.listaRelatorioCaches(relatorioEvento.getIdLista(), relatorioEvento);
+		List<CachePadrao> cachePadrao =  cacheEvento.listaRelatorioCaches(relatorioEvento.getIdLista());
 		
 		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
 
