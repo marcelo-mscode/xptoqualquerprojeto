@@ -11,13 +11,11 @@ import br.com.sysloccOficial.model.RelatorioEventos;
 public class SalvaCache implements SalvaAtualizaCache {
 
 	@Override
-	public void salva(RelatorioEventos relatorioEvento, List<CachePadrao> cachePadrao) {
+	public void salva(RelatorioEventos relatorioEvento, CachePadrao cachePadrao) {
 		
 		
 		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
-
 		
-		for (int i = 0; i < cachePadrao.size(); i++) {
 				
 				CacheEvento novoCacheEvento = new CacheEvento();
 				

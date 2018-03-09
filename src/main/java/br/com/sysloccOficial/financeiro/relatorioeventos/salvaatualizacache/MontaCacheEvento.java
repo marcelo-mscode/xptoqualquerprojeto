@@ -1,20 +1,24 @@
 package br.com.sysloccOficial.financeiro.relatorioeventos.salvaatualizacache;
 
+import java.util.List;
+
+import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
 public class MontaCacheEvento {
 	
 	
-	public static void salvaCache(RelatorioEventos relatorioEvento){
+	public static CachePadrao salvaCache(RelatorioEventos relatorioEvento, CachePadrao listaCachePadrao){
 		SalvaAtualizaCache salva = new SalvaCache();
-		salva.salva(relatorioEvento);
+
+		return salva.salva(relatorioEvento,listaCachePadrao);
 		
 	}
 
 	public static void atualizaCache(RelatorioEventos relatorioEvento){
 
 		SalvaAtualizaCache atualiza = new AtualizaCache();
-		atualiza.salva(relatorioEvento);
+		atualiza.atualiza(relatorioEvento);
 		
 	}
 	

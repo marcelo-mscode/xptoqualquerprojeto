@@ -8,7 +8,7 @@ import br.com.sysloccOficial.model.RelatorioEventos;
 public class AtualizaCache implements SalvaAtualizaCache {
 
 	@Override
-	public void salva(RelatorioEventos relatorioEvento, List<CachePadrao> cachePadrao) {
+	public void salva(RelatorioEventos relatorioEvento, CachePadrao cachePadrao) {
 		// TODO Auto-generated method stub
 
 	}

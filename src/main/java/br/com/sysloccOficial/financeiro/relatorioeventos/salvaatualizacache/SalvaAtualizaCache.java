@@ -6,6 +6,6 @@ import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
 public interface SalvaAtualizaCache {
-	public void salva(RelatorioEventos relatorioEvento, List<CachePadrao> cachePadrao);
+	public void salva(RelatorioEventos relatorioEvento, CachePadrao cachePadrao);
 	public void atualiza(RelatorioEventos relatorioEvento);
 }
