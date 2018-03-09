@@ -265,6 +265,17 @@ public class RelatorioEventoDAO {
 		}
 	}
 	
+	
+	
+	public void salvaAtualizaCacheDoEvento(RelatorioEventos relatorioEvento){
+		
+		List<CachePadrao> cachePadrao =  cacheEvento.listaRelatorioCaches(relatorioEvento.getIdLista());
+		
+	}
+	
+	
+	
+	
 	public void salvaCacheDoEvento(RelatorioEventos relatorioEvento){
 		
 		
@@ -305,6 +316,17 @@ public class RelatorioEventoDAO {
 	
 	}
 
+	
+	public void atualizaCacheDoEvento(RelatorioEventos relatorioEvento){
+		
+
+	}
+	
+	
+	
+	
+	
+	
 	public List<String> listaAnoRelatorioEventos(){
 		try {
 			String ano ="SELECT distinct(anoEvento) FROM RelatorioEventos order by anoEvento desc";

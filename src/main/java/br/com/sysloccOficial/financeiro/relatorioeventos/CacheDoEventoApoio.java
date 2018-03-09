@@ -22,10 +22,9 @@ public class CacheDoEventoApoio {
 	@PersistenceContext	private EntityManager manager;
 	
 	
-public List<CachePadrao> listaRelatorioCaches(Integer idLista){
+	public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 		
 		try {
-			
 			// Verificar se tem relatorio evento
 			Integer id = verificaSeTemRelatorioEventoPorIdLista(idLista);
 			
@@ -111,11 +110,5 @@ public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 
 		return q.getResultList();
 	}
-	
-	
-	
-	
-	
-	
 
 }
