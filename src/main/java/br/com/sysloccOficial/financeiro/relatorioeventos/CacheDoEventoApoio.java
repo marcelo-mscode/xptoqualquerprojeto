@@ -106,7 +106,7 @@ public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 	}
 	
 	private List<CachePadrao> pegaCachePadrao() {
-		String consulta = "from CachePadrao order by idCachePadrao";
+		String consulta = "from CachePadrao where habilitado = 1 order by idCachePadrao";
 		TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
 
 		return q.getResultList();
