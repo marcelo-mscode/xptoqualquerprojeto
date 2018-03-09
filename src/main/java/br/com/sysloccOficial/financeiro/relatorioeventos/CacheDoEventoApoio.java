@@ -51,7 +51,6 @@ public class CacheDoEventoApoio {
 					}
 				
 			}else{
-
 				return pegaCachePadrao();
 			}
 			

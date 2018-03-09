@@ -272,14 +272,19 @@ public class RelatorioEventoDAO {
 		List<CacheEvento> caches = cacheTeste.getResultList();
 		*/
 		
-		
+		/*
 		manager.createQuery("DELETE FROM CacheEvento WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento()).executeUpdate();
-		manager.clear();
+		manager.clear();*/
 		
 		
 		List<CachePadrao> cachePadrao =  cacheEvento.listaRelatorioCaches(relatorioEvento.getIdLista());
 		
-		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
+		
+		
+		
+		
+		
+		/*BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
 
 		
 		for (int i = 0; i < cachePadrao.size(); i++) {
@@ -301,7 +306,7 @@ public class RelatorioEventoDAO {
 					
 					manager.merge(novoCacheEvento);
 				}
-		}
+		}*/
 	
 	}
 

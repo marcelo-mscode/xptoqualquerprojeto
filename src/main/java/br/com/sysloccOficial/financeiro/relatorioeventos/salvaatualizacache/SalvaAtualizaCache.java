@@ -1,11 +1,10 @@
 package br.com.sysloccOficial.financeiro.relatorioeventos.salvaatualizacache;
 
-import java.util.List;
-
+import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
 public interface SalvaAtualizaCache {
-	public void salva(RelatorioEventos relatorioEvento, CachePadrao cachePadrao);
-	public void atualiza(RelatorioEventos relatorioEvento);
+	public CacheEvento salva(RelatorioEventos relatorioEvento, CachePadrao cachePadrao);
+	public CacheEvento atualiza(RelatorioEventos relatorioEvento, CacheEvento cacheParaAtualizar);
 }
