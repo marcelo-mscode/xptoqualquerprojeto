@@ -305,17 +305,6 @@ public class RelatorioEventoDAO {
 	
 	}
 
-	
-	public void atualizaCacheDoEvento(RelatorioEventos relatorioEvento){
-		
-
-	}
-	
-	
-	
-	
-	
-	
 	public List<String> listaAnoRelatorioEventos(){
 		try {
 			String ano ="SELECT distinct(anoEvento) FROM RelatorioEventos order by anoEvento desc";
