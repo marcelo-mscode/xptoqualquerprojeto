@@ -273,7 +273,7 @@ public class RelatorioEventoDAO {
 		*/
 		
 		
-		manager.createQuery("DELETE FROM CacheEvento WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento()).executeUpdate();
+		//manager.createQuery("DELETE FROM CacheEvento WHERE relatorioEvento="+relatorioEvento.getIdRelatorioEvento()).executeUpdate();
 		//manager.clear();
 		
 		

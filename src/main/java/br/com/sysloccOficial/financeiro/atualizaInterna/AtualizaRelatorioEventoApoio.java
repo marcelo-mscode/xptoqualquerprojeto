@@ -163,7 +163,12 @@ public class AtualizaRelatorioEventoApoio{
 			manager.persist(novoGiro);
 			
 // ------------------ > SALVA CACHE DO EVENTO 			
-			relatorioDAO.salvaCacheDoEvento(novoRelatorio);
+			try {
+				relatorioDAO.salvaCacheDoEvento(novoRelatorio);
+			} catch (Exception e) {
+				System.out.println("Deu um erro aqui ao atualizar Cache do Vento");
+			}
+			
 			
 		}else{
 			novoRelatorio.setIdRelatorioEvento(relatorio.getIdRelatorioEvento());
@@ -180,8 +185,12 @@ public class AtualizaRelatorioEventoApoio{
 			giro.setRelatorioEvento(novoRelatorio);
 			manager.merge(giro);
 			
-// ------------------ > SALVA CACHE DO EVENTO 			
-			relatorioDAO.salvaCacheDoEvento(novoRelatorio);
+// ------------------ > SALVA CACHE DO EVENTO 
+			try {
+				relatorioDAO.salvaCacheDoEvento(novoRelatorio);
+			} catch (Exception e) {
+				System.out.println("Deu um erro aqui ao atualizar Cache do Vento");
+			}
 			
 		}
 		
