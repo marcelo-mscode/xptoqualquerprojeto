@@ -11,8 +11,10 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Component;
 
+import br.com.sysloccOficial.financeiro.relatorioeventos.salvaatualizacache.MontaCacheEvento;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
+import br.com.sysloccOficial.model.RelatorioEventos;
 
 @Component
 @Transactional
@@ -22,7 +24,7 @@ public class CacheDoEventoApoio {
 	@PersistenceContext	private EntityManager manager;
 	
 	
-	public List<CachePadrao> listaRelatorioCaches(Integer idLista){
+	public List<CachePadrao> listaRelatorioCaches(Integer idLista,RelatorioEventos relatorioEvento){
 		
 		try {
 			// Verificar se tem relatorio evento
@@ -49,6 +51,10 @@ public class CacheDoEventoApoio {
 					}
 				
 			}else{
+				
+				MontaCacheEvento.salvaCache(relatorioEvento);
+				
+				pegaCachePadrao();
 				
 				return pegaCachePadrao();
 			}

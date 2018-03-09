@@ -265,17 +265,6 @@ public class RelatorioEventoDAO {
 		}
 	}
 	
-	
-	
-	public void salvaAtualizaCacheDoEvento(RelatorioEventos relatorioEvento){
-		
-		List<CachePadrao> cachePadrao =  cacheEvento.listaRelatorioCaches(relatorioEvento.getIdLista());
-		
-	}
-	
-	
-	
-	
 	public void salvaCacheDoEvento(RelatorioEventos relatorioEvento){
 		
 		
@@ -288,7 +277,7 @@ public class RelatorioEventoDAO {
 		//manager.clear();
 		
 		
-		List<CachePadrao> cachePadrao =  cacheEvento.listaRelatorioCaches(relatorioEvento.getIdLista());
+		List<CachePadrao> cachePadrao =  cacheEvento.listaRelatorioCaches(relatorioEvento.getIdLista(), relatorioEvento);
 		
 		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
 
