@@ -72,7 +72,7 @@ public class CacheDoEventoApoio {
 		
 	}
 	
-	private List<CacheEvento> pegaCacheExistenteDoRelatorio(Integer id) {
+	public List<CacheEvento> pegaCacheExistenteDoRelatorio(Integer id) {
 		TypedQuery<CacheEvento> cacheEvento = manager.createQuery("from CacheEvento where relatorioEvento = "+ id, CacheEvento.class);
 		List<CacheEvento> listaCaches = cacheEvento.getResultList();
 		return listaCaches;

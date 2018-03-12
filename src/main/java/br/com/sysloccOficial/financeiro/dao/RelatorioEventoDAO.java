@@ -24,6 +24,7 @@ import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.relatorioeventos.CacheDoEventoApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
+import br.com.sysloccOficial.financeiro.relatorioeventos.salvaatualizacache.MontaCacheEvento;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
 import br.com.sysloccOficial.model.DesIntFinanc;
@@ -264,6 +265,21 @@ public class RelatorioEventoDAO {
 			return zero;
 		}
 	}
+	
+	public void atualizaCacheDoEvento(RelatorioEventos relatorioEvento){
+			
+		List<CacheEvento> listaCachesDoEventoParaAtualizar =  cacheEvento.pegaCacheExistenteDoRelatorio(relatorioEvento.getIdRelatorioEvento());
+		
+		for (int i = 0; i < listaCachesDoEventoParaAtualizar.size(); i++) {
+			
+			MontaCacheEvento.atualizaCache(relatorioEvento, listaCachesDoEventoParaAtualizar.get(i));
+			
+			System.out.println(listaCachesDoEventoParaAtualizar.get(i).getValor());
+		}
+		
+		
+	}
+	
 	
 	public void salvaCacheDoEvento(RelatorioEventos relatorioEvento){
 		

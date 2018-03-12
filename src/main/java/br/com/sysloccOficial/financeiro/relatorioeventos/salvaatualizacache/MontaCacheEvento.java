@@ -11,10 +11,10 @@ public class MontaCacheEvento {
 		return salva.salva(relatorioEvento,listaCachePadrao);
 	}
 
-	public static CacheEvento atualizaCache(RelatorioEventos relatorioEvento, CacheEvento cacheParaAtualizar){
+	public static CacheEvento atualizaCache(RelatorioEventos relatorioEvento, CacheEvento listaCachesDoEventoParaAtualizar){
 
 		SalvaAtualizaCache atualiza = new AtualizaCache();
-		return atualiza.atualiza(relatorioEvento, cacheParaAtualizar);
+		return atualiza.atualiza(relatorioEvento, listaCachesDoEventoParaAtualizar);
 		
 	}
 	
