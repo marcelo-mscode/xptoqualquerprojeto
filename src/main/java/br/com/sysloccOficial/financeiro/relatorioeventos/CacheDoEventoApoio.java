@@ -27,10 +27,9 @@ public class CacheDoEventoApoio {
 	public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 		
 		try {
-			// Verificar se tem relatorio evento
+
 			Integer id = verificaSeTemRelatorioEventoPorIdLista(idLista);
 			
-			// Se tiver o relatorio 
 			if(id != null){
 
 				List<CacheEvento> listaCaches = pegaCacheExistenteDoRelatorio(id);

@@ -63,6 +63,8 @@ public class AtualizaRelatorioEventoApoio{
 			
 			List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
 	
+			
+			// ----- ponto chave
 			List<CachePadrao> listaRelatorioCaches = cacheEvento.listaRelatorioCaches(idLista);
 	
 			RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdLista(idLista);
