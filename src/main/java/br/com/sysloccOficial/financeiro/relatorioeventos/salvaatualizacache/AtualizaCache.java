@@ -14,9 +14,6 @@ public class AtualizaCache implements SalvaAtualizaCache {
 		
 		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
 		
-		System.out.println(cacheParaAtualizar.getCachePadrao().getTipoCache());
-		
-		
 		if(cacheParaAtualizar.getCachePadrao().getTipoCache().equals(TipoCache.FUNCIONARIO)){
 			cacheParaAtualizar.setValor(relatorioEvento.getTotalDiferenca().multiply((cacheParaAtualizar.getRazaoPorcentagem())));
 		}

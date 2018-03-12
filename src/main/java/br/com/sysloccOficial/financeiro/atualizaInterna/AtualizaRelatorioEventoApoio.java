@@ -192,7 +192,7 @@ public class AtualizaRelatorioEventoApoio{
 				//relatorioDAO.salvaCacheDoEvento(novoRelatorio);
 				relatorioDAO.atualizaCacheDoEvento(novoRelatorio);
 			} catch (Exception e) {
-				System.out.println("Deu um erro aqui ao atualizar Cache do Vento");
+				System.out.println("Deu um erro aqui ao atualizar Cache do Evento");
 			}
 			
 		}

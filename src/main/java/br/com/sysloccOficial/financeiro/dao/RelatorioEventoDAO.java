@@ -269,17 +269,12 @@ public class RelatorioEventoDAO {
 	public void atualizaCacheDoEvento(RelatorioEventos relatorioEvento){
 			
 		List<CacheEvento> listaCachesDoEventoParaAtualizar =  cacheEvento.pegaCacheExistenteDoRelatorio(relatorioEvento.getIdRelatorioEvento());
-		
+
 		for (int i = 0; i < listaCachesDoEventoParaAtualizar.size(); i++) {
-			
 			MontaCacheEvento.atualizaCache(relatorioEvento, listaCachesDoEventoParaAtualizar.get(i));
-			
-			System.out.println(listaCachesDoEventoParaAtualizar.get(i).getValor());
+			manager.merge(listaCachesDoEventoParaAtualizar.get(i));
 		}
-		
-		
 	}
-	
 	
 	public void salvaCacheDoEvento(RelatorioEventos relatorioEvento){
 		
