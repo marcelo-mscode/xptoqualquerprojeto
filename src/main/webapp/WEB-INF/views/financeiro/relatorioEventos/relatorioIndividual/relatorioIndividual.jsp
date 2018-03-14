@@ -77,6 +77,8 @@ function mudaCache(idRelatorio, idCachePadrao, idLista){
 		url : "atualizaCacheRelatorioEvento?idRelatorio="+idRelatorio+"&idCachePadrao="+idCachePadrao+"&novoValorCache="+novoValorCache+"&idLista="+idLista,
 		success : function(data) {
 			$("#"+idDivAjax).html(data);
+			
+			
 		}
 	});
 	
