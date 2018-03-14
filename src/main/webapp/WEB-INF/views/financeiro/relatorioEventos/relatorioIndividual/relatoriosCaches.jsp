@@ -37,8 +37,13 @@
 				<td><fmt:formatNumber value="${relatorioCaches.valor}" pattern="#,##0.00"/></td>
 		 	</tr>	
 	 	 </c:forEach>
+  		<tr>
+			<td style="padding: 18px;">sssss</td>
+			<td style="padding: 18px;">ssss</td>
+			<td style="padding: 18px;">sss</td>
+		</tr>
 	 	
-	<c:forEach var="i" begin="1" end="4">
+	<c:forEach var="i" begin="1" end="3">
   		<tr>
 			<td style="padding: 18px;"></td>
 			<td style="padding: 18px;"></td>
