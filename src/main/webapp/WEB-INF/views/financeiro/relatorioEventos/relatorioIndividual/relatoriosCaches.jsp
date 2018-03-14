@@ -37,10 +37,23 @@
 				<td><fmt:formatNumber value="${relatorioCaches.valor}" pattern="#,##0.00"/></td>
 		 	</tr>	
 	 	 </c:forEach>
+	 	 <tr>
+			<td style="padding: 10px;" colspan="3"></td>
+		</tr>	
+	 	 <tr>
+			<td style="padding: 10px;" colspan="3">Novo Cache</td>
+		</tr>	
   		<tr>
-			<td style="padding: 18px;">sssss</td>
-			<td style="padding: 18px;">ssss</td>
-			<td style="padding: 18px;">sss</td>
+			<td style="width: 110px !important;padding: 0;">
+				<select class="form-control" style="border: none;height:35px;">
+					<option>Mônica</option>
+					<option>Arthur</option>
+					<option>Santiago</option>
+				</select>
+			
+			</td>
+			<td style="padding: 0;"><input class="form-control" style="border: none;height:35px;text-align: center" value="20" /></td>
+			<td style="padding: 0;"><a class="btn btn-success" style="border: none;height: 35px;text-align: center;padding: 7px 41px;border-radius: 0;">Salvar</a></td>
 		</tr>
 	 	
 	<c:forEach var="i" begin="1" end="3">
