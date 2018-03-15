@@ -26,7 +26,7 @@
 	 	
 	 	<c:forEach items="${relatorioCaches}" var="relatorioCaches">
 		 	<tr>
-				<td>${relatorioCaches.cachePadrao.nomeFunc}-${relatorio.idRelatorioEvento}</td>
+				<td>${relatorioCaches.cachePadrao.nomeFunc}</td>
 				<td style="padding: 0;margin: 0;text-align: center;">
 					<input type="text" class="ajusteInput"  value="${relatorioCaches.razaoPorcentagem*100}" 
 					
@@ -41,19 +41,19 @@
 			<td style="padding: 10px;" colspan="3"></td>
 		</tr>	
 	 	 <tr>
-			<td style="padding: 10px;" colspan="3">Novo Cache</td>
+			<td style="padding: 2px 12px;" colspan="3">Novo Cache</td>
 		</tr>	
   		<tr>
 			<td style="width: 110px !important;padding: 0;">
 				<select class="form-control" style="border: none;height:35px;">
-					<option>Mônica</option>
-					<option>Arthur</option>
-					<option>Santiago</option>
+					<c:forEach items="${usuarios}" var="usuarios">
+						<option value="${usuarios[0]}">${usuarios[1]}</option>
+					</c:forEach>	
 				</select>
 			
 			</td>
 			<td style="padding: 0;"><input class="form-control" style="border: none;height:35px;text-align: center" value="20" /></td>
-			<td style="padding: 0;"><a class="btn btn-success" style="border: none;height: 35px;text-align: center;padding: 7px 41px;border-radius: 0;">Salvar</a></td>
+			<td style="padding: 0;"><a class="btn btn-default" style="border: none;height: 35px;text-align: center;padding: 7px 41px;border-radius: 0;">Salvar</a></td>
 		</tr>
 	 	
 	<c:forEach var="i" begin="1" end="3">

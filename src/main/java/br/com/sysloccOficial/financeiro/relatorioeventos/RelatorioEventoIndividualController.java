@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.sysloccOficial.daos.UsuarioDAO;
 import br.com.sysloccOficial.financeiro.atualizaInterna.AtualizaInternaRelatoriosEmMassa;
 import br.com.sysloccOficial.financeiro.atualizaInterna.AtualizaRelatorioEventoApoio;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
@@ -27,6 +28,7 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 	@Autowired RelatorioEventoDAO relatorioEventoDAO;
 	@Autowired RelatorioEventoDAO relatorioDAO;
 	@Autowired AtualizaRelatorioEventoApoio relatorioApoio;
+	@Autowired UsuarioDAO usuarios;
 	
 	@RequestMapping("relatorioEventoIndividual")
 	public ModelAndView relatorioEventoIndividual(Integer idLista){
@@ -49,6 +51,8 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 		MV.addObject("infoLista", infoLista);
 
 		MV.addObject("infoInterna", infoInterna);
+
+		MV.addObject("usuarios", usuarios.usuariosProducao());
 		
 		
 		
