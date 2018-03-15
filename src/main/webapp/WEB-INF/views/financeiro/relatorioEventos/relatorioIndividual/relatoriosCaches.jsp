@@ -45,7 +45,7 @@
 		</tr>	
   		<tr>
 			<td style="width: 110px !important;padding: 0;">
-				<select class="form-control" style="border: none;height:35px;">
+				<select class="form-control" style="border: none;height:35px;" id="idUsuarioNovoCache">
 					<c:forEach items="${usuarios}" var="usuarios">
 						<option value="${usuarios[0]}">${usuarios[1]}</option>
 					</c:forEach>	
@@ -53,7 +53,7 @@
 			
 			</td>
 			<td style="padding: 0;"><input class="form-control" style="border: none;height:35px;text-align: center" value="20" /></td>
-			<td style="padding: 0;"><button onclick="salvaNovoCache();" class="btn btn-default" style="border: none;height: 35px;text-align: center;padding: 7px 41px;border-radius: 0;">Salvar</button></td>
+			<td style="padding: 0;"><button onclick="salvaNovoCache(idUsuarioNovoCache,);" class="btn btn-default" style="border: none;height: 35px;text-align: center;padding: 7px 41px;border-radius: 0;">Salvar</button></td>
 		</tr>
 	 	
 	<c:forEach var="i" begin="1" end="3">

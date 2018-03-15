@@ -79,24 +79,23 @@ function mudaCache(idRelatorio, idCachePadrao, idLista){
 			
 		}
 	});
-	
 }	
 
-//function salvaNovoCache(idRelatorio, idCachePadrao, idLista){
-function salvaNovoCache(){
+function salvaNovoCache(idUsuarioNovoCache, idRelatorio, idCachePadrao, idLista){
+
 	
 	alert("Salva");
 	
-/* 	var novoValorCache = $("#mudaCacheFunc"+idCachePadrao).val();
+ 	var novoValorCache = $("#mudaCacheFunc"+idCachePadrao).val();
 	
 	$.ajax({
-		url : "atualizaCacheRelatorioEvento?idRelatorio="+idRelatorio+"&idCachePadrao="+idCachePadrao+"&novoValorCache="+novoValorCache+"&idLista="+idLista,
+		url : "salvaNovoCache?idRelatorio="+idRelatorio+"&idCachePadrao="+idCachePadrao+"&novoValorCache="+novoValorCache+"&idLista="+idLista,
 		success : function(data) {
 			$("#"+idDivAjax).html(data);
 			
 			
 		}
 	});
- */	
+ 	
 }	
 </script>
