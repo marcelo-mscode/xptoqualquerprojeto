@@ -500,6 +500,25 @@ public class RelatorioEventoDAO {
 		
 	}
 	
+	public void salvaNovoCacheNoRelatorio(int idRelatorioEvento, int idNovoUsuario, double novaPorcentagemCaches, int idLista){
+		
+		CachePadrao cachePadrao = manager.getReference(CachePadrao.class, idNovoUsuario);
+		RelatorioEventos relatorio = manager.getReference(RelatorioEventos.class, idRelatorioEvento);
+		
+		CacheEvento novoCacheEvento = new CacheEvento();
+		
+		BigDecimal porc = new BigDecimal(novaPorcentagemCaches/100);
+		
+		novoCacheEvento.setRazaoPorcentagem(porc);
+		novoCacheEvento.setValor(new BigDecimal("0.00"));
+		novoCacheEvento.setCachePadrao(cachePadrao);
+		novoCacheEvento.setRelatorioEvento(relatorio);
+		
+		manager.persist(novoCacheEvento);
+		
+		
+	}
+	
 	
 	
 }

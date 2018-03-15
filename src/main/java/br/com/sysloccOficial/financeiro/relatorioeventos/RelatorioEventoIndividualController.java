@@ -79,9 +79,9 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 	}
 	
 	@RequestMapping("salvaNovoCache")
-	public String salvaNovoCache(){
+	public String salvaNovoCache(int idRelatorioEvento, int idNovoUsuario, double novaPorcentagemCaches, int idLista){
 		
-		System.out.println("salvaNovoCache");
+		relatorioDAO.salvaNovoCacheNoRelatorio(idRelatorioEvento, idNovoUsuario, novaPorcentagemCaches, idLista);
 		
 		return null;
 	}

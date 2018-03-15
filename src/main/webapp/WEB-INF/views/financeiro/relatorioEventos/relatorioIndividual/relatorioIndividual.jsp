@@ -81,22 +81,22 @@ function mudaCache(idRelatorio, idCachePadrao, idLista){
 	});
 }	
 
-function salvaNovoCache(idUsuarioNovoCache,idRelatorioEvento,novaPorcentagemCache,idLista){
+function salvaNovoCache(idUsuarioNovoCache,idRelatorioEvento,novaPorcentagemCache){
 
  	 var idNovoUsuario = $(idUsuarioNovoCache).val();
- 	 var novaPorcentagemCaches = $("#novaPorcentagemCache").val();
-	 var idListas = $(idLista).val();	
- 	 alert(idListas);
+ 	 var novaPorcentagemCaches = $("#novaPorcentagemCache").val().replace(",",".");;
+	 var idLista = $("#idLista").val();	
 
 	 
  	$.ajax({
 		url : "salvaNovoCache?idRelatorioEvento="+idRelatorioEvento+"&idNovoUsuario="+idNovoUsuario+"&novaPorcentagemCaches="+novaPorcentagemCaches+"&idLista="+idLista,
 		success : function(data) {
-			$("#"+idDivAjax).html(data);
+			/* $("#"+idDivAjax).html(data); */
 			
+			location.relaod();
 			
 		}
-	}); 
+	});  
  	
 }	
 </script>
