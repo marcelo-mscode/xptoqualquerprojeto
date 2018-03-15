@@ -78,4 +78,14 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 		 return "redirect:relatorioEventoIndividual?idLista="+idLista;
 	}
 	
+	@RequestMapping("salvaNovoCache")
+	public String salvaNovoCache(){
+		
+		System.out.println("salvaNovoCache");
+		
+		return null;
+	}
+	
+	
+	
 }
