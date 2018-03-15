@@ -52,7 +52,7 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 
 		MV.addObject("infoInterna", infoInterna);
 
-		MV.addObject("usuarios", usuarios.usuariosProducao());
+		MV.addObject("usuarios", usuarios.cachePadraoNomes());
 		
 		
 		

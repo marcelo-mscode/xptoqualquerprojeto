@@ -163,6 +163,13 @@ public class UsuarioDAO{
 		return lista;
 	}
 
+	public List<Object[]> cachePadraoNomes(){
+		String consulta = "select u.idCachePadrao, u.nomeFunc from CachePadrao u where habilitado = true order by nomeFunc";
+		Query query = manager.createQuery(consulta);
+		List<Object[]> lista = query.getResultList();
+		return lista;
+	}
+
 	public List<Object[]> usuariosProducaoteste(){
 		String consulta = "select u.idUsuario, u.nome from Usuario u order by nome";
 		Query query = manager.createQuery(consulta);
