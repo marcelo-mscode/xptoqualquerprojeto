@@ -16,12 +16,12 @@ public class AtualizaCache implements SalvaAtualizaCache {
 		
 		if(cacheParaAtualizar.getCachePadrao().getTipoCache().equals(TipoCache.FUNCIONARIO)){
 			
-			System.out.println("Razão Porcentagem"+ cacheParaAtualizar.getRazaoPorcentagem());
+		/*	System.out.println("Razão Porcentagem"+ cacheParaAtualizar.getRazaoPorcentagem());
 			System.out.println("Total Diferença: " +relatorioEvento.getTotalDiferenca());
-			
+		*/	
 			cacheParaAtualizar.setValor(relatorioEvento.getTotalDiferenca().multiply((cacheParaAtualizar.getRazaoPorcentagem())));
 			
-			System.out.println("Valor: " + cacheParaAtualizar.getValor());
+		//	System.out.println("Valor: " + cacheParaAtualizar.getValor());
 			
 		}
 		

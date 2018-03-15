@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.daos.UsuarioDAO;
@@ -62,6 +63,7 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 	}
 	
 	@RequestMapping("atualizaCacheRelatorioEvento")
+	@ResponseBody
 	public String atualizaCacheRelatorioEvento(Integer idRelatorio, Integer idCachePadrao, String novoValorCache,Integer idLista) throws ParseException{
 		
 		    relatorioEventoDAO.atualizaCacheEvento(idRelatorio, idCachePadrao, novoValorCache);
@@ -77,15 +79,27 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 			  */
 			 atualizaInternaRelatoriosEventosEmMassa(relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano));
 		 
-		 return "redirect:relatorioEventoIndividual?idLista="+idLista;
+		 return "ok";
 	}
 	
 	@RequestMapping("salvaNovoCache")
-	public String salvaNovoCache(int idRelatorioEvento, int idNovoUsuario, double novaPorcentagemCaches, int idLista){
+	@ResponseBody
+	public String salvaNovoCache(int idRelatorioEvento, int idNovoUsuario, double novaPorcentagemCaches, int idLista) throws ParseException{
 		
 		relatorioDAO.salvaNovoCacheNoRelatorio(idRelatorioEvento, idNovoUsuario, novaPorcentagemCaches, idLista);
 		
-		return null;
+		
+		 ArrayList<String> datas =  relatorioDAO.dataRelatoriosEventosCadastrados(idLista);
+		 String mes = datas.get(1).toUpperCase().toString();
+		 String ano = datas.get(2).toUpperCase().toString();
+	
+		 /**
+		  * 
+		  * Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
+		  */
+		 atualizaInternaRelatoriosEventosEmMassa(relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano));
+		
+		return "ok";
 	}
 	
 	

@@ -74,9 +74,7 @@ function mudaCache(idRelatorio, idCachePadrao, idLista){
 	$.ajax({
 		url : "atualizaCacheRelatorioEvento?idRelatorio="+idRelatorio+"&idCachePadrao="+idCachePadrao+"&novoValorCache="+novoValorCache+"&idLista="+idLista,
 		success : function(data) {
-			$("#"+idDivAjax).html(data);
-			
-			
+			location.reload();
 		}
 	});
 }	
@@ -91,10 +89,7 @@ function salvaNovoCache(idUsuarioNovoCache,idRelatorioEvento,novaPorcentagemCach
  	$.ajax({
 		url : "salvaNovoCache?idRelatorioEvento="+idRelatorioEvento+"&idNovoUsuario="+idNovoUsuario+"&novaPorcentagemCaches="+novaPorcentagemCaches+"&idLista="+idLista,
 		success : function(data) {
-			/* $("#"+idDivAjax).html(data); */
-			
-			location.relaod();
-			
+			location.reload();
 		}
 	});  
  	
