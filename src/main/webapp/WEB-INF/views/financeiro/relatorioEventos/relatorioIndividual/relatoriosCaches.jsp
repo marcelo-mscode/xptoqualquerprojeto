@@ -45,10 +45,30 @@
 		</tr>	
   		<tr>
 			<td style="width: 110px !important;padding: 0;">
+				
+				<c:forEach items="${relatorioCaches}" var="relatorioCaches">
+						<c:forEach items="${usuarios}" var="usuarios">
+							${relatorioCaches.cachePadrao.idCachePadrao} <br>
+							${usuarios[0]}
+						</c:forEach>	
+				</c:forEach>
+				
+				
+				
+				
 				<select class="form-control" style="border: none;height:35px;" id="idUsuarioNovoCache">
-					<c:forEach items="${usuarios}" var="usuarios">
-						<option value="${usuarios[0]}">${usuarios[1]}</option>
-					</c:forEach>	
+					
+					<%-- <c:forEach items="${relatorioCaches}" var="relatorioCaches">
+						<c:forEach items="${usuarios}" var="usuarios">
+						
+							<c:if test="${relatorioCaches.cachePadrao.idCachePadrao != usuarios[0]}">
+								<option value="${usuarios[0]}">${usuarios[1]}</option>
+							</c:if>
+						
+						
+						</c:forEach>	
+					</c:forEach> --%>
+				
 				</select>
 				
 				<input id="idLista" value="${infoLista.idLista}" type="hidden" />
