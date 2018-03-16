@@ -51,6 +51,12 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		AnaliticoTotalBancos movimentoSantander = carregaSaldosBancarios(idAnalitico,4);
 		
 		
+		BigDecimal totalTarifasBanco = movimentoItau.getTotalTarifas()
+								       .add(movimentoCef.getTotalTarifas())
+								       .add(movimentoBradesco.getTotalTarifas())
+								       .add(movimentoSantander.getTotalTarifas());
+		
+		
 		MV.addObject("movimentoItau", movimentoItau);
 		MV.addObject("movimentoCef", movimentoCef);
 		MV.addObject("movimentoBradesco", movimentoBradesco);
@@ -117,7 +123,7 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		
 		
 		BigDecimal somaDespVariaveis = dadosEvento.SomaDespVariaveis(
-				new BigDecimal("19792.45")
+				totalTarifasBanco
 				, finanDespesas
 				, relatorioEventoDAO.despesasFixas("FinancOutrasDespesas",anoMes));
 		
@@ -135,7 +141,7 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 
 		MV.addObject("giroDeficitAvit", dadosEvento.giroDeficitAvit(lucroOperacional,creditoAplic,MOContrib));
 
-		MV.addObject("contasReceber", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes).add(new BigDecimal("95323.10")));
+		MV.addObject("contasReceber", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes));
 		
 		//
 		
