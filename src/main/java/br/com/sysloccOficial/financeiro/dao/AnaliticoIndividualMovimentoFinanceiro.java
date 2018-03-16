@@ -342,7 +342,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 	public HashSet<MovimentacaoBancosSaidas> totalSaidasBanco(int idAnalitico,int idBanco){
 			try {
-				TypedQuery<MovimentacaoBancosSaidas> f = manager.createQuery("select f from MovimentacaoBancosSaidas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaidas.class);
+				TypedQuery<MovimentacaoBancosSaidas> f = manager.createQuery("select f from MovimentacaoBancosSaidas f join fetch f.analitico where f.analitico.idAnalitico ="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaidas.class);
 				
 				HashSet<MovimentacaoBancosSaidas> movTarifas = new HashSet<MovimentacaoBancosSaidas>(f.getResultList());
 				
@@ -355,7 +355,10 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 	public MovimentacaoBancosSaldoAnterior totalSaldoAnteriorBanco(int idAnalitico,int idBanco){
 			try {
-				TypedQuery<MovimentacaoBancosSaldoAnterior> f = manager.createQuery("select f from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaldoAnterior.class);
+				
+				//String consulta= "select f from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where f.analitico.idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco;
+				
+				TypedQuery<MovimentacaoBancosSaldoAnterior> f = manager.createQuery("select f from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where f.analitico.idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaldoAnterior.class);
 				return f.getSingleResult();
 			} catch (NoResultException e) {
 				MovimentacaoBancosSaldoAnterior novo = new MovimentacaoBancosSaldoAnterior();

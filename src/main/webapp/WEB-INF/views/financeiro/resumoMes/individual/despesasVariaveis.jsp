@@ -21,7 +21,7 @@
 			<tr>
 				<th class="input-260px">Despesas bancárias:</th>
 				<th><fmt:formatNumber value="${despesasBancarias}" pattern="#,##0.00"/></th>
-				<th></th>
+				<th>||||||||||   ${movimentoItau.totalTarifas}</th>
 				<th></th>
 				<th></th>
 				<th></th>
