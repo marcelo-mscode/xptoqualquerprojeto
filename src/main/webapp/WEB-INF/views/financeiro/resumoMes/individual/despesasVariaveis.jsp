@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-			<c:set var="despesasBancarias" value="${movimentoItau.totalTarifas + movimentoCef.totalTarifas + movimentoBradesco.totalTarifas - movimentoSantander.totalTarifas}" />
+			<c:set var="despesasBancarias" value="${movimentoItau.totalTarifas + movimentoCef.totalTarifas + movimentoBradesco.totalTarifas + movimentoSantander.totalTarifas}" />
 			
 				
 			<tr>
@@ -21,7 +21,7 @@
 			<tr>
 				<th class="input-260px">Despesas bancárias:</th>
 				<th><fmt:formatNumber value="${despesasBancarias}" pattern="#,##0.00"/></th>
-				<th>||||||||||   ${movimentoItau.totalTarifas}</th>
+				<th></th>
 				<th></th>
 				<th></th>
 				<th></th>

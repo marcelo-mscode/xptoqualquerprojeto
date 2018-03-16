@@ -1,7 +1,6 @@
 package br.com.sysloccOficial.financeiro.resumomes.individual;
 
 import java.math.BigDecimal;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import br.com.sysloccOficial.financeiro.analitico.individual.CarregaSaldosBancar
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
 import br.com.sysloccOficial.financeiro.dao.MontaContasPagarDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
-import br.com.sysloccOficial.financeiro.model.EmprestimoBancario;
+import br.com.sysloccOficial.financeiro.model.AnaliticoTotalBancos;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
 
@@ -46,10 +45,16 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		
 		// Carrega cabecalho de saldos Bancarios ---------------------------------------------- //
 		
-		MV.addObject("movimentoItau", carregaSaldosBancarios(idAnalitico,1));
-		MV.addObject("movimentoCef", carregaSaldosBancarios(idAnalitico,2));
-		MV.addObject("movimentoBradesco", carregaSaldosBancarios(idAnalitico,3));
-		MV.addObject("movimentoSantander", carregaSaldosBancarios(idAnalitico,4));
+		AnaliticoTotalBancos movimentoItau = carregaSaldosBancarios(idAnalitico,1);
+		AnaliticoTotalBancos movimentoCef = carregaSaldosBancarios(idAnalitico,2);
+		AnaliticoTotalBancos movimentoBradesco = carregaSaldosBancarios(idAnalitico,3);
+		AnaliticoTotalBancos movimentoSantander = carregaSaldosBancarios(idAnalitico,4);
+		
+		
+		MV.addObject("movimentoItau", movimentoItau);
+		MV.addObject("movimentoCef", movimentoCef);
+		MV.addObject("movimentoBradesco", movimentoBradesco);
+		MV.addObject("movimentoSantander", movimentoSantander);
 		
 		
 		
@@ -107,10 +112,15 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		BigDecimal finanDespesas = relatorioEventoDAO.despesasFixas("FinancDespesas",anoMes);
 		MV.addObject("despCaixasProjetos", finanDespesas);
 		
+		
+		
+		
+		
 		BigDecimal somaDespVariaveis = dadosEvento.SomaDespVariaveis(
-				new BigDecimal("9344.94")
+				new BigDecimal("19792.45")
 				, finanDespesas
 				, relatorioEventoDAO.despesasFixas("FinancOutrasDespesas",anoMes));
+		
 		MV.addObject("somaDespVariaveis", somaDespVariaveis);
 		
 		MV.addObject("outrasDespesas", relatorioEventoDAO.despesasFixas("FinancOutrasDespesas",anoMes));
