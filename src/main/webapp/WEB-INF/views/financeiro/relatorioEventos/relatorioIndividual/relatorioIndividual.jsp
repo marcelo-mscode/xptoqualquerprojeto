@@ -64,6 +64,26 @@
   </div>		
 </div>
 
+
+<div class="col-md-12 alpha60 div-confirmacao" id="ConfirmaPagamento" style="position: fixed; display: none;background-color: rgba(255, 255, 255, 0.8);">
+	<div class="col-md-4"></div>
+	<div class="col-md-4 sub-div-confirmacao" style="height: 85px !important;box-shadow: 0px 2px 18px 10px #ccc">
+		Recalculando valores do Relatório ... <br>
+		<div class="progress col-md-12" style="margin-top: 20px;">
+			<div class="progress-bar progress-bar-striped active"
+				role="progressbar" aria-valuenow="45" aria-valuemin="0"
+				aria-valuemax="100" style="width: 100%">
+				<span class="sr-only">100% Complete</span>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4"></div>
+</div>
+
+
+
+
+
 <c:import url="../../../_comum/footer.jsp" />
 
 <script type="text/javascript">
@@ -74,10 +94,16 @@ function mudaCache(idRelatorio, idCachePadrao, idLista){
 	$.ajax({
 		url : "atualizaCacheRelatorioEvento?idRelatorio="+idRelatorio+"&idCachePadrao="+idCachePadrao+"&novoValorCache="+novoValorCache+"&idLista="+idLista,
 		success : function(data) {
+			$("#ConfirmaPagamento").fadeOut(500);
+		},
+		beforeSend : function() {
+			$("#ConfirmaPagamento").fadeIn(500);
+		},
+		complete : function() {
 			location.reload();
 		}
-	});
-}	
+	});  
+};	
 
 function salvaNovoCache(idUsuarioNovoCache,idRelatorioEvento,novaPorcentagemCache){
 
@@ -89,9 +115,18 @@ function salvaNovoCache(idUsuarioNovoCache,idRelatorioEvento,novaPorcentagemCach
  	$.ajax({
 		url : "salvaNovoCache?idRelatorioEvento="+idRelatorioEvento+"&idNovoUsuario="+idNovoUsuario+"&novaPorcentagemCaches="+novaPorcentagemCaches+"&idLista="+idLista,
 		success : function(data) {
+			$("#ConfirmaPagamento").fadeOut(500);
 			location.reload();
+		},
+		beforeSend : function() {
+			$("#ConfirmaPagamento").fadeIn(500);
+		},
+		complete : function() {
+			/*$("#ConfirmaPagamento").fadeOut(500);*/
 		}
 	});  
  	
-}	
+};	
+
+
 </script>
