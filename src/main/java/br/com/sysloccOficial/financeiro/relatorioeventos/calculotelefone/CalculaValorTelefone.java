@@ -47,24 +47,29 @@ public class CalculaValorTelefone implements CalculoValorTelefone {
 			/**
 			 * Rever esses dois ifs, porque o primeiro faz a mesma coisa que o segundo
 			 */
-			if(somaGirosEventosMes.equals(validador) || somaGirosEventosMes == null){
-				razaoCalculoTelefone = valorGiroDesseEvento.divide( valorGiroDesseEvento,0,RoundingMode.UP);
-			}
-			if(valorGiroDesseEvento.equals(somaGirosEventosMes)){
+			if(somaGirosEventosMes.equals(validador) || somaGirosEventosMes == null || somaGirosEventosMes.equals(valorGiroDesseEvento)){
+//				razaoCalculoTelefone = valorGiroDesseEvento.divide( valorGiroDesseEvento,0,RoundingMode.UP);
 				razaoCalculoTelefone = new BigDecimal("1");
 			}
-			/**
+/*			if(somaGirosEventosMes.equals(valorGiroDesseEvento)){
+				razaoCalculoTelefone = new BigDecimal("1");
+			}
+*/			/**
 			 * Fim rever
 			 */
 			
-			if(somaGirosEventosMes != null){
+			else{
+				razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,0,RoundingMode.UP);
+			}
+			
+/*			if(somaGirosEventosMes != null){
 				razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,0,RoundingMode.UP);
 			}
 
 			if(somaGirosEventosMes != validador){
 				razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,0,RoundingMode.UP);
 			}
-			
+*/			
 			
 			// Pegar o resultado e multiplicar pelo valor mensal do telefone
 			BigDecimal valorTelefoneEvento = valorTelefone.multiply(razaoCalculoTelefone);
