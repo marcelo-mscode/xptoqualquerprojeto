@@ -191,7 +191,7 @@ public class ListaDAO {
 	}
 	
 	public List<Lista> listaMenuProducao(){
-		String consulta = "select distinct(l) from Lista l where idlistaEstatus = 5 order by dataDoEvento desc";
+		String consulta = "select distinct(l) from Lista l where idlistaEstatus = 5 and dataDoEvento > '2018-01-01 00:00:00' order by dataDoEvento desc";
 		TypedQuery<Lista> query = manager.createQuery(consulta, Lista.class); 
 		return query.getResultList();
 	}

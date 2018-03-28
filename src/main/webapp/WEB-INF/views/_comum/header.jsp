@@ -107,9 +107,9 @@
 		
 		 <ul class=	"nav navbar-nav">
           <li class="dropdown producao">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">PRODUÇÃO (Betha)</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">PRODUÇÃO</a>
             <ul class="dropdown-menu" role="menu">
-              <li class="disab"><a href="<c:url value="/menuProducao" />">Produção (Betha)</a></li>
+              <li class="disab"><a href="<c:url value="/menuProducao" />">Produção</a></li>
              </ul>
               
        	  </li>

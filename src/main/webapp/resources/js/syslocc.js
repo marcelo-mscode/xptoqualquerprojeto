@@ -2557,6 +2557,10 @@ function mudaCampoData(id){
 
 function pagaContas(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
 	
+	
+	
+	alert();
+	
 	var banco = $("#"+idbanco+contador).val();
 	
 	if(banco == 0){
@@ -2565,7 +2569,7 @@ function pagaContas(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
 		return false;
 	}
 	
-	$.ajax({
+	/*$.ajax({
 		url : "pagaConta?idLista="+idLista+"&idFornecedor="+idFornecedor+"&qtdDias="+qtdDias+"&idbanco="+banco,
 		success : function(data) {
 			$("#ConfirmaPagamento").fadeOut(500);
@@ -2576,9 +2580,9 @@ function pagaContas(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
 			$("#ConfirmaPagamento").fadeIn(500);
 		},
 		complete : function() {
-			/*$("#ConfirmaPagamento").fadeOut(500);*/
+			$("#ConfirmaPagamento").fadeOut(500);
 		}
-	});
+	});*/
 	
 };
 
