@@ -54,13 +54,15 @@
 			</tr>
 	</c:forEach>
 	
-	<tr>
-		<td>Despesas VT</td>
-		<td></td>
-		<td>${depesasEventos}</td>
-		<td></td>
-		<td></td>
-	</tr>
+	<c:if test="${depesasEventos != null}">
+		<tr>
+			<td>Despesas VT</td>
+			<td></td>
+			<td class="ajusteValores"><fmt:formatNumber value="${depesasEventos}" pattern="#,##0.00"/></td>
+			<td class="ajusteValores">(<fmt:formatNumber value="${depesasEventos}" pattern="#,##0.00"/>)</td>
+			<td></td>
+		</tr>
+	</c:if>
 	
 	
 

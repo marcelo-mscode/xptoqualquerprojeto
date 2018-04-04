@@ -26,9 +26,6 @@ public class RelatorioEventoIndividualApoio {
 		
 		List<DesIntFinanc> despesasProjeto = relatorioEventoDAO.despesasProjeto(idLista);
 		
-		BigDecimal somaDespesasProjeto = relatorioEventoDAO.somaDespesasProjeto(idLista);
-		
-		System.out.println(somaDespesasProjeto);
 		
 		for (Integer ids : idsFornecedoresPorList) {
 			
@@ -52,8 +49,6 @@ public class RelatorioEventoIndividualApoio {
 					}
 				}
 			}
-			
-			
 			bvs.setValorFornecedor(valor);
 			bvs.setValorParaPagar(valorParaPgar);
 			bvs.setDiferenca(diferenca);
@@ -61,13 +56,15 @@ public class RelatorioEventoIndividualApoio {
 			listaRelatorioBVS.add(bvs);
 		}
 
-
-/*		if(!despesasProjeto.isEmpty()){
+		if(!despesasProjeto.isEmpty()){
+			
 			for (int i = 0; i < despesasProjeto.size(); i++) {
-				despesas = despesas.add(despesasProjeto.get(i).ge)
+				
+				System.out.println("Tem Valor !!!");
 			}
 		}
-*/		
+
+		
 		
 		
 		return listaRelatorioBVS;
