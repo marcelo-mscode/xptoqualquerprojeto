@@ -25,7 +25,10 @@ public class RelatorioEventoIndividualApoio {
 		List<RelatorioBVS> listaRelatorioBVS = new ArrayList<RelatorioBVS>();
 		
 		List<DesIntFinanc> despesasProjeto = relatorioEventoDAO.despesasProjeto(idLista);
+		
 		BigDecimal somaDespesasProjeto = relatorioEventoDAO.somaDespesasProjeto(idLista);
+		
+		System.out.println(somaDespesasProjeto);
 		
 		for (Integer ids : idsFornecedoresPorList) {
 			
@@ -52,8 +55,8 @@ public class RelatorioEventoIndividualApoio {
 			
 			
 			bvs.setValorFornecedor(valor);
-			bvs.setValorParaPagar(valorParaPgar.add(somaDespesasProjeto));
-			bvs.setDiferenca(diferenca.subtract(somaDespesasProjeto));
+			bvs.setValorParaPagar(valorParaPgar);
+			bvs.setDiferenca(diferenca);
 			
 			listaRelatorioBVS.add(bvs);
 		}
