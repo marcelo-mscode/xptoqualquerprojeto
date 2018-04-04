@@ -59,6 +59,8 @@ public class AtualizaRelatorioEventoApoio{
 	public void montaObjetoRelatorio(Integer idLista,Lista infoLista,String mes,String ano) throws ParseException{
 	
 		
+//			BigDecimal despesasEvento = 
+		
 			InfoInterna infoInterna = relatorioDAO.pegaInfoInterna(idLista);
 			
 			List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
