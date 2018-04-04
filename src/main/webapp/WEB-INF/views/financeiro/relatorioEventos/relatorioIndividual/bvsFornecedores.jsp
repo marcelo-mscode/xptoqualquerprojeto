@@ -53,6 +53,16 @@
 				</td>
 			</tr>
 	</c:forEach>
+	
+	<tr>
+		<td>Despesas VT</td>
+		<td></td>
+		<td>${depesasEventos}</td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	
 
 	<c:forEach var="i" begin="1" end="3">
 	  		<tr>

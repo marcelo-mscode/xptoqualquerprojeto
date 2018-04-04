@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.financeiro.relatorioeventos;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -53,6 +54,9 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 
 		MV.addObject("infoInterna", infoInterna);
 
+		MV.addObject("depesasEventos", relatorioEventoDAO.somaDespesasProjeto(idLista));
+		
+		
 		
 		
 		MV.addObject("usuarios", usuarios.cachePadraoNomes(relatorioEventos.getIdRelatorioEvento()));
