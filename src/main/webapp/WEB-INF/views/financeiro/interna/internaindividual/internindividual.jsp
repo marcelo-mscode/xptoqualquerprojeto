@@ -433,7 +433,7 @@
                <tr>
                   <th>Total 2</th>
                   <th class="fundoVerde textRight" colspan="2">
-                     <fmt:formatNumber value="${calculadora.total2}" pattern="#,##0.00"/>
+                     <fmt:formatNumber value="${calculadora.total2 + calculadora.subDireto}" pattern="#,##0.00"/>
                   </th>
                   <td></td>
                   <td></td>
