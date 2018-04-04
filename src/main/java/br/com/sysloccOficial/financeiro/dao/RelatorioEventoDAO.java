@@ -457,6 +457,14 @@ public class RelatorioEventoDAO {
 			return null;
 		}
 	}
+	public BigDecimal somaDespesasProjeto(Integer idLista) {
+		try {
+			TypedQuery<BigDecimal> despesas = manager.createQuery("SELECT sum(locco + valor1 + valor2 + valor3) FROM DesIntFinanc WHERE idLista = "+idLista, BigDecimal.class);
+			return despesas.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 	public List<Integer> idsRelatoriosEventosPorMesAno(Integer mes, Integer anoEvento){
 		try {

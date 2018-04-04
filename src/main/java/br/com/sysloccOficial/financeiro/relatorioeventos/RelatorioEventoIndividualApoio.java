@@ -25,7 +25,7 @@ public class RelatorioEventoIndividualApoio {
 		List<RelatorioBVS> listaRelatorioBVS = new ArrayList<RelatorioBVS>();
 		
 		List<DesIntFinanc> despesasProjeto = relatorioEventoDAO.despesasProjeto(idLista);
-		
+		BigDecimal somaDespesasProjeto = relatorioEventoDAO.somaDespesasProjeto(idLista);
 		
 		for (Integer ids : idsFornecedoresPorList) {
 			
@@ -49,22 +49,22 @@ public class RelatorioEventoIndividualApoio {
 					}
 				}
 			}
+			
+			
 			bvs.setValorFornecedor(valor);
-			bvs.setValorParaPagar(valorParaPgar);
-			bvs.setDiferenca(diferenca);
+			bvs.setValorParaPagar(valorParaPgar.add(somaDespesasProjeto));
+			bvs.setDiferenca(diferenca.subtract(somaDespesasProjeto));
 			
 			listaRelatorioBVS.add(bvs);
 		}
 
-		if(!despesasProjeto.isEmpty()){
-			
-			for (int i = 0; i < despesasProjeto.size(); i++) {
-				
-			}
-			System.out.println("Tem Valor !!!");
-		}
 
-		
+/*		if(!despesasProjeto.isEmpty()){
+			for (int i = 0; i < despesasProjeto.size(); i++) {
+				despesas = despesas.add(despesasProjeto.get(i).ge)
+			}
+		}
+*/		
 		
 		
 		return listaRelatorioBVS;
