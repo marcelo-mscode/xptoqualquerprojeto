@@ -23,6 +23,9 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import abr.com.springboot.repositories.PessoaRepository;
+import abr.com.springboot.resources.PessoaResources;
+import abr.com.springboot.services.PessoaService;
 import br.com.sysloccOficial.ListaProducao.DeterminaQuantidade.dao.BuscaQualquerQuantidadeDeterminantePadrao;
 import br.com.sysloccOficial.ListaProducao.DeterminaQuantidade.dao.BuscaQuantidadeDeterminante;
 import br.com.sysloccOficial.ListaProducao.Excel.ExcelNovoBayerController;
@@ -122,6 +125,8 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          CachePadraoController.class,
 								          RelatorioEventoDAO.class,
 								          AnaliticoIndividualController.class,
+								          PessoaResources.class,
+								          PessoaService.class,
 								          ApoioCartaUtil.class})
 @EnableCaching
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {

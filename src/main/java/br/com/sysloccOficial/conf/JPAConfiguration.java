@@ -35,7 +35,7 @@ public class JPAConfiguration {
 
 		em.setDataSource(dataSource());
 		em.setPackagesToScan(new String[]{
-				"br.com.sysloccOficial.model", "br.com.sysloccOficial.financeiro.model, abr.com.springboot.domain" }
+				"br.com.sysloccOficial.model", "br.com.sysloccOficial.financeiro.model", "abr.com.springboot.domain" }
 		);
 		
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
