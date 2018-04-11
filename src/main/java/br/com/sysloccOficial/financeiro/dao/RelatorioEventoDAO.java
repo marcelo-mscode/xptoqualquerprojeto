@@ -17,6 +17,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,6 +29,7 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.financeiro.relatorioeventos.salvaatualizacache.MontaCacheEvento;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
+import br.com.sysloccOficial.model.Categoria;
 import br.com.sysloccOficial.model.DesIntFinanc;
 import br.com.sysloccOficial.model.GiroEvento;
 import br.com.sysloccOficial.model.InfoInterna;
@@ -526,7 +529,5 @@ public class RelatorioEventoDAO {
 		
 		
 	}
-	
-	
 	
 }
