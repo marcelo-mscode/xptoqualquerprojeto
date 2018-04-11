@@ -125,8 +125,10 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          CachePadraoController.class,
 								          RelatorioEventoDAO.class,
 								          AnaliticoIndividualController.class,
-								          PessoaResources.class,
 								          PessoaService.class,
+								          PessoaRepository.class,
+								          /* PessoaResources.class,
+								          */
 								          ApoioCartaUtil.class})
 @EnableCaching
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {

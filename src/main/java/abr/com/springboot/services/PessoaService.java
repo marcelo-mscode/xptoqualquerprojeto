@@ -13,8 +13,10 @@ public class PessoaService {
 
 	@Autowired PessoaRepository repo;
 	
-	public Pessoa buscar(Integer idPessoa){
-		Optional<Pessoa> obj = repo.findById(idPessoa);
+	public Pessoa buscar(Integer id){
+		System.out.println("Pessoa Service");
+		
+		Optional<Pessoa> obj = repo.findById(id);
 		return obj.orElse(null);
 	}
 	

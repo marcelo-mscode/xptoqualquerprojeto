@@ -7,5 +7,5 @@ import abr.com.springboot.domain.Pessoa;
 
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Integer>{
-
+	
 }
