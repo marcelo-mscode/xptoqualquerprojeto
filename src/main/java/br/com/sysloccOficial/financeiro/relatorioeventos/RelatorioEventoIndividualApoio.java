@@ -26,6 +26,8 @@ public class RelatorioEventoIndividualApoio {
 		
 		List<DesIntFinanc> despesasProjeto = relatorioEventoDAO.despesasProjeto(idLista);
 		
+		BigDecimal somaDespesasProjeto = relatorioEventoDAO.somaDespesasProjeto(idLista);
+		
 		
 		for (Integer ids : idsFornecedoresPorList) {
 			
@@ -61,6 +63,8 @@ public class RelatorioEventoIndividualApoio {
 		if(!despesasProjeto.isEmpty()){
 			
 			for (int i = 0; i < despesasProjeto.size(); i++) {
+				
+				
 				
 				System.out.println("Tem Valor !!!");
 			}
