@@ -42,11 +42,13 @@ public class RelatorioEventoIndividualApoio {
 					valor = valor.add(listaProducaoPPorIdLista.get(i).getValorItem());
 					valorParaPgar = valorParaPgar.add(listaProducaoPPorIdLista.get(i).getValorDePagamentoContratacao());
 					
-					if(ids.equals(6961)){
+					diferenca = diferenca.add(listaProducaoPPorIdLista.get(i).getDiferenca());
+					
+					/*if(ids.equals(6961)){
 						diferenca = diferenca.add(listaProducaoPPorIdLista.get(i).getValorItem());
 					}else{
 						diferenca = diferenca.add(listaProducaoPPorIdLista.get(i).getDiferenca());
-					}
+					}*/
 				}
 			}
 			bvs.setValorFornecedor(valor);

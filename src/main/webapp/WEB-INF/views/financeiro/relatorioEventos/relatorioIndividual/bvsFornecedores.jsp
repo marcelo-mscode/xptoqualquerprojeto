@@ -25,12 +25,17 @@
 				<td>${relatorioBVS.nomeFornecedor}</td>
 				<td class="ajusteValores"><fmt:formatNumber value="${relatorioBVS.valorFornecedor}" pattern="#,##0.00"/></td>
 				<td class="ajusteValores">
-					<c:if test="${relatorioBVS.idFornecedor != '6961'}">
+	
+						<fmt:formatNumber value="${relatorioBVS.valorFornecedor - relatorioBVS.diferenca}" pattern="#,##0.00"/>
+
+<%-- 					<c:if test="${relatorioBVS.idFornecedor != '6961'}">
 						<fmt:formatNumber value="${relatorioBVS.valorFornecedor - relatorioBVS.diferenca}" pattern="#,##0.00"/>
 					</c:if>
 					<c:if test="${relatorioBVS.idFornecedor == '6961'}">
 						-
 					</c:if>
+--%>
+
 				</td>
 				<td class="ajusteValores">
 					<c:if test="${relatorioBVS.diferenca != '0.00'}">
