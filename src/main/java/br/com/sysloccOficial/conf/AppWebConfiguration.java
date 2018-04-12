@@ -125,7 +125,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          CachePadraoController.class,
 								          RelatorioEventoDAO.class,
 								          AnaliticoIndividualController.class,
-								          PessoaService.class,
+								          /*PessoaService.class,*/
 								         /* PessoaResources.class,
 								          PessoaRepository.class,*/
 								          ApoioCartaUtil.class})
