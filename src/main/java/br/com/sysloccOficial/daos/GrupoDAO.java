@@ -84,7 +84,6 @@ public class GrupoDAO {
 			double teste = (double) valorTotal.getSingleResult();
 			
 			BigDecimal testes = new BigDecimal(teste);
-			System.out.println(testes);
 			
 			return testes;
 		} catch (Exception e) {
