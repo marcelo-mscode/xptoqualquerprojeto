@@ -49,15 +49,6 @@ public class ResumoMesIndex {
 		MV.addObject("anos", anos);
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		return MV;
 	}
 	
