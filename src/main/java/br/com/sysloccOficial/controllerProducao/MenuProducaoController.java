@@ -93,34 +93,27 @@ public class MenuProducaoController extends AuxProducao{
 		
 		List<Date> datas = new ArrayList<Date>();
 		
-		LinkedHashSet<Lista> listas = new LinkedHashSet<Lista>(listaDAO.listaMenuProducao());
+		List<Lista> listas = new ArrayList<Lista>(listaDAO.listaMenuProducao());
 		
 		
+		List<String> data = new ArrayList<String>();
 		
-/*		Iterator<Lista> iterador = listas.iterator();
 		
-		while(iterador.hasNext()){
+		for (int i = 0; i < listas.size(); i++) {
 			
-			System.out.println(iterador.next().getIdLista());
+			Calendar cal = listas.get(i).getDataDoEvento();
 			
-			if(iterador.next().getDataDoEvento() != null){
-				datas.add(iterador.next().getDataDoEvento().getTime());
-			}else{
-				System.out.println(iterador.next().getDataDoEvento());
-			}
-				
+			//cal.get(Calendar.MONTH);			
+			System.out.println(cal.get(Calendar.MONTH));
+			
 		}
-		*/
 		
-	
+		
+		
 		
 		
 		MV.addObject("lista", listas);
-//		MV.addObject("datas", datas);
-		
-		
-		
-		
+	
 		return MV;
 	}
 	

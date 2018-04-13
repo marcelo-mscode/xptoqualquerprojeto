@@ -61,6 +61,13 @@
 											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataAprovacao.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>	
 											 <td class="alinhamentoVertical">${lista.usuarioAprova.nome}</td>
 										</tr>
+										
+										<tr>
+											<td><fmt:formatDate value="${lista.dataAprovacao.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>
+										
+										</tr>
+										
+										
 								  </c:forEach>	
 			
 						   </tbody>
