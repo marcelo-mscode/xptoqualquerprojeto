@@ -8,7 +8,7 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioBVS;
 public class CalculaTotalDiferencaTelefone implements TotalDiferencaTelefone {
 	
 	@Override
-	public BigDecimal totalDiferencaComTelefone( List<RelatorioBVS> relatorioBVS, BigDecimal fee,BigDecimal feeReduzido, BigDecimal impostoClienteDiferenca,BigDecimal margemContribuicao, BigDecimal valorTelefone) {
+	public BigDecimal totalDiferencaComTelefone( List<RelatorioBVS> relatorioBVS, BigDecimal fee,BigDecimal feeReduzido, BigDecimal impostoClienteDiferenca,BigDecimal margemContribuicao, BigDecimal valorTelefone, BigDecimal DespesasEvento) {
 		BigDecimal totalDiferenca = new BigDecimal("0");
 		for (int i = 0; i < relatorioBVS.size(); i++) {
 			totalDiferenca = totalDiferenca.add(relatorioBVS.get(i).getDiferenca());
@@ -18,7 +18,7 @@ public class CalculaTotalDiferencaTelefone implements TotalDiferencaTelefone {
 									   .add(impostoClienteDiferenca)
 									   .subtract(margemContribuicao)
 									   .subtract(valorTelefone)
-									   .subtract(new BigDecimal("79.00"))
+									   .subtract(DespesasEvento)
 									   ;
 		
 		
@@ -26,7 +26,7 @@ public class CalculaTotalDiferencaTelefone implements TotalDiferencaTelefone {
 	}
 
 	@Override
-	public BigDecimal totalDiferencaSemTelefone(List<RelatorioBVS> relatorioBVS, BigDecimal fee,BigDecimal feeReduzido, BigDecimal impostoClienteDiferenca) {
+	public BigDecimal totalDiferencaSemTelefone(List<RelatorioBVS> relatorioBVS, BigDecimal fee,BigDecimal feeReduzido, BigDecimal impostoClienteDiferenca, BigDecimal DespesasEvento) {
 		BigDecimal totalDiferenca = new BigDecimal("0");
 		for (int i = 0; i < relatorioBVS.size(); i++) {
 			totalDiferenca = totalDiferenca.add(relatorioBVS.get(i).getDiferenca());
@@ -34,7 +34,7 @@ public class CalculaTotalDiferencaTelefone implements TotalDiferencaTelefone {
 		totalDiferenca = totalDiferenca.add(fee)
 									   .add(impostoClienteDiferenca)
 									   .add(feeReduzido)
-									   .subtract(new BigDecimal("79.00"))
+									   .subtract(DespesasEvento)
 				;
 
 		//totalDiferenca = totalDiferenca.add(fee).add(impostoClienteDiferenca).add(feeReduzido);

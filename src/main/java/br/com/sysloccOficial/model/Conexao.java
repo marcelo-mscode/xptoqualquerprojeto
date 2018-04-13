@@ -28,7 +28,7 @@ public class Conexao {
 	   		   
 	   		   status = "Connection Opened";
 	   	   }catch (ClassNotFoundException e){
-	   		   System.out.println("N�o foi possivel encontrar a classe");
+	   		   System.out.println("Não foi possivel encontrar a classe");
 	   	   }
 		return conn;
 	   			   

@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 public class CalculadoraGiro {
 	
-	public static BigDecimal calculadoraGiroSemTelefone(BigDecimal valorLiquido, BigDecimal cacheSemTelefone, BigDecimal externas){
+	public static BigDecimal calculadoraGiroSemTelefone(BigDecimal valorLiquido, BigDecimal cacheSemTelefone, BigDecimal externas, BigDecimal DespesasEvento){
 		CalculoGiro calcGiroSemTelefone = new CalculaGiroSemTelefone();
-		return calcGiroSemTelefone.calculaGiro(valorLiquido, cacheSemTelefone, externas);
+		return calcGiroSemTelefone.calculaGiro(valorLiquido, cacheSemTelefone, externas, DespesasEvento);
 	}
 	
 	public static BigDecimal calculadoraGiroComTelefone(){

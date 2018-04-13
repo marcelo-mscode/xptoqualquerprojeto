@@ -85,7 +85,7 @@ public class CacheDoEventoApoio {
 			
 			CachePadrao transfCache = new CachePadrao();
 			
-			System.out.println(listaCaches.get(i).getCachePadrao().getNomeFunc());
+		//	System.out.println(listaCaches.get(i).getCachePadrao().getNomeFunc());
 			
 			
 			transfCache.setHabilitado(true);

@@ -29,10 +29,6 @@ public class RelatorioEventoIndividualApoio {
 		
 		List<RelatorioBVS> listaRelatorioBVS = new ArrayList<RelatorioBVS>();
 		
-		List<DesIntFinanc> despesasProjeto = relatorioEventoDAO.despesasProjeto(idLista);
-		
-		BigDecimal somaDespesasProjeto = relatorioEventoDAO.somaDespesasProjeto(idLista);
-		
 		for (Integer ids : idsFornecedoresPorList) {
 			
 			BigDecimal valor = new BigDecimal("0");
@@ -63,16 +59,6 @@ public class RelatorioEventoIndividualApoio {
 			
 			listaRelatorioBVS.add(bvs);
 		}
-
-		if(!despesasProjeto.isEmpty()){
-			
-			for (int i = 0; i < despesasProjeto.size(); i++) {
-				System.out.println("Tem Valor !!!");
-			}
-		}
-
-		
-		
 		
 		return listaRelatorioBVS;
 	}

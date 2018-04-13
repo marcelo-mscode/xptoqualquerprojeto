@@ -465,7 +465,7 @@ public class RelatorioEventoDAO {
 			TypedQuery<BigDecimal> despesas = manager.createQuery("SELECT sum(locco + valor1 + valor2 + valor3) FROM DesIntFinanc WHERE idLista = "+idLista, BigDecimal.class);
 			return despesas.getSingleResult();
 		} catch (Exception e) {
-			return null;
+			return new BigDecimal("0.00");
 		}
 	}
 	

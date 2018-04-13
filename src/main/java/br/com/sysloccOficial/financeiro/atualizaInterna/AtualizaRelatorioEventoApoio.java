@@ -18,7 +18,6 @@ import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
-import br.com.sysloccOficial.financeiro.dao.SalvaCacheDoEvento;
 import br.com.sysloccOficial.financeiro.funcionario.cacheCalculos.CalculadoraCachesTotais;
 import br.com.sysloccOficial.financeiro.relatorioeventos.CacheDoEventoApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioBVS;
@@ -64,6 +63,10 @@ public class AtualizaRelatorioEventoApoio{
 	
 			RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdLista(idLista);
 			
+			//Despesas do Evento
+			BigDecimal somaDespesasEvento = relatorioDAO.somaDespesasProjeto(idLista);
+			
+			
 			RelatorioEventos novoRelatorio = new RelatorioEventos();
 			
 			novoRelatorio.setAnoEvento(ano);
@@ -95,7 +98,7 @@ public class AtualizaRelatorioEventoApoio{
 														relatorioBVS,
 														novoRelatorio.getFee(),
 														novoRelatorio.getFeeReduzido(), 
-														novoRelatorio.getImpostoClienteDiferenca());
+														novoRelatorio.getImpostoClienteDiferenca(),somaDespesasEvento);
 			
 // -------- Calculo de Caches sem telefone	---- //		
 			novoRelatorio.setTotalCachesSemTelefone(CalculadoraCachesTotais.totalCachesSemTelefone(listaRelatorioCaches, totalDiferencaSemTelefone));
@@ -103,7 +106,8 @@ public class AtualizaRelatorioEventoApoio{
 //--------- Giro Sem Telefone ------------------ //
 			BigDecimal giroSTelef = CalculadoraGiro.calculadoraGiroSemTelefone(novoRelatorio.getValorLiquido(),
 	                          												   novoRelatorio.getTotalCachesSemTelefone(),
-	                          												   CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
+	                          												   CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS),
+	                          												   somaDespesasEvento);
 //--------- Margem Contribuição ---------------- //
 			novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
 			
@@ -118,11 +122,10 @@ public class AtualizaRelatorioEventoApoio{
 			novoRelatorio.setCustoTelefone(custoTelefone);
 			
 // -------  Calcula totalExternas
-			BigDecimal somaDespesasProjeto = relatorioDAO.somaDespesasProjeto(idLista);
 			BigDecimal totalExterna = novoRelatorio.getMargemContribuicao()
 													.add(novoRelatorio.getCustoTelefone()
 													.add(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS)
-													.add(somaDespesasProjeto)));
+													.add(somaDespesasEvento)));
 			
 		//	totalExterna.add(somaDespesasProjeto);
 			
@@ -132,7 +135,7 @@ public class AtualizaRelatorioEventoApoio{
 			BigDecimal totalDiferencaComTelefone =  CalculadoraDiferencaTelefone.totalDiferencaComTelefone(
 													   relatorioBVS, novoRelatorio.getFee(),
 													   novoRelatorio.getFeeReduzido(),novoRelatorio.getImpostoClienteDiferenca(),
-													   novoRelatorio.getMargemContribuicao(), custoTelefone);
+													   novoRelatorio.getMargemContribuicao(), custoTelefone,somaDespesasEvento);
 
 			novoRelatorio.setTotalDiferenca(totalDiferencaComTelefone);
 
@@ -171,7 +174,7 @@ public class AtualizaRelatorioEventoApoio{
 			try {
 				relatorioDAO.salvaCacheDoEvento(novoRelatorio);
 			} catch (Exception e) {
-				System.out.println("Deu um erro aqui ao atualizar Cache do Vento");
+				System.out.println("Deu um erro aqui ao atualizar Cache do Evento");
 			}
 			
 			

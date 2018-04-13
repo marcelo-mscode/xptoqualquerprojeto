@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 class CalculaGiroSemTelefone implements CalculoGiro {
 
 	@Override
-	public BigDecimal calculaGiro(BigDecimal valorLiquido, BigDecimal cacheSemTelefone, BigDecimal externas) {
+	public BigDecimal calculaGiro(BigDecimal valorLiquido, BigDecimal cacheSemTelefone, BigDecimal externas, BigDecimal DespesasEvento) {
 		
 		
 		BigDecimal valorLiquidoComScala = valorLiquido.setScale(2,2);
@@ -22,7 +22,7 @@ class CalculaGiroSemTelefone implements CalculoGiro {
 						  .subtract(externasComScala)
 						  .subtract(internas)
 						  .add(bvs)
-						  .subtract(new BigDecimal("79.00"))
+						  .subtract(DespesasEvento)
 						  ;
 		
 		return giroSemTelefone;

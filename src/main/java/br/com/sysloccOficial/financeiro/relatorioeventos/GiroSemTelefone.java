@@ -81,7 +81,7 @@ public class GiroSemTelefone implements Giro{
 		
 	/*	List<CachePadrao> relatorios1 = relatorioEventoDAO.relatorioCaches(new BigDecimal("2241.11"));*/
 		
-		System.out.println("teste");
+	//	System.out.println("teste");
 		
 		RelatorioCachesOutros relatorioCachesOutros = new RelatorioCachesOutros(relatorio2, calculoTotalDiferenca());
 		BigDecimal totalCaches = relatorioCachesOutros.getTotalCaches();
