@@ -3,8 +3,12 @@ package br.com.sysloccOficial.financeiro.relatorioeventos;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.model.DesIntFinanc;
 import br.com.sysloccOficial.model.producao.ProducaoP;
@@ -27,7 +31,6 @@ public class RelatorioEventoIndividualApoio {
 		List<DesIntFinanc> despesasProjeto = relatorioEventoDAO.despesasProjeto(idLista);
 		
 		BigDecimal somaDespesasProjeto = relatorioEventoDAO.somaDespesasProjeto(idLista);
-		
 		
 		for (Integer ids : idsFornecedoresPorList) {
 			
@@ -63,9 +66,6 @@ public class RelatorioEventoIndividualApoio {
 		if(!despesasProjeto.isEmpty()){
 			
 			for (int i = 0; i < despesasProjeto.size(); i++) {
-				
-				
-				
 				System.out.println("Tem Valor !!!");
 			}
 		}
