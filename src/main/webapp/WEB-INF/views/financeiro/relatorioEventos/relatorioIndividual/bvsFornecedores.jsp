@@ -13,9 +13,9 @@
 	</tr>
 	<tr style="background: #f1f1f1 !important">
 		<td>Fornecedor</td>
-		<td class="descricao">Valor</td>
-		<td class="descricao">Pagto</td>
-		<td class="descricao">R$</td>
+		<td class="descricao">Valor <b>(NF)</b></td>
+		<td class="descricao">Pagto <b>(PARA FORNECEDOR)</b></td>
+		<td class="descricao"><b>R$  ( DIFERENÇA )</b></td>
 		<td class="descricao">À pagar</td>
 	</tr>
 

@@ -26,6 +26,7 @@ public class RelatorioEventoIndividualApoio {
 		
 		List<Integer> idsFornecedoresPorList = relatorioEventoDAO.idsFornecedoresPorLista(idLista);
 		List<ProducaoP> listaProducaoPPorIdLista = relatorioEventoDAO.listaProducaoPPorIdLista(idLista);	
+		
 		List<RelatorioBVS> listaRelatorioBVS = new ArrayList<RelatorioBVS>();
 		
 		List<DesIntFinanc> despesasProjeto = relatorioEventoDAO.despesasProjeto(idLista);

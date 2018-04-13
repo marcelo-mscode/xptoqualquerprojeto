@@ -50,11 +50,7 @@ public class AtualizaRelatorioEventoApoio{
 	@Autowired ProdutoGrupoDAO produtoGrupoDAO;
 	@Autowired CacheDoEventoApoio cacheEvento;
 	
-	
-	
 	@PersistenceContext	private EntityManager manager;
-	
-	
 	
 	public void montaObjetoRelatorio(Integer idLista,Lista infoLista,String mes,String ano) throws ParseException{
 	
@@ -122,9 +118,17 @@ public class AtualizaRelatorioEventoApoio{
 			novoRelatorio.setCustoTelefone(custoTelefone);
 			
 // -------  Calcula totalExternas
-			BigDecimal totalExterna = novoRelatorio.getMargemContribuicao().add(novoRelatorio.getCustoTelefone().add(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS)));
+			BigDecimal somaDespesasProjeto = relatorioDAO.somaDespesasProjeto(idLista);
+			BigDecimal totalExterna = novoRelatorio.getMargemContribuicao()
+													.add(novoRelatorio.getCustoTelefone()
+													.add(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS)
+													.add(somaDespesasProjeto)));
+			
+		//	totalExterna.add(somaDespesasProjeto);
+			
 			novoRelatorio.setPgtoExternas(totalExterna);
 			
+// -------	Total Diferença		
 			BigDecimal totalDiferencaComTelefone =  CalculadoraDiferencaTelefone.totalDiferencaComTelefone(
 													   relatorioBVS, novoRelatorio.getFee(),
 													   novoRelatorio.getFeeReduzido(),novoRelatorio.getImpostoClienteDiferenca(),
