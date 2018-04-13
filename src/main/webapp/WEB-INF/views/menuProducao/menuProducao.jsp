@@ -49,6 +49,7 @@
 									<th class="col-md-4">Nome Lista</th>
 									<th>Status</th>
 									<th>Codigo da Lista</th>
+									<th>Data Evento</th>
 									<th>Data Aprovação</th>
 									<th>Aprovado Por</th>
 									
@@ -58,15 +59,10 @@
 											 <td class="alinhamentoVertical"><a href="itensProducao?idLIsta=${lista.idLista}">${lista.lista}</a></td>
 											 <td class="alinhamentoVertical">-- Aprovado</td>
 											 <td class="alinhamentoVertical">${lista.listaCod}</td>
+											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataDoEvento.time}" pattern="dd/MM/yyyy"/></td>	
 											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataAprovacao.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>	
 											 <td class="alinhamentoVertical">${lista.usuarioAprova.nome}</td>
 										</tr>
-										
-										<tr>
-											<td><fmt:formatDate value="${lista.dataAprovacao.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>
-										
-										</tr>
-										
 										
 								  </c:forEach>	
 			
