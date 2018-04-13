@@ -22,7 +22,7 @@
 		<th></th>
 		<th></th>
 		<th></th>
-		<th style="border: 2px solid #000; background-color: red"><b> - </b></th>
+		<th style="border: 2px solid #000;"><b> - </b></th>
 		<th></th>
 	</tr>
 	
