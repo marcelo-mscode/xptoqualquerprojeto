@@ -13,7 +13,15 @@ public class CalculaTotalDiferencaTelefone implements TotalDiferencaTelefone {
 		for (int i = 0; i < relatorioBVS.size(); i++) {
 			totalDiferenca = totalDiferenca.add(relatorioBVS.get(i).getDiferenca());
 		}
-		totalDiferenca = totalDiferenca.add(fee).add(feeReduzido).add(impostoClienteDiferenca).subtract(margemContribuicao).subtract(valorTelefone);
+		totalDiferenca = totalDiferenca.add(fee)
+									   .add(feeReduzido)
+									   .add(impostoClienteDiferenca)
+									   .subtract(margemContribuicao)
+									   .subtract(valorTelefone)
+									   .subtract(new BigDecimal("79.00"))
+									   ;
+		
+		
 		return totalDiferenca;
 	}
 
@@ -23,7 +31,17 @@ public class CalculaTotalDiferencaTelefone implements TotalDiferencaTelefone {
 		for (int i = 0; i < relatorioBVS.size(); i++) {
 			totalDiferenca = totalDiferenca.add(relatorioBVS.get(i).getDiferenca());
 		}
-		totalDiferenca = totalDiferenca.add(fee).add(impostoClienteDiferenca).add(feeReduzido);
+		totalDiferenca = totalDiferenca.add(fee)
+									   .add(impostoClienteDiferenca)
+									   .add(feeReduzido)
+									   .subtract(new BigDecimal("79.00"))
+				;
+
+		//totalDiferenca = totalDiferenca.add(fee).add(impostoClienteDiferenca).add(feeReduzido);
+		
+		
+		
+		
 		return totalDiferenca;
 	}
 }

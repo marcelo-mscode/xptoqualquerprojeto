@@ -17,7 +17,13 @@ class CalculaGiroSemTelefone implements CalculoGiro {
 		BigDecimal bvs = new BigDecimal("0.00");
 		BigDecimal internas = new BigDecimal("0.00");
 //		giroSemTelefone = valorLiquido.subtract(cacheSemTelefone).subtract(externas).subtract(internas).add(bvs);
-		giroSemTelefone = valorLiquidoComScala.subtract(cacheSemTelefoneComScala).subtract(externasComScala).subtract(internas).add(bvs);
+		giroSemTelefone = valorLiquidoComScala
+						  .subtract(cacheSemTelefoneComScala)
+						  .subtract(externasComScala)
+						  .subtract(internas)
+						  .add(bvs)
+						  .subtract(new BigDecimal("79.00"))
+						  ;
 		
 		return giroSemTelefone;
 	}
