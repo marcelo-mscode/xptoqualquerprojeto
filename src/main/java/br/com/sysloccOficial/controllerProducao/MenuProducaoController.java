@@ -96,18 +96,24 @@ public class MenuProducaoController extends AuxProducao{
 		List<Lista> listas = new ArrayList<Lista>(listaDAO.listaMenuProducao());
 		
 		
-		List<String> data = new ArrayList<String>();
+		List<Integer[]> ano = new ArrayList<Integer[]>();
 		
 		
 		for (int i = 0; i < listas.size(); i++) {
 			
 			Calendar cal = listas.get(i).getDataDoEvento();
 			
-			//cal.get(Calendar.MONTH);			
-			System.out.println(cal.get(Calendar.MONTH));
+			Integer[] teste = new Integer[2];
+			
+			teste[0] = cal.get(Calendar.YEAR);
+			teste[1] = cal.get(Calendar.MONTH);
+			
+			ano.add(teste);		
+			System.out.println(ano.get(i)[1]);
 			
 		}
 		
+		List<Integer[]> anos = removerDuplicadosDuasListas(ano, ano);
 		
 		
 		
@@ -116,6 +122,20 @@ public class MenuProducaoController extends AuxProducao{
 	
 		return MV;
 	}
+	
+	public <E> List<E> removerDuplicadosDuasListas(List<E> combinacoesA,List<E> combinacoesB) {
+		for (int i = 0; i < combinacoesA.size(); i++) {
+			for (int j = 0; j < combinacoesB.size(); j++) {
+				if(combinacoesA.get(i).equals(combinacoesB.get(j))){
+					combinacoesA.remove(i);
+				}
+		    }
+	   }
+		return combinacoesA;
+   }
+	
+	
+	
 	
 	@RequestMapping("/itensProducaoFornecedor")
 	public ModelAndView itensProducaoFornecedor() {
