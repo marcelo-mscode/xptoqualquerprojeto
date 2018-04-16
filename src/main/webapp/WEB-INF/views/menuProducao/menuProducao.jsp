@@ -66,14 +66,15 @@
 								  </c:forEach>	
 									
 						  	<c:forEach items="${data}" var="data">
+						  	
+						  		<fmt:formatDate value="${data.time}" pattern="yyyy/MM" var="mesAno" />
+						  		
 							  	<c:forEach items="${lista}" var="lista">
+							  		<fmt:formatDate value="${lista.dataDoEvento.time}" pattern="yyyy/MM" var="mesAnoEvento" />
 							  	 <tr>
-							  		<c:if test="${data.time == lista.dataDoEvento.time}">
-									  		<td>${lista.listaCod}</td>
-							  		</c:if>
-	
-							  		<c:if test="${data.time != lista.dataDoEvento.time}">
-									  		<td>Não é igual</td>
+							  		<c:if test="${mesAno == mesAnoEvento}">
+									  		<td>${lista.lista}</td>
+									  		<td><fmt:formatDate value="${lista.dataDoEvento.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>
 							  		</c:if>
 								 </tr>
 					  		</c:forEach>
