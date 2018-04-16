@@ -7,8 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -91,38 +89,23 @@ public class MenuProducaoController extends AuxProducao{
 	public ModelAndView menuProducao() {
 		ModelAndView MV = new ModelAndView("menuProducao/menuProducao");
 		
-		List<Date> datas = new ArrayList<Date>();
 		
 		List<Lista> listas = new ArrayList<Lista>(listaDAO.listaMenuProducao());
 		
-		
-		List<Integer[]> ano = new  ArrayList<Integer[]>();
-		
-		
-		for (int i = 0; i < listas.size(); i++) {
-			
-			Calendar cal = listas.get(i).getDataDoEvento();
-			
-			Integer[] teste = new Integer[2];
-			
-			teste[0] = cal.get(Calendar.YEAR);
-			teste[1] = cal.get(Calendar.MONTH);
-			
-			ano.add(teste);	
-		}
-		
-		
-//		List<Integer[]> anos = removerDuplicadosDuasListas(ano,ano);
-
-		for (int i = 0; i < ano.size(); i++) {
-			System.out.println(ano);
-		}	
-		
-		
-		
 		MV.addObject("lista", listas);
-		MV.addObject("ano", ano);
-	
+
+		
+		
+		
+		Calendar cal = Calendar.getInstance();
+		
+		
+        int month = cal.get(Calendar.MONTH) + 1;
+        int year = cal.get(Calendar.YEAR);
+        System.out.println("Current Date: " + cal.getTime());
+        System.out.println("Month: " + month);
+        System.out.println("Year: " + year);
+		
 		return MV;
 	}
 	
