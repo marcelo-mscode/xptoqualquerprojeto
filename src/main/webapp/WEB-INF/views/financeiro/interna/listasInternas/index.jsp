@@ -20,13 +20,13 @@
 
 <div style="height: 350px;">
 	
-	<div class="col-md-12" style="margin: 10px 0px 25px -14px;/* border-bottom: 1px solid #ccc; */padding-bottom: 10px;">
+	<div class="col-md-12" style="margin: 25px 0px 25px -14px;">
 		<span style="font-family: 'OpenSansLight';font-size: 25px;margin-left: 32px;">PLANILHAS INTERNAS</span>
 	</div>
 	
 <div id="criacaoListas" class="col-md-12 efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:35px 40px 70px 35px;">
  <div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;">
-	<table class="table table-striped table-hover table-condensed" style="">
+	<table class="table table-striped table-td-ajuste table-sem-bold table-hover table-condensed" style="">
 	  <tbody id="prospeccaoFiltro">
 			<tr>
 				<td colspan="6"
