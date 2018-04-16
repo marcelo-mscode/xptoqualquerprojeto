@@ -493,6 +493,9 @@ public ArrayList<Integer> FormataDataJodaGenerica(Date data) throws ParseExcepti
         	Calendar m = Calendar.getInstance();
             m.set(Calendar.MONTH, i);
             m.set(Calendar.YEAR, year);
+            m.set(Calendar.HOUR, 00);
+            m.set(Calendar.MINUTE , 00);
+            m.set(Calendar.SECOND , 00);
         	
             listaCal.add(m);
             

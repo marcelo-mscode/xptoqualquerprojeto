@@ -97,6 +97,10 @@ public class MenuProducaoController extends AuxProducao{
 		
 		List<Calendar> cal = utilDatas.retornaAnoMesAtualCalendar();
 
+		for (int i = 0; i < cal.size(); i++) {
+			System.out.println(cal);	
+		}
+		
 		MV.addObject("data", cal);
 		
 		
