@@ -65,7 +65,15 @@
 										</tr>
 										
 								  </c:forEach>	
-			
+								  
+								  <c:forEach items="${ano}" var="ano">
+									  <tr>
+											<td>${ano[0]}</td>
+											<td>${ano[1]}</td>
+									  </tr>
+								  </c:forEach>
+								  
+								  	
 						   </tbody>
 						</table>
 					</div>

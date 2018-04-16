@@ -96,7 +96,7 @@ public class MenuProducaoController extends AuxProducao{
 		List<Lista> listas = new ArrayList<Lista>(listaDAO.listaMenuProducao());
 		
 		
-		List<Integer[]> ano = new ArrayList<Integer[]>();
+		LinkedHashSet<Integer[]> ano = new  LinkedHashSet<Integer[]>();
 		
 		
 		for (int i = 0; i < listas.size(); i++) {
@@ -111,16 +111,18 @@ public class MenuProducaoController extends AuxProducao{
 			ano.add(teste);	
 		}
 		
-		List<Integer[]> anos = removerDuplicadosDuasListas(ano, ano);
-	//	List<Integer[]> anos1 = removerDuplicadosDuasListas(anos, anos);
-	//	List<Integer[]> anos2 = removerDuplicadosDuasListas(anos1, anos1);
+		Iterator<Integer[]> itr = ano.iterator();
 		
-		for (int i = 0; i < anos.size(); i++) {
-			System.out.println(anos.get(i)[1]);
+		while(itr.hasNext()){
+			
+			System.out.println(itr.next()[1]);
 		}
 		
 		
+		
+		
 		MV.addObject("lista", listas);
+		MV.addObject("teste", ano);
 	
 		return MV;
 	}

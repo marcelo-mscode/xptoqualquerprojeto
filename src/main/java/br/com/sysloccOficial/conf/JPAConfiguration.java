@@ -79,8 +79,8 @@ public class JPAConfiguration {
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.hbm2ddl.auto","update");
 		properties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect");
-		/*properties.setProperty("hibernate.show_sql", "true");
-		properties.setProperty("hibernate.format_sql", "true");*/
+		properties.setProperty("hibernate.show_sql", "true");
+		properties.setProperty("hibernate.format_sql", "true");
 	//	properties.setProperty("hibernate.generate_statistics", "true");
 		/*properties.setProperty("hibernate.search.default.directory_provider", "filesystem");
 		properties.setProperty("hibernate.search.default.indexBase", "/sysloccOficial/indexes");*/
