@@ -64,7 +64,16 @@
 											 <td class="alinhamentoVertical">${lista.usuarioAprova.nome}</td>
 										</tr>
 								  </c:forEach>	
-								  	
+									
+								  <c:forEach items="${data}" var="data">
+								  	<tr>
+								  		<td><fmt:formatDate value="${data.time}" pattern="dd/MM/yyyy"/></td>
+								  	</tr>
+								  
+								  </c:forEach>	
+									
+									
+																	  	
 						   </tbody>
 						</table>
 					</div>
