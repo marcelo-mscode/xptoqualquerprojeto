@@ -95,16 +95,7 @@ public class MenuProducaoController extends AuxProducao{
 		
 		MV.addObject("lista", listas);
 
-		
-		List<Calendar> cal = utilDatas.retornaAnoMesAtualEAnterioresCalendar();
-
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-		
-		for (int i = 0; i < cal.size(); i++) {
-			System.out.println(sdf.format(cal.get(i).getTime()));	
-		}
-		
-		MV.addObject("data", cal);
+		MV.addObject("data", utilDatas.retornaAnoMesAtualEAnterioresCalendar());
 		
 		MV.addObject("mesesReferencia", utilDatas.mesesAno());
 		
