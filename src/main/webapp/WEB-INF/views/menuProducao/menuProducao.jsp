@@ -63,13 +63,16 @@
 											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataAprovacao.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>	
 											 <td class="alinhamentoVertical">${lista.usuarioAprova.nome}</td>
 										</tr>
-										
 								  </c:forEach>	
 								  
-								  <c:forEach items="${ano}" var="ano">
+								   <c:forEach items="${ano}" var="ano">		
 									  <tr>
 											<td>${ano[0]}</td>
 											<td>${ano[1]}</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
 									  </tr>
 								  </c:forEach>
 								  
