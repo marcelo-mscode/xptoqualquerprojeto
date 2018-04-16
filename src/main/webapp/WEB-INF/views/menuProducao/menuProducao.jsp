@@ -8,7 +8,7 @@
    .producao{background: #f1f1f1;}
 </style>
 <!-- - - - - - - - - - Container - - - - - - - - - - - -->
-<div style="height: 80px;background: #e74c3c" class="">
+<div style="height: 80px;background: #e74c3c;box-shadow: 3px 0px 5px 5px #ccc;">
    <div class="row" style="margin-top: 0px;margin-left: 5px">
       <div class="col-md-12" style="margin-top: 10px">
          <span style="font-size: 25px;color: #fff;font-family:'OpenSansLight' ">PRODUÇÃO</span>
@@ -24,7 +24,7 @@
 <div class="container">
    <div>
       <div class="row">
-         <div class="col-md-12 painel ajuste-left" style="box-shadow: 0px 4px 30px 7px #ccc;">
+         <div class="col-md-12 painel ajuste-left" style="box-shadow: 0px 10px 30px 7px #ccc;margin-top: -6px">
             <div class="col-md-12">
                <table class="table table-striped table-td-ajuste table-sem-bold table-hover table-condensed" style="font-size: 12px;">
                   <tbody>

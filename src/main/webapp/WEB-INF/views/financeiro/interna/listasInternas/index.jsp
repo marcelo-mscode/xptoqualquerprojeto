@@ -28,59 +28,59 @@
  <div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;">
 	<table class="table table-striped table-hover table-condensed" style="">
 	  <tbody id="prospeccaoFiltro">
-		<tr style="background: #f1f1f1 !important">
-			<th></th>
-			<th>Evento</th>
+			<tr>
+				<td colspan="6"
+					style="text-align: right; padding-right: 68px !important">
+					<h3 style="margin: 0">${ano}</h3>
+				</td>
+			</tr>
+
+			<tr style="background: #f1f1f1 !important">
+			<th style="padding-left: 20px !important">Evento</th>
 			<th>Empresa</th>
 			<th>Data Evento</th>
-			<th>Itens fechados</th>
 		</tr>
 		
-		<c:forEach items="${listasInternas}" var="listasInternas" varStatus="loop">
-			<tr>
-				<td>${loop.count}</td>
-			    <td><a href="internaIndividual?idLista=${listasInternas.idLista}">${listasInternas.lista}</a></td>
-				<td>${listasInternas.idJob.empresa.empresa}</td>
-				<td>Colocar data evento no código</td>
-				<td>
-					${fn:length(listasInternas.producaoP)}
-				</td>
-			</tr>		
-		</c:forEach>
-			
+		<c:forEach items="${data}" var="data">
+                    <fmt:formatDate value="${data.time}" pattern="yyyy" var="anoAtual" />
+                    <c:if test="${ano == anoAtual}">
+                       <tr>
+                          <td colspan="6">
+                             <fmt:formatDate value="${data.time}" pattern="MM" var="mesEvento"/>
+                             <c:forEach items="${mesesReferencia}" var="mesReferencia" varStatus="count">
+                                <c:if test="${count.count == mesEvento}">
+                                   <b>${mesReferencia}</b>						  				
+                                </c:if>
+                             </c:forEach>
+                          </td>
+                       </tr>
+                       <fmt:formatDate value="${data.time}" pattern="yyyy/MM" var="mesAno" />
+                       <c:forEach items="${listasInternas}" var="listasInternas">
+                          <fmt:formatDate value="${listasInternas.dataDoEvento.time}" pattern="yyyy/MM" var="mesAnoEvento" />
+                          <tr>
+                             <c:if test="${mesAno == mesAnoEvento}">
+                                <td style="padding-left: 20px !important"><a href="internaIndividual?idLista=${listasInternas.idLista}">${listasInternas.lista}</a></td>
+								<td>${listasInternas.idJob.empresa.empresa}</td>
+								<td><fmt:formatDate value="${listasInternas.dataDoEvento.time}" pattern="dd/MM/yyyy"/></td>
+                             </c:if>
+                          </tr>
+                       </c:forEach>
+                    </c:if>
+          </c:forEach>
 		
 		
-		<%-- <c:forEach items="${prospeccoes}" var="prospeccoes">
-			<tr>
-			    <td><a href="edicaoProspeccao?idProspeccao=${prospeccoes.idProspeccao}">${prospeccoes.titulo}</a></td>
-				<td>
-					<c:forTokens items="${prospeccoes.idEmpresa.empresa}" delims=" " var="word" varStatus="status">  
-	                   <c:if test="${status.count < 3}">  
-	                     <c:out value="${word}" escapeXml="false"/>  
-	                   </c:if>  
-	                </c:forTokens>
-				</td>
-			
-				<c:forEach items="${prospeccoes.interacao}" var="interacao" varStatus="loop">
-				  <c:if test="${loop.last}">	
-					<td>
-						<c:forTokens items="${interacao.interacao}" delims=" " var="word" varStatus="status">  
-		                   <c:if test="${status.count < 6}">  
-		                     <c:out value="${word}" escapeXml="false"/>  
-		                   </c:if>
-	                    </c:forTokens>	
-					</td>
-					<td><fmt:formatDate value="${interacao.dataInteracao.time}" pattern="dd/MM/yyyy hh:mm"/></td>
-					<td>
-						<c:if test="${interacao.dataProximaInteracao  != '0001-01-01 00:00:00.0'}">
-							<fmt:formatDate value="${interacao.dataProximaInteracao}" pattern="dd/MM/yyyy HH:mm"/>
-						</c:if>
-						<c:if test="${interacao.dataProximaInteracao  == '0001-01-01 00:00:00.0'}"></c:if>
-					</td>
-				  </c:if>
-				</c:forEach>
-			</tr>
-		</c:forEach>	 --%>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
 	  </tbody>
 	</table>
   </div>		
