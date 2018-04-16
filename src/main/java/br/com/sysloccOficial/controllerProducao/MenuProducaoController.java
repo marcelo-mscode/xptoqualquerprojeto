@@ -105,8 +105,7 @@ public class MenuProducaoController extends AuxProducao{
 		
 		MV.addObject("data", cal);
 		
-		
-	
+		MV.addObject("ano", Calendar.getInstance().get(Calendar.YEAR));
 		
 		return MV;
 	}

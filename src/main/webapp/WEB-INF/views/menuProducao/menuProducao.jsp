@@ -44,6 +44,11 @@
 						<table class="table table-striped table-td-ajuste table-sem-bold table-hover table-condensed"
 							style="font-size: 12px;">
 							<tbody>
+								
+								<tr>
+									<td colspan="6"><h3>${ano}</h3></td>
+								</tr>
+								
 								<tr class="active">
 									
 									<th class="col-md-4">Nome Lista</th>
@@ -54,7 +59,7 @@
 									<th>Aprovado Por</th>
 									
 								</tr>
-								  <c:forEach items="${lista}" var="lista">				
+								  <%-- <c:forEach items="${lista}" var="lista">				
 										<tr >
 											 <td class="alinhamentoVertical"><a href="itensProducao?idLIsta=${lista.idLista}">${lista.lista}</a></td>
 											 <td class="alinhamentoVertical">-- Aprovado</td>
@@ -69,12 +74,12 @@
 										</tr>
 										<tr>
 											<td colspan="6"></td>
-										</tr>
-										<tr>
-											<td colspan="6"></td>
-										</tr>
-									
+										</tr> --%>
+				  			
 						  	<c:forEach items="${data}" var="data">
+						  		<fmt:formatDate value="${data.time}" pattern="yyyy" var="anoAtual" />
+						  		<c:if test="${ano == anoAtual}">
+						  	
 						  		<tr>
 						  			<td colspan="6"><fmt:formatDate value="${data.time}" pattern="MM"/></td>
 						  		</tr>
@@ -86,13 +91,14 @@
 							  		<c:if test="${mesAno == mesAnoEvento}">
 									  		<td class="alinhamentoVertical"><a href="itensProducao?idLIsta=${lista.idLista}">${lista.lista}</a></td>
 									  		<td class="alinhamentoVertical">-- Aprovado</td>
-											 <td class="alinhamentoVertical">${lista.listaCod}</td>
+											 <td class="alinhamentoVertical">${lista.listaCod}.${lista.revisao}</td>
 											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataDoEvento.time}" pattern="dd/MM/yyyy"/></td>	
 											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataAprovacao.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>	
 											 <td class="alinhamentoVertical">${lista.usuarioAprova.nome}</td>
 							  		</c:if>
 								 </tr>
-					  		</c:forEach>
+						  		</c:forEach>
+					  		  </c:if>
 						</c:forEach>
 								  	
 								  	
