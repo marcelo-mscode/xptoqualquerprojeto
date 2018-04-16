@@ -46,6 +46,7 @@ import br.com.sysloccOficial.model.CartaContratacao;
 import br.com.sysloccOficial.model.Empresa;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.LocalEvento;
+import br.com.sysloccOficial.model.MesesComReferencia;
 import br.com.sysloccOficial.model.ProducaoValoresGJson;
 import br.com.sysloccOficial.model.ProdutoGrupo;
 import br.com.sysloccOficial.model.Usuario;
@@ -104,6 +105,8 @@ public class MenuProducaoController extends AuxProducao{
 		}
 		
 		MV.addObject("data", cal);
+		
+		MV.addObject("mesesReferencia", utilDatas.mesesAno());
 		
 		MV.addObject("ano", Calendar.getInstance().get(Calendar.YEAR));
 		

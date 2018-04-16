@@ -52,36 +52,28 @@
 								<tr class="active">
 									
 									<th class="col-md-4">Nome Lista</th>
-									<th>Status</th>
+									<th>Empresa</th>
 									<th>Codigo da Lista</th>
 									<th>Data Evento</th>
 									<th>Data Aprovação</th>
 									<th>Aprovado Por</th>
 									
 								</tr>
-								  <%-- <c:forEach items="${lista}" var="lista">				
-										<tr >
-											 <td class="alinhamentoVertical"><a href="itensProducao?idLIsta=${lista.idLista}">${lista.lista}</a></td>
-											 <td class="alinhamentoVertical">-- Aprovado</td>
-											 <td class="alinhamentoVertical">${lista.listaCod}</td>
-											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataDoEvento.time}" pattern="dd/MM/yyyy"/></td>	
-											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataAprovacao.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>	
-											 <td class="alinhamentoVertical">${lista.usuarioAprova.nome}</td>
-										</tr>
-								  </c:forEach>	
-										<tr>
-											<td colspan="6"></td>
-										</tr>
-										<tr>
-											<td colspan="6"></td>
-										</tr> --%>
 				  			
 						  	<c:forEach items="${data}" var="data">
 						  		<fmt:formatDate value="${data.time}" pattern="yyyy" var="anoAtual" />
 						  		<c:if test="${ano == anoAtual}">
 						  	
 						  		<tr>
-						  			<td colspan="6"><fmt:formatDate value="${data.time}" pattern="MM"/></td>
+						  			<td colspan="6">
+						  				<fmt:formatDate value="${data.time}" pattern="MM" var="mesEvento"/>
+						  			
+							  			<c:forEach items="${mesesReferencia}" var="mesReferencia" varStatus="count">
+							  				<c:if test="${count.count == mesEvento}">
+												${mesReferencia}						  				
+							  				</c:if>
+							  			</c:forEach>
+						  			</td>
 						  		</tr>
 						  		<fmt:formatDate value="${data.time}" pattern="yyyy/MM" var="mesAno" />
 						  		
@@ -89,12 +81,12 @@
 							  		<fmt:formatDate value="${lista.dataDoEvento.time}" pattern="yyyy/MM" var="mesAnoEvento" />
 							  	 <tr>
 							  		<c:if test="${mesAno == mesAnoEvento}">
-									  		<td class="alinhamentoVertical"><a href="itensProducao?idLIsta=${lista.idLista}">${lista.lista}</a></td>
-									  		<td class="alinhamentoVertical">-- Aprovado</td>
-											 <td class="alinhamentoVertical">${lista.listaCod}.${lista.revisao}</td>
-											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataDoEvento.time}" pattern="dd/MM/yyyy"/></td>	
-											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataAprovacao.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>	
-											 <td class="alinhamentoVertical">${lista.usuarioAprova.nome}</td>
+									  		<td class="alinhamentoVertical" style=""><a href="itensProducao?idLIsta=${lista.idLista}">${lista.lista}</a></td>
+									  		<td class="alinhamentoVertical">${lista.idJob.empresa.empresa}</td>
+											<td class="alinhamentoVertical">${lista.listaCod}.${lista.revisao}</td>
+											<td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataDoEvento.time}" pattern="dd/MM/yyyy"/></td>	
+											<td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataAprovacao.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>	
+											<td class="alinhamentoVertical">${lista.usuarioAprova.nome}</td>
 							  		</c:if>
 								 </tr>
 						  		</c:forEach>
