@@ -467,28 +467,16 @@ public ArrayList<Integer> FormataDataJodaGenerica(Date data) throws ParseExcepti
 	}
 	
 	
-	public List<Calendar> retornaAnoMesAtualCalendar(){
+	public List<Calendar> retornaAnoMesAtualEAnterioresCalendar(){
 		
 		Calendar cal = Calendar.getInstance();
 		
         int month = cal.get(Calendar.MONTH);
         int year = cal.get(Calendar.YEAR);
         
-        List<Integer[]>  data  = new ArrayList<Integer[]>();
-        
-        for (int i = 1; i <= month; i++) {
-        	Integer[] datas = new Integer[2]; 
-			
-        	datas[0] = year;
-        	datas[1] = i;
-        	
-        	data.add(datas);
-		}
-        
-        
         List<Calendar> listaCal = new ArrayList<Calendar>();
         
-        for (int i = 0; i <= month; i++) {
+        for (int i = month; i >= 0; i--) {
 
         	Calendar m = Calendar.getInstance();
             m.set(Calendar.MONTH, i);

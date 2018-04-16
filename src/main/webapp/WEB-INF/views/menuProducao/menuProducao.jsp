@@ -64,17 +64,32 @@
 											 <td class="alinhamentoVertical">${lista.usuarioAprova.nome}</td>
 										</tr>
 								  </c:forEach>	
+										<tr>
+											<td colspan="6"></td>
+										</tr>
+										<tr>
+											<td colspan="6"></td>
+										</tr>
+										<tr>
+											<td colspan="6"></td>
+										</tr>
 									
 						  	<c:forEach items="${data}" var="data">
-						  	
+						  		<tr>
+						  			<td colspan="6"><fmt:formatDate value="${data.time}" pattern="MM"/></td>
+						  		</tr>
 						  		<fmt:formatDate value="${data.time}" pattern="yyyy/MM" var="mesAno" />
 						  		
 							  	<c:forEach items="${lista}" var="lista">
 							  		<fmt:formatDate value="${lista.dataDoEvento.time}" pattern="yyyy/MM" var="mesAnoEvento" />
 							  	 <tr>
 							  		<c:if test="${mesAno == mesAnoEvento}">
-									  		<td>${lista.lista}</td>
-									  		<td><fmt:formatDate value="${lista.dataDoEvento.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>
+									  		<td class="alinhamentoVertical"><a href="itensProducao?idLIsta=${lista.idLista}">${lista.lista}</a></td>
+									  		<td class="alinhamentoVertical">-- Aprovado</td>
+											 <td class="alinhamentoVertical">${lista.listaCod}</td>
+											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataDoEvento.time}" pattern="dd/MM/yyyy"/></td>	
+											 <td class="alinhamentoVertical"><fmt:formatDate value="${lista.dataAprovacao.time}" pattern="dd/MM/yyyy HH:mm:ss"/></td>	
+											 <td class="alinhamentoVertical">${lista.usuarioAprova.nome}</td>
 							  		</c:if>
 								 </tr>
 					  		</c:forEach>
