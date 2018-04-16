@@ -108,14 +108,16 @@ public class MenuProducaoController extends AuxProducao{
 			teste[0] = cal.get(Calendar.YEAR);
 			teste[1] = cal.get(Calendar.MONTH);
 			
-			ano.add(teste);		
-			System.out.println(ano.get(i)[1]);
-			
+			ano.add(teste);	
 		}
 		
 		List<Integer[]> anos = removerDuplicadosDuasListas(ano, ano);
+	//	List<Integer[]> anos1 = removerDuplicadosDuasListas(anos, anos);
+	//	List<Integer[]> anos2 = removerDuplicadosDuasListas(anos1, anos1);
 		
-		
+		for (int i = 0; i < anos.size(); i++) {
+			System.out.println(anos.get(i)[1]);
+		}
 		
 		
 		MV.addObject("lista", listas);
