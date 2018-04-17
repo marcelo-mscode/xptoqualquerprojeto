@@ -67,36 +67,11 @@
                        </c:forEach>
                     </c:if>
           </c:forEach>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 	  </tbody>
 	</table>
   </div>		
 </div>
-	
-	
-	
-	
-	
-	
-	
 </div>	
-   
-   
-
-
 
 <c:import url="../../../_comum/footer.jsp" />
    
