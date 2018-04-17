@@ -744,6 +744,7 @@ public Integer novoCodJob(){
 	
 	public String limpaSqlComList(String consulta){
 		String c2 = consulta.replace("[", "").replace("]", "");
+		System.out.println("=======================================\n"+ c2 + "\n==============================================");
 		return c2;
 	}
 	

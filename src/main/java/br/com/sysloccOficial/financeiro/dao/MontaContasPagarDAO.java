@@ -159,8 +159,21 @@ public class MontaContasPagarDAO {
 		String consultaLimpaFfinanceiro = util.limpaSqlComList("SELECT idFornecedor FROM"
 				+ " FornecedorFinanceiro where idProducao in ("+listaUmFornecedor+")");
 		
-		TypedQuery<Integer> lista2 = manager.createQuery(consultaLimpaFfinanceiro,Integer.class);
-		List<Integer> listaUmFinanceiro = lista2.getResultList();
+		List<Integer> listaUmFinanceiro = new ArrayList<Integer>();
+		
+		try {
+			TypedQuery<Integer> lista2 = manager.createQuery(consultaLimpaFfinanceiro,Integer.class);
+			listaUmFinanceiro = lista2.getResultList();
+			
+		} catch (Exception e) {
+			System.out.println("Erro em MontaContasPagarDAO, linha 169 : "+ e);
+		}
+		
+		
+		if(listaUmFinanceiro.isEmpty()){
+			System.out.println("Ta Vazia");
+		}
+		
 		
 		
 		List<Object[]> lista = montaDiasPagamentoDataFornecedorValor(listaUmFinanceiro);
