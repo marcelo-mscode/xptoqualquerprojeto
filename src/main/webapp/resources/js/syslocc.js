@@ -2555,7 +2555,7 @@ function mudaCampoData(id){
 }
 
 
-function funcaoPagaConta(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
+/*function funcaoPagaConta(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
 	
 	alert("Aqui !!!!");
 	
@@ -2582,5 +2582,5 @@ function funcaoPagaConta(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) 
 		}
 	});
 	
-};
+};*/
 

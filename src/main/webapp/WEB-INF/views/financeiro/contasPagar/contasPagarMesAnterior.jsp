@@ -60,3 +60,49 @@
 	
 		</table>
 		<h1 class="pLeft"><fmt:formatNumber value="${valorTotal}" pattern="#,##0.00" /></h1>
+		
+		<script type="text/javascript">
+		function funcaoPagaConta(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
+			
+			var banco = $("#"+idbanco).val();
+			
+			alert(banco);
+			
+		if(banco == 0){
+				$("#"+idbanco+contador).css("border","1px solid red");
+				alert("Selecione um banco !");
+				return false;
+			}
+			
+			$.ajax({
+				url : "pagaConta?idLista="+idLista+"&idFornecedor="+idFornecedor+"&qtdDias="+qtdDias+"&idbanco="+banco,
+				success : function(data) {
+					$("#ConfirmaPagamento").fadeOut(500);
+					$("#sucesso"+contador).fadeIn(500);
+					location.reload();
+				},
+				beforeSend : function() {
+					$("#ConfirmaPagamento").fadeIn(500);
+				},
+				complete : function() {
+					$("#ConfirmaPagamento").fadeOut(500);
+				},
+				error : function() {
+					alert("Erro aqui");
+				}
+			});
+			
+		};
+		
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
