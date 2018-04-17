@@ -66,8 +66,6 @@
 			
 			var banco = $("#"+idbanco).val();
 			
-			alert(banco);
-			
 		if(banco == 0){
 				$("#"+idbanco+contador).css("border","1px solid red");
 				alert("Selecione um banco !");
@@ -79,7 +77,7 @@
 				success : function(data) {
 					$("#ConfirmaPagamento").fadeOut(500);
 					$("#sucesso"+contador).fadeIn(500);
-					/* location.reload(); */
+					location.reload();
 				},
 				beforeSend : function() {
 					$("#ConfirmaPagamento").fadeIn(500);
