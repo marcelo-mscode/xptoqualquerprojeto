@@ -139,15 +139,26 @@ public class MontaContasPagarDAO {
 		 * 
 		 */
 		String consultaUmFornecedor = "SELECT idProducao FROM ProducaoP where lista.idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
-		TypedQuery<Integer> listaProdPUmForn = manager.createQuery(consultaUmFornecedor, Integer.class);
-		List<Integer> listaUmFornecedor = listaProdPUmForn.getResultList();
 		
+		
+		List<Integer> listaUmFornecedor = new ArrayList<Integer>();
+		
+		try {
+			TypedQuery<Integer> listaProdPUmForn = manager.createQuery(consultaUmFornecedor, Integer.class);
+			listaUmFornecedor = listaProdPUmForn.getResultList();
+			
+		} catch (Exception e) {
+			System.out.println("Erro aqui:" + e);
+		}
+		
+
 		/**
 		 * Pega todos os registros Financeiros da Lord 
 		 * 
 		 */
 		String consultaLimpaFfinanceiro = util.limpaSqlComList("SELECT idFornecedor FROM"
 				+ " FornecedorFinanceiro where idProducao in ("+listaUmFornecedor+")");
+		
 		TypedQuery<Integer> lista2 = manager.createQuery(consultaLimpaFfinanceiro,Integer.class);
 		List<Integer> listaUmFinanceiro = lista2.getResultList();
 		
@@ -206,24 +217,29 @@ public class MontaContasPagarDAO {
 	 * 60 - 2016-08-09
 	 */
 	private List<Object[]> montaDiasPagamentoDataFornecedorValor(List<Integer> listaUmFinanceiro) {
-		String consultaDiasPrazoPagamento = util.limpaSqlComList("SELECT"
-				+ " distinct(diasPrazoParaPagamento),"
-				+ " dtPgotFornecedor.dataPagar, "
-				+ " idEmpresa.empresa,"
-				+ " valor,"
-				+ " idEmpresa.idEmpresa,"
-				+ " idFornecedorFinanceiro.contratacao,"
-				+ " idFornecedorFinanceiro.idProducao.temMesmoFornecedor,"
-				+ " idFornecedorFinanceiro.idProducao.valorDePagamentoContratacao,"
-				+ " idFornecedorFinanceiro.idProducao.valorContratacao"
-				+ " FROM ValorPagtoFornecedor where idFornecedorFinanceiro in("
-				+ listaUmFinanceiro+") and dtPgotFornecedor.Status = 'PENDENTE' order by diasPrazoParaPagamento");
-		TypedQuery<Object[]> listaT = manager.createQuery(consultaDiasPrazoPagamento,Object[].class);
-		List<Object[]> lista = listaT.getResultList();
+		try {
+			String consultaDiasPrazoPagamento = util.limpaSqlComList("SELECT"
+					+ " distinct(diasPrazoParaPagamento),"
+					+ " dtPgotFornecedor.dataPagar, "
+					+ " idEmpresa.empresa,"
+					+ " valor,"
+					+ " idEmpresa.idEmpresa,"
+					+ " idFornecedorFinanceiro.contratacao,"
+					+ " idFornecedorFinanceiro.idProducao.temMesmoFornecedor,"
+					+ " idFornecedorFinanceiro.idProducao.valorDePagamentoContratacao,"
+					+ " idFornecedorFinanceiro.idProducao.valorContratacao"
+					+ " FROM ValorPagtoFornecedor where idFornecedorFinanceiro in("
+					+ listaUmFinanceiro+") and dtPgotFornecedor.Status = 'PENDENTE' order by diasPrazoParaPagamento");
+			TypedQuery<Object[]> listaT = manager.createQuery(consultaDiasPrazoPagamento,Object[].class);
+			List<Object[]> lista = listaT.getResultList();
+			return lista;
+			
+		} catch (Exception e) {
+			System.out.println("Deu um erro: "+e);
+			System.out.println("Com os ids: "+listaUmFinanceiro);
+			return null;
+		}
 		
-		//System.out.println();
-		
-		return lista;
 	}
 
 	/**
@@ -234,12 +250,25 @@ public class MontaContasPagarDAO {
 	 * @return
 	 */
 	private List<Integer> pegaDiasPagamento(List<Integer> listaUmFinanceiro) {
-		String consultaDiasPrazoPagamento = util.limpaSqlComList("SELECT distinct(diasPrazoParaPagamento)"
-				+ " FROM ValorPagtoFornecedor where idFornecedorFinanceiro in("
-				+ listaUmFinanceiro+") and dtPgotFornecedor.Status = 'PENDENTE' order by diasPrazoParaPagamento");
-		TypedQuery<Integer> listaT = manager.createQuery(consultaDiasPrazoPagamento,Integer.class);
-		List<Integer> lista = listaT.getResultList();
-		return lista;
+		
+		try {
+			String consultaDiasPrazoPagamento = util.limpaSqlComList("SELECT distinct(diasPrazoParaPagamento)"
+					+ " FROM ValorPagtoFornecedor where idFornecedorFinanceiro in("
+					+ listaUmFinanceiro+") and dtPgotFornecedor.Status = 'PENDENTE' order by diasPrazoParaPagamento");
+			TypedQuery<Integer> listaT = manager.createQuery(consultaDiasPrazoPagamento,Integer.class);
+			List<Integer> lista = listaT.getResultList();
+			
+			
+			return lista;
+			
+		} catch (Exception e) {
+			
+			System.out.println("Erro: "+e);
+			
+			return null;
+			
+		}
+		
 	}
 
 
