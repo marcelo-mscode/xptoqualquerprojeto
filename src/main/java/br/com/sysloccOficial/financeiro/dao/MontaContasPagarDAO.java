@@ -297,8 +297,11 @@ public class MontaContasPagarDAO {
 
 	private List<ValorPagtoFornecedor> pegaListaValoresPGTODoFornecedor(Integer qtdDias,
 			List<Integer> listaIdFornecedorEmFornecedorFinanceiroPorIdProducao) {
-		String consultaValorPgto =util.limpaSqlComList("FROM ValorPagtoFornecedor v join fetch v.dtPgotFornecedor where idFornecedorFinanceiro in("+listaIdFornecedorEmFornecedorFinanceiroPorIdProducao
+/*		String consultaValorPgto =util.limpaSqlComList("FROM ValorPagtoFornecedor v left join fetch v.dtPgotFornecedor where idFornecedorFinanceiro in("+listaIdFornecedorEmFornecedorFinanceiroPorIdProducao
 		+") and diasPrazoParaPagamento="+qtdDias);
+*/		
+		String consultaValorPgto =util.limpaSqlComList("FROM ValorPagtoFornecedor v where idFornecedorFinanceiro in("+listaIdFornecedorEmFornecedorFinanceiroPorIdProducao
+				+") and diasPrazoParaPagamento="+qtdDias);
 		
 		TypedQuery<ValorPagtoFornecedor> listaValorPgto = manager.createQuery(consultaValorPgto,ValorPagtoFornecedor.class);
 		List<ValorPagtoFornecedor> listaValorP = listaValorPgto.getResultList();
