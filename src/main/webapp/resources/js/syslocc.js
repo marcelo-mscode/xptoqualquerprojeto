@@ -2555,9 +2555,9 @@ function mudaCampoData(id){
 }
 
 
-/*function pagaContas(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
+function funcaoPagaConta(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
 	
-	alert("Aqui !@!!!");
+	alert("Aqui !!!!");
 	
 	var banco = $("#"+idbanco+contador).val();
 	
@@ -2583,4 +2583,4 @@ function mudaCampoData(id){
 	});
 	
 };
-*/
+

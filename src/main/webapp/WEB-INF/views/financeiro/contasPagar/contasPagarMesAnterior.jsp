@@ -49,7 +49,7 @@
 						</td>
 						<td class="aligVertical"><fmt:formatNumber value="${novaLista[4]}" pattern="#,##0.00" /></td>
 						<td>
-							<a onclick="pagaContas(${idListas[0]},${novaLista[5]},${novaLista[6]},'valor${loop.count}','tipoBanco${loop.count}',${loop.count});" class="btn btn-success">PAGAR</a>
+							<a onclick="funcaoPagaConta(${idListas[0]},${novaLista[5]},${novaLista[6]},'valor${loop.count}','tipoBanco${loop.count}',${loop.count});" class="btn btn-success">PAGAR</a>
 							<i class="glyphicon glyphicon-ok" style="font-size:18px;  color: green;margin-left: 15px;display: none;" id="sucesso${loop.count}"></i>
 						 </td>
 						<c:set var="valorTotal" value="${valorTotal+novaLista[4]}" />			
