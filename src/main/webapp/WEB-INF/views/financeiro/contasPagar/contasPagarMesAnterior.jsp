@@ -79,7 +79,7 @@
 				success : function(data) {
 					$("#ConfirmaPagamento").fadeOut(500);
 					$("#sucesso"+contador).fadeIn(500);
-					location.reload();
+					/* location.reload(); */
 				},
 				beforeSend : function() {
 					$("#ConfirmaPagamento").fadeIn(500);
