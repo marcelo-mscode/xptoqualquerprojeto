@@ -99,4 +99,48 @@
 	</table>
 </div>
 
+
+
+<script>
+function pagaContas(idLista,idFornecedor,qtdDias,idLinha,idbanco,contador) {
+	
+	alert("Aqui !@!!!");
+	
+	var banco = $("#"+idbanco+contador).val();
+	
+	if(banco == 0){
+		$("#"+idbanco+contador).css("border","1px solid red");
+		alert("Selecione um banco !");
+		return false;
+	}
+	
+	$.ajax({
+		url : "pagaConta?idLista="+idLista+"&idFornecedor="+idFornecedor+"&qtdDias="+qtdDias+"&idbanco="+banco,
+		success : function(data) {
+			$("#ConfirmaPagamento").fadeOut(500);
+			$("#sucesso"+contador).fadeIn(500);
+			location.reload();
+		},
+		beforeSend : function() {
+			$("#ConfirmaPagamento").fadeIn(500);
+		},
+		complete : function() {
+			$("#ConfirmaPagamento").fadeOut(500);
+		}
+	});
+	
+};
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
 <c:import url="../../_comum/footer.jsp" />

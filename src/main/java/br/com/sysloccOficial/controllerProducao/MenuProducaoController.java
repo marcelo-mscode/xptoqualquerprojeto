@@ -89,8 +89,7 @@ public class MenuProducaoController extends AuxProducao{
 	@RequestMapping("/menuProducao")
 	public ModelAndView menuProducao() {
 		ModelAndView MV = new ModelAndView("menuProducao/menuProducao");
-		
-		
+				
 		List<Lista> listas = new ArrayList<Lista>(listaDAO.listaMenuProducao());
 		
 		MV.addObject("lista", listas);
