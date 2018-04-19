@@ -32,7 +32,7 @@
 		<th> - </th>
 		<th>Total =></th>
 		<th> - </th>
-		<th style="border: 2px solid #000"><b>${contasReceber}</b></th>
+		<th style="border: 2px solid #000"><b><fmt:formatNumber value="${contasReceber}" pattern="#,##0.00"/></b></th>
 		<th> - </th>
 	</tr>
 	

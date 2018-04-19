@@ -32,7 +32,7 @@
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
-		<th class="input-160px" style="border: 2px solid #000;color: #fff"><b><fmt:formatNumber value="${salarios}" pattern="#,##0.00"/></b></th>
+		<th class="input-160px" style="border: 2px solid #000;"><b><fmt:formatNumber value="${salarios}" pattern="#,##0.00"/></b></th>
 		<th class="input-160px"></th>
 	</tr>
 

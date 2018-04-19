@@ -28,8 +28,6 @@ public class ContasReceberController {
 		List<RelatorioEventos> relatorio = contasreceberDAO.relatorioEventos();
 		List<InfoInterna> infoInterna = contasreceberDAO.inforInterna();
 		
-		
-		
 		MV.addObject("listaReceber",relatorio);
 		MV.addObject("infoInterna",infoInterna);
 		

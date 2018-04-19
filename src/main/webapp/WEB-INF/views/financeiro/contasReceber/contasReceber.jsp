@@ -29,7 +29,7 @@
 
 <div id="criacaoListas" class="col-md-12 efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:35px 40px 70px 35px;">
  <div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;" class="col-md-12">
- 	<div class="col-md-8" style="padding-right: 0;border-right: 2px solid #ccc;">
+ 	<div class="col-md-12" style="padding-right: 0;border-right: 2px solid #ccc;">
 	<table class="table table-striped table-hover table-condensed" >
 	  <tbody id="prospeccaoFiltro">
 		<tr style="background: #f1f1f1 !important;text-align: center !important;">
@@ -88,7 +88,7 @@
 	</table>
 	</div>
 	
-	<div class="col-md-4" style="padding-left: 0;">
+	<!-- <div class="col-md-4" style="padding-left: 0;">
 	<table class="table table-striped table-hover table-condensed">
 	  <tbody id="prospeccaoFiltro">
 		<tr style="background: #f1f1f1 !important;text-align: center !important;">
@@ -142,7 +142,7 @@
 		
 	</tbody>
 	</table>
-	</div>	
+	</div>	 -->
 		
   </div>		
 </div>
