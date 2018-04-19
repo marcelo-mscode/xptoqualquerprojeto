@@ -1,15 +1,17 @@
 package br.com.teste.datas;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import br.com.sysloccOficial.model.Lista;
 
 public class MesAnoAtual {
 
 	public static void main(String[] args) {
 
-		Calendar cal = Calendar.getInstance();
+		
+		
+		/*Calendar cal = Calendar.getInstance();
 		
 		
         int month = cal.get(Calendar.MONTH);
@@ -48,7 +50,7 @@ public class MesAnoAtual {
 
         	String dataa = sdf.format(listaCal.get(i).getTime());
         	System.out.println(dataa);
-		}
+		}*/
         
 	}
 
