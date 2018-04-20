@@ -331,7 +331,7 @@
                
 <!-- FEE  -->               
                <tr>
-                  <th>Fee ${infoLista.administracao}% ????</th>
+                  <th>Fee ${infoLista.administracao}%</th>
                   <th class="servicos">
 	                 <%-- <c:set var="free14" value="${calculadora.subContratados * (infoLista.administracao*0.01)}" /> --%>
                      <%-- <fmt:formatNumber value="${free14}" pattern="#,##0.00"/> --%>
