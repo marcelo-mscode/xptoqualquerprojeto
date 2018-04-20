@@ -11,20 +11,18 @@ import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 
 
 public class CalculaValorTelefone implements CalculoValorTelefone {
-
+	
 	private AnaliticoIndividualDAO analiticoDAO;
 	private RelatorioEventoDAO relatorioDAO;
-
+	
 	public CalculaValorTelefone(AnaliticoIndividualDAO analiticoDAO,RelatorioEventoDAO relatorioDAO) {
 		this.analiticoDAO = analiticoDAO;
 		this.relatorioDAO = relatorioDAO;
 	}
 	
-	
-	
 	@Override
 	public BigDecimal calculoValorTelefone(BigDecimal giroSemTelefoneEvento,Integer idRelatorioAtual, String mes, String ano) {
-	
+		
 		BigDecimal razaoCalculoTelefone = new BigDecimal("0.00");
 		BigDecimal validador = new BigDecimal("0.00");
 		
