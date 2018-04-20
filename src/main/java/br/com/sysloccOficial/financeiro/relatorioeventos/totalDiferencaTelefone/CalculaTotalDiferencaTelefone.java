@@ -26,7 +26,11 @@ public class CalculaTotalDiferencaTelefone implements TotalDiferencaTelefone {
 	}
 
 	@Override
-	public BigDecimal totalDiferencaSemTelefone(List<RelatorioBVS> relatorioBVS, BigDecimal fee,BigDecimal feeReduzido, BigDecimal impostoClienteDiferenca, BigDecimal DespesasEvento) {
+	public BigDecimal totalDiferencaSemTelefone(List<RelatorioBVS> relatorioBVS, BigDecimal fee,
+			BigDecimal feeReduzido,
+			BigDecimal impostoClienteDiferenca,
+			BigDecimal DespesasEvento) {
+
 		BigDecimal totalDiferenca = new BigDecimal("0");
 		for (int i = 0; i < relatorioBVS.size(); i++) {
 			totalDiferenca = totalDiferenca.add(relatorioBVS.get(i).getDiferenca());
@@ -36,12 +40,6 @@ public class CalculaTotalDiferencaTelefone implements TotalDiferencaTelefone {
 									   .add(feeReduzido)
 									   .subtract(DespesasEvento)
 				;
-
-		//totalDiferenca = totalDiferenca.add(fee).add(impostoClienteDiferenca).add(feeReduzido);
-		
-		
-		
-		
 		return totalDiferenca;
 	}
 }

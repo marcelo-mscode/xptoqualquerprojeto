@@ -41,10 +41,7 @@
                         </tr>
                   <c:forEach items="${listaRelatorioEventos}" var="listaRelatorioEventos">
                      <c:if test="${ano == listaRelatorioEventos.anoEvento}">
-                        
-	                     
                         <tr>
-						   	
 						   	
                            <c:forEach items="${listasProducao}" var="listasProducao" varStatus="loops">
                               <c:if test="${listaRelatorioEventos.idLista == listasProducao.idLista}">

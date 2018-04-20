@@ -146,9 +146,6 @@ public class MenuProducaoController extends AuxProducao{
 	    MV.addObject("InfoJobs",localEventoDAO.ultimoLocalEvento(lista.getIdJob().getIdJob()));
 	    MV.addObject("lista", lista);
 	    MV.addObject("userLogado", util.retornaUsuarioLogado());
-		
-	    
-	    
 	    
 		verificaSeItemSeraSalvoOuAtualizado(idFornecedor, idLista, idProdutoGrupo);
 	    

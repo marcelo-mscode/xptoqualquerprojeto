@@ -59,7 +59,7 @@ public class CalculaValorTelefone implements CalculoValorTelefone {
 			 */
 			
 			else{
-				razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,0,RoundingMode.UP);
+				razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,12,RoundingMode.UP);
 			}
 			
 /*			if(somaGirosEventosMes != null){

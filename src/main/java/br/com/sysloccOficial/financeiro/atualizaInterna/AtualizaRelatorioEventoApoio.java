@@ -78,6 +78,9 @@ public class AtualizaRelatorioEventoApoio{
 			novoRelatorio.setServicos(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
 // -------  FeeReduzido			
 			BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
+			
+			
+			
 			novoRelatorio.setFee(infoLista.getAdministracaoValor().subtract(feeReduzido));
 			novoRelatorio.setFeeReduzido(feeReduzido);
 // ------- //			

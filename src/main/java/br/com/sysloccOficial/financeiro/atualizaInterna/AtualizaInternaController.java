@@ -24,20 +24,42 @@ public class AtualizaInternaController extends AtualizaInternaRelatoriosEmMassa 
 		 
 	
 		 //Verifica se tem algum relatório ja cadastrado no sistema
+		 
+		 Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
+		 relatorioApoio.montaObjetoRelatorio(idLista,infoLista,mes,ano);
+
+		 LinkedHashSet<Integer> listaIdsRelatoriosEventosCadastrados = relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano);
+		 
+		 /**
+		  *	Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
+		  * 
+		  */
+			 
+		 atualizaInternaRelatoriosEventosEmMassa(listaIdsRelatoriosEventosCadastrados);
+		 
+		 
+		 
+		 
+		 
+		 /*//Verifica se tem algum relatório ja cadastrado no sistema
 		 LinkedHashSet<Integer> listaIdsRelatoriosEventosCadastrados = relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano);
 
 		 if(listaIdsRelatoriosEventosCadastrados.isEmpty()){
 			 Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
 			 relatorioApoio.montaObjetoRelatorio(idLista,infoLista,mes,ano);
 		 }else{
-			 /**
+			 *//**
 			  * 
 			  * Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
-			  */
+			  *//*
 			 atualizaInternaRelatoriosEventosEmMassa(listaIdsRelatoriosEventosCadastrados);
 		 }
 		 
-	
+		 
+		 
+		 */
+		 
+		 
  		 //Se datas retornar erro, indica que não tem uma data do evento cadastrada na Lista
  		 //Criar lightbox pedindo para financeiro cadastrar uma data manualmente.
  		 //Depois que a data for inserida no lightbox, cadastrar a data e chamar essa action novamente.
