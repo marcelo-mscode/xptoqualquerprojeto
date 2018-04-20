@@ -49,7 +49,7 @@ public class MontaContasPagarDAO {
 
 	public List<Object[]> constroiObjetoTeste(List<Object[]> idListas){
 		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
-		//List<Integer> idListas =  pegaIdsListasIndividuais(); 
+
 		for (int i = 0; i < idListas.size(); i++) {
 			Integer num = (Integer) idListas.get(i)[0];
 			
