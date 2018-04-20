@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.conf.Utilitaria;
+import br.com.sysloccOficial.financeiro.contaspagar.services.ServiceContasPagar;
 import br.com.sysloccOficial.financeiro.dao.ContasPagarDAO;
 import br.com.sysloccOficial.financeiro.dao.MontaContasPagarDAO;
 import br.com.sysloccOficial.model.producao.ProducaoP;
@@ -24,15 +25,20 @@ public class ContasPagarController {
 	@Autowired Utilitaria utildatas;
 	@Autowired MontaContasPagarDAO montaObjeto;
 	
+	@Autowired ServiceContasPagar serviceContasPagar;
+	
+	
+	
 	@RequestMapping("contasPagar")
 	public ModelAndView contasPagar(){
 		ModelAndView MV = new ModelAndView("financeiro/contasPagar/contasPagar");
 		
 // ---- Listas do Mes Atual
 		
-		List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
+		List<Object[]> idListas = serviceContasPagar.montaListaMesAtual(); 
 		
-		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
+		List<Object[]> listaAtual = serviceContasPagar.constroiObjeto(idListas);
+		
 		MV.addObject("novaLista", listaAtual);
 		
 		removeIdsVazios(idListas, listaAtual);
