@@ -48,6 +48,7 @@ public class MontaContasPagarDAO {
 	}
 
 	public List<Object[]> constroiObjetoTeste(List<Object[]> idListas){
+	
 		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
 
 		for (int i = 0; i < idListas.size(); i++) {
@@ -137,16 +138,16 @@ public class MontaContasPagarDAO {
 	public List<Object[]> montaObjeto(Integer idLista,Integer idFornecedor){
 		
 		/**
-		 * Pega todos os registros da Lord em producaoP de uma lista
+		 * Pega idsProducaoP de um Fornecedor Pelo id da Lista
 		 * 
 		 */
-		String consultaUmFornecedor = "SELECT idProducao FROM ProducaoP where lista.idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
+		String idsProducaoPDeUmFornecedorPorLista = "SELECT idProducao FROM ProducaoP where lista.idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
 		
 		
 		List<Integer> listaUmFornecedor = new ArrayList<Integer>();
 		
 		try {
-			TypedQuery<Integer> listaProdPUmForn = manager.createQuery(consultaUmFornecedor, Integer.class);
+			TypedQuery<Integer> listaProdPUmForn = manager.createQuery(idsProducaoPDeUmFornecedorPorLista, Integer.class);
 			listaUmFornecedor = listaProdPUmForn.getResultList();
 			
 		} catch (Exception e) {
@@ -155,7 +156,7 @@ public class MontaContasPagarDAO {
 		
 
 		/**
-		 * Pega todos os registros Financeiros da Lord 
+		 * Pega todos os registros Financeiros pelo idProducaoP do Fornecedor 
 		 * 
 		 */
 		String consultaLimpaFfinanceiro = util.limpaSqlComList("SELECT idFornecedor FROM"
