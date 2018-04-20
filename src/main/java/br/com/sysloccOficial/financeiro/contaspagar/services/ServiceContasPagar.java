@@ -61,14 +61,19 @@ public class ServiceContasPagar {
 		for (int i = 0; i < pegaDiasPagamento.size(); i++) {
 			
 			BigDecimal valor = new BigDecimal("0.00");
-
+			BigDecimal diferenca = new BigDecimal("0.00");
+			
 			Object[] novo = new Object[11];
 
 			for (int j = 0; j < listaValorPgtoFornecedor.size(); j++) {
 				if (listaValorPgtoFornecedor.get(j)[0].equals(pegaDiasPagamento.get(i))) {
 					
-				  //valor = valor.add((BigDecimal) lista.get(j)[3]); // ---> Aqui pega o valor total sem contratação
-					valor = valor.add((BigDecimal) listaValorPgtoFornecedor.get(j)[3]); // ---> Aqui pega o valor de contratação !
+				  //listaValorPgtoFornecedor.get(j)[3]); // ---> Aqui pega o valor total sem contratação
+				  //listaValorPgtoFornecedor.get(j)[8]); // ---> Aqui pega o valor de contratação !
+				  //listaValorPgtoFornecedor.get(j)[9]); // ---> Aqui pega a diferenca !
+					
+					valor = valor.add((BigDecimal) listaValorPgtoFornecedor.get(j)[3]); // 
+					diferenca = diferenca.add((BigDecimal) listaValorPgtoFornecedor.get(j)[9]); // 
 			
 					novo[0] = listaValorPgtoFornecedor.get(j)[1]; // data pagar
 					novo[1] = listaValorPgtoFornecedor.get(j)[2]; // nome fornecedor
@@ -85,7 +90,7 @@ public class ServiceContasPagar {
 				
 			novo[2] = producaoP.getTipoPagamento(); 
 			novo[3] = producaoP.getLista().getIdLista(); 
-			novo[4] = valor; 
+			novo[4] = valor.subtract(diferenca); 
 			
 			listaObjetos.add(novo);
 		}

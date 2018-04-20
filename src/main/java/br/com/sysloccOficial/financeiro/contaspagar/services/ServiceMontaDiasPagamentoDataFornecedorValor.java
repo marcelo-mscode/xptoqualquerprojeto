@@ -33,7 +33,8 @@ public class ServiceMontaDiasPagamentoDataFornecedorValor {
 					+ " idFornecedorFinanceiro.contratacao,"
 					+ " idFornecedorFinanceiro.idProducao.temMesmoFornecedor,"
 					+ " idFornecedorFinanceiro.idProducao.valorDePagamentoContratacao,"
-					+ " idFornecedorFinanceiro.idProducao.valorContratacao"
+					+ " idFornecedorFinanceiro.idProducao.valorContratacao,"
+					+ " idFornecedorFinanceiro.idProducao.diferenca"
 					+ " FROM ValorPagtoFornecedor where idFornecedorFinanceiro in("
 					+ listaUmFinanceiro+") and dtPgotFornecedor.Status = 'PENDENTE' order by diasPrazoParaPagamento");
 			TypedQuery<Object[]> listaT = manager.createQuery(consultaDiasPrazoPagamento,Object[].class);
