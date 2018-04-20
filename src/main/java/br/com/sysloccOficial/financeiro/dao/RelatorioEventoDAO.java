@@ -73,8 +73,6 @@ public class RelatorioEventoDAO {
 		return manager.find(Lista.class, idLista);
 	}
 	
-	
-	
 	public ArrayList<String> dataRelatoriosEventosCadastrados(Integer idLista) throws ParseException{
 		
 		CriteriaBuilder cb = manager.getCriteriaBuilder();
@@ -123,7 +121,7 @@ public class RelatorioEventoDAO {
 			return null;
 		}
 	}
-
+	
 	public List<RelatorioEventos> relatorioEventoPorMesReferencia(Integer mes, Integer ano){
 		
 		
@@ -137,8 +135,7 @@ public class RelatorioEventoDAO {
 			return null;
 		}
 	}
-	
-	
+		
 	/*public List<CachePadrao> listaRelatorioCaches(Integer idLista){
 		
 		try {
