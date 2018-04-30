@@ -2,6 +2,7 @@ package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -248,16 +249,21 @@ public class RelatorioEventoDAO {
 		TypedQuery<CacheEvento> q = manager.createQuery("FROM CacheEvento where relatorioEvento ="+idRelatorioEvento, CacheEvento.class);
 		List<CacheEvento> caches = q.getResultList();
 		
-		NumberFormat nf = NumberFormat.getPercentInstance();
+		DecimalFormat nf = new DecimalFormat("0.##");
+	
+			
 		
-		/*nf.setMaximumFractionDigits(1);
-		nf.setMaximumIntegerDigits(3);
-		nf.setMinimumFractionDigits(2);
-		*/
-		
-		for (int i = 0; i < caches.size(); i++) {
-			System.out.println(nf.format(caches.get(i).getRazaoPorcentagem().divide(new BigDecimal("100"),10,RoundingMode.HALF_DOWN)));
-		}
+		/*for (int i = 0; i < caches.size(); i++) {
+			String formato = nf.format(caches.get(i).getRazaoPorcentagem()).replace(",", ".");
+
+			BigDecimal forma = new BigDecimal(formato);
+			
+			caches.get(i).setRazaoPorcentagem(new BigDecimal(formato));
+			
+			System.out.println(formato);
+			
+			
+		}*/
 		
 		
 		

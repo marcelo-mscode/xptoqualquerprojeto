@@ -28,7 +28,7 @@
 		 	<tr>
 				<td>${relatorioCaches.cachePadrao.nomeFunc}</td>
 				<td style="padding: 0;margin: 0;text-align: center;">
-					<input type="text" class="ajusteInput"  value="${relatorioCaches.razaoPorcentagem}" 
+					<input type="text" class="ajusteInput"  value="${relatorioCaches.razaoPorcentagem*100}" 
 					
 					onblur="mudaCache(${relatorio.idRelatorioEvento}, ${relatorioCaches.cachePadrao.idCachePadrao}, ${infoLista.idLista});"
 					
