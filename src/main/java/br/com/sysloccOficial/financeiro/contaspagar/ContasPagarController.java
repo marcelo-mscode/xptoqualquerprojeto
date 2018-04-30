@@ -1,7 +1,6 @@
 package br.com.sysloccOficial.financeiro.contaspagar;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.financeiro.contaspagar.services.ServiceContasPagar;
 import br.com.sysloccOficial.financeiro.dao.ContasPagarDAO;
 import br.com.sysloccOficial.financeiro.dao.MontaContasPagarDAO;
-import br.com.sysloccOficial.model.producao.ProducaoP;
 
 
 @Controller
@@ -53,11 +51,11 @@ public class ContasPagarController {
 		removeIdsVazios(idListasAnteriores, listaAnteriores);
 		MV.addObject("idListasAnteriores",idListasAnteriores);
 
-		/*
+		
 // ---- Soma Total		
 		BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
 	    MV.addObject("somaTotal", somaTotal);
-		*/
+		
 		return MV;
 	}
 

@@ -57,11 +57,11 @@
 		
   </div>		
 						
-<div class="col-md-4" style="padding:15px;font-size:30px;text-align:center ;position:fixed ;bottom: 54px;background-color: #fff;border: 1px solid #ccc;height: 60px">
+<%-- <div class="col-md-4" style="padding:15px;font-size:30px;text-align:center ;position:fixed ;bottom: 54px;background-color: #fff;border: 1px solid #ccc;height: 60px">
  
  <fmt:formatNumber value="${somaTotal}" pattern="#,##0.00" />
  <a onclick="location.reload();"><i class="glyphicon glyphicon-refresh" style="font-size: 20px;float: right;top: 9px"></i></a>	
-</div>
+</div> --%>
 
 <div class="col-md-12 alpha60 div-confirmacao" id="ConfirmaPagamento" style="position: fixed; display: none;background-color: rgba(255, 255, 255, 0.7);">
 	<div class="col-md-4"></div>
@@ -89,7 +89,7 @@
  .active{background-color: #ddd !important}	
 </style>
 
-<div class="col-md-12 navegacaoResumoMes">
+<!-- <div class="col-md-12 navegacaoResumoMes">
 	<table class="table tiraBordaTabela">
 		<tr>
 			<td class="input-95px"><a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink">Resumo mês</a></td>
@@ -97,7 +97,7 @@
 			<td class=""><a href="contasReceber" class="navegacaoLink">Contas a receber</a></td>
 		</tr>
 	</table>
-</div>
+</div> -->
 
 
 <c:import url="../../_comum/footer.jsp" />
