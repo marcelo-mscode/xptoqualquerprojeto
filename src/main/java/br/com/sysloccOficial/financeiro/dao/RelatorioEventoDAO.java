@@ -2,6 +2,7 @@ package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,8 +18,6 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +28,6 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.financeiro.relatorioeventos.salvaatualizacache.MontaCacheEvento;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
-import br.com.sysloccOficial.model.Categoria;
 import br.com.sysloccOficial.model.DesIntFinanc;
 import br.com.sysloccOficial.model.GiroEvento;
 import br.com.sysloccOficial.model.InfoInterna;
@@ -240,9 +238,30 @@ public class RelatorioEventoDAO {
 	
 	}
 	
-	public LinkedHashSet<CacheEvento> listaCacheEventoPorEvento(Integer idRelatorioEvento){
+	/*public LinkedHashSet<CacheEvento> listaCacheEventoPorEvento(Integer idRelatorioEvento){
 		TypedQuery<CacheEvento> q = manager.createQuery("FROM CacheEvento where relatorioEvento ="+idRelatorioEvento, CacheEvento.class);
 		LinkedHashSet<CacheEvento> caches = new LinkedHashSet<CacheEvento>(q.getResultList());
+		return caches;
+	}*/
+
+	public List<CacheEvento> listaCacheEventoPorEvento(Integer idRelatorioEvento){
+		TypedQuery<CacheEvento> q = manager.createQuery("FROM CacheEvento where relatorioEvento ="+idRelatorioEvento, CacheEvento.class);
+		List<CacheEvento> caches = q.getResultList();
+		
+		NumberFormat nf = NumberFormat.getPercentInstance();
+		
+		/*nf.setMaximumFractionDigits(1);
+		nf.setMaximumIntegerDigits(3);
+		nf.setMinimumFractionDigits(2);
+		*/
+		
+		for (int i = 0; i < caches.size(); i++) {
+			System.out.println(nf.format(caches.get(i).getRazaoPorcentagem().divide(new BigDecimal("100"),10,RoundingMode.HALF_DOWN)));
+		}
+		
+		
+		
+		
 		return caches;
 	}
 	

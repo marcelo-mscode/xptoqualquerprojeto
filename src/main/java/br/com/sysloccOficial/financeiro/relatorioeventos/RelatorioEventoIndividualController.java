@@ -42,7 +42,7 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 		
 		List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
 		
-	 	LinkedHashSet<CacheEvento> relatorio = relatorioEventoDAO.listaCacheEventoPorEvento(relatorioEventos.getIdRelatorioEvento());
+	 	List<CacheEvento> relatorio = relatorioEventoDAO.listaCacheEventoPorEvento(relatorioEventos.getIdRelatorioEvento());
 		
 	 	
 	 	InfoInterna infoInterna = relatorioEventoDAO.infoInterna(idLista);
