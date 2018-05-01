@@ -5,23 +5,28 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+
+<c:forEach items="${infoLista.idJob.localEvento}" var="locEvento">
+	<c:set  var="localEvento" value="${locEvento.local}" />
+</c:forEach>
+
 <table class="table table-striped table-hover table-bordered bordaDestaque" >
   <tbody id="prospeccaoFiltro">
 	<tr>
+		<td>Nome do Evento</td>
 		<td>Cliente</td>
-		<td>${infoLista.idJob.empresa.empresa}</td>
-		<td></td>
+		<td>NF</td>
 		<td>Data do Evento</td>
-		<td style="background-color: red;color: #fff">06/05/2016 Colocar data</td>
+		<td>Local do Evento</td>
 		
 	</tr>
 
 	<tr>
-		<td>Nome do Evento</td>
-		<td>${infoLista.lista}</td>
-		<td style="background-color: red;color: #fff">NF</td>
-		<td>Local do Evento</td>
-		<td style="background-color: red;color: #fff">SP</td>
+		<td><b>${infoLista.lista}</b></td>
+		<td><b>${infoLista.idJob.empresa.empresa}</b></td>
+		<td><b>${infoInterna.nfInterna}</b></td>
+		<td><b><fmt:formatDate value="${infoLista.dataDoEvento.time}" pattern="dd/MM/yyyy"/></b></td>
+		<td><b>${localEvento}</b></td>
 	</tr>
   </tbody>
 </table>

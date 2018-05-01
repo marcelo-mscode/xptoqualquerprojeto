@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -21,15 +22,25 @@ public class CacheEvento {
 	private BigDecimal valor;
 	private BigDecimal razaoPorcentagem;
 	
+	@Transient private String razaoPorcentagemFormato;
+	
+	
 // ------------------------------------------------------ //
 	@OneToOne @JoinColumn(name="relatorioEvento") private RelatorioEventos relatorioEvento;
 	@OneToOne @JoinColumn(name="cachePadrao") private CachePadrao cachePadrao;
 	
 // ------------------------------------------------------ //
 
-	
 	public Integer getIdCacheEvento() {
 		return idCacheEvento;
+	}
+
+	public String getRazaoPorcentagemFormato() {
+		return razaoPorcentagemFormato;
+	}
+
+	public void setRazaoPorcentagemFormato(String razaoPorcentagemFormato) {
+		this.razaoPorcentagemFormato = razaoPorcentagemFormato;
 	}
 
 	public CachePadrao getCachePadrao() {

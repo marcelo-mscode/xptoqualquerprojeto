@@ -249,24 +249,14 @@ public class RelatorioEventoDAO {
 		TypedQuery<CacheEvento> q = manager.createQuery("FROM CacheEvento where relatorioEvento ="+idRelatorioEvento, CacheEvento.class);
 		List<CacheEvento> caches = q.getResultList();
 		
-		DecimalFormat nf = new DecimalFormat("0.##");
+		DecimalFormat nf = new DecimalFormat("0.###");
 	
 			
 		
-		/*for (int i = 0; i < caches.size(); i++) {
-			String formato = nf.format(caches.get(i).getRazaoPorcentagem()).replace(",", ".");
-
-			BigDecimal forma = new BigDecimal(formato);
-			
-			caches.get(i).setRazaoPorcentagem(new BigDecimal(formato));
-			
-			System.out.println(formato);
-			
-			
-		}*/
-		
-		
-		
+		for (int i = 0; i < caches.size(); i++) {
+			String formato = nf.format(caches.get(i).getRazaoPorcentagem().multiply(new BigDecimal("100")));
+			caches.get(i).setRazaoPorcentagemFormato(formato);
+		}	
 		
 		return caches;
 	}
@@ -525,12 +515,14 @@ public class RelatorioEventoDAO {
 	
 	public void atualizaCacheEvento(Integer idRelatorio, Integer idCachePadrao, String novaPorcentagemCache){
 		
+		String converteVirgulaPorc = novaPorcentagemCache.replace(",", ".");
+		
 		String consulta = "from CacheEvento where relatorioEvento = "+idRelatorio+" and cachePadrao = "+idCachePadrao;
 		TypedQuery<CacheEvento> q = manager.createQuery(consulta, CacheEvento.class);
 		
 		CacheEvento cache = q.getSingleResult();
 		
-		BigDecimal porcentatemNova = new BigDecimal(novaPorcentagemCache);
+		BigDecimal porcentatemNova = new BigDecimal(converteVirgulaPorc);
 		
 		cache.setRazaoPorcentagem(porcentatemNova.divide(new BigDecimal("100"),3,RoundingMode.UP));
 
