@@ -33,7 +33,8 @@
    .ajusteFinanceiro{float: none !important;}
    .ajusteFinanceiroBar{position: fixed;width:150%;}
    .alinhamentoVertical > td {vertical-align: middle !important;}
-   
+   .ajuste85px{width: 85px}
+   .ajusteVertical{vertical-align: middle !important;}
    
    
 </style>
@@ -104,16 +105,16 @@
                </tr>
                <tr style="background: #f1f1f1 !important;font-size: 12px">
                   <th class="servicos"></th>
-                  <th class="servicos">FatLocco</th>
-                  <th class="servicos">SubContratados</th>
-                  <th class="servicos">FatDireto</th>
+                  <th class="servicos ajuste85px">FatLocco</th>
+                  <th class="servicos ajuste85px">SubContratados</th>
+                  <th class="servicos ajuste85px">FatDireto</th>
                   <th class="internaLocco colorRed" style="text-align: center;width: 100px;" >Valor Fornecedor</th>
-                  <th class="internaLocco" >Valor NF</th>
-                  <th class="internaLocco colorBlue" >Diferença</th>
-                  <th class="infFornecedores" >Fornecedor</th>
+                  <th class="internaLocco ajuste85px">Valor NF</th>
+                  <th class="internaLocco colorBlue ajuste85px">Diferença</th>
+                  <th class="infFornecedores" style="width: 165px">Fornecedor</th>
                   <th class="infFornecedores" >Obs:</th>
-                  <th class="infFornecedores" >Dif. Imposto</th>
-                  <th class="infFornecedores" >Vencimento</th>
+                  <th class="infFornecedores ajuste85px">Dif. Imposto</th>
+                  <th class="infFornecedores ajuste85px">Vencimento</th>
                   <th class="infFornecedores" style="width: 70px;" >NF/Recibo</th>
                   <th class="infFornecedores" >Dados</th>
                </tr>
@@ -132,24 +133,24 @@
            	       <tr>
                   </c:if>
                   
-                  <td>${itensInterna.produtoGrupo.idGrupo.grupo}<%--  - ${itensInterna.produtoGrupo.produto} --%></td>
+                  <td class="ajusteVertical">${itensInterna.produtoGrupo.idGrupo.grupo}<%--  - ${itensInterna.produtoGrupo.produto} --%></td>
                  
                 <!-- Fat Locco -->  
-                  <td class="textRight">
+                  <td class="textCenter ajusteVertical">
 	                  <c:if test="${itensInterna.produtoGrupo.imposto == true && itensInterna.produtoGrupo.idGrupo.incideAdministracao == false}">
 	              	    <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/> 
 	                  </c:if>
                   </td>
 				
                 <!-- SubContratados -->  
-                  <td class="textRight">
+                  <td class="textCenter ajusteVertical">
  	            	 <c:if test="${itensInterna.produtoGrupo.imposto == true && itensInterna.produtoGrupo.idGrupo.incideAdministracao == true}">
 	              	  	<fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/> 
 	                 </c:if>
                  </td>
 				               
                <!-- Fat Direto -->
-                  <td class="textRight">
+                  <td class="textCenter ajusteVertical">
 	                  <c:if test="${itensInterna.produtoGrupo.imposto == false}">
 	              	    <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
 	                  </c:if>
@@ -157,10 +158,10 @@
                   
                <!-- Valor fornecedor -->	
                  
-                  <td class="colorRed" style="padding: 0px">
+                  <td class="colorRed ajusteVertical" style="padding: 0px">
 	            		
 	            		
-	            	<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text"
+	            	<input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" style="text-align: center;"
 	            	value="<fmt:formatNumber value="${itensInterna.valorFornecedor}" pattern="#,##0.00"/>"
 	                onblur="valorF('valorF',${itensInterna.idProducao});" />
 	            		
@@ -171,14 +172,14 @@
                   
                   
                <!-- Valor NF -->	
-                  <td class="textRight"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/></td>
+                  <td class="textRight ajusteVertical textCenter"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/></td>
 
                <!-- Diferenca -->
                   <c:if test="${itensInterna.diferenca < 0}">
-             	     <td class="colorRed">
+             	     <td class="colorRed ajusteVertical textCenter">
                   </c:if>				
                   <c:if test="${itensInterna.diferenca >= 0}">
-               	   <td class="colorBlue">
+               	   <td class="colorBlue ajusteVertical textCenter">
                   </c:if>				
                   <c:if test="${itensInterna.diferenca == '0.00'}">
                   	0,00
