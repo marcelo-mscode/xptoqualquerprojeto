@@ -92,7 +92,7 @@
    </ul>
    
    
-   <div class="tab-content" style="width: 100%;">
+   <div class="tab-content" style="width: 150%;">
       <div role="tabpanel" class="tab-pane active" id="home">
          <table class="table table-bordered table-condensed" style="box-shadow: 0px 1px 14px 3px #ccc;margin-top: -1px;">
             <tbody id="prospeccaoFiltro">
