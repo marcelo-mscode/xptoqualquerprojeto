@@ -75,10 +75,10 @@
 </div>   
    
    
-<div id="criacaoListas" class="efeitoDegrade" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:10px 0px 70px 10px;">
+<div id="criacaoListas" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:10px 0px 70px 10px;width: 150%;background-color: #fff">
    <a href="relatorioEventoIndividual?idLista=${infoLista.idLista}" style="float: right;margin-right: 15px;">Relatório Evento: ${infoLista.lista}</a>
    <!-- <div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;"> -->
-   <ul class="nav nav-tabs" role="tablist" style="margin-top: 150px;">
+   <ul class="nav nav-tabs" role="tablist" style="margin-top: 150px;border: none">
       <li role="presentation" class="active" style="">
          <a href="#home" aria-controls="home" role="tab" data-toggle="tab" aria-expanded="false" style="background-color: #ffff99;border: 1px solid #999;">
             <h5>Planilha Interna</h5>
@@ -93,12 +93,12 @@
    </ul>
    
    
-   <div class="tab-content" style="width: 150%;">
+   <div class="tab-content" style="width: 90%;">
       <div role="tabpanel" class="tab-pane active" id="home">
          <table class="table table-bordered table-condensed" style="box-shadow: 0px 1px 14px 3px #ccc;margin-top: -1px;">
             <tbody id="prospeccaoFiltro">
                <tr style="text-align: center">
-                  <th class="servicos">Serviços</th>
+                  <th class="servicos" style="width: 290px">Serviços</th>
                   <th class="servicos" colspan="3">Custos</th>
                   <th class="internaLocco" colspan="3">Interna Locco</th>
                   <th class="infFornecedores" colspan="6">Informações Fornecedores</th>
@@ -112,7 +112,7 @@
                   <th class="internaLocco ajuste85px">Valor NF</th>
                   <th class="internaLocco colorBlue ajuste85px">Diferença</th>
                   <th class="infFornecedores" style="width: 165px">Fornecedor</th>
-                  <th class="infFornecedores" >Obs:</th>
+                  <th class="infFornecedores" style="width: 190px">Obs:</th>
                   <th class="infFornecedores ajuste85px">Dif. Imposto</th>
                   <th class="infFornecedores ajuste85px">Vencimento</th>
                   <th class="infFornecedores" style="width: 70px;" >NF/Recibo</th>
@@ -220,7 +220,7 @@
 	                  
 	                  
 	                  <%-- <td rowspan="${itensInterna.rowSpan}" style="vertical-align: middle;font-size: 12px"> --%>
-	                  <td rowspan="" style="vertical-align: middle;font-size: 12px">
+	                  <td style="vertical-align: middle;font-size: 12px;padding: 0;margin: 0;text-align: center">
 	                  <c:forEach items="${itensInterna.fornecedorFinanceiro.idValorPgtoFornecedor}" var="fornecedorFinanceiro">
 	                 	 <fmt:formatDate value="${fornecedorFinanceiro.dtPgotFornecedor.dataPagar}" pattern="dd/MM/yyyy" /><br>
 	                  </c:forEach>
@@ -231,7 +231,7 @@
 	                   
 	                  	<input id="nfRec${itensInterna.idProducao}" class="ajusteInput" type="text" value="${itensInterna.nfRecibo}"
 	                  	onblur="editaCamposProducaoP('nfRec${itensInterna.idProducao}','nfRecibo',${itensInterna.idProducao});"
-	                  	style="width: 100%;height: 100%;text-align: center">
+	                  	style="width:70px;height:55px;text-align: center;margin: 0px;padding: 0">
 	                  	
 	                  </td>
 	                  
@@ -253,9 +253,9 @@
 		               	<td colspan="1"></td>
 		               	<td colspan="1"></td>
 		               	<td colspan="1"></td>
-						<td class="colorRed"><fmt:formatNumber value="${totalDepesas}" pattern="#,##0.00"/></td>
+						<td class="colorRed textCenter"><fmt:formatNumber value="${totalDepesas}" pattern="#,##0.00"/></td>
 		               	<td colspan="1"></td>
-		               	<td class="colorRed">(<fmt:formatNumber value="${totalDepesas}" pattern="#,##0.00"/>)</td>
+		               	<td class="colorRed textCenter">(<fmt:formatNumber value="${totalDepesas}" pattern="#,##0.00"/>)</td>
 		               	<td colspan="6"></td>
 	               </tr>
               </c:if>
@@ -304,7 +304,7 @@
                   <th class="servicos">
                      <fmt:formatNumber value="${calculadora.subDireto}" pattern="#,##0.00"/>
                   </th>
-                  <td class="colorRed">
+                  <td class="colorRed textCenter">
                   	<c:if test="${totalDepesas != null }">
                      <fmt:formatNumber value="${totalValorFornecedor + totalDepesas}" pattern="#,##0.00"/>
                   	</c:if>
@@ -312,10 +312,10 @@
                      <fmt:formatNumber value="${totalValorFornecedor}" pattern="#,##0.00"/>
                   	</c:if>
                   </td>
-                  <td class="textRight">
+                  <td class="textCenter">
                      <fmt:formatNumber value="${calculadora.subValorNf}" pattern="#,##0.00"/>
                   </td>
-                  <td class="textRight">
+                  <td class="textCenter">
 	                  <c:if test="${totalDepesas == null }">
 	                     <fmt:formatNumber value="${totalValorDiferenca}" pattern="#,##0.00"/>
 	                  </c:if>
@@ -334,17 +334,15 @@
                <tr>
                   <th>Fee ${infoLista.administracao}%</th>
                   <th class="servicos">
-	                 <%-- <c:set var="free14" value="${calculadora.subContratados * (infoLista.administracao*0.01)}" /> --%>
-                     <%-- <fmt:formatNumber value="${free14}" pattern="#,##0.00"/> --%>
                      <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
                   </th>
                   <th></th>
                   <td class="colorRed"></td>
                   <td class="colorRed"></td>
-                  <td class="textRight">
+                  <td class="textCenter">
                      <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
                   </td>
-                  <td class="textRight">
+                  <td class="textCenter">
                      <fmt:formatNumber value="${calculadora.feeGeral}" pattern="#,##0.00"/>
                   </td>
                   <td colspan="6"></td>
@@ -359,10 +357,10 @@
                   <th></th>
                   <td class="colorRed"></td>
                   <td class="colorRed"></td>
-                  <td class="textRight">
+                  <td class="textCenter">
                      <fmt:formatNumber value="${calculadora.feeReduzido}" pattern="#,##0.00"/>
                   </td>
-                  <td class="textRight">
+                  <td class="textCenter">
                      <fmt:formatNumber value="${calculadora.feeReduzido}" pattern="#,##0.00"/>
                   </td>
                   <td colspan="6"></td>
@@ -401,10 +399,10 @@
                   <th class="servicos colorRed textCenter">
                      <fmt:formatNumber value="${calculadora.impostoValorFornecedor}" pattern="#,##0.00"/>
                   </th>
-                  <td class="textRight">
+                  <td class="textCenter">
                      <fmt:formatNumber value="${impostoLista}" pattern="#,##0.00"/>
                   </td>
-                  <td class="colorRed">
+                  <td class="colorRed textCenter">
                      <fmt:formatNumber value="${calculadora.impostoDiferenca}" pattern="#,##0.00"/>
                   </td>
                   <td colspan="6"></td>
