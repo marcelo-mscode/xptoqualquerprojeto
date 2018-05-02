@@ -4,14 +4,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.swing.JOptionPane;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.financeiro.calculadora.Calculadora;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;

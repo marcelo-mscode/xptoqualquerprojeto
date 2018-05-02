@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import br.com.sysloccOficial.model.Cliente;
-
 public class AnaliticoTotalBancos {
 	
 	private String nomeBanco;
