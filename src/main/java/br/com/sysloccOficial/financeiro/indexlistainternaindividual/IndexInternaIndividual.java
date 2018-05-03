@@ -98,6 +98,9 @@ public class IndexInternaIndividual {
 		List<DesIntFinanc> d = internaIndividualDAO.despTeste(idLista);
 		MV.addObject("teste", d);
 		
+		MV.addObject("ultimaAtualizacao", internaIndividualDAO.buscaUltimaAtualizacaoInterna(idLista));
+		
+		
 		return MV;
 	}
 	

@@ -3,7 +3,6 @@ package br.com.sysloccOficial.financeiro.dao;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,8 +21,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
+import br.com.sysloccOficial.financeiro.model.UltimaAtualizacaoInterna;
 import br.com.sysloccOficial.financeiro.relatorioeventos.CacheDoEventoApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.TipoCache;
 import br.com.sysloccOficial.financeiro.relatorioeventos.salvaatualizacache.MontaCacheEvento;
@@ -34,6 +35,7 @@ import br.com.sysloccOficial.model.GiroEvento;
 import br.com.sysloccOficial.model.InfoInterna;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
+import br.com.sysloccOficial.model.Usuario;
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
 
@@ -44,6 +46,7 @@ public class RelatorioEventoDAO {
 	@PersistenceContext	private EntityManager manager;
 	@Autowired CacheDoEventoApoio cacheEvento;
 	@Autowired UtilitariaDatas utildatas;
+	@Autowired Utilitaria util;
 	
 	
 	
@@ -547,8 +550,31 @@ public class RelatorioEventoDAO {
 		novoCacheEvento.setRelatorioEvento(relatorio);
 		
 		manager.persist(novoCacheEvento);
+	}
+	
+	public void UltimaAtualizacao(Integer idLista){
 		
+		Usuario usuario = util.retornaUsuarioLogado();
+		
+		
+		try {
+			TypedQuery<UltimaAtualizacaoInterna> busca = manager.createQuery("from UltimaAtualizacaoInterna where idLista = "+idLista, UltimaAtualizacaoInterna.class);
+			UltimaAtualizacaoInterna atualizar = busca.getSingleResult();
+			
+			atualizar.setDataAtualizacao(Calendar.getInstance());
+			atualizar.setUsuario(usuario.getNome());
+			atualizar.setIdLista(idLista);
+			manager.merge(atualizar);
+			
+		} catch (Exception e) {
+			UltimaAtualizacaoInterna novoObj = new UltimaAtualizacaoInterna();
+			novoObj.setDataAtualizacao(Calendar.getInstance());
+			novoObj.setUsuario(usuario.getNome());
+			novoObj.setIdLista(idLista);
+			manager.persist(novoObj);
+		}
 		
 	}
+	
 	
 }

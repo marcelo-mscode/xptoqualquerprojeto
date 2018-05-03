@@ -396,7 +396,15 @@
          </div>
          
          <div class="row">
-            <div class="col-md-7" style="margin-bottom: 17px;margin-left: -10px;">Última Atualização em: 12/05/2015 9:35:12 - por: Erika Spainer</div>
+            <div class="col-md-7" style="margin-bottom: 17px;margin-left: -10px;">Última Atualização em:
+	        	<c:if test="${ultimaAtualizacao == null}">
+	        		<b>Essa planilha não foi atualizada</b>
+	        	</c:if>
+	        	<c:if test="${ultimaAtualizacao != null}">
+	             <fmt:formatDate value="${ultimaAtualizacao.dataAtualizacao.time}" pattern="dd/MM/yyyy HH:mm:ss" />
+	              - por: ${ultimaAtualizacao.usuario}
+	        	</c:if>
+            </div>
          </div>
          
        <div style="background-color: #fff;width: 90%;height: 440px">

@@ -7,25 +7,19 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.financeiro.indexlistainternaindividual.VerificaTipoDespesa;
-import br.com.sysloccOficial.financeiro.indexlistainternaindividual.CalculoFornecedor.CalculaValorFornecedor;
+import br.com.sysloccOficial.financeiro.model.UltimaAtualizacaoInterna;
 import br.com.sysloccOficial.model.DesIntFinanc;
-import br.com.sysloccOficial.model.Empresa;
-import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.InfoInterna;
 import br.com.sysloccOficial.model.Lista;
-import br.com.sysloccOficial.model.OrcamentoFornecedor;
 import br.com.sysloccOficial.model.producao.DifImpostoProducaoP;
 import br.com.sysloccOficial.model.producao.ObsProducao;
 import br.com.sysloccOficial.model.producao.ProducaoP;
@@ -257,7 +251,7 @@ public class InternaIndividualDAO {
 	
 	public List<Object[]> listaDeIdsFornecedores(Integer idLista){
 		String consulta ="select  distinct idEmpFornecedor.idEmpresa, count(idEmpFornecedor) from ProducaoP where idlista ="+idLista+" group by idEmpFornecedor";
-		Query q = manager.createQuery(consulta);
+		TypedQuery<Object[]> q = manager.createQuery(consulta, Object[].class);
 		return q.getResultList();
 	}
 
@@ -417,6 +411,20 @@ public class InternaIndividualDAO {
 		
 		
 	}
+	
+	public UltimaAtualizacaoInterna buscaUltimaAtualizacaoInterna(int idLista){
+		try {
+			TypedQuery<UltimaAtualizacaoInterna> busca = manager.createQuery("from UltimaAtualizacaoInterna where idLista = "+idLista, UltimaAtualizacaoInterna.class);
+			UltimaAtualizacaoInterna atualizar = busca.getSingleResult();
+			return atualizar;
+			
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+	
+	
 	
 	/*public void salvaNovoOrcamento(String valor,Integer idFornecedor,Integer idGrupo){
 		TypedQuery<Empresa> e = manager.createQuery("select e from Empresa e where idEmpresa=6937", Empresa.class); 

@@ -1,9 +1,6 @@
 package br.com.sysloccOficial.financeiro.indexlistainternaindividual.CalculoFornecedor;
 
 import java.math.BigDecimal;
-
-import javax.swing.JOptionPane;
-
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
 public class FornecedorTemNegociacaoComContratacaoIgualZero implements CalculoFornecedorInterna {
