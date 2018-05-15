@@ -212,7 +212,7 @@
                            </td>
                            <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
                            <td style="padding: 20px !important;">
-	                           	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${telefone.idFinancTelefone}&tabela=FinancEscritorio">
+	                           	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${telefone.idFinancTelefone}&tabela=FinancTelefone">
 	                           	<i class="glyphicon glyphicon-trash"></i></a>
                            	</td>
                         </tr>
@@ -220,11 +220,12 @@
                      </c:forEach>
                      <tr>
                         <td colspan="2"></td>
-                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
+                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
                            <b>
                               <fmt:formatNumber value="${totalTelefone}" pattern="#,##0.00"/>
                            </b>
                         </td>
+                        <td colspan="2"></td>
                      </tr>
                   </table>
                </td>
@@ -264,19 +265,22 @@
                               /> 
                            </td>
                            <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
-                           <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
+                           <td style="padding: 20px !important;">
+                           <a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${folha.idFinancFolha}&tabela=FinancFolhaPgto">
+	                       <i class="glyphicon glyphicon-trash"></i></a>
+                           </td>
                         </tr>
                         <c:set var="totalFolha" value="${totalFolha+folha.valor}" />
                      </c:forEach>
                      <tr>
-                     
-                     
-                     
+
                      <tr>
                         <td colspan="2"></td>
-                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
+                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
                         	<b><fmt:formatNumber value="${totalFolha}" pattern="#,##0.00"/></b>
                         </td>
+                        <td colspan="2"></td>
+                        
                      </tr>
                   </table>
                </td>
@@ -317,7 +321,10 @@
                               onblur="editaCamposAnaliticoDespesas('editaDespesas','valorDespesas${despesas.idFinancDespesas}',${despesas.idFinancDespesas},'valor','despesas');"
                               /> 
                            </td>
-                           <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>	
+                           <td style="padding: 20px !important;">
+                           	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${despesas.idFinancDespesas}&tabela=FinancDespesas">
+                           	<i class="glyphicon glyphicon-trash"></i></a>
+                           </td>	
                         </tr>
                         <c:set var="totalDespesas" value="${totalDespesas+despesas.valor}" />
                      </c:forEach>
@@ -325,9 +332,10 @@
                      
                      <tr>
                         <td colspan="2"></td>
-                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
+                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
                         	<b><fmt:formatNumber value="${totalDespesas}" pattern="#,##0.00"/></b>
                         </td>
+                        <td colspan="2"></td>
                      </tr>
                   </table>
                </td>
@@ -372,7 +380,10 @@
                               /> 
                            </td>
                            <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
-						   <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
+						   <td style="padding: 20px !important;">
+                           	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${outrasdespesas.idFinancOutrasDespesas}&tabela=FinancOutrasDespesas">
+                           	<i class="glyphicon glyphicon-trash"></i></a>
+						   </td>
                            
                         </tr>
                         <c:set var="totalOutrasdespesas" value="${totalOutrasdespesas+outrasdespesas.valor}" />
@@ -381,9 +392,10 @@
                      
                      <tr>
                         <td colspan="2"></td>
-                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
+                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
                         	<b><fmt:formatNumber value="${totalOutrasdespesas}" pattern="#,##0.00"/></b>
                         </td>
+                        <td colspan="2"></td>
                      </tr>
                   </table>
                </td>

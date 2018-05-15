@@ -17,7 +17,8 @@
                      <tr>
                      	<td>Data</td>
                         <td>Descrição</td>
-                        <td colspan="2">Valor</td>
+                        <td>Valor</td>
+                        <td>Excluir</td>
                      </tr>
                      <tr>
                         <td colspan="4"></td>
@@ -39,6 +40,11 @@
                               onblur="editaCamposAnaliticoDespesas('editaDespesas','valorDespesas${despesas.idFinancDespesas}',${despesas.idFinancDespesas},'valor','despesas');"
                               /> 
                            </td>
+                           <td style="padding: 20px !important;">
+                           	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${despesas.idFinancDespesas}&tabela=FinancDespesas">
+                           	<i class="glyphicon glyphicon-trash"></i></a>
+                           </td>
+                           
                         </tr>
                         <c:set var="totalDespesas" value="${totalDespesas+despesas.valor}" />
                      </c:forEach>
@@ -46,8 +52,9 @@
                      
                      <tr>
                         <td colspan="2"></td>
-                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
+                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
                         	<b><fmt:formatNumber value="${totalDespesas}" pattern="#,##0.00"/></b>
                         </td>
+                        <td colspan="2"></td>
                      </tr>
                   </table>

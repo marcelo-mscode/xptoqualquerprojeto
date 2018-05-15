@@ -37,7 +37,10 @@
                               /> 
                            </td>
                            <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
-                           <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
+                           <td style="padding: 20px !important;">
+                           		<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${telefone.idFinancTelefone}&tabela=FinancTelefone">
+                           		<i class="glyphicon glyphicon-trash"></i></a>
+                           	</td>
                            
                            
                         </tr>
@@ -45,10 +48,11 @@
                      </c:forEach>
                      <tr>
                         <td colspan="2"></td>
-                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
+                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
                            <b>
                               <fmt:formatNumber value="${totalTelefone}" pattern="#,##0.00"/>
                            </b>
                         </td>
+                        <td colspan="2"></td>
                      </tr>
                   </table>
