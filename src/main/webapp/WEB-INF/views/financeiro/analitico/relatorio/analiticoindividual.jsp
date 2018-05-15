@@ -103,7 +103,12 @@
                               /> 
                            </td>
                            <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
-                           <td style="padding: 20px !important;"><a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}"><i class="glyphicon glyphicon-trash"></i></a></td>
+                           <td style="padding: 20px !important;">
+                           	
+                           	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${impostos.idFinancImpostos}&tabela=FinancImpostos">
+                           	
+                           	<i class="glyphicon glyphicon-trash"></i></a>
+                           </td>
                            
                         </tr>
                         <c:set var="totalImpostos" value="${totalImpostos+impostos.valor}" />

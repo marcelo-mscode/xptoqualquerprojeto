@@ -94,9 +94,9 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 
 	
 	@RequestMapping("excluiItemAnalitico")
-	public String excluiItemAnalitico(int idAnalitico){
+	public String excluiItemAnalitico(int idAnalitico, int idTabela, String tabela){
 		
-		System.out.println("Excluindo Item");
+		analiticoIndDAO.excluiItemAnalitco(idAnalitico, idTabela, tabela);
 		
 		return "redirect:analiticoIndividual?idAnalitico="+idAnalitico;
 	}

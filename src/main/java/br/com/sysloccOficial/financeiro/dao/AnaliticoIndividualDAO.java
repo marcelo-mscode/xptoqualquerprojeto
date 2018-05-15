@@ -123,6 +123,24 @@ public class AnaliticoIndividualDAO {
 		
 	}
 	
+	public void excluiItemAnalitco(int idAnalitico, int idTabela, String tabela){
+		
+		
+		FinancImpostos imposto =  manager.find(Class.forName("tabela").class, idTabela);
+		
+		
+		
+		
+		
+		System.out.println(idAnalitico);
+		System.out.println(idTabela);
+		System.out.println(tabela);
+		
+		
+	}
+	
+	
+	
 // --------------------------------------------------------- //
 	public void salvaVideo(VideosYt videos){
 		try {
