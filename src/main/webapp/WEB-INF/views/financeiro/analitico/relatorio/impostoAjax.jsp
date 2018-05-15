@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <table class="table table-hover table-bordered">
    <tr>
-      <td colspan="4" align="center" class="corEscritorio"><b>OUTROS IMPOSTOS</b></td>
+      <td colspan="5" align="center" class="corEscritorio"><b>OUTROS IMPOSTOS</b></td>
    </tr>
    <tr>
       <td class="tiraPaddingData"><input id="descImpostos" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
@@ -18,9 +18,10 @@
       <td colspan="2">Descrição</td>
       <td>Valor</td>
       <td>Fixo</td>
+      <td>Excluir</td>
    </tr>
    <tr>
-      <td colspan="4"></td>
+      <td colspan="5"></td>
    </tr>
    <c:set var="totalImpostos" value="0.00" />
    <c:forEach items="${impostos}" var="impostos">
@@ -36,15 +37,20 @@
             /> 
          </td>
          <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
+         <td style="padding: 20px !important;">
+          	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${impostos.idFinancImpostos}&tabela=FinancImpostos">
+          	<i class="glyphicon glyphicon-trash"></i></a>
+         </td>
       </tr>
       <c:set var="totalImpostos" value="${totalImpostos+impostos.valor}" />
    </c:forEach>
    <tr>
       <td colspan="2"></td>
-      <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
+      <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
          <b>
             <fmt:formatNumber value="${totalImpostos}" pattern="#,##0.00"/>
          </b>
       </td>
+      <td colspan="2"></td>
    </tr>
 </table>
