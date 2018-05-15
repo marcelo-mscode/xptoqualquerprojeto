@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <table class="table table-hover table-bordered">
                      <tr class="input-140px">
-                        <td colspan="4" align="center" class="corTelefone"><b>TELEFONES</b></td>
+                        <td colspan="5" align="center" class="corTelefone"><b>TELEFONES</b></td>
                      </tr>
                      <tr>
                         <td class="tiraPaddingData"><input id="descTelefone" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
@@ -18,9 +18,10 @@
                         <td class="input-180px" colspan="2">Descrição</td>
                         <td class="input-30px">Valor</td>
 					    <td>Fixo</td>
+					    <td>Excluir</td>
                      </tr>
                      <tr>
-                        <td colspan="3"></td>
+                        <td colspan="5"></td>
                      </tr>
                      <c:set var="totalTelefone" value="0.00" />
                      <c:forEach items="${telefone}" var="telefone">
@@ -36,6 +37,9 @@
                               /> 
                            </td>
                            <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
+                           <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
+                           
+                           
                         </tr>
                         <c:set var="totalTelefone" value="${totalTelefone+telefone.valor}" />
                      </c:forEach>

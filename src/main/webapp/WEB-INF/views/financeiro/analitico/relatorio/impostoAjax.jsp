@@ -46,7 +46,7 @@
    </c:forEach>
    <tr>
       <td colspan="2"></td>
-      <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
+      <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
          <b>
             <fmt:formatNumber value="${totalImpostos}" pattern="#,##0.00"/>
          </b>

@@ -159,8 +159,9 @@
                            </td>
                            <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
                            <td style="padding: 20px !important;">
-                           	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${escritorio.idFinancEscritorio}&tabela=FinancEscritorio">
-                           	<i class="glyphicon glyphicon-trash"></i></a></td>
+	                           	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${escritorio.idFinancEscritorio}&tabela=FinancEscritorio">
+	                           	<i class="glyphicon glyphicon-trash"></i></a>
+                           </td>
                         </tr>
                         <c:set var="totalEscritorio" value="${totalEscritorio+escritorio.valor}" />
                      </c:forEach>
@@ -210,7 +211,10 @@
                               /> 
                            </td>
                            <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
-                           <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
+                           <td style="padding: 20px !important;">
+	                           	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${telefone.idFinancTelefone}&tabela=FinancEscritorio">
+	                           	<i class="glyphicon glyphicon-trash"></i></a>
+                           	</td>
                         </tr>
                         <c:set var="totalTelefone" value="${totalTelefone+telefone.valor}" />
                      </c:forEach>
