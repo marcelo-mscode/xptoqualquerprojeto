@@ -27,8 +27,7 @@ import br.com.sysloccOficial.model.producao.ProducaoPDespesas;
 public class IndexInternaIndividual {
 
 	@Autowired InternaIndividualDAO internaIndividualDAO;
-	
-	
+		
 	@RequestMapping("internaIndividual")
 	public ModelAndView internaIndividual(Integer idLista){
 		ModelAndView MV = new ModelAndView("financeiro/interna/internaindividual/internindividual");

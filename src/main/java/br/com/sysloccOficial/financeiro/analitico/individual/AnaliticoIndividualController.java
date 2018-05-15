@@ -1,6 +1,5 @@
 package br.com.sysloccOficial.financeiro.analitico.individual;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
-import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
 import br.com.sysloccOficial.financeiro.dao.CacheDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
@@ -44,8 +42,6 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 		MV.addObject("movimentoSantander", carregaSaldosBancarios(idAnalitico,4));
 		
 		// --------------------------------------------------------------------- //
-		
-		
 		
 		FinancAnalitico analitico = analiticoIndDAO.carregaAnaliticoIndividual(idAnalitico);
 		MV.addObject("InfoAnalitico",analitico);
@@ -96,6 +92,15 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 		return MV;
 	}
 
+	
+	@RequestMapping("excluiItemAnalitico")
+	public String excluiItemAnalitico(int idAnalitico){
+		
+		System.out.println("Excluindo Item");
+		
+		return "redirect:analiticoIndividual?idAnalitico="+idAnalitico;
+	}
+	
 
 	@RequestMapping("videos")
 	public ModelAndView videos (){
