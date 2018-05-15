@@ -45,7 +45,7 @@ public class AnaliticoIndividualFolhaDAO {
 			manager.persist(escritorio);
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Erro ao inserir Folha PGTO: "+e);
+			System.out.println("Erro ao inserir Folha PGTO: "+e);
 		}
 		
 	}

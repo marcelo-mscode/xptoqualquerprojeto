@@ -123,20 +123,14 @@ public class AnaliticoIndividualDAO {
 		
 	}
 	
-	public void excluiItemAnalitco(int idAnalitico, int idTabela, String tabela){
-		
-		
-		FinancImpostos imposto =  manager.find(Class.forName("tabela").class, idTabela);
-		
-		
-		
-		
-		
-		System.out.println(idAnalitico);
-		System.out.println(idTabela);
-		System.out.println(tabela);
-		
-		
+	public void excluiItemAnalitco(int idAnalitico, int idTabela, String tabela) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
+		try {
+			Object obj = Class.forName("br.com.sysloccOficial.financeiro.model."+tabela).newInstance();
+			Object obj2 = manager.find(obj.getClass(), idTabela);
+			manager.remove(obj2);
+		} catch (Exception e) {
+			System.out.println("Houve um erro ao excluir um item da tabela: "+tabela+"\nErro: "+e);
+		}
 	}
 	
 	

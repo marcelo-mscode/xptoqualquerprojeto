@@ -104,10 +104,8 @@
                            </td>
                            <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
                            <td style="padding: 20px !important;">
-                           	
-                           	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${impostos.idFinancImpostos}&tabela=FinancImpostos">
-                           	
-                           	<i class="glyphicon glyphicon-trash"></i></a>
+	                           	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${impostos.idFinancImpostos}&tabela=FinancImpostos">
+	                           	<i class="glyphicon glyphicon-trash"></i></a>
                            </td>
                            
                         </tr>
@@ -115,11 +113,12 @@
                      </c:forEach>
                      <tr>
                         <td colspan="2"></td>
-                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
+                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
                            <b>
                               <fmt:formatNumber value="${totalImpostos}" pattern="#,##0.00"/>
                            </b>
                         </td>
+                        <td colspan="2"></td>
                      </tr>
                   </table>
     			</td>
@@ -159,18 +158,20 @@
                               /> 
                            </td>
                            <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
-                           <td style="padding: 20px !important;"><a href="nada"><i class="glyphicon glyphicon-trash"></i></a></td>
-                           
+                           <td style="padding: 20px !important;">
+                           	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${escritorio.idFinancEscritorio}&tabela=FinancEscritorio">
+                           	<i class="glyphicon glyphicon-trash"></i></a></td>
                         </tr>
                         <c:set var="totalEscritorio" value="${totalEscritorio+escritorio.valor}" />
                      </c:forEach>
                      <tr>
                         <td colspan="2"></td>
-                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="2">
+                        <td style="height: 51px;vertical-align: middle;font-size: 15px" colspan="1">
                            <b>
                               <fmt:formatNumber value="${totalEscritorio}" pattern="#,##0.00"/>
                            </b>
                         </td>
+                        <td colspan="2"></td>
                      </tr>
                   </table>
                </td>

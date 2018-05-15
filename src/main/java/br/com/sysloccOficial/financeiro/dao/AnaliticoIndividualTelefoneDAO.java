@@ -64,7 +64,7 @@ public class AnaliticoIndividualTelefoneDAO {
 				manager.persist(telefone);
 				
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "Erro ao inserir telefone: "+e);
+				System.out.println("Erro ao inserir telefone: "+e);
 			}
 			
 		}

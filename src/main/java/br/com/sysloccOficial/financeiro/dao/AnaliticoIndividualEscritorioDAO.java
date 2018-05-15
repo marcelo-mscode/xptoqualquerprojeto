@@ -44,7 +44,7 @@ public class AnaliticoIndividualEscritorioDAO {
 			escritorio.setData(Calendar.getInstance());
 			manager.persist(escritorio);
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Erro ao inserir escritorio: "+e);
+			System.out.println("Erro ao inserir escritorio: "+e);
 		}
 		
 	}
