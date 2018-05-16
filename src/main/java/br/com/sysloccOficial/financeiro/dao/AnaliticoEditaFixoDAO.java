@@ -17,31 +17,26 @@ public class AnaliticoEditaFixoDAO {
 	
 	@PersistenceContext	private EntityManager manager;
 
-	public void editaFixo(int idAnalitico, int idTabela, int chkFixo, String nomeTabela){
+	public void editaFixo(int idAnalitico, int idTabela, int chkFixo, String nomeTabela) throws InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException{
 		boolean chk = true;
 		if(chkFixo == 0) { chk = false; }
 		
 		try {
 			
-			Object obj = Class.forName("nomeTabela").newInstance();
+			Object obj3 = Class.forName("br.com.sysloccOficial.financeiro.model.FinancImpostos").newInstance();
+			Object obj4 = manager.find(obj3.getClass(), idTabela);
 			
-			Class tabela = obj.getClass();
+			Field fieldFixo = obj4.getClass().getDeclaredField("fixo");
+			fieldFixo.setBoolean(obj4, chk);
 			
-			Class outrosImpostos = manager.find(tabela.getClass(), idTabela);
+			System.out.println(fieldFixo);
+			
+			/*fieldFixo.set(boolean.class, chk);
+			
+			manager.merge(obj4);*/
 			
 			
-			 for (Field field : outrosImpostos.getDeclaredFields())
-		        {
-
-		            String campo = field.getName();
-		            if(campo == "fixo"){
-		            	System.out.println("Esse é o Campo Fixo");
-		            	Class tipo = field.getType();
-		            	field.set(tipo, chk);
-		            	manager.merge(outrosImpostos);
-		            }
-		        }
-		} catch (Exception e) {
+		} catch (ClassNotFoundException  e) {
 			System.out.println("Erro ao inserir escritorio: "+e);
 		}
 	}

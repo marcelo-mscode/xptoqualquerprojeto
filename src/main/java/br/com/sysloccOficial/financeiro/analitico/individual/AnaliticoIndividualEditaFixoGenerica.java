@@ -12,7 +12,7 @@ public class AnaliticoIndividualEditaFixoGenerica {
 	@Autowired AnaliticoEditaFixoDAO fixoDAO;
 	
 	@RequestMapping("editaFixo")
-	public void editaFixo(int idAnalitico, int idTabela, int chkFixo){
+	public void editaFixo(int idAnalitico, int idTabela, int chkFixo) throws InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException{
 		
 		String nomeTabela = "FinancImpostos";
 		
