@@ -95,9 +95,7 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 	
 	@RequestMapping("excluiItemAnalitico")
 	public String excluiItemAnalitico(int idAnalitico, int idTabela, String tabela) throws ClassNotFoundException, InstantiationException, IllegalAccessException{
-		
 		analiticoIndDAO.excluiItemAnalitco(idAnalitico, idTabela, tabela);
-		
 		return "redirect:analiticoIndividual?idAnalitico="+idAnalitico;
 	}
 	
