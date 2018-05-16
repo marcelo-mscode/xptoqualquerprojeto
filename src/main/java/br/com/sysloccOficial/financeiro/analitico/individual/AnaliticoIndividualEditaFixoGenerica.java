@@ -12,11 +12,19 @@ public class AnaliticoIndividualEditaFixoGenerica {
 	@Autowired AnaliticoEditaFixoDAO fixoDAO;
 	
 	@RequestMapping("editaFixo")
-	public void editaFixo(int idAnalitico, int idTabela, int chkFixo) throws InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException{
+	public void editaFixo(int idAnalitico, int idTabela, int chkFixo,int codigo) throws InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException{
+		String testeNomeTabela = retornaNomeTabela(codigo);
+		fixoDAO.editaFixo(idAnalitico, idTabela, chkFixo,testeNomeTabela);
+	}
+	
+	
+	private String retornaNomeTabela(int codigo){
+		String nome = null;
 		
-		String nomeTabela = "FinancImpostos";
-		
-		fixoDAO.editaFixo(idAnalitico, idTabela, chkFixo,nomeTabela);
+		if(codigo == 075541){
+			nome="FinancImpostos";
+		}
+		return nome;
 	}
 	
 	

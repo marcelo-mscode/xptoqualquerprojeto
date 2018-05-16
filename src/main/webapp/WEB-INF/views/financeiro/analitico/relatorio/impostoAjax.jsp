@@ -38,11 +38,11 @@
          </td>
          
 	     <td style="padding: 15px !important;">
-		    <input type="checkbox" <c:if test = "${impostos.fixo == true}"> checked = checked</c:if > />
+		    <input type="checkbox" <c:if test = "${impostos.fixo == true}"> checked = checked</c:if >
+		    id="chkEditaimpostos${impostos.idFinancImpostos}"
+ 	  	    onclick="editaCheckedFixo('editaFixo',${idAnalitico},${impostos.idFinancImpostos},'impostos',075541);"
+ 	  	    />
 	     </td>
-                           
-         
-         
          
          <td style="padding: 20px !important;">
           	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${impostos.idFinancImpostos}&tabela=FinancImpostos">

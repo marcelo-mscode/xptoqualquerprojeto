@@ -22,22 +22,15 @@ public class AnaliticoEditaFixoDAO {
 		if(chkFixo == 0) { chk = false; }
 		
 		try {
-			
-			Object obj3 = Class.forName("br.com.sysloccOficial.financeiro.model.FinancImpostos").newInstance();
+			Object obj3 = Class.forName("br.com.sysloccOficial.financeiro.model."+nomeTabela).newInstance();
 			Object obj4 = manager.find(obj3.getClass(), idTabela);
-			
-			Field fieldFixo = obj4.getClass().getDeclaredField("fixo");
-			fieldFixo.setBoolean(obj4, chk);
-			
-			System.out.println(fieldFixo);
-			
-			/*fieldFixo.set(boolean.class, chk);
-			
-			manager.merge(obj4);*/
-			
-			
+			Field f = obj4.getClass().getDeclaredField("fixo");
+			f.setAccessible(true);
+			f.setBoolean(obj4, chk);
+			manager.merge(obj4);
+			System.out.println("Tudo certo !");
 		} catch (ClassNotFoundException  e) {
-			System.out.println("Erro ao inserir escritorio: "+e);
+			System.out.println("Erro ao editarFixo: "+e);
 		}
 	}
 	

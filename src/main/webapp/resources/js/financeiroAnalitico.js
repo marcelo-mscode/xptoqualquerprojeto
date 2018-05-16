@@ -23,29 +23,19 @@ function editaCamposFinanceiro(desc,valor1,action, idAnalitico,idDivAjax) {
 };
 
 // Edita checked fixo
-function editaCheckedFixo(action, idAnalitico, idTabela, idDivAjax) {
+function editaCheckedFixo(action, idAnalitico, idTabela, idDivAjax,codigo) {
+	var codif = codigo;
+	var chk = $("#chkEdita"+idDivAjax+idTabela).is(':checked');
 	
-	var chk = $("#chkEdita"+idDivAjax).is(':checked');
 	var confereBoolean = 1;
 	if( chk  == false ){ confereBoolean = 0;}
 
 	$.ajax({
-		url : action+"?idAnalitico="+idAnalitico+"&idTabela="+idTabela+"&chkFixo="+confereBoolean,
+		url : action+"?idAnalitico="+idAnalitico+"&idTabela="+idTabela+"&chkFixo="+confereBoolean+"&codigo="+codigo,
 		success : function(data) {
 			$("#"+idDivAjax).html(data);
 		}
 	});
-	
-	/*var valor = $("#"+valor1).val();
-	var descricao = $("#"+desc).val();
-	
-	
-	/*if(descricao == '' || descricao ==' ' || descricao == null){
-		$("#"+desc).css("border","1px solid red");
-		alert("Coloque um valor");
-		return false;
-	}
-	*/
 };
 
 
