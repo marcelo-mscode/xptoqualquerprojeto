@@ -1,5 +1,7 @@
 package br.com.sysloccOficial.financeiro.dao;
 
+import java.lang.reflect.Field;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -21,14 +23,24 @@ public class AnaliticoEditaFixoDAO {
 		
 		try {
 			
-			Object tabela = Class.forName("nomeTabela").newInstance();
+			Object obj = Class.forName("nomeTabela").newInstance();
 			
-			Object outrosImpostos = manager.find(tabela.getClass(), idTabela);
+			Class tabela = obj.getClass();
+			
+			Class outrosImpostos = manager.find(tabela.getClass(), idTabela);
 			
 			
-			
-			outrosImpostos.setFixo(chk);
-			manager.merge(outrosImpostos);
+			 for (Field field : outrosImpostos.getDeclaredFields())
+		        {
+
+		            String campo = field.getName();
+		            if(campo == "fixo"){
+		            	System.out.println("Esse é o Campo Fixo");
+		            	Class tipo = field.getType();
+		            	field.set(tipo, chk);
+		            	manager.merge(outrosImpostos);
+		            }
+		        }
 		} catch (Exception e) {
 			System.out.println("Erro ao inserir escritorio: "+e);
 		}
