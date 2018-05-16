@@ -21,6 +21,7 @@ public class FinancEscritorio {
 	private Integer idFinancEscritorio;
 	private BigDecimal valor;
 	private String descricao;
+	private boolean fixo;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar data;
@@ -28,10 +29,17 @@ public class FinancEscritorio {
 // ------------------------------------------------------------------ //	
 	@OneToOne @JoinColumn(name="analitico") private FinancAnalitico analitico;
 // ------------------------------------------------------------------ //	
-
 	
 	public Integer getIdFinancEscritorio() {
 		return idFinancEscritorio;
+	}
+
+	public boolean isFixo() {
+		return fixo;
+	}
+
+	public void setFixo(boolean fixo) {
+		this.fixo = fixo;
 	}
 
 	public void setIdFinancEscritorio(Integer idFinancEscritorio) {

@@ -79,7 +79,7 @@
                         <td><button onclick="editaCamposFinanceiro('descImpostos','valorImpostos','salvaNovoImposto',${InfoAnalitico.idAnalitico},'impostos');" class="btn btn-default botaoMais">+</button> </td>
 	                    
 	                    <td style="padding: 15px !important;">
-	                    	<input id="chkFixoOutrosImpostos" type="checkbox" checked="checked"/>
+	                    	<input id="chKimpostos" type="checkbox" checked="checked"/>
 	                    </td>	
 	                    
 	                    
@@ -142,7 +142,9 @@
                         <td class="tiraPaddingData"><input id="descEscritorio" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorEscritorio" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiro('descEscritorio','valorEscritorio','salvaNovoEscritorio',${InfoAnalitico.idAnalitico},'escritorio');" class="btn btn-default botaoMais">+</button> </td>
-                    	<td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
+                    	<td style="padding: 15px !important;">
+	                    	<input id="chKescritorio" type="checkbox" checked="checked"/>
+	                    </td>
                     	<td></td>
                      </tr>
                      <tr>
@@ -167,7 +169,9 @@
                               onblur="editaCamposAnalitico('editaEscritorio','valor${escritorio.idFinancEscritorio}',${escritorio.idFinancEscritorio},'valor','escritorio');"
                               /> 
                            </td>
-                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
+                           <td style="padding: 15px !important;">
+                           		<input type="checkbox" <c:if test = "${escritorio.fixo == true}"> checked = checked</c:if > />
+                           </td>
                            <td style="padding: 20px !important;">
 	                           	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${escritorio.idFinancEscritorio}&tabela=FinancEscritorio">
 	                           	<i class="glyphicon glyphicon-trash"></i></a>

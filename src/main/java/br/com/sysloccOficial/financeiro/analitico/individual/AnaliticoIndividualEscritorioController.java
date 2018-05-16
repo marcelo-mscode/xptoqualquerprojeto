@@ -18,9 +18,9 @@ public class AnaliticoIndividualEscritorioController {
 	
 	@RequestMapping("salvaNovoEscritorio")
 	@ResponseBody
-	private ModelAndView salvaNovoEscritorio(Integer idAnalitico,String valor,String descricao){
+	private ModelAndView salvaNovoEscritorio(Integer idAnalitico,String valor,String descricao, int chkFixoOutrosImpostos){
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/escritorioAjax");
-		analiticoIndDAO.salvaNovoEscritorio(idAnalitico,valor,descricao);
+		analiticoIndDAO.salvaNovoEscritorio(idAnalitico,valor,descricao, chkFixoOutrosImpostos);
 		
 		MV.addObject("idAnalitico",idAnalitico);
 		List<FinancEscritorio> analitico2 = analiticoIndDAO.carregaAnaliticoEscritorio(idAnalitico);

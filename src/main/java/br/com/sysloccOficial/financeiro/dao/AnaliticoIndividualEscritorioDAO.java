@@ -28,7 +28,12 @@ public class AnaliticoIndividualEscritorioDAO {
 	@Autowired private AnaliticoIndividualDAO individualDAO;
 	
 	
-	public void salvaNovoEscritorio(Integer idAnalitico, String valor,String descricao) {
+	public void salvaNovoEscritorio(Integer idAnalitico, String valor,String descricao, int chkFixoOutrosImpostos) {
+		
+		boolean chk = true;
+		
+		if(chkFixoOutrosImpostos == 0) { chk = false; }
+		
 		
 		FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
 		try {
@@ -42,6 +47,7 @@ public class AnaliticoIndividualEscritorioDAO {
 			}
 			escritorio.setAnalitico(analitico);
 			escritorio.setData(Calendar.getInstance());
+			escritorio.setFixo(chk);
 			manager.persist(escritorio);
 		} catch (Exception e) {
 			System.out.println("Erro ao inserir escritorio: "+e);

@@ -23,10 +23,9 @@ public class AnaliticoIndividualImpostoController {
 	
 	@RequestMapping("salvaNovoImposto")
 	@ResponseBody
-	private ModelAndView salvaNovoEscritorio(Integer idAnalitico,String valor,String descricao, int chkFixoOutrosImpostos){
-
-		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/impostoAjax");
+	private ModelAndView salvaNovoImposto(Integer idAnalitico,String valor,String descricao, int chkFixoOutrosImpostos){
 		
+		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/impostoAjax");
 	    analiticoIndDAO.salvaNovoImposto(idAnalitico,valor,descricao,chkFixoOutrosImpostos);
 		
 		MV.addObject("idAnalitico",idAnalitico);

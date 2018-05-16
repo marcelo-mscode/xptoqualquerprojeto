@@ -29,10 +29,9 @@ public class AnaliticoIndividualImpostoDAO {
 	
 	public void salvaNovoImposto(Integer idAnalitico, String valor,String descricao, int chkFixoOutrosImpostos) {
 		
-		boolean chk = false;
+		boolean chk = true;
 		
-		if(chkFixoOutrosImpostos == 1 ? chk == true : chk == false );
-		
+		if(chkFixoOutrosImpostos == 0) { chk = false; }
 		
 		FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
 		try {
