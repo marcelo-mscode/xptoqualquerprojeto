@@ -36,7 +36,13 @@
             onblur="editaCamposAnalitico('editaFinancImposto','valorImpostos${impostos.idFinancImpostos}',${impostos.idFinancImpostos},'valor','impostos');"
             /> 
          </td>
-         <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
+         
+         <td style="padding: 15px !important;">
+         	<input type="checkbox" checked="${impostos.fixo}"/>
+         </td>
+         
+         
+         
          <td style="padding: 20px !important;">
           	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${impostos.idFinancImpostos}&tabela=FinancImpostos">
           	<i class="glyphicon glyphicon-trash"></i></a>

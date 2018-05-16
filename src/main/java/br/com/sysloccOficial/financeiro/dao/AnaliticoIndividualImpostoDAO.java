@@ -27,21 +27,23 @@ public class AnaliticoIndividualImpostoDAO {
 	@Autowired private AnaliticoIndividualDAO individualDAO;
 	
 	
-	public void salvaNovoImposto(Integer idAnalitico, String valor,String descricao) {
+	public void salvaNovoImposto(Integer idAnalitico, String valor,String descricao, boolean chkFixoOutrosImpostos) {
 		
 		FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
 		try {
-			FinancImpostos escritorio = new FinancImpostos();
-			escritorio.setDescricao(descricao);
+			FinancImpostos outrosImpostos = new FinancImpostos();
+			outrosImpostos.setDescricao(descricao);
 			
 			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
-				escritorio.setValor(new BigDecimal("0.00"));
+				outrosImpostos.setValor(new BigDecimal("0.00"));
 			}else{
-				escritorio.setValor(new BigDecimal(util.formataValores(valor)));
+				outrosImpostos.setValor(new BigDecimal(util.formataValores(valor)));
 			}
-			escritorio.setAnalitico(analitico);
-			escritorio.setData(Calendar.getInstance());
-			manager.persist(escritorio);
+			outrosImpostos.setAnalitico(analitico);
+			outrosImpostos.setData(Calendar.getInstance());
+			outrosImpostos.setFixo(chkFixoOutrosImpostos);
+			
+			manager.persist(outrosImpostos);
 		} catch (Exception e) {
 			System.out.println("Erro ao inserir escritorio: "+e);
 		}

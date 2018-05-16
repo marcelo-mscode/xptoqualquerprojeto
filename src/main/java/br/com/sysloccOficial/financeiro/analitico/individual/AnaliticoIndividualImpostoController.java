@@ -2,6 +2,8 @@ package br.com.sysloccOficial.financeiro.analitico.individual;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +23,10 @@ public class AnaliticoIndividualImpostoController {
 	
 	@RequestMapping("salvaNovoImposto")
 	@ResponseBody
-	private ModelAndView salvaNovoEscritorio(Integer idAnalitico,String valor,String descricao){
+	private ModelAndView salvaNovoEscritorio(Integer idAnalitico,String valor,String descricao, boolean chkFixoOutrosImpostos){
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/impostoAjax");
-		analiticoIndDAO.salvaNovoImposto(idAnalitico,valor,descricao);
+		
+	    analiticoIndDAO.salvaNovoImposto(idAnalitico,valor,descricao,chkFixoOutrosImpostos);
 		
 		MV.addObject("idAnalitico",idAnalitico);
 		List<FinancImpostos> analitico2 = analiticoIndDAO.carregaAnaliticoImposto(idAnalitico);
