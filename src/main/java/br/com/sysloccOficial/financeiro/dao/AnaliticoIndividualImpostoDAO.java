@@ -54,6 +54,19 @@ public class AnaliticoIndividualImpostoDAO {
 		
 	}
 	
+	public void editaFixo(int idAnalitico, int idTabela, int chkFixo){
+		boolean chk = true;
+		if(chkFixo == 0) { chk = false; }
+		
+		try {
+			FinancImpostos outrosImpostos = manager.find(FinancImpostos.class, idTabela);
+			outrosImpostos.setFixo(chk);
+			manager.merge(outrosImpostos);
+		} catch (Exception e) {
+			System.out.println("Erro ao inserir escritorio: "+e);
+		}
+	}
+	
 	public List<FinancImpostos> carregaAnaliticoImposto(Integer idAnalitico) {
 		try {
 			TypedQuery<FinancImpostos> f = manager.createQuery("select f from FinancImpostos f where analitico.idAnalitico="+idAnalitico,FinancImpostos.class);

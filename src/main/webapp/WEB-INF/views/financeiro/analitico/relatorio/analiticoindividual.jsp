@@ -109,7 +109,11 @@
                            </td>
                            
                            <td style="padding: 15px !important;">
-					 	  	 <input type="checkbox" <c:if test = "${impostos.fixo == true}"> checked = checked</c:if > />
+					 	  	 <input type="checkbox" <c:if test = "${impostos.fixo == true}"> checked = checked</c:if > 
+					 	  	  id="chkEditaimpostos"
+					 	  	  onclick="editaCheckedFixo('editaImpostoFixo',${InfoAnalitico.idAnalitico},${impostos.idFinancImpostos},'impostos');"
+					 	  	 
+					 	  	  />
                            </td>
                            
                            

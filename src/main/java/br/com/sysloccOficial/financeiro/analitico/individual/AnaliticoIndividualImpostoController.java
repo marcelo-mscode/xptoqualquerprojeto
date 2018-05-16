@@ -48,5 +48,10 @@ public class AnaliticoIndividualImpostoController {
 		
 		return MV;
 	}
+	
+	@RequestMapping("editaImpostoFixo")
+	public void editaImpostoFixo(int idAnalitico, int idTabela, int chkFixo){
+		analiticoIndDAO.editaFixo(idAnalitico, idTabela, chkFixo);
+	}
 
 }
