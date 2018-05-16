@@ -2,6 +2,7 @@ function editaCamposFinanceiro(desc,valor1,action, idAnalitico,idDivAjax) {
 	
 	var valor = $("#"+valor1).val();
 	var descricao = $("#"+desc).val();
+	var chkFixoOutrosImpostos = $('#chkFixoOutrosImpostos').is(':checked');
 	
 	if(descricao == '' || descricao ==' ' || descricao == null){
 		$("#"+desc).css("border","1px solid red");
@@ -10,7 +11,7 @@ function editaCamposFinanceiro(desc,valor1,action, idAnalitico,idDivAjax) {
 	}
 	
 	$.ajax({
-		url : action+"?idAnalitico="+idAnalitico+"&valor="+valor+"&descricao="+descricao,
+		url : action+"?idAnalitico="+idAnalitico+"&valor="+valor+"&descricao="+descricao+"&chkFixoOutrosImpostos"+chkFixoOutrosImpostos,
 		success : function(data) {
 			$("#"+idDivAjax).html(data);
 		}

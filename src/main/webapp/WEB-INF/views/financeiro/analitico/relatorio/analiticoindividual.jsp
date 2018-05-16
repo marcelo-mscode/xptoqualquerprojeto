@@ -77,7 +77,12 @@
                         <td class="tiraPaddingData"><input id="descImpostos" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorImpostos" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiro('descImpostos','valorImpostos','salvaNovoImposto',${InfoAnalitico.idAnalitico},'impostos');" class="btn btn-default botaoMais">+</button> </td>
-	                    <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+	                    
+	                    <td style="padding: 15px !important;">
+	                    	<input id="chkFixoOutrosImpostos" type="checkbox" checked="checked"/>
+	                    </td>	
+	                    
+	                    
 	                    <td></td>
                      </tr>
                      <tr>

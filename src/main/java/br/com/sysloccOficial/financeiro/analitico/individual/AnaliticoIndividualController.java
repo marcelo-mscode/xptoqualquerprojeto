@@ -20,10 +20,6 @@ import br.com.sysloccOficial.model.VideosYt;
 @Controller
 public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 	
-	//@Autowired AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
-
-	
-	
 	@Autowired private AnaliticoIndividualDAO analiticoIndDAO;
 	@Autowired DadosEventosMes dadosEvento;
 	@Autowired RelatorioEventoDAO relatorioEventoDAO;
@@ -98,6 +94,8 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 		analiticoIndDAO.excluiItemAnalitco(idAnalitico, idTabela, tabela);
 		return "redirect:analiticoIndividual?idAnalitico="+idAnalitico;
 	}
+	
+	
 	
 
 	@RequestMapping("videos")

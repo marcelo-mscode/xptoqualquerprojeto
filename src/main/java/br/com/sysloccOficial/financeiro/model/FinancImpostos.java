@@ -20,6 +20,7 @@ public class FinancImpostos {
 	private Integer idFinancImpostos;
 	private BigDecimal valor;
 	private String descricao;
+	private boolean fixo;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar data;
@@ -30,6 +31,14 @@ public class FinancImpostos {
 
 	public Integer getIdFinancImpostos() {
 		return idFinancImpostos;
+	}
+
+	public boolean isFixo() {
+		return fixo;
+	}
+
+	public void setFixo(boolean fixo) {
+		this.fixo = fixo;
 	}
 
 	public void setIdFinancImpostos(Integer idFinancImpostos) {
