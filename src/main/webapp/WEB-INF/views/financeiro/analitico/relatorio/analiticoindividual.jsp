@@ -109,7 +109,7 @@
                            </td>
                            
                            <td style="padding: 15px !important;">
-                           	<input type="checkbox" value="${impostos.fixo}"/>
+					 	  	 <input type="checkbox" <c:if test = "${impostos.fixo == true}"> checked = checked</c:if > />
                            </td>
                            
                            
