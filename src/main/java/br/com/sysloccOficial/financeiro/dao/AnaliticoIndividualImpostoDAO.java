@@ -27,7 +27,12 @@ public class AnaliticoIndividualImpostoDAO {
 	@Autowired private AnaliticoIndividualDAO individualDAO;
 	
 	
-	public void salvaNovoImposto(Integer idAnalitico, String valor,String descricao, boolean chkFixoOutrosImpostos) {
+	public void salvaNovoImposto(Integer idAnalitico, String valor,String descricao, int chkFixoOutrosImpostos) {
+		
+		boolean chk = false;
+		
+		if(chkFixoOutrosImpostos == 1 ? chk == true : chk == false );
+		
 		
 		FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
 		try {
@@ -41,7 +46,7 @@ public class AnaliticoIndividualImpostoDAO {
 			}
 			outrosImpostos.setAnalitico(analitico);
 			outrosImpostos.setData(Calendar.getInstance());
-			outrosImpostos.setFixo(chkFixoOutrosImpostos);
+			outrosImpostos.setFixo(chk);
 			
 			manager.persist(outrosImpostos);
 		} catch (Exception e) {
