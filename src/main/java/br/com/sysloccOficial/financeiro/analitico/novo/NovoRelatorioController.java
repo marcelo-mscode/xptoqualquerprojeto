@@ -37,12 +37,12 @@ public class NovoRelatorioController {
 	}
 	
 	@RequestMapping("criaNovo")
-	public String criaNovo(FinancAnalitico novoAnalitico){
+	public String criaNovo(FinancAnalitico novoAnalitico) throws NoSuchFieldException, SecurityException{
 		
 		FinancAnalitico novoAnaliticoPersistido = analiticoDAO.salvaNovoAnalitico(novoAnalitico);
 //		Integer idAnalitico = 15;
 		
-		CopiaRelatorioAnterior.copiaOutrosImpostos(novoAnaliticoPersistido);
+		CopiaRelatorioAnterior.copiaOutrosImpostosReflection(novoAnaliticoPersistido);
 		
 		
 		return "redirect:analiticoIndividual?idAnalitico="+novoAnaliticoPersistido.getIdAnalitico();

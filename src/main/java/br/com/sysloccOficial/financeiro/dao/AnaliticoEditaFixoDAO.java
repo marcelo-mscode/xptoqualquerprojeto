@@ -1,14 +1,10 @@
 package br.com.sysloccOficial.financeiro.dao;
 
 import java.lang.reflect.Field;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import br.com.sysloccOficial.financeiro.model.FinancImpostos;
 
 
 @Repository
@@ -27,6 +23,7 @@ public class AnaliticoEditaFixoDAO {
 			f.setAccessible(true);
 			f.setBoolean(obj4, chk);
 			manager.merge(obj4);
+			manager.close();
 		} catch (ClassNotFoundException  e) {
 			System.out.println("Erro ao editarFixo: "+e);
 		}
