@@ -20,6 +20,7 @@ public class NovoRelatorioController {
 	@Autowired private AnaliticoDAO analiticoDAO;
 	@Autowired private UtilitariaDatas utilDatas;
 	@Autowired private Utilitaria util;
+	@Autowired private NovoRelatorioCopiaMesAnteriorService CopiaRelatorioAnterior;
 	
 	
 	@RequestMapping("novoAnalitico")
@@ -37,7 +38,12 @@ public class NovoRelatorioController {
 	
 	@RequestMapping("criaNovo")
 	public String criaNovo(FinancAnalitico novoAnalitico){
-		Integer idAnalitico = analiticoDAO.salvaNovoAnalitico(novoAnalitico);	
+//		Integer idAnalitico = analiticoDAO.salvaNovoAnalitico(novoAnalitico);
+		Integer idAnalitico = 15;
+		
+		CopiaRelatorioAnterior.copiaOutrosImpostos(idAnalitico);
+		
+		
 		return "redirect:analiticoIndividual?idAnalitico="+idAnalitico;
 	}
 	
