@@ -34,6 +34,19 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 		manager.close();
 		return list.getResultList();
 	}
+
+	public List<Object> copiaOutrosImpostosReflection(int idAnalitico, String nomeTabela){
+		
+		String buscaIdAnaliticoAnterior = "SELECT idAnalitico FROM FinancAnalitico where idAnalitico <> "+idAnalitico+" order by idAnalitico desc";
+		TypedQuery<Integer> buscaidAnaliticoAnterior = manager.createQuery(buscaIdAnaliticoAnterior, Integer.class).setMaxResults(1);
+		Integer idAnaliticoAnterior = buscaidAnaliticoAnterior.getSingleResult();
+		
+		String buscaImpostos = "FROM "+nomeTabela+" where analitico = "+idAnaliticoAnterior+" and fixo = true";
+		
+		TypedQuery<Object> list = manager.createQuery(buscaImpostos, Object.class);
+		manager.close();
+		return list.getResultList();
+	}
 	
 	public void persisteFinancImposto(FinancImpostos  novoFinanc){
 		manager.persist(novoFinanc);
