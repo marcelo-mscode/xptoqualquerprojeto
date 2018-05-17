@@ -24,14 +24,14 @@ public class AnaliticoDAO {
 	@PersistenceContext	private EntityManager manager;
 	@Autowired private UtilitariaDatas utilDatas;
 	
-	public Integer salvaNovoAnalitico(FinancAnalitico novoAnalitico) {
+	public FinancAnalitico salvaNovoAnalitico(FinancAnalitico novoAnalitico) {
 		OutputStream out;
 		try {
 			
 			Integer numeroMes = utilDatas.referenciaMesAnalitico(novoAnalitico.getMesA());
 			novoAnalitico.setMesReferencia(numeroMes);
 			manager.persist(novoAnalitico);
-			return novoAnalitico.getIdAnalitico();
+			return novoAnalitico;
 		} catch (Exception e) {
 			try {
 				out = new FileOutputStream("c:/SYSLOC/file.txt");

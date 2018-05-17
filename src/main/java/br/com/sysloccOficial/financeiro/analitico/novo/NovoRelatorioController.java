@@ -38,13 +38,14 @@ public class NovoRelatorioController {
 	
 	@RequestMapping("criaNovo")
 	public String criaNovo(FinancAnalitico novoAnalitico){
-//		Integer idAnalitico = analiticoDAO.salvaNovoAnalitico(novoAnalitico);
-		Integer idAnalitico = 15;
 		
-		CopiaRelatorioAnterior.copiaOutrosImpostos(idAnalitico);
+		FinancAnalitico novoAnaliticoPersistido = analiticoDAO.salvaNovoAnalitico(novoAnalitico);
+//		Integer idAnalitico = 15;
+		
+		CopiaRelatorioAnterior.copiaOutrosImpostos(novoAnaliticoPersistido);
 		
 		
-		return "redirect:analiticoIndividual?idAnalitico="+idAnalitico;
+		return "redirect:analiticoIndividual?idAnalitico="+novoAnaliticoPersistido.getIdAnalitico();
 	}
 	
 }
