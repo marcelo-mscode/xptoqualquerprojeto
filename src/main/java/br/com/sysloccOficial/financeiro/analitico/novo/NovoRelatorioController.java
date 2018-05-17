@@ -37,7 +37,7 @@ public class NovoRelatorioController {
 	}
 	
 	@RequestMapping("criaNovo")
-	public String criaNovo(FinancAnalitico novoAnalitico) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException{
+	public String criaNovo(FinancAnalitico novoAnalitico) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, ClassNotFoundException, InstantiationException{
 		
 		FinancAnalitico novoAnaliticoPersistido = analiticoDAO.salvaNovoAnalitico(novoAnalitico);
 //		Integer idAnalitico = 15;

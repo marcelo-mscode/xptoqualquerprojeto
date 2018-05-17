@@ -52,6 +52,11 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 		manager.persist(novoFinanc);
 		manager.close();
 	}
+
+	public void persisteFinancImpostoReflection(Object  novoFinanc){
+		manager.persist(novoFinanc);
+		manager.close();
+	}
 	
 	
 }
