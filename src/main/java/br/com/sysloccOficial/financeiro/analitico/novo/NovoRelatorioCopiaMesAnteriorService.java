@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.financeiro.analitico.novo;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +18,13 @@ public class NovoRelatorioCopiaMesAnteriorService {
 	@Autowired NovoRelatorioCopiaMesAnteriorDAO novoMesAnterior;
 	
 	public void copiaOutrosImpostos(FinancAnalitico analiticoNovo){
-		
-		int mesReferenciaAnterior = analiticoNovo.getMesReferencia()  - 1;
-		
-		String buscaImpostos = "FROM FinancImpostos where analitico = "+mesReferenciaAnterior+" and fixo = true";
-		
-		
-		List<FinancImpostos> list = novoMesAnterior.copiaOutrosImpostos(buscaImpostos, analiticoNovo.getIdAnalitico());
-		
+		List<FinancImpostos> list = novoMesAnterior.copiaOutrosImpostos(analiticoNovo.getIdAnalitico());
+	
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i).getDescricao());
+			list.get(i).setAnalitico(analiticoNovo);
+			list.get(i).setData(Calendar.getInstance());
+			novoMesAnterior.persisteFinancImposto(list.get(i));
 		}
-		
-		
 	}
 	
 	

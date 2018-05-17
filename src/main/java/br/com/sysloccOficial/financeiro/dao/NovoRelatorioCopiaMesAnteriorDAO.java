@@ -22,19 +22,23 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 	@PersistenceContext	private EntityManager manager;
 	@Autowired private UtilitariaDatas utilDatas;
 	
-	public List<FinancImpostos> copiaOutrosImpostos(String consulta,int idAnalitico){
+	public List<FinancImpostos> copiaOutrosImpostos(int idAnalitico){
 		
-		String buscaIdAnaliticoAnterior = "SELECT idAnalitico FROM FinancAnalitico order by idAnalitico desc";
+		String buscaIdAnaliticoAnterior = "SELECT idAnalitico FROM FinancAnalitico where idAnalitico <> "+idAnalitico+" order by idAnalitico desc";
 		TypedQuery<Integer> buscaidAnaliticoAnterior = manager.createQuery(buscaIdAnaliticoAnterior, Integer.class).setMaxResults(1);
 		Integer idAnaliticoAnterior = buscaidAnaliticoAnterior.getSingleResult();
 		
 		String buscaImpostos = "FROM FinancImpostos where analitico = "+idAnaliticoAnterior+" and fixo = true";
 		
-		TypedQuery<FinancImpostos> cons = manager.createQuery(buscaImpostos, FinancImpostos.class);
-		return cons.getResultList();
+		TypedQuery<FinancImpostos> list = manager.createQuery(buscaImpostos, FinancImpostos.class);
+		manager.close();
+		return list.getResultList();
 	}
 	
-	
+	public void persisteFinancImposto(FinancImpostos  novoFinanc){
+		manager.persist(novoFinanc);
+		manager.close();
+	}
 	
 	
 }
