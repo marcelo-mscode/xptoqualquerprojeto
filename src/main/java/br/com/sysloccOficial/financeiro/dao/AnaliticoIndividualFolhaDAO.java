@@ -27,22 +27,26 @@ public class AnaliticoIndividualFolhaDAO {
 	@Autowired private AnaliticoIndividualDAO individualDAO;
 	
 	
-	public void salvaNovoFolha(Integer idAnalitico, String valor,String descricao) {
+	public void salvaNovoFolha(Integer idAnalitico, String valor,String descricao, int chkFixo) {
+		
+		boolean chk = true;
+		if(chkFixo == 0) { chk = false; }
 		
 		FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
 		try {
-			FinancFolhaPgto escritorio = new FinancFolhaPgto();
-			escritorio.setDescricao(descricao);
+			FinancFolhaPgto folhaPgto = new FinancFolhaPgto();
+			folhaPgto.setDescricao(descricao);
 			
 			if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
-				escritorio.setValor(new BigDecimal("0.00"));
+				folhaPgto.setValor(new BigDecimal("0.00"));
 			}else{
-				escritorio.setValor(new BigDecimal(util.formataValores(valor)));
+				folhaPgto.setValor(new BigDecimal(util.formataValores(valor)));
 			}
 			
-			escritorio.setAnalitico(analitico);
-			escritorio.setData(Calendar.getInstance());
-			manager.persist(escritorio);
+			folhaPgto.setAnalitico(analitico);
+			folhaPgto.setData(Calendar.getInstance());
+			folhaPgto.setFixo(chk);
+			manager.persist(folhaPgto);
 			
 		} catch (Exception e) {
 			System.out.println("Erro ao inserir Folha PGTO: "+e);

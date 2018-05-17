@@ -28,7 +28,7 @@
    .tiraPaddingData{padding: 0px 0px 0px 5px  !important;height: 50px !important}
    .corMarronEstranha{background-color: rgb(255,204,153);}	
    .corRosaEstranha{background-color: rgb(255,153,204);}	
-   
+   .erro{color: red;font-weight: bold;}
    ::-webkit-scrollbar { width: 15px; height: 20px;}
    ::-webkit-scrollbar-track:enabled { background-color: #FFF; }
    ::-webkit-scrollbar-thumb:vertical { background-color: #e74c3c; }
@@ -173,7 +173,10 @@
                               /> 
                            </td>
                            <td style="padding: 15px !important;">
-                           		<input type="checkbox" <c:if test = "${escritorio.fixo == true}"> checked = checked</c:if > />
+                           		<input type="checkbox" <c:if test = "${escritorio.fixo == true}"> checked = checked</c:if >
+                           		id="chkEditaescritorio${escritorio.idFinancEscritorio}"
+					 	  	  	onclick="editaCheckedFixo('editaFixo',${InfoAnalitico.idAnalitico},${escritorio.idFinancEscritorio},'escritorio',253652);"
+					 	  	  />
                            </td>
                            <td style="padding: 20px !important;">
 	                           	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${escritorio.idFinancEscritorio}&tabela=FinancEscritorio">
@@ -202,7 +205,9 @@
                         <td class="tiraPaddingData"><input id="descTelefone" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorTelefone" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiro('descTelefone','valorTelefone','salvaNovoTelefone',${InfoAnalitico.idAnalitico},'telefones');" class="btn btn-default botaoMais">+</button> </td>
-                     	<td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
+                     	<td style="padding: 15px !important;">
+                     		<input id="chKtelefones" type="checkbox" checked="checked" />
+                     	</td>
                      	<td></td>
                      </tr>
                      <tr>
@@ -227,7 +232,12 @@
                               onblur="editaCamposAnalitico('editaTelefone','valorTelefone${telefone.idFinancTelefone}',${telefone.idFinancTelefone},'valor','telefones');"
                               /> 
                            </td>
-                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+                           <td style="padding: 15px !important;">
+                           		<input type="checkbox" <c:if test = "${telefone.fixo == true}"> checked = checked</c:if >
+                           		id="chkEditatelefones${telefone.idFinancTelefone}"
+					 	  	  	onclick="editaCheckedFixo('editaFixo',${InfoAnalitico.idAnalitico},${telefone.idFinancTelefone},'telefones',3225519);"
+					 	  	  />
+                           </td>	
                            <td style="padding: 20px !important;">
 	                           	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${telefone.idFinancTelefone}&tabela=FinancTelefone">
 	                           	<i class="glyphicon glyphicon-trash"></i></a>
@@ -256,7 +266,8 @@
                         <td class="tiraPaddingData"><input id="descFolha" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorFolha" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiro('descFolha','valorFolha','salvaNovoFolha',${InfoAnalitico.idAnalitico},'folha');" class="btn btn-default botaoMais">+</button> </td>
-                     	<td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
+                     	<td style="padding: 15px !important;">
+                     		<input id="chKfolha" type="checkbox" checked="checked"/></td>
                      	<td></td>
                      </tr>
                      <tr>
@@ -281,7 +292,14 @@
                               onblur="editaCamposAnalitico('editaFolha','valorFolha${folha.idFinancFolha}',${folha.idFinancFolha},'valor','folha');"
                               /> 
                            </td>
-                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked"/></td>
+                           
+                           <td style="padding: 15px !important;">
+                           		<input type="checkbox" <c:if test = "${folha.fixo == true}"> checked = checked</c:if >
+                           		id="chkEditafolha${folha.idFinancFolha}"
+					 	  	  	onclick="editaCheckedFixo('editaFixo',${InfoAnalitico.idAnalitico},${folha.idFinancFolha},'folha',222354);"
+					 	  	  />
+                           </td>
+                           
                            <td style="padding: 20px !important;">
                            <a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${folha.idFinancFolha}&tabela=FinancFolhaPgto">
 	                       <i class="glyphicon glyphicon-trash"></i></a>
@@ -366,7 +384,9 @@
                         <td class="tiraPaddingData"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${InfoAnalitico.idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
-                       	<td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+                       	<td style="padding: 15px !important;">
+                       		<input id="chKoutrasdespesas" type="checkbox"/>
+                       	</td>	
                         
                      </tr>
                      <tr>
@@ -396,7 +416,12 @@
                               onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'valor','outrasdespesas');"
                               /> 
                            </td>
-                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+                           <td style="padding: 15px !important;">
+                           	<input type="checkbox" <c:if test = "${outrasdespesas.fixo == true}"> checked = checked</c:if >
+                           		id="chkEditaoutrasdespesas${outrasdespesas.idFinancOutrasDespesas}"
+					 	  	  	onclick="editaCheckedFixo('editaFixo',${InfoAnalitico.idAnalitico},${outrasdespesas.idFinancOutrasDespesas},'outrasdespesas',52251);"
+					 	  	  />
+                           </td>	
 						   <td style="padding: 20px !important;">
                            	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${outrasdespesas.idFinancOutrasDespesas}&tabela=FinancOutrasDespesas">
                            	<i class="glyphicon glyphicon-trash"></i></a>
@@ -512,8 +537,8 @@
 <div class="col-md-12 navegacaoResumoMes">
 	<table class="table tiraBordaTabela">
 		<tr>
-			<td class="input-95px"><a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink">Resumo mês</a></td>
-			<td class="input-80px active"><a href="analiticoIndividual?idAnalitico=3" class="navegacaoLink">Analítico</a></td>
+			<td class="input-95px"><a href="resumoMesIndividual?mes=${mes}&ano=${InfoAnalitico.anoA}" class="navegacaoLink">Resumo mês</a></td>
+			<td class="input-80px active"><a href="analiticoIndividual?idAnalitico=${InfoAnalitico.idAnalitico}" class="navegacaoLink">Analítico</a></td>
 			<td class="input-120px"><a href="contasPagar" class="navegacaoLink">Contas a pagar</a></td>
 			<td class=""><a href="contasReceber" class="navegacaoLink">Contas a receber</a></td>
 			

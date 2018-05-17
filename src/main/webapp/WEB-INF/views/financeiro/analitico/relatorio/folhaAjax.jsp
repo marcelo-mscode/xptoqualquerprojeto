@@ -37,7 +37,12 @@
                               onblur="editaCamposAnalitico('editaFolha','valorFolha${folha.idFinancFolha}',${folha.idFinancFolha},'valor','folha');"
                               /> 
                            </td>
-                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
+                           <td style="padding: 15px !important;">
+                           		<input type="checkbox" <c:if test = "${folha.fixo == true}"> checked = checked</c:if >
+                           		id="chkEditafolha${folha.idFinancFolha}"
+					 	  	  	onclick="editaCheckedFixo('editaFixo',${idAnalitico},${folha.idFinancFolha},'folha',222354);"
+					 	  	  />
+                           </td> 
                            <td style="padding: 20px !important;">
                            	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${folha.idFinancFolha}&tabela=FinancFolhaPgto">
   	                        <i class="glyphicon glyphicon-trash"></i></a>

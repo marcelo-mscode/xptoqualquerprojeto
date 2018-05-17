@@ -44,10 +44,11 @@ public class AnaliticoIndividualTelefoneDAO {
 		}
 	}
 	
-	public void salvaNovoTelefone(Integer idAnalitico, String valor,String semCategoria) {
-			
+	public void salvaNovoTelefone(Integer idAnalitico, String valor,String semCategoria, int chkFixoOutrosImpostos) {
+			boolean chk = true;
+			if(chkFixoOutrosImpostos == 0) { chk = false; }
+		
 			FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
-			FinancCategTelef categoriaTelefone = categoriaTelefone(1);
 			try {
 				FinancTelefone telefone = new FinancTelefone();
 				telefone.setSemCategoria(semCategoria);
@@ -60,7 +61,7 @@ public class AnaliticoIndividualTelefoneDAO {
 				
 				telefone.setAnalitico(analitico);
 				telefone.setData(Calendar.getInstance());
-		//		telefone.setCategoria(categoriaTelefone);
+				telefone.setFixo(chk);
 				manager.persist(telefone);
 				
 			} catch (Exception e) {

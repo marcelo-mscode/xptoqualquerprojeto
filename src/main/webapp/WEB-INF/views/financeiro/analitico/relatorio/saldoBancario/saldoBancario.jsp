@@ -27,14 +27,15 @@
       			<c:if test="${movimentoItau.valorAbertura != null}">
 	      			 value="<fmt:formatNumber value="${movimentoItau.valorAbertura}" pattern="#,##0.00"/>"
       			</c:if>
+      			<c:if test="${movimentoItau.valorAbertura < 0}">class='erro'</c:if>
              	onblur="editaSaldos('valorAnteriorItau1',${idAnalitico},'valor','1');"/>
       	</td>
       	<td><b>Tarifas</b></td>
-      	<td><fmt:formatNumber value="${movimentoItau.totalTarifas}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoItau.totalTarifas < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoItau.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>
-      	<td><fmt:formatNumber value="${movimentoItau.totalCreditos}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoItau.totalCreditos < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoItau.totalCreditos}" pattern="#,##0.00"/></td>
       	<td><b>Débitos</b></td>
-      	<td><fmt:formatNumber value="${movimentoItau.totalDebitos}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoItau.totalDebitos < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoItau.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo Itau</b></td>
       	<td class="campoSaldos">
       		<input id="dataSaldoFechamentoItau1" style="border: none;padding: 8px 10px 8px;line-height: 13px;"
@@ -42,20 +43,20 @@
       		<c:if test="${movimentoItau.dataFechamentoCaixa != null}">
 	      		value="<fmt:formatDate value="${movimentoItau.dataFechamentoCaixa}" pattern="dd/MM/yyyy"/>"
       		</c:if>
-      		
             onclick="mudaCampoData('dataSaldoFechamentoItau1');"
             onblur="editaSaldos('dataSaldoFechamentoItau1',${idAnalitico},'dataFechamento','1');"/>
       	</td>
-      	<td><fmt:formatNumber value="${movimentoItau.valorAbertura -
-      								   movimentoItau.totalTarifas + 
-      								   movimentoItau.totalCreditos - 
-      								   movimentoItau.totalDebitos}" pattern="#,##0.00"/></td>
+      	
+      	<c:set value="${movimentoItau.valorAbertura - movimentoItau.totalTarifas + movimentoItau.totalCreditos - movimentoItau.totalDebitos}" var="saldoItau" />
+      	<td  <c:if test="${saldoItau < 0}">class='erro'</c:if>><fmt:formatNumber value="${saldoItau}" pattern="#,##0.00"/>
+      	</td>
       	<td class="campoSaldos">
       		<input id="valorAlternativoItau1" style="border: none;padding: 8px;line-height: 13px;"
       		<c:if test="${movimentoItau.valoresDefinir == null}">placeholder="$Valor definir" class="amareloFlat2"</c:if>
       		<c:if test="${movimentoItau.valoresDefinir != null}">
 	      		 value="<fmt:formatNumber value="${movimentoItau.valoresDefinir}" pattern="#,##0.00"/>"
       		</c:if>
+      		<c:if test="${movimentoItau.valoresDefinir < 0}">class='erro'</c:if>
              	onblur="editaSaldos('valorAlternativoItau1',${idAnalitico},'valorDefinir','1');"/>
       	</td>
       </tr>
@@ -77,14 +78,15 @@
     		<c:if test="${movimentoCef.valorAbertura != null}">
 	   		   value="<fmt:formatNumber value="${movimentoCef.valorAbertura}" pattern="#,##0.00"/>"
     		</c:if>
+    		<c:if test="${movimentoCef.valorAbertura < 0}">class='erro'</c:if>
              	onblur="editaSaldos('valorAnteriorCEF2',${idAnalitico},'valor','2');"/>
       	</td>
       	<td><b>Tarifas</b></td>
-      	<td><fmt:formatNumber value="${movimentoCef.totalTarifas}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoCef.totalTarifas < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoCef.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>
-      	<td><fmt:formatNumber value="${movimentoCef.totalCreditos}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoCef.totalCreditos < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoCef.totalCreditos}" pattern="#,##0.00"/></td>
       	<td><b>Débitos</b></td>
-      	<td><fmt:formatNumber value="${movimentoCef.totalDebitos}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoCef.totalDebitos < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoCef.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo CEF</b></td>
       	<td class="campoSaldos">
       		<input id="dataSaldoFechamentoCEF2" style="border: none;padding: 8px 10px 8px;line-height: 13px;"
@@ -96,16 +98,15 @@
             onclick="mudaCampoData('dataSaldoFechamentoCEF2');"
             onblur="editaSaldos('dataSaldoFechamentoCEF2',${idAnalitico},'dataFechamento','2');"/>
       	</td>
-      	<td><fmt:formatNumber value="${movimentoCef.valorAbertura -
-      								   movimentoCef.totalTarifas + 
-      								   movimentoCef.totalCreditos - 
-      								   movimentoCef.totalDebitos}" pattern="#,##0.00"/></td>
+      	<c:set value="${movimentoCef.valorAbertura - movimentoCef.totalTarifas + movimentoCef.totalCreditos - movimentoCef.totalDebitos}" var="saldoCEF" />
+      	<td  <c:if test="${saldoCEF < 0}">class='erro'</c:if>><fmt:formatNumber value="${saldoCEF}" pattern="#,##0.00"/></td>
       	<td class="campoSaldos">
       		<input id="valorAlternativoCEF2" style="border: none;padding: 8px;line-height: 13px;"
       		<c:if test="${movimentoCef.valoresDefinir == null}">placeholder="$Valor definir" class="amareloFlat2"</c:if>
       		<c:if test="${movimentoCef.valoresDefinir != null}">
 	      		 value="<fmt:formatNumber value="${movimentoCef.valoresDefinir}" pattern="#,##0.00"/>"
       		</c:if>
+      		<c:if test="${movimentoCef.valoresDefinir < 0}">class='erro'</c:if>
              	onblur="editaSaldos('valorAlternativoCEF2',${idAnalitico},'valorDefinir','2');"/>
       	</td>
       </tr>
@@ -127,14 +128,15 @@
     		<c:if test="${movimentoBradesco.valorAbertura != null}">
 	      		value="<fmt:formatNumber value="${movimentoBradesco.valorAbertura}" pattern="#,##0.00"/>"
     		</c:if>
+    		<c:if test="${movimentoBradesco.valorAbertura < 0}">class='erro'</c:if>
            onblur="editaSaldos('valorAnteriorBRADESCO3',${idAnalitico},'valor','3');"/>
          </td>  
       	<td><b>Tarifas</b></td>
-      	<td><fmt:formatNumber value="${movimentoBradesco.totalTarifas}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoBradesco.totalTarifas < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoBradesco.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>
-      	<td><fmt:formatNumber value="${movimentoBradesco.totalCreditos}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoBradesco.totalCreditos < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoBradesco.totalCreditos}" pattern="#,##0.00"/></td>
       	<td><b>Débitos</b></td>
-      	<td><fmt:formatNumber value="${movimentoBradesco.totalDebitos}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoBradesco.totalDebitos < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoBradesco.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo BRADESCO</b></td>
       	<td class="campoSaldos">
       		<input id="dataSaldoFechamentoBRADESCO3" style="border: none;padding: 8px 10px 8px;line-height: 13px;"
@@ -145,17 +147,15 @@
             onclick="mudaCampoData('dataSaldoFechamentoBRADESCO3');"
             onblur="editaSaldos('dataSaldoFechamentoBRADESCO3',${idAnalitico},'dataFechamento','3');"/>
       	</td>
-      	<td><fmt:formatNumber value="${movimentoBradesco.valorAbertura -
-      								   movimentoBradesco.totalTarifas + 
-      								   movimentoBradesco.totalCreditos - 
-      								   movimentoBradesco.totalDebitos}" pattern="#,##0.00"/></td>
+      	<c:set value="${movimentoBradesco.valorAbertura - movimentoBradesco.totalTarifas + movimentoBradesco.totalCreditos - movimentoBradesco.totalDebitos }" var="saldoBradesco" />
+      	<td   <c:if test="${saldoBradesco < 0}">class='erro'</c:if>><fmt:formatNumber value="${saldoBradesco}" pattern="#,##0.00"/></td>
       	<td class="campoSaldos">
       		<input id="valorAlternativoBRADESCO3" style="border: none;padding: 8px;line-height: 13px;"
       		<c:if test="${movimentoBradesco.valoresDefinir == null}">placeholder="$Valor definir" class="amareloFlat2"</c:if>
       		<c:if test="${movimentoBradesco.valoresDefinir != null}">
 	      		 value="<fmt:formatNumber value="${movimentoBradesco.valoresDefinir}" pattern="#,##0.00"/>"
       		</c:if>
-      		
+      		<c:if test="${movimentoBradesco.valoresDefinir < 0}">class='erro'</c:if>
              	onblur="editaSaldos('valorAlternativoBRADESCO3',${idAnalitico},'valorDefinir','3');"/>
       	</td>
       </tr>
@@ -178,15 +178,15 @@
     		<c:if test="${movimentoSantander.valorAbertura != null}">
 	      		value="<fmt:formatNumber value="${movimentoSantander.valorAbertura}" pattern="#,##0.00"/>"
     		</c:if>
-      		
+      	   <c:if test="${movimentoSantander.valorAbertura < 0}">class='erro'</c:if>	
            onblur="editaSaldos('valorAnteriorSANTANDER4',${idAnalitico},'valor','4');"/>
          </td> 
       	<td><b>Tarifas</b></td>
-      	<td><fmt:formatNumber value="${movimentoSantander.totalTarifas}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoSantander.totalTarifas < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoSantander.totalTarifas}" pattern="#,##0.00"/></td>
       	<td><b>Créditos</b></td>
-      	<td><fmt:formatNumber value="${movimentoSantander.totalCreditos}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoSantander.totalCreditos < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoSantander.totalCreditos}" pattern="#,##0.00"/></td>
       	<td><b>Débitos</b></td>
-      	<td><fmt:formatNumber value="${movimentoSantander.totalDebitos}" pattern="#,##0.00"/></td>
+      	<td <c:if test="${movimentoSantander.totalDebitos < 0}">class='erro'</c:if>><fmt:formatNumber value="${movimentoSantander.totalDebitos}" pattern="#,##0.00"/></td>
       	<td><b>Saldo SANTANDER</b></td>
       	<td class="campoSaldos">
       		<input id="dataSaldoFechamentoSANTANDER4" style="border: none;padding: 8px 10px 8px;line-height: 13px;"
@@ -198,13 +198,9 @@
             onclick="mudaCampoData('dataSaldoFechamentoSANTANDER4');"
             onblur="editaSaldos('dataSaldoFechamentoSANTANDER4',${idAnalitico},'dataFechamento','4');"/>
       	</td>
-      	<td>
-      		<c:set var="saldoSantanderFinal"  value="${movimentoSantander.valorAbertura -
-      								   movimentoSantander.totalTarifas + 
-      								   movimentoSantander.totalCreditos - 
-      								   movimentoSantander.totalDebitos}"/>
-      	   <span <c:if test="${saldoSantanderFinal < 0 }"> style="color:red"</c:if> >
-      	   <fmt:formatNumber value="${saldoSantanderFinal}" pattern="#,##0.00"/></span>
+   		<c:set var="saldoSantanderFinal"  value="${movimentoSantander.valorAbertura - movimentoSantander.totalTarifas + movimentoSantander.totalCreditos - movimentoSantander.totalDebitos}"/>
+      	<td <c:if test="${saldoSantanderFinal < 0 }"> class="erro"</c:if>>
+      	   <fmt:formatNumber value="${saldoSantanderFinal}" pattern="#,##0.00"/>
       	</td>
       	
       	<td class="campoSaldos">
@@ -213,10 +209,9 @@
       		<c:if test="${movimentoSantander.valoresDefinir != null}">
 	      		 value="<fmt:formatNumber value="${movimentoSantander.valoresDefinir}" pattern="#,##0.00"/>"
       		</c:if>
-             	onblur="editaSaldos('valorAlternativoSANTANDER4',${idAnalitico},'valorDefinir','4');"/>
+      		<c:if test="${movimentoSantander.valoresDefinir < 0}">class='erro'</c:if>
+           	onblur="editaSaldos('valorAlternativoSANTANDER4',${idAnalitico},'valorDefinir','4');"/>
       	</td>
       </tr>
-      
-      
    </tbody>
 </table>		

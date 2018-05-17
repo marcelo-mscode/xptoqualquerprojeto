@@ -39,7 +39,10 @@
                               /> 
                            </td>
                            <td style="padding: 15px !important;">
-                           		<input type="checkbox" <c:if test = "${escritorio.fixo == true}"> checked = checked</c:if > />
+                           		<input type="checkbox" <c:if test = "${escritorio.fixo == true}"> checked = checked</c:if >
+                           		id="chkEditaescritorio${escritorio.idFinancEscritorio}"
+					 	  	  	onclick="editaCheckedFixo('editaFixo',${idAnalitico},${escritorio.idFinancEscritorio},'escritorio',253652);"
+                           		 />
                            </td>
                            <td style="padding: 20px !important;">
 	                           	<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${escritorio.idFinancEscritorio}&tabela=FinancEscritorio">

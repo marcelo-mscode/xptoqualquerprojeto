@@ -21,10 +21,10 @@ public class AnaliticoIndividualFolhaController {
 	
 	@RequestMapping("salvaNovoFolha")
 	@ResponseBody
-	private ModelAndView salvaNovoEscritorio(Integer idAnalitico,String valor,String descricao){
+	private ModelAndView salvaNovoEscritorio(Integer idAnalitico,String valor,String descricao, int chkFixoOutrosImpostos){
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/folhaAjax");
 		
-		analiticoIndDAO.salvaNovoFolha(idAnalitico,valor,descricao);
+		analiticoIndDAO.salvaNovoFolha(idAnalitico,valor,descricao,chkFixoOutrosImpostos);
 		
 		MV.addObject("idAnalitico",idAnalitico);
 		List<FinancFolhaPgto> analitico2 = analiticoIndDAO.carregaAnaliticoFolha(idAnalitico);

@@ -17,11 +17,14 @@ public class AnaliticoIndividualTelefoneController {
 	
 	@RequestMapping("salvaNovoTelefone")
 	@ResponseBody
-	private ModelAndView salvaNovoTelefone(Integer idAnalitico,String valor,String descricao){
+	private ModelAndView salvaNovoTelefone(Integer idAnalitico,String valor,String descricao, int chkFixoOutrosImpostos){
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/telefonesAjax");
 		
-		analiticoIndDAO.salvaNovoTelefone(idAnalitico,valor,descricao);
+		analiticoIndDAO.salvaNovoTelefone(idAnalitico,valor,descricao,chkFixoOutrosImpostos);
 		MV.addObject("idAnalitico",idAnalitico);
+		
+		
+		
 		List<FinancTelefone> analitico2 = analiticoIndDAO.carregaAnaliticoTelefone(idAnalitico);
 		MV.addObject("telefone",analitico2);
 		return MV;

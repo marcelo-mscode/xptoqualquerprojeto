@@ -33,7 +33,6 @@ function editaCheckedFixo(action, idAnalitico, idTabela, idDivAjax,codigo) {
 	$.ajax({
 		url : action+"?idAnalitico="+idAnalitico+"&idTabela="+idTabela+"&chkFixo="+confereBoolean+"&codigo="+codigo,
 		success : function(data) {
-			$("#"+idDivAjax).html(data);
 		}
 	});
 };
@@ -42,6 +41,11 @@ function editaCheckedFixo(action, idAnalitico, idTabela, idDivAjax,codigo) {
 
 
 function editaCamposFinanceiroDespesas(data,desc,valor1,action, idAnalitico,idDivAjax) {
+	
+	var chk = $("#chK"+idDivAjax).is(':checked');
+	var confereBoolean = 1;
+	if( chk  == false ){ confereBoolean = 0;}
+	
 	
 	var valor = $("#"+valor1).val();
 	var descricao = $("#"+desc).val();
@@ -60,7 +64,7 @@ function editaCamposFinanceiroDespesas(data,desc,valor1,action, idAnalitico,idDi
 
 	
 	$.ajax({
-		url : action+"?idAnalitico="+idAnalitico+"&DataPgto="+datas+"&valor="+valor+"&descricao="+descricao,
+		url : action+"?idAnalitico="+idAnalitico+"&DataPgto="+datas+"&valor="+valor+"&descricao="+descricao+"&chkFixo="+confereBoolean,
 		success : function(data) {
 			$("#"+idDivAjax).html(data);
 		}

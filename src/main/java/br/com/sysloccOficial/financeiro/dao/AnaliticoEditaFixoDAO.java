@@ -20,7 +20,6 @@ public class AnaliticoEditaFixoDAO {
 	public void editaFixo(int idAnalitico, int idTabela, int chkFixo, String nomeTabela) throws InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException{
 		boolean chk = true;
 		if(chkFixo == 0) { chk = false; }
-		
 		try {
 			Object obj3 = Class.forName("br.com.sysloccOficial.financeiro.model."+nomeTabela).newInstance();
 			Object obj4 = manager.find(obj3.getClass(), idTabela);
@@ -28,10 +27,8 @@ public class AnaliticoEditaFixoDAO {
 			f.setAccessible(true);
 			f.setBoolean(obj4, chk);
 			manager.merge(obj4);
-			System.out.println("Tudo certo !");
 		} catch (ClassNotFoundException  e) {
 			System.out.println("Erro ao editarFixo: "+e);
 		}
 	}
-	
 }

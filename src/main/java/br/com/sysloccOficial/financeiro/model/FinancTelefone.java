@@ -21,6 +21,7 @@ public class FinancTelefone {
 	private Integer idFinancTelefone;
 	private BigDecimal valor;
 	private String semCategoria;
+	private boolean fixo;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar data;
@@ -29,7 +30,7 @@ public class FinancTelefone {
 	@OneToOne @JoinColumn(name="analitico") private FinancAnalitico analitico;
 	/*@OneToOne @JoinColumn(name="categoria") private FinancCategTelef categoria;*/
 // ------------------------------------------------------------------ //	
-
+	
 	public Integer getIdFinancTelefone() {
 		return idFinancTelefone;
 	}
@@ -40,6 +41,14 @@ public class FinancTelefone {
 	public void setCategoria(FinancCategTelef categoria) {
 		this.categoria = categoria;
 	}*/
+
+	public boolean isFixo() {
+		return fixo;
+	}
+
+	public void setFixo(boolean fixo) {
+		this.fixo = fixo;
+	}
 
 	public String getSemCategoria() {
 		return semCategoria;

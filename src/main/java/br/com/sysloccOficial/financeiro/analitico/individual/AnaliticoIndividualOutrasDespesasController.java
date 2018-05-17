@@ -16,10 +16,10 @@ public class AnaliticoIndividualOutrasDespesasController {
 	
 	@RequestMapping("salvaNovoOutrasDespesas")
 	@ResponseBody
-	private ModelAndView salvaNovoDespesas(Integer idAnalitico,String DataPgto, String valor,String descricao) throws ParseException{
+	private ModelAndView salvaNovoDespesas(Integer idAnalitico,String DataPgto, String valor,String descricao, int chkFixo) throws ParseException{
 		ModelAndView MV = new ModelAndView("financeiro/analitico/relatorio/outrasDespesasAjax");
 		
-		analiticoIndDAO.salvaNovoOutrasDespesas(idAnalitico,DataPgto,valor,descricao);
+		analiticoIndDAO.salvaNovoOutrasDespesas(idAnalitico,DataPgto,valor,descricao,chkFixo);
 		
 		MV.addObject("idAnalitico",idAnalitico);
 	

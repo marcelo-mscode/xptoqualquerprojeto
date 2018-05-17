@@ -30,6 +30,8 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 	@RequestMapping("resumoMesIndividual")
 	public ModelAndView resumoMesIndex(Integer mes, Integer ano){
 		
+		int mesDoAno = mes;
+		
 		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(mes,ano);
 
 		if(!infoEvento.isEmpty()){

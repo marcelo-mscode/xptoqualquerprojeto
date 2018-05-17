@@ -20,6 +20,7 @@ public class FinancFolhaPgto {
 	private Integer idFinancFolha;
 	private BigDecimal valor;
 	private String descricao;
+	private boolean fixo;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar data;
@@ -27,9 +28,17 @@ public class FinancFolhaPgto {
 // ------------------------------------------------------------------ //	
 	@OneToOne @JoinColumn(name="analitico") private FinancAnalitico analitico;	
 // ------------------------------------------------------------------ //	
-
+	
 	public Integer getIdFinancFolha() {
 		return idFinancFolha;
+	}
+
+	public boolean isFixo() {
+		return fixo;
+	}
+
+	public void setFixo(boolean fixo) {
+		this.fixo = fixo;
 	}
 
 	public void setIdFinancFolha(Integer idFinancFolha) {

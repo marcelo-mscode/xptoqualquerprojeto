@@ -23,7 +23,9 @@ public class AnaliticoIndividualOutrasDespesasDAO {
 	@Autowired private AnaliticoIndividualDAO individualDAO;
 	
 	
-	public void salvaNovoOutrasDespesas(Integer idAnalitico,String DataPgto,String valor,String descricao) throws ParseException {
+	public void salvaNovoOutrasDespesas(Integer idAnalitico,String DataPgto,String valor,String descricao, int chkFixo) throws ParseException {
+		boolean chk = true;
+		if(chkFixo == 0) { chk = false; }
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date data = new java.sql.Date(format.parse(DataPgto).getTime());
@@ -41,6 +43,7 @@ public class AnaliticoIndividualOutrasDespesasDAO {
 			
 			despesas.setAnalitico(analitico);
 			despesas.setData(data);
+			despesas.setFixo(chk);
 			manager.persist(despesas);
 			
 		} catch (Exception e) {

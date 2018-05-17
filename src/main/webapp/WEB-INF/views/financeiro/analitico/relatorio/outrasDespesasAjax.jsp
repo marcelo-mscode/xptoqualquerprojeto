@@ -13,7 +13,7 @@
                         <td class="tiraPaddingData"><input id="descOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData input-140px" type="text" placeholder="Descrição"/></td>
                         <td class="tiraPaddingData"><input id="valorOutrasDespesas" class="form-control ajusteInput2 tiraPaddingData" type="text" placeholder="valor"/></td>
                         <td><button onclick="editaCamposFinanceiroDespesas('dataOutrasDespesas','descOutrasDespesas','valorOutrasDespesas','salvaNovoOutrasDespesas',${idAnalitico},'outrasdespesas');" class="btn btn-default botaoMais botaoMaisDespesa">+</button> </td>
-                    	<td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+                    	<td style="padding: 15px !important;"><input type="checkbox" /></td>	
                      </tr>
                      <tr>
                      	<td>Data</td>
@@ -42,7 +42,13 @@
                               onblur="editaCamposAnaliticoDespesas('editaOutrasDespesas','valorOutrasdespesas${outrasdespesas.idFinancOutrasDespesas}',${outrasdespesas.idFinancOutrasDespesas},'valor','outrasdespesas');"
                               /> 
                            </td>
-                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+                           <td style="padding: 15px !important;">
+                           <input type="checkbox" <c:if test = "${outrasdespesas.fixo == true}"> checked = checked</c:if >
+                           		id="chkEditaoutrasdespesas${outrasdespesas.idFinancOutrasDespesas}"
+					 	  	  	onclick="editaCheckedFixo('editaFixo',${idAnalitico},${outrasdespesas.idFinancOutrasDespesas},'outrasdespesas',52251);"
+					 	  	  />
+                           </td>	
+						   
 						   <td style="padding: 20px !important;">
 						   <a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${outrasdespesas.idFinancOutrasDespesas}&tabela=FinancOutrasDespesas">
                            <i class="glyphicon glyphicon-trash"></i></a>	

@@ -19,6 +19,7 @@ public class FinancOutrasDespesas {
 	private Integer idFinancOutrasDespesas;
 	private BigDecimal valor;
 	private String descricao;
+	private boolean fixo;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
@@ -26,9 +27,17 @@ public class FinancOutrasDespesas {
 // ------------------------------------------------------------------ //	
 	@OneToOne @JoinColumn(name="analitico") private FinancAnalitico analitico;	
 // ------------------------------------------------------------------ //	
-
+	
 	public Integer getIdFinancOutrasDespesas() {
 		return idFinancOutrasDespesas;
+	}
+
+	public boolean isFixo() {
+		return fixo;
+	}
+
+	public void setFixo(boolean fixo) {
+		this.fixo = fixo;
 	}
 
 	public void setIdFinancOutrasDespesas(Integer idFinancOutrasDespesas) {

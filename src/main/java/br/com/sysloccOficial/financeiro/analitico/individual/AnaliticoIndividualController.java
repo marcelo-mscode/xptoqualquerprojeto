@@ -84,7 +84,9 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 		
 		// ---- EMPRESTIMOS ---- //		
 		MV.addObject("emprestimosBancos", analiticoMovFinanceiroDAO.carregaEmprestimos(idAnalitico));
-
+		
+		MV.addObject("mes", mes);
+		
 		return MV;
 	}
 

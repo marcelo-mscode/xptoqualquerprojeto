@@ -36,7 +36,11 @@
                               onblur="editaCamposAnalitico('editaTelefone','valorTelefone${telefone.idFinancTelefone}',${telefone.idFinancTelefone},'valor','telefones');"
                               /> 
                            </td>
-                           <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>
+                           <td style="padding: 15px !important;">
+                           		<input type="checkbox" <c:if test = "${telefone.fixo == true}"> checked = checked</c:if >
+                           			id="chkEditatelefones${telefone.idFinancTelefone}"
+					 	  	  		onclick="editaCheckedFixo('editaFixo',${idAnalitico},${telefone.idFinancTelefone},'telefones',3225519);"
+ 				 	  	        />
                            <td style="padding: 20px !important;">
                            		<a href="excluiItemAnalitico?idAnalitico=${idAnalitico}&idTabela=${telefone.idFinancTelefone}&tabela=FinancTelefone">
                            		<i class="glyphicon glyphicon-trash"></i></a>
