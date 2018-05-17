@@ -21,6 +21,7 @@ public class FinancTelefone {
 	private Integer idFinancTelefone;
 	private BigDecimal valor;
 	private String semCategoria;
+	private String descricao;
 	private boolean fixo;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -41,6 +42,14 @@ public class FinancTelefone {
 	public void setCategoria(FinancCategTelef categoria) {
 		this.categoria = categoria;
 	}*/
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
 	public boolean isFixo() {
 		return fixo;

@@ -40,10 +40,8 @@ public class NovoRelatorioController {
 	public String criaNovo(FinancAnalitico novoAnalitico) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, ClassNotFoundException, InstantiationException{
 		
 		FinancAnalitico novoAnaliticoPersistido = analiticoDAO.salvaNovoAnalitico(novoAnalitico);
-//		Integer idAnalitico = 15;
 		
-		CopiaRelatorioAnterior.copiaOutrosImpostosReflection(novoAnaliticoPersistido);
-		
+		CopiaRelatorioAnterior.copiaAnaliticoReflection(novoAnaliticoPersistido);
 		
 		return "redirect:analiticoIndividual?idAnalitico="+novoAnaliticoPersistido.getIdAnalitico();
 	}

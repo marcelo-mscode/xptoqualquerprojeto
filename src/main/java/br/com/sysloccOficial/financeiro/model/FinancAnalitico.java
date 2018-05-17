@@ -26,11 +26,20 @@ public class FinancAnalitico {
 	@OneToMany (mappedBy="analitico")private List<FinancFolhaPgto> folha; 
 	@OneToMany (mappedBy="analitico")private List<FinancDespesas> despesas; 
 	@OneToMany (mappedBy="analitico")private List<FinancImpostos> impostos; 
+	@OneToMany (mappedBy="analitico")private List<FinancOutrasDespesas> outrasDespesas; 
 	
 // ------------------------------------------------------------ //	
 	
 	public Integer getIdAnalitico() {
 		return idAnalitico;
+	}
+
+	public List<FinancOutrasDespesas> getOutrasDespesas() {
+		return outrasDespesas;
+	}
+
+	public void setOutrasDespesas(List<FinancOutrasDespesas> outrasDespesas) {
+		this.outrasDespesas = outrasDespesas;
 	}
 
 	public Integer getMesReferencia() {
