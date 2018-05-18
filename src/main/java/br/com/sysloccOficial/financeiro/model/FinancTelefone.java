@@ -29,19 +29,11 @@ public class FinancTelefone {
 	
 // ------------------------------------------------------------------ //	
 	@OneToOne @JoinColumn(name="analitico") private FinancAnalitico analitico;
-	/*@OneToOne @JoinColumn(name="categoria") private FinancCategTelef categoria;*/
 // ------------------------------------------------------------------ //	
 	
 	public Integer getIdFinancTelefone() {
 		return idFinancTelefone;
 	}
-	/*public FinancCategTelef getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(FinancCategTelef categoria) {
-		this.categoria = categoria;
-	}*/
 
 	public String getDescricao() {
 		return descricao;

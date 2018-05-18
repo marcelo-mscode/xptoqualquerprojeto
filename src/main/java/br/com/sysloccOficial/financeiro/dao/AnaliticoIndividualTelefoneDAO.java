@@ -44,14 +44,15 @@ public class AnaliticoIndividualTelefoneDAO {
 		}
 	}
 	
-	public void salvaNovoTelefone(Integer idAnalitico, String valor,String semCategoria, int chkFixoOutrosImpostos) {
+	public void salvaNovoTelefone(Integer idAnalitico, String valor, String semCategoria, int chkFixoOutrosImpostos) {
 			boolean chk = true;
 			if(chkFixoOutrosImpostos == 0) { chk = false; }
 		
 			FinancAnalitico analitico = individualDAO.carregaAnaliticoIndividual(idAnalitico);
 			try {
 				FinancTelefone telefone = new FinancTelefone();
-				telefone.setSemCategoria(semCategoria);
+				//telefone.setSemCategoria(semCategoria);
+				telefone.setDescricao(semCategoria);
 				
 				if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
 					telefone.setValor(new BigDecimal("0.00"));
@@ -79,8 +80,8 @@ public class AnaliticoIndividualTelefoneDAO {
 				
 				if(tipoCampo.equals("descricao")){
 					String valor2 = valor.replace("x1x2x3x", "%");
-					telefone.setSemCategoria(valor2);
-				}
+					//telefone.setSemCategoria(valor2);
+					telefone.setDescricao(valor2);				}
 				if(tipoCampo.equals("valor")){
 					if(valor.equals(null) || valor.equals("")|| valor.equals(" ")){
 						telefone.setValor(new BigDecimal("0.00"));

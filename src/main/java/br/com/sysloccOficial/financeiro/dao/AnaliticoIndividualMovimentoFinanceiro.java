@@ -355,9 +355,6 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 	public MovimentacaoBancosSaldoAnterior totalSaldoAnteriorBanco(int idAnalitico,int idBanco){
 			try {
-				
-				//String consulta= "select f from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where f.analitico.idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco;
-				
 				TypedQuery<MovimentacaoBancosSaldoAnterior> f = manager.createQuery("select f from MovimentacaoBancosSaldoAnterior f join fetch f.analitico where f.analitico.idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaldoAnterior.class);
 				return f.getSingleResult();
 			} catch (NoResultException e) {

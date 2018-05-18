@@ -25,8 +25,6 @@ public class AnaliticoEditaFixoDAO {
 			Field f = obj4.getClass().getDeclaredField("fixo");
 			f.setAccessible(true);
 			f.setBoolean(obj4, chk);
-		
-			
 			
 			manager.merge(obj4);
 			manager.close();

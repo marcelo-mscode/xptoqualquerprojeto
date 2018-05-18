@@ -27,7 +27,7 @@
                      <c:forEach items="${telefone}" var="telefone">
                         <tr>
                            <td colspan="2" class="tiraPaddingData">
-                              <input id="descricaoTelefone${telefone.idFinancTelefone}" class="ajusteInput2 input-160px tiraPaddingData" value="${telefone.semCategoria}"
+                              <input id="descricaoTelefone${telefone.idFinancTelefone}" class="ajusteInput2 input-160px tiraPaddingData" value="${telefone.descricao}"
                                  onblur="editaCamposAnalitico('editaTelefone','descricaoTelefone${telefone.idFinancTelefone}',${telefone.idFinancTelefone},'descricao','telefones');"
                                  />
                            </td>
