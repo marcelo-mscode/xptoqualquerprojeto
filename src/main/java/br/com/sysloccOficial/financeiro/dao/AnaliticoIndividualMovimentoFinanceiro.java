@@ -339,7 +339,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 			return null;
 		}
 	}
-
+	
 	public HashSet<MovimentacaoBancosSaidas> totalSaidasBanco(int idAnalitico,int idBanco){
 			try {
 				TypedQuery<MovimentacaoBancosSaidas> f = manager.createQuery("select f from MovimentacaoBancosSaidas f join fetch f.analitico where f.analitico.idAnalitico ="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaidas.class);
