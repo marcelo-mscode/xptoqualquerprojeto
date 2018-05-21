@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.com.sysloccOficial.conf.UtilitariaDatas;
-import br.com.sysloccOficial.financeiro.model.FinancImpostos;
+import br.com.sysloccOficial.financeiro.model.EmprestimoBancario;
 
 
 
@@ -34,6 +34,12 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 		manager.close();
 		return list.getResultList();
 	}
+	
+	public List<EmprestimoBancario> copiaTabelaEmprestimos(int idAnalitico){
+		String consulta = "FROM EmprestimoBancario where analitico = "+ idAnalitico;
+		TypedQuery<EmprestimoBancario> list = manager.createQuery(consulta, EmprestimoBancario.class);
+		return list.getResultList();
+	}	
 
 	public void persisteFinancImpostoReflection(Object  novoFinanc){
 		manager.persist(novoFinanc);

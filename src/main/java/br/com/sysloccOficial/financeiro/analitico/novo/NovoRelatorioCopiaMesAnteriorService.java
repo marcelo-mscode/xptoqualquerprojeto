@@ -5,9 +5,13 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import sysloccOficial.NovoExcelBayer;
 import br.com.sysloccOficial.financeiro.dao.NovoRelatorioCopiaMesAnteriorDAO;
+import br.com.sysloccOficial.financeiro.model.EmprestimoBancario;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 
 
@@ -63,5 +67,30 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			novoMesAnterior.persisteFinancImpostoReflection(novo);
 		}
 	}
+	
+	public void copiaTabelaEmprestimos (FinancAnalitico novoAnaliticoPersistido){
+		
+		List<EmprestimoBancario> lista = novoMesAnterior.copiaTabelaEmprestimos(novoAnaliticoPersistido.getIdAnalitico());				
+		
+		
+		for (int i = 0; i < lista.size(); i++) {
+			
+			EmprestimoBancario novo = new EmprestimoBancario();
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+	}
+	
+	
 	
 }
