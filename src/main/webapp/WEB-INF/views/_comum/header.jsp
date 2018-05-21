@@ -182,7 +182,7 @@
               <li><a href="<c:url value="contasReceber" />">Contas Receber</a></li>
               <li><a href="<c:url value="relatorioEventosIndex" />">Relatório de Eventos</a></li>
               <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Analítico</a>
+                <a tabindex="-1" href="<c:url value="/indexAnalitico" />">Analítico</a>
                 <ul class="dropdown-menu">
                   <li><a tabindex="-1" href="<c:url value="/indexAnalitico" />" >Relatórios</a></li>
                   <li><a tabindex="-1" href="<c:url value="/novoAnalitico" />" >Novo Relatório</a></li>
