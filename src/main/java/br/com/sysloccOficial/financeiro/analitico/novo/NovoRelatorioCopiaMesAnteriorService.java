@@ -27,6 +27,7 @@ public class NovoRelatorioCopiaMesAnteriorService {
 		copiaPorReflection(novoAnaliticoPersistido, "FinancTelefone");
 		copiaPorReflection(novoAnaliticoPersistido, "FinancFolhaPgto");
 		copiaPorReflection(novoAnaliticoPersistido, "FinancOutrasDespesas");
+		copiaTabelaEmprestimos(novoAnaliticoPersistido);
 	}
 	
 	public void copiaPorReflection(FinancAnalitico novoAnaliticoPersistido,String nomeTabela) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, ClassNotFoundException, InstantiationException{
@@ -72,25 +73,22 @@ public class NovoRelatorioCopiaMesAnteriorService {
 		
 		List<EmprestimoBancario> lista = novoMesAnterior.copiaTabelaEmprestimos(novoAnaliticoPersistido.getIdAnalitico());				
 		
+		System.out.println(novoAnaliticoPersistido.getIdAnalitico());
 		
 		for (int i = 0; i < lista.size(); i++) {
 			
-			EmprestimoBancario novo = new EmprestimoBancario();
-			
-			
-			
-			
-			
-			
-			
+			if(lista.get(i).isPago() == false){
+				EmprestimoBancario novo = new EmprestimoBancario();
+				novo.setDataPrimeiroPagamento(lista.get(i).getDataPrimeiroPagamento());
+				novo.setDescricao(lista.get(i).getDescricao());
+				novo.setDiaMesPagamento(lista.get(i).getDiaMesPagamento());
+				novo.setPago(lista.get(i).isPago());
+				novo.setQuantidadeParcelas(lista.get(i).getQuantidadeParcelas());
+				novo.setValorParcela(lista.get(i).getValorParcela());
+				novo.setAnalitico(novoAnaliticoPersistido);
+				novo.setBanco(lista.get(i).getBanco());
+				novoMesAnterior.persisteEmprestimos(novo);
+			}
 		}
-		
-		
-		
-		
-		
 	}
-	
-	
-	
 }
