@@ -23,11 +23,8 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 	@Autowired private UtilitariaDatas utilDatas;
 	
 	public List<Object> copiaOutrosImpostosReflection(int idAnalitico, String nomeTabela){
-		
-		String buscaIdAnaliticoAnterior = "SELECT idAnalitico FROM FinancAnalitico where idAnalitico <> "+idAnalitico+" order by idAnalitico desc";
-		TypedQuery<Integer> buscaidAnaliticoAnterior = manager.createQuery(buscaIdAnaliticoAnterior, Integer.class).setMaxResults(1);
-		Integer idAnaliticoAnterior = buscaidAnaliticoAnterior.getSingleResult();
-		
+		Integer idAnaliticoAnterior = idAnaliticoAnterior(idAnalitico);
+
 		String buscaImpostos = "FROM "+nomeTabela+" where analitico = "+idAnaliticoAnterior+" and fixo = true";
 		
 		TypedQuery<Object> list = manager.createQuery(buscaImpostos, Object.class);
@@ -36,17 +33,16 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 	}
 	
 	public int idAnaliticoAnterior(int idAnalitico){
-		
-		
+		String buscaIdAnaliticoAnterior = "SELECT idAnalitico FROM FinancAnalitico where idAnalitico <> "+idAnalitico+" order by idAnalitico desc";
+		TypedQuery<Integer> buscaidAnaliticoAnterior = manager.createQuery(buscaIdAnaliticoAnterior, Integer.class).setMaxResults(1);
+		return buscaidAnaliticoAnterior.getSingleResult();
 	}
 	
 	
 	
 	public List<EmprestimoBancario> copiaTabelaEmprestimos(int idAnalitico){
 		
-		String buscaIdAnaliticoAnterior = "SELECT idAnalitico FROM FinancAnalitico where idAnalitico <> "+idAnalitico+" order by idAnalitico desc";
-		TypedQuery<Integer> buscaidAnaliticoAnterior = manager.createQuery(buscaIdAnaliticoAnterior, Integer.class).setMaxResults(1);
-		Integer idAnaliticoAnterior = buscaidAnaliticoAnterior.getSingleResult();
+		Integer idAnaliticoAnterior = idAnaliticoAnterior(idAnalitico);
 		
 		String consulta = "FROM EmprestimoBancario where analitico = "+ idAnaliticoAnterior;
 		TypedQuery<EmprestimoBancario> list = manager.createQuery(consulta, EmprestimoBancario.class);
