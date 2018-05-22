@@ -185,6 +185,11 @@ public class MovimentacaoFinanceiroController {
 	@RequestMapping("sqlFormataTexto")
 	public String sqlFormataTexto(String dia,String descricao,String valor){
 		
+		
+		String valorSplit1 = valor.replace(".", "");
+		String valorSplit2 = valorSplit1.replace(",", ".");
+		
+		
 		String base = "INSERT INTO `locomotivos`.`movimentacaobancossaidas` (`data`, `descricao`, `valor`, `analitico`, `banco`) VALUES (";
 		String diaZ = base +"'"+" 2018-01-"+dia+" 14:25:51"+"','";
 		String descricaoZ = diaZ + descricao+"','";
@@ -192,7 +197,7 @@ public class MovimentacaoFinanceiroController {
 		
 		
 		
-		String valorZ = descricaoZ + valor;
+		String valorZ = descricaoZ + valorSplit2;
 		
 		String finalSQL = ", '12', '1');";
 		
