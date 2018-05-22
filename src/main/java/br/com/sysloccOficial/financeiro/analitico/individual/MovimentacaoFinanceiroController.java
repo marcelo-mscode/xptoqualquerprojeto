@@ -170,6 +170,39 @@ public class MovimentacaoFinanceiroController {
 		return MV;
 	}
 	
+	@RequestMapping("sqlFormata")
+	public ModelAndView sqlFormata(String texto){
+		
+		ModelAndView MV = new ModelAndView("financeiro/analitico/sqlFormata");
+		MV.addObject("descricao", texto);
+		
+		System.out.println(texto);
+		
+		return MV;
+	}
+	
+	
+	@RequestMapping("sqlFormataTexto")
+	public String sqlFormataTexto(String dia,String descricao,String valor){
+		
+		String base = "INSERT INTO `locomotivos`.`movimentacaobancossaidas` (`data`, `descricao`, `valor`, `analitico`, `banco`) VALUES (";
+		String diaZ = base +"'"+" 2018-01-"+dia+" 14:25:51"+"','";
+		String descricaoZ = diaZ + descricao+"','";
+		
+		
+		
+		
+		String valorZ = descricaoZ + valor;
+		
+		String finalSQL = ", '12', '1');";
+		
+		String consulta = valorZ +"'"+ finalSQL;
+		
+		
+		return "redirect:sqlFormata?texto="+consulta;
+	}
+	
+	
 	
 	
 	
