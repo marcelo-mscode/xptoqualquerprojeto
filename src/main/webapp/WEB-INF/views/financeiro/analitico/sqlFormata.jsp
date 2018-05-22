@@ -23,7 +23,7 @@ input{ margin-right: 10px !important }
 <div class="col-md-12" style="height: 235px;border-bottom: 1px solid #ccc;padding: 50px 50px">
 	<form action="sqlFormataTexto" method="POST">
 		
-		<input type="text" name="dia" value="12"/>Dia<br><br>
+		<input type="text" name="dia" value="24"/>Dia<br><br>
 		<input type="text" name="descricao" />Descrição<br><br>
 		<input type="text" name="valor" />Valor<br><br>
 		<input type="submit" name="Enviar" />
