@@ -1,21 +1,25 @@
 package abr.com.springboot.domain;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.FileInputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import org.apache.poi.hssf.util.CellReference;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DateUtil;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class CreateWorkBook {
+public class Excel {
 
-	public static void main(String[] args) throws IOException {
-		
-		private String path;
+	private String path;
 
 		public static void main(String[] args) {
 			//Carregando arquivo especifico
-			Excel excel = new Excel("C:\\temp\\Lucas.xlsx");
+			Excel excel = new Excel("bancos.xlsx");
 			//Apenas mostrando os valores
 			excel.processAll();
 		}
@@ -88,5 +92,3 @@ public class CreateWorkBook {
 			return path;
 		}
 	}
-
-}

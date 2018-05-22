@@ -203,7 +203,6 @@ public class MovimentacaoFinanceiroController {
 		
 		String consulta = valorZ +"'"+ finalSQL;
 		
-		
 		return "redirect:sqlFormata?texto="+consulta;
 	}
 	

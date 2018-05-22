@@ -7,7 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class OpenWorkBook {
 	   public static void main(String args[])throws Exception { 
-	      File file = new File("C:/sysCon/bancos.xlsx");
+	      File file = new File("C:\\sysCon\\bancos.xlsx");
 	      FileInputStream fIP = new FileInputStream(file);
 	      
 	      //Get the workbook instance for XLSX file 
