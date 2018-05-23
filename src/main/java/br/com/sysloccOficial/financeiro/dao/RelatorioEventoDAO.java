@@ -341,7 +341,7 @@ public class RelatorioEventoDAO {
 
 	public List<String> listaAnoRelatorioEventos(){
 		try {
-			String ano ="SELECT distinct(anoEvento) FROM RelatorioEventos order by anoEvento desc";
+			String ano ="SELECT distinct(anoEvento) FROM RelatorioEventos where anoEvento > 2017 order by anoEvento desc";
 			TypedQuery<String> q = manager.createQuery(ano, String.class);
 			return q.getResultList();
 		} catch (Exception e) {

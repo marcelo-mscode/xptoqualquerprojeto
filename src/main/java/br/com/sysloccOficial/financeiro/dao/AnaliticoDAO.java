@@ -46,7 +46,7 @@ public class AnaliticoDAO {
 	
 	public List<String> indexAnaliticoAno(){
 		try {
-			TypedQuery<String> q = manager.createQuery("SELECT distinct(anoA) FROM FinancAnalitico order by anoA DESC",String.class);
+			TypedQuery<String> q = manager.createQuery("SELECT distinct(anoA) FROM FinancAnalitico where anoA > 2017 order by anoA DESC",String.class);
 			return q.getResultList();
 		} catch (Exception e) {
 			return null;
