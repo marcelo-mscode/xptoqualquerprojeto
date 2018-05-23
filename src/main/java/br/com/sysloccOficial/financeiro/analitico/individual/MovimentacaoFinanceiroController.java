@@ -205,6 +205,33 @@ public class MovimentacaoFinanceiroController {
 		String finalSQL = ", '12', '1');";
 		
 		String consulta = valorZ +"'"+ finalSQL;
+		 
+		return "redirect:sqlFormata?texto="+consulta;
+	}
+
+	@RequestMapping("sqlFormataTexto")
+	public String sqlFormataTexto(String dia,String descricao,String valor){
+		
+		
+		String dias = "02";
+		
+		
+		String valorSplit1 = valor.replace(".", "");
+		String valorSplit2 = valorSplit1.replace(",", ".");
+		
+		
+		String base = "INSERT INTO `locomotivos`.`movimentacaobancostarifas` (`data`, `descricao`, `valor`, `analitico`, `banco`) VALUES (";
+		String diaZ = base +"'"+" 2018-01-"+dias+" 14:25:51"+"','";
+		String descricaoZ = diaZ + descricao+"','";
+		
+		String base2 = "INSERT INTO `locomotivos`.`emprestimobancario` (`dataPrimeiroPagamento`, `descricao`, `diaMesPagamento`, `pago`, `quantidadeParcelas`, `valorParcela`, `analitico`, `banco`) VALUES ('2018-02-02 00:00:00', 'teste', '0', '0', '0', '523.00', '12', '1');";
+		
+		
+		String valorZ = descricaoZ + valorSplit2;
+		
+		String finalSQL = ", '12', '1');";
+		
+		String consulta = valorZ +"'"+ finalSQL;
 		
 		return "redirect:sqlFormata?texto="+consulta;
 	}
