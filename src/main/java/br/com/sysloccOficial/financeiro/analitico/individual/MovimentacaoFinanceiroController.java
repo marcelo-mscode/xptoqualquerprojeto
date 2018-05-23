@@ -197,7 +197,7 @@ public class MovimentacaoFinanceiroController {
 		String diaZ = base +"'"+" 2018-01-"+dias+" 14:25:51"+"','";
 		String descricaoZ = diaZ + descricao+"','";
 		
-		
+		String base2 = "INSERT INTO `locomotivos`.`emprestimobancario` (`dataPrimeiroPagamento`, `descricao`, `diaMesPagamento`, `pago`, `quantidadeParcelas`, `valorParcela`, `analitico`, `banco`) VALUES ('2018-02-02 00:00:00', 'teste', '0', '0', '0', '523.00', '12', '1');";
 		
 		
 		String valorZ = descricaoZ + valorSplit2;
