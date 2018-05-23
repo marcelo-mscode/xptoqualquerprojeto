@@ -43,7 +43,7 @@ public class ResumoMesIndex {
 		MV.addObject("analitico", resultado);
 		
 		
-		TypedQuery<String> aaa = manager.createQuery("select distinct(anoA) from FinancAnalitico order by anoA desc", String.class);
+		TypedQuery<String> aaa = manager.createQuery("select distinct(anoA) from FinancAnalitico where anoA > 2017 order by anoA desc", String.class);
 		List<String> anos = aaa.getResultList();
 		
 		MV.addObject("anos", anos);
