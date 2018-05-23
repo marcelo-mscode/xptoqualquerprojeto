@@ -236,7 +236,7 @@ public class MovimentacaoFinanceiroController {
 		
 		
 		
-		String descricao2 = "ITAU LIMITE";
+		String descricao2 = "GIRO SANTANDER 12/8";
 		
 		
 		String valorSplit1 = valor.replace(".", "");
@@ -252,7 +252,7 @@ public class MovimentacaoFinanceiroController {
 		
 		String valorZ = descricaoZ + valorSplit2;
 		
-		String finalSQL = ", '12', '1');";
+		String finalSQL = ", '12', '4');";
 		
 		String consulta = valorZ +"'"+ finalSQL;
 		
