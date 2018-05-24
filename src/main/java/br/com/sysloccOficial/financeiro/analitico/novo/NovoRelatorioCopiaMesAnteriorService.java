@@ -29,6 +29,7 @@ public class NovoRelatorioCopiaMesAnteriorService {
 		copiaPorReflection(novoAnaliticoPersistido, "FinancFolhaPgto");
 		copiaPorReflection(novoAnaliticoPersistido, "FinancOutrasDespesas");
 		copiaPorReflection(novoAnaliticoPersistido, "MovimentacaoBancosSaidas");
+		copiaPorReflection(novoAnaliticoPersistido, "MovimentacaoBancosTarifas");
 		copiaTabelaEmprestimos(novoAnaliticoPersistido);
 	}
 	
@@ -52,13 +53,13 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			Field dataN = novo.getClass().getDeclaredField("data");
 			dataN.setAccessible(true);
 			
-			if(nomeTabela == "FinancOutrasDespesas" || nomeTabela == "MovimentacaoBancosSaidas"){
+			if(nomeTabela == "FinancOutrasDespesas" || nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
 				dataN.set(novo, (Date) Calendar.getInstance().getTime());
 			}else{
 				dataN.set(novo, (Calendar) Calendar.getInstance());
 			}
 			
-			if(nomeTabela == "MovimentacaoBancosSaidas"){
+			if(nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
 				Field bancoN = novo.getClass().getDeclaredField("banco");
 				bancoN.setAccessible(true);
 				bancoN.set(novo, (BancosAnalitico) bancoN.get(list.get(i)));

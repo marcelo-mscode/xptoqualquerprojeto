@@ -46,7 +46,13 @@
              onblur="editaValoresSaidas('editaTarifas','valortarifasItau${tarifasItau.idMovBancos}',${tarifasItau.idMovBancos},'valor','itauTarifas','1');"
              /> 
           </td>
-          <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+          <td style="padding: 15px !important;">
+          	<input type="checkbox" 
+          		<c:if test="${tarifasItau.fixo == true }" >
+          		checked="checked"  
+          		</c:if>
+          	/>
+          </td>		
 		  <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
        </tr>
        <c:set var="totaltarifasItau" value="${totaltarifasItau+tarifasItau.valor}" />
