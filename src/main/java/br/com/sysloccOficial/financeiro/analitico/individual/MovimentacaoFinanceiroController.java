@@ -189,7 +189,7 @@ public class MovimentacaoFinanceiroController {
 		String dias = "02";
 		
 		
-		String consulta = emprestimos(dias, descricao, valor) ; 
+		String consulta = movimentacaoBancaria(dias, descricao, valor) ; 
 		
 	/*	String valorSplit1 = valor.replace(".", "");
 		String valorSplit2 = valorSplit1.replace(",", ".");
@@ -219,13 +219,17 @@ public class MovimentacaoFinanceiroController {
 		String valorSplit2 = valorSplit1.replace(",", ".");
 		
 		
-		String base = "INSERT INTO `locomotivos`.`movimentacaobancostarifas` (`data`, `descricao`, `valor`, `analitico`, `banco`) VALUES (";
-		String diaZ = base +"'"+" 2018-01-"+dias+" 14:25:51"+"','";
+		//String base = "INSERT INTO `locomotivos`.`movimentacaobancos` (`data`, `descricao`, `valor`, `analitico`, `banco`) VALUES (";
+		String movimentacaobancos = "INSERT INTO `locomotivos`.`movimentacaobancos` (`data`, `descricao`, `ndnf`, `valor`, `analitico`, `banco`) VALUES (";
+		
+		
+		
+		String diaZ = movimentacaobancos +"'"+" 2018-02-"+dias+" 14:25:51"+"','";
 		String descricaoZ = diaZ + descricao+"','";
 		
-		String valorZ = descricaoZ + valorSplit2;
+		String valorZ = descricaoZ+"','"+ valorSplit2;
 		
-		String finalSQL = ", '12', '1');";
+		String finalSQL = ", '17', '1');";
 		
 		String consulta = valorZ +"'"+ finalSQL;
 		
