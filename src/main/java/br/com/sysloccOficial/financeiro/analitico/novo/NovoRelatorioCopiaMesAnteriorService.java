@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import sysloccOficial.NovoExcelBayer;
 import br.com.sysloccOficial.financeiro.dao.NovoRelatorioCopiaMesAnteriorDAO;
+import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
 import br.com.sysloccOficial.financeiro.model.EmprestimoBancario;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 
@@ -27,6 +28,7 @@ public class NovoRelatorioCopiaMesAnteriorService {
 		copiaPorReflection(novoAnaliticoPersistido, "FinancTelefone");
 		copiaPorReflection(novoAnaliticoPersistido, "FinancFolhaPgto");
 		copiaPorReflection(novoAnaliticoPersistido, "FinancOutrasDespesas");
+		copiaPorReflection(novoAnaliticoPersistido, "MovimentacaoBancosSaidas");
 		copiaTabelaEmprestimos(novoAnaliticoPersistido);
 	}
 	
@@ -50,11 +52,17 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			Field dataN = novo.getClass().getDeclaredField("data");
 			dataN.setAccessible(true);
 			
-			if(nomeTabela == "FinancOutrasDespesas"){
+			if(nomeTabela == "FinancOutrasDespesas" || nomeTabela == "MovimentacaoBancosSaidas"){
 				dataN.set(novo, (Date) Calendar.getInstance().getTime());
 			}else{
 				dataN.set(novo, (Calendar) Calendar.getInstance());
 			}
+			
+			if(nomeTabela == "MovimentacaoBancosSaidas"){
+				Field bancoN = novo.getClass().getDeclaredField("banco");
+				bancoN.setAccessible(true);
+				bancoN.set(novo, (BancosAnalitico) bancoN.get(list.get(i)));
+			}			
 			
 			Field descricaoN = novo.getClass().getDeclaredField("descricao");
 			descricaoN.setAccessible(true);
