@@ -45,7 +45,15 @@
              onblur="editaValoresSaidas('editaMovimentacaoFinanceiraSaidas','valorSaidaItau${saidasItau.idMovBancos}',${saidasItau.idMovBancos},'valor','saidasItau','1');"
              /> 
           </td>
-          <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+                    
+          <td style="padding: 15px !important;">
+          	<input type="checkbox" 
+          		<c:if test="${saidasItau.fixo == true }" >
+          		checked="checked"  
+          		</c:if>
+          	/>
+          </td>	
+          
 		  <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
        </tr>
        <c:set var="totalsaidasItau" value="${totalsaidasItau+saidasItau.valor}" />

@@ -20,6 +20,7 @@ public class MovimentacaoBancosSaidas {
 	private Integer idMovBancos;
 	private String descricao;
 	private BigDecimal valor;
+	private boolean fixo;
 	
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -29,9 +30,15 @@ public class MovimentacaoBancosSaidas {
 	@OneToOne @JoinColumn(name="analitico") private FinancAnalitico analitico;
 	@OneToOne @JoinColumn(name="banco") private BancosAnalitico banco;
 // ------------------------------------------------------------------ //	
-
+	
 	public Integer getIdMovBancos() {
 		return idMovBancos;
+	}
+	public boolean isFixo() {
+		return fixo;
+	}
+	public void setFixo(boolean fixo) {
+		this.fixo = fixo;
 	}
 	public void setIdMovBancos(Integer idMovBancos) {
 		this.idMovBancos = idMovBancos;

@@ -36,6 +36,13 @@ public class NovoRelatorioCopiaMesAnteriorService {
 		
 		List<Object> list = novoMesAnterior.copiaOutrosImpostosReflection(novoAnaliticoPersistido.getIdAnalitico(), nomeDaTabela);
 		
+		forParaPersistir(novoAnaliticoPersistido, list, nomeDaTabela, nomeTabela);
+		
+	}
+	
+	
+	public void forParaPersistir(FinancAnalitico novoAnaliticoPersistido, List<Object> list,String nomeDaTabela,String nomeTabela) throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchFieldException, SecurityException{
+		
 		for (int i = 0; i < list.size(); i++) {
 			
 			Object novo = Class.forName(nomeDaTabela).newInstance();
@@ -67,7 +74,23 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			
 			novoMesAnterior.persisteFinancImpostoReflection(novo);
 		}
+		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void copiaTabelaEmprestimos (FinancAnalitico novoAnaliticoPersistido){
 		
@@ -91,4 +114,5 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			}
 		}
 	}
+	
 }

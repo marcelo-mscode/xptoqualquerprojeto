@@ -45,7 +45,15 @@
              onblur="editaValoresSaidas('editaMovimentacaoFinanceiraSaidas','valorSaidasSantander${saidasSantander.idMovBancos}',${saidasSantander.idMovBancos},'valor','santanderSaida','4');"
              /> 
           </td>
-        <td style="padding: 15px !important;"><input type="checkbox" checked="checked" /></td>	
+                  
+          <td style="padding: 15px !important;">
+          	<input type="checkbox" 
+          		<c:if test="${saidasSantander.fixo == true }" >
+          		checked="checked"  
+          		</c:if>
+          	/>
+          </td>	
+          	
 		<td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
        </tr>
        <c:set var="totalsaidasSantander" value="${totalsaidasSantander+saidasSantander.valor}" />
