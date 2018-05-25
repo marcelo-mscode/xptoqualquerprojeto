@@ -54,9 +54,9 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			dataN.setAccessible(true);
 			
 			if(nomeTabela == "FinancOutrasDespesas" || nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
-				dataN.set(novo, (Date) Calendar.getInstance().getTime());
+				dataN.set(novo, (Date) dataN.get(list.get(i)));
 			}else{
-				dataN.set(novo, (Calendar) Calendar.getInstance());
+				dataN.set(novo, (Calendar) dataN.get(list.get(i)));
 			}
 			
 			if(nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
@@ -85,21 +85,6 @@ public class NovoRelatorioCopiaMesAnteriorService {
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public void copiaTabelaEmprestimos (FinancAnalitico novoAnaliticoPersistido){
 		

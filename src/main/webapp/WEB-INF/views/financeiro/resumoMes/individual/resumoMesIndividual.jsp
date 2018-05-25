@@ -30,13 +30,13 @@
 		  <ol class="breadcrumb">
 		    <li><a href="index.html">Menu</a></li>
 		    <li><a href="resumoMesIndex">Lista Resumos Mês</a></li>
-		    <li class="active">Resumo Mês MAIO</li>
+		    <li class="active">Resumo Mês XXXX</li>
 		  </ol>					
 </div>
 
 <div style="height: 35px;">
 	<div class="col-md-12" style="margin: 10px 0px 25px -14px;/* border-bottom: 1px solid #ccc; */padding-bottom: 10px;" align="center">
-		<span style="font-family: 'OpenSansLight';font-size: 25px;margin-left: 32px;">Resumo do Mês de MAIO 2017</span>
+		<span style="font-family: 'OpenSansLight';font-size: 25px;margin-left: 32px;">Resumo do Mês de XXXXXX</span>
 	</div>
 </div>
 
