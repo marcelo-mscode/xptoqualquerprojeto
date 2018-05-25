@@ -44,6 +44,7 @@ public class NovoRelatorioCopiaMesAnteriorService {
 	}
 	
 	
+	@SuppressWarnings("deprecation")
 	public void forParaPersistir(FinancAnalitico novoAnaliticoPersistido, List<Object> list,String nomeDaTabela,String nomeTabela) throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchFieldException, SecurityException{
 		
 		for (int i = 0; i < list.size(); i++) {
@@ -56,17 +57,19 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			if(nomeTabela == "FinancOutrasDespesas" || nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
 				
 				
+				Calendar colocandoMesAtual = Calendar.getInstance();
 				Date  e = (Date) dataN.get(list.get(i));
+				colocandoMesAtual.setTime(e);
+				colocandoMesAtual.add(Calendar.MONTH, novoAnaliticoPersistido.getMesReferencia());
+				e.getTime();
 				
-				e.setMonth(e.getMonth()+1);
-				
-				System.out.println("Data: "+e);
-				
-				dataN.set(novo, (Date) dataN.get(list.get(i)));
-				
+				dataN.set(novo, (Date) e);
 			
 			}else{
-				dataN.set(novo, (Calendar) dataN.get(list.get(i)));
+				
+				Calendar colocandoMesAtual = (Calendar) dataN.get(list.get(i));
+				colocandoMesAtual.add(Calendar.MONTH, novoAnaliticoPersistido.getMesReferencia()+1);
+				dataN.set(novo, colocandoMesAtual);
 			}
 			
 			if(nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
