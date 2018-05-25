@@ -160,7 +160,7 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		//
 		MV.addObject("outrosImpostos", relatorioEventoDAO.outrosImpostos(anoMes));
 		
-		MV.addObject("totalPagar", dadosEvento.totalPagar(relatorioEventoDAO.contasReceber(ano.toString(),nomeMes),
+		MV.addObject("totalPagar", dadosEvento.totalPagar(somaTotal,
 								   relatorioEventoDAO.salarios(anoMes),
 								   somaTotalCache, impostos, relatorioEventoDAO.outrosImpostos(anoMes)
 		));

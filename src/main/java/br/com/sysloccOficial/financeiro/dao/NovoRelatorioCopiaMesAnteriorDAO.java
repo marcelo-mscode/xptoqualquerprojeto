@@ -44,7 +44,7 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 		
 		Integer idAnaliticoAnterior = idAnaliticoAnterior(idAnalitico);
 		
-		String consulta = "FROM EmprestimoBancario where analitico = "+ idAnaliticoAnterior;
+		String consulta = "FROM EmprestimoBancario where analitico = "+ idAnaliticoAnterior +" AND PAGO <> 1";
 		TypedQuery<EmprestimoBancario> list = manager.createQuery(consulta, EmprestimoBancario.class);
 		return list.getResultList();
 	}	

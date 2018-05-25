@@ -7,17 +7,13 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.swing.JOptionPane;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
@@ -221,7 +217,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 	
 	public List<MovimentacaoBancos> carregaAnaliticoEntradas(Integer idAnalitico,Integer idBanco) {
 		try {
-			TypedQuery<MovimentacaoBancos> f = manager.createQuery("select f from MovimentacaoBancos f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancos.class);
+			TypedQuery<MovimentacaoBancos> f = manager.createQuery("select f from MovimentacaoBancos f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco+" ORDER BY data",MovimentacaoBancos.class);
 			return f.getResultList();
 		} catch (Exception e) {
 			System.out.println("Não foi possível carregar as listagens de entradas do Itau: "+e);
@@ -231,7 +227,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 	
 	public List<MovimentacaoBancosSaidas> carregaAnaliticoSaidas(Integer idAnalitico,Integer idBanco) {
 		try {
-			TypedQuery<MovimentacaoBancosSaidas> f = manager.createQuery("select f from MovimentacaoBancosSaidas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosSaidas.class);
+			TypedQuery<MovimentacaoBancosSaidas> f = manager.createQuery("select f from MovimentacaoBancosSaidas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco+" ORDER BY DATA",MovimentacaoBancosSaidas.class);
 			return f.getResultList();
 		} catch (Exception e) {
 			System.out.println("Não foi possível carregar as listagens de saidas do Itau: "+e);
@@ -241,7 +237,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 	public List<MovimentacaoBancosTarifas> carregaAnaliticoTarifas(Integer idAnalitico,Integer idBanco) {
 		try {
-			TypedQuery<MovimentacaoBancosTarifas> f = manager.createQuery("select f from MovimentacaoBancosTarifas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco,MovimentacaoBancosTarifas.class);
+			TypedQuery<MovimentacaoBancosTarifas> f = manager.createQuery("select f from MovimentacaoBancosTarifas f join fetch f.analitico where idAnalitico="+idAnalitico+" and f.banco.idBanco = "+idBanco+" ORDER BY DATA",MovimentacaoBancosTarifas.class);
 			return f.getResultList();
 		} catch (Exception e) {
 			System.out.println("Não foi possível carregar as listagens de Tarifas: "+e);
@@ -391,7 +387,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 	public LinkedHashSet<EmprestimoBancario> carregaEmprestimos(Integer idAnalitico) {
 		try {
-			TypedQuery<EmprestimoBancario> emp = manager.createQuery("from EmprestimoBancario f join fetch f.analitico where idAnalitico="+idAnalitico,EmprestimoBancario.class);
+			TypedQuery<EmprestimoBancario> emp = manager.createQuery("from EmprestimoBancario f join fetch f.analitico where idAnalitico="+idAnalitico+" AND PAGO <> 1",EmprestimoBancario.class);
 			LinkedHashSet<EmprestimoBancario> movTarifas = new LinkedHashSet<EmprestimoBancario>(emp.getResultList());
 			return movTarifas;
 		} catch (Exception e) {
