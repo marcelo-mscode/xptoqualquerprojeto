@@ -120,10 +120,6 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		BigDecimal finanDespesas = relatorioEventoDAO.despesasFixas("FinancDespesas",anoMes);
 		MV.addObject("despCaixasProjetos", finanDespesas);
 		
-		
-		
-		
-		
 		BigDecimal somaDespVariaveis = dadosEvento.SomaDespVariaveis(
 				totalTarifasBanco
 				, finanDespesas
