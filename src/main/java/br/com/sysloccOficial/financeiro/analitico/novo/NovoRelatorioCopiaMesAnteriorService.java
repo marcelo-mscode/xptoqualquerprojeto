@@ -54,7 +54,17 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			dataN.setAccessible(true);
 			
 			if(nomeTabela == "FinancOutrasDespesas" || nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
+				
+				
+				Date  e = (Date) dataN.get(list.get(i));
+				
+				e.setMonth(e.getMonth()+1);
+				
+				System.out.println("Data: "+e);
+				
 				dataN.set(novo, (Date) dataN.get(list.get(i)));
+				
+			
 			}else{
 				dataN.set(novo, (Calendar) dataN.get(list.get(i)));
 			}
