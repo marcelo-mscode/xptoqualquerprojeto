@@ -58,49 +58,24 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			
 			if(nomeTabela == "FinancOutrasDespesas" || nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
 				
-				Calendar dattt = Calendar.getInstance();
+				Calendar cal = Calendar.getInstance();
+				Calendar calDiaData = Calendar.getInstance();
 				
-				
-				Date d = (Date)dataN.get(list.get(i));
-				
-				
-				dattt.set(2018, 05);
-				
-				
-				
-				
-				SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-				System.out.print(formatarDate.format(d)+"\n");
-				
-				
-			/*	//data
-				System.out.println(Calendar.getInstance().getTime());
-				//ano
-				System.out.println(Calendar.getInstance().get(Calendar.YEAR));
-				//mes
-				System.out.println(Calendar.getInstance().get(Calendar.MONTH)+1);
-				*/
-				
-				
-			//	Calendar colocandoMesAtual = new GregorianCalendar();
-						
-				/*colocandoMesAtual = (Calendar) dataN.get(list.get(i));
-				
-				dataN.set(novo, (Date) colocandoMesAtual.getTime());
-*/
-			
-				dataN.set(novo, (Date) Calendar.getInstance().getTime());
+				calDiaData.setTime((Date)dataN.get(list.get(i)));
+				int dia = calDiaData.get(Calendar.DAY_OF_MONTH);
+				cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), dia,00,00,00);
+				dataN.set(novo, (Date) cal.getTime());
 			
 			}else{
+				Calendar calend = Calendar.getInstance();
+				Calendar novoS = (Calendar) dataN.get(list.get(i));
 				
-/*				Calendar colocandoMesAtual = new GregorianCalendar();
-				colocandoMesAtual = (Calendar) dataN.get(list.get(i));
-				dataN.set(novo, colocandoMesAtual);
-				Calendar colocandoMesAtual = new GregorianCalendar();
-				colocandoMesAtual = (Calendar) dataN.get(list.get(i));*/
-				dataN.set(novo, (Calendar) Calendar.getInstance());
+				int dia = novoS.get(Calendar.DAY_OF_MONTH);
 				
+				System.out.println("DIA: ---> "+DIA);
 				
+				calend.set(calend.get(Calendar.YEAR), calend.get(Calendar.MONTH), dia,00,00,00);
+				dataN.set(novo, (Calendar) calend);
 				
 			}
 			
