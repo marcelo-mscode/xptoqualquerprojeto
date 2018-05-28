@@ -44,7 +44,7 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 			
 		} catch (Exception e) {
 			System.out.println("Erro ao pegar idAnalitico anterior: "+e);
-			return null;
+			return 0;
 		}
 		
 		
