@@ -23,6 +23,7 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 	@Autowired private UtilitariaDatas utilDatas;
 	
 	public List<Object> copiaOutrosImpostosReflection(int idAnalitico, String nomeTabela){
+		
 		Integer idAnaliticoAnterior = idAnaliticoAnterior(idAnalitico);
 
 		String buscaImpostos = "FROM "+nomeTabela+" where analitico = "+idAnaliticoAnterior+" and fixo = true";
@@ -33,9 +34,21 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 	}
 	
 	public int idAnaliticoAnterior(int idAnalitico){
-		String buscaIdAnaliticoAnterior = "SELECT idAnalitico FROM FinancAnalitico where idAnalitico <> "+idAnalitico+" order by idAnalitico desc";
-		TypedQuery<Integer> buscaidAnaliticoAnterior = manager.createQuery(buscaIdAnaliticoAnterior, Integer.class).setMaxResults(1);
-		return buscaidAnaliticoAnterior.getSingleResult();
+	
+		try {
+			String buscaIdAnaliticoAnterior = "SELECT idAnalitico FROM FinancAnalitico where idAnalitico <> "+idAnalitico+" order by idAnalitico desc";
+			System.out.println("buscaIdAnaliticoAnterior: "+buscaIdAnaliticoAnterior);
+			
+			TypedQuery<Integer> buscaidAnaliticoAnterior = manager.createQuery(buscaIdAnaliticoAnterior, Integer.class).setMaxResults(1);
+			return buscaidAnaliticoAnterior.getSingleResult();
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao pegar idAnalitico anterior: "+e);
+			return null;
+		}
+		
+		
+		
 	}
 	
 	

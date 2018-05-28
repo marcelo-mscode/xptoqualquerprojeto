@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,20 +57,26 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			
 			if(nomeTabela == "FinancOutrasDespesas" || nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
 				
+			//	Calendar colocandoMesAtual = new GregorianCalendar();
+						
+				/*colocandoMesAtual = (Calendar) dataN.get(list.get(i));
 				
-				Calendar colocandoMesAtual;
-				Date  e = (Date) dataN.get(list.get(i));
-				colocandoMesAtual.setTime(e);
-				colocandoMesAtual.add(Calendar.MONTH, novoAnaliticoPersistido.getMesReferencia());
-				e.getTime();
-				
-				dataN.set(novo, (Date) e);
+				dataN.set(novo, (Date) colocandoMesAtual.getTime());
+*/
+			
+				dataN.set(novo, (Date) dataN.get(list.get(i)));
 			
 			}else{
 				
-				Calendar colocandoMesAtual = (Calendar) dataN.get(list.get(i));
-				colocandoMesAtual.add(Calendar.MONTH, novoAnaliticoPersistido.getMesReferencia()+1);
+/*				Calendar colocandoMesAtual = new GregorianCalendar();
+				colocandoMesAtual = (Calendar) dataN.get(list.get(i));
 				dataN.set(novo, colocandoMesAtual);
+*/				Calendar colocandoMesAtual = new GregorianCalendar();
+				colocandoMesAtual = (Calendar) dataN.get(list.get(i));
+				dataN.set(novo, (Calendar) dataN.get(list.get(i)));
+				
+				
+				
 			}
 			
 			if(nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
@@ -93,11 +100,6 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			Field fixoN = novo.getClass().getDeclaredField("fixo");
 			fixoN.setAccessible(true);
 			fixoN.set(novo, (boolean)fixoN.get(list.get(i)));
-			
-			System.out.println("");
-			System.out.println("");
-			System.out.println("");
-			System.out.println("");
 			
 			novoMesAnterior.persisteFinancImpostoReflection(novo);
 		}

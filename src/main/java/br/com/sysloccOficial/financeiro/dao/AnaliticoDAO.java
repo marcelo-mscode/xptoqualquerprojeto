@@ -25,7 +25,7 @@ public class AnaliticoDAO {
 	@Autowired private UtilitariaDatas utilDatas;
 	
 	public FinancAnalitico salvaNovoAnalitico(FinancAnalitico novoAnalitico) {
-		OutputStream out;
+		
 		try {
 			
 			Integer numeroMes = utilDatas.referenciaMesAnalitico(novoAnalitico.getMesA());
@@ -33,14 +33,9 @@ public class AnaliticoDAO {
 			manager.persist(novoAnalitico);
 			return novoAnalitico;
 		} catch (Exception e) {
-			try {
-				out = new FileOutputStream("c:/SYSLOC/file.txt");
-				PrintStream ps = new PrintStream(out);      
-				e.printStackTrace(ps);
-				return null;
-			} catch (Exception e2) {
-				return null;	
-			} 
+			System.out.println("Deu um  erro ao fazer novo analitico");
+			
+			return null;
 		}
 	}
 	
