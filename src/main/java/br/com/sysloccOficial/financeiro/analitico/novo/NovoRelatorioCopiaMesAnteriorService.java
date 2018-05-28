@@ -57,7 +57,7 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			if(nomeTabela == "FinancOutrasDespesas" || nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
 				
 				
-				Calendar colocandoMesAtual = Calendar.getInstance();
+				Calendar colocandoMesAtual;
 				Date  e = (Date) dataN.get(list.get(i));
 				colocandoMesAtual.setTime(e);
 				colocandoMesAtual.add(Calendar.MONTH, novoAnaliticoPersistido.getMesReferencia());
