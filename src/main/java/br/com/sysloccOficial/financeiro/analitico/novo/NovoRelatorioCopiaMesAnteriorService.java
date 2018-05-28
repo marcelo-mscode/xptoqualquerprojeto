@@ -94,6 +94,11 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			fixoN.setAccessible(true);
 			fixoN.set(novo, (boolean)fixoN.get(list.get(i)));
 			
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			System.out.println("");
+			
 			novoMesAnterior.persisteFinancImpostoReflection(novo);
 		}
 		
