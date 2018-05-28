@@ -72,7 +72,7 @@ public class NovoRelatorioCopiaMesAnteriorService {
 				
 				int dia = novoS.get(Calendar.DAY_OF_MONTH);
 				
-				System.out.println("DIA: ---> "+DIA);
+				System.out.println("DIA: ---> "+dia);
 				
 				calend.set(calend.get(Calendar.YEAR), calend.get(Calendar.MONTH), dia,00,00,00);
 				dataN.set(novo, (Calendar) calend);
