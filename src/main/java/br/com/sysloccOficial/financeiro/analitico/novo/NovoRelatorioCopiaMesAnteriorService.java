@@ -2,6 +2,7 @@ package br.com.sysloccOficial.financeiro.analitico.novo;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -57,6 +58,30 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			
 			if(nomeTabela == "FinancOutrasDespesas" || nomeTabela == "MovimentacaoBancosSaidas" || nomeTabela == "MovimentacaoBancosTarifas"){
 				
+				Calendar dattt = Calendar.getInstance();
+				
+				
+				Date d = (Date)dataN.get(list.get(i));
+				
+				
+				dattt.set(2018, 05);
+				
+				
+				
+				
+				SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+				System.out.print(formatarDate.format(d)+"\n");
+				
+				
+			/*	//data
+				System.out.println(Calendar.getInstance().getTime());
+				//ano
+				System.out.println(Calendar.getInstance().get(Calendar.YEAR));
+				//mes
+				System.out.println(Calendar.getInstance().get(Calendar.MONTH)+1);
+				*/
+				
+				
 			//	Calendar colocandoMesAtual = new GregorianCalendar();
 						
 				/*colocandoMesAtual = (Calendar) dataN.get(list.get(i));
@@ -64,16 +89,16 @@ public class NovoRelatorioCopiaMesAnteriorService {
 				dataN.set(novo, (Date) colocandoMesAtual.getTime());
 */
 			
-				dataN.set(novo, (Date) dataN.get(list.get(i)));
+				dataN.set(novo, (Date) Calendar.getInstance().getTime());
 			
 			}else{
 				
 /*				Calendar colocandoMesAtual = new GregorianCalendar();
 				colocandoMesAtual = (Calendar) dataN.get(list.get(i));
 				dataN.set(novo, colocandoMesAtual);
-*/				Calendar colocandoMesAtual = new GregorianCalendar();
-				colocandoMesAtual = (Calendar) dataN.get(list.get(i));
-				dataN.set(novo, (Calendar) dataN.get(list.get(i)));
+				Calendar colocandoMesAtual = new GregorianCalendar();
+				colocandoMesAtual = (Calendar) dataN.get(list.get(i));*/
+				dataN.set(novo, (Calendar) Calendar.getInstance());
 				
 				
 				
