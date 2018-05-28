@@ -55,6 +55,15 @@
 				</div>
 			</c:if>
 			
+			<c:if test="${param.error != null}">
+				<div class="alert alert-error">
+					Falha ao fazer Login.<br>
+					<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+                      <span style="color: red;font-weight: bold"><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" /></span>
+					</c:if>
+				</div>
+			</c:if>
+			
 			
 		</form:form>
 	</div>
