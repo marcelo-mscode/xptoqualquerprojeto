@@ -25,6 +25,8 @@ public class AnaliticoIndividualEditaFixoGenerica {
 		if(codigo == 3225519){ nome="FinancTelefone"; }
 		if(codigo == 222354){ nome="FinancFolhaPgto"; }
 		if(codigo == 52251){ nome="FinancOutrasDespesas"; }
+		if(codigo == 66778){ nome="MovimentacaoBancosSaidas"; }
+		if(codigo == 66779){ nome="MovimentacaoBancosTarifas"; }
 		return nome;
 	}
 }

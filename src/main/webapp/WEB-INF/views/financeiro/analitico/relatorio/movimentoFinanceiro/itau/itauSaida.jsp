@@ -48,8 +48,8 @@
                     
           <td style="padding: 15px !important;">
           	<input type="checkbox" <c:if test="${saidasItau.fixo == true }" >checked="checked"</c:if>
-          	id="chkEditaescritorio${escritorio.idFinancEscritorio}"
-			onclick="editaCheckedFixo('editaFixo',${InfoAnalitico.idAnalitico},${escritorio.idFinancEscritorio},'escritorio',253652);"
+          	id="chkEditasaidasItau${saidasItau.idMovBancos}"
+			onclick="editaCheckedFixo('editaFixo',${InfoAnalitico.idAnalitico},${saidasItau.idMovBancos},'saidasItau',66778);"
           	
           	/>
           </td>	

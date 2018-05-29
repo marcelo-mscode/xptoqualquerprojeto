@@ -14,6 +14,8 @@ public class AnaliticoEditaFixoDAO {
 	@PersistenceContext	private EntityManager manager;
 
 	public void editaFixo(int idAnalitico, int idTabela, int chkFixo, String nomeTabela) throws InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException{
+	
+		
 		boolean chk = true;
 		if(chkFixo == 0) { chk = false; }
 	

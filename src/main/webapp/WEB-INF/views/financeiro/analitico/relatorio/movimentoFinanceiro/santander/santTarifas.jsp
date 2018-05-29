@@ -47,9 +47,11 @@
           </td>
           <td style="padding: 15px !important;">
           	<input type="checkbox" 
-          		<c:if test="${tarifasSantander.fixo == true }" >
-          		checked="checked"  
-          		</c:if>
+          		<c:if test="${tarifasSantander.fixo == true }" >checked="checked"</c:if>
+          		id="chkEditasantanderTarifas${tarifasSantander.idMovBancos}"
+				onclick="editaCheckedFixo('editaFixo',${InfoAnalitico.idAnalitico},${tarifasSantander.idMovBancos},'santanderTarifas',66779);"
+          		
+          		
           	/>
           </td>	
 		  <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>

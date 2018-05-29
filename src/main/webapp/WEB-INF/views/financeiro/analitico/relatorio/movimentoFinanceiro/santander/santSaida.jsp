@@ -47,10 +47,10 @@
           </td>
                   
           <td style="padding: 15px !important;">
-          	<input type="checkbox" 
-          		<c:if test="${saidasSantander.fixo == true }" >
-          		checked="checked"  
-          		</c:if>
+          	<input type="checkbox" <c:if test="${saidasSantander.fixo == true }" >checked="checked"</c:if>
+          	id="chkEditasantanderSaida${saidasSantander.idMovBancos}"
+			onclick="editaCheckedFixo('editaFixo',${InfoAnalitico.idAnalitico},${saidasSantander.idMovBancos},'santanderSaida',66778);"
+          	
           	/>
           </td>	
           	
