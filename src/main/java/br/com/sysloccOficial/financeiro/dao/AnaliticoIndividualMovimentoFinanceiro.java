@@ -355,7 +355,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 				return f.getSingleResult();
 			} catch (NoResultException e) {
 				MovimentacaoBancosSaldoAnterior novo = new MovimentacaoBancosSaldoAnterior();
-				System.out.println("Não foi possível carregar as listagens de Saldos Anterior: "+e);
+			//	System.out.println("Não foi possível carregar as listagens de Saldos Anterior: "+e);
 				return novo;
 			}
 	}

@@ -35,13 +35,8 @@ public class NovoRelatorioCopiaMesAnteriorDAO {
 	
 	public int idAnaliticoAnterior(int idAnalitico){
 	
-		System.out.println(idAnalitico);
-		
-		
 		try {
 			String buscaIdAnaliticoAnterior = "SELECT idAnalitico FROM FinancAnalitico where idAnalitico <> "+idAnalitico+" order by idAnalitico desc";
-			System.out.println("buscaIdAnaliticoAnterior: "+buscaIdAnaliticoAnterior);
-			
 			TypedQuery<Integer> buscaidAnaliticoAnterior = manager.createQuery(buscaIdAnaliticoAnterior, Integer.class).setMaxResults(1);
 			return buscaidAnaliticoAnterior.getSingleResult();
 			
