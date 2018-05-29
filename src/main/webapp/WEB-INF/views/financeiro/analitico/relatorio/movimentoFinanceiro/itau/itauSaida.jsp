@@ -47,12 +47,13 @@
           </td>
                     
           <td style="padding: 15px !important;">
-          	<input type="checkbox" 
-          		<c:if test="${saidasItau.fixo == true }" >
-          		checked="checked"  
-          		</c:if>
+          	<input type="checkbox" <c:if test="${saidasItau.fixo == true }" >checked="checked"</c:if>
+          	id="chkEditaescritorio${escritorio.idFinancEscritorio}"
+			onclick="editaCheckedFixo('editaFixo',${InfoAnalitico.idAnalitico},${escritorio.idFinancEscritorio},'escritorio',253652);"
+          	
           	/>
           </td>	
+          
           
 		  <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
        </tr>
