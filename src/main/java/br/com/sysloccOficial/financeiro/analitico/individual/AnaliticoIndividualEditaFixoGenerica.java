@@ -3,6 +3,7 @@ package br.com.sysloccOficial.financeiro.analitico.individual;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.sysloccOficial.financeiro.dao.AnaliticoEditaFixoDAO;
 
@@ -12,6 +13,7 @@ public class AnaliticoIndividualEditaFixoGenerica {
 	@Autowired AnaliticoEditaFixoDAO fixoDAO;
 	
 	@RequestMapping("editaFixo")
+	@ResponseBody
 	public String editaFixo(int idAnalitico, int idTabela, int chkFixo,int codigo) throws InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException{
 		String testeNomeTabela = retornaNomeTabela(codigo);
 		fixoDAO.editaFixo(idAnalitico, idTabela, chkFixo,testeNomeTabela);

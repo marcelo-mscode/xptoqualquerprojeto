@@ -33,6 +33,7 @@ function editaCheckedFixo(action, idAnalitico, idTabela, idDivAjax,codigo) {
 	$.ajax({
 		url : action+"?idAnalitico="+idAnalitico+"&idTabela="+idTabela+"&chkFixo="+confereBoolean+"&codigo="+codigo,
 		success : function(data) {
+			
 		}
 	});
 };

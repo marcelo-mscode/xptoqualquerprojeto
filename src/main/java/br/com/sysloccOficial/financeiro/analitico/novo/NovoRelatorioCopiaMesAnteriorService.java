@@ -2,22 +2,15 @@ package br.com.sysloccOficial.financeiro.analitico.novo;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import sysloccOficial.NovoExcelBayer;
 import br.com.sysloccOficial.financeiro.dao.NovoRelatorioCopiaMesAnteriorDAO;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
 import br.com.sysloccOficial.financeiro.model.EmprestimoBancario;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
-
-
 
 @Service
 public class NovoRelatorioCopiaMesAnteriorService {
@@ -45,8 +38,6 @@ public class NovoRelatorioCopiaMesAnteriorService {
 		
 	}
 	
-	
-	@SuppressWarnings("deprecation")
 	public void forParaPersistir(FinancAnalitico novoAnaliticoPersistido, List<Object> list,String nomeDaTabela,String nomeTabela) throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchFieldException, SecurityException{
 		
 		for (int i = 0; i < list.size(); i++) {
@@ -71,8 +62,6 @@ public class NovoRelatorioCopiaMesAnteriorService {
 				Calendar novoS = (Calendar) dataN.get(list.get(i));
 				
 				int dia = novoS.get(Calendar.DAY_OF_MONTH);
-				
-				System.out.println("DIA: ---> "+dia);
 				
 				calend.set(calend.get(Calendar.YEAR), calend.get(Calendar.MONTH), dia,00,00,00);
 				dataN.set(novo, (Calendar) calend);
