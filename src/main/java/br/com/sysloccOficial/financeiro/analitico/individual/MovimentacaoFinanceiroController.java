@@ -1,5 +1,7 @@
 package br.com.sysloccOficial.financeiro.analitico.individual;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -188,31 +190,52 @@ public class MovimentacaoFinanceiroController {
 		
 		Produto pp = analiticoMovFinanceiroDAO.pegaProdutos();
 		
+		  try{
+				
+				/*
+				 * A Classe FileOutputStream é responsável por criar
+				 * o arquivo fisicamente no disco, assim poderemos realizar a 
+				 * escrita neste. 
+				 * */
+				FileOutputStream fout = new FileOutputStream("c:\\testeProduto.ser");
+				
+				/*
+				 * A Classe ObjectOutputStream escreve os objetos no FileOutputStream
+				 * */
+				ObjectOutputStream oos = new ObjectOutputStream(fout);   
+				
+				/*
+				 * Veja aqui a mágica ocorrendo: Estamos gravando um objeto 
+				 * do tipo Address no arquivo address.ser. Atenção: O nosso 
+				 * objeto Address que está sendo gravado, já é gravado de forma 
+				 * serializada
+				 * */
+				oos.writeObject(pp);
+				
+				oos.close();
+				System.out.println("Done");
+		 
+			   }catch(Exception ex){
+				   ex.printStackTrace();
+			   } 
+			}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
 		String dias = "02";
-		
-		
 		String consulta = movimentacaoBancaria(dias, descricao, valor) ; 
-		
-	/*	String valorSplit1 = valor.replace(".", "");
-		String valorSplit2 = valorSplit1.replace(",", ".");
-		
-		
-		String base = "INSERT INTO `locomotivos`.`movimentacaobancostarifas` (`data`, `descricao`, `valor`, `analitico`, `banco`) VALUES (";
-		String diaZ = base +"'"+" 2018-01-"+dias+" 14:25:51"+"','";
-		String descricaoZ = diaZ + descricao+"','";
-		
-		String base2 = "INSERT INTO `locomotivos`.`emprestimobancario` (`dataPrimeiroPagamento`, `descricao`, `diaMesPagamento`, `pago`, `quantidadeParcelas`, `valorParcela`, `analitico`, `banco`) VALUES ('2018-02-02 00:00:00', 'teste', '0', '0', '0', '523.00', '12', '1');";
-		
-		
-		String valorZ = descricaoZ + valorSplit2;
-		
-		String finalSQL = ", '12', '1');";
-		
-		String consulta = valorZ +"'"+ finalSQL;*/
-		 
 		return "redirect:sqlFormata?texto="+consulta;
 	}
 

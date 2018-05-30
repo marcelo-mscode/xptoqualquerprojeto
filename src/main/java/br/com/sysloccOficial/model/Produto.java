@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
@@ -20,8 +21,12 @@ import javax.persistence.Transient;
 
 
 @Entity
-public class Produto implements Comparable<Produto>{
+public class Produto implements Comparable<Produto>, Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8819573492446267684L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idproduto;
