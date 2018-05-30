@@ -1,6 +1,8 @@
 package br.com.sysloccOficial.financeiro.analitico.individual;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.util.LinkedHashSet;
@@ -188,28 +190,28 @@ public class MovimentacaoFinanceiroController {
 	@RequestMapping("sqlFormataTexto")
 	public String sqlFormataTexto(String dia,String descricao,String valor){
 		
-		Produto pp = analiticoMovFinanceiroDAO.pegaProdutos();
+		/*List<Produto> pp = analiticoMovFinanceiroDAO.pegaProdutos();
 		
 		  try{
 				
-				/*
+				
 				 * A Classe FileOutputStream é responsável por criar
 				 * o arquivo fisicamente no disco, assim poderemos realizar a 
 				 * escrita neste. 
-				 * */
-				FileOutputStream fout = new FileOutputStream("c:\\testeProduto.ser");
+				 * 
+				FileOutputStream fout = new FileOutputStream("K:\\testeProduto.ser");
 				
-				/*
+				
 				 * A Classe ObjectOutputStream escreve os objetos no FileOutputStream
-				 * */
+				 * 
 				ObjectOutputStream oos = new ObjectOutputStream(fout);   
 				
-				/*
+				
 				 * Veja aqui a mágica ocorrendo: Estamos gravando um objeto 
 				 * do tipo Address no arquivo address.ser. Atenção: O nosso 
 				 * objeto Address que está sendo gravado, já é gravado de forma 
 				 * serializada
-				 * */
+				 * 
 				oos.writeObject(pp);
 				
 				oos.close();
@@ -217,28 +219,54 @@ public class MovimentacaoFinanceiroController {
 		 
 			   }catch(Exception ex){
 				   ex.printStackTrace();
-			   } 
-			}
+			   } */
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		  pegaProdutoSer();
+		  
+		  
+		  
 		String dias = "02";
 		String consulta = movimentacaoBancaria(dias, descricao, valor) ; 
 		return "redirect:sqlFormata?texto="+consulta;
 	}
+	
+	
+	private void pegaProdutoSer(){
+		
+		List<Produto> teste ;
+		 try{
+			   
+			   /*
+			    * Responsável por carregar o arquivo address.ser
+			    * */
+			   FileInputStream fin = new FileInputStream("K:\\testeProduto.ser");
+			   
+			   /*
+			    * Responsável por ler o objeto referente ao arquivo
+			    * */
+			   ObjectInputStream ois = new ObjectInputStream(fin);
+			   
+			   /*
+			    * Aqui a mágica é feita, onde os bytes presentes no arquivo address.ser
+			    * são convertidos em uma instância de Address.
+			    * */
+			   teste = (List<Produto>) ois.readObject();
+			   ois.close();
 
+			   for (Produto produto : teste) {
+				   System.out.println("Nome Produto: "+produto.getProduto());
+			   }
+	 
+		   }catch(Exception ex){
+			   ex.printStackTrace(); 
+		   } 
+		
+		
+	}
+	
+	
+	
+	
 	private String movimentacaoBancaria (String dias, String descricao,String valor){
 		
 		

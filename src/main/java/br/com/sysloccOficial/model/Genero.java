@@ -1,13 +1,18 @@
 package br.com.sysloccOficial.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 
 
 @Entity
-public class Genero {
+public class Genero implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1616806914867439326L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idgenero;

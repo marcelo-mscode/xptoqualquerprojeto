@@ -574,15 +574,10 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 	}
 	
 	
-	public Produto pegaProdutos(){
-		
-		Produto p =  manager.find(Produto.class, 5);
-		
-
-		return p;
+	public List<Produto> pegaProdutos(){
+		TypedQuery<Produto> p =  manager.createQuery("from Produto order by idproduto", Produto.class);
+		return p.getResultList();
 	}
-	
-	
 	
 }
 

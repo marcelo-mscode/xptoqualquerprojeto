@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,8 +11,12 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Unidade {
+public class Unidade implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7057471431569962739L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idunidade;
