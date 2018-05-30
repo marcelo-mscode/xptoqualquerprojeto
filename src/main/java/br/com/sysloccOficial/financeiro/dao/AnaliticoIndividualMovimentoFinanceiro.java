@@ -7,13 +7,16 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
@@ -23,6 +26,7 @@ import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaldoAnterior;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
+import br.com.sysloccOficial.model.Produto;
 
 @Repository
 @Transactional
@@ -568,6 +572,17 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 			return null;
 		}
 	}
+	
+	
+	public Produto pegaProdutos(){
+		
+		Produto p =  manager.find(Produto.class, 5);
+		
+
+		return p;
+	}
+	
+	
 	
 }
 

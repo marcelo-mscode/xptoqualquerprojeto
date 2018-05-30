@@ -16,6 +16,7 @@ import br.com.sysloccOficial.financeiro.model.EmprestimoBancario;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosTarifas;
+import br.com.sysloccOficial.model.Produto;
 
 @Controller
 public class MovimentacaoFinanceiroController {
@@ -184,6 +185,10 @@ public class MovimentacaoFinanceiroController {
 	
 	@RequestMapping("sqlFormataTexto")
 	public String sqlFormataTexto(String dia,String descricao,String valor){
+		
+		Produto pp = analiticoMovFinanceiroDAO.pegaProdutos();
+		
+		
 		
 		
 		String dias = "02";
