@@ -48,7 +48,7 @@
    </ol>
 </div>
 
-<div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 760%">
+<div id="criacaoListas" class="efeitoDegrade" style="margin-top:34px;font-size: 12px;font-family: 'OpenSansLight';padding:35px 5px 70px 5px;width: 785%">
    <div style="padding: 15px 0 55px 20px;;box-shadow: 0px 0px 30px 5px #ccc;margin-top: 42px;padding-right: 40px;">
       <h2>Analítico ${InfoAnalitico.mesA} ${InfoAnalitico.anoA}</h2>
 		
@@ -517,12 +517,8 @@
    </div>
 </div>
 
-<div class="col-md-1" style="font-size:30px;position:fixed ;bottom: 55px;background-color: #fff;border: 1px solid #ccc;height: 60px">
-
- <%-- <c:set var="totalGeral" value="${totalImpostos+totalEscritorio+totalTelefone+totalFolha+totalDespesas+totalOutrasdespesas}" />
- <fmt:formatNumber value="${totalGeral}" pattern="#,##0.00"/> --%>
- <a onclick="location.reload();" ><i class="glyphicon glyphicon-refresh" style="font-size: 36px;top: 12px;margin-left: 15px;"></i></a>	
-
+<div style="font-size:30px;position:fixed ;bottom: 54px;background-color: #fff;border: 1px solid #ccc;height: 45px;width: 45px;margin-left: 17px">
+ <a onclick="location.reload();" ><i class="glyphicon glyphicon-refresh" style="font-size: 25px;top: 12px;margin-left: 10px;"></i></a>	
 </div>
 
 <style>

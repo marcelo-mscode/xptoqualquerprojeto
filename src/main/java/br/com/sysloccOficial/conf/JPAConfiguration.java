@@ -87,8 +87,6 @@ public class JPAConfiguration {
 		return properties;
 	}
 	
-	
-	
 	@Bean
 	public PlatformTransactionManager transactionManager
 	(EntityManagerFactory emf){

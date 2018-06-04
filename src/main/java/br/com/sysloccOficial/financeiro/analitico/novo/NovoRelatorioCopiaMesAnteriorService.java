@@ -80,7 +80,7 @@ public class NovoRelatorioCopiaMesAnteriorService {
 			
 			Field valorN = novo.getClass().getDeclaredField("valor");
 			valorN.setAccessible(true);
-			valorN.set(novo, (BigDecimal) valorN.get(list.get(i)));
+			valorN.set(novo, (BigDecimal) new BigDecimal("0.00"));
 			
 			Field analiticoN = novo.getClass().getDeclaredField("analitico");
 			analiticoN.setAccessible(true);

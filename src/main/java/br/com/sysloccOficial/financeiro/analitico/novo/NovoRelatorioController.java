@@ -37,13 +37,15 @@ public class NovoRelatorioController {
 	}
 	
 	@RequestMapping("criaNovo")
-	public String criaNovo(FinancAnalitico novoAnalitico) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, ClassNotFoundException, InstantiationException{
+	public String criaNovo(FinancAnalitico novoAnalitico) throws InterruptedException, NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException, ClassNotFoundException, InstantiationException{
 		
 		FinancAnalitico novoAnaliticoPersistido = analiticoDAO.salvaNovoAnalitico(novoAnalitico);
 		
 		CopiaRelatorioAnterior.copiaAnaliticoReflection(novoAnaliticoPersistido);
-		
+
+		new Thread().sleep(2000);
 		return "redirect:analiticoIndividual?idAnalitico="+novoAnaliticoPersistido.getIdAnalitico();
 	}
+	
 	
 }

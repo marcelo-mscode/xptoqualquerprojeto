@@ -87,7 +87,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 	
 	public List<MovimentacaoBancos> carregaMovimentaBancos(Integer idAnalitico, Integer idBanco) {
 		try {
-			TypedQuery<MovimentacaoBancos > f = manager.createQuery("select m from MovimentacaoBancos  m where analitico.idAnalitico="+idAnalitico+" and m.banco.idBanco = "+idBanco,MovimentacaoBancos .class);
+			TypedQuery<MovimentacaoBancos > f = manager.createQuery("select m from MovimentacaoBancos  m where analitico.idAnalitico="+idAnalitico+" and m.banco.idBanco = "+idBanco+ " ORDER BY data",MovimentacaoBancos .class);
 			return f.getResultList();
 		} catch (Exception e) {
 			System.out.println("Erro ao carregar a lista de Movimento Financeiro: "+e);
@@ -97,7 +97,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 	public List<MovimentacaoBancosSaidas> carregaMovimentaBancosSaidas(Integer idAnalitico, Integer idBanco) {
 		try {
-			TypedQuery<MovimentacaoBancosSaidas> f = manager.createQuery("select m from MovimentacaoBancosSaidas  m where analitico.idAnalitico="+idAnalitico+" and m.banco.idBanco = "+idBanco,MovimentacaoBancosSaidas .class);
+			TypedQuery<MovimentacaoBancosSaidas> f = manager.createQuery("select m from MovimentacaoBancosSaidas  m where analitico.idAnalitico="+idAnalitico+" and m.banco.idBanco = "+idBanco+ " ORDER BY data",MovimentacaoBancosSaidas .class);
 			return f.getResultList();
 		} catch (Exception e) {
 			System.out.println("Erro ao carregar a lista de Movimento Financeiro Saidas: "+e);

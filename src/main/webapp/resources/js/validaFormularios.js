@@ -118,17 +118,6 @@ $("#cadastraNovoItem").submit(function() {
 	var produtoAtuacao = $("#produtoAtuacao").val();
 	var empresaFornecedor = $("#empresaFornecedor").val();
 	if(seFalseItem($("#produtoAtuacao"),produtoAtuacao) == false){return false;}
-	
-	
-	/*if($("#custoItemunitario").val() == "0,00" || $("#custoItemunitario").val() == null || $("#custoItemunitario").val() == "" || $("#custoItemunitario").val() == "0"){
-		if($("#bvFornecedorValorEdita").val() == "0,00" || $("#bvFornecedorValorEdita").val() == null || $("#bvFornecedorValorEdita").val() == ""){
-			$("#custoItemunitario").css("border","2px solid red");
-			$("#bvFornecedorValorEdita").css("border","2px solid red");
-			$("#camposUnitarios").show(100);
-			return false;
-			}
-	}
-	*/
 	if($("#empresaFornecedor").val() == "SelecioneFornecedor"){
 		$("#empresaFornecedor").css("border","2px solid red")
    	    .parent().append("<span class='errors'>*Selecione um Fornecedor.</span>");
@@ -137,25 +126,6 @@ $("#cadastraNovoItem").submit(function() {
 	}
 	return true;
 });
-
-/*$("#atualizaDetalhesItem").submit(function() {
-	var produtoAtuacao = $("#produtoAtuacao").val();
-	var empresaFornecedor = $("#empresaFornecedor").val();
-	if(seFalseItem($("#produtoAtuacao"),produtoAtuacao) == false){return false;}
-	if($("#empresaFornecedor").val() == "SelecioneFornecedor"){
-		$("#empresaFornecedor").css("border","2px solid red")
-		.parent().append("<span class='errors'>*Selecione um Fornecedor.</span>");
-		$(".errors").show();
-		return false;
-	}
-	return true;
-});*/
-
-
-
-
-
-
 
 //Atualiza Status do Job
 $("#cadastraStatus").submit(function() {

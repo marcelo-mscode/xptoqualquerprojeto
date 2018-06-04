@@ -58,7 +58,7 @@ public class AnaliticoIndividualDespesasDAO {
 	
 	public List<FinancDespesas> carregaAnaliticoDespesas(Integer idAnalitico) {
 		try {
-			TypedQuery<FinancDespesas> f = manager.createQuery("select f from FinancDespesas f where analitico.idAnalitico="+idAnalitico,FinancDespesas.class);
+			TypedQuery<FinancDespesas> f = manager.createQuery("select f from FinancDespesas f where analitico.idAnalitico="+idAnalitico+" order by data",FinancDespesas.class);
 			return f.getResultList();
 		} catch (Exception e) {
 			System.out.println(e);

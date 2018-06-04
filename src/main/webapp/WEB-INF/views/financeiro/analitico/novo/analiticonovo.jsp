@@ -33,7 +33,7 @@
   	<h2 class="" style="margin-left: 20px;border-bottom: 1px solid #ccc;padding-bottom: 10px">Criar Novo Analítico</h2>
   	<br>
 
-	<form action="criaNovo" method="post" class="form-inline">
+	<form action="criaNovo" method="post" class="form-inline" id="formNovoAnalitico">
 	   <div class="form-group" style="margin-left: 20px;" >
 	      <label for="exampleInputName2">Mês</label>
 	      <select class="form-control" name="mesA">
@@ -53,8 +53,29 @@
   </div>
 </div>  
 
+<div class="col-md-12 alpha60 div-confirmacao" id="ConfirmaPagamento" style="position: fixed; background-color: rgba(255, 255, 255, 0.8); display: none;">
+	<div class="col-md-4"></div>
+
+	<div class="col-md-4 sub-div-confirmacao" style="height: 85px !important;box-shadow: 0px 2px 18px 10px #ccc;margin-top: 20% !important;">
+		Copiando dados do mês anterior ... <br>
+		<div class="progress col-md-12" style="margin-top: 20px;">
+			<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+				<span class="sr-only">100% Complete</span>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4"></div>
+</div>
 
 <c:import url="../../../_comum/footer.jsp" />
+<script>
+
+$( "#formNovoAnalitico" ).submit(function(){
+	$( "#ConfirmaPagamento" ).fadeIn("slow");
+} ); 
+</script>
+
+
   
   
   
