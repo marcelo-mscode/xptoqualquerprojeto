@@ -76,7 +76,7 @@ public class AnaliticoIndividualTelefoneDAO {
 				TypedQuery<FinancTelefone> q = manager.createQuery("from FinancTelefone where idFinancTelefone="+idTabela,FinancTelefone.class);
 				FinancTelefone telefone = q.getSingleResult();
 				
-				telefone.setData(Calendar.getInstance());
+				// telefone.setData(Calendar.getInstance());
 				
 				if(tipoCampo.equals("descricao")){
 					String valor2 = valor.replace("x1x2x3x", "%");

@@ -66,8 +66,9 @@ public class AnaliticoIndividualFolhaDAO {
 	
 	public Integer editaFolha(Integer idTabela, String valor, String tipoCampo) {
 			
-		FinancFolhaPgto escritorio = manager.find(FinancFolhaPgto.class, idTabela);
-			escritorio.setData(Calendar.getInstance());
+			FinancFolhaPgto escritorio = manager.find(FinancFolhaPgto.class, idTabela);
+		
+			// escritorio.setData(Calendar.getInstance());
 			
 			if(tipoCampo.equals("descricao")){
 				String valor2 = valor.replace("x1x2x3x", "%");

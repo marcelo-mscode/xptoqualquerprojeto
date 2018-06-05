@@ -68,7 +68,8 @@ public class AnaliticoIndividualEscritorioDAO {
 	public Integer editaEscritorio(Integer idTabela, String valor, String tipoCampo) {
 			
 			FinancEscritorio escritorio = manager.find(FinancEscritorio.class, idTabela);
-			escritorio.setData(Calendar.getInstance());
+			
+			// escritorio.setData(Calendar.getInstance());
 			
 			if(tipoCampo.equals("descricao")){
 				String valor2 = valor.replace("x1x2x3x", "%");

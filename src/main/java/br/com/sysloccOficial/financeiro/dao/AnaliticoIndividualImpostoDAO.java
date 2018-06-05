@@ -80,7 +80,7 @@ public class AnaliticoIndividualImpostoDAO {
 	public Integer editaImposto(Integer idTabela, String valor, String tipoCampo) {
 			
 			FinancImpostos escritorio = manager.find(FinancImpostos.class, idTabela);
-			escritorio.setData(Calendar.getInstance());
+			// escritorio.setData(Calendar.getInstance());
 			
 			if(tipoCampo.equals("descricao")){
 				String valor2 = valor.replace("x1x2x3x", "%");
