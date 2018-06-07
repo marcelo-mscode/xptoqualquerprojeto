@@ -30,7 +30,7 @@
        <td colspan="1">Valor</td>
     </tr>
     <tr>
-       <td colspan="7"></td>
+       <td colspan="7"> ITAU</td>
     </tr>
     
     <c:set var="totalSantander" value="0.00" />
