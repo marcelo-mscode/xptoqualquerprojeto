@@ -517,9 +517,9 @@
    </div>
 </div>
 
-<div style="font-size:30px;position:fixed ;bottom: 54px;background-color: #fff;border: 1px solid #ccc;height: 45px;width: 45px;margin-left: 17px">
+<!-- <div style="font-size:30px;position:fixed ;bottom: 54px;background-color: #fff;border: 1px solid #ccc;height: 45px;width: 45px;margin-left: 17px">
  <a onclick="location.reload();" ><i class="glyphicon glyphicon-refresh" style="font-size: 25px;top: 12px;margin-left: 10px;"></i></a>	
-</div>
+</div> -->
 
 <style>
  .navegacaoResumoMes{padding-top: 8px;font-size: 12px;position: fixed;bottom: 0px;background-color: #fff;border: 2px solid #ccc;height: 55px;}
