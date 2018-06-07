@@ -36,7 +36,7 @@
    
    /* ::-webkit-scrollbar-track {background-color: #F4F4F4;}
    ::-webkit-scrollbar-thumb {background: #dad7d7;} */
-   
+   .textoBancos{padding: 1px 0 0 10px !important;font-weight: 100;text-align: center;font-size: 11px;font-weight: bold;}
    
 	
 </style>

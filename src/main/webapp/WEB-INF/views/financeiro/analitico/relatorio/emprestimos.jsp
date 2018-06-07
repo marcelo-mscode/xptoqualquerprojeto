@@ -30,11 +30,13 @@
        <td colspan="1">Valor</td>
     </tr>
     <tr>
-       <td colspan="7"> ITAU</td>
+       <td colspan="7" class="textoBancos amareloFlat">ITAU</td>
     </tr>
     
     <c:set var="totalSantander" value="0.00" />
     <c:forEach items="${emprestimosBancos}" var="emprestimosBancos">
+      
+      <c:if test="${emprestimosBancos.banco.idBanco == 1}">
        <tr>
        	  <td class="tiraPaddingData">
        	  		<input id="dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${emprestimosBancos.dataPrimeiroPagamento}" pattern="dd/MM/yyyy"/>" type="text"
@@ -69,7 +71,100 @@
           </td>
        </tr>
        <c:set var="totalSantander" value="${totalSantander+emprestimosBancos.valorParcela}" />
+       </c:if>	
+       </c:forEach>
+<!-- SANTANDER ------->       
+      
+      <c:forEach items="${emprestimosBancos}" var="emprestimosBancos">
+        <c:if test="${emprestimosBancos.banco.idBanco == 4}">
+	       <tr>
+	      	 <td colspan="7" class="textoBancos corRosaEstranha"> SANTANDER</td>
+	   	   </tr>
+       <tr>
+       	  <td class="tiraPaddingData">
+       	  		<input id="dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${emprestimosBancos.dataPrimeiroPagamento}" pattern="dd/MM/yyyy"/>" type="text"
+                onclick="mudaCampoData('dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}');"
+                onblur="editaEmprestimos('dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}',${idAnalitico},'data',${emprestimosBancos.idEmprestimo});"/>
+          </td>
+       	  <td class="tiraPaddingData">
+	       	  <select id="emprestimoTipoBanco${emprestimosBancos.idEmprestimo}" class="form-control" onchange="editaEmprestimos('emprestimoTipoBanco${emprestimosBancos.idEmprestimo}','${idAnalitico}','combo',${emprestimosBancos.idEmprestimo},'emprestimos');" style="width: 125px;height: 50px;border: none;">
+		       <option value="${emprestimosBancos.banco.idBanco}">${emprestimosBancos.banco.nomebanco}</option>
+		       <option value="1">ITAU</option>
+		       <option value="2">C.E.F</option>
+		       <option value="3">BRADESCO</option>
+		       <option value="4">SANTANDER</option>
+	       	  </select>
+          </td>
+          <td class="tiraPaddingData" colspan="3">
+             <input id="descricaoEmprestimo${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData input-140px" value="${emprestimosBancos.descricao}"
+                onblur="editaEmprestimos('descricaoEmprestimo${emprestimosBancos.idEmprestimo}',${idAnalitico},'descricao',${emprestimosBancos.idEmprestimo},'emprestimos');"/>
+          </td>
+          <td class="tiraPaddingData"  <c:if test = "${emprestimosBancos.valorParcela < 0}">style='color:red'</c:if> >
+             <input id="valorEmprestimo${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${emprestimosBancos.valorParcela}" pattern="#,##0.00"/>"
+             onblur="editaEmprestimos('valorEmprestimo${emprestimosBancos.idEmprestimo}',${idAnalitico},'valor',${emprestimosBancos.idEmprestimo},'emprestimos');"
+             /> 
+          </td>
+          <td>	
+          		<c:if test="${emprestimosBancos.pago == true}">
+	          		<a href="" class="btn btn-success" disabled="disabled">PAGO</a>
+          		</c:if>
+          		<c:if test="${emprestimosBancos.pago == false}">
+	          		<a onclick="editaEmprestimos('valorEmprestimo${emprestimosBancos.idEmprestimo}',${idAnalitico},'pagar',${emprestimosBancos.idEmprestimo},'emprestimos');" class="btn btn-info">PAGAR</a>
+          		</c:if>
+          </td>
+       </tr>
+       <c:set var="totalSantander" value="${totalSantander+emprestimosBancos.valorParcela}" />
+       </c:if>	
+       
     </c:forEach>
+
+<!-- CEF ------->       
+      
+      <c:forEach items="${emprestimosBancos}" var="emprestimosBancos">
+        <c:if test="${emprestimosBancos.banco.idBanco == 4}">
+	       <tr>
+	      	 <td colspan="7" class="textoBancos verdeClaroFlat"> C.E.F.</td>
+	   	   </tr>
+       <tr>
+       	  <td class="tiraPaddingData">
+       	  		<input id="dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${emprestimosBancos.dataPrimeiroPagamento}" pattern="dd/MM/yyyy"/>" type="text"
+                onclick="mudaCampoData('dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}');"
+                onblur="editaEmprestimos('dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}',${idAnalitico},'data',${emprestimosBancos.idEmprestimo});"/>
+          </td>
+       	  <td class="tiraPaddingData">
+	       	  <select id="emprestimoTipoBanco${emprestimosBancos.idEmprestimo}" class="form-control" onchange="editaEmprestimos('emprestimoTipoBanco${emprestimosBancos.idEmprestimo}','${idAnalitico}','combo',${emprestimosBancos.idEmprestimo},'emprestimos');" style="width: 125px;height: 50px;border: none;">
+		       <option value="${emprestimosBancos.banco.idBanco}">${emprestimosBancos.banco.nomebanco}</option>
+		       <option value="1">ITAU</option>
+		       <option value="2">C.E.F</option>
+		       <option value="3">BRADESCO</option>
+		       <option value="4">SANTANDER</option>
+	       	  </select>
+          </td>
+          <td class="tiraPaddingData" colspan="3">
+             <input id="descricaoEmprestimo${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData input-140px" value="${emprestimosBancos.descricao}"
+                onblur="editaEmprestimos('descricaoEmprestimo${emprestimosBancos.idEmprestimo}',${idAnalitico},'descricao',${emprestimosBancos.idEmprestimo},'emprestimos');"/>
+          </td>
+          <td class="tiraPaddingData"  <c:if test = "${emprestimosBancos.valorParcela < 0}">style='color:red'</c:if> >
+             <input id="valorEmprestimo${emprestimosBancos.idEmprestimo}" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${emprestimosBancos.valorParcela}" pattern="#,##0.00"/>"
+             onblur="editaEmprestimos('valorEmprestimo${emprestimosBancos.idEmprestimo}',${idAnalitico},'valor',${emprestimosBancos.idEmprestimo},'emprestimos');"
+             /> 
+          </td>
+          <td>	
+          		<c:if test="${emprestimosBancos.pago == true}">
+	          		<a href="" class="btn btn-success" disabled="disabled">PAGO</a>
+          		</c:if>
+          		<c:if test="${emprestimosBancos.pago == false}">
+	          		<a onclick="editaEmprestimos('valorEmprestimo${emprestimosBancos.idEmprestimo}',${idAnalitico},'pagar',${emprestimosBancos.idEmprestimo},'emprestimos');" class="btn btn-info">PAGAR</a>
+          		</c:if>
+          </td>
+       </tr>
+       <c:set var="totalSantander" value="${totalSantander+emprestimosBancos.valorParcela}" />
+       </c:if>	
+       
+    </c:forEach>
+    
+    
+    
     <tr>
     <tr>
        <td colspan="5"></td>
