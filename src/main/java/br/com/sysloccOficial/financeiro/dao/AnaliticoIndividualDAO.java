@@ -161,6 +161,20 @@ public class AnaliticoIndividualDAO {
 		}
 	}
 	
+	
+	public int retornaIdAnaliticoPorMesAnoEvento(int mes, int ano){
+		
+		try {
+			TypedQuery<Integer> consulta = manager.createQuery("SELECT idAnalitico FROM FinancAnalitico where anoA = "+ano+" and mesReferencia = "+mes, Integer.class);
+			int valor = consulta.getSingleResult();
+			return valor;
+		} catch (Exception e) {
+			System.out.println("Não foi possível retornar o idAnalitico: "+e);
+			return 0;
+		}
+	}
+	
+	
 // --------------------------------------------------------- //
 	public void salvaVideo(VideosYt videos){
 		try {

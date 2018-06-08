@@ -73,6 +73,7 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 
 		MV.addObject("mes", mes);
 		MV.addObject("ano", ano);
+		MV.addObject("idAnalitico", analiticoIndDAO.retornaIdAnaliticoPorMesAnoEvento(mes, ano));
 		
 		
 		
