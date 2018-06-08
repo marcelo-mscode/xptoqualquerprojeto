@@ -1,6 +1,7 @@
 package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -134,6 +135,31 @@ public class AnaliticoIndividualDAO {
 	}
 	
 	
+	public Integer quantEventosMes(int anoEvento, int mesReferencia){
+		try {
+			String consulta = "select count(idRelatorioEvento) from RelatorioEventos where anoEvento ="+anoEvento+" and mesReferencia ="+mesReferencia;
+			TypedQuery<Long> cons = manager.createQuery(consulta, Long.class);
+			long quant = cons.getSingleResult();
+			int valor = (int) quant ;
+			return valor;
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao carregar quantidade de eventos em enalitico: "+e);
+			return 0;
+		}
+	}
+	
+	public List<Integer> idsRelatorioEventosMes(int anoEvento, int mesReferencia){
+		try {
+			String consulta ="select idLista from RelatorioEventos where anoEvento = "+anoEvento+" and mesReferencia = "+mesReferencia;
+			TypedQuery<Integer> cons = manager.createQuery(consulta, Integer.class);
+			List<Integer> teste = cons.getResultList();
+			return teste;
+		} catch (Exception e) {
+			System.out.println("Erro ao carregar idsRelatorios de eventos em enalitico: "+e);
+			return null;
+		}
+	}
 	
 // --------------------------------------------------------- //
 	public void salvaVideo(VideosYt videos){

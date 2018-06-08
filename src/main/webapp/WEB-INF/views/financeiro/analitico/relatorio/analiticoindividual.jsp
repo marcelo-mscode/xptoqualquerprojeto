@@ -522,7 +522,7 @@
 </div> -->
 
 <style>
- .navegacaoResumoMes{padding-top: 8px;font-size: 12px;position: fixed;bottom: 0px;background-color: #fff;border: 2px solid #ccc;height: 55px;}
+ .navegacaoResumoMes{padding-top: 8px;font-size: 12px;position: fixed;bottom: 0px;background-color: #fff;border: 2px solid #ccc;height: 68px;}
  .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
  .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
  .tiraBordaTabela tr td {border-top: none !important; border-left: 1px solid #ddd;background-color: #f5f5f5}
@@ -530,33 +530,33 @@
   #toTop{display: none !important;}	
 </style>
 
-<div class="col-md-12 navegacaoResumoMes">
+
+<c:import url="../../rodape/rodape.jsp" />
+
+<%-- <div class="col-md-12 navegacaoResumoMes">
 	<table class="table tiraBordaTabela">
 		<tr>
 			<td class="input-95px"><a href="resumoMesIndividual?mes=${mes}&ano=${InfoAnalitico.anoA}" class="navegacaoLink">Resumo mês</a></td>
 			<td class="input-80px active"><a href="analiticoIndividual?idAnalitico=${InfoAnalitico.idAnalitico}" class="navegacaoLink">Analítico</a></td>
-			<td class="input-120px"><a href="contasPagar" class="navegacaoLink">Contas a pagar</a></td>
-			<td class=""><a href="contasReceber" class="navegacaoLink">Contas a receber</a></td>
+			<td class="input-95px"><a href="contasPagar" class="navegacaoLink">Contas pagar</a></td>
+			<td class="input-95px"><a href="contasReceber" class="navegacaoLink">Contas receber</a></td>
 			
-			<c:forEach var="i" begin="1" end="10">
-				<td style="width: 20px !important;padding: 0px;vertical-align: middle;text-align: center;"><a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink" style="padding:7px">${i}</a></td>
+			<c:forEach var="i" begin="1" end="${quantRelatorioEventos}">
+			
+				<c:forEach items="${idsRelatorioEventos}" var="idsRelatorioEventos" varStatus="contador">
+				 	<c:if test="${i == contador.count}">
+		 				<td style="width: 20px !important;padding: 0px;vertical-align: middle;text-align: center;font-size: 15px;"><a href="relatorioEventoIndividual?idLista=${idsRelatorioEventos}" class="navegacaoLink" style="padding:7px">${i}</a></td>
+				 	</c:if>
+				</c:forEach>
+			
 			</c:forEach>
 			
 		</tr>
 	</table>
-</div>
+</div> --%>
 
 
 <c:import url="../../../_comum/footer.jsp" />
 <script type="text/javascript" src="
 <c:url value="resources/js/financeiroAnalitico.js" />"></script>
-
-
-
-
-
-
-
-
-
 

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.sysloccOficial.daos.UsuarioDAO;
 import br.com.sysloccOficial.financeiro.atualizaInterna.AtualizaInternaRelatoriosEmMassa;
 import br.com.sysloccOficial.financeiro.atualizaInterna.AtualizaRelatorioEventoApoio;
+import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.model.CacheEvento;
 import br.com.sysloccOficial.model.CachePadrao;
@@ -31,6 +32,8 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 	@Autowired RelatorioEventoDAO relatorioDAO;
 	@Autowired AtualizaRelatorioEventoApoio relatorioApoio;
 	@Autowired UsuarioDAO usuarios;
+	@Autowired private AnaliticoIndividualDAO analiticoIndDAO;
+	
 	
 	@RequestMapping("relatorioEventoIndividual")
 	public ModelAndView relatorioEventoIndividual(Integer idLista){
@@ -60,6 +63,18 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 		
 		
 		MV.addObject("usuarios", usuarios.cachePadraoNomes(relatorioEventos.getIdRelatorioEvento()));
+		
+		
+		int ano =  Integer.parseInt(relatorioEventos.getAnoEvento());
+		int mes = relatorioEventos.getMesReferencia();
+		
+		MV.addObject("quantRelatorioEventos", analiticoIndDAO.quantEventosMes(ano, mes));
+		MV.addObject("idsRelatorioEventos", analiticoIndDAO.idsRelatorioEventosMes(ano, mes));
+
+		MV.addObject("mes", mes);
+		MV.addObject("ano", ano);
+		
+		
 		
 		
 		

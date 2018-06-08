@@ -86,6 +86,10 @@ public class AnaliticoIndividualController extends CarregaSaldosBancarios {
 		MV.addObject("emprestimosBancos", analiticoMovFinanceiroDAO.carregaEmprestimos(idAnalitico));
 		
 		MV.addObject("mes", mes);
+
+		// ---- Preenche rodapé com quantidade de eventos do Mês	
+		MV.addObject("quantRelatorioEventos", analiticoIndDAO.quantEventosMes(ano, mes));
+		MV.addObject("idsRelatorioEventos", analiticoIndDAO.idsRelatorioEventosMes(ano, mes));
 		
 		return MV;
 	}

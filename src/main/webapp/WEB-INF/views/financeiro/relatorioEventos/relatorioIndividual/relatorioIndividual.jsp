@@ -64,6 +64,39 @@
   </div>		
 </div>
 
+<style>
+ .navegacaoResumoMes{padding-top: 8px;font-size: 12px;position: fixed;bottom: 0px;background-color: #fff;border: 2px solid #ccc;height: 68px;}
+ .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
+ .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
+ .tiraBordaTabela tr td {border-top: none !important; border-left: 1px solid #ddd;background-color: #f5f5f5}
+ .active{background-color: #ddd !important}
+  #toTop{display: none !important;}	
+</style>
+
+
+<div class="col-md-12 navegacaoResumoMes">
+	<table class="table tiraBordaTabela">
+		<tr>
+			<td class="input-95px"><a href="resumoMesIndividual?mes=${mes}&ano=${ano}" class="navegacaoLink">Resumo mês</a></td>
+			<td class="input-80px active"><a href="analiticoIndividual?idAnalitico=${InfoAnalitico.idAnalitico}" class="navegacaoLink">Analítico</a></td>
+			<td class="input-95px"><a href="contasPagar" class="navegacaoLink">Contas pagar</a></td>
+			<td class="input-95px"><a href="contasReceber" class="navegacaoLink">Contas receber</a></td>
+			
+			<c:forEach var="i" begin="1" end="${quantRelatorioEventos}">
+			
+				<c:forEach items="${idsRelatorioEventos}" var="idsRelatorioEventos" varStatus="contador">
+				 	<c:if test="${i == contador.count}">
+		 				<td style="width: 20px !important;padding: 0px;vertical-align: middle;text-align: center;font-size: 15px;"><a href="relatorioEventoIndividual?idLista=${idsRelatorioEventos}" class="navegacaoLink" style="padding:7px">${i}</a></td>
+				 	</c:if>
+				</c:forEach>
+			
+			</c:forEach>
+			
+		</tr>
+	</table>
+</div>
+
+
 
 <div class="col-md-12 alpha60 div-confirmacao" id="ConfirmaPagamento" style="position: fixed; display: none;background-color: rgba(255, 255, 255, 0.8);">
 	<div class="col-md-4"></div>

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.analitico.individual.CarregaSaldosBancarios;
+import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
 import br.com.sysloccOficial.financeiro.dao.MontaContasPagarDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
@@ -25,12 +26,13 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 	@Autowired UtilitariaDatas utilDatas;
 	@Autowired MontaContasPagarDAO montaObjeto;
 	@Autowired AnaliticoIndividualMovimentoFinanceiro analiticoMovFinanceiroDAO;
+	@Autowired private AnaliticoIndividualDAO analiticoIndDAO;
 	
 
 	@RequestMapping("resumoMesIndividual")
 	public ModelAndView resumoMesIndex(Integer mes, Integer ano){
 		
-		int mesDoAno = mes;
+		// int mesDoAno = mes;
 		
 		List<RelatorioEventos> infoEvento = relatorioEventoDAO.relatorioEventoPorMesReferencia(mes,ano);
 
@@ -168,6 +170,10 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		// Total conta Garantia Itau ( soma dos emprestimos cadastrados )
 		BigDecimal totalEmprestimos = analiticoMovFinanceiroDAO.pegaTotalEmprestimosSemParcelamento(idAnalitico);
 		MV.addObject("totalEmprestimos", totalEmprestimos);
+		
+		MV.addObject("quantRelatorioEventos", analiticoIndDAO.quantEventosMes(ano, mes));
+		MV.addObject("idsRelatorioEventos", analiticoIndDAO.idsRelatorioEventosMes(ano, mes));
+		
 		
 		return MV;
 	    }
