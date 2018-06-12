@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.daos;
 
+import java.awt.Window.Type;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,7 +8,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
+
 import br.com.sysloccOficial.model.Contato;
 import br.com.sysloccOficial.model.Empresa;
 import br.com.sysloccOficial.model.EmpresaAtuacao;
@@ -163,7 +166,16 @@ public class EmpresaDAO {
 		return lista.getResultList();
 	}
 	
-	
+	public List<Empresa> listaTodasEmpresas(){
+		try {
+			
+			TypedQuery<Empresa> cons = manager.createQuery("FROM Empresa e order by habilitado, cliente,empresa",Empresa.class);
+			return cons.getResultList();
+			
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 	
 	

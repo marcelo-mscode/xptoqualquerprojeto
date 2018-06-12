@@ -26,6 +26,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import abr.com.springboot.repositories.PessoaRepository;
 import abr.com.springboot.resources.PessoaResources;
 import abr.com.springboot.services.PessoaService;
+import br.com.serializacoestestes.EmpresaTesteSerializacao;
 import br.com.sysloccOficial.ListaProducao.DeterminaQuantidade.dao.BuscaQualquerQuantidadeDeterminantePadrao;
 import br.com.sysloccOficial.ListaProducao.DeterminaQuantidade.dao.BuscaQuantidadeDeterminante;
 import br.com.sysloccOficial.ListaProducao.Excel.ExcelNovoBayerController;
@@ -125,6 +126,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          CachePadraoController.class,
 								          RelatorioEventoDAO.class,
 								          AnaliticoIndividualController.class,
+								          EmpresaTesteSerializacao.class,
 								          /*PessoaService.class,*/
 								         /* PessoaResources.class,
 								          PessoaRepository.class,*/
