@@ -244,6 +244,9 @@ public class EmpresaController {
 			MV.addObject("empresas", empresaDAO.mostra(0,350));
 		}else{
 			long tempoInicio = System.currentTimeMillis();
+			
+			System.out.println("Comecei a busca em: "+tempoInicio);
+			
 			MV.addObject("empresas", empresaDAO.listaBuscaAjaxEmpresas(nome));
 			long tempoTotal = (System.currentTimeMillis()-tempoInicio);
 			long  segundos = ( tempoTotal / 1000 ) % 60;    

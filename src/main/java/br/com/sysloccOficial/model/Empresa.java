@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
 
@@ -22,7 +23,7 @@ import br.com.sysloccOficial.model.producao.ValorPagtoFornecedor;
 import br.com.sysloccOficial.model.prospeccao.Prospeccao;
 
 @Entity
-public class Empresa {
+public class Empresa implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
