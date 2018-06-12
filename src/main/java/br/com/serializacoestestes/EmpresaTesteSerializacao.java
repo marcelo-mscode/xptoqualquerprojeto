@@ -25,29 +25,29 @@ public class EmpresaTesteSerializacao {
 		
 		List<Empresa> pp = empresaDAO.listaTodasEmpresas();
 		
-		  try{
+		  /*try{
 				
-				/**
+				*//**
 				 * A Classe FileOutputStream é responsável por criar
 				 * o arquivo fisicamente no disco, assim poderemos realizar a 
 				 * escrita neste. 
-				 */
+				 *//*
 				 
 				 
 				FileOutputStream fout = new FileOutputStream("K:\\cache\\empresas\\listaEmpresas.ser");
 				
-				/**
+				*//**
 				 * A Classe ObjectOutputStream escreve os objetos no FileOutputStream
-				 */
+				 *//*
 				
 				ObjectOutputStream oos = new ObjectOutputStream(fout);   
 				
-				/**
+				*//**
 				 * Veja aqui a mágica ocorrendo: Estamos gravando um objeto 
 				 * do tipo Address no arquivo address.ser. Atenção: O nosso 
 				 * objeto Address que está sendo gravado, já é gravado de forma 
 				 * serializada
-				 */
+				 *//*
 				oos.writeObject(pp);
 				
 				oos.close();
@@ -55,7 +55,12 @@ public class EmpresaTesteSerializacao {
 		 
 			   }catch(Exception ex){
 				   ex.printStackTrace();
-			   }
+			   }*/
+		for (int i = 0; i < pp.size(); i++) {
+			System.out.println(pp.get(i).getEmpresa());
+		}
+		
+		
 		
 		return "ok";
 	}
