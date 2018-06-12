@@ -240,11 +240,14 @@ public class EmpresaController {
 	public ModelAndView buscaAjax(String nome) throws IOException {
 		MV.setViewName("empresa/listaAjax");
 		
-		
 		if(nome == null || nome == "" || nome == " "){
 			MV.addObject("empresas", empresaDAO.mostra(0,350));
 		}else{
+			long tempoInicio = System.currentTimeMillis();
 			MV.addObject("empresas", empresaDAO.listaBuscaAjaxEmpresas(nome));
+			long tempoTotal = (System.currentTimeMillis()-tempoInicio);
+			long  segundos = ( tempoTotal / 1000 ) % 60;    
+			System.out.println("Tempo Total em segundos da busca: "+segundos);
 		}
 		
 	    return MV;
