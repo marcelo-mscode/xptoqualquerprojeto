@@ -7,9 +7,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.Tuple;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
@@ -168,20 +171,65 @@ public class EmpresaDAO {
 		return lista.getResultList();
 	}
 	
-	public List<Empresa> listaTodasEmpresas(){
+	public List<Tuple> listaTodasEmpresas(){
 		try {
 			
+			long tempoInicio = System.currentTimeMillis();
+			
 			CriteriaBuilder cb = manager.getCriteriaBuilder();
-			CriteriaQuery<Empresa>
+			CriteriaQuery<Tuple> c = cb.createQuery(Tuple.class);
+			Root<Empresa> l = c.from(Empresa.class);
+			c.multiselect(
+					l.<String>get("idEmpresa").alias("empresa.idEmpresa"),
+					l.<String>get("empresa").alias("empresa.empresa"),
+					l.<String>get("cliente").alias("empresa.cliente"),
+					l.<String>get("fornecedor").alias("empresa.fornecedor"),
+					l.<String>get("prospect").alias("empresa.prospect"),
+					l.<String>get("habilitado").alias("empresa.habilitado")
+					);
+			
+			TypedQuery<Tuple> query = manager.createQuery(c);
+			List<Tuple> resultado = query.getResultList();
+
 			
 			
-			String consulta = "FROM Empresa";
+			/*
+			for (Tuple tuple : resultado) {
+				System.out.println("idEmpresa: " + tuple.get("empresa.idEmpresa"));
+				System.out.println("empresa :" + tuple.get("empresa.empresa"));
+				System.out.println("cliente :" + tuple.get("empresa.cliente"));
+				System.out.println("fornecedor :" + tuple.get("empresa.fornecedor"));
+				System.out.println("prospect :" + tuple.get("empresa.prospect"));
+				System.out.println("habilitado :" + tuple.get("empresa.habilitado"));
+			}*/
 			
 			
+			long tempoTotal = (System.currentTimeMillis()-tempoInicio);
+			
+			long  segundos = ( tempoTotal / 1000 ) % 60;    
 			
 			
-			TypedQuery<Empresa> cons = manager.createQuery(consulta,Empresa.class);
-			return cons.getResultList();
+			System.out.println("Tempo Total em segundos: "+segundos);
+
+			
+			
+		/*	TypedQuery<String> cons = manager.createQuery("SELECT empresa FROM Empresa", String.class);
+			List<String> lista = cons.getResultList();*/
+			
+			return resultado;
+			
+		/*	CriteriaBuilder cb = manager.getCriteriaBuilder();
+			CriteriaQuery<Empresa> e = cb.createQuery(Empresa.class);
+			Root<Empresa> d = e.from(Empresa.class);
+			
+			d.fetch("contato", JoinType.LEFT);
+			e.select(d).distinct(true);
+			
+			TypedQuery<Empresa> emp = manager.createQuery(e);
+			List<Empresa> empresas = emp.getResultList();
+			
+		
+			return empresas;*/
 			
 		} catch (Exception e) {
 			System.out.println("Nada !");

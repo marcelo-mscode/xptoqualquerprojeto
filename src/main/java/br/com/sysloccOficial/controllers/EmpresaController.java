@@ -65,12 +65,9 @@ public class EmpresaController {
 		ModelAndView mv = new ModelAndView("empresa/listaEmpresa");
 		
 		long tempoInicio = System.currentTimeMillis();
-		//Código do programa...
+	
 		
 		mv.addObject("empresas", empresaDAO.mostra(first, max));
-		
-		System.out.println("Tempo Total: "+(System.currentTimeMillis()-tempoInicio));
-		//O código acima irá te retornar o tempo gasto em milisegundos...
 		
 		long tempoTotal = (System.currentTimeMillis()-tempoInicio);
 		
