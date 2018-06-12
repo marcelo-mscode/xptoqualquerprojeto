@@ -8,6 +8,8 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -168,10 +170,15 @@ public class EmpresaDAO {
 	
 	public List<Empresa> listaTodasEmpresas(){
 		try {
-			String consulta = "FROM Empresa e "
-								+ "join fetch e.produtoGrupo "
-							
-								+ "	order by e.habilitado, cliente, empresa";
+			
+			CriteriaBuilder cb = manager.getCriteriaBuilder();
+			CriteriaQuery<Empresa>
+			
+			
+			String consulta = "FROM Empresa";
+			
+			
+			
 			
 			TypedQuery<Empresa> cons = manager.createQuery(consulta,Empresa.class);
 			return cons.getResultList();
