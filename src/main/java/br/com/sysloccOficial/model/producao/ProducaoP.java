@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.model.producao;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,8 +28,13 @@ import br.com.sysloccOficial.model.ProdutoGrupo;
 import br.com.sysloccOficial.model.Usuario;
 
 @Entity
-public class ProducaoP {
+public class ProducaoP implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer idProducao;

@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.model.producao;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,7 +16,12 @@ import br.com.sysloccOficial.model.Empresa;
 import br.com.sysloccOficial.model.Producao;
 
 @Entity
-public class FornecedorFinanceiro {
+public class FornecedorFinanceiro implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer idFornecedor;

@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.model.producao;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
@@ -19,7 +20,12 @@ import br.com.sysloccOficial.model.Producao;
 import br.com.sysloccOficial.model.ProdutoGrupo;
 
 @Entity
-public class CartaContFornecedor {
+public class CartaContFornecedor implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer idCartaForn;

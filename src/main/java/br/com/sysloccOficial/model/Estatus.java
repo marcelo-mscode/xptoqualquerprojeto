@@ -1,6 +1,8 @@
 package br.com.sysloccOficial.model;
 
+import java.io.Serializable;
 import java.util.List;
+
 import javafx.print.PrinterJob.JobStatus;
 
 import javax.persistence.Entity;
@@ -12,7 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Estatus {
+public class Estatus implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)

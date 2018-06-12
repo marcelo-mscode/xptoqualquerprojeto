@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -14,7 +15,12 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-public class JobStatus {
+public class JobStatus implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)

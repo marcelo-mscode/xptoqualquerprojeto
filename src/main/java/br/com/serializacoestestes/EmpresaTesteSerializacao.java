@@ -34,7 +34,7 @@ public class EmpresaTesteSerializacao {
 				 */
 				 
 				 
-				FileOutputStream fout = new FileOutputStream("K:\\cache\\empresass\\listaEmpresas.ser");
+				FileOutputStream fout = new FileOutputStream("K:\\cache\\empresas\\listaEmpresas.ser");
 				
 				/**
 				 * A Classe ObjectOutputStream escreve os objetos no FileOutputStream

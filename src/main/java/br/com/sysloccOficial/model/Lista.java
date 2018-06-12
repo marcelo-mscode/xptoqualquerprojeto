@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
@@ -20,8 +21,12 @@ import javax.persistence.Transient;
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
 @Entity
-public class Lista {
+public class Lista implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
  	private Integer idLista;
