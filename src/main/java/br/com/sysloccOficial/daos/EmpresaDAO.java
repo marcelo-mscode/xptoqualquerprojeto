@@ -168,11 +168,25 @@ public class EmpresaDAO {
 	
 	public List<Empresa> listaTodasEmpresas(){
 		try {
+			String consulta = "FROM Empresa e left join fetch "
+								+ "e.empresaAtuacao "
+								+ "e.contato "
+								+ "e.job "
+								+ "e.pagamento "
+								+ "e.pagamentoProducao "
+								+ "e.produtoGrupo "
+								+ "e.cartaFornecedor "
+								+ "e.idValorPgtoFornecedor "
+								+ "e.idProspeccao "
+								+ "e.idProducao "
+								+ "	order by e.habilitado, e.cliente, e.empresa";
 			
-			TypedQuery<Empresa> cons = manager.createQuery("FROM Empresa e order by habilitado, cliente,empresa",Empresa.class);
+			TypedQuery<Empresa> cons = manager.createQuery(consulta,Empresa.class);
 			return cons.getResultList();
 			
 		} catch (Exception e) {
+			System.out.println("Nada !");
+			
 			return null;
 		}
 	}
