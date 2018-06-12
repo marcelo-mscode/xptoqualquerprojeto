@@ -188,20 +188,30 @@ public class EmpresaDAO {
 					l.<String>get("habilitado").alias("empresa.habilitado")
 					);
 			
+			/*select e from Empresa e order by habilitado, cliente,empresa*/
+			
+			c.orderBy(cb.asc(l.<Boolean>get("habilitado")),cb.asc(l.<Boolean>get("cliente")),cb.asc(l.<Boolean>get("empresa")))
+			
+			;
+			
+			
+			
+			
 			TypedQuery<Tuple> query = manager.createQuery(c);
-			List<Tuple> resultado = query.getResultList();
-
+			List<Tuple> resultado = query
+			.setMaxResults(350)
+	        .setFirstResult(0)  
+	        .getResultList();
 			
 			
-			/*
 			for (Tuple tuple : resultado) {
-				System.out.println("idEmpresa: " + tuple.get("empresa.idEmpresa"));
 				System.out.println("empresa :" + tuple.get("empresa.empresa"));
+/*				System.out.println("idEmpresa: " + tuple.get("empresa.idEmpresa"));
 				System.out.println("cliente :" + tuple.get("empresa.cliente"));
 				System.out.println("fornecedor :" + tuple.get("empresa.fornecedor"));
 				System.out.println("prospect :" + tuple.get("empresa.prospect"));
 				System.out.println("habilitado :" + tuple.get("empresa.habilitado"));
-			}*/
+*/			}
 			
 			
 			long tempoTotal = (System.currentTimeMillis()-tempoInicio);

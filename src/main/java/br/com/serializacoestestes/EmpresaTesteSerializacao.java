@@ -27,7 +27,7 @@ public class EmpresaTesteSerializacao {
 		
 		List<Tuple> pp = empresaDAO.listaTodasEmpresas();
 		
-		  try{
+		 /* try{
 				
 				FileOutputStream fout = new FileOutputStream("K:\\cache\\empresas\\listaEmpresas.ser");
 				
@@ -41,12 +41,7 @@ public class EmpresaTesteSerializacao {
 		 
 			   }catch(Exception ex){
 				   ex.printStackTrace();
-			   }
-		/*for (int i = 0; i < pp.size(); i++) {
-			System.out.println(pp.get(i));
-		}*/
-		
-		
+			   }*/
 		
 		return "ok";
 	}
