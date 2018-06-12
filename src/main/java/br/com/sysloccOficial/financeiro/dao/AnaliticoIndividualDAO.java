@@ -1,17 +1,13 @@
 package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancDespesas;
@@ -20,8 +16,6 @@ import br.com.sysloccOficial.financeiro.model.FinancFolhaPgto;
 import br.com.sysloccOficial.financeiro.model.FinancImpostos;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.FinancTelefone;
-import br.com.sysloccOficial.financeiro.model.MovimentacaoBancos;
-import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
 import br.com.sysloccOficial.model.VideosYt;
 
 

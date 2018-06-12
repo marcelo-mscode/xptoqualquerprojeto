@@ -71,8 +71,13 @@
       </tr>
    </table>
 </div>
+
+<c:if test="${ultimaAtualizacao != null}">	
+   <a href="relatorioEventoIndividual?idLista=${infoLista.idLista}" style="float: right;margin-right: 70px;margin-top: 165px;">Relatório desse Evento: ${infoLista.lista}</a>
+</c:if>
+
+
 <div id="criacaoListas" style="font-family: 'OpenSansLight';border-top: 1px solid #ccc;padding:10px 0px 70px 10px;width: 150%;background-color: #fff">
-   <a href="relatorioEventoIndividual?idLista=${infoLista.idLista}" style="float: right;margin-right: 15px;">Relatório Evento: ${infoLista.lista}</a>
    <!-- <div style="padding: 20px;box-shadow: 0px 0px 30px 5px #ccc;"> -->
    <ul class="nav nav-tabs" role="tablist" style="margin-top: 150px;border: none">
       <li role="presentation" class="active" style="">

@@ -24,7 +24,7 @@
   <ol class="breadcrumb">
     <li><a href="index.html">Menu</a></li>
     <li><a href="relatorioEventosIndex">Relatório de Eventos</a></li>
-    <li class="active">Relatório ${infoLista.lista}</li>
+    <li class="">Relatório ${infoLista.lista}</li>
   </ol>					
 </div>
 
@@ -69,7 +69,8 @@
  .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
  .navegacaoLink{color: green;font-weight: bold;text-transform: uppercase;}	
  .tiraBordaTabela tr td {border-top: none !important; border-left: 1px solid #ddd;background-color: #f5f5f5}
- .active{background-color: #ddd !important}
+ .activeMenu{background-color: #ddd !important}
+ .active{background-color: #007bff !important}
   #toTop{display: none !important;}	
 </style>
 
@@ -78,7 +79,7 @@
 	<table class="table tiraBordaTabela">
 		<tr>
 			<td class="input-95px"><a href="resumoMesIndividual?mes=${mes}&ano=${ano}" class="navegacaoLink">Resumo mês</a></td>
-			<td class="input-80px active"><a href="analiticoIndividual?idAnalitico=${idAnalitico}" class="navegacaoLink">Analítico</a></td>
+			<td class="input-80px activeMenu"><a href="analiticoIndividual?idAnalitico=${idAnalitico}" class="navegacaoLink">Analítico</a></td>
 			<td class="input-95px"><a href="contasPagar" class="navegacaoLink">Contas pagar</a></td>
 			<td class="input-95px"><a href="contasReceber" class="navegacaoLink">Contas receber</a></td>
 			
@@ -103,7 +104,7 @@
 	<div class="col-md-4 sub-div-confirmacao" style="height: 85px !important;box-shadow: 0px 2px 18px 10px #ccc">
 		Recalculando valores do Relatório ... <br>
 		<div class="progress col-md-12" style="margin-top: 20px;">
-			<div class="progress-bar progress-bar-striped progress-bar-animated"
+			<div class="progress-bar progress-bar-striped progress-bar-animated active"
 				role="progressbar" aria-valuenow="45" aria-valuemin="0"
 				aria-valuemax="100" style="width: 100%">
 				<span class="sr-only">100% Complete</span>

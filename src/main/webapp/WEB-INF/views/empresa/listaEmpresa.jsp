@@ -6,6 +6,13 @@
 
 <c:import url="../_comum/header.jsp" />
 
+<style>
+
+.pace{display: none }	
+
+</style>
+
+
 <!-- - - - - - - - - - Container - - - - - - - - - - - -->
 <div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ddd;">
 
@@ -23,25 +30,24 @@
 	<a href="excelEmpresas" style="margin-left: 520px;" class="btn btn-default" id="planilhaExcelEmpresas">Relatório</a>
 </div>
 
-<div style="width: 100%;height: 80px;border-bottom: 1px solid #ddd;padding: 12px 28px;">
+<div style="width: 100%;height: 80px;border-bottom: 1px solid #ddd;padding: 5px 28px;">
 	
-	<div class="has-feedback input-300px" style="margin-bottom: 5px">
-	    <input type="text" id="target" class="form-control" aria-describedby="inputSuccess2Status" placeholder="Pesquisar por nome...">
-	  	<span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true" style="top: 1px;color: #ccc;"></span>
-	
-	
+	<div class="row">
+		<div class="col-md-2" style="margin-bottom: 5px;padding-right: 0px;">
+		    <input type="text" id="target" class="form-control" placeholder="Pesquisar por nome...">
+	   </div>
+	   <div class="col-md-1" style="padding-left: 5px;">
+		  	<button class="btn btn-default" onclick="buscaClientesNova();">
+				Buscar <span class="glyphicon glyphicon-search" style="top: 4px;margin-left: 0px;font-size: 16px;"></span>
+			</button> 
+	   </div>
+	</div>		
 
-   </div>
-	<div>
+	<div class="row" style="margin-left: 4px;padding-left: 5px;">
 		<input value="1" name="mcheckbox[]" type="checkbox" id="clienteBox" onclick="buscaClientes();" >&nbsp&nbspCliente
 		<input value="2" name="mcheckbox[]" type="checkbox" style="margin-left: 25px;" id="prospectBox" onclick="buscaClientes();" >&nbsp&nbspProspect
 		<input value="4" name="mcheckbox[]" type="checkbox" style="margin-left: 25px;" id="fornecedorBox" onclick="buscaClientes();" >&nbsp&nbsp&nbsp&nbspFornecedor
 	</div>	
-	
-   	
-<!-- 
-
- -->
  </div>
 
 
@@ -67,21 +73,12 @@
 								<!-- <th>CNPJ da empresa</th> -->
 								<th>Categoria</th>
 								<th>Status</th>
-								
-								<%-- <security:authorize access="hasRole('ROLE_ADMIN')"> 
-									<th style="text-align: center;">Excluir</th>
-									</security:authorize>
-								 --%>
-															
 							</tr>
 						<c:forEach items="${empresas}" var="empresas" varStatus="conta">
 							<tr >
-								
 								<td><a href="infoempresa?id=${empresas.idEmpresa}">${empresas.empresa}</a></td>
-								
 									
 								<c:choose>	
-								
 										<c:when test="${empresas.cliente eq true and empresas.fornecedor eq true and empresas.prospect eq true}">
 											<td>Cliente/Fornecedor/Prospect</td>
 										</c:when>
@@ -222,5 +219,13 @@
 
 <c:import url="../_comum/footer.jsp" />
 <script type="text/javascript" src="<c:url value="resources/js/empresaScript.js" />"></script>
+<script type="text/javascript" >
+
+paceOptions = {
+		  ajax: false, // disabled
+		  document: false, // disabled
+		  eventLag: false, // disabled
+		};
+</script>
 
 

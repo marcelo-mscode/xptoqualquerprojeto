@@ -3,9 +3,9 @@
  * 
  */
 //---------------- Busca Lista de Empresa por nome ------------------ //
-$( "#target" ).keyup(function() {
+/*$( "#target" ).keyup(function() {
 	var nome = $("#target").val();
-	/*var idEvento = $("#idEvento").val();*/
+	var idEvento = $("#idEvento").val();
 	  $.ajax({
 			url : "busca?nome=" + nome,
 			success : function(data) {
@@ -13,13 +13,40 @@ $( "#target" ).keyup(function() {
 			},
 			beforeSend : function() {
 				$('#loader-lista').fadeIn(1500);
+				$("#target").prop("disabled",true);
 			},
 			complete : function() {
-				$('#loader-lista').fadeOut(500);
-				$('#nextConsulta').fadeOut(500);
+				$('#loader-lista').fadeOut(200);
+				$('#nextConsulta').fadeOut(200);
+				$("#target").prop("disabled",false);
 			}
 		});
-});
+});*/
+
+function buscaClientesNova() {
+	var nome = $("#target").val();
+		  $.ajax({
+			url : "busca?nome=" + nome,
+			success : function(data) {
+			$("#clientesAjax").fadeIn(300).html(data);
+			},
+			beforeSend : function() {
+				$('#loader-lista').fadeIn(500);
+				$("#target").prop("disabled",true);
+			},
+			complete : function() {
+				$('#loader-lista').fadeOut(200);
+				$('#nextConsulta').fadeOut(200);
+				$("#target").prop("disabled",false);
+			}
+		});
+}
+
+
+
+
+
+
 // ------------------------------------------------------------------- //
 function buscaClientes(){
 	var n = todos();

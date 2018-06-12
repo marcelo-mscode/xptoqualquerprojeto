@@ -533,30 +533,8 @@
 
 <c:import url="../../rodape/rodape.jsp" />
 
-<%-- <div class="col-md-12 navegacaoResumoMes">
-	<table class="table tiraBordaTabela">
-		<tr>
-			<td class="input-95px"><a href="resumoMesIndividual?mes=${mes}&ano=${InfoAnalitico.anoA}" class="navegacaoLink">Resumo mês</a></td>
-			<td class="input-80px active"><a href="analiticoIndividual?idAnalitico=${InfoAnalitico.idAnalitico}" class="navegacaoLink">Analítico</a></td>
-			<td class="input-95px"><a href="contasPagar" class="navegacaoLink">Contas pagar</a></td>
-			<td class="input-95px"><a href="contasReceber" class="navegacaoLink">Contas receber</a></td>
-			
-			<c:forEach var="i" begin="1" end="${quantRelatorioEventos}">
-			
-				<c:forEach items="${idsRelatorioEventos}" var="idsRelatorioEventos" varStatus="contador">
-				 	<c:if test="${i == contador.count}">
-		 				<td style="width: 20px !important;padding: 0px;vertical-align: middle;text-align: center;font-size: 15px;"><a href="relatorioEventoIndividual?idLista=${idsRelatorioEventos}" class="navegacaoLink" style="padding:7px">${i}</a></td>
-				 	</c:if>
-				</c:forEach>
-			
-			</c:forEach>
-			
-		</tr>
-	</table>
-</div> --%>
-
-
 <c:import url="../../../_comum/footer.jsp" />
+
 <script type="text/javascript" src="
 <c:url value="resources/js/financeiroAnalitico.js" />"></script>
 
