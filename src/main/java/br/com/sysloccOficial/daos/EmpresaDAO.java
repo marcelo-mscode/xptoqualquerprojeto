@@ -234,9 +234,6 @@ public class EmpresaDAO {
 								+" e.prospect,"
 								+" e.habilitado "
 								+" from Empresa e where "+criterio+" order by habilitado,empresa";
-		
-		System.out.println(consulta);
-		
 		try{
 		TypedQuery<Object[]> query = manager.createQuery(consulta,Object[].class);
 			return query.getResultList();
@@ -246,10 +243,6 @@ public class EmpresaDAO {
 			return null;
 		}
 	}
-	
-	
-	
-	
 	
 		
 }

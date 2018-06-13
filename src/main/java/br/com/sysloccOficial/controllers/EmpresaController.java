@@ -245,8 +245,6 @@ public class EmpresaController {
 		if(tipo == 7){ fornecedores = " cliente != 0 and prospect != 0 and fornecedor != 0 "; }
 		
 		if(tipo == 4){ fornecedores = " fornecedor != 0 ";}
-
-		
 		
 		MV.addObject("empresas", empresaDAO.buscaListaClienteFornecedorProspect(fornecedores));
 

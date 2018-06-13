@@ -11,53 +11,53 @@
 </tr>
 
 <c:forEach items="${empresas}" var="empresas" varStatus="conta">
-							<tr >
-								<td><a href="infoempresa?id=${empresas[0]}">${empresas[1]}</a></td>
-									
-								<c:choose>	
-										<c:when test="${empresas[3] eq true and empresas[4] eq true and empresas[5] eq true}">
-											<td>Cliente/Fornecedor/Prospect</td>
-										</c:when>
-										
- 										 <c:when test="${empresas[3] eq true and empresas[4] eq true and empresas[5] eq false}">
-											<td>Cliente/Fornecedor</td>
-										</c:when>
-										
-										<c:when test="${empresas[3] eq true and empresas[4] eq false and empresas[5] eq true}">
-											<td>Cliente/Prospect</td>
-										</c:when>
-										
-										<c:when test="${empresas[3] eq true and empresas[4] eq false and empresas[5] eq false}">
-											<td>Cliente</td>
-										</c:when>
-										
-										
-										<c:when test="${empresas[3] eq false and empresas[4] eq true and empresas[5] eq true}">
-											<td>Fornecedor/Prospect</td>
-										</c:when>
+		<tr >
+			<td><a href="infoempresa?id=${empresas[0]}">${empresas[1]}</a></td>
+				
+			<c:choose>	
+					<c:when test="${empresas[2] eq true and empresas[3] eq true and empresas[4] eq true}">
+						<td>Cliente/Fornecedor/Prospect</td>
+					</c:when>
+					
+						 <c:when test="${empresas[2] eq true and empresas[3] eq true and empresas[4] eq false}">
+						<td>Cliente/Fornecedor</td>
+					</c:when>
+					
+					<c:when test="${empresas[2] eq true and empresas[3] eq false and empresas[4] eq true}">
+						<td>Cliente/Prospect</td>
+					</c:when>
+					
+					<c:when test="${empresas[2] eq true and empresas[3] eq false and empresas[4] eq false}">
+						<td>Cliente</td>
+					</c:when>
+					
+					
+					<c:when test="${empresas[2] eq false and empresas[3] eq true and empresas[4] eq true}">
+						<td>Fornecedor/Prospect</td>
+					</c:when>
 
-										<c:when test="${empresas[3] eq true and empresas[4] eq true and empresas[5] eq false}">
-											<td>Fornecedor/Cliente</td>
-										</c:when>
-										
-										<c:when test="${empresas[3] eq false and empresas[4] eq true and empresas[5] eq false}">
-											<td>Fornecedor</td>
-										</c:when>
+					<c:when test="${empresas[2] eq true and empresas[3] eq true and empresas[4] eq false}">
+						<td>Fornecedor/Cliente</td>
+					</c:when>
+					
+					<c:when test="${empresas[2] eq false and empresas[3] eq true and empresas[4] eq false}">
+						<td>Fornecedor</td>
+					</c:when>
 
 
-										<c:when test="${empresas[3] eq false and empresas[4] eq false and empresas[5] eq true}">
-											<td>Prospect</td>
-										</c:when>
-										
-								</c:choose>
-								
-								<c:if test="${empresas[6]}">
-									<td>Ativa</td>
-								</c:if>
+					<c:when test="${empresas[2] eq false and empresas[3] eq false and empresas[4] eq true}">
+						<td>Prospect</td>
+					</c:when>
+					
+			</c:choose>
+			
+			<c:if test="${empresas[5]}">
+				<td>Ativa</td>
+			</c:if>
 
-								<c:if test="${!empresas[6]}">
-									<td class="disab">Desativada</td>
-								</c:if>
+			<c:if test="${!empresas[5]}">
+				<td class="disab">Desativada</td>
+			</c:if>
 
-							</tr>
+		</tr>
 </c:forEach>
