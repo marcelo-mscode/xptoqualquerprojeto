@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -178,8 +179,14 @@ public class ProducaoListagemController {
 		
 		MV.addObject("lista", listaDAO.editaLista(idLista));
 		
-		
+		long tempoInicio = System.currentTimeMillis();
+		//Foco
 		MV.addObject("categoria", listaDAO.listadeCategorias(idLista));
+		
+		JOptionPane.showMessageDialog(null, ""+ Utilitaria.calculaTempoExecucaoSegundos(tempoInicio));
+		
+		
+		
 		MV.addObject("categoriasGalderma", listaDAO.listadeCategoriasGalderma());
 		
 		MV.addObject("categoriasBayer", listaDAO.listadeCategoriasBayer());
