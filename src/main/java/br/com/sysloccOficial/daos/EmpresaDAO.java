@@ -157,6 +157,35 @@ public class EmpresaDAO {
 		return lista.getResultList();
 		}
 	}
+
+	public List<Tuple> listaBuscaAjaxEmpresasPorNome(String nome){
+		
+		if(nome==""){  return null;	}else
+		{
+//			String consulta = "select c from Empresa c where empresa like '"+nome+"%' order by habilitado, cliente,empresa";
+			
+			CriteriaBuilder cb = manager.getCriteriaBuilder();
+			CriteriaQuery<Tuple> c = cb.createQuery(Tuple.class);
+			Root<Empresa> l = c.from(Empresa.class);
+			c.multiselect(
+					l.<String>get("idEmpresa").alias("empresa.idEmpresa"),
+					l.<String>get("empresa").alias("empresa.empresa"),
+					l.<String>get("cliente").alias("empresa.cliente"),
+					l.<String>get("fornecedor").alias("empresa.fornecedor"),
+					l.<String>get("prospect").alias("empresa.prospect"),
+					l.<String>get("habilitado").alias("empresa.habilitado")
+					);
+			
+			/*cb.like(l.<String>get("empresa"), nome+"%");*/
+			c.orderBy(cb.asc(l.<Boolean>get("habilitado")),cb.asc(l.<Boolean>get("cliente")),cb.asc(l.<Boolean>get("empresa")));
+			
+			TypedQuery<Tuple> query = manager.createQuery(c);
+			List<Tuple> resultado = query.getResultList();
+
+			return resultado;
+			
+		}
+	}
 	
 	public Empresa retornaEmpresa(int idEmpresa){
 		return manager.find(Empresa.class, idEmpresa);
@@ -173,9 +202,6 @@ public class EmpresaDAO {
 	
 	public List<Tuple> listaTodasEmpresas(Integer first, Integer max){
 		try {
-			
-			long tempoInicio = System.currentTimeMillis();
-			
 			CriteriaBuilder cb = manager.getCriteriaBuilder();
 			CriteriaQuery<Tuple> c = cb.createQuery(Tuple.class);
 			Root<Empresa> l = c.from(Empresa.class);
@@ -195,22 +221,9 @@ public class EmpresaDAO {
 			.setMaxResults(max)
 	        .setFirstResult(first)  
 	        .getResultList();
-			
-			long tempoTotal = (System.currentTimeMillis()-tempoInicio);
-			
-			long  segundos = ( tempoTotal / 1000 ) % 60;    
-			
-			
-			System.out.println("Tempo Total em segundos: "+segundos);
 
-			
 			return resultado;
-			
-	
-			
 		} catch (Exception e) {
-			System.out.println("Nada !");
- 			
 			return null;
 		}
 	}

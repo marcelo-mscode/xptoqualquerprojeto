@@ -70,7 +70,6 @@
 						<tbody id="clientesAjax">
 							<tr>
 								<th>Nome da empresa</th>
-								<!-- <th>CNPJ da empresa</th> -->
 								<th>Categoria</th>
 								<th>Status</th>
 							</tr>

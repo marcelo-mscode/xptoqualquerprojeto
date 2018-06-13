@@ -9,12 +9,6 @@
 	<!-- <th>CNPJ da empresa</th> -->
 	<th>Categoria</th>
 	<th>Status</th>
-	
-	<%-- <security:authorize access="hasRole('ROLE_ADMIN')"> 
-		<th style="text-align: center;">Excluir</th>
-		</security:authorize>
-	 --%>
-								
 </tr>
 
 <c:forEach items="${empresas}" var="empresas">

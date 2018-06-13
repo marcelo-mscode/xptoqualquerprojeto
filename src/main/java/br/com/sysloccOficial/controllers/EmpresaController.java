@@ -62,17 +62,7 @@ public class EmpresaController {
 	@RequestMapping("/listaempresa")
 	public ModelAndView lista(Integer first, Integer max){
 		ModelAndView mv = new ModelAndView("empresa/listaEmpresaNova");
-		
-		long tempoInicio = System.currentTimeMillis();
-	
-		
-//		mv.addObject("empresas", empresaDAO.mostra(first, max));
 		mv.addObject("empresas", empresaDAO.listaTodasEmpresas(first, max));
-		
-		long tempoTotal = (System.currentTimeMillis()-tempoInicio);
-		long  segundos = ( tempoTotal / 1000 ) % 60;    
-		
-		System.out.println("Tempo Total em segundos: "+segundos);
 		
 		mv.addObject("min", first);
 		mv.addObject("max", max);
@@ -80,7 +70,17 @@ public class EmpresaController {
 		return mv;
 	}
 	
-	
+	@RequestMapping("/busca")
+	public ModelAndView buscaAjax(String nome) throws IOException {
+		MV.setViewName("empresa/listaAjaxNova");
+		
+		if(nome == null || nome == "" || nome == " "){
+			MV.addObject("empresas", empresaDAO.listaTodasEmpresas(0,150));
+		}else{
+			MV.addObject("empresas", empresaDAO.listaBuscaAjaxEmpresasPorNome(nome));
+		}
+	    return MV;
+	}
 	
 	
 	@RequestMapping("/salvaEmpresa")
@@ -224,26 +224,6 @@ public class EmpresaController {
 		atuacaoDAO.salva(a);
 		return "redirect:infoempresa?id="+a.getIdEmpresaTag();
 		
-	}
-	
-	@RequestMapping("/busca")
-	public ModelAndView buscaAjax(String nome) throws IOException {
-		MV.setViewName("empresa/listaAjax");
-		
-		if(nome == null || nome == "" || nome == " "){
-			MV.addObject("empresas", empresaDAO.mostra(0,350));
-		}else{
-			long tempoInicio = System.currentTimeMillis();
-			
-			System.out.println("Comecei a busca em: "+tempoInicio);
-			
-			MV.addObject("empresas", empresaDAO.listaBuscaAjaxEmpresas(nome));
-			long tempoTotal = (System.currentTimeMillis()-tempoInicio);
-			long  segundos = ( tempoTotal / 1000 ) % 60;    
-			System.out.println("Tempo Total em segundos da busca: "+segundos);
-		}
-		
-	    return MV;
 	}
 	
 	@RequestMapping("/buscaClientes")
