@@ -14,11 +14,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.swing.JOptionPane;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.model.Contato;
 import br.com.sysloccOficial.model.Empresa;
 import br.com.sysloccOficial.model.EmpresaAtuacao;
@@ -72,10 +70,8 @@ public class EmpresaDAO {
 	
 	public Empresa infoempresa(Integer id) {
 		
-		long tempoInicio = System.currentTimeMillis();
-		
 		Empresa e = manager.find(Empresa.class, id);
-		JOptionPane.showMessageDialog(null, "Tempo de execução: "+ Utilitaria.calculaTempoExecucaoSegundos(tempoInicio)+" segundos.");
+	//	System.out.println("Nome da empresa: "+e.getEmpresa());
 		return e;
 	}
 	
