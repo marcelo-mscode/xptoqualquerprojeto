@@ -227,7 +227,7 @@ public class EmpresaController {
 	
 	@RequestMapping("/buscaClientes")
 	public ModelAndView buscaClientes(Integer tipo){
-		MV.setViewName("empresa/listaAjaxNova");
+		MV.setViewName("empresa/listaAjaxCriterios");
 		
 		String fornecedores = "";
 		
@@ -246,14 +246,9 @@ public class EmpresaController {
 		
 		if(tipo == 4){ fornecedores = " fornecedor != 0 ";}
 
-		String consulta = "from Empresa where "+fornecedores+" order by habilitado,empresa";
-
-		
-	//	mv.addObject("empresas", empresaDAO.listaTodasEmpresas(first, max));
 		
 		
-		
-		MV.addObject("empresas", empresaDAO.buscaListaClienteFornecedorProspect(consulta));
+		MV.addObject("empresas", empresaDAO.buscaListaClienteFornecedorProspect(fornecedores));
 
 		return MV;
 	}

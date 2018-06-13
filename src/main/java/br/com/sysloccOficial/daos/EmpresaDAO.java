@@ -226,40 +226,25 @@ public class EmpresaDAO {
 		}
 	}
 	
-	public List<Tuple> buscaListaClienteFornecedorProspect(String criterio){
-		String consulta = "from Empresa where "+criterio+" order by habilitado,empresa";
+	public List<Object[]> buscaListaClienteFornecedorProspect(String criterio){
+		String consulta = "SELECT e.idEmpresa,"
+								+ " e.empresa, "
+								+ " e.cliente,"
+								+" e.fornecedor,"
+								+" e.prospect,"
+								+" e.habilitado "
+								+" from Empresa e where "+criterio+" order by habilitado,empresa";
 		
-		try {
-			CriteriaBuilder cb = manager.getCriteriaBuilder();
-			CriteriaQuery<Tuple> c = cb.createQuery(Tuple.class);
-			Root<Empresa> l = c.from(Empresa.class);
-			c.multiselect(
-					l.<String>get("idEmpresa").alias("empresa.idEmpresa"),
-					l.<String>get("empresa").alias("empresa.empresa"),
-					l.<String>get("cliente").alias("empresa.cliente"),
-					l.<String>get("fornecedor").alias("empresa.fornecedor"),
-					l.<String>get("prospect").alias("empresa.prospect"),
-					l.<String>get("habilitado").alias("empresa.habilitado")
-					);
-			
-			
-			//cliente != 0
-			
-			Predicate perdicate = cb.equal(l.<Boolean>get("cliente"), false);
-			c.where(perdicate);
-			
-			c.orderBy(cb.asc(l.<Boolean>get("habilitado")),cb.asc(l.<Boolean>get("cliente")),cb.asc(l.<Boolean>get("empresa")));
-			
-			TypedQuery<Tuple> query = manager.createQuery(c);
-
+		System.out.println(consulta);
+		
+		try{
+		TypedQuery<Object[]> query = manager.createQuery(consulta,Object[].class);
 			return query.getResultList();
 		} catch (Exception e) {
+			System.out.println("Deu erro ao buscar Listas Cliente: "+e);
+			
 			return null;
 		}
-		
-		
-		
-		
 	}
 	
 	
