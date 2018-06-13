@@ -763,6 +763,11 @@ public Integer novoCodJob(){
 		return um.compareTo(dois);
 	}
 	
+	public static long calculaTempoExecucaoSegundos(long tempoInicio){
+		long segundos = ( tempoInicio / 1000 ) % 60;
+		return segundos;
+	}
+	
 	
 	
 }
