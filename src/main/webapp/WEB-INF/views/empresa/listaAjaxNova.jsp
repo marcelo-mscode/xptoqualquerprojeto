@@ -5,9 +5,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <tr>
-	<th>Nome da empresa vindo Ajax</th>
-	<th>Categoria vindo Ajax</th>
-	<th>Status vindo Ajax</th>
+	<th>Nome da empresa</th>
+	<th>Categoria</th>
+	<th>Status</th>
 </tr>
 
 <c:forEach items="${empresas}" var="empresas" varStatus="conta">

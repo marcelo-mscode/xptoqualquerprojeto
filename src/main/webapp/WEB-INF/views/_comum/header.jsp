@@ -91,7 +91,7 @@
               
               <!-- <li class="disab"><a href="listajob">Jobs</a></li>
               <li><a href="listaProducao">Listas de Produção</a></li> -->
-              <li><a href="listaempresa?first=0&max=100">Empresas</a></li>
+              <li><a href="listaempresa?first=0&max=51">Empresas</a></li>
               <!-- <li><a href="#" class="disab">Prospecção</a></li> -->
               <li class="divider"></li> 
               <li ><a href="<c:url value="/listaProdutos" />">Produtos</a></li>

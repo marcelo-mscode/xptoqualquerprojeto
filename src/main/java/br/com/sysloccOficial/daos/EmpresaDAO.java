@@ -12,6 +12,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
@@ -162,7 +163,6 @@ public class EmpresaDAO {
 		
 		if(nome==""){  return null;	}else
 		{
-//			String consulta = "select c from Empresa c where empresa like '"+nome+"%' order by habilitado, cliente,empresa";
 			
 			CriteriaBuilder cb = manager.getCriteriaBuilder();
 			CriteriaQuery<Tuple> c = cb.createQuery(Tuple.class);
@@ -176,14 +176,12 @@ public class EmpresaDAO {
 					l.<String>get("habilitado").alias("empresa.habilitado")
 					);
 			
-			/*cb.like(l.<String>get("empresa"), nome+"%");*/
+			Predicate perdicate = cb.like(l.<String>get("empresa"), nome+"%");
+			c.where(perdicate);
 			c.orderBy(cb.asc(l.<Boolean>get("habilitado")),cb.asc(l.<Boolean>get("cliente")),cb.asc(l.<Boolean>get("empresa")));
 			
 			TypedQuery<Tuple> query = manager.createQuery(c);
-			List<Tuple> resultado = query.getResultList();
-
-			return resultado;
-			
+			return query.getResultList();
 		}
 	}
 	
@@ -227,6 +225,44 @@ public class EmpresaDAO {
 			return null;
 		}
 	}
+	
+	public List<Tuple> buscaListaClienteFornecedorProspect(String criterio){
+		String consulta = "from Empresa where "+criterio+" order by habilitado,empresa";
+		
+		try {
+			CriteriaBuilder cb = manager.getCriteriaBuilder();
+			CriteriaQuery<Tuple> c = cb.createQuery(Tuple.class);
+			Root<Empresa> l = c.from(Empresa.class);
+			c.multiselect(
+					l.<String>get("idEmpresa").alias("empresa.idEmpresa"),
+					l.<String>get("empresa").alias("empresa.empresa"),
+					l.<String>get("cliente").alias("empresa.cliente"),
+					l.<String>get("fornecedor").alias("empresa.fornecedor"),
+					l.<String>get("prospect").alias("empresa.prospect"),
+					l.<String>get("habilitado").alias("empresa.habilitado")
+					);
+			
+			
+			//cliente != 0
+			
+			Predicate perdicate = cb.equal(l.<Boolean>get("cliente"), false);
+			c.where(perdicate);
+			
+			c.orderBy(cb.asc(l.<Boolean>get("habilitado")),cb.asc(l.<Boolean>get("cliente")),cb.asc(l.<Boolean>get("empresa")));
+			
+			TypedQuery<Tuple> query = manager.createQuery(c);
+
+			return query.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+		
+		
+		
+		
+	}
+	
+	
 	
 	
 	

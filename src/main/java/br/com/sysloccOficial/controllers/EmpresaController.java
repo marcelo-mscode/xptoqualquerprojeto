@@ -75,7 +75,7 @@ public class EmpresaController {
 		MV.setViewName("empresa/listaAjaxNova");
 		
 		if(nome == null || nome == "" || nome == " "){
-			MV.addObject("empresas", empresaDAO.listaTodasEmpresas(0,150));
+			MV.addObject("empresas", empresaDAO.listaTodasEmpresas(0,51));
 		}else{
 			MV.addObject("empresas", empresaDAO.listaBuscaAjaxEmpresasPorNome(nome));
 		}
@@ -84,7 +84,6 @@ public class EmpresaController {
 	
 	
 	@RequestMapping("/salvaEmpresa")
-	/*@CacheEvict(value="listaEmpresa", allEntries=true)*/
 	public String salva(Pagamento pagamento,Empresa e,Integer idEmpresaAtualiza,RedirectAttributes rd){
 	
 		Calendar c = Calendar.getInstance();
@@ -228,7 +227,7 @@ public class EmpresaController {
 	
 	@RequestMapping("/buscaClientes")
 	public ModelAndView buscaClientes(Integer tipo){
-		MV.setViewName("empresa/listaAjax");
+		MV.setViewName("empresa/listaAjaxNova");
 		
 		String fornecedores = "";
 		
@@ -245,14 +244,16 @@ public class EmpresaController {
 
 		if(tipo == 7){ fornecedores = " cliente != 0 and prospect != 0 and fornecedor != 0 "; }
 		
-		if(tipo == 4){ fornecedores = " fornecedor != 0 ";
-/*			String f = "from Empresa where fornecedor != 0 order by habilitado,empresa";
-			MV.addObject("empresas", sql.retornaLista(f));*/   
-		}
+		if(tipo == 4){ fornecedores = " fornecedor != 0 ";}
 
 		String consulta = "from Empresa where "+fornecedores+" order by habilitado,empresa";
 
-		MV.addObject("empresas", sql.retornaLista(consulta));
+		
+	//	mv.addObject("empresas", empresaDAO.listaTodasEmpresas(first, max));
+		
+		
+		
+		MV.addObject("empresas", empresaDAO.buscaListaClienteFornecedorProspect(consulta));
 
 		return MV;
 	}
