@@ -42,7 +42,7 @@ function emailErro(){
 	<div class="col-md-10">
 		<ol class="breadcrumb">
 			<li><a href="index.html">Home</a></li>
-			<li><a href="listaempresa?first=0&max=350">Lista de Empresas</a></li>
+			<li><a href="listaempresa?first=0&max=100">Lista de Empresas</a></li>
     		<li class="active">Edição de Empresa</li>
 		</ol>
 	</div>

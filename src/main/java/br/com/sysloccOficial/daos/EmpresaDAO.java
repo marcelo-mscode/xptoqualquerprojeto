@@ -171,7 +171,7 @@ public class EmpresaDAO {
 		return lista.getResultList();
 	}
 	
-	public List<Tuple> listaTodasEmpresas(){
+	public List<Tuple> listaTodasEmpresas(Integer first, Integer max){
 		try {
 			
 			long tempoInicio = System.currentTimeMillis();
@@ -188,31 +188,13 @@ public class EmpresaDAO {
 					l.<String>get("habilitado").alias("empresa.habilitado")
 					);
 			
-			/*select e from Empresa e order by habilitado, cliente,empresa*/
-			
-			c.orderBy(cb.asc(l.<Boolean>get("habilitado")),cb.asc(l.<Boolean>get("cliente")),cb.asc(l.<Boolean>get("empresa")))
-			
-			;
-			
-			
-			
+			c.orderBy(cb.asc(l.<Boolean>get("habilitado")),cb.asc(l.<Boolean>get("cliente")),cb.asc(l.<Boolean>get("empresa")));
 			
 			TypedQuery<Tuple> query = manager.createQuery(c);
 			List<Tuple> resultado = query
-			.setMaxResults(350)
-	        .setFirstResult(0)  
+			.setMaxResults(max)
+	        .setFirstResult(first)  
 	        .getResultList();
-			
-			
-			for (Tuple tuple : resultado) {
-				System.out.println("empresa :" + tuple.get("empresa.empresa"));
-/*				System.out.println("idEmpresa: " + tuple.get("empresa.idEmpresa"));
-				System.out.println("cliente :" + tuple.get("empresa.cliente"));
-				System.out.println("fornecedor :" + tuple.get("empresa.fornecedor"));
-				System.out.println("prospect :" + tuple.get("empresa.prospect"));
-				System.out.println("habilitado :" + tuple.get("empresa.habilitado"));
-*/			}
-			
 			
 			long tempoTotal = (System.currentTimeMillis()-tempoInicio);
 			
@@ -222,24 +204,9 @@ public class EmpresaDAO {
 			System.out.println("Tempo Total em segundos: "+segundos);
 
 			
-			
-		/*	TypedQuery<String> cons = manager.createQuery("SELECT empresa FROM Empresa", String.class);
-			List<String> lista = cons.getResultList();*/
-			
 			return resultado;
 			
-		/*	CriteriaBuilder cb = manager.getCriteriaBuilder();
-			CriteriaQuery<Empresa> e = cb.createQuery(Empresa.class);
-			Root<Empresa> d = e.from(Empresa.class);
-			
-			d.fetch("contato", JoinType.LEFT);
-			e.select(d).distinct(true);
-			
-			TypedQuery<Empresa> emp = manager.createQuery(e);
-			List<Empresa> empresas = emp.getResultList();
-			
-		
-			return empresas;*/
+	
 			
 		} catch (Exception e) {
 			System.out.println("Nada !");

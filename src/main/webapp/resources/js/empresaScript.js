@@ -24,7 +24,7 @@
 });*/
 
 function buscaClientesNova() {
-	var nome = $("#target").val();
+	var nome = $("#buscaEmpresaPorEmpresa").val();
 		  $.ajax({
 			url : "busca?nome=" + nome,
 			success : function(data) {
@@ -32,12 +32,12 @@ function buscaClientesNova() {
 			},
 			beforeSend : function() {
 				$('#loader-lista').fadeIn(500);
-				$("#target").prop("disabled",true);
+				$("#buscaEmpresaPorEmpresa").prop("disabled",true);
 			},
 			complete : function() {
 				$('#loader-lista').fadeOut(200);
 				$('#nextConsulta').fadeOut(200);
-				$("#target").prop("disabled",false);
+				$("#buscaEmpresaPorEmpresa").prop("disabled",false);
 			}
 		});
 }

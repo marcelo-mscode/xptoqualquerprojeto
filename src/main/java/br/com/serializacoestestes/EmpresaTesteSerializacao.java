@@ -25,7 +25,7 @@ public class EmpresaTesteSerializacao {
 	@RequestMapping("empresaSerializaTeste")
 	public String empresaSerializaTeste(){
 		
-		List<Tuple> pp = empresaDAO.listaTodasEmpresas();
+	//	List<Tuple> pp = empresaDAO.listaTodasEmpresas();
 		
 		 /* try{
 				

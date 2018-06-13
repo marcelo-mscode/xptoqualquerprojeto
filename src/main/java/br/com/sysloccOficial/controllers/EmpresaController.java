@@ -60,29 +60,22 @@ public class EmpresaController {
 	
 	
 	@RequestMapping("/listaempresa")
-	/*@Cacheable(value="listaEmpresa")*/
 	public ModelAndView lista(Integer first, Integer max){
-		ModelAndView mv = new ModelAndView("empresa/listaEmpresa");
+		ModelAndView mv = new ModelAndView("empresa/listaEmpresaNova");
 		
 		long tempoInicio = System.currentTimeMillis();
 	
 		
-		mv.addObject("empresas", empresaDAO.mostra(first, max));
+//		mv.addObject("empresas", empresaDAO.mostra(first, max));
+		mv.addObject("empresas", empresaDAO.listaTodasEmpresas(first, max));
 		
 		long tempoTotal = (System.currentTimeMillis()-tempoInicio);
-		
 		long  segundos = ( tempoTotal / 1000 ) % 60;    
-		
 		
 		System.out.println("Tempo Total em segundos: "+segundos);
 		
-		
 		mv.addObject("min", first);
 		mv.addObject("max", max);
-		
-		
-		//atualizaBancoEmpresa();
-		
 		
 		return mv;
 	}
