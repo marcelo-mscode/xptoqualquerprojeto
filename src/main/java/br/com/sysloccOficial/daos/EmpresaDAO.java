@@ -192,8 +192,10 @@ public class EmpresaDAO {
 	public List<Contato> listaEmpresasParaExcel(){
 //		String consulta = "from Empresa e join fetch e.contato c where e.empresa like 'bayer%' and e.habilitado <> 0";
 //		String consulta = "from Contato c join fetch c.empresa e where c.empresa.empresa like 'bayer%' or c.empresa.empresa like 'covestro%' and c.habilitado <> 0 order by e.empresa.empresa";
-		String consulta = "from Contato c join fetch c.empresa e where c.habilitado <> 0 and cliente <> 0 order by e.empresa.empresa";
+		String consulta = "from Contato c join fetch c.empresa e where c.habilitado <> 0 and cliente <> 0 and fornecedor <> 0 order by e.empresa.empresa";
 		TypedQuery<Contato> lista = manager.createQuery(consulta,Contato.class);
+		manager.close();
+		
 		return lista.getResultList();
 	}
 	
