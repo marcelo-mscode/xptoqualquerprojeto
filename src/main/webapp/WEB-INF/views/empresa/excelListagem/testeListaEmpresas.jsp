@@ -27,19 +27,19 @@
 	Gerar Relatório Excel</a>
 </div>
 
-<div style="width: 100%;border-bottom: 1px solid #ddd;padding: 12px 28px;" id="listagemEmpresasConsulta">
-
-		<table class="table table-striped table-bordered">
+<div style="width: 100%;border-bottom: 1px solid #ddd;padding: 12px 28px;">
+		
+		
+		<table class="table">
 		  <tbody>
 			<tr>
-				<th class="input-180px">Empresa</th>
-				<th class="input-180px">Telefone Principal</th>
-				<th>Contatos</th>
+				<th class="input-180px">Nome Empresa</th>
+				<th>Contato</th>
 			</tr>
-				<c:forEach items="${empresa}" var="empresa">
+			
+			<c:forEach items="${empresa}" var="empresa">
 				<tr>
 					<td style="border-right: 1px solid #ddd">${empresa[1]}</td>
-					<td style="border-right: 1px solid #ddd">${empresa[2]}</td>
 					<td style="padding: 0px !important">
 						<table class="table" style="background-color: #f8f8f8;margin: 0">
 							<tr>
@@ -67,15 +67,22 @@
 								</c:forEach>
 							</tr>
 						</table>
+					
 					</td>
+					
+					
 				</tr>
 			</c:forEach>
-		  </tbody>
+			
+			
+			</tbody>
 		</table>
+		
 </div>
-
-<div class="col-md-12 alpha60 div-confirmacao" id="geraExcel" style="position: fixed;"></div>		
-
-
-<c:import url="../../_comum/footer.jsp" />
-<script type="text/javascript" src="<c:url value="resources/js/empresaScript.js" />"></script>
+		
+			
+			
+			
+			
+			
+			

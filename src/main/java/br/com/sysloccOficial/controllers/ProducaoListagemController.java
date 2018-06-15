@@ -183,7 +183,7 @@ public class ProducaoListagemController {
 		//Foco
 		MV.addObject("categoria", listaDAO.listadeCategorias(idLista));
 		
-		JOptionPane.showMessageDialog(null, ""+ Utilitaria.calculaTempoExecucaoSegundos(tempoInicio));
+//		JOptionPane.showMessageDialog(null, ""+ Utilitaria.calculaTempoExecucaoSegundos(tempoInicio));
 		
 		
 		

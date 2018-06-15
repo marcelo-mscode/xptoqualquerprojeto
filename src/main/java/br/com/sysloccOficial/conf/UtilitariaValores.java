@@ -66,4 +66,11 @@ public class UtilitariaValores {
 			return retorno;
 		}
 
+		public static String limpaConsultaRetornoStatico(String limpa){
+			String retorno ="";
+			String g = limpa.replace("[", "");
+			retorno = g.replace("]", "");
+			return retorno;
+		}
+
 }

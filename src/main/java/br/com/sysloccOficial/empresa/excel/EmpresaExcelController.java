@@ -3,6 +3,8 @@ package br.com.sysloccOficial.empresa.excel;
 import java.io.IOException;
 import java.util.List;
 
+import javax.persistence.Tuple;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +26,13 @@ public class EmpresaExcelController {
 	public ModelAndView excelEmpresas(){
 		ModelAndView MV = new ModelAndView("empresa/excelListagem/excelListagem");
 	
-		List<Contato> listaEmpresas = empresaDAO.listaEmpresasParaExcel();
+		List<Object[]> listaEmpresas = empresaDAO.listaEmpresaTeste();
+		List<Object[]> listaContatos =  empresaDAO.listaContatos(listaEmpresas);
+		List<Object[]> listaComunicador =  empresaDAO.listaComunicador(listaContatos);
 		
-		MV.addObject("listaContatos",listaEmpresas);
+		MV.addObject("empresa", listaEmpresas);
+		MV.addObject("contato", listaContatos);
+		MV.addObject("comunicador", listaComunicador);
 		
 	return MV;
 	
@@ -44,6 +50,19 @@ public class EmpresaExcelController {
 		return MV;
 	}
 	
-	
+	@RequestMapping("testeListaEmpresa")
+	public ModelAndView testeListaEmpresa(){
+		
+		ModelAndView MV = new ModelAndView("empresa/excelListagem/testeListaEmpresas");
+		List<Object[]> listaEmpresas = empresaDAO.listaEmpresaTeste();
+		List<Object[]> listaContatos =  empresaDAO.listaContatos(listaEmpresas);
+		List<Object[]> listaComunicador =  empresaDAO.listaComunicador(listaContatos);
+		
+		MV.addObject("empresa", listaEmpresas);
+		MV.addObject("contato", listaContatos);
+		MV.addObject("comunicador", listaComunicador);
+		
+		return MV;
+	}
 	
 }
