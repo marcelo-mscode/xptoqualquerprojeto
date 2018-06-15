@@ -118,7 +118,7 @@ public class EmpresaDAO {
 
 	public List<Object[]> listaFornecedores(){
 		String consulta = "select e.idEmpresa,e.empresa from Empresa e where fornecedor <> 0 and habilitado != 0 order by empresa";
-		Query query = manager.createQuery(consulta);
+		TypedQuery<Object[]> query = manager.createQuery(consulta,Object[].class);
 		List<Object[]> lista = query.getResultList();
 		return lista;
 	}
@@ -132,16 +132,14 @@ public class EmpresaDAO {
 	
 	public List<Object[]> listaEmpresasClientes(){
 		String consulta = "select e.idEmpresa,e.empresa from Empresa e where habilitado != 0 and cliente != 0 order by empresa";
-		Query query = manager.createQuery(consulta);
-		List<Object[]> lista = query.getResultList();
-		return lista;
+		TypedQuery<Object[]> query = manager.createQuery(consulta, Object[].class);
+		return query.getResultList();
 	}
 	
 	public List<Object[]> listaContatoEmpresa(Integer idEmpresa){
 		String consulta = "select c.idContato,c.contato from Contato c where idEmpresa=:idEmpresa";
-		Query query = manager.createQuery(consulta).setParameter("idEmpresa", idEmpresa);
-		List<Object[]> lista = query.getResultList();
-		return lista;
+		TypedQuery<Object[]> query = manager.createQuery(consulta, Object[].class).setParameter("idEmpresa", idEmpresa);
+		return query.getResultList();
 	}
 	
 	
@@ -155,8 +153,7 @@ public class EmpresaDAO {
 		if(nome==""){  return null;	}else
 		{
 		String consulta = "select c from Empresa c where empresa like '"+nome+"%' order by habilitado, cliente,empresa";
-		
-		Query lista = manager.createQuery(consulta);
+		TypedQuery<Object[]> lista = manager.createQuery(consulta,Object[].class);
 		return lista.getResultList();
 		}
 	}

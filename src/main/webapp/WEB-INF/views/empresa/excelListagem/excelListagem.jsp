@@ -81,21 +81,14 @@
 		  </tbody>
 		</table>
 </div>
-
 <div style="width: 100%;border-bottom: 1px solid #ddd;padding: 12px 28px;display: none" id="listagemEmpresasCarregando">
-
 	<span>Carregando Listas ... </span>
 	<img class="col-md-offset-5" src="resources/images/loader-lista.gif" width="30" height="30" alt="loading" id="loader-lista" style="margin-right: -2px;display: block;position: fixed;
     margin-top: -25px;">
 	
 </div>
 
-
-
-
-
 <div class="col-md-12 alpha60 div-confirmacao" id="geraExcel" style="position: fixed;"></div>		
-
 
 <c:import url="../../_comum/footer.jsp" />
 <script type="text/javascript" src="<c:url value="resources/js/empresaScript.js" />"></script>

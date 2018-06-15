@@ -27,7 +27,7 @@ public class EmpresaExcelController {
 	public ModelAndView excelEmpresas(){
 		ModelAndView MV = new ModelAndView("empresa/excelListagem/excelListagem");
 	
-		List<Object[]> listaEmpresas = empresaDAO.listaEmpresaTeste("clientes != 0");
+		List<Object[]> listaEmpresas = empresaDAO.listaEmpresaTeste("cliente != 0");
 		List<Object[]> listaContatos =  empresaDAO.listaContatos(listaEmpresas);
 		List<Object[]> listaComunicador =  empresaDAO.listaComunicador(listaContatos);
 		
