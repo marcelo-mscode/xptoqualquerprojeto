@@ -104,8 +104,8 @@ public String GeraListagemNova(Integer tipoDeListagem) throws IOException{
 	
 		String tipoConsulta = MontaQueryCliente.montaQueryCliente(tipoDeListagem);
 		
-		List<Object[]> listagem = empresaDAO.listaEmpresaTeste(tipoConsulta);
-		List<Object[]> listaContatos =  empresaDAO.listaContatos(listagem);
+		List<Object[]> listagemEmpresas = empresaDAO.listaEmpresaTeste(tipoConsulta);
+		List<Object[]> listaContatos =  empresaDAO.listaContatos(listagemEmpresas);
 		List<Object[]> listaComunicador =  empresaDAO.listaComunicador(listaContatos);
 		
 		
@@ -146,50 +146,63 @@ public String GeraListagemNova(Integer tipoDeListagem) throws IOException{
 			
 			int numLinha = 2;
 			
-			for (int i = 0; i < listagem.size(); i++) {
+			for (int i = 0; i < listagemEmpresas.size(); i++) {
 				
-					XSSFRow linhaNova;
-					linhaNova = spreadSheet.createRow(numLinha);
-					Cell empresaNova = linhaNova.createCell(0);
-					Cell NomeContatoNova = linhaNova.createCell(1);
+					XSSFRow linhaNova; linhaNova = spreadSheet.createRow(numLinha);	Cell empresaNova = linhaNova.createCell(0);Cell NomeContatoNova = linhaNova.createCell(1);
 					
 					//Nome da Empresa
-					String nomeEmpresa = (String) listagem.get(i)[1];
-					empresaNova.setCellValue(nomeEmpresa);
-					//Nome Contato
+					String nomeEmpresa = (String) listagemEmpresas.get(i)[1];empresaNova.setCellValue(nomeEmpresa);
 					
+					//Nome Contato
 					for (int j = 0; j < listaContatos.size(); j++) {
 						
-						int idEmpresa = (int)listagem.get(i)[0];
-						int idContato = (int)listaContatos.get(i)[2];
-						
+						int idEmpresa = (int)listagemEmpresas.get(i)[0];
+						int idContato = (int)listaContatos.get(j)[2];
+					
 						if(idEmpresa == idContato){
-							System.out.println(idEmpresa);
-							System.out.println(idContato);
-//							NomeContatoNova.setCellValue((String)listaContatos.get(i)[1]);
+							String nomeContato = (String) listaContatos.get(j)[1];
+							NomeContatoNova.setCellValue(nomeContato);
+
+							
+							for (int k = 0; k < listaComunicador.size(); k++) {
+									
+								int idComunicador = (int)listaComunicador.get(i)[1];
+
+								int celula = 2;	
+								if(idContato == idComunicador){
+									Cell comunicador = linhaNova.createCell(celula);
+									String comunic = (String)listaComunicador.get(k)[0];
+									comunicador.setCellValue(comunic);
+									celula++;
+								}
+							}
 						}
 					}
-					 
-					
-					/*String[] tipo = new String[listaEmpresas.get(i).getComunicador().size()];
 					
 					
+					
+				/*	
+					String[] tipo = new String[listaEmpresas.get(i).getComunicador().size()];
 					
 					
 					for (int j = 0; j < listaEmpresas.get(i).getComunicador().size(); j++) {
 						tipo[j] = listaEmpresas.get(i).getComunicador().get(j).getComunicador();
 					}
-*/					
-/*					int celula = 2;	
+				
+					int celula = 2;	
 					
 					for (int j = 0; j < tipo.length; j++) {
 						Cell comunicador = linhaNova.createCell(celula);
 						comunicador.setCellValue(tipo[j]);
 						celula++;
-					}
-*/					numLinha++;
-				
-				
+					}*/
+
+					
+					
+					
+					
+					
+					numLinha++;
 			}
 			workbook.write(out);
 			out.close();
