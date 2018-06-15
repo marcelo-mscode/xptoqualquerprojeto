@@ -253,6 +253,7 @@ public class EmpresaDAO {
 			TypedQuery<Object[]> query = manager.createQuery(consulta, Object[].class);
 			return query.getResultList();
 		} catch (Exception e) {
+			System.out.println("Erro ao carregar Empresas: "+e);
 			return null;
 		}
 	}
@@ -268,7 +269,7 @@ public class EmpresaDAO {
 			TypedQuery<Object[]> query = manager.createQuery(consultaLimpa, Object[].class);
 			return query.getResultList();
 		} catch (Exception e) {
-			System.out.println("Erro: "+e);
+			System.out.println("Erro carregar Contatos: "+e);
 			return null;
 		}
 	}
@@ -285,7 +286,7 @@ public class EmpresaDAO {
 		
 			return query.getResultList();
 		} catch (Exception e) {
-			System.out.println("Erro: "+e);
+			System.out.println("Erro ao carregar Comunicadores: "+e);
 			return null;
 		}
 	}

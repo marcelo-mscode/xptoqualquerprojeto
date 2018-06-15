@@ -114,10 +114,24 @@ function buscaListagemEmpresasConsultas(){
 	var n = todos();
 		
 	if(n == 0){
-		urlAux("excelEmpresas", $('#nextConsulta').fadeIn(500));
+		
+		location.reload();
+		
 	}else{
-		var c = "buscaListagemEmpresasConsultas?tipo="+n;
-		urlAux(c ,$('#nextConsulta').fadeOut(500));
+		
+		$.ajax({
+			url : "buscaListagemEmpresasConsultas?tipo="+n,
+			success : function(data) {
+			$("#listagemEmpresasConsulta").fadeIn(800).html(data);
+			},
+			beforeSend : function() {
+				$('#listagemEmpresasConsulta').fadeOut(100);
+				$('#listagemEmpresasCarregando').fadeIn(500);
+			},
+			complete : function() {
+				$('#listagemEmpresasCarregando').fadeOut(500);
+			}
+		});
 	}
 }
 

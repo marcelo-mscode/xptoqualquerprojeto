@@ -42,7 +42,7 @@ public class EmpresaExcelController {
 	@RequestMapping("buscaListagemEmpresasConsultas")
 	public ModelAndView buscaListagemEmpresasConsultas(Integer tipo){
 		
-		ModelAndView MV = new ModelAndView("empresa/excelListagem/excelListagem");
+		ModelAndView MV = new ModelAndView("empresa/excelListagem/excelListagemAjax");
 		
 		String tipoConsulta = MontaQueryCliente.montaQueryCliente(tipo);
 		
@@ -55,7 +55,7 @@ public class EmpresaExcelController {
 		MV.addObject("comunicador", listaComunicador);
 		
 		
-		return null;
+		return MV;
 	}
 	
 	
