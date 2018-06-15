@@ -23,6 +23,7 @@ import br.com.sysloccOficial.daos.AtuacaoDAO;
 import br.com.sysloccOficial.daos.ContatoDAO;
 import br.com.sysloccOficial.daos.EmpresaDAO;
 import br.com.sysloccOficial.daos.PagamentoDAO;
+import br.com.sysloccOficial.empresas.services.MontaQueryCliente;
 import br.com.sysloccOficial.model.Atuacao;
 import br.com.sysloccOficial.model.Contato;
 import br.com.sysloccOficial.model.Empresa;
@@ -228,29 +229,10 @@ public class EmpresaController {
 	@RequestMapping("/buscaClientes")
 	public ModelAndView buscaClientes(Integer tipo){
 		MV.setViewName("empresa/listaAjaxCriterios");
-		
-		String fornecedores = "";
-		
-		if(tipo == 1){ fornecedores = " cliente != 0 ";	}
-		
-		if(tipo == 2){ fornecedores = " prospect != 0 "; }
-
-		if(tipo == 3){ fornecedores = " cliente != 0 and prospect != 0 "; }
-
-
-		if(tipo == 5){ fornecedores = " fornecedor != 0 and cliente != 0 "; }
-
-		if(tipo == 6){ fornecedores = " fornecedor != 0 and prospect != 0 "; }
-
-		if(tipo == 7){ fornecedores = " cliente != 0 and prospect != 0 and fornecedor != 0 "; }
-		
-		if(tipo == 4){ fornecedores = " fornecedor != 0 ";}
-		
-		MV.addObject("empresas", empresaDAO.buscaListaClienteFornecedorProspect(fornecedores));
-
+		MV.addObject("empresas", empresaDAO.buscaListaClienteFornecedorProspect(MontaQueryCliente.montaQueryCliente(tipo)));
 		return MV;
 	}
-
+	
 	@RequestMapping("/fornecedor")
 	public ModelAndView fornecedor(){
 		ModelAndView mm = new ModelAndView();

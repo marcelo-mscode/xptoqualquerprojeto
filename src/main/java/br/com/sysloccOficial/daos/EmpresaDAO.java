@@ -247,9 +247,9 @@ public class EmpresaDAO {
 	}
 	
 	
-	public List<Object[]> listaEmpresaTeste(){
+	public List<Object[]> listaEmpresaTeste(String parteConsulta){
 		try {
-			String consulta = "SELECT idEmpresa, empresa, telefone FROM Empresa where habilitado <> 0 and cliente <> 0 order by empresa";
+			String consulta = "SELECT idEmpresa, empresa, telefone FROM Empresa where habilitado <> 0 and "+parteConsulta+" order by empresa";
 			TypedQuery<Object[]> query = manager.createQuery(consulta, Object[].class);
 			return query.getResultList();
 		} catch (Exception e) {
@@ -258,70 +258,37 @@ public class EmpresaDAO {
 	}
 	
 	public List<Object[]> listaContatos(List<Object[]> listaEmpresa){
-		
 		try {
-			 
 			List<Integer> idEmpresas = new ArrayList<Integer>();
-			
 			for (int i = 0; i < listaEmpresa.size(); i++) {
 				idEmpresas.add((Integer) listaEmpresa.get(i)[0]);
 			}		
 			String consulta = "SELECT idContato, contato, empresa.idEmpresa from Contato c where idEmpresa IN ("+idEmpresas+")";
-			
 			String consultaLimpa = UtilitariaValores.limpaConsultaRetornoStatico(consulta);
-			
 			TypedQuery<Object[]> query = manager.createQuery(consultaLimpa, Object[].class);
-			
-			List<Object[]> resultado = query.getResultList();
-			
-			
-			return resultado;
+			return query.getResultList();
 		} catch (Exception e) {
-			
 			System.out.println("Erro: "+e);
 			return null;
 		}
 	}
-	
 
 	public List<Object[]> listaComunicador(List<Object[]> listaContatos){
-		
 		try {
-			
 			List<Integer> idContatos = new ArrayList<Integer>();
-			
 			for (int i = 0; i < listaContatos.size(); i++) {
 				idContatos.add((Integer) listaContatos.get(i)[0]);
 			}		
 			String consulta = "SELECT comunicador, contato.idContato from Comunicador c where contato IN ("+idContatos+")";
-			
 			String consultaLimpa = UtilitariaValores.limpaConsultaRetornoStatico(consulta);
-			
 			TypedQuery<Object[]> query = manager.createQuery(consultaLimpa, Object[].class);
-			
-			List<Object[]> resultado = query.getResultList();
-			
-			
-			for (int i = 0; i < resultado.size(); i++) {
-				System.out.println(resultado.get(i)[0]);
-			}
-			return resultado;
+		
+			return query.getResultList();
 		} catch (Exception e) {
-			
 			System.out.println("Erro: "+e);
 			return null;
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 		

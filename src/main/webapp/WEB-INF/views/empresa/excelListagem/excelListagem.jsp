@@ -27,6 +27,14 @@
 	Gerar Relatório Excel</a>
 </div>
 
+<div class="row" style="margin-top: 0px;background-color: #fff;border-bottom: 1px solid #ddd">
+	<div style="padding: 5px 9px 5px 32px;">
+		<input value="1" name="mcheckbox[]" type="checkbox" id="clienteBox" onclick="buscaListagemEmpresasConsultas();" >&nbsp&nbspCliente
+		<input value="2" name="mcheckbox[]" type="checkbox" style="margin-left: 25px;" id="prospectBox" onclick="buscaListagemEmpresasConsultas();" >&nbsp&nbspProspect
+		<input value="4" name="mcheckbox[]" type="checkbox" style="margin-left: 25px;" id="fornecedorBox" onclick="buscaListagemEmpresasConsultas();" >&nbsp&nbsp&nbsp&nbspFornecedor
+	</div>	
+</div>
+
 <div style="width: 100%;border-bottom: 1px solid #ddd;padding: 12px 28px;" id="listagemEmpresasConsulta">
 
 		<table class="table table-striped table-bordered">

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.daos.EmpresaDAO;
+import br.com.sysloccOficial.empresas.services.MontaQueryCliente;
 import br.com.sysloccOficial.model.Contato;
 
 
@@ -26,7 +27,7 @@ public class EmpresaExcelController {
 	public ModelAndView excelEmpresas(){
 		ModelAndView MV = new ModelAndView("empresa/excelListagem/excelListagem");
 	
-		List<Object[]> listaEmpresas = empresaDAO.listaEmpresaTeste();
+		List<Object[]> listaEmpresas = empresaDAO.listaEmpresaTeste("clientes != 0");
 		List<Object[]> listaContatos =  empresaDAO.listaContatos(listaEmpresas);
 		List<Object[]> listaComunicador =  empresaDAO.listaComunicador(listaContatos);
 		
@@ -37,6 +38,26 @@ public class EmpresaExcelController {
 	return MV;
 	
 	}
+	
+	@RequestMapping("buscaListagemEmpresasConsultas")
+	public ModelAndView buscaListagemEmpresasConsultas(Integer tipo){
+		
+		ModelAndView MV = new ModelAndView("empresa/excelListagem/excelListagem");
+		
+		String tipoConsulta = MontaQueryCliente.montaQueryCliente(tipo);
+		
+		List<Object[]> listaEmpresas = empresaDAO.listaEmpresaTeste(tipoConsulta);
+		List<Object[]> listaContatos =  empresaDAO.listaContatos(listaEmpresas);
+		List<Object[]> listaComunicador =  empresaDAO.listaComunicador(listaContatos);
+		
+		MV.addObject("empresa", listaEmpresas);
+		MV.addObject("contato", listaContatos);
+		MV.addObject("comunicador", listaComunicador);
+		
+		
+		return null;
+	}
+	
 	
 
 	@RequestMapping("geraExcelEmpresas")
@@ -50,19 +71,20 @@ public class EmpresaExcelController {
 		return MV;
 	}
 	
+	
+	
+	
 	@RequestMapping("testeListaEmpresa")
-	public ModelAndView testeListaEmpresa(){
+	public void testeListaEmpresa(){
 		
-		ModelAndView MV = new ModelAndView("empresa/excelListagem/testeListaEmpresas");
+		/*ModelAndView MV = new ModelAndView("empresa/excelListagem/testeListaEmpresas");
 		List<Object[]> listaEmpresas = empresaDAO.listaEmpresaTeste();
 		List<Object[]> listaContatos =  empresaDAO.listaContatos(listaEmpresas);
 		List<Object[]> listaComunicador =  empresaDAO.listaComunicador(listaContatos);
 		
 		MV.addObject("empresa", listaEmpresas);
 		MV.addObject("contato", listaContatos);
-		MV.addObject("comunicador", listaComunicador);
-		
-		return MV;
+		MV.addObject("comunicador", listaComunicador);*/
 	}
 	
 }
