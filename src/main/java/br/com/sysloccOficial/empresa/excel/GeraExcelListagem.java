@@ -154,32 +154,47 @@ public String GeraListagemNova(Integer tipoDeListagem) throws IOException{
 					String nomeEmpresa = (String) listagemEmpresas.get(i)[1];empresaNova.setCellValue(nomeEmpresa);
 					
 					//Nome Contato
+					int tamanhoComunicador = 0;
 					for (int j = 0; j < listaContatos.size(); j++) {
 						
 						int idEmpresa = (int)listagemEmpresas.get(i)[0];
-						int idContato = (int)listaContatos.get(j)[2];
+						int idEmpresaEmContato = (int)listaContatos.get(j)[2];
+						int idContato = (int)listaContatos.get(j)[0];
 					
-						if(idEmpresa == idContato){
+						if(idEmpresa == idEmpresaEmContato){
 							String nomeContato = (String) listaContatos.get(j)[1];
 							NomeContatoNova.setCellValue(nomeContato);
-
+						}
+						
+						int celula = 2;
+						
+						for (int l = 0; l < listaComunicador.size(); l++) {
 							
-							for (int k = 0; k < listaComunicador.size(); k++) {
-									
-								int idComunicador = (int)listaComunicador.get(i)[1];
-
-								int celula = 2;	
-								if(idContato == idComunicador){
-									Cell comunicador = linhaNova.createCell(celula);
-									String comunic = (String)listaComunicador.get(k)[0];
-									comunicador.setCellValue(comunic);
-									celula++;
-								}
+							int idContatoEmComunicador = (int)listaComunicador.get(l)[1];
+						
+							if(idContato == idContatoEmComunicador){
+								Cell comunicador = linhaNova.createCell(celula);
+								String comunic = (String)listaComunicador.get(l)[0];
+								comunicador.setCellValue(comunic);
+								celula++;
 							}
 						}
 					}
 					
+/*					int celula = 2;	
 					
+					for (int k = 0; k < listaComunicador.size(); k++) {
+						
+						int idComunicador = (int)listaComunicador.get(i)[1];
+						
+						if(idContato == idComunicador){
+							Cell comunicador = linhaNova.createCell(celula);
+							String comunic = (String)listaComunicador.get(k)[0];
+							comunicador.setCellValue(comunic);
+							celula++;
+						}
+					}
+*/					
 					
 				/*	
 					String[] tipo = new String[listaEmpresas.get(i).getComunicador().size()];
