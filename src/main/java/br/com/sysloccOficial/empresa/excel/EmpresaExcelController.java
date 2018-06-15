@@ -61,10 +61,11 @@ public class EmpresaExcelController {
 	
 
 	@RequestMapping("geraExcelEmpresas")
-	public ModelAndView geraExcelEmpresas() throws IOException{
+	public ModelAndView geraExcelEmpresas(Integer tipo) throws IOException{
 		ModelAndView MV = new ModelAndView("empresa/excelListagem/geraExcelEmpresas");
 		
-		String downloadExcel = geraExcel.GeraListagem();
+//		String downloadExcel = geraExcel.GeraListagem();
+		String downloadExcel = geraExcel.GeraListagemNova(4);
 		
 		MV.addObject("nomeArquivo", downloadExcel);
 		

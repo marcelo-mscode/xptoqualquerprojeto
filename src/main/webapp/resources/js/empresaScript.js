@@ -135,5 +135,29 @@ function buscaListagemEmpresasConsultas(){
 	}
 }
 
+function exportaExcelEmpresas() {
+	$("#planilhaExcelEmpresas")
+	.text("Gerando Listagem ...")
+	.css("pointer-events", "none")
+	.prepend(
+	"<img src='resources/images/ajax-loader-fff.gif' width='20' height='20' alt='loading' id='loader-confirmacao' style='margin-right: 2px;'>");
+	$.ajax({
+		url : "geraExcelEmpresas",
+		success : function(data) {
+			
+			$("#geraExcel").fadeIn(300).html(data);
+		}
+	});
+}
+
+
+
+
+
+
+
+
+
+
 
 

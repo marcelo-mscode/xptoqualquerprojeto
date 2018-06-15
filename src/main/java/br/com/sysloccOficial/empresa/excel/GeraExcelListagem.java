@@ -98,8 +98,10 @@ public class GeraExcelListagem {
 	
 public String GeraListagemNova(Integer tipoDeListagem) throws IOException{
 		
-		List<Contato> listaEmpresas = empresaDAO.listaEmpresasParaExcel();
+		//List<Contato> listaEmpresas = empresaDAO.listaEmpresasParaExcel();
 		
+		
+	
 		String tipoConsulta = MontaQueryCliente.montaQueryCliente(tipoDeListagem);
 		
 		List<Object[]> listagem = empresaDAO.listaEmpresaTeste(tipoConsulta);
@@ -152,19 +154,24 @@ public String GeraListagemNova(Integer tipoDeListagem) throws IOException{
 					Cell NomeContatoNova = linhaNova.createCell(1);
 					
 					//Nome da Empresa
-					String nomeEmpresa = (String) listagem.get(i)[0];
+					String nomeEmpresa = (String) listagem.get(i)[1];
 					empresaNova.setCellValue(nomeEmpresa);
 					//Nome Contato
 					
 					for (int j = 0; j < listaContatos.size(); j++) {
-						if(listagem.get(i)[0] == listaContatos.get(i)[0]){
-							NomeContatoNova.setCellValue(listaEmpresas.get(i).getContato());
-						}
 						
+						int idEmpresa = (int)listagem.get(i)[0];
+						int idContato = (int)listaContatos.get(i)[2];
+						
+						if(idEmpresa == idContato){
+							System.out.println(idEmpresa);
+							System.out.println(idContato);
+//							NomeContatoNova.setCellValue((String)listaContatos.get(i)[1]);
+						}
 					}
 					 
 					
-					String[] tipo = new String[listaEmpresas.get(i).getComunicador().size()];
+					/*String[] tipo = new String[listaEmpresas.get(i).getComunicador().size()];
 					
 					
 					
@@ -172,15 +179,15 @@ public String GeraListagemNova(Integer tipoDeListagem) throws IOException{
 					for (int j = 0; j < listaEmpresas.get(i).getComunicador().size(); j++) {
 						tipo[j] = listaEmpresas.get(i).getComunicador().get(j).getComunicador();
 					}
-					
-					int celula = 2;	
+*/					
+/*					int celula = 2;	
 					
 					for (int j = 0; j < tipo.length; j++) {
 						Cell comunicador = linhaNova.createCell(celula);
 						comunicador.setCellValue(tipo[j]);
 						celula++;
 					}
-					numLinha++;
+*/					numLinha++;
 				
 				
 			}

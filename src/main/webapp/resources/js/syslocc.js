@@ -1513,7 +1513,7 @@ function exportaExcelGalderma(idLista) {
 
 // ------------------ //
 // Gera planilha Excel ListaEmpresas
-function exportaExcelEmpresas() {
+/*function exportaExcelEmpresas() {
 	$("#planilhaExcelEmpresas")
 	.text("Gerando Listagem ...")
 	.css("pointer-events", "none")
@@ -1526,30 +1526,13 @@ function exportaExcelEmpresas() {
 			$("#geraExcel").fadeIn(300).html(data);
 		}
 	});
-}
+}*/
 
 //------------------ //
 
 function excluiCategoria(idGrupo,idLista) {
-
 	$("#excliuGrupoItem").attr('href','excluiCategoria?idGrupo='+idGrupo+'&idLista='+idLista);
-	
-	
 	$("#excluiGrupo").fadeIn(300).html(data);
-	
-	
-	/*$("#planilhaGerarExcel")
-			.text("Gerando Planilha ...")
-			.css("pointer-events", "none")
-			.prepend(
-					"<img src='resources/images/ajax-loader-fff.gif' width='20' height='20' alt='loading' id='loader-confirmacao' style='margin-right: 2px;'>");
-	$.ajax({
-		url : "exportaExcel?idLista=" + idLista,
-		success : function(data) {
-
-			$("#geraExcel").fadeIn(300).html(data);
-		}
-	});*/
 }
 
 
