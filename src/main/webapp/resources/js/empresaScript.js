@@ -123,10 +123,16 @@ function buscaListagemEmpresasConsultas(){
 			url : "buscaListagemEmpresasConsultas?tipo="+n,
 			success : function(data) {
 			$("#listagemEmpresasConsulta").fadeIn(800).html(data);
+			$("#listagemDemorada").fadeOut(300);
 			},
 			beforeSend : function() {
 				$('#listagemEmpresasConsulta').fadeOut(100);
 				$('#listagemEmpresasCarregando').fadeIn(500);
+
+				if(n == 4){
+					$("#listagemDemorada").fadeIn(300);
+				}
+				
 			},
 			complete : function() {
 				$('#listagemEmpresasCarregando').fadeOut(500);

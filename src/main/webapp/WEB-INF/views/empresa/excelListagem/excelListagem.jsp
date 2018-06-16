@@ -26,7 +26,7 @@
 	<img alt="" src="resources/images/excel.png" width="18" height="18" style="margin-right: 5px">
 	Gerar Relatório Excel</a>
 	
-	<span style="color: red;margin-left: 10px;font-size: 13px;display: none" id="listagemDemorada"  >ESSA LISTAGEM PODE DEMORAR ALGUNS MINUTOS...</span>
+	<span style="color: red;margin-left: 10px;font-size: 13px;display: none" id="listagemDemorada"  > ESSA LISTAGEM PODE DEMORAR ALGUNS MINUTOS...</span>
 	
 </div>
 
