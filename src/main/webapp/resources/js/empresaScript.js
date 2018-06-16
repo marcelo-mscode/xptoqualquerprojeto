@@ -136,18 +136,35 @@ function buscaListagemEmpresasConsultas(){
 }
 
 function exportaExcelEmpresas() {
-	$("#planilhaExcelEmpresas")
-	.text("Gerando Listagem ...")
-	.css("pointer-events", "none")
-	.prepend(
-	"<img src='resources/images/ajax-loader-fff.gif' width='20' height='20' alt='loading' id='loader-confirmacao' style='margin-right: 2px;'>");
-	$.ajax({
-		url : "geraExcelEmpresas",
-		success : function(data) {
-			
-			$("#geraExcel").fadeIn(300).html(data);
+	
+	var n = todos();
+	
+	if(n == 0){
+		
+		location.reload();
+		
+	}else{
+
+		$("#planilhaExcelEmpresas")
+		.text("Gerando Listagem ...")
+		.css("pointer-events", "none")
+		.prepend(
+		"<img src='resources/images/ajax-loader-fff.gif' width='20' height='20' alt='loading' id='loader-confirmacao' style='margin-right: 2px;'>");
+		
+		if(n == 4){
+			$("#listagemDemorada").fadeIn(300);
 		}
-	});
+		
+		
+		$.ajax({
+			url : "geraExcelEmpresas?tipo="+n,
+			success : function(data) {
+				
+				$("#geraExcel").fadeIn(300).html(data);
+				$("#listagemDemorada").fadeOut(300);
+			}
+		});
+	}
 }
 
 

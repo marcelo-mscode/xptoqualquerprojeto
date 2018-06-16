@@ -65,7 +65,7 @@ public class EmpresaExcelController {
 		ModelAndView MV = new ModelAndView("empresa/excelListagem/geraExcelEmpresas");
 		
 //		String downloadExcel = geraExcel.GeraListagem();
-		String downloadExcel = geraExcel.GeraListagemNova(5);
+		String downloadExcel = geraExcel.GeraListagemNova(tipo);
 		
 		MV.addObject("nomeArquivo", downloadExcel);
 		

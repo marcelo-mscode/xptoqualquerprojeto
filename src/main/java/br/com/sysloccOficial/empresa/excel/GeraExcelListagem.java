@@ -147,6 +147,8 @@ public String GeraListagemNova(Integer tipoDeListagem) throws IOException{
 			int numLinha = 2;
 			
 			for (int i = 0; i < listagemEmpresas.size(); i++) {
+				    
+					int idEmpresa = (int)listagemEmpresas.get(i)[0];
 				
 					XSSFRow linhaNova; linhaNova = spreadSheet.createRow(numLinha);	Cell empresaNova = linhaNova.createCell(0);Cell NomeContatoNova = linhaNova.createCell(1);
 					
@@ -157,7 +159,6 @@ public String GeraListagemNova(Integer tipoDeListagem) throws IOException{
 					int tamanhoComunicador = 0;
 					for (int j = 0; j < listaContatos.size(); j++) {
 						
-						int idEmpresa = (int)listagemEmpresas.get(i)[0];
 						int idEmpresaEmContato = (int)listaContatos.get(j)[2];
 						int idContato = (int)listaContatos.get(j)[0];
 					
@@ -172,7 +173,7 @@ public String GeraListagemNova(Integer tipoDeListagem) throws IOException{
 							
 							int idContatoEmComunicador = (int)listaComunicador.get(l)[1];
 						
-							if(idContato == idContatoEmComunicador){
+							if(idContato == idContatoEmComunicador && idEmpresaEmContato == idEmpresa){
 								Cell comunicador = linhaNova.createCell(celula);
 								String comunic = (String)listaComunicador.get(l)[0];
 								comunicador.setCellValue(comunic);

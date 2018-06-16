@@ -14,7 +14,7 @@
 		<ol class="breadcrumb">
 			<li><a href="index.html">Home</a></li>
 			<li><a href="listaempresa?first=0&amp;max=350">Empresas</a></li>
-			<li class="active">Lista de Empresas</li>
+			<li class="active">Relatório de Empresa</li>
 		</ol>
 	</div>
 </div>
@@ -25,6 +25,9 @@
 	<a onclick="exportaExcelEmpresas();" style="margin-left: 520px;" class="btn btn-default" id="planilhaExcelEmpresas">
 	<img alt="" src="resources/images/excel.png" width="18" height="18" style="margin-right: 5px">
 	Gerar Relatório Excel</a>
+	
+	<span style="color: red;margin-left: 10px;font-size: 13px;display: none" id="listagemDemorada"  >ESSA LISTAGEM PODE DEMORAR ALGUNS MINUTOS...</span>
+	
 </div>
 
 <div class="row" style="margin-top: 0px;background-color: #fff;border-bottom: 1px solid #ddd">
