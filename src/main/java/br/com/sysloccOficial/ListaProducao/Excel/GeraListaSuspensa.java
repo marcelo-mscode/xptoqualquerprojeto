@@ -26,7 +26,7 @@ public class GeraListaSuspensa {
 		
 		XSSFDataValidationHelper dvHelper = new XSSFDataValidationHelper(abaMaster);
 		XSSFDataValidationConstraint dvConstraint = (XSSFDataValidationConstraint)
-				dvHelper.createExplicitListConstraint(new String[]{"Terceiro", "Custo Interno", "Faturamento Direto","Contratado pela Bayer"});
+				dvHelper.createExplicitListConstraint(new String[]{"Terceiro", "Custo Interno", "Faturamento Direto","Contratado pela Bayer","Reembolso de despesas"});
 		CellRangeAddressList addressList = new CellRangeAddressList(linha, linha, 1, 1);
 		XSSFDataValidation validation = (XSSFDataValidation)dvHelper.createValidation(
 				dvConstraint, addressList);
