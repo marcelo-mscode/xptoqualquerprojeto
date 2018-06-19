@@ -126,7 +126,6 @@ public class ProducaoListagemController {
 				idList2.add(codigos.get(x));
 			}
 		}
-		
 
 		List<ListaConsulta> listas = new ArrayList<ListaConsulta>();
 		

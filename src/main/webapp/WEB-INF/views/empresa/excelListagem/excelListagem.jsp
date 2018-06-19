@@ -13,7 +13,7 @@
 	<div class="col-md-10">
 		<ol class="breadcrumb">
 			<li><a href="index.html">Home</a></li>
-			<li><a href="listaempresa?first=0&amp;max=350">Empresas</a></li>
+			<li><a href="listaempresa?first=0&amp;max=51">Empresas</a></li>
 			<li class="active">Relatório de Empresa</li>
 		</ol>
 	</div>
@@ -33,8 +33,8 @@
 <div class="row" style="margin-top: 0px;background-color: #fff;border-bottom: 1px solid #ddd">
 	<div style="padding: 5px 9px 5px 32px;">
 		<input value="1" name="mcheckbox[]" type="checkbox" id="clienteBox" onclick="buscaListagemEmpresasConsultas();" >&nbsp&nbspCliente
-		<input value="2" name="mcheckbox[]" type="checkbox" style="margin-left: 25px;" id="prospectBox" onclick="buscaListagemEmpresasConsultas();" >&nbsp&nbspProspect
-		<input value="4" name="mcheckbox[]" type="checkbox" style="margin-left: 25px;" id="fornecedorBox" onclick="buscaListagemEmpresasConsultas();" >&nbsp&nbsp&nbsp&nbspFornecedor
+		<input value="2" name="mcheckbox[]" type="checkbox" style="margin-left: 25px;" id="prospectBox" onclick="buscaListagemEmpresasConsultas();"  >&nbsp&nbspProspect
+		<input value="4" name="mcheckbox[]" type="checkbox" style="margin-left: 25px;" id="fornecedorBox" onclick="buscaListagemEmpresasConsultas();" disabled="disabled">&nbsp&nbsp&nbsp&nbspFornecedor
 	</div>	
 </div>
 

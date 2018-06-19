@@ -72,7 +72,7 @@ public class Empresa implements Serializable{
 	@OneToMany(mappedBy="idEmpresa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)private List<Pagamento> pagamento;
 	@OneToMany(mappedBy="idEmpresa", fetch = FetchType.EAGER, cascade = CascadeType.ALL)private List<Pagamento> pagamentoProducao;
 	@OneToMany(mappedBy="empresa", fetch = FetchType.LAZY, cascade = CascadeType.ALL)private List<ProdutoGrupo> produtoGrupo;
-	@OneToOne(mappedBy="fornecedor")private CartaContFornecedor cartaFornecedor;
+	/*@OneToOne(mappedBy="fornecedor")private CartaContFornecedor cartaFornecedor;*/
 	@OneToMany(mappedBy="idEmpresa", fetch = FetchType.LAZY) private List<ValorPagtoFornecedor> idValorPgtoFornecedor;
 	@OneToMany(mappedBy="idEmpresa", fetch = FetchType.LAZY) private List<Prospeccao> idProspeccao;
 	@OneToMany(mappedBy="idEmpFornecedor", fetch = FetchType.LAZY) private List<ProducaoP> idProducao;
@@ -83,12 +83,12 @@ public class Empresa implements Serializable{
 	public Calendar getDataCadastro() {
 		return dataCadastro;
 	}
-	public CartaContFornecedor getCartaFornecedor() {
+	/*public CartaContFornecedor getCartaFornecedor() {
 		return cartaFornecedor;
 	}
 	public void setCartaFornecedor(CartaContFornecedor cartaFornecedor) {
 		this.cartaFornecedor = cartaFornecedor;
-	}
+	}*/
 	public List<ValorPagtoFornecedor> getIdValorPgtoFornecedor() {
 		return idValorPgtoFornecedor;
 	}

@@ -1,6 +1,5 @@
 package br.com.sysloccOficial.daos;
 
-import java.awt.Window.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,16 +11,18 @@ import javax.persistence.Tuple;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.swing.JOptionPane;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.sysloccOficial.conf.UtilitariaValores;
 import br.com.sysloccOficial.model.Contato;
+import br.com.sysloccOficial.model.ContatoInfoBasica;
 import br.com.sysloccOficial.model.Empresa;
 import br.com.sysloccOficial.model.EmpresaAtuacao;
+import br.com.sysloccOficial.model.EmpresaInfoBasica;
 
 @Repository
 public class EmpresaDAO {
@@ -257,6 +258,30 @@ public class EmpresaDAO {
 		}
 	}
 	
+	public List<EmpresaInfoBasica> listaEmpresaTesteRefatorada(String parteConsulta){
+		try {
+			
+			List<EmpresaInfoBasica> empresaInfo = new ArrayList<EmpresaInfoBasica>();
+			
+			String consulta = "SELECT idEmpresa, empresa, telefone FROM Empresa where habilitado <> 0 and "+parteConsulta+" order by empresa";
+			TypedQuery<Object[]> query = manager.createQuery(consulta, Object[].class);
+			List<Object[]> lista = query.getResultList();
+			
+			for (int i = 0; i < lista.size(); i++) {
+				EmpresaInfoBasica info = new EmpresaInfoBasica();
+				info.setIdEmpresa((Integer) lista.get(i)[0]);
+				info.setEmpresa((String) lista.get(i)[1]);
+				info.setTelefone((String)lista.get(i)[2]);
+				empresaInfo.add(info);
+			}
+			
+			return empresaInfo;
+		} catch (Exception e) {
+			System.out.println("Erro ao carregar Empresas: "+e);
+			return null;
+		}
+	}
+	
 	public List<Object[]> listaContatos(List<Object[]> listaEmpresa){
 		try {
 			List<Integer> idEmpresas = new ArrayList<Integer>();
@@ -273,16 +298,65 @@ public class EmpresaDAO {
 		}
 	}
 
+	public List<ContatoInfoBasica> listaContatosRefatorada(List<EmpresaInfoBasica> listaEmpresa){
+		try {
+			List<Integer> idEmpresas = new ArrayList<Integer>();
+			List<ContatoInfoBasica> listaContatos = new ArrayList<ContatoInfoBasica>();
+			
+			for (int i = 0; i < listaEmpresa.size(); i++) {
+				idEmpresas.add((Integer) listaEmpresa.get(i).getIdEmpresa());
+			}		
+		
+			String consulta = "SELECT idContato, contato, empresa.idEmpresa from Contato c where idEmpresa IN ("+idEmpresas+") and habilitado <> 0";
+			String consultaLimpa = UtilitariaValores.limpaConsultaRetornoStatico(consulta);
+			TypedQuery<Object[]> query = manager.createQuery(consultaLimpa, Object[].class);
+			List<Object[]> lista = query.getResultList();
+			
+			
+			for (int i = 0; i < lista.size(); i++) {
+				ContatoInfoBasica contato = new ContatoInfoBasica();
+				contato.setIdContato((Integer) lista.get(i)[0]);
+				contato.setContato((String) lista.get(i)[1]);
+				contato.setIdEmpresa((Integer) lista.get(i)[2]);
+				listaContatos.add(contato);
+			}
+			return listaContatos;
+		} catch (Exception e) {
+			System.out.println("Erro carregar Contatos: "+e);
+			return null;
+		}
+	}
+
 	public List<Object[]> listaComunicador(List<Object[]> listaContatos){
 		try {
 			List<Integer> idContatos = new ArrayList<Integer>();
 			for (int i = 0; i < listaContatos.size(); i++) {
 				idContatos.add((Integer) listaContatos.get(i)[0]);
 			}		
+			
+		//	JOptionPane.showMessageDialog(null, "ListaContatos : "+ listaContatos.size());
+			
 			String consulta = "SELECT comunicador, contato.idContato from Comunicador c where contato IN ("+idContatos+")";
 			String consultaLimpa = UtilitariaValores.limpaConsultaRetornoStatico(consulta);
 			TypedQuery<Object[]> query = manager.createQuery(consultaLimpa, Object[].class);
 		
+			return query.getResultList();
+		} catch (Exception e) {
+			System.out.println("Erro ao carregar Comunicadores: "+e);
+			return null;
+		}
+	}
+	public List<Object[]> listaComunicadorRefatorada(List<ContatoInfoBasica> listaContatos){
+		try {
+			List<Integer> idContatos = new ArrayList<Integer>();
+			for (int i = 0; i < listaContatos.size(); i++) {
+				idContatos.add(listaContatos.get(i).getIdContato());
+			}		
+			
+			String consulta = "SELECT comunicador, contato.idContato from Comunicador c where contato IN ("+idContatos+")";
+			String consultaLimpa = UtilitariaValores.limpaConsultaRetornoStatico(consulta);
+			TypedQuery<Object[]> query = manager.createQuery(consultaLimpa, Object[].class);
+			
 			return query.getResultList();
 		} catch (Exception e) {
 			System.out.println("Erro ao carregar Comunicadores: "+e);
