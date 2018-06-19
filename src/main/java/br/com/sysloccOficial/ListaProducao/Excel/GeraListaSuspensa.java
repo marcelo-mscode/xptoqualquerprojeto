@@ -34,13 +34,5 @@ public class GeraListaSuspensa {
 		abaMaster.addValidationData(validation);
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

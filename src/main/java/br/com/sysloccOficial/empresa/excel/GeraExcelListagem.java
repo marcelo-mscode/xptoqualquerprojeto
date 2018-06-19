@@ -230,9 +230,6 @@ public String GeraListagemNovaRefatorada(Integer tipoDeListagem) throws IOExcept
 	
 	int numLinha = 2;
 
-	
-	long tempoInicio = System.currentTimeMillis();
-	
 	for (int i = 0; i < listagemEmpresas.size(); i++) {
 		
 		int idEmpresa = listagemEmpresas.get(i).getIdEmpresa();
@@ -280,36 +277,17 @@ public String GeraListagemNovaRefatorada(Integer tipoDeListagem) throws IOExcept
 			    }
 			  }
 			}
-			
-		/*	System.out.println("Antes de apagar: "+listaComunicador.size());*/
-			
 			for (int k = 0; k < listaComunicadorApagar.size(); k++) {
 				int t = listaComunicadorApagar.get(k);
 				listaComunicador.get(t)[0] = null; 
 				listaComunicador.get(t)[1] = null; 
 			}
-			
-			/*for (int k = 0; k < listaComunicador.size(); k++) {
-				
-				if(listaComunicador.get(k)[0] == null){
-					listaComunicador.remove(k);
-				}
-			}
-			System.out.println("Depois de apagar: "+listaComunicador.size());
-			System.out.println();*/
 		}
 	}
 	
 	
-	/*workbook.write(out);
-	out.close();*/
-	long tempofim = System.currentTimeMillis();
-	
-	long tt = ((tempofim - tempoInicio));
-	
-	System.out.println("Tempo total: "+ tt);
-
-	
+	workbook.write(out);
+	out.close();
 	return downloadExcel;
 }
 	
