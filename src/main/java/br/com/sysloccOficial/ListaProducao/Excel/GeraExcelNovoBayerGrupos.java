@@ -77,6 +77,10 @@ public class GeraExcelNovoBayerGrupos {
 				BigDecimal orcamComImposto = new BigDecimal("0");
 				BigDecimal orcamSemImposto = new BigDecimal("0");
 				
+				boolean reembolsoDespesas = false;
+				
+				
+				
 				if(listaGrupos.get(i).getDetermPadrao() != null){
 					qtdUnica = listaGrupos.get(i).getDetermPadrao().getQuantDetermPadrao();
 					diariaUnica = listaGrupos.get(i).getDetermPadrao().getDiariasPadrao();
@@ -140,13 +144,19 @@ public class GeraExcelNovoBayerGrupos {
 									semImpostoUnico = semImpostoUnico.add(precoSemImposto.multiply(new BigDecimal(qtdsemImposto)));
 								}
 					    }
+						
+						//Pegar aqui o Reembolso de despesas que estará em Produto Grupo.
+						reembolsoDespesas = listaGrupos.get(i).getProdutoGrupo().get(j).isReembolsoDespesas();
+						
+						
+						
 			     }
 	// ------------------------------------------------------------------------------------------------------------------------ //
 					
 				   valoresEmCadaItem(listaGrupos, corpoGrupos, i, zero, comImposto,semImposto, qtdcomImposto,
 						          diariacomImposto, qtdsemImposto,diariasemImposto,
 						          listaGrupos.get(i).isIncideAdministracao(), listaGrupos.get(i).isFeeReduzido(),orcamComImposto,orcamSemImposto,
-						          qtdUnica,diariaUnica,comImpostoUnico, semImpostoUnico);
+						          qtdUnica,diariaUnica,comImpostoUnico, semImpostoUnico, reembolsoDespesas);
 			}
 		}
 		return corpoGrupos;
@@ -185,7 +195,8 @@ public class GeraExcelNovoBayerGrupos {
 			BigDecimal comImposto, BigDecimal semImposto, double qtdcomImposto,
 			double diariacomImposto, double qtdsemImposto,
 			double diariasemImposto, boolean incideAdministracao, boolean feeReduzido,
-			BigDecimal orcamentoComImposto,BigDecimal orcamentoSemImposto, double qtdUnica, double diariaUnica, BigDecimal comImpostoUnico, BigDecimal semImpostoUnico) {
+			BigDecimal orcamentoComImposto,BigDecimal orcamentoSemImposto, double qtdUnica,
+			double diariaUnica, BigDecimal comImpostoUnico, BigDecimal semImpostoUnico,boolean reembolsoDespesas) {
 			
 		BigDecimal quantFinal = new BigDecimal(qtdUnica*diariaUnica);
 		
@@ -226,7 +237,15 @@ public class GeraExcelNovoBayerGrupos {
 			corpoGrupoBayer.setQuantidade(qtdUnica);
 			corpoGrupoBayer.setDiaria(diariaUnica);
 			
-			corpoGrupoBayer.setTipoServico(categoriasimpostoBayer(corpoGrupoBayer.isTemImposto(),incideAdministracao,feeReduzido));
+			
+///////////////////reembolsoDespesas aqui tbem
+				//corpoGrupoBayer.setTipoServico(categoriasimpostoBayer(corpoGrupoBayer.isTemImposto(),incideAdministracao,feeReduzido,reembolsoDespesas));
+				
+				if(reembolsoDespesas == true){
+					corpoGrupoBayer.setTipoServico("Reembolso de despesas");
+				}else{
+					corpoGrupoBayer.setTipoServico(categoriasimpostoBayer(corpoGrupoBayer.isTemImposto(),incideAdministracao,feeReduzido,reembolsoDespesas));
+				}
 			
 			corpoGrupos.add(corpoGrupoBayer);
 		}
@@ -255,15 +274,25 @@ public class GeraExcelNovoBayerGrupos {
 			corpoGrupoBayerSemImposto.setQuantidade(qtdUnica);
 			corpoGrupoBayerSemImposto.setDiaria(diariaUnica);
 			
-			corpoGrupoBayerSemImposto.setTipoServico(categoriasimpostoBayer(corpoGrupoBayerSemImposto.isTemImposto(),incideAdministracao,feeReduzido));
+			if(reembolsoDespesas == true){
+				
+			}
+		
+///////////////////reembolsoDespesas
+			if(reembolsoDespesas == true){
+				corpoGrupoBayerSemImposto.setTipoServico("Reembolso de despesas");
+			}else{
+				corpoGrupoBayerSemImposto.setTipoServico(categoriasimpostoBayer(corpoGrupoBayerSemImposto.isTemImposto(),incideAdministracao,feeReduzido,reembolsoDespesas));
+			}
+			
 			corpoGrupos.add(corpoGrupoBayerSemImposto);
 		}
 		
 	}
 	
-	public String categoriasimpostoBayer(boolean imposto,boolean incideAdministracao,boolean feeReduzido){
+	public String categoriasimpostoBayer(boolean imposto,boolean incideAdministracao,boolean feeReduzido,boolean reembolsoDespesas){
 		ChainVerificaCategoriaImposto verificaTipoDespesa  = new ChainVerificaCategoriaImposto();
-		String tipoCategoriaImposto =  verificaTipoDespesa.verifica(imposto,incideAdministracao,feeReduzido);
+		String tipoCategoriaImposto =  verificaTipoDespesa.verifica(imposto,incideAdministracao,feeReduzido,reembolsoDespesas);
 		return tipoCategoriaImposto;
 	}
 	

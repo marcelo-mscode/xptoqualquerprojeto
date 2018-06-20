@@ -67,7 +67,8 @@ public class GeraExcelNovoBayer{
 			infoLista.setFeeReduzido(new BigDecimal("7"));
 		}
 
-		BaseExcelBayer base = new BaseExcelBayer("C:/SYSLOC/upload/excel/"+infoLista.getIdJob().getTitulo());
+		BaseExcelBayer base = new BaseExcelBayer("K:/Programas instalados no SSD/SYSLOC/upload/excel/"+infoLista.getIdJob().getTitulo());
+//		BaseExcelBayer base = new BaseExcelBayer("C:/SYSLOC/upload/excel/"+infoLista.getIdJob().getTitulo());
 		FileOutputStream out = base.caminhoeNomeDoArquivo();
 		String downloadExcel = base.caminhoDownloadExcel(infoLista.getIdJob().getTitulo(),"upload/upload/excel/"+infoLista.getIdJob().getTitulo());
 		
@@ -504,7 +505,9 @@ public class GeraExcelNovoBayer{
 	}
 	
 	private void InsereImagem() throws FileNotFoundException, IOException {
-		InputStream is = new FileInputStream("C:/SYSLOC/upload/logoEmpresas/bayerExcel.png");
+		InputStream is = new FileInputStream("K:/Programas instalados no SSD/SYSLOC/upload/logoEmpresas/bayerExcel.png");
+
+		//InputStream is = new FileInputStream("C:/SYSLOC/upload/logoEmpresas/bayerExcel.png");
 	    byte[] bytes = IOUtils.toByteArray(is);
 	    int pictureIdx = novoExcel.addPicture(bytes, novoExcel.PICTURE_TYPE_JPEG);
 	    is.close();

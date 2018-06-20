@@ -58,8 +58,7 @@ public class ProdutoGrupo {
 	private boolean imposto;
 	private boolean custoComBvFornecedor;
 	private boolean bvFornecedorEmPorcentagem;
-
-	
+	private boolean reembolsoDespesas;
 	
 // ------------------------------------------ //	
 	@Transient private boolean salvarEfechar;
@@ -82,16 +81,22 @@ public class ProdutoGrupo {
 	@OneToOne(mappedBy="produtoGrupo", cascade=CascadeType.REMOVE) private DeterminaQuantidades determQuantidade;
 
 	
-	@OneToOne(mappedBy="prodGrupo")private CartaContFornecedor cartaFornecedor;
+//	@OneToOne(mappedBy="prodGrupo")private CartaContFornecedor cartaFornecedor;
 //  @OneToOne(mappedBy="produtoGrupo")	 	 private Producao producao;
     @OneToOne(mappedBy="produtoGrupo", fetch = FetchType.LAZY)	private ProducaoP producaop;
 	
 // --------------------------------------- //	
 	
-    
-    
 	public Integer getIdProdutoGrupo() {
 		return idProdutoGrupo;
+	}
+
+	public boolean isReembolsoDespesas() {
+		return reembolsoDespesas;
+	}
+
+	public void setReembolsoDespesas(boolean reembolsoDespesas) {
+		this.reembolsoDespesas = reembolsoDespesas;
 	}
 
 	public DeterminaQuantidades getDetermQuantidade() {
@@ -370,13 +375,13 @@ public class ProdutoGrupo {
 		this.producao = producao;
 	}*/
 		
-	public CartaContFornecedor getCartaFornecedor() {
+	/*public CartaContFornecedor getCartaFornecedor() {
 		return cartaFornecedor;
 	}
 
 	public void setCartaFornecedor(CartaContFornecedor cartaFornecedor) {
 		this.cartaFornecedor = cartaFornecedor;
-	}
+	}*/
 
 	/*public Producao getProducaop() {
 		return producaop;

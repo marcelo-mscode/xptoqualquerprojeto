@@ -112,6 +112,8 @@ public class MontaGruposCategoriasGalderma{
 				BigDecimal orcamComImposto = new BigDecimal("0");
 				BigDecimal orcamSemImposto = new BigDecimal("0");
 				
+				boolean reembolsoDespesas = false;
+				
 
 				if(listaGrupos.get(i).getDetermPadrao() != null){
 						if(listaGrupos.get(i).getDetermPadrao().getQuantDetermPadrao() == 0){
@@ -183,7 +185,7 @@ public class MontaGruposCategoriasGalderma{
 				   valoresEmCadaItem(listaGrupos, corpoGrupos, i, zero, comImposto,semImposto, qtdcomImposto,
 						          diariacomImposto, qtdsemImposto,diariasemImposto,
 						          listaGrupos.get(i).isIncideAdministracao(), listaGrupos.get(i).isFeeReduzido(),orcamComImposto,orcamSemImposto,
-						          qtdUnica,diariaUnica,comImpostoUnico, semImpostoUnico);
+						          qtdUnica,diariaUnica,comImpostoUnico, semImpostoUnico,reembolsoDespesas);
 			}
 		
 		return corpoGrupos;
@@ -254,7 +256,8 @@ public class MontaGruposCategoriasGalderma{
 			BigDecimal comImposto, BigDecimal semImposto, double qtdcomImposto,
 			double diariacomImposto, double qtdsemImposto,
 			double diariasemImposto, boolean incideAdministracao, boolean feeReduzido,
-			BigDecimal orcamentoComImposto,BigDecimal orcamentoSemImposto, double qtdUnica, double diariaUnica, BigDecimal comImpostoUnico, BigDecimal semImpostoUnico) {
+			BigDecimal orcamentoComImposto,BigDecimal orcamentoSemImposto, double qtdUnica,
+			double diariaUnica, BigDecimal comImpostoUnico, BigDecimal semImpostoUnico, boolean reembolsoDespesas) {
 			
 		BigDecimal quantFinal = new BigDecimal(qtdUnica*diariaUnica);
 		
@@ -308,7 +311,7 @@ public class MontaGruposCategoriasGalderma{
 			corpoGrupoGalderma.setQuantidade(qtdUnica);
 			corpoGrupoGalderma.setDiaria(diariaUnica);
 			
-			corpoGrupoGalderma.setTipoServico(categoriasimpostoBayer(corpoGrupoGalderma.isTemImposto(),incideAdministracao,feeReduzido));
+			corpoGrupoGalderma.setTipoServico(categoriasimpostoBayer(corpoGrupoGalderma.isTemImposto(),incideAdministracao,feeReduzido,reembolsoDespesas));
 			
 			corpoGrupoGalderma.setTxServico(listaGrupos.get(i).getIdCategoria().getTxServico());
 			corpoGrupoGalderma.setTxISS(listaGrupos.get(i).getIdCategoria().getTxISS());
@@ -343,7 +346,7 @@ public class MontaGruposCategoriasGalderma{
 			corpoGrupoBayerSemImposto.setQuantidade(qtdUnica);
 			corpoGrupoBayerSemImposto.setDiaria(diariaUnica);
 			
-			corpoGrupoBayerSemImposto.setTipoServico(categoriasimpostoBayer(corpoGrupoBayerSemImposto.isTemImposto(),incideAdministracao,feeReduzido));
+			corpoGrupoBayerSemImposto.setTipoServico(categoriasimpostoBayer(corpoGrupoBayerSemImposto.isTemImposto(),incideAdministracao,feeReduzido,reembolsoDespesas));
 			
 			corpoGrupoBayerSemImposto.setTxServico(listaGrupos.get(i).getIdCategoria().getTxServico());
 			corpoGrupoBayerSemImposto.setTxISS(listaGrupos.get(i).getIdCategoria().getTxISS());
@@ -353,9 +356,9 @@ public class MontaGruposCategoriasGalderma{
 		
 	}
 	
-	public String categoriasimpostoBayer(boolean imposto,boolean incideAdministracao,boolean feeReduzido){
+	public String categoriasimpostoBayer(boolean imposto,boolean incideAdministracao,boolean feeReduzido,boolean reembolsoDespesas){
 		ChainVerificaCategoriaImposto verificaTipoDespesa  = new ChainVerificaCategoriaImposto();
-		String tipoCategoriaImposto =  verificaTipoDespesa.verifica(imposto,incideAdministracao,feeReduzido);
+		String tipoCategoriaImposto =  verificaTipoDespesa.verifica(imposto,incideAdministracao,feeReduzido,reembolsoDespesas);
 		return tipoCategoriaImposto;
 	}
 	
