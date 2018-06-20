@@ -40,6 +40,12 @@ public class ProdutoGrupoDAO {
 		
 		return query.getResultList();
 	}
+
+	public ProdutoGrupo umProdutoGrupoPorGrupo(Integer idProdutoGrupo){
+		String consulta = "select pg from ProdutoGrupo pg where idProdutoGrupo="+idProdutoGrupo; 
+		TypedQuery<ProdutoGrupo> query = manager.createQuery(consulta, ProdutoGrupo.class);
+		return query.getSingleResult();
+	}
 	
 	public Lista pegaLista(Integer idLista){
 		Lista e = manager.find(Lista.class, idLista);

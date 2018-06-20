@@ -21,7 +21,7 @@
 	<c:set value="${produtoGrupo.idProduto}" var="idProduto" />
 	<c:set value="${produtoGrupo.produto}" var="produto" />
 	<c:set value="${produtoGrupo.empresa.empresa}" var="fornecedor" />
-	<c:set value="${produtoGrupo.isReembolsoDespesas}" var="reembolsoDespesa" />
+	<c:set value="${produtoGrupo.isReembolsoDespesas()}" var="reembolsoDespesas" />
 </c:forEach>
 
 

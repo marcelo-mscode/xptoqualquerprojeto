@@ -355,6 +355,10 @@ public class ProducaoListagemController {
 		MV.addObject("idGrupo",idGrupo);
 		MV.addObject("genero",generoDAO.mostra());
 		MV.addObject("unidades",unidadeDAO.mostra());
+		MV.addObject("umProdutoGrupo",produtoGrupoDAO.umProdutoGrupoPorGrupo(idProdutoGrupo));
+		
+		
+		
 		
 		return MV;
 	}
