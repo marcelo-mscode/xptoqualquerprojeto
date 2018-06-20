@@ -14,16 +14,14 @@
 <c:set  value="${0}" var="preco"/>	
 <c:set  value="${0}" var="bv"/>	
 <c:forEach items="${produtoGrupo}" var="produtoGrupo">
-
-	<c:set  value="${produtoGrupo.custoProduto * (produtoGrupo.quantidade * produtoGrupo.quantidade2 * produtoGrupo.diarias) + custo}" var="custo"/>
-	<c:set  value="${produtoGrupo.precoProduto * (produtoGrupo.quantidade * produtoGrupo.quantidade2 * produtoGrupo.diarias) + preco}" var="preco"/>
-	<c:set  value="${produtoGrupo.bvFornecedorValor + bv}" var="bv"/>
+	<c:set value="${produtoGrupo.custoProduto * (produtoGrupo.quantidade * produtoGrupo.quantidade2 * produtoGrupo.diarias) + custo}" var="custo"/>
+	<c:set value="${produtoGrupo.precoProduto * (produtoGrupo.quantidade * produtoGrupo.quantidade2 * produtoGrupo.diarias) + preco}" var="preco"/>
+	<c:set value="${produtoGrupo.bvFornecedorValor + bv}" var="bv"/>
 	<c:set value="${produtoGrupo.custoComBvFornecedor}" var="custoComBvFornecedor" />
-	<%-- <c:set value="${produtoGrupo.idProdutoGrupo}" var="idProdutoGrupo" /> --%>
 	<c:set value="${produtoGrupo.idProduto}" var="idProduto" />
 	<c:set value="${produtoGrupo.produto}" var="produto" />
 	<c:set value="${produtoGrupo.empresa.empresa}" var="fornecedor" />
-
+	<c:set value="${produtoGrupo.isReembolsoDespesas}" var="reembolsoDespesa" />
 </c:forEach>
 
 

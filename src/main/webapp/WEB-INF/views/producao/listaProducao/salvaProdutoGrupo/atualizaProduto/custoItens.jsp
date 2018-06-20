@@ -10,8 +10,7 @@
 <c:set var="custoProduto" value="${detalhesItem.custoProduto}" />
 <c:set var="precoSNF" value="${detalhesItem.custoProduto + detalhesItem.bv}" /> 
 <c:set var="bv" value="${detalhesItem.bv}" />
-
-
+<c:set value="${produtoGrupo.reembolsoDespesas}" var="reembolsoDespesa" />
 
 <div class="col-md-4" style="border-right: 15px solid #fff; font-size: 12px; line-height: 20px; background-color: #F2F2F2; padding-bottom: 4px; height: 165px;">
 
@@ -60,7 +59,25 @@
 
 		&nbsp<span>% ${Impostogrupo.imposto}</span>
 	</div>
-
+	
+<!-- Reembolso de despesas  -->
+                <div class="form-inline" style="margin-bottom: 5px;">
+                    <!-- Reembolso de Despesas Bayer &nbsp&nbsp -->
+                    <%-- <c:if test="${reembolsoDespesa == true}">
+	                    <input type="checkbox" name="reembolsoDespesas" id="reembolsoCheckbox" checked="checked">
+                    </c:if> --%>
+                    
+                     Reembolso ?  ${reembolsoDespesa}
+                    
+                    <%-- <c:if test="${reembolsoDespesa != true}">
+	                    <input type="checkbox" name="reembolsoDespesas" id="reembolsoCheckbox" checked="checked">
+                    </c:if> --%>
+                </div>                  
+<!--  -->
+	
+	
+	
+	
 	<div class="form-inline" style="background: #e4eef2; padding: 3px 3px 3px 2px;">
 		Preço Unit. Final R$ <span id="precoUnitFinal">
 		  <c:if test="${detalhesItem.imposto == true}">

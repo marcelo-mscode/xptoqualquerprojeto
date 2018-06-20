@@ -16,7 +16,7 @@
 	<c:set  value="${produtoGrupo.precoProduto * (produtoGrupo.quantidade * produtoGrupo.quantidade2 * produtoGrupo.diarias) + preco}" var="preco"/>
 	<c:set  value="${produtoGrupo.bvFornecedorValor + bv}" var="bv"/>
 	<c:set  value="${produtoGrupo.custoComBvFornecedor}" var="custoComBvFornecedor" />
-	<c:set  value="${produtoGrupo.reembolsoDespesas}" var="reembolsoDespesa" />
+	<%-- <c:set  value="${produtoGrupo.reembolsoDespesas}" var="reembolsoDespesa" /> --%>
 	
 	
 </c:forEach>
@@ -104,37 +104,16 @@
       <div class="form-group col-md-12 tira-padding painel" style="padding: 10px 0;">
 
                                 
-                <div class="col-md-4" style="height: 148px;font-size:12px;color:#000;border-right:15px solid #fff;background-color: #F2F2F2 !important">
+                <div class="col-md-4" style="height: 148px;font-size:12px;color:#000;border-right:15px solid #fff;background-color: #F2F2F2 !important;padding-bottom: 186px !important;">
                     <h5>Informações de   cadastro</h5>
                     <p>Custo cadastro R$ <span id="custoCadastro"></span></p>
                     <p>Margem % <span></span></p>
                     <p>Preço s/ NF R$:<span id="precoSemNota"></span></p>
-                   
-                   
-	                 <!-- <div class="checkbox ">
-		               <label>
-		               <input type="checkbox" id="CheckbvFornecedor" name="custoComBvFornecedor">
-			               Custo com BV forn. incluso
-		                </label>
-						<div class="controls display-none" id="bvFornecedor">
-							Valor BV forn. incluso
-							<select id="" name="bvFornecedorEmPorcentagem" class="form-control">
-								<option value="1">%</option>
-								<option value="0">R$</option>
-							</select>
-						
-						<input class="form-control" name="bvFornecedorTransiente" value="0,00">
-						</div>
-				    </div> -->
                 </div>
-             
-
-              
-
 
 <!--                Custo Itens -->
 <span style="position: absolute;margin-top: -1%;color: red;font-size: 13px;display: none;z-index: 9999" id="camposUnitarios">*Preencha um desses campos em vermelho com um valor</span>              
-              <div class="col-md-4" style="border-right:15px solid #fff;font-size: 12px;line-height: 20px;background-color: #F2F2F2;padding-bottom: 4px;">
+              <div class="col-md-4" style="border-right:15px solid #fff;font-size: 12px;line-height: 20px;background-color: #F2F2F2;padding-bottom: 15px;">
                       <div class="form-inline" style="margin-top:10px">
                       Custo Net Unit. R$&nbsp
                      
@@ -171,7 +150,7 @@
                     &nbsp<span>% ${impostoGrupo.imposto}</span>
                     </div>                  
 <!-- Reembolso de despesas  -->
-                    <div class="form-inline">
+                    <div class="form-inline" style="margin-bottom: 5px;">
                     Reembolso de Despesas Bayer
                     &nbsp&nbsp
                     <input type="checkbox" name="reembolsoDespesas" id="reembolsoCheckbox">
@@ -186,7 +165,7 @@
                <!-- Fim Custo Itens -->
 
               <!--  Qtd Custo   -->
-              <div class="col-md-4" style="font-size:12px;line-height: 27px;background-color: #F2F2F2;padding-bottom: 1px;">
+              <div class="col-md-4" style="font-size:12px;line-height: 27px;background-color: #F2F2F2;padding-bottom: 40px;">
                   <div class="form-inline" style="margin-top:10px">
                     Quantidade&nbsp&nbsp
                     <!-- <input id="quantidade1" onblur="calculaValorTotal();"  type="text" class="form-control voltar"  style="height: 24px;width: 50px;font-size: 11px;padding: 5px;" name="quantidade" value="1"> -->
