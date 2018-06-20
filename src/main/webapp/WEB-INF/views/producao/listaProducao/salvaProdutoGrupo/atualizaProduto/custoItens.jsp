@@ -11,7 +11,7 @@
 <c:set var="precoSNF" value="${detalhesItem.custoProduto + detalhesItem.bv}" /> 
 <c:set var="bv" value="${detalhesItem.bv}" />
 
-<div class="col-md-4" style="border-right: 15px solid #fff; font-size: 12px; line-height: 20px; background-color: #F2F2F2; padding-bottom: 4px; height: 165px;">
+<div class="col-md-4" style="border-right: 15px solid #fff; font-size: 12px; line-height: 20px; background-color: #F2F2F2; padding-bottom: 15px; height: 195px;">
 
 	<div class="form-inline" style="margin-top: 10px">
 		Custo Net Unit. R$&nbsp

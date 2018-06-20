@@ -126,7 +126,7 @@
 <div class="row">
        <div class="form-group col-md-12 tira-padding painel" style="padding: 10px 0;">
                             
-                <div class="col-md-4" style="font-size:12px;color:#000;border-right:15px solid #fff;background-color: #F2F2F2 !important;height: 165px;">
+                <div class="col-md-4" style="font-size:12px;color:#000;border-right:15px solid #fff;background-color: #F2F2F2 !important;height: 195px;">
                     <h5>Informações de   cadastro</h5>
                     <p>Custo cadastro R$ <span id="custoCadastro">0,00</span></p>
                     <p>Margem % <span>0,00</span></p>

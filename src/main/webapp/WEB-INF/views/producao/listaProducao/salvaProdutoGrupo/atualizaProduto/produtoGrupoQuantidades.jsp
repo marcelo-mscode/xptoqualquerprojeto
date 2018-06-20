@@ -7,7 +7,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<div class="col-md-4" style="font-size:12px;line-height: 27px;background-color: #F2F2F2;padding-bottom: 1px;height: 165px;">
+<div class="col-md-4" style="font-size:12px;line-height: 27px;background-color: #F2F2F2;padding-bottom: 1px;height: 195px;">
    <div class="form-inline" style="margin-top:10px">Quantidade&nbsp&nbsp
 
 		<input id="quantidade1" onblur="calculaValorTotal();" type="text" class="form-control voltar estiloInput"  value="${fn:replace(quantidade1,'.',',')}" name="quantidadeTransiente">
