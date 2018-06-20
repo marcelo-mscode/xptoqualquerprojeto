@@ -16,6 +16,9 @@
 	<c:set  value="${produtoGrupo.precoProduto * (produtoGrupo.quantidade * produtoGrupo.quantidade2 * produtoGrupo.diarias) + preco}" var="preco"/>
 	<c:set  value="${produtoGrupo.bvFornecedorValor + bv}" var="bv"/>
 	<c:set  value="${produtoGrupo.custoComBvFornecedor}" var="custoComBvFornecedor" />
+	<c:set  value="${produtoGrupo.reembolsoDespesas}" var="reembolsoDespesa" />
+	
+	
 </c:forEach>
 <div class="col-md-12 bodyXY" style="height: 35px;">
 
@@ -34,10 +37,10 @@
 </div>
 <br /><br />
 
-<div class="container shadow-com-padding" style="background: #fff;margin-bottom: 160px;padding-bottom: 45px;"> 
+<div class="container shadow-com-padding" style="background: #fff;margin-bottom: 160px;padding-bottom: 45px;margin-top: 15px;"> 
 	<div class="row" style="margin-top: 0;background-color: #f2f2f2;border-bottom: 1px solid #ccc;">
 	  <div class="col-md-12 tira-padding" style="font-family: 'OpenSansLight'">
-	  	<h4><a href="editaLinha?idGrupo=${idGrupo}" class="botao-voltar" style="margin-left: 0"><i class="glyphicon glyphicon-menu-left"></i></a>
+	  	<h4><a href="editaLinha?idGrupo=${idGrupo}" class="botao-voltar" style="margin-left: 17px;padding: 4px 15px;"><i class="glyphicon glyphicon-menu-left"></i></a>
 	  	Lista: <strong style="margin-right: 15px">${lista[0]}</strong>
 	  	Cliente: <strong style="margin-right: 15px">${empresa}</strong>
 	  	Lista cod. <strong	>${lista[1]} .${lista[2]}</strong></h4>
@@ -165,9 +168,15 @@
                     Incide Imposto
                     &nbsp&nbsp
                     <input type="checkbox" checked="checked" name="imposto" id="incideimpostoCheckbox" onclick="calculaPrecoSNF();">
-                    
                     &nbsp<span>% ${impostoGrupo.imposto}</span>
                     </div>                  
+<!-- Reembolso de despesas  -->
+                    <div class="form-inline">
+                    Reembolso de Despesas Bayer
+                    &nbsp&nbsp
+                    <input type="checkbox" name="reembolsoDespesas" id="reembolsoCheckbox">
+                    </div>                  
+<!--  -->
 
                     <div class="form-inline" style="background:#e4eef2">
                       Preço Unit. Final R$ <span id="precoUnitFinal">0,00</span>
