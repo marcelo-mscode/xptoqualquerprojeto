@@ -319,6 +319,16 @@ public class GeraExcelRodapeCalculos {
 		criaLinhaECelulaPorcentagemMerge(cell, linha, imposto.doubleValue(), 2,novoExcel); /** Porcentagem de 15% */
 		criaLinhaECelulaFormulaComMerge(cell, linha, "$F$"+porcentagem+"*$C$"+totalFaturado+"", 5,5,6,15,11, new int[]{242,242,242},false);
 	}
+
+	public void setaCelulaComFormulaRodapeCalculoEncargosFee(XSSFCell cell,XSSFRow linha,int num,BigDecimal imposto){
+		
+		int totalFaturado = num-1;
+		int porcentagem = num+1;
+		
+		criaLinhaECelulaTextoComMerge(cell, linha, "Encargos tributários - Fee", 0, 0, 1, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,false,11);
+		criaLinhaECelulaPorcentagemMerge(cell, linha, imposto.doubleValue(), 2,novoExcel); /** Porcentagem de 15% */
+		criaLinhaECelulaFormulaComMerge(cell, linha, "$F$"+porcentagem+"*$C$"+totalFaturado+"", 5,5,6,15,11, new int[]{242,242,242},false);
+	}
 	
 	public void setaCelulaComFormulaRodapeCalculoFaturadoAgencia(XSSFCell cell,XSSFRow linha,int num){
 		int num1 = num+1;

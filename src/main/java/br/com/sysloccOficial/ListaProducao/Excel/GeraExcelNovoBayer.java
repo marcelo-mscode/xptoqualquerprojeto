@@ -232,70 +232,70 @@ public class GeraExcelNovoBayer{
 		XSSFCell custosInternos = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroCustInter(custosInternos, linha, num,"Custos internos Agência","-",num+2);
 		//Sub-total
-		linha = abaMaster.creaddteRow(num+30);
+		linha = abaMaster.createRow(num+31);
 		XSSFCell subTotal = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroSub(subTotal, linha, num,"Sub-total","-",num+23,num+28);
 		//impostos
-		linha = abaMaster.createRow(num+31);
+		linha = abaMaster.createRow(num+32);
 		XSSFCell impostos = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroImpostos(impostos, linha, num,"Impostos", infoCategoria.getImposto(),num+29,num+24);
 		//TotalNF1
-		linha = abaMaster.createRow(num+32);
+		linha = abaMaster.createRow(num+33);
 		XSSFCell totalNF1 = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroTotalNF(totalNF1, linha, num,"linha 10","NF1","TOTAL NF1",num+29,num+30);
 		//PrevEx
-		linha = abaMaster.createRow(num+33);
+		linha = abaMaster.createRow(num+34);
 		XSSFCell PrevEx = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroPrevExtras(PrevEx, linha, num,"Previsão de Extras 10% sobre:","");
 		
 		//Total Serviços SubContratados
-		linha = abaMaster.createRow(num+34);
+		linha = abaMaster.createRow(num+35);
 		XSSFCell totalSubEx = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroTotalServSubEx(totalSubEx, linha, num+33,"Total Serviços SubContratados",new BigDecimal("10"),num+23);
 		
 		//Faturado diretamemente para Bayer
-		linha = abaMaster.createRow(num+35);
+		linha = abaMaster.createRow(num+36);
 		XSSFCell fatDirBayerEx = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroFatDirBayerEx(fatDirBayerEx, linha, num+34,"Faturado diretamente para Bayer",new BigDecimal("10"),num+24);
 		//Contratado pela Bayer gestão Agência
-		linha = abaMaster.createRow(num+36);
+		linha = abaMaster.createRow(num+37);
 		XSSFCell contBayerEx = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroContBayerEx(contBayerEx, linha, num+35,"Contratado pela Bayer gestão Agência",new BigDecimal("10"),num+25);
 		//Fee(14.0%)
-		linha = abaMaster.createRow(num+37);
+		linha = abaMaster.createRow(num+38);
 		XSSFCell fee14Ex = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroFee14Ex(fee14Ex, linha, num+36,"Fee("+infoLista.getAdministracao().toString()+"%)",infoLista.getAdministracao(),num+33,num+34);
 		//Fee(7%)
-		linha = abaMaster.createRow(num+38);
+		linha = abaMaster.createRow(num+39);
 		XSSFCell fee7Ex = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroFee7Ex(fee7Ex, linha, num+37,"Fee("+infoLista.getFeeReduzido().toString()+"%)",infoLista.getFeeReduzido(),num+35);
 		//Custos Internos Agência
-		linha = abaMaster.createRow(num+39);
+		linha = abaMaster.createRow(num+40);
 		XSSFCell custosInterEx = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroCustInterEx(custosInterEx, linha, num+38,"Custos Internos Agência",new BigDecimal("10"),num+28);
 		//Sub-Total
-		linha = abaMaster.createRow(num+40);
+		linha = abaMaster.createRow(num+41);
 		XSSFCell subTotalEx = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroSubTotalEx(subTotalEx, linha, num,"Sub-Total","",num+33,num+38);
 		//Impostos
-		linha = abaMaster.createRow(num+41);
+		linha = abaMaster.createRow(num+42);
 		XSSFCell impostosEx = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroImpostosEx(impostosEx, linha, num+39,"Impostos",infoCategoria.getImposto(),num+34,num+35);
 		//TotalNF2
-		linha = abaMaster.createRow(num+42);
+		linha = abaMaster.createRow(num+43);
 		XSSFCell totalNF2 = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroTotalNF2(totalNF2, linha, num,"linha 20","NF2","TOTAL NF2",num+39,num+40);
 		//Total Evento
-		linha = abaMaster.createRow(num+43);
+		linha = abaMaster.createRow(num+44);
 		XSSFCell totalEvento = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroTotalEvento(totalEvento, linha,num+41,num+31);
 		
 // -------------------------------------
 		// Num Contrato SAP
-		linha = abaMaster.createRow(num+46);
+		linha = abaMaster.createRow(num+47);
 		XSSFCell numContrato2 = linha.createCell(0);
 		criaLinhaECelulaMesclado(numContrato2, linha, "Nr. Contrato SAP: 4400182963", 0, abaMaster, 0, 0, XSSFCellStyle.ALIGN_LEFT);
-		linha = abaMaster.createRow(num+47);
+		linha = abaMaster.createRow(num+48);
 		XSSFCell cellContrato = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.setaCelulaRodapeContrato(cellContrato, linha, num);
 		
