@@ -175,7 +175,7 @@ public class GeraExcelNovoBayer{
 //////////Encargos tributários	
 		linha = abaMaster.createRow(num+13);
 		XSSFCell cellEncargosTributariosFee = linha.createCell(0);
-		calculoRopapExcelRodapeCalculos.setaCelulaComFormulaRodapeCalculoEncargos(cellEncargosTributariosFee, linha, num+12,infoCategoria.getImposto());
+		calculoRopapExcelRodapeCalculos.setaCelulaComFormulaRodapeCalculoEncargosFee(cellEncargosTributariosFee, linha, num+12,infoCategoria.getImposto());
 
 		//Total faturado via agência			
 		linha = abaMaster.createRow(num+15);
