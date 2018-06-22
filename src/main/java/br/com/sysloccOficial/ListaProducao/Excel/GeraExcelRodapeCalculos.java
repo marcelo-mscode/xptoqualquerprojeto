@@ -16,6 +16,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import br.com.sysloccOficial.Excel.BaseExcelBayer;
+
 public class GeraExcelRodapeCalculos {
 	
 	private XSSFWorkbook novoExcel;
@@ -28,7 +30,10 @@ public class GeraExcelRodapeCalculos {
 	private int[] corBranco = {252,252,252};
 	private int[] corCinzaEsc = {217,217,217};
 	private int[] corVerdeAgua = {204,255,204};
-
+	private int[] corAmarelo = {255,255,0};
+	private BaseExcelBayer base = new BaseExcelBayer();
+	
+	
 	public GeraExcelRodapeCalculos(XSSFWorkbook novoExcel,int primeiraLinha, int ultimaLinha,XSSFSheet abaMaster){
 		this.novoExcel = novoExcel;
 		this.primeiraLinha = primeiraLinha;
@@ -218,6 +223,14 @@ public class GeraExcelRodapeCalculos {
 		criaLinhaECelulaTextoComMerge(cell, linha, "Total Faturado diretamente para a Bayer", 0, 0, 4, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,11,aba);
 		criaLinhaECelulaFormulaComMerge(cell, linha, "F"+num+"+F"+num1+"", 5,5,5,15,11, new int[]{242,242,242},false,aba);
 	}
+
+	public void setaCelulaComFormulaRodapeCalculoTotalReembolsoOpc(XSSFCell cell,XSSFRow linha,int num,XSSFSheet aba){
+		num = num+1;
+		int linhaTotalReembolso = linha.getRowNum()  -16 ;
+		
+		criaLinhaECelulaTextoComMerge(cell, linha, "Total - Reembolso de despesa", 0, 0, 4, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,11,aba);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "F"+linhaTotalReembolso, 5,5,5,15,11, new int[]{242,242,242},false,aba);
+	}
 	
 	public void setaCelulaComFormulaRodapeCalculoTotalOrcamentoOpc(XSSFCell cell,XSSFRow linha,int num,XSSFSheet aba){
 		num = num-1;
@@ -272,8 +285,8 @@ public class GeraExcelRodapeCalculos {
 		
 		XSSFCell cellPorc = criaLinhaECelulaPorcentagem(cell, linha, feeLista.doubleValue(), 2,novoExcel); /** Porcentagem de 10% */
 		estiloCorFundoBordaRecebeEstilo(cellPorc.getCellStyle(), linha, 30, XSSFCellStyle.ALIGN_CENTER, new int[]{242,242,242},true,false,11);
-		criaLinhaECelulaFormulaComMerge(cellTeste, linha, "G"+fatDiretoBayer+"+G"+terceiros+"", 3,3,4,30,11, new int[]{242,242,242},false);
-		criaLinhaECelulaFormulaComMerge(cellTeste, linha, "D"+total+"*C"+total+"", 5,5,6,30,11, new int[]{242,242,242},false);
+		criaLinhaECelulaFormulaComMerge(cellTeste, linha, "G"+fatDiretoBayer+"+G"+(fatDiretoBayer + 1)+"+G"+(fatDiretoBayer + 3), 3,3,4,30,11, new int[]{242,242,242},false);
+		criaLinhaECelulaFormulaComMerge(cellTeste, linha, "D"+( total + 1 )+"*C"+( total + 1 )+"", 5,5,6,30,11, new int[]{242,242,242},false);
 		
 	}
 
@@ -284,8 +297,8 @@ public class GeraExcelRodapeCalculos {
 		XSSFCell cellPorc = criaLinhaECelulaPorcentagem(cell, linha, fee.doubleValue(), 2,novoExcel); /** Porcentagem de 10% */
 		estiloCorFundoBordaRecebeEstilo(cellPorc.getCellStyle(), linha, 30, XSSFCellStyle.ALIGN_CENTER, new int[]{242,242,242},true,false,11);
 		
-		criaLinhaECelulaFormulaComMerge(cell, linha, "G"+num+"", 3,3,4,30,11, new int[]{242,242,242},false);
-		criaLinhaECelulaFormulaComMerge(cell, linha, "D"+linPorc+"*C"+linPorc+"", 5,5,6,30,11, new int[]{242,242,242},false);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "G"+(num + 1 )+"", 3,3,4,30,11, new int[]{242,242,242},false);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "D"+(linPorc + 1 )+"*C"+(linPorc + 1 )+"", 5,5,6,30,11, new int[]{242,242,242},false);
 	}
 //////// Sub total fee
 	public void setaCelulaComFormulaRodapeCalculoSubTotalFee(XSSFCell cell,XSSFRow linha,int num,BigDecimal fee){
@@ -302,56 +315,96 @@ public class GeraExcelRodapeCalculos {
 	}
 
 	public void setaCelulaComFormulaRodapeCalculoSubTotal2(XSSFCell cell,XSSFRow linha,int num){
-		num = num+2;
+		num = num+3;
 		int num1 = num+1;
-		int num2 = num+5;
-		int num3 = num+6;
-		criaLinhaECelulaTextoComMerge(cell, linha, "Sub total 2 (Serviços faturados via agência + Fee de remuneração)", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,11);
-		criaLinhaECelulaFormulaComMerge(cell, linha, "$G$"+num+"+$G$"+num1+"+$F$"+num2+"+$F$"+num3+"", 5,5,6,15,11, new int[]{242,242,242},false);
+		criaLinhaECelulaTextoComMerge(cell, linha, "Sub total 2 (Serviços faturados via agência)", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,11);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "$G$"+num+"+$G$"+num1, 5,5,6,15,11, new int[]{242,242,242},false);
 	}
 
 	public void setaCelulaComFormulaRodapeCalculoEncargos(XSSFCell cell,XSSFRow linha,int num,BigDecimal imposto){
 		
-		int totalFaturado = num-1;
-		int porcentagem = num+1;
+	/*	int totalFaturado = linha.getRowNum() + 1;
+		int porcentagem = num+4;*/
+
+		int totalFaturado = num+4;
+		
+		int porcentagem = linha.getRowNum() + 1;
 		
 		criaLinhaECelulaTextoComMerge(cell, linha, "Encargos tributários", 0, 0, 1, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,false,11);
 		criaLinhaECelulaPorcentagemMerge(cell, linha, imposto.doubleValue(), 2,novoExcel); /** Porcentagem de 15% */
-		criaLinhaECelulaFormulaComMerge(cell, linha, "$F$"+porcentagem+"*$C$"+totalFaturado+"", 5,5,6,15,11, new int[]{242,242,242},false);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "$F$"+totalFaturado+"*$C$"+porcentagem+"", 5,5,6,15,11, new int[]{242,242,242},false);
 	}
 
 	public void setaCelulaComFormulaRodapeCalculoEncargosFee(XSSFCell cell,XSSFRow linha,int num,BigDecimal imposto){
-		
-		int totalFaturado = num-1;
-		int porcentagem = num+1;
+		int linhaPorcentagem = linha.getRowNum()+ 1;
+		int linhaTotaFee = linha.getRowNum() + 9;
 		
 		criaLinhaECelulaTextoComMerge(cell, linha, "Encargos tributários - Fee", 0, 0, 1, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,false,11);
 		criaLinhaECelulaPorcentagemMerge(cell, linha, imposto.doubleValue(), 2,novoExcel); /** Porcentagem de 15% */
-		criaLinhaECelulaFormulaComMerge(cell, linha, "$F$"+porcentagem+"*$C$"+totalFaturado+"", 5,5,6,15,11, new int[]{242,242,242},false);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "$F$"+linhaTotaFee+"*$C$"+linhaPorcentagem+"", 5,5,6,15,11, new int[]{242,242,242},false);
 	}
 	
 	public void setaCelulaComFormulaRodapeCalculoFaturadoAgencia(XSSFCell cell,XSSFRow linha,int num){
-		int num1 = num+1;
+		int subTotalFaturadoViaAgencia = num + 2;
+		int porcentagemEncargos = num + 3;
 		
-		criaLinhaECelulaTextoComMerge(cell, linha, "Total Faturado via agência", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,11);
-		criaLinhaECelulaFormulaComMerge(cell, linha, "$F$"+num+"/(100%-$C$"+num1+")", 5,5,6,15,11, new int[]{242,242,242},true);
+		criaLinhaECelulaTextoComMerge(cell, linha, "Total Faturado via agência", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,10);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "$F$"+subTotalFaturadoViaAgencia+"/(100%-$C$"+porcentagemEncargos+")", 5,5,6,15,10, new int[]{242,242,242},true);
+		base.criaLinhaECelulaTexto(cell, linha, "linha 10 do pedido",7 ,novoExcel,corAmarelo);
 	}
 
 	public void setaCelulaComFormulaRodapeCalculoFaturadoDiretoBayer(XSSFCell cell,XSSFRow linha,int num){
 		num = num+1;
-		int num1= num+3;
-		criaLinhaECelulaTextoComMerge(cell, linha, "Total Faturado diretamente para a Bayer", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,11);
-		criaLinhaECelulaFormulaComMerge(cell, linha, "G"+num+"+G"+num1+"", 5,5,6,15,11, new int[]{242,242,242},true);
+		int num1= num+4;
+		criaLinhaECelulaTextoComMerge(cell, linha, "Total Faturado diretamente para a Bayer", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,10);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "G"+num+"+G"+num1+"", 5,5,6,15,10, new int[]{242,242,242},true);
 
+	}
+/// Total ReembolsoDespesas
+	public void setaCelulaComFormulaRodapeCalculoReembolsoDespesas(XSSFCell cell,XSSFRow linha,int num){
+		num = num+1;
+		int formula = linha.getRowNum() - 17;
+		
+		criaLinhaECelulaTextoComMerge(cell, linha, "Total - Reembolso de despesa", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,10);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "G"+formula, 5,5,6,15,10, new int[]{242,242,242},true);
+		base.criaLinhaECelulaTexto(cell, linha, "linha 20 do pedido",7 ,novoExcel,corAmarelo);
+	}
+
+/// Total Fee
+	public void setaCelulaComFormulaRodapeCalculoFee(XSSFCell cell,XSSFRow linha,int num){
+		num = num+1;
+		int linhaSubTotalFee = linha.getRowNum() - 11;
+		int linhaEncargosTributariosFee = linha.getRowNum() - 7;
+		
+		criaLinhaECelulaTextoComMerge(cell, linha, "Total - Fee", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,10);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "$F$"+linhaSubTotalFee+"/(100%-$C$"+linhaEncargosTributariosFee+")", 5,5,6,15,10, new int[]{242,242,242},true);
+		
+		base.criaLinhaECelulaTexto(cell, linha, "linha 30 do pedido",7 ,novoExcel,corAmarelo);
+	}
+
+/// Total Previsao Extras
+	public void setaCelulaComFormulaTotalPrevisaoExtras(XSSFCell cell,XSSFRow linha,int num){
+		num = num+1;
+		int linhaTotalFaturadoViaAgencia = linha.getRowNum() - 7;
+		int linhaReembolsoDespesas = linha.getRowNum() - 3;
+		int linhaTotalFee = linha.getRowNum() - 1;
+		
+		String formula = "SUM(F"+linhaTotalFaturadoViaAgencia+"+F"+linhaReembolsoDespesas+"+F"+linhaTotalFee+")*10%";
+		
+		criaLinhaECelulaTextoComMerge(cell, linha, "Total - Previsão Extras", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,10);
+		criaLinhaECelulaFormulaComMerge(cell, linha, formula, 5,5,6,15,10, new int[]{242,242,242},true);
+		
+		base.criaLinhaECelulaTexto(cell, linha, "linha 40 do pedido",7 ,novoExcel,corAmarelo);
 	}
 
 	public void setaCelulaComFormulaRodapeCalculoTotalOrcamento(XSSFCell cell,XSSFRow linha,int num){
 
-		num = num+1;
-		int num1 = num+2;
+		int primeira = linha.getRowNum() - 9;
+		int ultima = linha.getRowNum() - 3;
 		
-		criaLinhaECelulaTextoComMerge(cell, linha, "Total do orçamento (todos os custos de produção somandos)", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{247,150,70},true,true,11);
-		criaLinhaECelulaFormulaComMerge(cell, linha, "F"+num+"+F"+num1+"", 5,5,6,15,11, new int[]{247,150,70},true);
+		
+		criaLinhaECelulaTextoComMerge(cell, linha, "Total do orçamento (todos os custos de produção somandos)", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{247,150,70},true,true,10);
+		criaLinhaECelulaFormulaComMerge(cell, linha, "SUM(F"+primeira+":F"+ultima+")", 5,5,6,15,11, new int[]{247,150,70},true);
 
 	}
 
@@ -385,7 +438,7 @@ public class GeraExcelRodapeCalculos {
 		quadroLinha1(cell, linha, num, textoFaturamento, numPorcentagem, formula);
 	}
 	public void quadroFee14(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem,int totalSub,int fatDireto,int linhaPorc){
-		String formula = "((F"+totalSub+"+F"+fatDireto+")*C"+linhaPorc+")";
+		String formula = "((F"+totalSub+"+F"+fatDireto+")*C"+(linhaPorc + 1)+")";
 		quadroLinha1Porc(cell, linha, num, textoFaturamento, numPorcentagem.toString(), formula);
 	}
 	public void quadroFee7(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem,int linha7Porc,int contBayer){

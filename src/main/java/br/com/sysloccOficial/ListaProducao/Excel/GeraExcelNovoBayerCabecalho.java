@@ -25,7 +25,7 @@ public class GeraExcelNovoBayerCabecalho {
 		abaMaster.setColumnWidth(4, 4000);
 		abaMaster.setColumnWidth(5, 5000);
 		abaMaster.setColumnWidth(6, 4000);
-		abaMaster.setColumnWidth(7, 4000);
+		abaMaster.setColumnWidth(7, 5000);
 		abaMaster.setColumnWidth(8, 6000);
 		abaMaster.setColumnWidth(9, 6000);
 		abaMaster.setColumnWidth(10, 6000);
