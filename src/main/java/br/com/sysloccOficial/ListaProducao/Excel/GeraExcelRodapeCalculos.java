@@ -421,6 +421,8 @@ public class GeraExcelRodapeCalculos {
 		criaLinhaECelulaTextoComMerge(cell, linha, "", 5, 5,5, 15,XSSFCellStyle.ALIGN_LEFT,corCinzaEsc,false,true,10);
 	}
 	public void quadroTotalEvento(XSSFCell cell,XSSFRow linha,int nf1,int nf2){
+		nf1 = nf1 +9;
+		nf2 = nf2 +9;
 		criaLinhaECelulaTextoComMerge(cell, linha, "TOTAL EVENTO", 0, 0,4, 15,XSSFCellStyle.ALIGN_CENTER,corCinzaEsc,false,true,10);
 		criaLinhaECelulaFormulaComMergeQuadro(cell, linha, "F"+nf1+"+F"+nf2+"", 5,5,5,15,10,corCinzaEsc,true);
 	}
@@ -442,23 +444,32 @@ public class GeraExcelRodapeCalculos {
 		quadroLinha1Porc(cell, linha, num, textoFaturamento, numPorcentagem.toString(), formula);
 	}
 	public void quadroFee7(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem,int linha7Porc,int contBayer){
+		contBayer = contBayer + 9;
+		linha7Porc = linha7Porc + 1;
 		String formula = "(F"+contBayer+"*C"+linha7Porc+")";
 		quadroLinha1Porc(cell, linha, num, textoFaturamento, numPorcentagem.toString(), formula);
 	}
 	public void quadroCustInter(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,String numPorcentagem,int custoInter){
+		custoInter = custoInter +1;
 		String formula = "G"+custoInter+"";
 		quadroLinha1(cell, linha, num, textoFaturamento, numPorcentagem, formula);
 	}
 	public void quadroSub(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,String numPorcentagem,int totalserv,int custosint){
+		totalserv = totalserv + 9;
+		custosint = custosint +9;
 		String formula = "SUM(F"+totalserv+":F"+custosint+")";
 		quadroLinha1(cell, linha, num, textoFaturamento, numPorcentagem, formula);
 	}
 	public void quadroImpostos(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem, int subTotal, int fatDirBayer){
+		subTotal = subTotal + 9;
+		fatDirBayer = fatDirBayer + 9;
 		String formula = "((F"+subTotal+"-F"+fatDirBayer+"-F"+(fatDirBayer+1)+")/0.771)-(F"+subTotal+"-F"+fatDirBayer+"-F"+(fatDirBayer+1)+")";
 		quadroLinha1Porc(cell, linha, num, textoFaturamento, numPorcentagem.toString(), formula);
 	}
 	
 	public void quadroTotalNF(XSSFCell cell,XSSFRow linha,int num,String colunaLinha1,String colunaLinha2,String colunaLinha3,int subTotal,int imposto){
+		subTotal = subTotal + 9 ;
+		imposto = imposto + 9 ;
 		criaLinhaECelulaTextoComMerge(cell, linha, colunaLinha1, 0, 0,0, 15,XSSFCellStyle.ALIGN_LEFT,corVerdeAgua,false,true,10);
 		criaLinhaECelulaTextoComMerge(cell, linha, colunaLinha2, 1, 1,2, 15,XSSFCellStyle.ALIGN_LEFT,corVerdeAgua,false,true,10);
 		criaLinhaECelulaTextoComMerge(cell, linha, colunaLinha3, 3, 3,3, 15,XSSFCellStyle.ALIGN_LEFT,corVerdeAgua,false,true,10);
@@ -469,40 +480,64 @@ public class GeraExcelRodapeCalculos {
 		quadroLinha2(cell, linha, num, textoFaturamento, numPorcentagem);
 	}
 	public void quadroTotalServSubEx(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem,int totalSubCont){
+		
+		totalSubCont = totalSubCont +9;
+		num = num +9;
+		
 		String formula = "F"+totalSubCont+"*E"+num+"";
 		quadroLinha3(cell, linha, textoFaturamento, numPorcentagem, formula);
 	}
 	
 	public void quadroFatDirBayerEx(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem,int fatDiretoBayer){
+		fatDiretoBayer = fatDiretoBayer + 9;
+		num = num + 9;
 		String formula = "F"+fatDiretoBayer+"*E"+num+"";
 		quadroLinha3(cell, linha,textoFaturamento, numPorcentagem, formula);
 	}
 	public void quadroContBayerEx(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem,int contbayer){
+		contbayer = contbayer + 9;
+		num = num + 9;
 		String formula = "F"+contbayer+"*E"+num+"";
 		quadroLinha3(cell, linha,textoFaturamento, numPorcentagem, formula);
 	}
 	public void quadroFee14Ex(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem,int totalServSub,int fatDiretoBayer){
+		totalServSub = totalServSub + 9;
+		fatDiretoBayer = fatDiretoBayer + 9;
+		num = num + 9;
 		String formula = "(F"+totalServSub+"+F"+fatDiretoBayer+")*E"+num+"";
 		quadroLinha3(cell, linha,textoFaturamento, numPorcentagem, formula);
 	}
 	public void quadroFee7Ex(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem,int contBayer){
+		contBayer = contBayer + 9;
+		num = num + 9;
 		String formula = "F"+contBayer+"*E"+num+"";
 		quadroLinha3(cell, linha,textoFaturamento, numPorcentagem, formula);
 	}
 	public void quadroCustInterEx(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem,int custoInt){
+		custoInt = custoInt +9;
+		num = num +9;
 		String formula = "F"+custoInt+"*E"+num+"";
 		quadroLinha3(cell, linha, textoFaturamento, numPorcentagem, formula);
 	}
 	public void quadroSubTotalEx(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,String numPorcentagem,int totalServ,int custosInt){
+		totalServ = totalServ +9;
+		custosInt = custosInt +9;
 		String formula = "SUM(F"+totalServ+":F"+custosInt+")";
 		quadroLinha1(cell, linha, num, textoFaturamento, numPorcentagem, formula);
 	}
 	public void quadroImpostosEx(XSSFCell cell,XSSFRow linha,int num,String textoFaturamento,BigDecimal numPorcentagem,int fatBayer,int contBayer){
+		num = num + 9;
+		fatBayer = fatBayer + 9;
+		contBayer = contBayer + 9;
 		String formula = "((F"+num+"-F"+fatBayer+"-F"+contBayer+")/0.771)-(F"+num+"-F"+fatBayer+"-F"+contBayer+")";
 		quadroLinha3(cell, linha,textoFaturamento, numPorcentagem, formula);
 	}
 	
 	public void quadroTotalNF2(XSSFCell cell,XSSFRow linha,int num,String colunaLinha1,String colunaLinha2,String colunaLinha3,int subtotal,int impostos){
+		
+		subtotal = subtotal +9;
+		impostos = impostos +9;
+		
 		criaLinhaECelulaTextoComMerge(cell, linha, colunaLinha1, 0, 0,0, 15,XSSFCellStyle.ALIGN_LEFT,corVerdeAgua,false,true,10);
 		criaLinhaECelulaTextoComMerge(cell, linha, colunaLinha2, 1, 1,2, 15,XSSFCellStyle.ALIGN_LEFT,corVerdeAgua,false,true,10);
 		criaLinhaECelulaTextoComMerge(cell, linha, colunaLinha3, 3, 3,3, 15,XSSFCellStyle.ALIGN_LEFT,corVerdeAgua,false,true,10);
