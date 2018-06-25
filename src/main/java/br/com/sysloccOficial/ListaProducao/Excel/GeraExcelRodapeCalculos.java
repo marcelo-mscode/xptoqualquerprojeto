@@ -391,8 +391,8 @@ public class GeraExcelRodapeCalculos {
 		
 		String formula = "SUM(F"+linhaTotalFaturadoViaAgencia+"+F"+linhaReembolsoDespesas+"+F"+linhaTotalFee+")*10%";
 		
-		criaLinhaECelulaTextoComMerge(cell, linha, "Total - Previsão Extras", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,10);
-		criaLinhaECelulaFormulaComMerge(cell, linha, formula, 5,5,6,15,10, new int[]{242,242,242},true);
+		criaLinhaECelulaTextoComMergeFontCinza(cell, linha, "Total - Previsão Extras", 0, 0, 3, 15,XSSFCellStyle.ALIGN_LEFT,new int[]{242,242,242},true,true,10);
+		criaLinhaECelulaFormulaComMergeFontCinza(cell, linha, formula, 5,5,6,15,10, new int[]{242,242,242},true);
 		
 		base.criaLinhaECelulaTexto(cell, linha, "linha 40 do pedido",7 ,novoExcel,corAmarelo);
 	}
@@ -617,6 +617,24 @@ public class GeraExcelRodapeCalculos {
 		return cell;
 	}
 
+	public XSSFCell criaLinhaECelulaFormulaComMergeFontCinza(XSSFCell cell,XSSFRow linha,String valor,int posicaoCelula,int priCol, int ultCol,int alturaLinha,int fontTam,int[] cor,boolean bold){
+		XSSFCellStyle styleReal = novoExcel.createCellStyle();
+		styleReal.setDataFormat(novoExcel.createDataFormat().getFormat("R$    #,##0.00"));
+		styleReal.setAlignment(XSSFCellStyle.ALIGN_LEFT);
+		linha.setHeightInPoints(alturaLinha);
+		
+		estiloCorFundoBordaRecebeEstiloFonteCinza(styleReal, linha, alturaLinha, XSSFCellStyle.ALIGN_RIGHT, cor,true,bold,fontTam);
+		
+		cell = linha.createCell(posicaoCelula);	
+		cell.setCellType(XSSFCell.CELL_TYPE_FORMULA);
+		cell.setCellFormula(valor);
+		cell.setCellStyle(styleReal);
+		
+		GeraMergeLinhaComStylodaLinha merge = new GeraMergeLinhaComStylodaLinha(abaMaster, novoExcel);
+		merge.geraMerge(cell,linha.getRowNum(),priCol,ultCol);
+		return cell;
+	}
+
 	public XSSFCell criaLinhaECelulaFormulaComMergeQuadro(XSSFCell cell,XSSFRow linha,String valor,int posicaoCelula,int priCol, int ultCol,int alturaLinha,int fontTam,int[] cor,boolean bold){
 		XSSFCellStyle styleReal = novoExcel.createCellStyle();
 		styleReal.setDataFormat(novoExcel.createDataFormat().getFormat("R$    #,##0.00"));
@@ -688,6 +706,29 @@ public class GeraExcelRodapeCalculos {
 		styleReal.setFont(font);
 		styleReal.setWrapText(true);
 
+		cell.setCellStyle(styleReal);
+		
+		cell = linha.createCell(posicaoCelula);	
+		cell.setCellStyle(styleReal);
+		cell.setCellValue(valor);
+		GeraMergeLinhaComStylodaLinha merge = new GeraMergeLinhaComStylodaLinha(abaMaster, novoExcel);
+		merge.geraMerge(cell,linha.getRowNum(),priCol,ultCol);
+	}
+
+	public void criaLinhaECelulaTextoComMergeFontCinza(XSSFCell cell,XSSFRow linha,String valor,int posicaoCelula,int priCol,
+			int ultCol,int alturaLinha,short alinhamento,int[]corFundo,boolean italic, boolean bold,int fontTam){
+		
+		XSSFCellStyle styleReal = estiloCorFundoBorda(linha, alturaLinha, alinhamento, corFundo);
+		
+		XSSFFont font = novoExcel.createFont();
+		font.setItalic(italic);
+		font.setBold(bold);
+		font.setFontHeight(fontTam);
+		font.setFontName("Arial");
+		font.setColor(IndexedColors.GREY_40_PERCENT.getIndex());
+		styleReal.setFont(font);
+		styleReal.setWrapText(true);
+		
 		cell.setCellStyle(styleReal);
 		
 		cell = linha.createCell(posicaoCelula);	
@@ -816,6 +857,26 @@ public class GeraExcelRodapeCalculos {
 		
 		styleReal = setaBordaSimples(styleReal);
 	
+	}
+
+	private void estiloCorFundoBordaRecebeEstiloFonteCinza(XSSFCellStyle styleReal,XSSFRow linha, int alturaLinha, short alinhamento, int[] corFundo,boolean italic,boolean bold,int fontTam) {
+		styleReal.setAlignment(alinhamento);
+		linha.setHeightInPoints(alturaLinha);
+		
+		XSSFFont font = novoExcel.createFont();
+		font.setItalic(italic);
+		font.setBold(bold);
+		font.setFontHeight(fontTam);
+		font.setFontName("Arial");
+		font.setColor(IndexedColors.GREY_40_PERCENT.getIndex());
+		styleReal.setFont(font);
+		
+		styleReal.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		styleReal.setFillForegroundColor(new XSSFColor(new java.awt.Color(corFundo[0],corFundo[1],corFundo[2])));
+		styleReal.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER); 
+		
+		styleReal = setaBordaSimples(styleReal);
+		
 	}
 
 	public XSSFCellStyle criaBordasSimples(){

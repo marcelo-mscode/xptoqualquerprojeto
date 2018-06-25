@@ -67,8 +67,8 @@ public class GeraExcelNovoBayer{
 			infoLista.setFeeReduzido(new BigDecimal("7"));
 		}
 
-		BaseExcelBayer base = new BaseExcelBayer("K:/Programas instalados no SSD/SYSLOC/upload/excel/"+infoLista.getIdJob().getTitulo());
-//		BaseExcelBayer base = new BaseExcelBayer("C:/SYSLOC/upload/excel/"+infoLista.getIdJob().getTitulo());
+//		BaseExcelBayer base = new BaseExcelBayer("K:/Programas instalados no SSD/SYSLOC/upload/excel/"+infoLista.getIdJob().getTitulo());
+		BaseExcelBayer base = new BaseExcelBayer("C:/SYSLOC/upload/excel/"+infoLista.getIdJob().getTitulo());
 		FileOutputStream out = base.caminhoeNomeDoArquivo();
 		String downloadExcel = base.caminhoDownloadExcel(infoLista.getIdJob().getTitulo(),"upload/upload/excel/"+infoLista.getIdJob().getTitulo());
 		
@@ -215,10 +215,10 @@ public class GeraExcelNovoBayer{
 // -------------------------------------
 //Quadro 10% Loccoagencia		
 		// Num Contrato SAP
-		linha = abaMaster.createRow(num+29);
+		/*linha = abaMaster.createRow(num+29);
 		XSSFCell numContrato = linha.createCell(0);
-		criaLinhaECelulaMesclado(numContrato, linha, "Nr. Contrato SAP: 4400182963", 0, abaMaster, 0, 0, XSSFCellStyle.ALIGN_LEFT);
-		//Pedido Compra
+		criaLinhaECelulaMesclado(numContrato, linha, "Nr. Contrato SAP: 4400182963", 0, abaMaster, 0, 0, XSSFCellStyle.ALIGN_LEFT);*/
+		/*//Pedido Compra
 		linha = abaMaster.createRow(num+30);
 		XSSFCell pedidoCompra = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.quadroPedidCompra(pedidoCompra, linha, num);
@@ -303,15 +303,15 @@ public class GeraExcelNovoBayer{
 		//Total Evento
 		linha = abaMaster.createRow(num+50);
 		XSSFCell totalEvento = linha.createCell(0);
-		calculoRopapExcelRodapeCalculos.quadroTotalEvento(totalEvento, linha,num+41,num+31);
+		calculoRopapExcelRodapeCalculos.quadroTotalEvento(totalEvento, linha,num+41,num+31);*/
 		
 // -------------------------------------
 		// Num Contrato SAP
-		linha = abaMaster.createRow(num+52);
+		linha = abaMaster.createRow(num+29);
 		XSSFCell numContrato2 = linha.createCell(0);
 		criaLinhaECelulaMesclado(numContrato2, linha, "Nr. Contrato SAP: 4400182963", 0, abaMaster, 0, 0, XSSFCellStyle.ALIGN_LEFT);
 		
-		linha = abaMaster.createRow(num+53);
+		linha = abaMaster.createRow(num+30);
 		XSSFCell cellContrato = linha.createCell(0);
 		calculoRopapExcelRodapeCalculos.setaCelulaRodapeContrato(cellContrato, linha, num);
 		
@@ -557,9 +557,9 @@ public class GeraExcelNovoBayer{
 	}
 	
 	private void InsereImagem() throws FileNotFoundException, IOException {
-		InputStream is = new FileInputStream("K:/Programas instalados no SSD/SYSLOC/upload/logoEmpresas/bayerExcel.png");
+	//	InputStream is = new FileInputStream("K:/Programas instalados no SSD/SYSLOC/upload/logoEmpresas/bayerExcel.png");
 
-		//InputStream is = new FileInputStream("C:/SYSLOC/upload/logoEmpresas/bayerExcel.png");
+		InputStream is = new FileInputStream("C:/SYSLOC/upload/logoEmpresas/bayerExcel.png");
 	    byte[] bytes = IOUtils.toByteArray(is);
 	    int pictureIdx = novoExcel.addPicture(bytes, novoExcel.PICTURE_TYPE_JPEG);
 	    is.close();
