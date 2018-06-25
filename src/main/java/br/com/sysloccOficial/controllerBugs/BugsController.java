@@ -60,7 +60,7 @@ public class BugsController {
 				    + "\nUrl Anterior: "+ bugs.getUrlAnterior()
 				    + "\nUrl Atual: "+ bugs.getUrlAtual();
 		
-		String to = "sisloc@loccoagencia.com.br";
+		String to = "marcelomscode@hotmail.com";
 		
 		email.singleEmail(to, subject, text);
 		
