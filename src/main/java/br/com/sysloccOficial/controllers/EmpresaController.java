@@ -154,6 +154,9 @@ public class EmpresaController {
 			manager.merge(e);
 		}
 		
+		atualizaBancoEmpresa();
+		
+		
 		rd.addFlashAttribute("msg", utilMsg.msgConfirmacaoDadosSalvos());
 		
 		return "redirect:infoempresa?id="+idEmpresaAtualiza;
@@ -319,6 +322,11 @@ public class EmpresaController {
 		
 		Query q2 = manager.createNativeQuery("UPDATE Empresa SET cliente='-1' WHERE idEmpresa > '0' and cliente = 1;");
 		q2.executeUpdate();
+		
+		
+		System.out.println("Terminei !!!");
+		System.out.println("Terminei !!!");
+		
 	}
 	
 	
