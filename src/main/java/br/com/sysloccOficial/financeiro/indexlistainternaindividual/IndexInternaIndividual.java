@@ -208,18 +208,12 @@ public class IndexInternaIndividual {
 	}
 	
 	
-	/*@RequestMapping("salvaOrcamentoFornecedor")
-	@ResponseBody
-	private String salvaOrcamentoFornecedor(String valor, Integer idFornecedor,Integer idGrupo){
-		internaIndividualDAO.salvaNovoOrcamento(valor, idFornecedor,idGrupo);
+	@RequestMapping("editaNd")
+	public String editaNd(int idLista, boolean valor){
+		internaIndividualDAO.editaND(idLista, valor);
 		return "ok";
 	}
-	
-	
-	*/
-	
-	
-	
+
 	public <E> List<E> removerDuplicados(List<E> combinacoes) {
 		for (int i = 0; i < combinacoes.size(); i++) {
 			Object a = combinacoes.get(i);
@@ -233,7 +227,5 @@ public class IndexInternaIndividual {
 		}
 		return combinacoes;
 	}
-	
-	
 	
 }

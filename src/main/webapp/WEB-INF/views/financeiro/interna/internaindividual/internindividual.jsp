@@ -31,12 +31,12 @@
    .ajusteMenuFinanceiro, .bodyXY{width: 150% !important; }
    .ajusteFinanceiro{float: none !important;}
    .ajusteFinanceiroBar{position: fixed;width:150%;}
-   .alinhamentoVertical > td {vertical-align: middle !important;}
+   .alinhamentoVertical > td {vertical-align: middle !important;border: 1px solid red}
    .ajuste85px{width: 85px}
    .ajusteVertical{vertical-align: middle !important;}
    .botaoAtualizar {height: 50px;width: 135px;padding: 9px;font-size: 19px;box-shadow: 0px 0px 12px 4px #ccc;}
-
-
+   .ajusteInfoEvento{text-align: left;font-size: 12px;}
+   .
 
 </style>
 <div class="col-md-12 bodyXY" style="height: 35px;border-bottom: 1px solid #ccc;margin-top: 49px;position: fixed;z-index: 99;">
@@ -49,25 +49,31 @@
 <div class="col-md-12" style="margin-top: 11px;text-align: center;">
    <table class="table table-bordered table-hover table-condensed" style="width:98%;position: fixed;margin-top: 72px;background-color: #fff;z-index: 99;">
       <tr class="alinhamentoVertical">
-         <td colspan="4">Evento: ${infoLista.lista}</td>
-         <td colspan="2">${infoLista.idJob.empresa.empresa}</td>
-         <td colspan="3">Requisitante: ${infoLista.idJob.contatos.contato}</td>
-         <td colspan="3" class="form-inline">
-            Data Pagto:
+         <td colspan="4" class="ajusteInfoEvento">Evento: ${infoLista.lista}</td>
+         <td colspan="2" class="ajusteInfoEvento">${infoLista.idJob.empresa.empresa}</td>
+         <td colspan="3" class="ajusteInfoEvento">Requis: ${infoLista.idJob.contatos.contato}</td>
+         <td colspan="3" class="form-inline ajusteInfoEvento" style="width: 228px;">
+            Dt Pagto:
             <input id="dataPag${infoLista.idLista}" class="form-control input-160px"
             onblur="editaCamposProducaoP('dataPag${infoLista.idLista}','infoInternaData',${infoLista.idLista});" onclick="mudaCampoData('dataPag${infoLista.idLista}');" type="text"
             value="
             <fmt:formatDate value="${infoInterna.dataPagamento}" pattern="dd/MM/yyyy"/>
             "  >
          </td>
-         <td colspan="3" class="form-inline">NF &nbsp&nbsp
+         <td class="form-inline ajusteInfoEvento" style="width: 120px">NF &nbsp&nbsp
             <input id="nfInterna${infoLista.idLista}" class="form-control input-80px"
                onblur="editaCamposProducaoP('nfInterna${infoLista.idLista}','infoInternaNf',${infoLista.idLista});" type="text" value="${infoInterna.nfInterna}">
          </td>
-         <td colspan="3" class="form-inline">Imposto % &nbsp&nbsp
+         <td colspan="3" class="form-inline ajusteInfoEvento" style="width: 120px;">Imposto % &nbsp&nbsp
             <input id="impostoInterna${infoLista.idLista}" class="form-control input-80px"
                onblur="editaCamposProducaoP('impostoInterna${infoLista.idLista}','impostoInterna',${infoLista.idLista});" type="text" value="${infoInterna.impostoInterna}">
          </td>
+         <td>ND&nbsp&nbsp
+         		<input id="editaND"  
+         		<c:if test="${infoInterna.ndInterna eq  true}">checked="checked"</c:if>
+         		 type="checkbox" style="vertical-align: top;" onclick="editaND(${infoLista.idLista});"  />
+         </td>
+         
       </tr>
    </table>
 </div>
@@ -610,6 +616,7 @@
    </div>
 </div>
 <c:import url="../../../_comum/footer.jsp" />
+<script type="text/javascript" src="<c:url value="resources/js/financeiroInterna.js" />"></script>
 <script>
    $(document).ready(function(){
    	$('#formDespesas').validate({

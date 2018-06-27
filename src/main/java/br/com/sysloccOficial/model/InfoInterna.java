@@ -25,6 +25,7 @@ public class InfoInterna {
 	private Date dataPagamento;
 	private boolean recebido;
 	private double impostoInterna;
+	private boolean ndInterna;
 	
 	
 // ---------------------------------------------------------------- //	
@@ -34,10 +35,14 @@ public class InfoInterna {
 	@Temporal(TemporalType.TIMESTAMP)private Calendar dataRecebido;
 	
 // ---------------------------------------------------------------- //	
-	
-	
 	public Integer getIdInfoInterna() {
 		return idInfoInterna;
+	}
+	public boolean isNdInterna() {
+		return ndInterna;
+	}
+	public void setNdInterna(boolean ndInterna) {
+		this.ndInterna = ndInterna;
 	}
 	public double getImpostoInterna() {
 		return impostoInterna;

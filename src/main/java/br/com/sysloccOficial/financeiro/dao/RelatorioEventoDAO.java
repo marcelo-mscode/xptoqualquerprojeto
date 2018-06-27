@@ -16,6 +16,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -55,9 +56,23 @@ public class RelatorioEventoDAO {
 	}
 	
 	public List<Integer> idsFornecedoresPorLista(int idLista){
-		TypedQuery<Integer> q = manager.createQuery("SELECT distinct(idEmpFornecedor.idEmpresa) FROM ProducaoP p where idLista = "+idLista+" and p.produtoGrupo.imposto = 1 order by idEmpFornecedor.empresa",Integer.class);
+		String consulta = consultaNDFatDireto(idLista);
+		TypedQuery<Integer> q = manager.createQuery(consulta,Integer.class);
 		return q.getResultList();
 	}
+	
+	public String consultaNDFatDireto(int idLista){
+		TypedQuery<InfoInterna> query = manager.createQuery("from InfoInterna where idLista="+idLista,InfoInterna.class);
+		InfoInterna info = query.getSingleResult();
+		if(info.isNdInterna() == false){
+			String comNDFatDireto = "SELECT distinct(idEmpFornecedor.idEmpresa) FROM ProducaoP p where idLista = "+idLista+" and p.produtoGrupo.imposto = 1 order by idEmpFornecedor.empresa";
+			return comNDFatDireto;
+		}else{
+			String semNDFatDireto = "SELECT distinct(idEmpFornecedor.idEmpresa) FROM ProducaoP p where idLista = "+idLista+" order by idEmpFornecedor.empresa";
+			return semNDFatDireto;
+		}
+	}
+	
 	
 	public List<ProducaoP> listaProducaoPPorIdLista(int idLista){
 		//TypedQuery<ProducaoP> q2 = manager.createQuery("SELECT p FROM ProducaoP p where idLista = "+idLista,ProducaoP.class);

@@ -43,14 +43,7 @@ public class RelatorioEventoIndividualApoio {
 					bvs.setNomeFornecedor(listaProducaoPPorIdLista.get(i).getIdEmpFornecedor().getEmpresa());
 					valor = valor.add(listaProducaoPPorIdLista.get(i).getValorItem());
 					valorParaPgar = valorParaPgar.add(listaProducaoPPorIdLista.get(i).getValorDePagamentoContratacao());
-					
 					diferenca = diferenca.add(listaProducaoPPorIdLista.get(i).getDiferenca());
-					
-					/*if(ids.equals(6961)){
-						diferenca = diferenca.add(listaProducaoPPorIdLista.get(i).getValorItem());
-					}else{
-						diferenca = diferenca.add(listaProducaoPPorIdLista.get(i).getDiferenca());
-					}*/
 				}
 			}
 			bvs.setValorFornecedor(valor);

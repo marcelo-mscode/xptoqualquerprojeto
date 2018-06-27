@@ -7,13 +7,17 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.sound.midi.MidiDevice.Info;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.financeiro.indexlistainternaindividual.VerificaTipoDespesa;
 import br.com.sysloccOficial.financeiro.model.UltimaAtualizacaoInterna;
@@ -422,6 +426,19 @@ public class InternaIndividualDAO {
 			return null;
 		}
 
+	}
+
+	public void editaND(int idLista, boolean valor) {
+		try {
+			TypedQuery<InfoInterna> query = manager.createQuery("from InfoInterna where idLista="+idLista,InfoInterna.class);
+			InfoInterna info = query.getSingleResult();
+			info.setNdInterna(valor);
+			manager.merge(info);
+			manager.close();
+		} catch (Exception e) {
+			System.out.println("Erro ao atualizar ND Interna: "+e);
+		}
+		
 	}
 	
 	
