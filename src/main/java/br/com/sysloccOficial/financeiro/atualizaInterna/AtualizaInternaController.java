@@ -36,6 +36,8 @@ public class AtualizaInternaController extends AtualizaInternaRelatoriosEmMassa 
 			 
 		 atualizaInternaRelatoriosEventosEmMassa(listaIdsRelatoriosEventosCadastrados);
 		 
+		 relatorioApoio.montaObjetoRelatorioND(idLista,infoLista,mes,ano);
+		 
 		 /*//Verifica se tem algum relatório ja cadastrado no sistema
 		 LinkedHashSet<Integer> listaIdsRelatoriosEventosCadastrados = relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano);
 
