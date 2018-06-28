@@ -77,7 +77,13 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		MV.addObject("infoEvento", infoEvento);
 		MV.addObject("infoLista", infoLista);
 		MV.addObject("somaTotalEventos", dadosEvento.somaTotalEventos(infoEvento));
-		MV.addObject("custoTerceiros", dadosEvento.custoTerceiros(infoEvento));
+/**
+ * ABAIXO ESÁ COMENTADO PORQUE ESTOU CRIANDO RELATÓRIO INTERNO QUE FAZ ND APARECER AQUI, DESCOMENTAR DEPOIS !!!
+ * 
+ * 
+ * 
+ */
+/*		MV.addObject("custoTerceiros", dadosEvento.custoTerceiros(infoEvento));
 		MV.addObject("pgtoExternas", dadosEvento.pgtoExternas(infoEvento));
 		MV.addObject("faturamentoMes", dadosEvento.faturamentoMes(dadosEvento.somaTotalEventos(infoEvento),dadosEvento.pgtoExternas(infoEvento)));
 		
@@ -173,7 +179,7 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		
 		MV.addObject("quantRelatorioEventos", analiticoIndDAO.quantEventosMes(ano, mes));
 		MV.addObject("idsRelatorioEventos", analiticoIndDAO.idsRelatorioEventosMes(ano, mes));
-		
+*/		
 		
 		return MV;
 	    }

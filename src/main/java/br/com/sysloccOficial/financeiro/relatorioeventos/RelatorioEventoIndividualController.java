@@ -36,14 +36,21 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 	
 	
 	@RequestMapping("relatorioEventoIndividual")
-	public ModelAndView relatorioEventoIndividual(Integer idLista){
+	public ModelAndView relatorioEventoIndividual(Integer idLista, Integer idRelatorioEvento){
 		ModelAndView MV = new ModelAndView("financeiro/relatorioEventos/relatorioIndividual/relatorioIndividual");
 		
 		Lista infoLista = relatorioEventoDAO.listaPorIdLista(idLista);
 		
-		RelatorioEventos relatorioEventos = relatorioEventoDAO.relatorioEventoPorIdLista(idLista);
+		RelatorioEventos relatorioEventos = relatorioEventoDAO.relatorioEventoPoridRelatorioEvnto(idRelatorioEvento);
 		
-		List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
+		
+		List<RelatorioBVS> relatorioBVS = new ArrayList<RelatorioBVS>();
+		
+		if(relatorioEventos.isNdFatDireto() != true){
+			relatorioBVS = relApoio.relatorioBVS(idLista);
+		}else{
+			relatorioBVS = relApoio.relatorioBVSParaND(idLista);
+		}
 		
 	 	List<CacheEvento> relatorio = relatorioEventoDAO.listaCacheEventoPorEvento(relatorioEventos.getIdRelatorioEvento());
 		
@@ -59,11 +66,7 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 
 		MV.addObject("depesasEventos", relatorioEventoDAO.somaDespesasProjeto(idLista));
 		
-		
-		
-		
 		MV.addObject("usuarios", usuarios.cachePadraoNomes(relatorioEventos.getIdRelatorioEvento()));
-		
 		
 		int ano =  Integer.parseInt(relatorioEventos.getAnoEvento());
 		int mes = relatorioEventos.getMesReferencia();

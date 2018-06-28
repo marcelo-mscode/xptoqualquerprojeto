@@ -71,6 +71,7 @@ public class RelatorioEventos {
 	private	Integer mesReferencia;
 	
 	private boolean recebido;
+	private boolean ndFatDireto;
 
 	
 // ------------------------------------------------------------------------- //
@@ -84,9 +85,14 @@ public class RelatorioEventos {
     @OneToMany (mappedBy = "relatorioEvento") private List<CacheEvento> cacheEvento;
     
 // --------------------------------------------------------------------- //	
-	
     public Integer getIdRelatorioEvento() {
 		return idRelatorioEvento;
+	}
+	public boolean isNdFatDireto() {
+		return ndFatDireto;
+	}
+	public void setNdFatDireto(boolean ndFatDireto) {
+		this.ndFatDireto = ndFatDireto;
 	}
 	public BigDecimal getFeeReduzido() {
 		return feeReduzido;

@@ -118,9 +118,18 @@
 	
 	<tr>
 		<td>Imposto cliente 22,90%</td>
-		<td><fmt:formatNumber value="${infoLista.impostoValor}" pattern="#,##0.00"/></td>
-		<td></td>
-		<td><fmt:formatNumber value="${infoLista.impostoValor - relatorio.impostoSobreValorLoccoAgencia}" pattern="#,##0.00"/></td>
+		
+		<c:if test="${relatorio.ndFatDireto == false}">
+			<td><fmt:formatNumber value="${infoLista.impostoValor}" pattern="#,##0.00"/></td>
+			<td></td>
+			<td><fmt:formatNumber value="${infoLista.impostoValor - relatorio.impostoSobreValorLoccoAgencia}" pattern="#,##0.00"/></td>
+		</c:if>
+		<c:if test="${relatorio.ndFatDireto == true}">
+			<td>0,00</td>
+			<td></td>
+			<td>0,00</td>
+		</c:if>
+		
 		<td></td>
 	</tr>
 	

@@ -31,6 +31,7 @@ public class AtualizaInternaRelatoriosEmMassa {
 					 String ano2 = datas2.get(2).toUpperCase().toString();
 					 
 					 relatorioApoio.montaObjetoRelatorio(integer,infoLista2,mes2,ano2);
+					 relatorioApoio.montaObjetoRelatorioND(integer,infoLista2,mes2,ano2);
 					 
 				}
 			}

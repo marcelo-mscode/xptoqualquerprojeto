@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -16,12 +15,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.swing.JOptionPane;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
@@ -56,23 +52,34 @@ public class RelatorioEventoDAO {
 	}
 	
 	public List<Integer> idsFornecedoresPorLista(int idLista){
-		String consulta = consultaNDFatDireto(idLista);
-		TypedQuery<Integer> q = manager.createQuery(consulta,Integer.class);
+		//String consulta = consultaNDFatDireto(idLista);
+		
+		String comNDFatDireto = "SELECT distinct(idEmpFornecedor.idEmpresa) FROM ProducaoP p where idLista = "+idLista+" and p.produtoGrupo.imposto = 1 order by idEmpFornecedor.empresa";
+		TypedQuery<Integer> q = manager.createQuery(comNDFatDireto,Integer.class);
 		return q.getResultList();
 	}
+
+	public List<Integer> idsFornecedoresPorListaParaND(int idLista){
+		try {
+			String semNDFatDireto = "SELECT distinct(idEmpFornecedor.idEmpresa) FROM ProducaoP p where idLista = "+idLista+" and p.produtoGrupo.imposto = 0 order by idEmpFornecedor.empresa";
+			TypedQuery<Integer> q = manager.createQuery(semNDFatDireto,Integer.class);
+			return q.getResultList();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
-	public String consultaNDFatDireto(int idLista){
+	/*public String consultaNDFatDireto(int idLista){
 		TypedQuery<InfoInterna> query = manager.createQuery("from InfoInterna where idLista="+idLista,InfoInterna.class);
 		InfoInterna info = query.getSingleResult();
 		if(info.isNdInterna() == false){
 			String comNDFatDireto = "SELECT distinct(idEmpFornecedor.idEmpresa) FROM ProducaoP p where idLista = "+idLista+" and p.produtoGrupo.imposto = 1 order by idEmpFornecedor.empresa";
 			return comNDFatDireto;
 		}else{
-			String semNDFatDireto = "SELECT distinct(idEmpFornecedor.idEmpresa) FROM ProducaoP p where idLista = "+idLista+" order by idEmpFornecedor.empresa";
 			return semNDFatDireto;
 		}
 	}
-	
+	*/
 	
 	public List<ProducaoP> listaProducaoPPorIdLista(int idLista){
 		//TypedQuery<ProducaoP> q2 = manager.createQuery("SELECT p FROM ProducaoP p where idLista = "+idLista,ProducaoP.class);
@@ -111,7 +118,24 @@ public class RelatorioEventoDAO {
 		try {
 			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where idLista="+idLista, RelatorioEventos.class);
 			return q.getSingleResult();
-			
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public RelatorioEventos relatorioEventoPorIdListaComNDFatDireto(Integer idLista){
+		try {
+			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where idLista="+idLista+" and ndFatDireto = true", RelatorioEventos.class);
+			return q.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public RelatorioEventos relatorioEventoPoridRelatorioEvnto(Integer idRelatorioEvento){
+		try {
+			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where idRelatorioEvento = "+idRelatorioEvento, RelatorioEventos.class);
+			return q.getSingleResult();
 		} catch (Exception e) {
 			return null;
 		}
@@ -140,9 +164,6 @@ public class RelatorioEventoDAO {
 	}
 	
 	public List<RelatorioEventos> relatorioEventoPorMesReferencia(Integer mes, Integer ano){
-		
-		
-		
 		
 		try {
 			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where mesReferencia= "+ mes + " and anoEvento ="+ ano +"order by idRelatorioEvento", RelatorioEventos.class);
@@ -264,19 +285,22 @@ public class RelatorioEventoDAO {
 	}*/
 
 	public List<CacheEvento> listaCacheEventoPorEvento(Integer idRelatorioEvento){
-		TypedQuery<CacheEvento> q = manager.createQuery("FROM CacheEvento where relatorioEvento ="+idRelatorioEvento, CacheEvento.class);
-		List<CacheEvento> caches = q.getResultList();
 		
-		DecimalFormat nf = new DecimalFormat("0.###");
-	
+		try {
+			TypedQuery<CacheEvento> q = manager.createQuery("FROM CacheEvento where relatorioEvento ="+idRelatorioEvento, CacheEvento.class);
+			List<CacheEvento> caches = q.getResultList();
 			
-		
-		for (int i = 0; i < caches.size(); i++) {
-			String formato = nf.format(caches.get(i).getRazaoPorcentagem().multiply(new BigDecimal("100")));
-			caches.get(i).setRazaoPorcentagemFormato(formato);
-		}	
-		
-		return caches;
+			DecimalFormat nf = new DecimalFormat("0.###");
+			
+			for (int i = 0; i < caches.size(); i++) {
+				String formato = nf.format(caches.get(i).getRazaoPorcentagem().multiply(new BigDecimal("100")));
+				caches.get(i).setRazaoPorcentagemFormato(formato);
+			}	
+			
+			return caches;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	public BigDecimal somaGirosPorAnoMes(String ano, String mes, Integer idRelatorioAtual){
@@ -480,6 +504,14 @@ public class RelatorioEventoDAO {
 			return null;
 		}
 	}
+	public InfoInterna pegaInfoInternaND(Integer idLista) {
+		try {
+			TypedQuery<InfoInterna> info = manager.createQuery("from InfoInterna where idLista= "+idLista+" and ndInterna = true", InfoInterna.class);
+			return info.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
 	public List<DesIntFinanc> despesasProjeto(Integer idLista) {
 		try {
@@ -588,6 +620,11 @@ public class RelatorioEventoDAO {
 			novoObj.setIdLista(idLista);
 			manager.persist(novoObj);
 		}
+		
+	}
+
+	public void verificaFatDiretoComND(Integer idLista) {
+		// TODO Auto-generated method stub
 		
 	}
 	

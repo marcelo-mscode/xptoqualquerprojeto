@@ -103,9 +103,6 @@ public class MenuProducaoController extends AuxProducao{
 		return MV;
 	}
 	
-	
-	
-	
 	public List<Integer[]> removerDuplicadosDuasListas(List<Integer[]> combinacoesA, List<Integer[]> combinacoesB) {
 		for (int i = 0; i < combinacoesA.size(); i++) {
 			for (int j = 0; j < combinacoesB.size(); j++) {

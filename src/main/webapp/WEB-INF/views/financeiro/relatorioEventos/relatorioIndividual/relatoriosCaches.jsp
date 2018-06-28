@@ -40,31 +40,34 @@
 	 	 <tr>
 			<td style="padding: 10px;" colspan="3"></td>
 		</tr>	
-	 	 <tr>
-			<td style="padding: 2px 12px;" colspan="3">Novo Cache</td>
-		</tr>	
-  		<tr>
-			<td style="width: 110px !important;padding: 0;">
-				<select class="form-control" style="border: none;height:35px;" id="idUsuarioNovoCache">
-					<c:forEach items="${usuarios}" var="usuarios">
-						<option value="${usuarios[0]}">${usuarios[1]}</option>
-					</c:forEach>	
-				</select>
-				
-				<input id="idLista" value="${infoLista.idLista}" type="hidden" />
-			
-			</td>
-			<td style="padding: 0;"><input class="form-control" style="border: none;height:35px;text-align: center" id="novaPorcentagemCache"/></td>
-			<td style="padding: 0;"><button onclick="salvaNovoCache(idUsuarioNovoCache,${relatorio.idRelatorioEvento});" class="btn btn-default" style="border: none;height: 35px;text-align: center;padding: 7px 41px;border-radius: 0;">Salvar</button></td>
-		</tr>
 	 	
-	<c:forEach var="i" begin="1" end="3">
-  		<tr>
-			<td style="padding: 18px;"></td>
-			<td style="padding: 18px;"></td>
-			<td style="padding: 18px;"></td>
-		</tr>
-	</c:forEach>
+	    <c:if test="${relatorio.ndFatDireto == false}">	
+		 	<tr>
+				<td style="padding: 2px 12px;" colspan="3">Novo Cache</td>
+			</tr>	
+	  		<tr>
+				<td style="width: 110px !important;padding: 0;">
+					<select class="form-control" style="border: none;height:35px;" id="idUsuarioNovoCache">
+						<c:forEach items="${usuarios}" var="usuarios">
+							<option value="${usuarios[0]}">${usuarios[1]}</option>
+						</c:forEach>	
+					</select>
+					
+					<input id="idLista" value="${infoLista.idLista}" type="hidden" />
+				
+				</td>
+				<td style="padding: 0;"><input class="form-control" style="border: none;height:35px;text-align: center" id="novaPorcentagemCache"/></td>
+				<td style="padding: 0;"><button onclick="salvaNovoCache(idUsuarioNovoCache,${relatorio.idRelatorioEvento});" class="btn btn-default" style="border: none;height: 35px;text-align: center;padding: 7px 41px;border-radius: 0;">Salvar</button></td>
+			</tr>
+		 	
+			<c:forEach var="i" begin="1" end="3">
+		  		<tr>
+					<td style="padding: 18px;"></td>
+					<td style="padding: 18px;"></td>
+					<td style="padding: 18px;"></td>
+				</tr>
+			</c:forEach>
+		</c:if>		
 		
 		<tr class="bordaDestaque">
 			<td>TOTAL</td>
