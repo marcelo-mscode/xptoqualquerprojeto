@@ -58,14 +58,14 @@
 		  </tbody>
 	</table>
 	
-	<%-- <table class="table table-striped table-hover table-condensed" style="border: 1px solid #ddd"">
+	<table class="table table-striped table-hover table-condensed" style="border: 1px solid #ddd"">
 		  <tbody class="descEventoClientes">
 			
 			<c:import url="despesasBvs.jsp" />	 <tr><td colspan="7"></td></tr>
 	
 		</tbody>
 	</table>
-	
+ 	
 	<table class="table table-striped table-hover table-condensed" style="border: 1px solid #ddd"">
 		  <tbody class="descEventoClientes">
 
@@ -82,6 +82,7 @@
 		</tbody>
 	</table>
 
+
 	<table class="table table-striped table-hover table-condensed" style="border: 1px solid #ddd"">
 		  <tbody class="descEventoClientes">
 			<c:import url="resumoFinal.jsp" /> <tr><td colspan="7"></td></tr>
@@ -92,7 +93,7 @@
 		  <tbody class="descEventoClientes semPadding">
 			<c:import url="contasCorrente.jsp" /> <tr><td colspan="7"></td></tr>
 		</tbody>
-	</table> --%>
+	</table>
 	
 </div>
 	

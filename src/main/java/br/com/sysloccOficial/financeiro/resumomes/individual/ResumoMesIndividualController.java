@@ -83,7 +83,7 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
  * 
  * 
  */
-/*		MV.addObject("custoTerceiros", dadosEvento.custoTerceiros(infoEvento));
+		MV.addObject("custoTerceiros", dadosEvento.custoTerceiros(infoEvento));
 		MV.addObject("pgtoExternas", dadosEvento.pgtoExternas(infoEvento));
 		MV.addObject("faturamentoMes", dadosEvento.faturamentoMes(dadosEvento.somaTotalEventos(infoEvento),dadosEvento.pgtoExternas(infoEvento)));
 		
@@ -111,75 +111,68 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 				dadosEvento.somaCacheTotal(dadosEvento.somaCacheEquipe(infoEvento),dadosEvento.somaCacheDiretoria(infoEvento))
 				);
 		MV.addObject("lucroOperacional", lucroOperacional);
-		
-		MV.addObject("outrosImpostosContador", relatorioEventoDAO.despesasFixas("FinancImpostos", anoMes));
-		MV.addObject("outrosEscritorio", relatorioEventoDAO.despesasFixas("FinancEscritorio",anoMes));
-		MV.addObject("outrosTelefones", relatorioEventoDAO.despesasFixas("FinancTelefone",anoMes));
-		MV.addObject("outrosFolhaPgto", relatorioEventoDAO.despesasFixas("FinancFolhaPgto",anoMes));
-		
-		//
+
 		BigDecimal somaDespesasFixas = dadosEvento.SomaDespFixas(relatorioEventoDAO.despesasFixas("FinancImpostos",anoMes),
 				relatorioEventoDAO.despesasFixas("FinancEscritorio",anoMes),	
 				relatorioEventoDAO.despesasFixas("FinancTelefone",anoMes),
 				relatorioEventoDAO.despesasFixas("FinancFolhaPgto",anoMes));
 		MV.addObject("SomaDespFixas", somaDespesasFixas);
+		MV.addObject("outrosImpostosContador", relatorioEventoDAO.despesasFixas("FinancImpostos", anoMes));
+		MV.addObject("outrosEscritorio", relatorioEventoDAO.despesasFixas("FinancEscritorio",anoMes));
+		MV.addObject("outrosTelefones", relatorioEventoDAO.despesasFixas("FinancTelefone",anoMes));
+		MV.addObject("outrosFolhaPgto", relatorioEventoDAO.despesasFixas("FinancFolhaPgto",anoMes));
 		
-		
+
 		BigDecimal finanDespesas = relatorioEventoDAO.despesasFixas("FinancDespesas",anoMes);
 		MV.addObject("despCaixasProjetos", finanDespesas);
-		
 		BigDecimal somaDespVariaveis = dadosEvento.SomaDespVariaveis(
 				totalTarifasBanco
 				, finanDespesas
 				, relatorioEventoDAO.despesasFixas("FinancOutrasDespesas",anoMes));
 		
 		MV.addObject("somaDespVariaveis", somaDespVariaveis);
-		
 		MV.addObject("outrasDespesas", relatorioEventoDAO.despesasFixas("FinancOutrasDespesas",anoMes));
-		
-		//
+
 		BigDecimal creditoAplic = dadosEvento.somaCreditosAplicacoes(somaDespesasFixas, somaDespVariaveis);
 		MV.addObject("creditosAplicacoes",creditoAplic);
 		
-		//
 		BigDecimal MOContrib = relatorioEventoDAO.MOMargemContribuicao(ano.toString(),nomeMes);
 		MV.addObject("MOmargemContribuicao", MOContrib);
-
+		
 		MV.addObject("giroDeficitAvit", dadosEvento.giroDeficitAvit(lucroOperacional,creditoAplic,MOContrib));
-
+		
 		MV.addObject("contasReceber", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes));
-		
-		//
-		
-		List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
+
+/**
+ * 		Concentrar os esforços para diminuir o gargalo nesse carregamento
+ */
+		/*List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
 		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
-		
-		
 		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
 		BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
+		MV.addObject("eventosContasPagar", somaTotal);*/
+////////// FIM GARGALO //////////
 		
-		MV.addObject("eventosContasPagar", somaTotal);
-		//
 		MV.addObject("salarios", relatorioEventoDAO.salarios(anoMes));
-		//
+
 		MV.addObject("outrosImpostos", relatorioEventoDAO.outrosImpostos(anoMes));
 		
-		MV.addObject("totalPagar", dadosEvento.totalPagar(somaTotal,
-								   relatorioEventoDAO.salarios(anoMes),
-								   somaTotalCache, impostos, relatorioEventoDAO.outrosImpostos(anoMes)
-		));
-		
+		/*MV.addObject("totalPagar", dadosEvento.totalPagar(somaTotal,
+				relatorioEventoDAO.salarios(anoMes),
+				somaTotalCache, impostos, relatorioEventoDAO.outrosImpostos(anoMes)
+				));*/
 		// Total Giro Itau ( soma dos emprestimos cadastrados )
+	
 		BigDecimal giroItau = new BigDecimal("11781.48");
 		MV.addObject("giroItau", giroItau);
-
+		
 		// Total conta Garantia Itau ( soma dos emprestimos cadastrados )
 		BigDecimal totalEmprestimos = analiticoMovFinanceiroDAO.pegaTotalEmprestimosSemParcelamento(idAnalitico);
 		MV.addObject("totalEmprestimos", totalEmprestimos);
 		
 		MV.addObject("quantRelatorioEventos", analiticoIndDAO.quantEventosMes(ano, mes));
 		MV.addObject("idsRelatorioEventos", analiticoIndDAO.idsRelatorioEventosMes(ano, mes));
-*/		
+
 		
 		return MV;
 	    }
