@@ -54,6 +54,9 @@ public class AtualizaRelatorioEventoApoio{
 	public void montaObjetoRelatorio(Integer idLista,Lista infoLista,String mes,String ano) throws ParseException{
 	
 		
+		
+		
+		
 			InfoInterna infoInterna = relatorioDAO.pegaInfoInterna(idLista);
 			
 			List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
@@ -236,8 +239,8 @@ public class AtualizaRelatorioEventoApoio{
 		novoRelatorio.setMesReferencia(utildatas.referenciaMesAnalitico(mes));
 		novoRelatorio.setBvs(new BigDecimal("0.00"));
 		novoRelatorio.setCacheEquipEx(new BigDecimal("0.00"));
-		novoRelatorio.setValorLoccoAgenc(infoLista.getValorTotal());
-		novoRelatorio.setServicos(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
+		novoRelatorio.setValorLoccoAgenc(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
+		novoRelatorio.setServicos(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
 //-------  FeeReduzido			
 		//BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
 		
@@ -252,6 +255,9 @@ public class AtualizaRelatorioEventoApoio{
 		
 		novoRelatorio.setImpostoSobreValorLoccoAgencia(new BigDecimal("0.00"));
 
+		
+		System.out.println(novoRelatorio.getValorLoccoAgenc());
+		
 		novoRelatorio.setValorLiquido(novoRelatorio.getValorLoccoAgenc().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
 		novoRelatorio.setImpostoClienteDiferenca(new BigDecimal("0.00"));
 		novoRelatorio.setLiquidoImposto(novoRelatorio.getValorLoccoAgenc());
@@ -313,6 +319,7 @@ public class AtualizaRelatorioEventoApoio{
 		
 		novoRelatorio.setTotalCache(new BigDecimal("0.00"));
 		novoRelatorio.setTotalCachesComTelefone(new BigDecimal("0.00"));
+		novoRelatorio.setNdFatDireto(true);
 		
 		//Calcula giro Com telefone
 		/*BigDecimal giroComTelefone = novoRelatorio.getValorLiquido()

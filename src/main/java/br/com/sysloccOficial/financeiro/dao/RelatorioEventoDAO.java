@@ -116,16 +116,17 @@ public class RelatorioEventoDAO {
 	
 	public RelatorioEventos relatorioEventoPorIdLista(Integer idLista){
 		try {
-			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where idLista="+idLista, RelatorioEventos.class);
+			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where idLista="+idLista+" and ndFatDireto = 0", RelatorioEventos.class);
 			return q.getSingleResult();
 		} catch (Exception e) {
+			System.out.println("Relatorio de Eventos está retornando mais que 1 resultado: "+e);
 			return null;
 		}
 	}
 
 	public RelatorioEventos relatorioEventoPorIdListaComNDFatDireto(Integer idLista){
 		try {
-			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where idLista="+idLista+" and ndFatDireto = true", RelatorioEventos.class);
+			TypedQuery<RelatorioEventos> q = manager.createQuery("from RelatorioEventos where idLista="+idLista+" and ndFatDireto = 1", RelatorioEventos.class);
 			return q.getSingleResult();
 		} catch (Exception e) {
 			return null;
@@ -395,7 +396,7 @@ public class RelatorioEventoDAO {
 			TypedQuery<RelatorioEventos> q = manager.createQuery(mes, RelatorioEventos.class);
 			return q.getResultList();
 		} catch (Exception e) {
-			//JOptionPane.showMessageDialog(null, "erro Listas: "+e);
+			System.out.println("Erro ao buscar lista de Relatório de eventos: "+e);
 			return null;
 		}
 	}

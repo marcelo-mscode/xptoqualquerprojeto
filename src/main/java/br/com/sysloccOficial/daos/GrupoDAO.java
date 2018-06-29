@@ -75,7 +75,6 @@ public class GrupoDAO {
 	}
 	
 	public BigDecimal valorGrupoSemImposto(Integer idlista){
-		
 		try {
 			String consulta = "SELECT sum(precoProduto*quantidade*quantidade2*diarias) FROM ProdutoGrupo where idGrupo in "
 					+ "		  (SELECT idgrupo FROM Grupo where idlista = "+idlista+") and imposto = 0";
@@ -90,6 +89,25 @@ public class GrupoDAO {
 			
 			//System.out.println("Não tem grupo sem imposto: "+e);
 		
+			return new BigDecimal("0");
+		}
+	}
+
+	public BigDecimal valorGrupoComImposto(Integer idlista){
+		try {
+			String consulta = "SELECT sum(precoProduto*quantidade*quantidade2*diarias) FROM ProdutoGrupo where idGrupo in "
+					+ "		  (SELECT idgrupo FROM Grupo where idlista = "+idlista+") and imposto = 1";
+			Query valorTotal = manager.createQuery(consulta);
+			
+			double teste = (double) valorTotal.getSingleResult();
+			
+			BigDecimal testes = new BigDecimal(teste);
+			
+			return testes;
+		} catch (Exception e) {
+			
+			//System.out.println("Não tem grupo sem imposto: "+e);
+			
 			return new BigDecimal("0");
 		}
 	}

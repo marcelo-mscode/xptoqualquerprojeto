@@ -120,12 +120,15 @@
 		</tr>
 		<tr>
 			<td>VENC</td>
-			<td>NFE</td>
+			<td style="text-align: center">
+			<c:if test="${relatorio.ndFatDireto == false}">NFE</c:if>
+			<c:if test="${relatorio.ndFatDireto == true}">ND</c:if>
+			</td>
 			<td>VALOR</td>
 		</tr>
 		<tr>
 			<td><fmt:formatDate value="${infoLista.infoInterna.dataPagamento}" pattern="dd/MM/yyyy"/> </td>
-			<td>${infoLista.infoInterna.nfInterna}</td>
+			<td style="text-align: center">${infoLista.infoInterna.nfInterna}</td>
 			<td><fmt:formatNumber value="${relatorio.valorLoccoAgenc}" pattern="#,##0.00"/></td>
 		</tr>
 		

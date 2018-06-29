@@ -47,7 +47,13 @@
                               <c:if test="${listaRelatorioEventos.idLista == listasProducao.idLista}">
 	                             <td>${listaRelatorioEventos.mesEvento}</td>
 <%-- 	                             <td  class="descricao">EVENTO ${loops.count}</td> --%>
-                                 <td colspan="2"><a href="relatorioEventoIndividual?idLista=${listaRelatorioEventos.idLista}&idRelatorioEvento=${listaRelatorioEventos.idRelatorioEvento}">${listasProducao.lista}</a></td>
+                                 <td colspan="2"><a href="relatorioEventoIndividual?idLista=${listaRelatorioEventos.idLista}&idRelatorioEvento=${listaRelatorioEventos.idRelatorioEvento}">
+                                 						${listasProducao.lista} 
+                                 						<c:if test="${listaRelatorioEventos.ndFatDireto == true}">
+	                                 						( ND )
+                                 						</c:if>
+                                 				</a>
+                                 </td>
                                  <td>${listasProducao.idJob.empresa.empresa}</td>
                               </c:if>
                            </c:forEach>

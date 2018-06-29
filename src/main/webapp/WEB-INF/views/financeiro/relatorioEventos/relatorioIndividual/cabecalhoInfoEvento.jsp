@@ -15,7 +15,10 @@
 	<tr>
 		<td>Nome do Evento</td>
 		<td>Cliente</td>
-		<td>NF</td>
+		<td style="text-align: center">
+			<c:if test="${relatorio.ndFatDireto == false}">NF</c:if>
+			<c:if test="${relatorio.ndFatDireto == true}">ND</c:if>
+		</td>
 		<td>Data do Evento</td>
 		<td>Local do Evento</td>
 		
@@ -24,7 +27,7 @@
 	<tr>
 		<td><b>${infoLista.lista}</b></td>
 		<td><b>${infoLista.idJob.empresa.empresa}</b></td>
-		<td><b>${infoInterna.nfInterna}</b></td>
+		<td style="text-align: center"><b>${infoInterna.nfInterna}</b></td>
 		<td><b><fmt:formatDate value="${infoLista.dataDoEvento.time}" pattern="dd/MM/yyyy"/></b></td>
 		<td><b>${localEvento}</b></td>
 	</tr>

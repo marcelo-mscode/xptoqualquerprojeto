@@ -438,10 +438,7 @@ public class InternaIndividualDAO {
 		} catch (Exception e) {
 			System.out.println("Erro ao atualizar ND Interna: "+e);
 		}
-		
 	}
-	
-	
 	
 	/*public void salvaNovoOrcamento(String valor,Integer idFornecedor,Integer idGrupo){
 		TypedQuery<Empresa> e = manager.createQuery("select e from Empresa e where idEmpresa=6937", Empresa.class); 
