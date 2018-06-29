@@ -24,7 +24,10 @@
 		<th class="fundoAmarelo input-160px" style="border: 2px solid #000"><b>
 		<fmt:formatNumber value="${totalItau}" pattern="#,##0.00"/>		
 		</b></th>
-		<th class="input-160px" rowspan="4" style="color: blue"><fmt:formatNumber value="${totalItau+totalCef+totalBradesco+totalSantander}" pattern="#,##0.00"/></th>
+		<th class="input-160px" rowspan="4" style="vertical-align:middle">
+		<c:set  var="somaTotalDosbancos" value="${totalItau+totalCef+totalBradesco+totalSantander}"/>
+		  	<fmt:formatNumber value="${somaTotalDosbancos}" pattern="#,##0.00"/>
+		</th>
 	</tr>
 	
 	<tr>

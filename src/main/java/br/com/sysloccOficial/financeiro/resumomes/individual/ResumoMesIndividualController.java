@@ -146,11 +146,12 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 /**
  * 		Concentrar os esforços para diminuir o gargalo nesse carregamento
  */
-		/*List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
+		List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
 		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
 		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
 		BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
-		MV.addObject("eventosContasPagar", somaTotal);*/
+		MV.addObject("eventosContasPagar", somaTotal);
+		
 ////////// FIM GARGALO //////////
 		
 		MV.addObject("salarios", relatorioEventoDAO.salarios(anoMes));
