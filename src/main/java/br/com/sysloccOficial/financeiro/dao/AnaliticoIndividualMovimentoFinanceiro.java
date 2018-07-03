@@ -402,7 +402,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 	
 	public BigDecimal contaGarantiaItau(int analitico){
 		try {
-			String consulta = "SELECT SUM(valorParcela) FROM EmprestimoBancario where descricao like 'ITAU LIMITE' and analitico = "+analitico;
+			String consulta = "SELECT SUM(valorParcela) FROM EmprestimoBancario where descricao like '%ITAU LIMITE%' and analitico = "+analitico;
 			TypedQuery<BigDecimal> query = manager.createQuery(consulta, BigDecimal.class);
 			return query.getSingleResult();
 		} catch (Exception e) {
@@ -412,13 +412,25 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 	public BigDecimal giroSantander(int analitico){
 		try {
-			String consulta = "SELECT SUM(valorParcela) FROM EmprestimoBancario where descricao like 'ITAU LIMITE' and analitico = "+analitico;
+			String consulta = "SELECT SUM(valorParcela) FROM EmprestimoBancario where descricao like '%GIRO SANTANDER%' and analitico = "+analitico;
 			TypedQuery<BigDecimal> query = manager.createQuery(consulta, BigDecimal.class);
 			return query.getSingleResult();
 		} catch (Exception e) {
 			return new BigDecimal("0.00");
 		}
 	}
+
+	public BigDecimal giroSantander(int analitico){
+		try {
+			String consulta = "SELECT SUM(valorParcela) FROM EmprestimoBancario where descricao like '%GIRO SANTANDER%' and analitico = "+analitico;
+			TypedQuery<BigDecimal> query = manager.createQuery(consulta, BigDecimal.class);
+			return query.getSingleResult();
+		} catch (Exception e) {
+			return new BigDecimal("0.00");
+		}
+	}
+	
+	
 	
 	
 	public BigDecimal pegaTotalEmprestimosSemParcelamento(Integer idAnalitico){

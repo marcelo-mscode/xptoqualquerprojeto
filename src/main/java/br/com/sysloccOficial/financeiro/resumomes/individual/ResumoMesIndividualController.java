@@ -164,13 +164,22 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 				));*/
 		// Total Giro Itau ( soma dos emprestimos cadastrados )
 	
-		BigDecimal giroItau = new BigDecimal("11781.48");
-		MV.addObject("giroItau", giroItau);
+		/*BigDecimal giroItau = new BigDecimal("11781.48");
+		MV.addObject("giroItau", giroItau);*/
 		
-		// Total conta Garantia Itau ( soma dos emprestimos cadastrados )
+		// Total conta Garantia Itau - ITAU LIMITE ( soma dos emprestimos cadastrados )
 		BigDecimal contaGarantiaItau = analiticoMovFinanceiroDAO.contaGarantiaItau(idAnalitico);
 		MV.addObject("contaGarantiaItau", contaGarantiaItau);
+
+		// Total giroSantander ( soma dos emprestimos cadastrados )
+		BigDecimal giroSantander = analiticoMovFinanceiroDAO.giroSantander(idAnalitico);
+		MV.addObject("giroSantander", giroSantander);
 		
+		
+		
+		
+		
+		//Rodapé links para outras páginas
 		MV.addObject("quantRelatorioEventos", analiticoIndDAO.quantEventosMes(ano, mes));
 		MV.addObject("idsRelatorioEventos", analiticoIndDAO.idsRelatorioEventosMes(ano, mes));
 
