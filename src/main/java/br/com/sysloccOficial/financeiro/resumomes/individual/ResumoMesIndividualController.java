@@ -168,7 +168,7 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		MV.addObject("giroItau", giroItau);
 		
 		// Total conta Garantia Itau ( soma dos emprestimos cadastrados )
-		BigDecimal contaGarantiaItau = analiticoMovFinanceiroDAO.pegaTotalEmprestimosSemParcelamento(idAnalitico);
+		BigDecimal contaGarantiaItau = analiticoMovFinanceiroDAO.contaGarantiaItau(idAnalitico);
 		MV.addObject("contaGarantiaItau", contaGarantiaItau);
 		
 		MV.addObject("quantRelatorioEventos", analiticoIndDAO.quantEventosMes(ano, mes));
