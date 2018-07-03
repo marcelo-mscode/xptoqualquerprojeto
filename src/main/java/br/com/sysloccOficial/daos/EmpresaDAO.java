@@ -249,7 +249,7 @@ public class EmpresaDAO {
 	
 	public List<Object[]> listaEmpresaTeste(String parteConsulta){
 		try {
-			String consulta = "SELECT idEmpresa, empresa, telefone FROM Empresa where habilitado = 0 and "+parteConsulta+" order by empresa";
+			String consulta = "SELECT idEmpresa, empresa, telefone FROM Empresa where habilitado <> 0 and "+parteConsulta+" order by empresa";
 			TypedQuery<Object[]> query = manager.createQuery(consulta, Object[].class);
 			return query.getResultList();
 		} catch (Exception e) {
@@ -263,7 +263,7 @@ public class EmpresaDAO {
 			
 			List<EmpresaInfoBasica> empresaInfo = new ArrayList<EmpresaInfoBasica>();
 			
-			String consulta = "SELECT idEmpresa, empresa, telefone FROM Empresa where habilitado = 0 and "+parteConsulta+" order by empresa";
+			String consulta = "SELECT idEmpresa, empresa, telefone FROM Empresa where habilitado <> 0 and "+parteConsulta+" order by empresa";
 			TypedQuery<Object[]> query = manager.createQuery(consulta, Object[].class);
 			List<Object[]> lista = query.getResultList();
 			

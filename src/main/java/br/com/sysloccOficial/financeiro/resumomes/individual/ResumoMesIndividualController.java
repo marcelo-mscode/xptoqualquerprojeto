@@ -146,11 +146,11 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 /**
  * 		Concentrar os esforços para diminuir o gargalo nesse carregamento
  */
-		List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
+		/*List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
 		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
 		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
 		BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
-		MV.addObject("eventosContasPagar", somaTotal);
+		MV.addObject("eventosContasPagar", somaTotal);*/
 		
 ////////// FIM GARGALO //////////
 		
@@ -168,8 +168,8 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		MV.addObject("giroItau", giroItau);
 		
 		// Total conta Garantia Itau ( soma dos emprestimos cadastrados )
-		BigDecimal totalEmprestimos = analiticoMovFinanceiroDAO.pegaTotalEmprestimosSemParcelamento(idAnalitico);
-		MV.addObject("totalEmprestimos", totalEmprestimos);
+		BigDecimal contaGarantiaItau = analiticoMovFinanceiroDAO.pegaTotalEmprestimosSemParcelamento(idAnalitico);
+		MV.addObject("contaGarantiaItau", contaGarantiaItau);
 		
 		MV.addObject("quantRelatorioEventos", analiticoIndDAO.quantEventosMes(ano, mes));
 		MV.addObject("idsRelatorioEventos", analiticoIndDAO.idsRelatorioEventosMes(ano, mes));
