@@ -412,7 +412,7 @@ public class AnaliticoIndividualMovimentoFinanceiro{
 
 	public BigDecimal outrosItau(int analitico){
 		try {
-			String consulta = "SELECT SUM(valorParcela) FROM EmprestimoBancario where descricao not like '%ITAU LIMITE%' and analitico = "+analitico;
+			String consulta = "SELECT SUM(valorParcela) FROM EmprestimoBancario where descricao not like '%ITAU LIMITE%' and banco = 1 and analitico = "+analitico;
 			TypedQuery<BigDecimal> query = manager.createQuery(consulta, BigDecimal.class);
 			return query.getSingleResult();
 		} catch (Exception e) {
