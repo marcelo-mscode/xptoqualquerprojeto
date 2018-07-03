@@ -70,7 +70,7 @@
          </td>
          <td>ND&nbsp&nbsp
          		<input id="editaND"  
-         		<c:if test="${infoInterna.ndInterna eq  true}">checked="checked"</c:if>
+         		<c:if test="${infoInterna.ndInterna eq  true}">checked="checked"  disabled="disabled"</c:if>
          		 type="checkbox" style="vertical-align: top;" onclick="editaND(${infoLista.idLista});"  />
          </td>
          

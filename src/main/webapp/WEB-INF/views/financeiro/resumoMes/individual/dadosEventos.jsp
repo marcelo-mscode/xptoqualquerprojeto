@@ -20,14 +20,18 @@
 				<c:forEach items="${infoLista}" var="infoLista">
 			
 					<c:if test="${infoEvento.idLista == infoLista.idLista}">
-						<tr>
+					   <c:if test="${infoEvento.ndFatDireto == true}"><tr class="error"></c:if>	
+					   <c:if test="${infoEvento.ndFatDireto == false}"><tr></c:if>	
 							<td>${infoLista.idJob.empresa.empresa}</td>
 							<td>${infoLista.lista}</td>
 							<td>${infoEvento.mesEvento}</td>
 							<td>SP</td>
 							<td>${loop.count}</td>
 							<td><fmt:formatNumber value="${infoEvento.valorLoccoAgenc}" pattern="#,##0.00"/></td>
-							<td>NF</td>
+							<td>
+								<c:if test="${infoEvento.ndFatDireto == false}">NF</c:if>
+								<c:if test="${infoEvento.ndFatDireto == true}">ND</c:if>
+							</td>
 						</tr>
 					</c:if>
 				</c:forEach>
