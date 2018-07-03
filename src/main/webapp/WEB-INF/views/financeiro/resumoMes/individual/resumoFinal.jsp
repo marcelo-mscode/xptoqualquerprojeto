@@ -95,6 +95,18 @@
 		<th class="input-160px" style="border: 2px solid #000"><b><fmt:formatNumber value="${giroSantander}" pattern="#,##0.00"/></b></th>
 		<th class="input-160px"></th>
 	</tr>
+	
+	<c:if test="${outrosSantander > 0 }">
+		<tr>
+			<th class="fundoAmarelo input-260px colorRed">Outros Santander</th>
+			<th class="input-160px fontSize12" style="padding: 0px 0px 0px 3px;vertical-align: middle;"></th>
+			<th class="input-160px fontSize12"></th>
+			<th class="input-160px fontSize12"></th>
+			<th class="input-160px"></th>
+			<th class="input-160px" style="border: 2px solid #000"><b><fmt:formatNumber value="${outrosSantander}" pattern="#,##0.00"/></b></th>
+			<th class="input-160px"></th>
+		</tr>
+	</c:if>
 
 	<tr>
 		<th class="fundoAmarelo input-260px colorRed">Conta Garantida Itau</th>
@@ -106,13 +118,25 @@
 		<th class="input-160px"></th>
 	</tr>
 
+	<c:if test="${outrosItau > 0 }">
+		<tr>
+			<th class="fundoAmarelo input-260px colorRed">Outros Empréstimos Itau</th>
+			<th class="input-160px"></th>
+			<th class="input-160px"></th>
+			<th class="input-160px"></th>
+			<th class="input-160px"></th>
+			<th class="input-160px" style="border: 2px solid #000"><b><fmt:formatNumber value="${outrosItau}" pattern="#,##0.00"/></b></th>
+			<th class="input-160px"></th>
+		</tr>
+	</c:if>
+	
 	<tr>
 		<th class="fundoAmarelo input-260px">Total a pagar c/ Emprestimos</th>
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
 		<th class="input-160px"></th>
-		<th class="input-160px" style="border: 2px solid #000"><b><fmt:formatNumber value="${totalPagar + contaGarantiaItau + giroSantander}" pattern="#,##0.00"/></b></th>
+		<th class="input-160px" style="border: 2px solid #000"><b><fmt:formatNumber value="${totalPagar + giroSantander + outrosSantander + contaGarantiaItau + outrosItau}" pattern="#,##0.00"/></b></th>
 		<th class="input-160px"></th>
 	</tr>
 

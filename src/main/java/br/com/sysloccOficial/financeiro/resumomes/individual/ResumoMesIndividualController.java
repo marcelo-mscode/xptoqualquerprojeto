@@ -171,9 +171,17 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		BigDecimal contaGarantiaItau = analiticoMovFinanceiroDAO.contaGarantiaItau(idAnalitico);
 		MV.addObject("contaGarantiaItau", contaGarantiaItau);
 
+		// Total outros Itau - ITAU LIMITE ( soma dos emprestimos cadastrados )
+		BigDecimal outrosItau = analiticoMovFinanceiroDAO.outrosItau(idAnalitico);
+		MV.addObject("outrosItau", outrosItau);
+
 		// Total giroSantander ( soma dos emprestimos cadastrados )
 		BigDecimal giroSantander = analiticoMovFinanceiroDAO.giroSantander(idAnalitico);
 		MV.addObject("giroSantander", giroSantander);
+
+		// Total giroSantander ( soma dos emprestimos cadastrados )
+		BigDecimal outrosSantander = analiticoMovFinanceiroDAO.outrosSantander(idAnalitico);
+		MV.addObject("outrosSantander", outrosSantander);
 		
 		
 		
