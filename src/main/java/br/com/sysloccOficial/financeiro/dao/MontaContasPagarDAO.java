@@ -142,14 +142,13 @@ public class MontaContasPagarDAO {
 	
 	public List<Object[]> montaObjeto(Integer idLista,Integer idFornecedor){
 		
+
 		/**
 		 * Pega idsProducaoP de um Fornecedor Pelo id da Lista
 		 * 
 		 */
-		String idsProducaoPDeUmFornecedorPorLista = "SELECT idProducao FROM ProducaoP where lista.idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
-		
-		
 		List<Integer> listaUmFornecedor = new ArrayList<Integer>();
+		String idsProducaoPDeUmFornecedorPorLista = "SELECT idProducao FROM ProducaoP where lista.idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
 		
 		try {
 			TypedQuery<Integer> listaProdPUmForn = manager.createQuery(idsProducaoPDeUmFornecedorPorLista, Integer.class);
@@ -193,9 +192,9 @@ public class MontaContasPagarDAO {
 		List<Object[]> listaObjetos = new ArrayList<Object[]>();
 		
 		
-		String consultaModoPagamento = "FROM ProducaoP where lista.idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
-		TypedQuery<ProducaoP> consultaProducaP = manager.createQuery(consultaModoPagamento, ProducaoP.class).setMaxResults(1);
-		ProducaoP producaoP = consultaProducaP.getSingleResult();
+		String consultaModoPagamento = "select tipoPagamento, idLista FROM ProducaoP where lista.idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
+		TypedQuery<Object[]> query = manager.createQuery(consultaModoPagamento, Object[].class).setMaxResults(1);
+		Object[] tipoPgtoIdLista = query.getSingleResult();
 		
 		
 		for (int i = 0; i < pegaDiasPagamento.size(); i++) {
@@ -222,9 +221,11 @@ public class MontaContasPagarDAO {
 				}
 			}
 				
-			novo[2] = producaoP.getTipoPagamento(); 
+			novo[2] = tipoPgtoIdLista[0]; 
+			novo[3] = tipoPgtoIdLista[1]; 
+/*			novo[2] = producaoP.getTipoPagamento(); 
 			novo[3] = producaoP.getLista().getIdLista(); 
-			novo[4] = valor; 
+*/			novo[4] = valor; 
 			
 			listaObjetos.add(novo);
 		}
