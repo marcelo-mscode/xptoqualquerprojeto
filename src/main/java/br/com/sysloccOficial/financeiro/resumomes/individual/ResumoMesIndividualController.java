@@ -203,5 +203,26 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		
 	}
 	
+	@RequestMapping("testeGargalo")
+	public ModelAndView testeGargalo(){
+		
+		ModelAndView MV = new ModelAndView("testes/data");
+		
+	/*	List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
+		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
+	*/
+		
+		System.out.println();
+		
+		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
+		/*BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
+		MV.addObject("eventosContasPagar", somaTotal);*/
+		
+		
+		
+		return MV;
+		
+	}
+	
 	
 }

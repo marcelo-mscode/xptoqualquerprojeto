@@ -33,12 +33,14 @@ public class MontaContasPagarDAO {
 	
 	
 	public List<Object[]> constroiObjeto(){
+	
 		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
 	
 		List<Integer> idListas =  pegaIdsListasIndividuais(); 
 		
 		for (int i = 0; i < idListas.size(); i++) {
 			List<Integer> idFornecedores = pegaIdsFornecedoresPorIdLista(idListas.get(i));
+			
 			for (int j = 0; j < idFornecedores.size(); j++) {
 				List<Object[]> constroiObjeto = montaObjeto(idListas.get(i),idFornecedores.get(j));
 				objetoConstruido.addAll(constroiObjeto);
@@ -47,6 +49,9 @@ public class MontaContasPagarDAO {
 		return objetoConstruido;
 	}
 
+	
+	
+	
 	public List<Object[]> constroiObjetoTeste(List<Object[]> idListas){
 	
 		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
