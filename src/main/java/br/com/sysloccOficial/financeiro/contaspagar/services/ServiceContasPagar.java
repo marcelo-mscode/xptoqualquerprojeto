@@ -107,10 +107,16 @@ public class ServiceContasPagar {
 
 	public List<ValorPagtoFornecedor> pegarValoresPendente( List<DtPgtoFornecedor> pegarContasPendente) {
 		
+		for (int i = 0; i < pegarContasPendente.size(); i++) {
+		
+			System.out.println(pegarContasPendente.get(i).getValorPgtoForn().getIdValorFinancForn());
+			
+		}
 		
 		
-		String limpa = "SELECT * FROM ValorPagtoFornecedor WHERE idValorFinancForn IN ("+pegarContasPendente+")";
+	/*	String limpa = "SELECT * FROM ValorPagtoFornecedor WHERE idValorFinancForn IN ("+numeros+")";
 		String consulta = util.limpaSqlComList(limpa);
+		System.out.println(consulta);*/
 		System.out.println();
 		
 		

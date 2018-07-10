@@ -87,9 +87,8 @@ public class ContasPagarRepository {
 
 	public List<DtPgtoFornecedor> pegarContasPendente() {
 		Query query = manager.createNativeQuery("SELECT * FROM DtPgtoFornecedor where status = 'Pendente'");
-	
-		System.out.println();
-		return query.getResultList();
+		List<DtPgtoFornecedor> lista = query.getResultList();
+		return lista;
 	}
 	
 }
