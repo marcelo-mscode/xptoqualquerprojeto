@@ -219,7 +219,9 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		
 		
 		List<DtPgtoFornecedor> pegarContasPendente = serviceContasPagar.pegarContasPendente();
-		List<ValorPagtoFornecedor> pegarValoresPendente = serviceContasPagar.pegarValoresPendente(pegarContasPendente);
+		
+		
+		//List<ValorPagtoFornecedor> pegarValoresPendente = serviceContasPagar.pegarValoresPendente(pegarContasPendente);
 		
 		
 		System.out.println();

@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.financeiro.contaspagar.repository;
 
+import java.awt.Window.Type;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.model.producao.DtPgtoFornecedor;
 import br.com.sysloccOficial.model.producao.ProducaoP;
+import br.com.sysloccOficial.model.producao.StatusFinanceiro;
 
 
 @Repository
@@ -86,9 +88,24 @@ public class ContasPagarRepository {
 	}
 
 	public List<DtPgtoFornecedor> pegarContasPendente() {
-		Query query = manager.createNativeQuery("SELECT * FROM DtPgtoFornecedor where status = 'Pendente'");
-		List<DtPgtoFornecedor> lista = query.getResultList();
-		return lista;
+		
+		try {
+			String consultaN1 = "FROM DtPgtoFornecedor where status = 'Pendente'";
+			String consulta = "FROM DtPgtoFornecedor d join fetch d.valorPgtoForn where d.Status = PENDENTE";
+			
+			TypedQuery<DtPgtoFornecedor> query = manager.createQuery(consulta,DtPgtoFornecedor.class);
+			List<DtPgtoFornecedor> lista = query.getResultList();
+			return lista;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println();
+			return null;
+		}
+		
+		
+		
+		
 	}
 	
 }
