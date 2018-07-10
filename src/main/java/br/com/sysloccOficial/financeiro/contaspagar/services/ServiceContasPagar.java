@@ -13,6 +13,7 @@ import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.financeiro.contaspagar.repository.ContasPagarRepository;
 import br.com.sysloccOficial.model.producao.DtPgtoFornecedor;
 import br.com.sysloccOficial.model.producao.ProducaoP;
+import br.com.sysloccOficial.model.producao.ValorPagtoFornecedor;
 
 
 @Service
@@ -100,12 +101,20 @@ public class ServiceContasPagar {
 	}
 
 	public List<DtPgtoFornecedor> pegarContasPendente() {
-		
-		
 		List<DtPgtoFornecedor> pegarContasPendente = contasPagarRepository.pegarContasPendente();
+		return pegarContasPendente;
+	}
+
+	public List<ValorPagtoFornecedor> pegarValoresPendente( List<DtPgtoFornecedor> pegarContasPendente) {
+		
+		
+		
+		String limpa = "SELECT * FROM ValorPagtoFornecedor WHERE idValorFinancForn IN ("+pegarContasPendente+")";
+		String consulta = util.limpaSqlComList(limpa);
 		System.out.println();
 		
-		return pegarContasPendente;
 		
+		
+		return null;
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +86,9 @@ public class ContasPagarRepository {
 	}
 
 	public List<DtPgtoFornecedor> pegarContasPendente() {
-		TypedQuery<DtPgtoFornecedor> query = manager.createQuery("FROM DtPgtoFornecedor where status = 'Pendente'", DtPgtoFornecedor.class);
+		Query query = manager.createNativeQuery("SELECT * FROM DtPgtoFornecedor where status = 'Pendente'");
+	
+		System.out.println();
 		return query.getResultList();
 	}
 	

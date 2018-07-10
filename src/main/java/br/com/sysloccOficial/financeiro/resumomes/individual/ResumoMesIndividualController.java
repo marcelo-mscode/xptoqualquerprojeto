@@ -19,6 +19,7 @@ import br.com.sysloccOficial.financeiro.model.AnaliticoTotalBancos;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
 import br.com.sysloccOficial.model.producao.DtPgtoFornecedor;
+import br.com.sysloccOficial.model.producao.ValorPagtoFornecedor;
 
 @Controller
 public class ResumoMesIndividualController extends CarregaSaldosBancarios{
@@ -218,6 +219,7 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		
 		
 		List<DtPgtoFornecedor> pegarContasPendente = serviceContasPagar.pegarContasPendente();
+		List<ValorPagtoFornecedor> pegarValoresPendente = serviceContasPagar.pegarValoresPendente(pegarContasPendente);
 		
 		
 		System.out.println();
