@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.analitico.individual.CarregaSaldosBancarios;
+import br.com.sysloccOficial.financeiro.contaspagar.services.ServiceContasPagar;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualMovimentoFinanceiro;
 import br.com.sysloccOficial.financeiro.dao.MontaContasPagarDAO;
@@ -17,6 +18,7 @@ import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
 import br.com.sysloccOficial.financeiro.model.AnaliticoTotalBancos;
 import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.RelatorioEventos;
+import br.com.sysloccOficial.model.producao.DtPgtoFornecedor;
 
 @Controller
 public class ResumoMesIndividualController extends CarregaSaldosBancarios{
@@ -203,6 +205,8 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		
 	}
 	
+	@Autowired ServiceContasPagar serviceContasPagar;
+	
 	@RequestMapping("testeGargalo")
 	public ModelAndView testeGargalo(){
 		
@@ -212,9 +216,12 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
 	*/
 		
-		System.out.println();
 		
-		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
+		List<DtPgtoFornecedor> pegarContasPendente = serviceContasPagar.pegarContasPendente();
+		
+		
+		System.out.println();
+		//List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
 		/*BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
 		MV.addObject("eventosContasPagar", somaTotal);*/
 		

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.financeiro.contaspagar.repository.ContasPagarRepository;
+import br.com.sysloccOficial.model.producao.DtPgtoFornecedor;
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
 
@@ -96,5 +97,15 @@ public class ServiceContasPagar {
 		}
 		
 		return listaObjetos;
+	}
+
+	public List<DtPgtoFornecedor> pegarContasPendente() {
+		
+		
+		List<DtPgtoFornecedor> pegarContasPendente = contasPagarRepository.pegarContasPendente();
+		System.out.println();
+		
+		return pegarContasPendente;
+		
 	}
 }

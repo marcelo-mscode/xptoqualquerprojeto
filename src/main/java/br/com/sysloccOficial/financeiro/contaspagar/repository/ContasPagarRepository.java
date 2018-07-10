@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
+import br.com.sysloccOficial.model.producao.DtPgtoFornecedor;
 import br.com.sysloccOficial.model.producao.ProducaoP;
 
 
@@ -81,6 +82,11 @@ public class ContasPagarRepository {
 			System.out.println("Erro : " +e);
 			return null;
 		}
+	}
+
+	public List<DtPgtoFornecedor> pegarContasPendente() {
+		TypedQuery<DtPgtoFornecedor> query = manager.createQuery("FROM DtPgtoFornecedor where status = 'Pendente'", DtPgtoFornecedor.class);
+		return query.getResultList();
 	}
 	
 }
