@@ -91,7 +91,7 @@ public class ContasPagarRepository {
 		
 		try {
 			String consultaN1 = "FROM DtPgtoFornecedor where status = 'Pendente'";
-			String consulta = "FROM DtPgtoFornecedor d join fetch d.valorPgtoForn where d.Status = PENDENTE";
+			String consulta = "FROM DtPgtoFornecedor d join fetch d.idValorPgForn where d.Status = 'Pendente'";
 			
 			TypedQuery<DtPgtoFornecedor> query = manager.createQuery(consulta,DtPgtoFornecedor.class);
 			List<DtPgtoFornecedor> lista = query.getResultList();
