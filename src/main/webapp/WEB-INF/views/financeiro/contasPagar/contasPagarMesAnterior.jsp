@@ -47,7 +47,11 @@
 							<option value="4">Santander</option>
 						</select>
 						</td>
+						
+						<!-- Valor para pagar Fornecedor -->
 						<td class="aligVertical"><fmt:formatNumber value="${novaLista[4]}" pattern="#,##0.00" /></td>
+						
+						
 						<td>
 							<a onclick="funcaoPagaConta(${idListas[0]},${novaLista[5]},${novaLista[6]},'valor${loop.count}','tipoBanco${loop.count}',${loop.count});" class="btn btn-success">PAGAR</a>
 							<i class="glyphicon glyphicon-ok" style="font-size:18px;  color: green;margin-left: 15px;display: none;" id="sucesso${loop.count}"></i>

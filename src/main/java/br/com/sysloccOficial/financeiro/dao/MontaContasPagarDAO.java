@@ -227,7 +227,7 @@ public class MontaContasPagarDAO {
 			listaUmFinanceiro = lista2.getResultList();
 			
 		} catch (Exception e) {
-			System.out.println("Erro em MontaContasPagarDAO, linha 169 : "+ e);
+			System.out.println("Erro em MontaContasPagarDAO, linha 230 : "+ e);
 		}
 		
 		
