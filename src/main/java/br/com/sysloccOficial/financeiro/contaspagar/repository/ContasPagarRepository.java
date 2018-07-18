@@ -1,6 +1,7 @@
 package br.com.sysloccOficial.financeiro.contaspagar.repository;
 
 import java.awt.Window.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -105,6 +106,24 @@ public class ContasPagarRepository {
 		
 		
 		
+		
+	}
+
+	public void pegaIdsProducaoP() {
+		
+		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
+		
+		Query query = manager.createNativeQuery(
+				"SELECT distinct(lista.idLista), lista.lista FROM ProducaoP where idProducao in ("
+				+ " SELECT idProducao FROM FornecedorFinanceiro where idFornecedor in ("
+				   + "SELECT idFornecedorFinanceiro FROM ValorPagtoFornecedor where idValorFinancForn in ("
+				      + "SELECT idValorPgForn FROM locomotivos.dtpgtofornecedor where status = 'PENDENTE' ORDER BY dataPagar"
+				      + ")));"
+				+ "   ");
+		
+		objetoConstruido = query.getResultList();
+		
+		System.out.println();
 		
 	}
 	

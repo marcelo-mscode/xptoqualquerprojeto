@@ -64,6 +64,11 @@ public class ContasPagarController {
 	private ModelAndView contaTeste(){
 		ModelAndView MV = new ModelAndView("menuProducao/testeContas");
 
+		
+		serviceContasPagar.testaIdsProducao();
+		
+		
+		
 		return MV;
 	}
 	

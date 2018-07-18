@@ -123,4 +123,15 @@ public class ServiceContasPagar {
 		
 		return null;
 	}
+
+	public void testaIdsProducao() {
+		
+		
+		contasPagarRepository.pegaIdsProducaoP();
+		
+		
+		
+		
+		
+	}
 }
