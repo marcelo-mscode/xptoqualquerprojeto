@@ -46,7 +46,7 @@
 		
 		<c:forEach items="${infoInterna}" var="infoInterna">
 			<c:forEach items="${listaReceber}" var="listaReceber">
-			  <c:if test="${infoInterna.lista.idLista == listaReceber.idLista && listaReceber.recebido == false}">
+			  <c:if test="${infoInterna.lista.idLista == listaReceber.idLista}">
 				<tr class="cabecalhoLista">
 					<td>
 						<c:if test="${listaReceber.ndFatDireto == true}">ND</c:if> 

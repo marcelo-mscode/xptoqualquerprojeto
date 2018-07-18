@@ -75,9 +75,6 @@ public class ContasReceberDAO {
 			throw new Exception();
 		}else{
 
-			infoInterna.setRecebido(true);
-			infoInterna.setDataRecebido(Calendar.getInstance());
-			manager.merge(infoInterna);
 			
 			TypedQuery<RelatorioEventos> s = manager.createQuery("from RelatorioEventos where idLista="+idLista+" and ndFatDireto = "+ndnf,RelatorioEventos.class);
 			RelatorioEventos relatorio = s.getSingleResult();
@@ -85,6 +82,12 @@ public class ContasReceberDAO {
 			relatorio.setDataRecebido(Calendar.getInstance());
 			manager.merge(relatorio);
 			manager.close();
+			
+			if(ndnf == false){
+				infoInterna.setRecebido(true);
+				infoInterna.setDataRecebido(Calendar.getInstance());
+				manager.merge(infoInterna);
+			}
 			
 			/**
 			 * Chamada ao método usado para registrar as contas recebidas no painél do Análitico
@@ -105,6 +108,20 @@ public class ContasReceberDAO {
 
 		BancosAnalitico banco = manager.getReference(BancosAnalitico.class, tipoBanco);
 		Lista lista = manager.find(Lista.class, idLista);
+ 
+		String ndnf ="";
+		
+		if(infoInterna.isNdInterna() == true){
+			ndnf = " ND";
+		}else{
+			ndnf = " NF";
+		}
+		
+		
+		String ndounf = infoInterna.getNfInterna();
+		
+		
+		
 		
 		bancoItau.setNdnf(infoInterna.getNfInterna());
 		bancoItau.setData(infoInterna.getDataPagamento());
