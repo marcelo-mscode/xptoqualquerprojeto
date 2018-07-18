@@ -48,13 +48,19 @@
 			<c:forEach items="${listaReceber}" var="listaReceber">
 			  <c:if test="${infoInterna.lista.idLista == listaReceber.idLista}">
 				<tr class="cabecalhoLista">
-					<td>NF ${infoInterna.nfInterna}</td>
-					<td class="descricao">${infoInterna.lista.lista}</td>
-					
-					
+					<td>
+						<c:if test="${listaReceber.ndFatDireto == true}">ND</c:if> 
+						<c:if test="${listaReceber.ndFatDireto == false}">NF</c:if> 
+						${infoInterna.nfInterna}
+					</td>
+
+					<td class="descricao">
+						${infoInterna.lista.lista} 
+						<c:if test="${listaReceber.ndFatDireto == true}">(ND)</c:if>
+					</td>
 					<td>
 						<fmt:formatDate value="${infoInterna.dataPagamento}" pattern="dd/MM/yyyy" />
-						<a onclick="mudaDataContasReceber(${infoInterna.nfInterna}, '${infoInterna.lista.lista}', ${infoInterna.idInfoInterna});" style="cursor:pointer;padding 10px;margin-left: 10px;" ><i class="glyphicon glyphicon-pencil" style="top:0px"></i></a>
+						<a onclick="mudaDataContasReceber(${listaReceber.idRelatorioEvento}, '${infoInterna.lista.lista}', ${infoInterna.idInfoInterna});" style="cursor:pointer;padding 10px;margin-left: 10px;" ><i class="glyphicon glyphicon-pencil" style="top:0px"></i></a>
 					</td>
 
 					<td>
@@ -65,7 +71,7 @@
 
 
 					<td> 
-						<select class="form-control" name="tipoBanco" id="tipoBancoContaReceber${infoInterna.lista.idLista}">
+						<select class="form-control" name="tipoBanco" id="tipoBancoContaReceber${listaReceber.idRelatorioEvento}">
 							<option value="0">Banco</option>
 							<option value="1">Itau</option>
 							<option value="2">CEF</option>
@@ -73,7 +79,7 @@
 							<option value="4">Santander</option>
 						</select>
 					</td>
-					<td><button class="btn btn-success" onclick="receberContas(${infoInterna.lista.idLista});">Receber</button></td>
+					<td><button class="btn btn-success" onclick="receberContas(${infoInterna.idInfoInterna},${infoInterna.lista.idLista},${listaReceber.ndFatDireto});">Receber</button></td>
 						<!-- </form> -->
 				</tr>
 			  </c:if>
@@ -187,9 +193,9 @@
 
 <script type="text/javascript">
 
-function receberContas(idLista) {
+function receberContas(idRelatorioEvento,idLista,ndnf) {
 	
-	var tipoBanco = $("#tipoBancoContaReceber"+idLista).val();
+	var tipoBanco = $("#tipoBancoContaReceber"+idRelatorioEvento).val();
 	
 	if(tipoBanco == 0){
 		alert("Selecione um Banco");
@@ -199,7 +205,7 @@ function receberContas(idLista) {
 	
 	
 	 $.ajax({
-		url : "receberConta?idLista="+idLista+"&tipoBanco="+tipoBanco,
+		url : "receberConta?idLista="+idLista+"&tipoBanco="+tipoBanco+"&ndnf="+ndnf,
 		success : function(data) {
 			$("#sucessoReceberConta").fadeIn(800);
 			setTimeout(function () {

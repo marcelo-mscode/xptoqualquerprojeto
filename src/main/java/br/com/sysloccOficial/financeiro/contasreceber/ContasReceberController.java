@@ -33,9 +33,12 @@ public class ContasReceberController {
 	}
 
 	@RequestMapping("receberConta")
-	public String receberConta(Integer idLista, Integer tipoBanco){
+	public String receberConta(Integer idLista, Integer tipoBanco,boolean ndnf){
+	
+		System.out.println();
+		
 		try {
-			contasreceberDAO.recebeConta(idLista,tipoBanco);
+			//contasreceberDAO.recebeConta(idLista,tipoBanco);
 			return "redirect:contasReceber";
 		} catch (Exception e) {
 			return "error";
