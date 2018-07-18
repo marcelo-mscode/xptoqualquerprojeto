@@ -24,6 +24,9 @@ public class ContasReceberController {
 		ModelAndView MV = new ModelAndView("financeiro/contasReceber/contasReceber");
 		
 		List<RelatorioEventos> relatorio = contasreceberDAO.relatorioEventos();
+	
+		
+		
 		List<InfoInterna> infoInterna = contasreceberDAO.inforInterna();
 		
 		MV.addObject("listaReceber",relatorio);
@@ -38,7 +41,7 @@ public class ContasReceberController {
 		System.out.println();
 		
 		try {
-			//contasreceberDAO.recebeConta(idLista,tipoBanco);
+			contasreceberDAO.recebeConta(idLista,tipoBanco,ndnf);
 			return "redirect:contasReceber";
 		} catch (Exception e) {
 			return "error";

@@ -55,7 +55,7 @@ public class ContasReceberDAO {
 		}
 	}
 
-	public void recebeConta(Integer idLista, Integer tipoBanco)throws Exception {
+	public void recebeConta(Integer idLista, Integer tipoBanco,boolean ndnf)throws Exception {
 		
 		TypedQuery<InfoInterna> q = manager.createQuery("from InfoInterna where lista.idLista="+idLista,InfoInterna.class);
 		InfoInterna infoInterna = q.getSingleResult();
@@ -79,7 +79,7 @@ public class ContasReceberDAO {
 			infoInterna.setDataRecebido(Calendar.getInstance());
 			manager.merge(infoInterna);
 			
-			TypedQuery<RelatorioEventos> s = manager.createQuery("from RelatorioEventos where idLista="+idLista,RelatorioEventos.class);
+			TypedQuery<RelatorioEventos> s = manager.createQuery("from RelatorioEventos where idLista="+idLista+" and ndFatDireto = "+ndnf,RelatorioEventos.class);
 			RelatorioEventos relatorio = s.getSingleResult();
 			relatorio.setRecebido(true);
 			relatorio.setDataRecebido(Calendar.getInstance());

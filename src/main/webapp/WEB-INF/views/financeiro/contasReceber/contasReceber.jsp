@@ -46,7 +46,7 @@
 		
 		<c:forEach items="${infoInterna}" var="infoInterna">
 			<c:forEach items="${listaReceber}" var="listaReceber">
-			  <c:if test="${infoInterna.lista.idLista == listaReceber.idLista}">
+			  <c:if test="${infoInterna.lista.idLista == listaReceber.idLista && listaReceber.recebido == false}">
 				<tr class="cabecalhoLista">
 					<td>
 						<c:if test="${listaReceber.ndFatDireto == true}">ND</c:if> 
@@ -60,7 +60,7 @@
 					</td>
 					<td>
 						<fmt:formatDate value="${infoInterna.dataPagamento}" pattern="dd/MM/yyyy" />
-						<a onclick="mudaDataContasReceber(${listaReceber.idRelatorioEvento}, '${infoInterna.lista.lista}', ${infoInterna.idInfoInterna});" style="cursor:pointer;padding 10px;margin-left: 10px;" ><i class="glyphicon glyphicon-pencil" style="top:0px"></i></a>
+						<a onclick="mudaDataContasReceber(${infoInterna.nfInterna}, '${infoInterna.lista.lista}', ${infoInterna.idInfoInterna});" style="cursor:pointer;padding 10px;margin-left: 10px;" ><i class="glyphicon glyphicon-pencil" style="top:0px"></i></a>
 					</td>
 
 					<td>
@@ -79,7 +79,7 @@
 							<option value="4">Santander</option>
 						</select>
 					</td>
-					<td><button class="btn btn-success" onclick="receberContas(${infoInterna.idInfoInterna},${infoInterna.lista.idLista},${listaReceber.ndFatDireto});">Receber</button></td>
+					<td><button class="btn btn-success" onclick="receberContas(${listaReceber.idRelatorioEvento}, ${infoInterna.lista.idLista},${listaReceber.ndFatDireto});">Receber</button></td>
 						<!-- </form> -->
 				</tr>
 			  </c:if>
@@ -199,7 +199,7 @@ function receberContas(idRelatorioEvento,idLista,ndnf) {
 	
 	if(tipoBanco == 0){
 		alert("Selecione um Banco");
-		$("#tipoBancoContaReceber"+idLista).css("border", "2px solid red");
+		$("#tipoBancoContaReceber"+idRelatorioEvento).css("border", "2px solid red");
 		return false;
 	}
 	
@@ -227,7 +227,7 @@ function mudaDataContasReceber(nf,evento,idInfoInterna){
 	$("#Eventoalterar").append(evento);
 	$("#Valoralterar").append(valor);
 	$("#idInfoInterna").attr('value',idInfoInterna);
-}
+};
 
 
 function alterardata(){
@@ -246,7 +246,7 @@ function alterardata(){
 			location.reload();
 		}
 	});
-}
+ };
 
 </script>
 
