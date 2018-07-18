@@ -192,7 +192,7 @@ public class MontaContasPagarDAO {
 		List<Object[]> listaObjetos = new ArrayList<Object[]>();
 		
 		
-		String consultaModoPagamento = "select tipoPagamento, idLista FROM ProducaoP where lista.idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
+		String consultaModoPagamento = "select tipoPagamento, lista.idLista FROM ProducaoP where lista.idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
 		TypedQuery<Object[]> query = manager.createQuery(consultaModoPagamento, Object[].class).setMaxResults(1);
 		Object[] tipoPgtoIdLista = query.getSingleResult();
 		
