@@ -111,19 +111,15 @@ public class ContasReceberDAO {
  
 		String ndnf ="";
 		
-		if(infoInterna.isNdInterna() == true){
-			ndnf = " ND";
-		}else{
+		if(relatorio.isNdFatDireto() == false){
 			ndnf = " NF";
+		}else{
+			ndnf = " ND";
 		}
 		
+		String ndounf = ndnf +" "+infoInterna.getNfInterna();
 		
-		String ndounf = infoInterna.getNfInterna();
-		
-		
-		
-		
-		bancoItau.setNdnf(infoInterna.getNfInterna());
+		bancoItau.setNdnf(ndounf);
 		bancoItau.setData(infoInterna.getDataPagamento());
 		bancoItau.setDescricao(lista.getLista());
 		bancoItau.setValor(relatorio.getValorLoccoAgenc());
