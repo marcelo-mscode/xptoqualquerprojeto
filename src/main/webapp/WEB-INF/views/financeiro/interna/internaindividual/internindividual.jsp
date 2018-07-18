@@ -151,12 +151,15 @@
                   <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
                   </c:if>
                   </td>
+                  
                   <!-- Valor fornecedor -->	
                   <td class="colorRed ajusteVertical" style="padding: 0px">
                   <input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" style="text-align: center;"
                   value="<fmt:formatNumber value="${itensInterna.valorFornecedor}" pattern="#,##0.00"/>"
                   onblur="valorF('valorF',${itensInterna.idProducao});" />
                   </td>
+                  
+                  
                   <c:set var="totalValorFornecedor" value="${totalValorFornecedor + itensInterna.valorFornecedor}"/>
                   <!-- Valor NF -->	
                   <td class="textRight ajusteVertical textCenter"><fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/></td>
