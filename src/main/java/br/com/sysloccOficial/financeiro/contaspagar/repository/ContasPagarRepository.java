@@ -110,15 +110,15 @@ public class ContasPagarRepository {
 	}
 
 	public void pegaIdsProducaoP() {
-		
+		String dataHoje =  UtilitariaDatas.pegaDataAtualEmStringPassandoFormato("yyyy-MM");
 		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
 		
-		Query query = manager.createNativeQuery(
+		Query query = manager.createQuery(
 				"SELECT distinct(lista.idLista), lista.lista FROM ProducaoP where idProducao in ("
 				+ " SELECT idProducao FROM FornecedorFinanceiro where idFornecedor in ("
 				   + "SELECT idFornecedorFinanceiro FROM ValorPagtoFornecedor where idValorFinancForn in ("
-				      + "SELECT idValorPgForn FROM locomotivos.dtpgtofornecedor where status = 'PENDENTE' ORDER BY dataPagar"
-				      + ")));"
+				      + "SELECT valorPgtoForn.idValorFinancForn FROM DtPgtoFornecedor where status = 'PENDENTE' ORDER BY dataPagar"
+				      + "))) and lista.dataDoEvento < '"+dataHoje+"-01' or lista.dataDoEvento is null order by lista.dataDoEvento desc  "
 				+ "   ");
 		
 		objetoConstruido = query.getResultList();

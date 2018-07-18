@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,15 @@ public class MontaContasPagarDAO {
 	
 		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
 	
-		List<Integer> idListas =  pegaIdsListasIndividuais(); 
+		/**
+		 * Chamada abaixo está comentada porque estou testando pegar somente fornecedores pendentes de pagamento
+		 */
+		
+		//List<Integer> idListas =  pegaIdsListasIndividuais();
+
+		List<Integer> idListas =  pegaIdsListasIndividuaisSomenteFornecedoresPendentesPagamento(); 
+		
+		
 		
 		for (int i = 0; i < idListas.size(); i++) {
 			List<Integer> idFornecedores = pegaIdsFornecedoresPorIdLista(idListas.get(i));
@@ -116,21 +125,66 @@ public class MontaContasPagarDAO {
 		return idListas;
 	}
 
-	public List<Object[]> pegaListasMesAnterior() {
+	/**
+	 * Está comentada porque estou testando pegar somente os fornecedores pendentes de pagamento
+	 * @return
+	 */
+	
+	/*public List<Object[]> pegaListasMesAnterior() {
 		String dataHoje =  UtilitariaDatas.pegaDataAtualEmStringPassandoFormato("yyyy-MM");
-		String idsListasIndiv = "select distinct(lista.idLista), lista.lista from ProducaoP where lista.dataDoEvento < '"+dataHoje+"-01' or dataDoEvento is null order by lista.dataDoEvento desc";
+		String idsListasIndiv = "select distinct(lista.idLista), lista.lista from ProducaoP where lista.dataDoEvento < '"+dataHoje+"-01' or lista.dataDoEvento is null order by lista.dataDoEvento desc";
 		System.out.println(idsListasIndiv);
 		TypedQuery<Object[]> listaIds = manager.createQuery(idsListasIndiv,Object[].class);
 		List<Object[]> idListas = listaIds.getResultList();
 		return idListas;
+	}*/
+	
+	public List<Object[]> pegaListasMesAnterior() {
+		String dataHoje =  UtilitariaDatas.pegaDataAtualEmStringPassandoFormato("yyyy-MM");
+		List<Object[]> objetoConstruido = new ArrayList<Object[]>();
+		
+		Query query = manager.createQuery(
+				"SELECT distinct(lista.idLista), lista.lista FROM ProducaoP where idProducao in ("
+				+ " SELECT idProducao FROM FornecedorFinanceiro where idFornecedor in ("
+				   + "SELECT idFornecedorFinanceiro FROM ValorPagtoFornecedor where idValorFinancForn in ("
+				      + "SELECT valorPgtoForn.idValorFinancForn FROM DtPgtoFornecedor where status = 'PENDENTE' ORDER BY dataPagar"
+				      + "))) and lista.dataDoEvento < '"+dataHoje+"-01' or lista.dataDoEvento is null order by lista.dataDoEvento desc  "
+				+ "   ");
+		
+		objetoConstruido = query.getResultList();
+		
+		return objetoConstruido;
+		
 	}
-
+	
 	public List<Integer> pegaIdsListasIndividuais() {
 		String idsListasIndiv = "select distinct(lista.idLista) from ProducaoP order by lista.dataDoEvento desc";
 		TypedQuery<Integer> listaIds = manager.createQuery(idsListasIndiv,Integer.class);
 		List<Integer> idListas = listaIds.getResultList();
 		return idListas;
 	}
+	
+	public List<Integer> pegaIdsListasIndividuaisSomenteFornecedoresPendentesPagamento () {
+		List<Integer> objetoConstruido = new ArrayList<Integer>();
+		
+		Query query = manager.createQuery(
+				"SELECT distinct(lista.idLista) FROM ProducaoP where idProducao in ("
+						+ " SELECT idProducao FROM FornecedorFinanceiro where idFornecedor in ("
+						+ "SELECT idFornecedorFinanceiro FROM ValorPagtoFornecedor where idValorFinancForn in ("
+						+ "SELECT valorPgtoForn.idValorFinancForn FROM DtPgtoFornecedor where status = 'PENDENTE' ORDER BY dataPagar"
+						+ "))) order by lista.dataDoEvento desc  "
+						+ "   ");
+		
+		objetoConstruido = query.getResultList();
+		
+		return objetoConstruido;
+		
+	}
+	
+	
+	
+
+	
 
 	public List<Object[]> pegaListasIndividuais() {
 		String idsListasIndiv = "select distinct(lista.idLista), lista.lista from ProducaoP order by lista.dataDoEvento desc";
