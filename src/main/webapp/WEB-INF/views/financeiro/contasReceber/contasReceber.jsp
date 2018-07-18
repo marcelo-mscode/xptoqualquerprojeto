@@ -50,22 +50,31 @@
 				<tr class="cabecalhoLista">
 					<td>NF ${infoInterna.nfInterna}</td>
 					<td class="descricao">${infoInterna.lista.lista}</td>
-					<td><fmt:formatDate value="${infoInterna.dataPagamento}" pattern="dd/MM/yyyy" /></td>
-					<td><fmt:formatNumber value="${listaReceber.valorLoccoAgenc}" pattern="#,##0.00"/> </td>
-					<form action="receberConta" method="post" >
-					<input type="hidden" value="${infoInterna.lista.idLista}" name="idLista">
 					
-						<td> 
-							<select class="form-control" name="tipoBanco">
-								<option value="0">Banco</option>
-								<option value="1">Itau</option>
-								<option value="2">CEF</option>
-								<option value="3">Bradesco</option>
-								<option value="4">Santander</option>
-							</select>
-						</td>
-						<td><button type="submit" class="btn btn-success">Receber</button></td>
-					</form>
+					
+					<td>
+						<fmt:formatDate value="${infoInterna.dataPagamento}" pattern="dd/MM/yyyy" />
+						<a onclick="mudaDataContasReceber(${infoInterna.nfInterna}, '${infoInterna.lista.lista}', ${infoInterna.idInfoInterna});" style="cursor:pointer;padding 10px;margin-left: 10px;" ><i class="glyphicon glyphicon-pencil" style="top:0px"></i></a>
+					</td>
+
+					<td>
+					
+					<fmt:formatNumber value="${listaReceber.valorLoccoAgenc}" pattern="#,##0.00"/>
+					<input value='<fmt:formatNumber value="${listaReceber.valorLoccoAgenc}" pattern="#,##0.00"/>' id="valorAlterar${infoInterna.idInfoInterna}" type="hidden">
+					</td>
+
+
+					<td> 
+						<select class="form-control" name="tipoBanco" id="tipoBancoContaReceber${infoInterna.lista.idLista}">
+							<option value="0">Banco</option>
+							<option value="1">Itau</option>
+							<option value="2">CEF</option>
+							<option value="3">Bradesco</option>
+							<option value="4">Santander</option>
+						</select>
+					</td>
+					<td><button class="btn btn-success" onclick="receberContas(${infoInterna.lista.idLista});">Receber</button></td>
+						<!-- </form> -->
 				</tr>
 			  </c:if>
 			 </c:forEach>
@@ -88,62 +97,6 @@
 	</table>
 	</div>
 	
-	<!-- <div class="col-md-4" style="padding-left: 0;">
-	<table class="table table-striped table-hover table-condensed">
-	  <tbody id="prospeccaoFiltro">
-		<tr style="background: #f1f1f1 !important;text-align: center !important;">
-			<td colspan="5" style="text-align: center !important;height: 51px;line-height: 40px;">Outras Contas</td>
-		</tr>
-		<tr style="background: #f1f1f1 !important" class="cabecalhoLista">
-			<td>NF/ND</td>
-			<td>Vencimento</td>
-			<td>Descrição</td>
-			<td>Valor</td>
-			<td></td>
-		</tr>
-		
-		<tr class="cabecalhoLista">
-			<td></td>
-			<td>05/06/2016</td>
-			<td class="descricao">GIRO ITAU 36/26</td>
-			<td>900,00</td>
-			<td><a href="" class="btn btn-success">Pagar</a></td>
-		</tr>
-		
-		<tr class="cabecalhoLista">
-			<td></td>
-			<td>05/07/2016</td>
-			<td class="descricao">GIRO ITAU 37/26</td>
-			<td>900,00</td>
-			<td><a href="" class="btn btn-success">Pagar</a></td>
-		</tr>
-		
-		<tr class="cabecalhoLista">
-			<td></td>
-			<td>05/08/2016</td>
-			<td class="descricao">GIRO ITAU 38/26</td>
-			<td>900,00</td>
-			<td><a href="" class="btn btn-success">Pagar</a></td>
-		</tr>
-		<tr class="cabecalhoLista">
-			<td></td>
-			<td>05/09/2016</td>
-			<td class="descricao">GIRO ITAU 38/26</td>
-			<td>900,00</td>
-			<td><a href="" class="btn btn-success">Pagar</a></td>
-		</tr>
-		<tr class="cabecalhoLista">
-			<td></td>
-			<td>05/10/2016</td>
-			<td class="descricao">GIRO ITAU 38/26</td>
-			<td>900,00</td>
-			<td><a href="" class="btn btn-success">Pagar</a></td>
-		</tr>
-		
-	</tbody>
-	</table>
-	</div>	 -->
-		
   </div>		
 </div>
 
@@ -155,7 +108,8 @@
  .tiraBordaTabela tr td a {text-decoration: none;}
  .tiraBordaTabela tr td a:hover{font-weight: bold;}
   #toTop{display: none !important;}
- 
+ .sub-div-confirmacao{margin-top: 15% !important; }
+ .fontSansLight{font-family: 'OpenSansLight';line-height: 30px;margin-top: 10px;}
 </style>
 
 <div class="col-md-12 navegacaoResumoMes">
@@ -169,5 +123,126 @@
 	</table>
 </div>
 
+<div class="col-md-12 alpha60 div-confirmacao" id="erroReceberConta" style="position: fixed; display: none;background-color: rgba(255, 255, 255, 0.8);">
+	<div class="col-md-4"></div>
+	<div class="col-md-12 sub-div-confirmacao" style="height: 190px !important;box-shadow: 0px 2px 18px 10px #ccc">
+		
+		<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="font-size: 35px; color: #F7E967"></span>
+		<h3 class="fontSansLight">Não é possível receber essa conta.</h3>
+		<h5>Verifique a data de vencimento ou gere um Analítico para o mês e ano do vencimento informados.</h5>
+		<br>
+		<button type="button" class="btn btn-success" onclick="location.reload();" style="margin-top: 8px;">Voltar</button>
+	</div>
+	<div class="col-md-4"></div>
+</div>
+
+<div class="col-md-12 alpha60 div-confirmacao" id="sucessoReceberConta" style="position: fixed; display: none;background-color: rgba(255, 255, 255, 0.8);">
+	<div class="col-md-4"></div>
+	<div class="col-md-12 sub-div-confirmacao" style="height: 190px !important;box-shadow: 0px 2px 18px 10px #ccc">
+		<span class="glyphicon glyphicon-ok" aria-hidden="true" style="font-size: 35px; color: #5cb85c;margin-top: 35px;"></span>
+		<h3 class="fontSansLight">Conta recebida com sucesso.</h3>
+		<h5 class="fontSansLight">Recarregando página ...</h5>
+	</div>
+	<div class="col-md-4"></div>
+</div>
+
+<div class="col-md-12 alpha60 div-confirmacao" id="mudaDataVencimentoModel" style="position: fixed; display: none;background-color: rgba(255, 255, 255, 0.8);">
+	<div class="col-md-4"></div>
+	<div class="col-md-12 sub-div-confirmacao" style="height: 210px !important;box-shadow: 0px 2px 18px 10px #ccc">
+		
+		<button type="button" class="close" data-dismiss="modal" style="font-size: 30px" onclick="location.reload();">
+         X
+        </button>
+        
+        
+		<h4 class="fontSansLight">ALTERAR DATA DE VENCIMENTO</h4>	
+				
+		<table class="table table-striped table-hover table-condensed" >
+			<tr>
+				<td>NF/ND</td>
+				<td>Descrição</td>
+				<td>Vencimento</td>
+				<td>Valor</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #ddd;">
+				<td><span id="NDNFalterar"></span></td>
+				<td><span id="Eventoalterar"></span></td>
+				<td>
+					<input type="date" style="border: 1px solid #ddd;border-radius: 4px;height: 22px;" id="dataParaAlterar">
+					<input id="idInfoInterna" type="hidden">
+				</td>
+				<td><span id="Valoralterar"></span></td>
+			</tr>
+		</table>
+		<button class="btn btn-success btnAlterar" onclick="alterardata();">ALTERAR</button>
+	</div>
+	<div class="col-md-4"></div>
+</div>
+
+
+
+
 
 <c:import url="../../_comum/footer.jsp" />
+
+<script type="text/javascript">
+
+function receberContas(idLista) {
+	
+	var tipoBanco = $("#tipoBancoContaReceber"+idLista).val();
+	
+	if(tipoBanco == 0){
+		alert("Selecione um Banco");
+		$("#tipoBancoContaReceber"+idLista).css("border", "2px solid red");
+		return false;
+	}
+	
+	
+	 $.ajax({
+		url : "receberConta?idLista="+idLista+"&tipoBanco="+tipoBanco,
+		success : function(data) {
+			$("#sucessoReceberConta").fadeIn(800);
+			setTimeout(function () {
+		        window.location.reload(1);}, 2000);
+		},
+		error: function(){
+			$("#erroReceberConta").fadeIn(800);
+			
+		}
+	});
+};
+
+function mudaDataContasReceber(nf,evento,idInfoInterna){
+
+	var valor =  $("#valorAlterar"+idInfoInterna).val();
+	
+	$("#mudaDataVencimentoModel").fadeIn(500);
+	$("#NDNFalterar").append(nf);
+	$("#Eventoalterar").append(evento);
+	$("#Valoralterar").append(valor);
+	$("#idInfoInterna").attr('value',idInfoInterna);
+}
+
+
+function alterardata(){
+	
+	var data = $("#dataParaAlterar").val();
+	var idInfoInterna = $("#idInfoInterna").val();
+	
+	if(data == null || data == ''){
+		$("#dataParaAlterar").css("border","2px solid red");
+		alert("Preencha com uma data válida");
+		return false;
+	}
+	$.ajax({
+		url : "alterarDataVencimento?idInfoInterna="+idInfoInterna+"&data="+data,
+		success : function(data) {
+			location.reload();
+		}
+	});
+}
+
+</script>
+
+
+

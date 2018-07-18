@@ -144,7 +144,7 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		
 		MV.addObject("giroDeficitAvit", dadosEvento.giroDeficitAvit(lucroOperacional,creditoAplic,MOContrib));
 		
-		MV.addObject("contasReceber", relatorioEventoDAO.contasReceber(ano.toString(),nomeMes));
+		MV.addObject("contasReceber", relatorioEventoDAO.contasReceberTotalResumoMes(ano.toString(),nomeMes));
 
 /**
  * 		Concentrar os esforços para diminuir o gargalo nesse carregamento

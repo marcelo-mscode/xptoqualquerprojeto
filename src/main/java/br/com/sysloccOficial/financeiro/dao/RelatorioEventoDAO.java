@@ -452,6 +452,15 @@ public class RelatorioEventoDAO {
 			return null;
 		}
 	}
+	public BigDecimal contasReceberTotalResumoMes(String anoEvento, String mesEvento) {
+		try {
+			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valorLoccoAgenc) from RelatorioEventos where recebido = 0 ",BigDecimal.class);
+			return f.getSingleResult();
+		} catch (Exception e) {
+			System.out.println("erro contasReceber: "+e);
+			return null;
+		}
+	}
 	
 	public BigDecimal eventosContasPagar(String anoEvento, String mesEvento) {
 		try {
