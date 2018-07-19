@@ -125,9 +125,9 @@
 <div class="col-md-12 navegacaoResumoMes">
 	<table class="table tiraBordaTabela">
 		<tr>
-			<td class="input-95px"><a href="resumoMesIndividual?mes=01&ano=2017" class="navegacaoLink">Resumo mês</a></td>
+			<td class="input-95px"><a href="resumoMesIndex" class="navegacaoLink">Resumo mês</a></td>
 			<td class="input-120px"><a href="contasPagar" class="navegacaoLink">Contas a pagar</a></td>
-			<td class="input-140px acctive"><a href="contasReceber" class="navegacaoLink">Contas a receber</a></td>
+			<td class="input-140px acctive">CONTAS A RECEBER</td>
 			<td class=""><a href="contasReceber" class="navegacaoLink"> - </a></td>
 		</tr>
 	</table>

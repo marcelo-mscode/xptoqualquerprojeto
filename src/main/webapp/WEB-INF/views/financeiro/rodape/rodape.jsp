@@ -9,7 +9,7 @@
 	<table class="table tiraBordaTabela">
 		<tr>
 			<td class="input-95px"><a href="resumoMesIndividual?mes=${mes}&ano=${InfoAnalitico.anoA}" class="navegacaoLink">Resumo mês</a></td>
-			<td class="input-80px active"><a href="analiticoIndividual?idAnalitico=${InfoAnalitico.idAnalitico}" class="navegacaoLink">Analítico</a></td>
+			<td class="input-80px active">ANALÍTICO</td>
 			<td class="input-95px"><a href="contasPagar" class="navegacaoLink">Contas pagar</a></td>
 			<td class="input-95px"><a href="contasReceber" class="navegacaoLink">Contas receber</a></td>
 			
