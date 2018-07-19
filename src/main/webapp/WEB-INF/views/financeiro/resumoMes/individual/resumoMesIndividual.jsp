@@ -30,13 +30,14 @@
 		  <ol class="breadcrumb">
 		    <li><a href="index.html">Menu</a></li>
 		    <li><a href="resumoMesIndex">Lista Resumos Mês</a></li>
-		    <li class="active">Resumo Mês XXXX</li>
+		    <li class="">Resumo Mês</li>
 		  </ol>					
 </div>
 
 <div style="height: 35px;">
-	<div class="col-md-12" style="margin: 10px 0px 25px -14px;/* border-bottom: 1px solid #ccc; */padding-bottom: 10px;" align="center">
-		<span style="font-family: 'OpenSansLight';font-size: 25px;margin-left: 32px;">Resumo do Mês de XXXXXX</span>
+	<div class="col-md-12" style="margin: 10px 0px 25px -14px;padding-bottom: 10px;font-family: 'OpenSansLight';font-size: 25px;text-align: center">
+		<h1>RESUMO DO MÊS</h1>
+		<h2 style="margin-top: 0px;">${nomeMes} de ${ano}</h2>
 	</div>
 </div>
 
@@ -113,8 +114,8 @@
 <div class="col-md-12 navegacaoResumoMes">
 	<table class="table tiraBordaTabela">
 		<tr>
-			<td class="input-95px"><a href="resumoMesIndividual?mes=${mes}&ano=${InfoAnalitico.anoA}" class="navegacaoLink">Resumo mês</a></td>
-			<td class="input-80px active"><a href="analiticoIndividual?idAnalitico=${InfoAnalitico.idAnalitico}" class="navegacaoLink">Analítico</a></td>
+			<td class="input-95px active">RESUMO MÊS</td>
+			<td class="input-80px"><a href="analiticoIndividual?idAnalitico=${idAnalitico}" class="navegacaoLink">Analítico</a></td>
 			<td class="input-95px"><a href="contasPagar" class="navegacaoLink">Contas pagar</a></td>
 			<td class="input-95px"><a href="contasReceber" class="navegacaoLink">Contas receber</a></td>
 			
@@ -122,7 +123,7 @@
 			
 				<c:forEach items="${idsRelatorioEventos}" var="idsRelatorioEventos" varStatus="contador">
 				 	<c:if test="${i == contador.count}">
-		 				<td style="width: 20px !important;padding: 0px;vertical-align: middle;text-align: center;font-size: 15px;"><a href="relatorioEventoIndividual?idLista=${idsRelatorioEventos}" class="navegacaoLink" style="padding:7px">${i}</a></td>
+		 				<td style="width: 20px !important;padding: 0px;vertical-align: middle;text-align: center;font-size: 15px;"><a href="relatorioEventoIndividual?idLista=${idsRelatorioEventos.get('relatorio.idLista')}&idRelatorioEvento=${idsRelatorioEventos.get('relatorio.idRelatorioEvento')}" class="navegacaoLink" style="padding:7px">${i}</a></td>
 				 	</c:if>
 				</c:forEach>
 			
@@ -131,13 +132,5 @@
 		</tr>
 	</table>
 </div>
-
-
-
-
-
-
-
-
 
 <c:import url="../../../_comum/footer.jsp" />

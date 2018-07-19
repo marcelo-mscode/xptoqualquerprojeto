@@ -2,12 +2,20 @@ package br.com.sysloccOficial.financeiro.dao;
 
 import java.math.BigDecimal;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Tuple;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.FinancDespesas;
@@ -16,6 +24,7 @@ import br.com.sysloccOficial.financeiro.model.FinancFolhaPgto;
 import br.com.sysloccOficial.financeiro.model.FinancImpostos;
 import br.com.sysloccOficial.financeiro.model.FinancOutrasDespesas;
 import br.com.sysloccOficial.financeiro.model.FinancTelefone;
+import br.com.sysloccOficial.model.RelatorioEventos;
 import br.com.sysloccOficial.model.VideosYt;
 
 
@@ -143,12 +152,24 @@ public class AnaliticoIndividualDAO {
 		}
 	}
 	
-	public List<Integer> idsRelatorioEventosMes(int anoEvento, int mesReferencia){
+	public List<Tuple> idsRelatorioEventosMes(int anoEvento, int mesReferencia){
 		try {
-			String consulta ="select idLista from RelatorioEventos where anoEvento = "+anoEvento+" and mesReferencia = "+mesReferencia;
-			TypedQuery<Integer> cons = manager.createQuery(consulta, Integer.class);
-			List<Integer> teste = cons.getResultList();
-			return teste;
+			
+			CriteriaBuilder cb = manager.getCriteriaBuilder();
+			CriteriaQuery<Tuple> c = cb.createQuery(Tuple.class);
+			Root<RelatorioEventos> relatorio = c.from(RelatorioEventos.class);
+			
+			c.multiselect(relatorio.<Integer>get("idLista").alias("relatorio.idLista"), 
+						  relatorio.<Integer>get("idRelatorioEvento").alias("relatorio.idRelatorioEvento") 
+			);
+			
+			Predicate predicate =  cb.and(cb.equal(relatorio.get("anoEvento"), anoEvento),cb.equal(relatorio.get("mesReferencia"), mesReferencia));
+			c.where(predicate);
+			
+			TypedQuery<Tuple> query = manager.createQuery(c);
+			List<Tuple> resultado = query.getResultList();
+					
+			return resultado;
 		} catch (Exception e) {
 			System.out.println("Erro ao carregar idsRelatorios de eventos em enalitico: "+e);
 			return null;

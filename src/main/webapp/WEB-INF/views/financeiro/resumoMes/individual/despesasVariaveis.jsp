@@ -15,7 +15,7 @@
 				<th></th>
 				<th></th>
 				<th style="font-weight: bold;"><fmt:formatNumber value="${somaDespVariaveis}" pattern="#,##0.00"/></th>
-				<th>35,3</th>
+				<th></th>
 			</tr>
 			
 			<tr>
@@ -55,7 +55,7 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				<th>0,00</th>
+				<th></th>
 			</tr>
 
 			<tr>
@@ -65,7 +65,7 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				<th>136,10</th>
+				<th></th>
 			</tr>
 
 			<tr>
@@ -75,7 +75,7 @@
 				<th class="fundoDespesasFixas">=></th>
 				<th class="fundoDespesasFixas">=></th>
 				<th  class="fundoDespesasFixas" style="border: 2px solid #000"><b><fmt:formatNumber value="${creditosAplicacoes}" pattern="#,##0.00"/></b></th>
-				<th>136,10</th>
+				<th></th>
 			</tr>
 			
 			 <tr><td colspan="7"></td></tr>
@@ -87,7 +87,7 @@
 				<th></th>
 				<th></th>
 				<th style="color: blue;"><b><fmt:formatNumber value="${MOmargemContribuicao}" pattern="#,##0.00"/></b></th>
-				<th>136,10</th>
+				<th></th>
 			</tr>
 
 			<tr class="fundoAmarelo input-260px" style="border: 2px solid #000">
@@ -97,5 +97,5 @@
 				<th  class="fundoAmarelo">=></th>
 				<th  class="fundoAmarelo">=></th>
 				<th  class="fundoAmarelo" style="font-weight: bold;color: red;border: 2px solid #000"><fmt:formatNumber value="${giroDeficitAvit}" pattern="#,##0.00"/></th>
-				<th style="color: red;background-color: #fff;border: 2px solid #000">(92,88)</th>
+				<th style="color: red;background-color: #fff;border: 2px solid #000"></th>
 			</tr>

@@ -26,7 +26,12 @@
 		</b></th>
 		<th class="input-160px" rowspan="4" style="vertical-align:middle">
 		<c:set  var="somaTotalDosbancos" value="${totalItau+totalCef+totalBradesco+totalSantander}"/>
-		  	<fmt:formatNumber value="${somaTotalDosbancos}" pattern="#,##0.00"/>
+			<c:if test="${somaTotalDosbancos < 0}"><span  class="error"></c:if>
+			<c:if test="${somaTotalDosbancos >= 0}"><span></c:if>
+			  	<fmt:formatNumber value="${somaTotalDosbancos}" pattern="#,##0.00"/>
+			</span>  
+		
+		
 		</th>
 	</tr>
 	

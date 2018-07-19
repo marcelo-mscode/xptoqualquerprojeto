@@ -43,7 +43,7 @@
 			<td>Banco</td>
 			<td></td>
 		</tr>
-		
+		<c:set var="valorTotal" value="0" />
 		<c:forEach items="${infoInterna}" var="infoInterna">
 			<c:forEach items="${listaReceber}" var="listaReceber">
 			  <c:if test="${infoInterna.lista.idLista == listaReceber.idLista}">
@@ -82,14 +82,18 @@
 					<td><button class="btn btn-success" onclick="receberContas(${listaReceber.idRelatorioEvento}, ${infoInterna.lista.idLista},${listaReceber.ndFatDireto});">Receber</button></td>
 						<!-- </form> -->
 				</tr>
+				  <c:set var="valorTotal" value="${valorTotal+listaReceber.valorLoccoAgenc}" /> 
 			  </c:if>
+			  
+			  
+			  
 			 </c:forEach>
 		 </c:forEach>
 
-		 <c:set var="valorTotal" value="0" />
+		<%--  <c:set var="valorTotal" value="0" />
 		 <c:forEach items="${listaReceber}" var="listaReceber">
 			 <c:set var="valorTotal" value="${valorTotal+listaReceber.valorLoccoAgenc}" /> 
-		 </c:forEach>
+		 </c:forEach> --%>
 	    
 		 <tr>
 		 	<td><b>Total a Receber</b></td>

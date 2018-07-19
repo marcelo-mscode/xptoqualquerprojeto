@@ -87,7 +87,9 @@
 			
 				<c:forEach items="${idsRelatorioEventos}" var="idsRelatorioEventos" varStatus="contador">
 				 	<c:if test="${i == contador.count}">
-		 				<td style="width: 20px !important;padding: 0px;vertical-align: middle;text-align: center;font-size: 15px;"><a href="relatorioEventoIndividual?idLista=${idsRelatorioEventos}" class="navegacaoLink" style="padding:7px">${i}</a></td>
+		 				<td style="width: 20px !important;padding: 0px;vertical-align: middle;text-align: center;font-size: 15px;">
+		 					<a href="relatorioEventoIndividual?idLista=${idsRelatorioEventos.get('relatorio.idLista')}&idRelatorioEvento=${idsRelatorioEventos.get('relatorio.idRelatorioEvento')}" class="navegacaoLink" style="padding:7px">${i}</a>
+		 				</td>
 				 	</c:if>
 				</c:forEach>
 			

@@ -13,7 +13,12 @@
 				<fmt:formatDate value="${movimentoItau.dataAberturaCaixa}" pattern="dd/MM/yyyy"/></td>
 				<td>=></td>
 				<td><fmt:formatNumber value="${movimentoItau.valorAbertura}" pattern="#,##0.00"/></td>
-				<td rowspan="4" class="totalBancos"><fmt:formatNumber value="${totalSaldosAnteriores}" pattern="#,##0.00"/></td>
+				<td rowspan="4" class="totalBancos">
+				<c:if test="${totalSaldosAnteriores < 0}"><span  class="error"></c:if>
+				<c:if test="${totalSaldosAnteriores >= 0}"><span></c:if>
+					<fmt:formatNumber value="${totalSaldosAnteriores}" pattern="#,##0.00"/>
+					</span>
+				</td>
 			</tr>
 			<tr>
 				<td></td>

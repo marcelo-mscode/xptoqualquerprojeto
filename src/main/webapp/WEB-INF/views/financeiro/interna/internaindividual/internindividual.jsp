@@ -79,7 +79,7 @@
 </div>
 
 <c:if test="${ultimaAtualizacao != null}">	
-   <a href="relatorioEventoIndividual?idLista=${infoLista.idLista}" style="float: right;margin-right: 70px;margin-top: 165px;">Relatório desse Evento: ${infoLista.lista}</a>
+   <a href="relatorioEventoIndividual?idLista=${infoLista.idLista}&idRelatorioEvento=${idRelatorioEvento}" style="float: right;margin-right: 70px;margin-top: 165px;">Relatório desse Evento: ${infoLista.lista}</a>
 </c:if>
 
 

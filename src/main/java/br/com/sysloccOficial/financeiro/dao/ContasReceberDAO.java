@@ -2,22 +2,16 @@ package br.com.sysloccOficial.financeiro.dao;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
-
 import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
@@ -83,10 +77,38 @@ public class ContasReceberDAO {
 			manager.merge(relatorio);
 			manager.close();
 			
+			
 			if(ndnf == false){
-				infoInterna.setRecebido(true);
-				infoInterna.setDataRecebido(Calendar.getInstance());
-				manager.merge(infoInterna);
+				try {
+					TypedQuery<RelatorioEventos> query = manager.createQuery("from RelatorioEventos where idLista="+idLista+" and ndFatDireto = 1",RelatorioEventos.class);
+					RelatorioEventos relatorioConfereSeND = query.getSingleResult();
+					
+					if(relatorioConfereSeND.isRecebido() == true){
+						infoInterna.setRecebido(true);
+						infoInterna.setDataRecebido(Calendar.getInstance());
+						manager.merge(infoInterna);
+						manager.close();
+					}
+					
+				} catch (Exception e) {
+					
+					infoInterna.setRecebido(true);
+					infoInterna.setDataRecebido(Calendar.getInstance());
+					manager.merge(infoInterna);
+					manager.close();
+				}
+			}
+
+			if(ndnf == true){
+				TypedQuery<RelatorioEventos> query = manager.createQuery("from RelatorioEventos where idLista="+idLista+" and ndFatDireto = 0",RelatorioEventos.class);
+				RelatorioEventos relatorioConfereSeND = query.getSingleResult();
+				
+				if(relatorioConfereSeND.isRecebido() == true){
+					infoInterna.setRecebido(true);
+					infoInterna.setDataRecebido(Calendar.getInstance());
+					manager.merge(infoInterna);
+					manager.close();
+				}
 			}
 			
 			/**

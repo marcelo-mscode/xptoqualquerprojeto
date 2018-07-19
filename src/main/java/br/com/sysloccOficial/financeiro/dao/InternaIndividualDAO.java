@@ -14,6 +14,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.sound.midi.MidiDevice.Info;
 
+import org.joda.time.chrono.IslamicChronology;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -439,6 +440,22 @@ public class InternaIndividualDAO {
 			System.out.println("Erro ao atualizar ND Interna: "+e);
 		}
 	}
+	
+	
+	public Integer verificaRelatorioEventoInternaExiste(Integer idLista){
+		try {
+			TypedQuery<Integer> query = manager.createQuery("SELECT idRelatorioEvento from RelatorioEventos where idLista= "+idLista, Integer.class).setMaxResults(1);
+			Integer resultado = query.getSingleResult();
+			return resultado;
+			
+		} catch (Exception e) {
+			System.out.println("Erro: "+e);
+			System.out.println();
+			return null;
+		}
+	}
+	
+	
 	
 	/*public void salvaNovoOrcamento(String valor,Integer idFornecedor,Integer idGrupo){
 		TypedQuery<Empresa> e = manager.createQuery("select e from Empresa e where idEmpresa=6937", Empresa.class); 

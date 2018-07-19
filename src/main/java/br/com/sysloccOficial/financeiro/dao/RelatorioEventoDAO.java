@@ -8,16 +8,20 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
@@ -454,8 +458,12 @@ public class RelatorioEventoDAO {
 	}
 	public BigDecimal contasReceberTotalResumoMes(String anoEvento, String mesEvento) {
 		try {
-			TypedQuery<BigDecimal> f = manager.createQuery("select sum(valorLoccoAgenc) from RelatorioEventos where recebido = 0 ",BigDecimal.class);
-			return f.getSingleResult();
+			
+			String consulta = "select sum(valorLoccoAgenc) from RelatorioEventos where idLista in( "
+					           	+ "select idLista from InfoInterna where recebido <> 1 order by dataPagamento "
+					          + ")  and recebido = 0";
+			Query query = (TypedQuery<BigDecimal>) manager.createNativeQuery(consulta);
+			return (BigDecimal) query.getSingleResult();
 		} catch (Exception e) {
 			System.out.println("erro contasReceber: "+e);
 			return null;

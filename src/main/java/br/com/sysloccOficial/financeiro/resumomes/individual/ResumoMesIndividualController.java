@@ -46,9 +46,17 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		String anoMes = ( mes < 10 ) ? ano+"-0"+mes  : ano+"-"+mes;
 		
 		String nomeMes = utilDatas.nomeMesPorDigito(mes);
+		MV.addObject("nomeMes", nomeMes);
+		MV.addObject("ano", ano);
+		MV.addObject("idAnalitico", analiticoIndDAO.retornaIdAnaliticoPorMesAnoEvento(mes, ano));
+		
+		
+		
 		
 		
 		Integer idAnalitico = pegaIdAnalitico(nomeMes, ano.toString());
+		
+		
 		
 		// Carrega cabecalho de saldos Bancarios ---------------------------------------------- //
 		
@@ -80,12 +88,7 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		MV.addObject("infoEvento", infoEvento);
 		MV.addObject("infoLista", infoLista);
 		MV.addObject("somaTotalEventos", dadosEvento.somaTotalEventos(infoEvento));
-/**
- * ABAIXO ESÁ COMENTADO PORQUE ESTOU CRIANDO RELATÓRIO INTERNO QUE FAZ ND APARECER AQUI, DESCOMENTAR DEPOIS !!!
- * 
- * 
- * 
- */
+
 		MV.addObject("custoTerceiros", dadosEvento.custoTerceiros(infoEvento));
 		MV.addObject("pgtoExternas", dadosEvento.pgtoExternas(infoEvento));
 		MV.addObject("faturamentoMes", dadosEvento.faturamentoMes(dadosEvento.somaTotalEventos(infoEvento),dadosEvento.pgtoExternas(infoEvento)));
@@ -185,10 +188,6 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 		// Total giroSantander ( soma dos emprestimos cadastrados )
 		BigDecimal outrosSantander = analiticoMovFinanceiroDAO.outrosSantander(idAnalitico);
 		MV.addObject("outrosSantander", outrosSantander);
-		
-		
-		
-		
 		
 		//Rodapé links para outras páginas
 		MV.addObject("quantRelatorioEventos", analiticoIndDAO.quantEventosMes(ano, mes));

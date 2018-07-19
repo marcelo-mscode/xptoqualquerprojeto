@@ -98,6 +98,10 @@ public class IndexInternaIndividual {
 		MV.addObject("teste", d);
 		
 		MV.addObject("ultimaAtualizacao", internaIndividualDAO.buscaUltimaAtualizacaoInterna(idLista));
+
+		MV.addObject("idRelatorioEvento", internaIndividualDAO.verificaRelatorioEventoInternaExiste(idLista));
+		
+		
 		
 		
 		return MV;

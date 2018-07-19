@@ -13,7 +13,7 @@
 				<th class="input-160px"></th>
 				<th class="input-160px"></th>
 				<th class="input-160px" style="font-weight: bold;"><fmt:formatNumber value="${SomaDespFixas}" pattern="#,##0.00"/></th>
-				<th class="input-160px">100,80</th>
+				<th class="input-160px"></th>
 			</tr>
 			
 			<tr>
@@ -23,7 +23,7 @@
 				<th class="input-160px"></th>
 				<th class="input-160px"></th>
 				<th class="input-160px"></th>
-				<th class="input-160px">11,2</th>
+				<th class="input-160px"></th>
 			</tr>
 			
 			<tr>
@@ -33,7 +33,7 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				<th>16,3</th>
+				<th></th>
 			</tr>
 			
 			<tr>
@@ -43,7 +43,7 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				<th>2,7</th>
+				<th></th>
 			</tr>
 			
 			<tr>
@@ -53,15 +53,15 @@
 				<th></th>
 				<th></th>
 				<th></th>
-				<th>70,5</th>
+				<th></th>
 			</tr>
 
 			<tr>
-				<th class="input-260px">Dissidio Fev</th>
+				<th class="input-260px">Dissidio</th>
 				<th> - </th>
 				<th></th>
 				<th></th>
 				<th></th>
 				<th></th>
-				<th>0,00</th>
+				<th></th>
 			</tr>

@@ -13,7 +13,7 @@
 				<th class="input-160px"></th>
 				<th class="input-160px">( + )</th>
 				<th class="input-160px"> - </th>
-				<th>0,0</th>
+				<th></th>
 			</tr>
 
 			<tr>
@@ -53,7 +53,7 @@
 				<th></th>
 				<th>( - )</th>
 				<th><fmt:formatNumber value="${impostos}" pattern="#,##0.00"/></th>
-				<th>42,10</th>
+				<th></th>
 			</tr>
 			<tr>
 				<td colspan="7"></td>
@@ -118,5 +118,5 @@
 				<th>=></th>
 				<th>=></th>
 				<th style="font-weight: bold;"><fmt:formatNumber value="${lucroOperacional}" pattern="#,##0.00"/></th>
-				<th>34,5</th>
+				<th></th>
 			</tr>

@@ -12,7 +12,7 @@
 				<th class="input-160px">LOCAL</th>
 				<th class="input-160px">EVENTO</th>
 				<th class="input-160px">Valor</th>
-				<th>Análise vertical</th>
+				<th>NF/ND</th>
 			</tr>
 			
 			<c:forEach items="${infoEvento}" var="infoEvento" varStatus="loop">
