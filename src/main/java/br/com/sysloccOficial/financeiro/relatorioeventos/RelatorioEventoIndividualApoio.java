@@ -60,6 +60,10 @@ public class RelatorioEventoIndividualApoio {
 		
 		List<Integer> idsFornecedoresPorList = relatorioEventoDAO.idsFornecedoresPorListaParaND(idLista);
 		
+		
+		/**
+		 * Encurtar essa lista abaixo pegando apenas os que tem imposto = 0
+		 */
 		List<ProducaoP> listaProducaoPPorIdLista = relatorioEventoDAO.listaProducaoPPorIdLista(idLista);	
 		
 		List<RelatorioBVS> listaRelatorioBVS = new ArrayList<RelatorioBVS>();
@@ -77,7 +81,8 @@ public class RelatorioEventoIndividualApoio {
 					bvs.setIdFornecedor(idsForn);
 					bvs.setNomeFornecedor(listaProducaoPPorIdLista.get(i).getIdEmpFornecedor().getEmpresa());
 					valor = valor.add(listaProducaoPPorIdLista.get(i).getValorItem());
-					valorParaPgar = valorParaPgar.add(listaProducaoPPorIdLista.get(i).getValorDePagamentoContratacao());
+					//Essa linha abaixo eu mudei porque estava dando errado o valor de contratação
+					valorParaPgar = valorParaPgar.add(listaProducaoPPorIdLista.get(i).getValorContratacao());
 					diferenca = diferenca.add(listaProducaoPPorIdLista.get(i).getDiferenca());
 				}
 			}
