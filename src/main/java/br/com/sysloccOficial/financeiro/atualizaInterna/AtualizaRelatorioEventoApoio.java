@@ -493,6 +493,8 @@ public class AtualizaRelatorioEventoApoio{
 								    .subtract(novoRelatorio.getTotalCachesComTelefone())
 				                    .subtract(novoRelatorio.getPgtoExternas());
 		
+		novoRelatorio.setNdFatDireto(true);
+		
 	if(relatorio == null){	
 	
 		manager.persist(novoRelatorio);
