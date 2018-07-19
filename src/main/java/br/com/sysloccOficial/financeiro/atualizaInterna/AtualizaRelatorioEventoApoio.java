@@ -383,12 +383,16 @@ public class AtualizaRelatorioEventoApoio{
 		//InfoInterna infoInterna = relatorioDAO.pegaInfoInterna(idLista);
 		InfoInterna infoInterna = relatorioDAO.pegaInfoInternaND(idLista);
 		
-		List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
+		//List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVSParaND(idLista);
+		List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVSParaND(idLista);
+		//List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
 		
 		// ----- ponto chave
 		List<CachePadrao> listaRelatorioCaches = cacheEvento.listaRelatorioCaches(idLista);
 
-		RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdLista(idLista);
+		
+		RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdListaComNDFatDireto(idLista);
+		//RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdLista(idLista);
 		
 		//Despesas do Evento
 		BigDecimal somaDespesasEvento = relatorioDAO.somaDespesasProjeto(idLista);
@@ -401,27 +405,29 @@ public class AtualizaRelatorioEventoApoio{
 		novoRelatorio.setMesReferencia(utildatas.referenciaMesAnalitico(mes));
 		novoRelatorio.setBvs(new BigDecimal("0.00"));
 		novoRelatorio.setCacheEquipEx(new BigDecimal("0.00"));
-		novoRelatorio.setValorLoccoAgenc(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
+		novoRelatorio.setValorLoccoAgenc(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
+		novoRelatorio.setServicos(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
+		
+/*		novoRelatorio.setValorLoccoAgenc(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
 		novoRelatorio.setServicos(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
-//-------  FeeReduzido			
-		BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
+*///-------  FeeReduzido			
+		//BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
+		BigDecimal feeReduzido = new BigDecimal("0.00");
 		
 		
 		
-		novoRelatorio.setFee(infoLista.getAdministracaoValor().subtract(feeReduzido));
+		novoRelatorio.setFee(new BigDecimal("0.00"));
 		novoRelatorio.setFeeReduzido(feeReduzido);
 //------- //			
-		novoRelatorio.setImpostoCliente(infoLista.getImpostoValor());
+		novoRelatorio.setImpostoCliente(new BigDecimal("0.00"));
 		novoRelatorio.setDataAtualizacao(Calendar.getInstance());
 		novoRelatorio.setIdLista(idLista);
 		
-		novoRelatorio.setImpostoSobreValorLoccoAgencia(CalculadoraImposto.calculaImpostoSobrevalorLoccoAgencia(
-														novoRelatorio.getValorLoccoAgenc(), 
-														new BigDecimal(infoInterna.getImpostoInterna()/100)));
+		novoRelatorio.setImpostoSobreValorLoccoAgencia(new BigDecimal("0.00"));
 
 		novoRelatorio.setValorLiquido(novoRelatorio.getValorLoccoAgenc().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
-		novoRelatorio.setImpostoClienteDiferenca(novoRelatorio.getImpostoCliente().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
-		novoRelatorio.setLiquidoImposto(novoRelatorio.getValorLoccoAgenc().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
+		novoRelatorio.setImpostoClienteDiferenca(new BigDecimal("0.00"));
+		novoRelatorio.setLiquidoImposto(novoRelatorio.getValorLoccoAgenc());
 		novoRelatorio.setTotalAPagarFornecedores(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
 		
 		BigDecimal totalDiferencaSemTelefone = CalculadoraDiferencaTelefone.totalDiferencaSemTelefone(
