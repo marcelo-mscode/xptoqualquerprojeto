@@ -254,7 +254,7 @@ public class AtualizaRelatorioEventoApoio{
 		
 		System.out.println(novoRelatorio.getValorLoccoAgenc());
 		
-		novoRelatorio.setValorLiquido(novoRelatorio.getValorLoccoAgenc().subtract(novoRelatorio.getImpostoSobreValorLoccoAgencia()));
+		novoRelatorio.setValorLiquido(novoRelatorio.getValorLoccoAgenc());
 		novoRelatorio.setImpostoClienteDiferenca(new BigDecimal("0.00"));
 		novoRelatorio.setLiquidoImposto(novoRelatorio.getValorLoccoAgenc());
 		novoRelatorio.setTotalAPagarFornecedores(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
