@@ -22,9 +22,7 @@
 		 				</td>
 				 	</c:if>
 				</c:forEach>
-			
 			</c:forEach>
-			
 		</tr>
 	</table>
 </div>
