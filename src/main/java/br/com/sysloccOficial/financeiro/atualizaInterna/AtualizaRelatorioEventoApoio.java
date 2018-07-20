@@ -118,6 +118,10 @@ public class AtualizaRelatorioEventoApoio{
 			Integer idRelatorioParaGiroTelefone = null;
 			idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelaStorioEventoExiste(relatorio, novoRelatorio);
 			
+			if(idRelatorioParaGiroTelefone == null){
+				System.out.println();
+			}
+			
 			//Custo 
 			BigDecimal custoTelefone = CalculadoraTelefone.calculaValorTelefone(analiticoDAO, relatorioDAO,giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
 			
