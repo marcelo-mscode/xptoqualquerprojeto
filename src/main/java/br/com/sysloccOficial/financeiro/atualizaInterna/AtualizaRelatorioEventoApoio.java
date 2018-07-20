@@ -18,6 +18,7 @@ import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.financeiro.dao.AnaliticoIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.InternaIndividualDAO;
 import br.com.sysloccOficial.financeiro.dao.RelatorioEventoDAO;
+import br.com.sysloccOficial.financeiro.dao.RelatorioEventoSalvaCacheNDDAO;
 import br.com.sysloccOficial.financeiro.funcionario.cacheCalculos.CalculadoraCachesTotais;
 import br.com.sysloccOficial.financeiro.relatorioeventos.CacheDoEventoApoio;
 import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioBVS;
@@ -43,6 +44,7 @@ public class AtualizaRelatorioEventoApoio{
 	@Autowired RelatorioEventoIndividualApoio relApoio;
 	@Autowired InternaIndividualDAO internaIndividualDAO;
 	@Autowired RelatorioEventoDAO relatorioDAO;
+	@Autowired RelatorioEventoSalvaCacheNDDAO relatorioNDDAO;
 	@Autowired AnaliticoIndividualDAO analiticoDAO;
 	@Autowired UtilitariaDatas utildatas;
 	@Autowired GrupoDAO grupoDAO;
@@ -553,9 +555,9 @@ public class AtualizaRelatorioEventoApoio{
 
 		manager.persist(novoGiro);
 		
-//------------------ > SALVA CACHE DO EVENTO 			
+//------------------ > SALVA CACHE DO EVENTO ND			
 		try {
-			relatorioDAO.salvaCacheDoEvento(novoRelatorio);
+			relatorioNDDAO.salvaCacheDoEventoND(novoRelatorio);
 		} catch (Exception e) {
 			System.out.println("Deu um erro aqui ao atualizar Cache do Evento: "+e);
 		}
