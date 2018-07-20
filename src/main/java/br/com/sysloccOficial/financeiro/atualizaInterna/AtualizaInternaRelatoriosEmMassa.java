@@ -21,8 +21,6 @@ public class AtualizaInternaRelatoriosEmMassa {
 	}
 
 	protected void atualizaInternaRelatoriosEventosEmMassa(LinkedHashSet<Integer> idsListas)throws ParseException {
-		
-				System.out.println("Rodando a 1º Vez ...");
 			
 				for (Integer integer : idsListas) {
 					
@@ -34,11 +32,8 @@ public class AtualizaInternaRelatoriosEmMassa {
 					 
 					 relatorioApoio.montaObjetoRelatorio(integer,infoLista2,mes2,ano2);
 					 relatorioApoio.montaObjetoRelatorioNDNovaRegra(integer,infoLista2,mes2,ano2);
-					 
 				}
 
-				System.out.println("Rodando a 2º Vez ...");
-				
 				for (Integer integer : idsListas) {
 					
 					Lista infoLista2 =  relatorioDAO.listaPorIdLista(integer);
@@ -48,7 +43,6 @@ public class AtualizaInternaRelatoriosEmMassa {
 					String ano2 = datas2.get(2).toUpperCase().toString();
 					
 					relatorioApoio.montaObjetoRelatorio(integer,infoLista2,mes2,ano2);
-					// relatorioApoio.montaObjetoRelatorioND(integer,infoLista2,mes2,ano2);
 					
 				}
 			}

@@ -69,9 +69,14 @@
                onblur="editaCamposProducaoP('impostoInterna${infoLista.idLista}','impostoInterna',${infoLista.idLista});" type="text" value="${infoInterna.impostoInterna}">
          </td>
          <td>ND&nbsp&nbsp
-         		<input id="editaND"  
-         		<c:if test="${infoInterna.ndInterna eq  true}">checked="checked"  disabled="disabled"</c:if>
-         		 type="checkbox" style="vertical-align: top;" onclick="editaND(${infoLista.idLista});"  />
+         		<c:if test="${infoInterna.ndInterna eq  true}">
+         			<input checked="checked"  disabled="disabled" type="checkbox" style="vertical-align: top;" />
+				</c:if>
+
+         		<c:if test="${infoInterna.ndInterna eq  false}">
+         			<input id="editaND"  type="checkbox" style="vertical-align: top;" onclick="editaND(${infoLista.idLista});" />
+				</c:if>
+         		
          </td>
          
       </tr>
@@ -151,8 +156,8 @@
                   <fmt:formatNumber value="${itensInterna.valorItem}" pattern="#,##0.00"/>
                   </c:if>
                   </td>
-                  
-                  <!-- Valor fornecedor -->	
+                 
+                 <!-- Valor fornecedor -->	
                   <td class="colorRed ajusteVertical" style="padding: 0px">
                   <input name="" id="valorF${itensInterna.idProducao}" class="ajusteInput" type="text" style="text-align: center;"
                   value="<fmt:formatNumber value="${itensInterna.valorFornecedor}" pattern="#,##0.00"/>"
@@ -181,7 +186,7 @@
                   <!-- Focar os esforços aqui !!!!!!!!!!!!!!!!!!!!  -->
                   <%--             <c:if test="${itensInterna.rowSpan != null}">
                      <td rowspan="${itensInterna.rowSpan}" style="vertical-align: middle;font-size: 12px">${itensInterna.idEmpFornecedor.empresa}</td>
-                         <td rowspan="${itensInterna.rowSpan}" style="text-align: center;vertical-align: middle;padding: 0">--%>
+                         <td rowspan="${itensInterna.rowSpan}" style="text-align: center;vertical-align: middle; padding: 0">--%>
                   <td rowspan="" style="vertical-align: middle;font-size: 12px">${itensInterna.idEmpFornecedor.empresa}</td>
                   <td rowspan="" style="text-align: center;vertical-align: middle;padding: 0">
                   <textarea id="obs${itensInterna.idProducao}" class="textareaXY"
@@ -189,14 +194,14 @@
                      rows="2" cols="10" style="border: none;overflow: hidden;height:20px;
                      text-align: center;">${fn:trim(itensInterna.obsProducao.obs)}</textarea>
                   </td>
-                  <%--                  <td rowspan="${itensInterna.rowSpan}" style="vertical-align: middle;padding: 0"> --%>
+                  <%-- <td rowspan="${itensInterna.rowSpan}" style="vertical-align: middle;padding: 0"> --%>
                   <td rowspan="" style="vertical-align: middle;padding: 0">
                   <textarea id="dif${itensInterna.idProducao}" class="textareaXY"
                      onblur="editaCamposProducaoP('dif${itensInterna.idProducao}','difImpostoProducaoP',${itensInterna.idProducao});"
                      rows="2" cols="10" style="border: none;overflow: hidden;height:20px;width:86px;
                      text-align: center;">${fn:trim(itensInterna.difImpostoProducaoP.obs)}</textarea>
-                  </td>
-                  <%-- <td rowspan="${itensInterna.rowSpan}" style="vertical-align: middle;font-size: 12px"> --%>
+                 </td>
+                 <%-- <td rowspan="${itensInterna.rowSpan}" style="vertical-align: middle;font-size: 12px"> --%>
                   <td style="vertical-align: middle;font-size: 12px;padding: 0;margin: 0;text-align: center">
                   <c:forEach items="${itensInterna.fornecedorFinanceiro.idValorPgtoFornecedor}" var="fornecedorFinanceiro">
                   <fmt:formatDate value="${fornecedorFinanceiro.dtPgotFornecedor.dataPagar}" pattern="dd/MM/yyyy" /><br>
@@ -620,6 +625,30 @@
 </div>
 <c:import url="../../../_comum/footer.jsp" />
 <script type="text/javascript" src="<c:url value="resources/js/financeiroInterna.js" />"></script>
+
+
+<div class="col-md-12 alpha60 div-confirmacao" id="mudaDataVencimentoModel" style="position: fixed; display: block;background-color: rgba(255, 255, 255, 0.8);">
+	<div class="col-md-4"></div>
+	<div class="col-md-12 sub-div-confirmacao" style=" margin-top: 17% !important;height: 210px !important;box-shadow: 0px 2px 18px 10px #ccc">
+		
+		<button type="button" class="close" data-dismiss="modal" style="font-size: 30px" onclick="location.reload();">
+         X
+        </button>
+        
+        <i class="glyphicon glyphicon-alert"></i>
+		<h3 class="fontSansLight">GERAR ND PARA ESSA PLANILHA ? </h3>	
+		<h4 class="fontSansLight">Essa ação não poderá ser desfeita</h4>	
+		
+		<button class="btn btn-success btnAlterar" onclick="">SIM</button>
+		<button class="btn btn-success btnAlterar" onclick="location.reload();">CANCELAR</button>
+	</div>
+	<div class="col-md-4"></div>
+</div>
+
+
+
+
+
 <script>
    $(document).ready(function(){
    	$('#formDespesas').validate({
