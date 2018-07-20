@@ -536,8 +536,13 @@ public class AtualizaRelatorioEventoApoio{
 		novoRelatorio.setNdFatDireto(true);
 		
 	if(relatorio == null){	
-	
-		manager.persist(novoRelatorio);
+		
+		
+		try {
+			manager.persist(novoRelatorio);
+		} catch (Exception e) {
+			System.out.println("Erro ao tentar salvar novo Relatório Evento: "+e);
+		}
 
 		GiroEvento novoGiro = new GiroEvento();
 		novoGiro.setGiroSemTelefone(giroSTelef);
@@ -552,7 +557,7 @@ public class AtualizaRelatorioEventoApoio{
 		try {
 			relatorioDAO.salvaCacheDoEvento(novoRelatorio);
 		} catch (Exception e) {
-			System.out.println("Deu um erro aqui ao atualizar Cache do Evento");
+			System.out.println("Deu um erro aqui ao atualizar Cache do Evento: "+e);
 		}
 		
 		

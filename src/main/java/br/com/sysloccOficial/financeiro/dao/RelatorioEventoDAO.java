@@ -363,6 +363,7 @@ public class RelatorioEventoDAO {
 					novoCacheEvento.setRelatorioEvento(relatorioEvento);
 					novoCacheEvento.setCachePadrao(cachePadrao.get(i));
 					manager.merge(novoCacheEvento);
+					manager.close();
 				}
 				
 				if(cachePadrao.get(i).getTipoCache().equals(TipoCache.DIRETORIA1) || cachePadrao.get(i).getTipoCache().equals(TipoCache.DIRETORIA2)){
@@ -373,6 +374,7 @@ public class RelatorioEventoDAO {
 					//	System.out.println(cachePadrao.get(i).getNomeFunc()+"- valor:"+novoCacheEvento.getValor());
 					
 					manager.merge(novoCacheEvento);
+					manager.close();
 				}
 			}
 			
