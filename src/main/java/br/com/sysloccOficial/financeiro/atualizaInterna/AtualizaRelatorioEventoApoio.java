@@ -213,177 +213,6 @@ public class AtualizaRelatorioEventoApoio{
 		
 	}
 	
-	
-	public void montaObjetoRelatorioND(Integer idLista,Lista infoLista,String mes,String ano) throws ParseException{
-		
-		InfoInterna infoInterna = relatorioDAO.pegaInfoInternaND(idLista);
-		
-		
-		if(infoInterna == null){
-			
-		}else{
-			
-		List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVSParaND(idLista);
-		
-		// ----- ponto chave
-		//List<CachePadrao> listaRelatorioCaches = cacheEvento.listaRelatorioCaches(idLista);
-
-		RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdListaComNDFatDireto(idLista);
-		
-		//Despesas do Evento
-		BigDecimal somaDespesasEvento = relatorioDAO.somaDespesasProjeto(idLista);
-		
-		
-		RelatorioEventos novoRelatorio = new RelatorioEventos();
-		
-		novoRelatorio.setAnoEvento(ano);
-		novoRelatorio.setMesEvento(mes);
-		novoRelatorio.setMesReferencia(utildatas.referenciaMesAnalitico(mes));
-		novoRelatorio.setBvs(new BigDecimal("0.00"));
-		novoRelatorio.setCacheEquipEx(new BigDecimal("0.00"));
-		novoRelatorio.setValorLoccoAgenc(CalculadoraTotalPagarFornecedores.calculaTotalComND(relatorioBVS));
-		novoRelatorio.setServicos(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
-//-------  FeeReduzido			
-		//BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
-		
-		
-		
-		novoRelatorio.setFee(new BigDecimal("0.00"));
-		novoRelatorio.setFeeReduzido(new BigDecimal("0.00"));
-//------- //			
-		novoRelatorio.setImpostoCliente(new BigDecimal("0.00"));
-		novoRelatorio.setDataAtualizacao(Calendar.getInstance());
-		novoRelatorio.setIdLista(idLista);
-		
-		novoRelatorio.setImpostoSobreValorLoccoAgencia(new BigDecimal("0.00"));
-
-		
-		System.out.println(novoRelatorio.getValorLoccoAgenc());
-		
-		novoRelatorio.setValorLiquido(novoRelatorio.getValorLoccoAgenc());
-		novoRelatorio.setImpostoClienteDiferenca(new BigDecimal("0.00"));
-		novoRelatorio.setLiquidoImposto(novoRelatorio.getValorLoccoAgenc());
-		novoRelatorio.setTotalAPagarFornecedores(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
-		
-		/*BigDecimal totalDiferencaSemTelefone = CalculadoraDiferencaTelefone.totalDiferencaSemTelefone(
-													relatorioBVS,
-													novoRelatorio.getFee(),
-													novoRelatorio.getFeeReduzido(), 
-													novoRelatorio.getImpostoClienteDiferenca(),somaDespesasEvento);*/
-		
-//-------- Calculo de Caches sem telefone	---- //		
-		novoRelatorio.setTotalCachesSemTelefone(new BigDecimal("0.00"));
-		
-//--------- Giro Sem Telefone ------------------ //
-		/*BigDecimal giroSTelef = CalculadoraGiro.calculadoraGiroSemTelefone(novoRelatorio.getValorLiquido(),
-                          												   novoRelatorio.getTotalCachesSemTelefone(),
-                          												   CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS),
-                          												   somaDespesasEvento);*/
-//--------- Margem Contribuição ---------------- //
-		novoRelatorio.setMargemContribuicao(new BigDecimal("0.00"));
-		
-//------  Calcula o Custo do Telefone do Mês corrente
-		 
-	/*	Integer idRelatorioParaGiroTelefone = null;
-		idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelaStorioEventoExiste(relatorio, novoRelatorio);
-		
-		//Custo 
-		BigDecimal custoTelefone = CalculadoraTelefone.calculaValorTelefone(analiticoDAO, relatorioDAO,giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
-		*/
-		novoRelatorio.setCustoTelefone(new BigDecimal("0.00"));
-		
-//-------  Calcula totalExternas
-		BigDecimal totalExterna = novoRelatorio.getMargemContribuicao()
-												.add(novoRelatorio.getCustoTelefone()
-												.add(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS)
-												.add(somaDespesasEvento)));
-		
-	//	totalExterna.add(somaDespesasProjeto);
-		
-		novoRelatorio.setPgtoExternas(totalExterna);
-		
-//-------	Total Diferença		
-		/*BigDecimal totalDiferencaComTelefone =  CalculadoraDiferencaTelefone.totalDiferencaComTelefone(
-												   relatorioBVS, novoRelatorio.getFee(),
-												   novoRelatorio.getFeeReduzido(),novoRelatorio.getImpostoClienteDiferenca(),
-												   novoRelatorio.getMargemContribuicao(), custoTelefone,somaDespesasEvento);*/
-
-		novoRelatorio.setTotalDiferenca(new BigDecimal("0.00"));
-
-//-------  Total Cache			
-		novoRelatorio.setCacheEquipIn(new BigDecimal("0.00"));
-		novoRelatorio.setTotalCachesIntExt(new BigDecimal("0.00"));
-		
-		novoRelatorio.setDiretoria1(new BigDecimal("0.00"));
-		novoRelatorio.setDiretoria2(new BigDecimal("0.00"));
-		
-		novoRelatorio.setDiferencaCacheFuncionariosTotalPgto(new BigDecimal("0.00"));
-		
-		novoRelatorio.setTotalCache(new BigDecimal("0.00"));
-		novoRelatorio.setTotalCachesComTelefone(new BigDecimal("0.00"));
-		novoRelatorio.setNdFatDireto(true);
-		
-		//Calcula giro Com telefone
-		/*BigDecimal giroComTelefone = novoRelatorio.getValorLiquido()
-								    .subtract(novoRelatorio.getTotalCachesComTelefone())
-				                    .subtract(novoRelatorio.getPgtoExternas());*/
-	
-	if(relatorio == null){
-		manager.persist(novoRelatorio);
-	}else{
-		novoRelatorio.setIdRelatorioEvento(relatorio.getIdRelatorioEvento());
-		manager.merge(novoRelatorio);
-	}
-	
-	/*if(relatorio == null){	
-	
-
-		GiroEvento novoGiro = new GiroEvento();
-		novoGiro.setGiroSemTelefone(giroSTelef);
-		novoGiro.setGiroComTelefone(giroComTelefone);
-		novoGiro.setMesEvento(mes);
-		novoGiro.setAnoEvento(ano);
-		novoGiro.setRelatorioEvento(novoRelatorio);
-
-		manager.persist(novoGiro);
-		
-//------------------ > SALVA CACHE DO EVENTO 			
-		try {
-			relatorioDAO.salvaCacheDoEvento(novoRelatorio);
-		} catch (Exception e) {
-			System.out.println("Deu um erro aqui ao atualizar Cache do Evento");
-		}
-		
-		
-	}else{
-		novoRelatorio.setIdRelatorioEvento(relatorio.getIdRelatorioEvento());
-		manager.merge(novoRelatorio);
-		
-		Integer idRelatorio = relatorio.getIdRelatorioEvento();
-		
-		GiroEvento giro = relatorioDAO.giroPorIdLista(idRelatorio);
-		
-		giro.setGiroSemTelefone(giroSTelef);
-		giro.setGiroComTelefone(giroComTelefone);
-		giro.setMesEvento(mes);
-		giro.setAnoEvento(ano);
-		giro.setRelatorioEvento(novoRelatorio);
-		manager.merge(giro);
-		
-//------------------ > ATUALIZA CACHE DO EVENTO 
-		try {
-			//relatorioDAO.salvaCacheDoEvento(novoRelatorio);
-			relatorioDAO.atualizaCacheDoEvento(novoRelatorio);
-		} catch (Exception e) {
-			System.out.println("Deu um erro aqui ao atualizar Cache do Evento");
-		}
-		
-	 }*/
-		}
-	
-	
-	}	
-	
 	public void montaObjetoRelatorioNDNovaRegra(Integer idLista,Lista infoLista,String mes,String ano) throws ParseException{
 		
 		//InfoInterna infoInterna = relatorioDAO.pegaInfoInterna(idLista);
@@ -589,7 +418,177 @@ public class AtualizaRelatorioEventoApoio{
 	  }
 	}
 	
-}
+ }
+		
+/*	public void montaObjetoRelatsssorioND(Integer idLista,Lista infoLista,String mes,String ano) throws ParseException{
+			
+			InfoInterna infoInterna = relatorioDAO.pegaInfoInternaND(idLista);
+			
+			
+			if(infoInterna == null){
+				
+			}else{
+				
+			List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVSParaND(idLista);
+			
+			// ----- ponto chave
+			//List<CachePadrao> listaRelatorioCaches = cacheEvento.listaRelatorioCaches(idLista);
+	
+			RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdListaComNDFatDireto(idLista);
+			
+			//Despesas do Evento
+			BigDecimal somaDespesasEvento = relatorioDAO.somaDespesasProjeto(idLista);
+			
+			
+			RelatorioEventos novoRelatorio = new RelatorioEventos();
+			
+			novoRelatorio.setAnoEvento(ano);
+			novoRelatorio.setMesEvento(mes);
+			novoRelatorio.setMesReferencia(utildatas.referenciaMesAnalitico(mes));
+			novoRelatorio.setBvs(new BigDecimal("0.00"));
+			novoRelatorio.setCacheEquipEx(new BigDecimal("0.00"));
+			novoRelatorio.setValorLoccoAgenc(CalculadoraTotalPagarFornecedores.calculaTotalComND(relatorioBVS));
+			novoRelatorio.setServicos(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
+	//-------  FeeReduzido			
+			//BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
+			
+			
+			
+			novoRelatorio.setFee(new BigDecimal("0.00"));
+			novoRelatorio.setFeeReduzido(new BigDecimal("0.00"));
+	//------- //			
+			novoRelatorio.setImpostoCliente(new BigDecimal("0.00"));
+			novoRelatorio.setDataAtualizacao(Calendar.getInstance());
+			novoRelatorio.setIdLista(idLista);
+			
+			novoRelatorio.setImpostoSobreValorLoccoAgencia(new BigDecimal("0.00"));
+	
+			
+			System.out.println(novoRelatorio.getValorLoccoAgenc());
+			
+			novoRelatorio.setValorLiquido(novoRelatorio.getValorLoccoAgenc());
+			novoRelatorio.setImpostoClienteDiferenca(new BigDecimal("0.00"));
+			novoRelatorio.setLiquidoImposto(novoRelatorio.getValorLoccoAgenc());
+			novoRelatorio.setTotalAPagarFornecedores(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
+			
+			BigDecimal totalDiferencaSemTelefone = CalculadoraDiferencaTelefone.totalDiferencaSemTelefone(
+														relatorioBVS,
+														novoRelatorio.getFee(),
+														novoRelatorio.getFeeReduzido(), 
+														novoRelatorio.getImpostoClienteDiferenca(),somaDespesasEvento);
+			
+	//-------- Calculo de Caches sem telefone	---- //		
+			novoRelatorio.setTotalCachesSemTelefone(new BigDecimal("0.00"));
+			
+	//--------- Giro Sem Telefone ------------------ //
+			BigDecimal giroSTelef = CalculadoraGiro.calculadoraGiroSemTelefone(novoRelatorio.getValorLiquido(),
+	                          												   novoRelatorio.getTotalCachesSemTelefone(),
+	                          												   CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS),
+	                          												   somaDespesasEvento);
+	//--------- Margem Contribuição ---------------- //
+			novoRelatorio.setMargemContribuicao(new BigDecimal("0.00"));
+			
+	//------  Calcula o Custo do Telefone do Mês corrente
+			 
+			Integer idRelatorioParaGiroTelefone = null;
+			idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelaStorioEventoExiste(relatorio, novoRelatorio);
+			
+			//Custo 
+			BigDecimal custoTelefone = CalculadoraTelefone.calculaValorTelefone(analiticoDAO, relatorioDAO,giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
+			
+			novoRelatorio.setCustoTelefone(new BigDecimal("0.00"));
+			
+	//-------  Calcula totalExternas
+			BigDecimal totalExterna = novoRelatorio.getMargemContribuicao()
+													.add(novoRelatorio.getCustoTelefone()
+													.add(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS)
+													.add(somaDespesasEvento)));
+			
+		//	totalExterna.add(somaDespesasProjeto);
+			
+			novoRelatorio.setPgtoExternas(totalExterna);
+			
+	//-------	Total Diferença		
+			BigDecimal totalDiferencaComTelefone =  CalculadoraDiferencaTelefone.totalDiferencaComTelefone(
+													   relatorioBVS, novoRelatorio.getFee(),
+													   novoRelatorio.getFeeReduzido(),novoRelatorio.getImpostoClienteDiferenca(),
+													   novoRelatorio.getMargemContribuicao(), custoTelefone,somaDespesasEvento);
+	
+			novoRelatorio.setTotalDiferenca(new BigDecimal("0.00"));
+	
+	//-------  Total Cache			
+			novoRelatorio.setCacheEquipIn(new BigDecimal("0.00"));
+			novoRelatorio.setTotalCachesIntExt(new BigDecimal("0.00"));
+			
+			novoRelatorio.setDiretoria1(new BigDecimal("0.00"));
+			novoRelatorio.setDiretoria2(new BigDecimal("0.00"));
+			
+			novoRelatorio.setDiferencaCacheFuncionariosTotalPgto(new BigDecimal("0.00"));
+			
+			novoRelatorio.setTotalCache(new BigDecimal("0.00"));
+			novoRelatorio.setTotalCachesComTelefone(new BigDecimal("0.00"));
+			novoRelatorio.setNdFatDireto(true);
+			
+			//Calcula giro Com telefone
+			BigDecimal giroComTelefone = novoRelatorio.getValorLiquido()
+									    .subtract(novoRelatorio.getTotalCachesComTelefone())
+					                    .subtract(novoRelatorio.getPgtoExternas());
+		
+		if(relatorio == null){
+			manager.persist(novoRelatorio);
+		}else{
+			novoRelatorio.setIdRelatorioEvento(relatorio.getIdRelatorioEvento());
+			manager.merge(novoRelatorio);
+		}
+		
+		if(relatorio == null){	
+		
+	
+			GiroEvento novoGiro = new GiroEvento();
+			novoGiro.setGiroSemTelefone(giroSTelef);
+			novoGiro.setGiroComTelefone(giroComTelefone);
+			novoGiro.setMesEvento(mes);
+			novoGiro.setAnoEvento(ano);
+			novoGiro.setRelatorioEvento(novoRelatorio);
+	
+			manager.persist(novoGiro);
+			
+	//------------------ > SALVA CACHE DO EVENTO 			
+			try {
+				relatorioDAO.salvaCacheDoEvento(novoRelatorio);
+			} catch (Exception e) {
+				System.out.println("Deu um erro aqui ao atualizar Cache do Evento");
+			}
+			
+			
+		}else{
+			novoRelatorio.setIdRelatorioEvento(relatorio.getIdRelatorioEvento());
+			manager.merge(novoRelatorio);
+			
+			Integer idRelatorio = relatorio.getIdRelatorioEvento();
+			
+			GiroEvento giro = relatorioDAO.giroPorIdLista(idRelatorio);
+			
+			giro.setGiroSemTelefone(giroSTelef);
+			giro.setGiroComTelefone(giroComTelefone);
+			giro.setMesEvento(mes);
+			giro.setAnoEvento(ano);
+			giro.setRelatorioEvento(novoRelatorio);
+			manager.merge(giro);
+			
+	//------------------ > ATUALIZA CACHE DO EVENTO 
+			try {
+				//relatorioDAO.salvaCacheDoEvento(novoRelatorio);
+				relatorioDAO.atualizaCacheDoEvento(novoRelatorio);
+			} catch (Exception e) {
+				System.out.println("Deu um erro aqui ao atualizar Cache do Evento");
+			}
+			
+		 }
+			}
+		
+		
+		}*/		
 	
 	
 	
