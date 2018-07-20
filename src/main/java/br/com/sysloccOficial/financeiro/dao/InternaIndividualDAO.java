@@ -429,11 +429,11 @@ public class InternaIndividualDAO {
 
 	}
 
-	public void editaND(int idLista, boolean valor) {
+	public void editaND(int idLista) {
 		try {
 			TypedQuery<InfoInterna> query = manager.createQuery("from InfoInterna where idLista="+idLista,InfoInterna.class);
 			InfoInterna info = query.getSingleResult();
-			info.setNdInterna(valor);
+			info.setNdInterna(true);
 			manager.merge(info);
 			manager.close();
 		} catch (Exception e) {

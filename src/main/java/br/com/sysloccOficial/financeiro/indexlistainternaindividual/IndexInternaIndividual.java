@@ -213,8 +213,9 @@ public class IndexInternaIndividual {
 	
 	
 	@RequestMapping("editaNd")
-	public String editaNd(int idLista, boolean valor){
-		internaIndividualDAO.editaND(idLista, valor);
+	@ResponseBody
+	public String editaNd(int idLista){
+		internaIndividualDAO.editaND(idLista);
 		return "ok";
 	}
 

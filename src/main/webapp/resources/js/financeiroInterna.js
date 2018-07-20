@@ -1,22 +1,30 @@
-function alertaND(){
+function alertaND(idLista){
 	
-}
+	$("#idListaGeraND").attr('value',idLista);
+	$("#editaNDModel").fadeIn(500);
+};
 
 
 /**
  * 
  */
 //ND
-function editaND(idLista) {
-	var valor = $("#editaND").is(':checked');
-	$.ajax({
-		url : "editaNd?idLista="+idLista+"&valor="+valor,
-		success : function(data) {
+function editaND() {
+	var idLista = $("#idListaGeraND").val();
+	
+	$("#editaND").attr("disabled","disabled");
 
+	$.ajax({
+		url : "editaNd?idLista="+idLista,
+		success : function(data) {
+			
+			if(data == "ok"){
+				location.reload();
+			}
 			if(data == 'erro'){
 				$('#wellErro').fadeIn(200);
 			}
 		}
-	});	
+	});
 };
 

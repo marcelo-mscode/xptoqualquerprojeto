@@ -74,7 +74,7 @@
 				</c:if>
 
          		<c:if test="${infoInterna.ndInterna eq  false}">
-         			<input id="editaND"  type="checkbox" style="vertical-align: top;" onclick="editaND(${infoLista.idLista});" />
+         			<input id="editaND"  type="checkbox" style="vertical-align: top;" onclick="alertaND(${infoLista.idLista});" />
 				</c:if>
          		
          </td>
@@ -627,20 +627,20 @@
 <script type="text/javascript" src="<c:url value="resources/js/financeiroInterna.js" />"></script>
 
 
-<div class="col-md-12 alpha60 div-confirmacao" id="mudaDataVencimentoModel" style="position: fixed; display: block;background-color: rgba(255, 255, 255, 0.8);">
+<div class="col-md-12 alpha60 div-confirmacao" id="editaNDModel" style="position: fixed; display: none;background-color: rgba(255, 255, 255, 0.8);">
 	<div class="col-md-4"></div>
-	<div class="col-md-12 sub-div-confirmacao" style=" margin-top: 17% !important;height: 210px !important;box-shadow: 0px 2px 18px 10px #ccc">
+	<div class="col-md-4 sub-div-confirmacao" style=" margin-top: 17% !important;height: 210px !important;box-shadow: 0px 2px 18px 10px #ccc">
 		
-		<button type="button" class="close" data-dismiss="modal" style="font-size: 30px" onclick="location.reload();">
+		<button type="button" class="close" data-dismiss="modal" style="font-size: 25px" onclick="location.reload();">
          X
         </button>
         
-        <i class="glyphicon glyphicon-alert"></i>
-		<h3 class="fontSansLight">GERAR ND PARA ESSA PLANILHA ? </h3>	
-		<h4 class="fontSansLight">Essa ação não poderá ser desfeita</h4>	
-		
-		<button class="btn btn-success btnAlterar" onclick="">SIM</button>
-		<button class="btn btn-success btnAlterar" onclick="location.reload();">CANCELAR</button>
+        <i class="glyphicon glyphicon-exclamation-sign" style="font-size: 35px;color: #F7E967;margin-bottom: 10px;"></i>
+		<h4 class="fontSansLight">GERAR ND PARA ESSA PLANILHA ? </h4>	
+		<h5 class="fontSansLight" style="margin-bottom: 25px">Essa ação não poderá ser desfeita</h5>	
+		<input id="idListaGeraND" type="hidden">
+		<button class="btn btn-success btnAlterar" onclick="editaND();">GERAR ND</button>
+		<button class="btn btn-danger btnAlterar" onclick="location.reload();">CANCELAR</button>
 	</div>
 	<div class="col-md-4"></div>
 </div>
