@@ -8,5 +8,6 @@ import br.com.sysloccOficial.financeiro.relatorioeventos.RelatorioBVS;
 public interface TotalPagarFornecedores {
 	
 	public BigDecimal totalAPagarFornecedores(List<RelatorioBVS> relatorioBVS);
+	public BigDecimal totalAPagarFornecedoresComND(List<RelatorioBVS> relatorioBVS);
 
 }

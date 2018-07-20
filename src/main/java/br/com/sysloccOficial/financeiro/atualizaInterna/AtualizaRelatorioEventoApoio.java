@@ -235,7 +235,7 @@ public class AtualizaRelatorioEventoApoio{
 		novoRelatorio.setMesReferencia(utildatas.referenciaMesAnalitico(mes));
 		novoRelatorio.setBvs(new BigDecimal("0.00"));
 		novoRelatorio.setCacheEquipEx(new BigDecimal("0.00"));
-		novoRelatorio.setValorLoccoAgenc(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
+		novoRelatorio.setValorLoccoAgenc(CalculadoraTotalPagarFornecedores.calculaTotalComND(relatorioBVS));
 		novoRelatorio.setServicos(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
 //-------  FeeReduzido			
 		//BigDecimal feeReduzido = produtoGrupoDAO.calculaSomaFeeLista(idLista);
@@ -405,8 +405,8 @@ public class AtualizaRelatorioEventoApoio{
 		novoRelatorio.setMesReferencia(utildatas.referenciaMesAnalitico(mes));
 		novoRelatorio.setBvs(new BigDecimal("0.00"));
 		novoRelatorio.setCacheEquipEx(new BigDecimal("0.00"));
-		novoRelatorio.setValorLoccoAgenc(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
-		novoRelatorio.setServicos(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
+		novoRelatorio.setValorLoccoAgenc(CalculadoraTotalPagarFornecedores.calculaTotalComND(relatorioBVS));
+		novoRelatorio.setServicos(CalculadoraTotalPagarFornecedores.calculaTotalComND(relatorioBVS));
 		
 /*		novoRelatorio.setValorLoccoAgenc(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));
 		novoRelatorio.setServicos(infoLista.getValorTotal().subtract(grupoDAO.valorGrupoSemImposto(idLista)));

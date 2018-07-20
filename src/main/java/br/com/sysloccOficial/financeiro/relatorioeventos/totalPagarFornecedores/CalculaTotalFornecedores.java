@@ -16,4 +16,12 @@ public class CalculaTotalFornecedores implements TotalPagarFornecedores{
 		return total;
 	}
 
+	@Override
+	public BigDecimal totalAPagarFornecedoresComND(List<RelatorioBVS> relatorioBVS) {
+		BigDecimal total = new BigDecimal("0");
+		for (int i = 0; i < relatorioBVS.size(); i++) {
+			total =          total.add(relatorioBVS.get(i).getValorFornecedor());
+		}
+		return total;	}
+
 }

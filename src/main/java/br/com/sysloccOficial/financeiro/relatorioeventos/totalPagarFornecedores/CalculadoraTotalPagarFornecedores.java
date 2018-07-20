@@ -11,4 +11,9 @@ public class CalculadoraTotalPagarFornecedores {
 		TotalPagarFornecedores total = new CalculaTotalFornecedores();
 		return total.totalAPagarFornecedores(relatorioBVS);
 	}
+
+	public static BigDecimal calculaTotalComND(List<RelatorioBVS> relatorioBVS){
+		TotalPagarFornecedores total = new CalculaTotalFornecedores();
+		return total.totalAPagarFornecedoresComND(relatorioBVS);
+	}
 }
