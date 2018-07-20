@@ -569,7 +569,7 @@ public class RelatorioEventoDAO {
 	public LinkedHashSet<Integer> idsListaRelatoriosEventosPorMesAno(String mes,String anoEvento){
 	
 		try {
-			String consultaRel = "select idLista from RelatorioEventos where mesEvento = '"+mes+"' and anoEvento = '"+anoEvento+"' and ndFatDireto <> 1";
+			String consultaRel = "select idLista from RelatorioEventos where mesEvento = '"+mes+"' and anoEvento = '"+anoEvento+"'";
 			TypedQuery<Integer> idsRelatorios = manager.createQuery(consultaRel, Integer.class);
 			
 			LinkedHashSet<Integer> ids = new LinkedHashSet<Integer>(idsRelatorios.getResultList());

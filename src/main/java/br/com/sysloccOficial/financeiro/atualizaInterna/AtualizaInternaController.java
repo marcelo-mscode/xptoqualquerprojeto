@@ -23,24 +23,22 @@ public class AtualizaInternaController extends AtualizaInternaRelatoriosEmMassa 
 		 
 	
 		 //Verifica se tem algum relatório ja cadastrado no sistema
-		 
 		 Lista infoLista =  relatorioDAO.listaPorIdLista(idLista);
 		 relatorioApoio.montaObjetoRelatorio(idLista,infoLista,mes,ano);
 
 		 LinkedHashSet<Integer> listaIdsRelatoriosEventosCadastrados = relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano);
 		 
 		 /**
-		  *	Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
-		  * 
-		  */
-			 
-		 atualizaInternaRelatoriosEventosEmMassa(listaIdsRelatoriosEventosCadastrados);
-		 
-		 
-		 /**
 		  * Método para gerar um relatório com base de ND
 		  */
 		 relatorioApoio.montaObjetoRelatorioNDNovaRegra(idLista,infoLista,mes,ano);
+		 
+		 /**
+		  *	Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
+		  * 
+		  */
+		 atualizaInternaRelatoriosEventosEmMassa(listaIdsRelatoriosEventosCadastrados);
+		 
 		
 		 
 		 
