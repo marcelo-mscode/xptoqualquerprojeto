@@ -387,6 +387,10 @@ public class AtualizaRelatorioEventoApoio{
 		//InfoInterna infoInterna = relatorioDAO.pegaInfoInterna(idLista);
 		InfoInterna infoInterna = relatorioDAO.pegaInfoInternaND(idLista);
 		
+		if(infoInterna == null){
+			System.out.println();
+		}else{
+		
 		//List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVSParaND(idLista);
 		List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVSParaND(idLista);
 		//List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
@@ -542,7 +546,8 @@ public class AtualizaRelatorioEventoApoio{
 		} catch (Exception e) {
 			System.out.println("Deu um erro aqui ao atualizar Cache do Evento: "+e);
 		}
-		
+	
+	  }
 	}
 	
 }
