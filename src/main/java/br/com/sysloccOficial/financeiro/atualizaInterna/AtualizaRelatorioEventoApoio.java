@@ -477,7 +477,11 @@ public class AtualizaRelatorioEventoApoio{
 		idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelatorioEventoExiste(relatorio, novoRelatorio);
 		
 		//Custo 
-		BigDecimal custoTelefone = CalculadoraTelefone.calculaValorTelefone(analiticoDAO, relatorioDAO,giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
+		BigDecimal custoTelefone = new BigDecimal("0.00");
+		
+		if(idRelatorioParaGiroTelefone != null){
+			custoTelefone = CalculadoraTelefone.calculaValorTelefone(analiticoDAO, relatorioDAO,giroSTelef, idRelatorioParaGiroTelefone, mes, ano);
+		}
 		
 		novoRelatorio.setCustoTelefone(custoTelefone);
 		
@@ -499,12 +503,24 @@ public class AtualizaRelatorioEventoApoio{
 
 		novoRelatorio.setTotalDiferenca(totalDiferencaComTelefone);
 
-//-------  Total Cache			
-		novoRelatorio.setCacheEquipIn(CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
-		novoRelatorio.setTotalCachesIntExt(CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone));
+//-------  Total Cache
 		
-		novoRelatorio.setDiretoria1(CalculadoraCaches.calculaCacheDiretoria(listaRelatorioCaches, totalDiferencaComTelefone, TipoCache.DIRETORIA1));
-		novoRelatorio.setDiretoria2(CalculadoraCaches.calculaCacheDiretoria(listaRelatorioCaches, totalDiferencaComTelefone, TipoCache.DIRETORIA2));
+		BigDecimal cacheEquipIn = new BigDecimal("0.00");
+		BigDecimal totalCachesIntExt = new BigDecimal("0.00");
+		BigDecimal diretoria1 = new BigDecimal("0.00");
+		BigDecimal diretoria2 = new BigDecimal("0.00");
+
+		if(totalDiferencaComTelefone.equals(new BigDecimal("0.000"))){}else{
+			cacheEquipIn = CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone);
+			totalCachesIntExt = CalculadoraCaches.calculaCacheEquipeInterna(listaRelatorioCaches, totalDiferencaComTelefone);
+			diretoria1 = CalculadoraCaches.calculaCacheDiretoria(listaRelatorioCaches, totalDiferencaComTelefone, TipoCache.DIRETORIA1);
+			diretoria2 = CalculadoraCaches.calculaCacheDiretoria(listaRelatorioCaches, totalDiferencaComTelefone, TipoCache.DIRETORIA2);
+		}
+		novoRelatorio.setCacheEquipIn(cacheEquipIn);
+		novoRelatorio.setTotalCachesIntExt(totalCachesIntExt);
+		
+		novoRelatorio.setDiretoria1(diretoria1);
+		novoRelatorio.setDiretoria2(diretoria2);
 		
 		novoRelatorio.setDiferencaCacheFuncionariosTotalPgto(
 				novoRelatorio.getTotalDiferenca().subtract(novoRelatorio.getTotalCachesIntExt()));

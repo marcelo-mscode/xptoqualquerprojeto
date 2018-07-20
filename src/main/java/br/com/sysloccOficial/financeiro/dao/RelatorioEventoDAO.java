@@ -352,15 +352,10 @@ public class RelatorioEventoDAO {
 		
 		List<CachePadrao> cachePadrao =  cacheEvento.listaRelatorioCaches(relatorioEvento.getIdLista());
 		
-		
-		
-		
-		
-		
 		BigDecimal valorParaDiretoria = relatorioEvento.getTotalDiferenca().subtract(relatorioEvento.getTotalCachesIntExt());
-
 		
-		for (int i = 0; i < cachePadrao.size(); i++) {
+		try {
+			for (int i = 0; i < cachePadrao.size(); i++) {
 				CacheEvento novoCacheEvento = new CacheEvento();
 				if(cachePadrao.get(i).getTipoCache().equals(TipoCache.FUNCIONARIO)){
 					novoCacheEvento.setRazaoPorcentagem(cachePadrao.get(i).getRazaoPorcentagem());
@@ -375,11 +370,16 @@ public class RelatorioEventoDAO {
 					novoCacheEvento.setValor(valorParaDiretoria.multiply((cachePadrao.get(i).getRazaoPorcentagem())));
 					novoCacheEvento.setRelatorioEvento(relatorioEvento);
 					novoCacheEvento.setCachePadrao(cachePadrao.get(i));
-				//	System.out.println(cachePadrao.get(i).getNomeFunc()+"- valor:"+novoCacheEvento.getValor());
+					//	System.out.println(cachePadrao.get(i).getNomeFunc()+"- valor:"+novoCacheEvento.getValor());
 					
 					manager.merge(novoCacheEvento);
 				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Deu um erro: "+e);
 		}
+		
 	
 	}
 
