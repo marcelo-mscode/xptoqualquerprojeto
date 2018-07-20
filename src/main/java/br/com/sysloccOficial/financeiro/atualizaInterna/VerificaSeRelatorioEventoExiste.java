@@ -5,7 +5,7 @@ import br.com.sysloccOficial.model.RelatorioEventos;
 public class VerificaSeRelatorioEventoExiste {
 
 	
-	public static Integer verificaSeRelaStorioEventoExiste(RelatorioEventos relatorio, RelatorioEventos novoRelatorio) {
+	public static Integer verificaSeRelatorioEventoExiste(RelatorioEventos relatorio, RelatorioEventos novoRelatorio) {
 		Integer idRelatorioParaGiroTelefone;
 
 		if(relatorio == null){

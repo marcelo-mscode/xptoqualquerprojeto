@@ -116,7 +116,7 @@ public class AtualizaRelatorioEventoApoio{
 //  ------  Calcula o Custo do Telefone do Mês corrente
 			 
 			Integer idRelatorioParaGiroTelefone = null;
-			idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelaStorioEventoExiste(relatorio, novoRelatorio);
+			idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelatorioEventoExiste(relatorio, novoRelatorio);
 			
 			if(idRelatorioParaGiroTelefone == null){
 				System.out.println();
@@ -396,7 +396,7 @@ public class AtualizaRelatorioEventoApoio{
 		//List<RelatorioBVS> relatorioBVS = relApoio.relatorioBVS(idLista);
 		
 		// ----- ponto chave
-		List<CachePadrao> listaRelatorioCaches = cacheEvento.listaRelatorioCaches(idLista);
+		List<CachePadrao> listaRelatorioCaches = cacheEvento.listaRelatorioCachesPorND(idLista);
 
 		
 		RelatorioEventos relatorio = relatorioDAO.relatorioEventoPorIdListaComNDFatDireto(idLista);
@@ -474,7 +474,7 @@ public class AtualizaRelatorioEventoApoio{
 //------  Calcula o Custo do Telefone do Mês corrente
 		 
 		Integer idRelatorioParaGiroTelefone = null;
-		idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelaStorioEventoExiste(relatorio, novoRelatorio);
+		idRelatorioParaGiroTelefone = VerificaSeRelatorioEventoExiste.verificaSeRelatorioEventoExiste(relatorio, novoRelatorio);
 		
 		//Custo 
 		BigDecimal custoTelefone = CalculadoraTelefone.calculaValorTelefone(analiticoDAO, relatorioDAO,giroSTelef, idRelatorioParaGiroTelefone, mes, ano);

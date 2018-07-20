@@ -10,16 +10,25 @@ public class CalculadoraCachesTotais {
 	
 	public static BigDecimal totalCachesSemTelefone(List<CachePadrao> listaRelatorioCaches,BigDecimal totalDiferencaSemTelefone){
 		
-		CacheFuncionarios funcionarioSTelefone = new CacheFuncionarioSTelefone();
-		CacheFuncionarios diretoriaSTelefone = new CacheDiretoriaSTelefone();
-									
-		BigDecimal totalCacheFuncionariosSemTelefone = funcionarioSTelefone.calculaCacheSemtelefone(listaRelatorioCaches, totalDiferencaSemTelefone);
-		BigDecimal totalCacheDiretoriaSemTelefone = diretoriaSTelefone.calculaCacheSemtelefone(listaRelatorioCaches, totalDiferencaSemTelefone);
-
+		BigDecimal calculoFinal = new BigDecimal("0.00");
 		
-		BigDecimal calculoFinal = totalCacheDiretoriaSemTelefone.add(totalCacheFuncionariosSemTelefone);
+		if(totalDiferencaSemTelefone.equals(new BigDecimal("0.00"))){
+			return calculoFinal;
+		}else{
+			
+			CacheFuncionarios funcionarioSTelefone = new CacheFuncionarioSTelefone();
+			CacheFuncionarios diretoriaSTelefone = new CacheDiretoriaSTelefone();
+			
+			BigDecimal totalCacheFuncionariosSemTelefone = funcionarioSTelefone.calculaCacheSemtelefone(listaRelatorioCaches, totalDiferencaSemTelefone);
+			BigDecimal totalCacheDiretoriaSemTelefone = diretoriaSTelefone.calculaCacheSemtelefone(listaRelatorioCaches, totalDiferencaSemTelefone);
+			
+			
+			calculoFinal = totalCacheDiretoriaSemTelefone.add(totalCacheFuncionariosSemTelefone);
+			
+			return calculoFinal;
+		}
 		
-		return calculoFinal;
+		
 	}
 	
 	public static BigDecimal totalCacheFuncionario(List<CachePadrao> relatorio,BigDecimal totalDiferencaSemTelefone){

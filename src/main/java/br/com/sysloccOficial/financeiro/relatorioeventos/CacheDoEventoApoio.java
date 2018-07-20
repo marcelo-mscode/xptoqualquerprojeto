@@ -46,9 +46,40 @@ public class CacheDoEventoApoio {
 					}else{
 						
 						return preencheListaCacheComCacheRelatorioEventoExistente(listaCaches);
-					
 					}
+			}else{
+				return pegaCachePadrao();
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao pegar cache Evento:" + e);
+			return null;
+		}
+	}
+
+	public List<CachePadrao> listaRelatorioCachesPorND(Integer idLista){
+		
+		try {
+			
+			Integer id = verificaSeTemRelatorioEventoPorIdListaPorND(idLista);
+			
+			if(id != null){
 				
+				List<CacheEvento> listaCaches = pegaCacheExistenteDoRelatorio(id);
+				// Verificar se tem cacheEvento desse relatorio
+				
+				// Se não tiver
+				// Pega Cache Padrão
+				if(listaCaches.isEmpty()){
+					
+					return pegaCachePadrao();
+					
+					// Se tiver
+					// Se tiver pega caches do evento	
+				}else{
+					
+					return preencheListaCacheComCacheRelatorioEventoExistente(listaCaches);
+				}
 			}else{
 				return pegaCachePadrao();
 			}
@@ -62,7 +93,20 @@ public class CacheDoEventoApoio {
 	private Integer verificaSeTemRelatorioEventoPorIdLista(Integer idLista) {
 		
 		try {
-			String idRelatorioEvento = "select idRelatorioEvento from RelatorioEventos where idLista = " +idLista;
+			String idRelatorioEvento = "select idRelatorioEvento from RelatorioEventos where idLista = " +idLista +" and ndFatDireto = 0";
+			TypedQuery<Integer> query = manager.createQuery(idRelatorioEvento,Integer.class);
+			Integer id = query.getSingleResult();
+			return id;
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
+
+	private Integer verificaSeTemRelatorioEventoPorIdListaPorND(Integer idLista) {
+		
+		try {
+			String idRelatorioEvento = "select idRelatorioEvento from RelatorioEventos where idLista = " +idLista+" and ndFatDireto = 1";
 			TypedQuery<Integer> query = manager.createQuery(idRelatorioEvento,Integer.class);
 			Integer id = query.getSingleResult();
 			return id;
@@ -105,10 +149,13 @@ public class CacheDoEventoApoio {
 	}
 	
 	private List<CachePadrao> pegaCachePadrao() {
-		String consulta = "from CachePadrao where habilitado = 1 order by idCachePadrao";
-		TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
-
-		return q.getResultList();
+		try{
+			String consulta = "from CachePadrao where habilitado = 1 order by idCachePadrao";
+			TypedQuery<CachePadrao> q = manager.createQuery(consulta,CachePadrao.class);
+			return q.getResultList();
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 }

@@ -31,7 +31,7 @@ public class CalculaTotalDiferencaTelefone implements TotalDiferencaTelefone {
 			BigDecimal impostoClienteDiferenca,
 			BigDecimal DespesasEvento) {
 
-		BigDecimal totalDiferenca = new BigDecimal("0");
+		BigDecimal totalDiferenca = new BigDecimal("0.00");
 		for (int i = 0; i < relatorioBVS.size(); i++) {
 			totalDiferenca = totalDiferenca.add(relatorioBVS.get(i).getDiferenca());
 		}
