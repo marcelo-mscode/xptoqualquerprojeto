@@ -26,9 +26,8 @@ public class CalculaValorTelefone implements CalculoValorTelefone {
 		BigDecimal razaoCalculoTelefone = new BigDecimal("0.00");
 		BigDecimal validador = new BigDecimal("0.00");
 		
-		// Pegar o soma de todos os giros
 		/**
-		 * Posso pegar o soma dos outros giros que estiverem cadastrados no banco o somar com o giro atual
+		 * Posso pegar o soma dos outros giros que estiverem cadastrados no banco e somar com o giro atual
 		 * assim teremos a soma de todos os giros do mes
 		 */
 		BigDecimal somaGirosEventosMes = relatorioDAO.somaGirosPorAnoMes(ano, mes, idRelatorioAtual);
@@ -46,28 +45,12 @@ public class CalculaValorTelefone implements CalculoValorTelefone {
 			 * Rever esses dois ifs, porque o primeiro faz a mesma coisa que o segundo
 			 */
 			if(somaGirosEventosMes.equals(validador) || somaGirosEventosMes == null || somaGirosEventosMes.equals(valorGiroDesseEvento)){
-//				razaoCalculoTelefone = valorGiroDesseEvento.divide( valorGiroDesseEvento,0,RoundingMode.UP);
 				razaoCalculoTelefone = new BigDecimal("1");
 			}
-/*			if(somaGirosEventosMes.equals(valorGiroDesseEvento)){
-				razaoCalculoTelefone = new BigDecimal("1");
-			}
-*/			/**
-			 * Fim rever
-			 */
-			
+
 			else{
 				razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,12,RoundingMode.UP);
 			}
-			
-/*			if(somaGirosEventosMes != null){
-				razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,0,RoundingMode.UP);
-			}
-
-			if(somaGirosEventosMes != validador){
-				razaoCalculoTelefone = valorGiroDesseEvento.divide( somaGirosEventosMes,0,RoundingMode.UP);
-			}
-*/			
 			
 			// Pegar o resultado e multiplicar pelo valor mensal do telefone
 			BigDecimal valorTelefoneEvento = valorTelefone.multiply(razaoCalculoTelefone);
