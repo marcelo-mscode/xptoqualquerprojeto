@@ -31,11 +31,11 @@ public class AtualizaInternaRelatoriosEmMassa {
 					 String ano2 = datas2.get(2).toUpperCase().toString();
 					 
 					 relatorioApoio.montaObjetoRelatorio(integer,infoLista2,mes2,ano2);
-					// relatorioApoio.montaObjetoRelatorioND(integer,infoLista2,mes2,ano2);
+					 relatorioApoio.montaObjetoRelatorioNDNovaRegra(integer,infoLista2,mes2,ano2);
 					 
 				}
 
-				for (Integer integer : idsListas) {
+				/*for (Integer integer : idsListas) {
 					
 					Lista infoLista2 =  relatorioDAO.listaPorIdLista(integer);
 					ArrayList<String> datas2 =  relatorioDAO.dataRelatoriosEventosCadastrados(integer);
@@ -46,7 +46,7 @@ public class AtualizaInternaRelatoriosEmMassa {
 					relatorioApoio.montaObjetoRelatorio(integer,infoLista2,mes2,ano2);
 					// relatorioApoio.montaObjetoRelatorioND(integer,infoLista2,mes2,ano2);
 					
-				}
+				}*/
 			}
 
 }

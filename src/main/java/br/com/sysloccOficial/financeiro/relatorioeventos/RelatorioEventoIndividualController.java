@@ -101,7 +101,7 @@ public class RelatorioEventoIndividualController extends AtualizaInternaRelatori
 			  * Método herdado que Faz a atualização em massa dos relatórios de eventos passando os ids das listas
 			  */
 			 atualizaInternaRelatoriosEventosEmMassa(relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano));
-			 atualizaInternaRelatoriosEventosEmMassa(relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano));
+//			 atualizaInternaRelatoriosEventosEmMassa(relatorioDAO.idsListaRelatoriosEventosPorMesAno(mes, ano));
 			 System.out.println();		 
 		 return "ok";
 	}

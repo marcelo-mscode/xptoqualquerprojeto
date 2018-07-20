@@ -438,19 +438,35 @@ public class AtualizaRelatorioEventoApoio{
 		novoRelatorio.setLiquidoImposto(novoRelatorio.getValorLoccoAgenc());
 		novoRelatorio.setTotalAPagarFornecedores(CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS));
 		
+		
+//-------- Total Diferenca sem telefone	---- //		
+		BigDecimal pegaFee = novoRelatorio.getFee();
+		BigDecimal pegaFeeReduzido = novoRelatorio.getFeeReduzido();
+		BigDecimal pegaImpostoClienteDiferenca = novoRelatorio.getImpostoClienteDiferenca();
+		BigDecimal pegaSomaDespesasEvento = somaDespesasEvento;
+		
 		BigDecimal totalDiferencaSemTelefone = CalculadoraDiferencaTelefone.totalDiferencaSemTelefone(
-													relatorioBVS,
-													novoRelatorio.getFee(),
-													novoRelatorio.getFeeReduzido(), 
-													novoRelatorio.getImpostoClienteDiferenca(),somaDespesasEvento);
+												    relatorioBVS,
+													pegaFee,
+													pegaFeeReduzido, 
+													pegaImpostoClienteDiferenca,pegaSomaDespesasEvento);
 		
 //-------- Calculo de Caches sem telefone	---- //		
-		novoRelatorio.setTotalCachesSemTelefone(CalculadoraCachesTotais.totalCachesSemTelefone(listaRelatorioCaches, totalDiferencaSemTelefone));
+		
+		BigDecimal pegaTotalCacheSemTelefone = CalculadoraCachesTotais.totalCachesSemTelefone(listaRelatorioCaches, totalDiferencaSemTelefone);
+		
+		
+		novoRelatorio.setTotalCachesSemTelefone(pegaTotalCacheSemTelefone);
 		
 //--------- Giro Sem Telefone ------------------ //
-		BigDecimal giroSTelef = CalculadoraGiro.calculadoraGiroSemTelefone(novoRelatorio.getValorLiquido(),
-                          												   novoRelatorio.getTotalCachesSemTelefone(),
-                          												   CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS),
+		
+		BigDecimal pegaValorLiquido = novoRelatorio.getValorLiquido();
+		BigDecimal pegaTotalPagarFornecedores = CalculadoraTotalPagarFornecedores.calculaTotal(relatorioBVS);
+		
+		
+		BigDecimal giroSTelef = CalculadoraGiro.calculadoraGiroSemTelefone(pegaValorLiquido,
+																		   pegaTotalCacheSemTelefone,
+																		   pegaTotalPagarFornecedores,
                           												   somaDespesasEvento);
 //--------- Margem Contribuição ---------------- //
 		novoRelatorio.setMargemContribuicao(giroSTelef.multiply(new BigDecimal("0.2")));
