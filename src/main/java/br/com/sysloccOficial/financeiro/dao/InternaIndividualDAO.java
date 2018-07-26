@@ -116,12 +116,19 @@ public class InternaIndividualDAO {
 		ProducaoP producao = manager.find(ProducaoP.class, idProducao);
 		
 		
-		String consultaValorPgtoFornecedor = "SELECT * FROM locomotivos.valorpagtofornecedor where idFornecedorFinanceiro in ("
-										   + "SELECT idFornecedor FROM locomotivos.fornecedorfinanceiro where idProducao in (259));";
-		TypedQuery<ValorPagtoFornecedor> query = manager.createQuery(consultaValorPgtoFornecedor, ValorPagtoFornecedor.class);
-		ValorPagtoFornecedor pgtoFornecedor = query.getSingleResult();
+		String consultaValorPgtoFornecedor = "FROM ValorPagtoFornecedor where idFornecedorFinanceiro in ("
+										   + "SELECT idFornecedor FROM FornecedorFinanceiro where idProducao in ("+idProducao+"))";
 		
-		System.out.println();
+		ValorPagtoFornecedor pgtoFornecedor = null;
+		
+		try {
+			TypedQuery<ValorPagtoFornecedor> query = manager.createQuery(consultaValorPgtoFornecedor, ValorPagtoFornecedor.class);
+			pgtoFornecedor = query.getSingleResult();
+			System.out.println(pgtoFornecedor);
+		} catch (Exception e) {
+			System.out.println("Erro ao pegar ValorPgto: "+e);
+		}
+		
 		
 		
 		BigDecimal zero = new BigDecimal("0.00");
@@ -132,10 +139,12 @@ public class InternaIndividualDAO {
 			
 		if(valorCont.equals(zero)){
 			producao.setValorContratacao(zero);
+			pgtoFornecedor.setValor(zero);
+			
 		}else{
 			producao.setValorContratacao(valorCont);
+			pgtoFornecedor.setValor(valorCont);
 		}
-		
 		
 		producao.setDiferenca(producao.getValorItem().subtract(valorCont));
 		
