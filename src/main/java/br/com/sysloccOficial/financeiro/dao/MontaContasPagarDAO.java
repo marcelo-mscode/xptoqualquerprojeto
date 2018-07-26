@@ -266,8 +266,8 @@ public class MontaContasPagarDAO {
 			for (int j = 0; j < lista.size(); j++) {
 				if (lista.get(j)[0].equals(pegaDiasPagamento.get(i))) {
 					
-				  //valor = valor.add((BigDecimal) lista.get(j)[3]); // ---> Aqui pega o valor total sem contratação
-					valor = valor.add((BigDecimal) lista.get(j)[8]); // ---> Aqui pega o valor de contratação !
+				      valor = valor.add((BigDecimal) lista.get(j)[3]); // ---> Aqui pega o valor total sem contratação
+					//valor = valor.add((BigDecimal) lista.get(j)[8]); // ---> Aqui pega o valor de contratação !
 			
 					novo[0] = lista.get(j)[1]; // data pagar
 					novo[1] = lista.get(j)[2]; // nome fornecedor

@@ -29,6 +29,7 @@ import br.com.sysloccOficial.model.producao.DifImpostoProducaoP;
 import br.com.sysloccOficial.model.producao.ObsProducao;
 import br.com.sysloccOficial.model.producao.ProducaoP;
 import br.com.sysloccOficial.model.producao.ProducaoPDespesas;
+import br.com.sysloccOficial.model.producao.ValorPagtoFornecedor;
 
 @Repository
 @Transactional
@@ -114,14 +115,21 @@ public class InternaIndividualDAO {
 	public void editaValorF(String valor, Integer idProducao) {
 		ProducaoP producao = manager.find(ProducaoP.class, idProducao);
 		
+		
+		String consultaValorPgtoFornecedor = "SELECT * FROM locomotivos.valorpagtofornecedor where idFornecedorFinanceiro in ("
+										   + "SELECT idFornecedor FROM locomotivos.fornecedorfinanceiro where idProducao in (259));";
+		TypedQuery<ValorPagtoFornecedor> query = manager.createQuery(consultaValorPgtoFornecedor, ValorPagtoFornecedor.class);
+		ValorPagtoFornecedor pgtoFornecedor = query.getSingleResult();
+		
+		System.out.println();
+		
+		
 		BigDecimal zero = new BigDecimal("0.00");
 		
 		BigDecimal valorCont = new BigDecimal(util.formataValores(valor));
 		
 		producao.setTemContratacao(true);
 			
-//		System.out.println(valorCont);
-		
 		if(valorCont.equals(zero)){
 			producao.setValorContratacao(zero);
 		}else{
