@@ -225,7 +225,7 @@ public class MontaContasPagarDAO {
 		try {
 			TypedQuery<Integer> lista2 = manager.createQuery(consultaLimpaFfinanceiro,Integer.class);
 			listaUmFinanceiro = lista2.getResultList();
-			
+			System.out.println(listaUmFinanceiro);
 		} catch (Exception e) {
 			System.out.println("Erro em MontaContasPagarDAO, linha 230 : "+ e);
 		}
@@ -241,7 +241,9 @@ public class MontaContasPagarDAO {
 		
 		List<Integer> pegaDiasPagamento = pegaDiasPagamento(listaUmFinanceiro);
 		
-		
+		if(pegaDiasPagamento.equals(null)){
+			System.out.println();
+		}
 		
 		List<Object[]> listaObjetos = new ArrayList<Object[]>();
 		
@@ -339,7 +341,7 @@ public class MontaContasPagarDAO {
 			
 		} catch (Exception e) {
 			
-			System.out.println("Erro: "+e);
+			System.out.println("Erro para pegar Dias Pagamento: "+e);
 			
 			return null;
 			
