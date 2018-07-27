@@ -398,13 +398,16 @@ public class MontaContasPagarDAO {
 			
 		}
 		
-		
-		FinancAnalitico analitico = manager.getReference(FinancAnalitico.class, 3);
+		/**
+		 * Função para lançar o pagamento no Analítco da data 
+		 * 
+		 */
+/*		FinancAnalitico analitico = manager.getReference(FinancAnalitico.class, 3);
 		registraSaida.setValor(valorFornecedor);
 		registraSaida.setAnalitico(analitico);
 		registraSaida.setDescricao(nomeFornecedor);
 		manager.persist(registraSaida);
-		
+*/		
 	}
 
 	private List<ValorPagtoFornecedor> pegaListaValoresPGTODoFornecedor(Integer qtdDias,
