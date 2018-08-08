@@ -52,6 +52,11 @@
              	onblur="editaValoresEntradas('editaMovimentacaoFinanceira','valorCEF${entradasCEF.idMovBancos}',${entradasCEF.idMovBancos},'valor','cefEntrada','2');"
             	 /> 
           </td>
+           <td style="padding: 20px !important;">
+		  	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${entradasCEF.idMovBancos}&tabela=MovimentacaoBancosSaidas "><i class="glyphicon glyphicon-trash"></i></a>
+		  </td>
+          
+          
        </tr>
        <c:set var="totalentradasCEF" value="${totalentradasCEF+entradasCEF.valor}" />
     </c:forEach>

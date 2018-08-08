@@ -42,6 +42,10 @@
              onblur="editaValoresSaidas('editaTarifas','valortarifasCEF${tarifasCEF.idMovBancos}',${tarifasCEF.idMovBancos},'valor','cefTarifas','2');"
              /> 
           </td>
+           <td style="padding: 20px !important;">
+		  	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${tarifasCEF.idMovBancos}&tabela=MovimentacaoBancosSaidas "><i class="glyphicon glyphicon-trash"></i></a>
+		  </td>
+          
        </tr>
        <c:set var="totaltarifasCEF" value="${totaltarifasCEF+tarifasCEF.valor}" />
     </c:forEach>

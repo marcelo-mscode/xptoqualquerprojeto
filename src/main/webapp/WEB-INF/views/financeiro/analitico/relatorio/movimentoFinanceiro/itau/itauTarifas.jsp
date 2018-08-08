@@ -53,7 +53,9 @@
 				onclick="editaCheckedFixo('editaFixo',${InfoAnalitico.idAnalitico},${tarifasItau.idMovBancos},'itauTarifas',66779);"
           	/>
           </td>		
-		  <td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
+		  <td style="padding: 20px !important;">
+		  	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${tarifasItau.idMovBancos}&tabela=MovimentacaoBancosTarifas"><i class="glyphicon glyphicon-trash"></i></a>	
+		  </td>
        </tr>
        <c:set var="totaltarifasItau" value="${totaltarifasItau+tarifasItau.valor}" />
     </c:forEach>
