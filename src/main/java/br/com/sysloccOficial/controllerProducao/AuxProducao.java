@@ -259,6 +259,7 @@ public class AuxProducao {
 	 * @param fornecedor
 	 */
 	public void enviarParaCriarValorPgtoFornecedor(List<ValorPgtoAux> pagamentos, FornecedorFinanceiro fornecedor) {
+		
 		for(int i =0; i< pagamentos.size();i++){
 			
 			valorPgtoFornecedor(fornecedor,

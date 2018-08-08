@@ -184,10 +184,12 @@
                   </c:if>
                   </td>
                   <!-- Focar os esforços aqui !!!!!!!!!!!!!!!!!!!!  -->
-                  <%--             <c:if test="${itensInterna.rowSpan != null}">
-                     <td rowspan="${itensInterna.rowSpan}" style="vertical-align: middle;font-size: 12px">${itensInterna.idEmpFornecedor.empresa}</td>
-                         <td rowspan="${itensInterna.rowSpan}" style="text-align: center;vertical-align: middle; padding: 0">--%>
-                  <td rowspan="" style="vertical-align: middle;font-size: 12px">${itensInterna.idEmpFornecedor.empresa}</td>
+                  
+                  	<td rowspan="" style="vertical-align: middle;font-size: 12px">
+                  		${itensInterna.idEmpFornecedor.empresa}
+                  	</td>
+                  
+                  
                   <td rowspan="" style="text-align: center;vertical-align: middle;padding: 0">
                   <textarea id="obs${itensInterna.idProducao}" class="textareaXY"
                      onblur="editaCamposProducaoP('obs${itensInterna.idProducao}','observacao',${itensInterna.idProducao});"

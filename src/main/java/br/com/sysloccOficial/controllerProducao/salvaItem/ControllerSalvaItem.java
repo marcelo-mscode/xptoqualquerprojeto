@@ -60,6 +60,7 @@ public class ControllerSalvaItem {
 	@Autowired private UtilitariaDatas utilDatas;
 	@Autowired private ApoioCartaSalvaItem apoioCarta;
 	@Autowired private AuxDAOProducao auxDAOProducao;
+	@Autowired private PreencheValorPagamentosServices preencheValoresPagamentos;
 	
 	@PersistenceContext	private EntityManager manager;
 	
@@ -77,9 +78,7 @@ public class ControllerSalvaItem {
 
 		Integer parcelas = producao.getNumParcelas();
 		
-		List<ValorPgtoAux> pagamentos = new ArrayList<ValorPgtoAux>();
 		
-		preenchePagamentos(producao, parcelas, pagamentos);
 		
 		producao.setLista(lista);
 		producao.setUsuario(usuario);
@@ -98,8 +97,12 @@ public class ControllerSalvaItem {
 			}else{
 				producao.setTemOutroFornecedor(true);
 			}
-			
 		}
+
+		List<ValorPgtoAux> pagamentos = new ArrayList<ValorPgtoAux>();
+		
+		//Preenche os pagamentos
+		preencheValoresPagamentos.preencheValoresPagamentos(producao, parcelas, pagamentos); 
 		
 		producao.setPrazoEntrega(utilDatas.formataDatasStringParaCalendar(producao.getpEntrega()+" "+"08:00"));
 		
@@ -178,26 +181,28 @@ public class ControllerSalvaItem {
 	}
 
 
-	private void preenchePagamentos(ProducaoP producao, Integer parcelas,List<ValorPgtoAux> pagamentos) {
+	/*private void preenchePagamentos(ProducaoP producao, Integer parcelas,List<ValorPgtoAux> pagamentos) {
+	
 		for(int i = 0; i <  parcelas;i++){
+			
+			BigDecimal valorItem = new BigDecimal("0.00");
 			
 			ValorPgtoAux valor = new ValorPgtoAux();
 		
 			valor.setParcela(producao.getParcela().get(i));
 			valor.setPrazo(producao.getPrazo().get(i));
 			valor.setData(util.formataDatasStringParaCalendar(producao.getData().get(i)+" 08:00"));
-			BigDecimal valorItem = util.valoresEmReais(producao.getValor().get(i));
+			
+			if(producao.isTemContratacao() == true){
+				valorItem = util.valoresEmReais(producao.getValorDePagamentoContratacaoTrans());
+			}else{
+				valorItem = util.valoresEmReais(producao.getValor().get(i));
+			}
 		
-			
-			
 			valor.setValor(valorItem);
-			
-			
-			
 			pagamentos.add(valor);
-			
 		}
-	}
+	}*/
 	
 	
 	

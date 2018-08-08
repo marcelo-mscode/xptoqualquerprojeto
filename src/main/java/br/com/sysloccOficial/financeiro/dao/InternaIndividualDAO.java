@@ -53,8 +53,6 @@ public class InternaIndividualDAO {
 		
 		return internIndividual;
 	}
-	
-	
 
 	public Lista infoLista(Integer idLista) {
 		Lista lista = manager.find(Lista.class, idLista);

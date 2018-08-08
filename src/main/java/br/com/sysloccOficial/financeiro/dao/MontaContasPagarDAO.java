@@ -4,24 +4,18 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.com.sysloccOficial.conf.Utilitaria;
 import br.com.sysloccOficial.conf.UtilitariaDatas;
 import br.com.sysloccOficial.financeiro.model.BancosAnalitico;
-import br.com.sysloccOficial.financeiro.model.FinancAnalitico;
 import br.com.sysloccOficial.financeiro.model.MovimentacaoBancosSaidas;
-import br.com.sysloccOficial.model.Lista;
 import br.com.sysloccOficial.model.producao.DtPgtoFornecedor;
-import br.com.sysloccOficial.model.producao.ProducaoP;
 import br.com.sysloccOficial.model.producao.StatusFinanceiro;
 import br.com.sysloccOficial.model.producao.ValorPagtoFornecedor;
 
@@ -141,7 +135,7 @@ public class MontaContasPagarDAO {
 	
 	public List<Object[]> pegaListasMesAnterior() {
 		//String dataHoje =  UtilitariaDatas.pegaDataAtualEmStringPassandoFormato("yyyy-MM");
-		String dataHoje22222222 =  "2018-04";
+		String dataHoje22222222 =  "2018-6";
 		
 		
 		
@@ -300,6 +294,13 @@ public class MontaContasPagarDAO {
 	 * 60 - 2016-08-09
 	 */
 	private List<Object[]> montaDiasPagamentoDataFornecedorValor(List<Integer> listaUmFinanceiro) {
+		
+		for (int i = 0; i < listaUmFinanceiro.size(); i++) {
+			if(listaUmFinanceiro.get(i) == 396){
+				System.out.println();
+			}
+		}
+		
 		try {
 			String consultaDiasPrazoPagamento = util.limpaSqlComList("SELECT"
 					+ " distinct(diasPrazoParaPagamento),"
@@ -431,9 +432,19 @@ public class MontaContasPagarDAO {
 	}
 
 	private List<Integer> pegaIdProducaoP(Integer idLista, Integer idFornecedor) {
+		
 		String consultaProducaoP = "select idProducao from ProducaoP where idLista ="+idLista+" and idEmpFornecedor ="+idFornecedor;
 		TypedQuery<Integer> listaProducaoP = manager.createQuery(consultaProducaoP,Integer.class);
 		List<Integer> listaP = listaProducaoP.getResultList();
+		
+		
+		if(listaP.isEmpty()){
+			String consultaFornecedorFinanceiro = "select f.idProducao.idProducao from FornecedorFinanceiro f where f.idProducao.lista ="+idLista+" and idEmpresa ="+idFornecedor;
+			TypedQuery<Integer> query = manager.createQuery(consultaFornecedorFinanceiro,Integer.class);
+			List<Integer> listaProducaoPFornecedorFinanceiro = query.getResultList();
+			return listaProducaoPFornecedorFinanceiro;
+		}
+		
 		return listaP;
 	}
 	
