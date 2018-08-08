@@ -48,6 +48,9 @@
              onblur="editaValoresEntradas('editaMovimentacaoFinanceira','valorentradasSantader${entradasSantader.idMovBancos}',${entradasSantader.idMovBancos},'valor','santanderEntrada','4');"
              /> 
           </td>
+           <td style="padding: 20px !important;">
+		  	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${entradasSantader.idMovBancos}&tabela=MovimentacaoBancos"><i class="glyphicon glyphicon-trash"></i></a>
+		  </td>
        </tr>
        <c:set var="totalentradasSantader" value="${totalentradasSantader+entradasSantader.valor}" />
     </c:forEach>

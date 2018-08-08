@@ -42,6 +42,9 @@
              onblur="editaValoresSaidas('editaTarifas','valorBradesco${tarifasBradesco.idMovBancos}',${tarifasBradesco.idMovBancos},'valor','bradescoTarifas','3');"
              /> 
           </td>
+          <td style="padding: 20px !important;">
+		  	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${tarifasBradesco.idMovBancos}&tabela=MovimentacaoBancosTarifas"><i class="glyphicon glyphicon-trash"></i></a>	
+		  </td>
        </tr>
        <c:set var="totalBradesco" value="${totalBradesco+tarifasBradesco.valor}" />
     </c:forEach>

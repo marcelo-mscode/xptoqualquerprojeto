@@ -53,8 +53,12 @@
           	
           	/>
           </td>	
-          	
-		<td style="padding: 20px !important;"><a href=""><i class="glyphicon glyphicon-trash"></i></a></td>
+           <td style="padding: 20px !important;">
+		  	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${saidasSantander.idMovBancos}&tabela=MovimentacaoBancosSaidas "><i class="glyphicon glyphicon-trash"></i></a>
+		  </td>	
+        	
+        	  	
+		
        </tr>
        <c:set var="totalsaidasSantander" value="${totalsaidasSantander+saidasSantander.valor}" />
     </c:forEach>

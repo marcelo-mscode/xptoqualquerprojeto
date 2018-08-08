@@ -43,7 +43,7 @@
              /> 
           </td>
            <td style="padding: 20px !important;">
-		  	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${tarifasCEF.idMovBancos}&tabela=MovimentacaoBancosSaidas "><i class="glyphicon glyphicon-trash"></i></a>
+		  	<a href="excluiItemAnalitico?idAnalitico=${InfoAnalitico.idAnalitico}&idTabela=${tarifasCEF.idMovBancos}&tabela=MovimentacaoBancosTarifas"><i class="glyphicon glyphicon-trash"></i></a>
 		  </td>
           
        </tr>
