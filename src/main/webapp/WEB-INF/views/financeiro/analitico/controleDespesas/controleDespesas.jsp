@@ -56,7 +56,6 @@
                 	<input id="dataDespesas" type="date" class="ajusteInput2 tiraPaddingData ajusteData">
                 </td>
               
-	           	<td>Dataaaaaaaaaaaaaa</td>
 	           	<td>Data</td>
 	           	<td>Data</td>
 	           	<td>Data</td>
@@ -65,7 +64,8 @@
 	           	<td>Data</td>
 	           	<td>Data</td>
 	           	<td>Data</td>
-	           	<td><!-- <button class="btn btn-success" onclick="">Salvar</button> --></td>
+	           	<td>Data</td>
+	           	<td style="padding: 0;"><button class="btn btn-success" onclick="">Salvar</button></td>
 	           </tr>
 
 	         </tbody>
