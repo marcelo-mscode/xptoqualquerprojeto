@@ -10,6 +10,7 @@
   
   .ajusteInput2{border: none;height: 35px;width: 90px;padding: 0 0 0 5px;}
   .tiraPaddingData{padding: 0px 0px 0px 5px  !important;height: 33px !important}
+  .ajusteData{width: 140px !important;}
 	
 </style>
 
@@ -51,7 +52,9 @@
 	           <tr>
 	       
 	       	  <tr>	
-                <td class="tiraPaddingData"><input id="dataDespesas" type="date" class="ajusteInput2 tiraPaddingData input-140px"></td>
+                <td class="tiraPaddingData">
+                	<input id="dataDespesas" type="date" class="ajusteInput2 tiraPaddingData ajusteData">
+                </td>
               
 	           	<td>Dataaaaaaaaaaaaaa</td>
 	           	<td>Data</td>
@@ -62,7 +65,7 @@
 	           	<td>Data</td>
 	           	<td>Data</td>
 	           	<td>Data</td>
-	           	<td><button class="btn btn-success" onclick="">Salvar</button></td>
+	           	<td><!-- <button class="btn btn-success" onclick="">Salvar</button> --></td>
 	           </tr>
 
 	         </tbody>
