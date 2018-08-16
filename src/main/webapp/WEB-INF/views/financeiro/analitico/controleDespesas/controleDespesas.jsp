@@ -38,7 +38,7 @@
 	      <table class="table table-hover table-bordered">
 	         <tbody>
 	           <tr>
-	           	<th>Data</th>
+	           	<th class="ajusteData">Data</th>
 	           	<th>Descrição</th>
 	           	<th>Cliente</th>
 	           	<th>Marcelo $</th>
@@ -48,14 +48,16 @@
 	           	<th>C. Credito Locco</th>
 	           	<th>Obs</th>
 	           	<th>Pagto</th>
-	           	<th>Salvar</th>
+	           	<th style =" width: 40px;">Salvar</th>
 	           <tr>
 	       
 	       	  <tr>	
                 <td class="tiraPaddingData">
-                	<input id="dataDespesas" type="date" class="ajusteInput2 tiraPaddingData ajusteData">
+                	<input id="dataDespesas" type="date" class="ajusteInput2 tiraPaddingData ajusteData ">
                 </td>
               
+	           	<td><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData ajusteData "></td>
+	           	<td><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData ajusteData "></td>
 	           	<td>Data</td>
 	           	<td>Data</td>
 	           	<td>Data</td>
@@ -63,9 +65,7 @@
 	           	<td>Data</td>
 	           	<td>Data</td>
 	           	<td>Data</td>
-	           	<td>Data</td>
-	           	<td>Data</td>
-	           	<td style="padding: 0;"><button class="btn btn-success" onclick="">Salvar</button></td>
+	           	<td style="padding: 0;"><button class="btn btn-success" onclick="" style="border-radius: 0;">Salvar</button></td>
 	           </tr>
 
 	         </tbody>
