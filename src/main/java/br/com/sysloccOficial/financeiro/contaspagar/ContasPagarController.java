@@ -33,14 +33,14 @@ public class ContasPagarController {
 		
 // ---- Listas do Mes Atual
 		
-		/*List<Object[]> idListas = serviceContasPagar.montaListaMesAtual(); 
+		List<Object[]> idListas = serviceContasPagar.montaListaMesAtual(); 
 		
 		List<Object[]> listaAtual = serviceContasPagar.constroiObjeto(idListas);
 		
 		MV.addObject("novaLista", listaAtual);
 		
 		removeIdsVazios(idListas, listaAtual);
-		MV.addObject("idListas",idListas);*/
+		MV.addObject("idListas",idListas);
 		
 // ---- Listas de meses anteriores
 		List<Object[]> idListasAnteriores = montaObjeto.pegaListasMesAnterior(); 

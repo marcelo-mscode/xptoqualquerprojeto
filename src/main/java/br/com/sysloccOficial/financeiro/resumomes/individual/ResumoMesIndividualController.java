@@ -152,11 +152,11 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 /**
  * 		Concentrar os esforços para diminuir o gargalo nesse carregamento
  */
-		/*List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
+		List<Object[]> idListas = montaObjeto.pegaListasMesAtual(); 
 		List<Object[]> listaAtual = montaObjeto.constroiObjetoTeste(idListas);
 		List<Object[]> listaAnteriores = montaObjeto.constroiObjeto();
 		BigDecimal somaTotal = montaObjeto.somaTotalMeses(listaAtual, listaAnteriores);
-		MV.addObject("eventosContasPagar", somaTotal);*/
+		MV.addObject("eventosContasPagar", somaTotal);
 		
 ////////// FIM GARGALO //////////
 		
@@ -164,10 +164,10 @@ public class ResumoMesIndividualController extends CarregaSaldosBancarios{
 
 		MV.addObject("outrosImpostos", relatorioEventoDAO.outrosImpostos(anoMes));
 		
-		/*MV.addObject("totalPagar", dadosEvento.totalPagar(somaTotal,
+		MV.addObject("totalPagar", dadosEvento.totalPagar(somaTotal,
 				relatorioEventoDAO.salarios(anoMes),
 				somaTotalCache, impostos, relatorioEventoDAO.outrosImpostos(anoMes)
-				));*/
+				));
 		// Total Giro Itau ( soma dos emprestimos cadastrados )
 	
 		/*BigDecimal giroItau = new BigDecimal("11781.48");

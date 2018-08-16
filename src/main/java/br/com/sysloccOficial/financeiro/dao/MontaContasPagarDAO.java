@@ -134,8 +134,8 @@ public class MontaContasPagarDAO {
 	}*/
 	
 	public List<Object[]> pegaListasMesAnterior() {
-		//String dataHoje =  UtilitariaDatas.pegaDataAtualEmStringPassandoFormato("yyyy-MM");
-		String dataHoje22222222 =  "2018-6";
+		String dataHoje =  UtilitariaDatas.pegaDataAtualEmStringPassandoFormato("yyyy-MM");
+		//String dataHoje22222222 =  "2018-6";
 		
 		
 		
@@ -147,7 +147,7 @@ public class MontaContasPagarDAO {
 				+ " SELECT idProducao FROM FornecedorFinanceiro where idFornecedor in ("
 				   + "SELECT idFornecedorFinanceiro FROM ValorPagtoFornecedor where idValorFinancForn in ("
 				      + "SELECT valorPgtoForn.idValorFinancForn FROM DtPgtoFornecedor where status = 'PENDENTE' ORDER BY dataPagar"
-				      + "))) and lista.dataDoEvento < '"+dataHoje22222222+"-01' or lista.dataDoEvento is null order by lista.dataDoEvento desc  "
+				      + "))) and lista.dataDoEvento < '"+dataHoje+"-28' or lista.dataDoEvento is null order by lista.dataDoEvento desc  "
 				+ "   ");
 		
 		objetoConstruido = query.getResultList();

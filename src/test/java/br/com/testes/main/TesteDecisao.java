@@ -1,39 +1,37 @@
 package br.com.testes.main;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class TesteDecisao {
 	
 	
 	
-		  public static void main(String[] args) {
+	public static void main(String[] args) {
 			
-			  
-			  teste();	
-			  
-		  }
-	
-		  
-		  public static void teste(){
-			  
-			  
-			  BigDecimal valor = new BigDecimal("0.00");
-			  
-			  
-			  
-			  if(valor.compareTo(BigDecimal.ZERO) == -1){
-				  System.out.println("Valor é menor");
-			  }
-			  if(valor.compareTo(BigDecimal.ZERO) == 0){
-				  System.out.println("Valor é igual");
-			  }
-			  if(valor.compareTo(BigDecimal.ZERO) == 1){
-				  System.out.println("Valor é maior");
-			  }
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter three numbers:");
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		int c = sc.nextInt();
+		int higher = max(a, b, c);
+		showResult(higher);
+		sc.close();
+	}
 
-			  
-		  }
+	public static int max(int x, int y, int z) {
+		int aux;
+		if (x > y && x > z) {
+			aux = x;
+		} else if (y > z) {
+			aux = y;
+		} else {
+			aux = z;
+		}
+		return aux;
+	}
+
+	public static void showResult(int value) {
+		System.out.println("Higher = " + value);
+	}
 		  
 }

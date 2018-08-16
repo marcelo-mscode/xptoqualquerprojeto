@@ -116,8 +116,12 @@ public class GeraExcelRodapeCalculos {
 
 /////// ReembolsoDespesas
 	public void setaCelulaComFormulaReembolsoDespesas(XSSFCell cell,XSSFRow linha){
-		primeiraLinha = primeiraLinha + 2;
-		ultimaLinha = ultimaLinha - 2;
+		/*primeiraLinha = primeiraLinha + 2;
+		ultimaLinha = ultimaLinha - 2;*/
+		
+		int primeiraLinhaNova = primeiraLinha;
+		int ultimaLinhaNova = ultimaLinha;
+		
 		
 		cor = new int[]{242,242,242};
 		merge = new int[]{0,5};
@@ -125,7 +129,7 @@ public class GeraExcelRodapeCalculos {
 		
 		GeraCelulaTexto celulaMerge = new GeraCelulaTexto(abaMaster, novoExcel);
 		XSSFRow infoLinha = celulaMerge.celulaBordaComTextoSeguidoFormula(linha.getRowNum(), "Fração do sub Total 1 - Reembolso de despesas", 0, cor, true, false,merge);
-		celulaMerge.celulaBorda(infoLinha, "", 6, cor, true, false, mergeForm, "SUMIF($B$"+primeiraLinha+":$B$"+ultimaLinha+","+"\"Reembolso de despesas\",$G$"+primeiraLinha+":$G$"+ultimaLinha+")");
+		celulaMerge.celulaBorda(infoLinha, "", 6, cor, true, false, mergeForm, "SUMIF($B$"+primeiraLinhaNova+":$B$"+ultimaLinhaNova+","+"\"Reembolso de despesas\",$G$"+primeiraLinhaNova+":$G$"+ultimaLinhaNova+")");
 	}
 
 	public void setaCelulaComFormulaRodapeFatDiretoOpc(XSSFCell cell,XSSFRow linha, int ultLinha, String texto, String condicao){
@@ -244,9 +248,13 @@ public class GeraExcelRodapeCalculos {
 		merge = new int[]{0,5};
 		mergeForm = new int[]{6,6};
 		
+		int primeiraLinhaNova = primeiraLinha - 2;
+		int ultimaLinhaNova = ultimaLinha + 2;
+		
+		
 		GeraCelulaTexto celulaMerge = new GeraCelulaTexto(abaMaster, novoExcel);
 		XSSFRow infoLinha = celulaMerge.celulaBordaComTextoSeguidoFormula(linha.getRowNum(), "Fração do sub Total 1 de custos internos (faturado via agência)", 0, cor, true, false,merge);
-		celulaMerge.celulaBorda(infoLinha, "", 6, cor, true, false, mergeForm, "SUMIF($B$"+primeiraLinha+":$B$"+ultimaLinha+","+"\"Custo Interno\",$G$"+primeiraLinha+":$G$"+ultimaLinha+")");
+		celulaMerge.celulaBorda(infoLinha, "", 6, cor, true, false, mergeForm, "SUMIF($B$"+primeiraLinhaNova+":$B$"+ultimaLinhaNova+","+"\"Custo Interno\",$G$"+primeiraLinhaNova+":$G$"+ultimaLinhaNova+")");
 	}
 
 	public void setaCelulaComFormulaRodapeTerceiro(XSSFCell cell,XSSFRow linha){

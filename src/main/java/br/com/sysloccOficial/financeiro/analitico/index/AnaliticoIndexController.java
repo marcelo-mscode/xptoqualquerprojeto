@@ -20,6 +20,7 @@ public class AnaliticoIndexController {
 		MV.addObject("analiticoAno", indexAnaliticoAno);
 		List<FinancAnalitico> indexAnalitico = analiticoDAO.indexAnalitico();
 		MV.addObject("analitico", indexAnalitico);
+		
 		return MV;
 	}
 }

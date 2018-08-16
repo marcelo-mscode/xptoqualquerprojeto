@@ -46,6 +46,7 @@ import br.com.sysloccOficial.criacao.controllerCriacao.relatorio.usuario.ApoioRe
 import br.com.sysloccOficial.daos.UsuarioDAO;
 import br.com.sysloccOficial.empresa.excel.EmpresaExcelController;
 import br.com.sysloccOficial.empresa.excel.GeraExcelListagem;
+import br.com.sysloccOficial.financeiro.analitico.controledespesas.ControleDespesasController;
 import br.com.sysloccOficial.financeiro.analitico.index.AnaliticoIndexController;
 import br.com.sysloccOficial.financeiro.analitico.individual.AnaliticoIndividualController;
 import br.com.sysloccOficial.financeiro.analitico.novo.NovoRelatorioController;
@@ -127,6 +128,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          RelatorioEventoDAO.class,
 								          AnaliticoIndividualController.class,
 								          EmpresaTesteSerializacao.class,
+								          ControleDespesasController.class,
 								          /*PessoaService.class,*/
 								         /* PessoaResources.class,
 								          PessoaRepository.class,*/
