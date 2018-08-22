@@ -47,6 +47,7 @@ import br.com.sysloccOficial.daos.UsuarioDAO;
 import br.com.sysloccOficial.empresa.excel.EmpresaExcelController;
 import br.com.sysloccOficial.empresa.excel.GeraExcelListagem;
 import br.com.sysloccOficial.financeiro.analitico.controledespesas.ControleDespesasController;
+import br.com.sysloccOficial.financeiro.analitico.controledespesas.ControleDespesasService;
 import br.com.sysloccOficial.financeiro.analitico.index.AnaliticoIndexController;
 import br.com.sysloccOficial.financeiro.analitico.individual.AnaliticoIndividualController;
 import br.com.sysloccOficial.financeiro.analitico.novo.NovoRelatorioController;
@@ -129,6 +130,7 @@ import br.com.sysloccOficial.prospeccao.dao.ProspeccaoDAO;
 								          AnaliticoIndividualController.class,
 								          EmpresaTesteSerializacao.class,
 								          ControleDespesasController.class,
+								          ControleDespesasService.class,
 								          /*PessoaService.class,*/
 								         /* PessoaResources.class,
 								          PessoaRepository.class,*/
