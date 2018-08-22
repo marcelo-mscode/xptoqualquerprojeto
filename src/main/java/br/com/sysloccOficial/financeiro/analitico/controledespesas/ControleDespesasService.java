@@ -1,6 +1,9 @@
 package br.com.sysloccOficial.financeiro.analitico.controledespesas;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,22 @@ public class ControleDespesasService {
 		return lista;
 	}
 	
+	
+	
+	public void salvaNovoControleDespesas(ControleDespesas controleNovo) throws ParseException{
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date data = new java.sql.Date(format.parse(controleNovo.getDataTransiente()).getTime());
+		
+		controleNovo.setData(data);
+		
+		try {
+			controleRepository.salvaNovoControle(controleNovo);
+		} catch (Exception e) {
+			System.out.println("Ocorre um erro ao salvar novo Controle de despesas: " +e);
+		}
+		
+	}
 	
 	
 }

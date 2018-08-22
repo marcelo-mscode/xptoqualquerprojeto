@@ -27,5 +27,15 @@ public class ControleDespesasRepository {
 		}
 		return query.getResultList();
 	}
+
+
+	public void salvaNovoControle(ControleDespesas controleNovo) throws SQLException {
+		
+		try {
+			manager.persist(controleNovo);
+		} catch (Exception e) {
+			throw new SQLException();
+		}
+	}
 	
 }

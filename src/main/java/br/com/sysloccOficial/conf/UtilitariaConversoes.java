@@ -41,8 +41,7 @@ public class UtilitariaConversoes {
 // ---------------- Converte de String para Date ----------------------------//	
 	public Date converteDatasStringParaCalendar(String data){
 		Calendar c = Calendar.getInstance();
-		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm",
-				new Locale("pt", "BR"));
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm", new Locale("pt", "BR"));
 		try {
 			c.setTime(df.parse(data));
 			} catch (ParseException e) {
