@@ -21,7 +21,7 @@ public class ControleDespesas {
 	private String cliente;
 	private BigDecimal marceloValor;
 	private BigDecimal pedroValor;
-	private BigDecimal celialoValor;
+	private BigDecimal celiaValor;
 	private BigDecimal loccoValor;
 	private BigDecimal ccLoccoValor;
 	private String obs;
@@ -80,14 +80,13 @@ public class ControleDespesas {
 		this.pedroValor = pedroValor;
 	}
 
-
-	public BigDecimal getCelialoValor() {
-		return celialoValor;
+	public BigDecimal getCeliaValor() {
+		return celiaValor;
 	}
 
 
-	public void setCelialoValor(BigDecimal celialoValor) {
-		this.celialoValor = celialoValor;
+	public void setCeliaValor(BigDecimal celiaValor) {
+		this.celiaValor = celiaValor;
 	}
 
 

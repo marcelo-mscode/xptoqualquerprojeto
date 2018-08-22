@@ -81,28 +81,57 @@
            	<th style =" width: 40px;">Salvar</th>
            <tr>
        	   
+       	   <c:set value="0.00" var="marcelo" />
+       	   <c:set value="0.00" var="pedro" />
+       	   <c:set value="0.00" var="celia" />
+       	   <c:set value="0.00" var="locco" />
+       	   <c:set value="0.00" var="CClocco" />
+       	   <c:set value="0.00" var="total" />
+       	   
        	   <c:forEach items="${lista}" var="lista">
        	   <tr>	
             <td class="tiraPaddingData">
-            <input id="dataDespesas" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${lista.data}" pattern="dd/MM/yyyy"/>" type="text"
-                onclick="mudaCampoData('dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}');"
+            <input id="dataDespesas${lista.idControleDespesas}" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${lista.data}" pattern="dd/MM/yyyy"/>" type="text"
+                onclick="mudaCampoData('dataDespesas${lista.idControleDespesas}');"
                 onblur=""/>
             
             </td>
-           	
-           	
-           	
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px" value="${lista.descricao}"></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px" value="${lista.cliente}"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData" value="${lista.obs}"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${lista.marceloValor}" pattern="#,##0.00"/>"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${lista.pedroValor}" pattern="#,##0.00"/>"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${lista.celiaValor}" pattern="#,##0.00"/>"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${lista.loccoValor}" pattern="#,##0.00"/>"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${lista.ccLoccoValor}" pattern="#,##0.00"/>"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px" value="${lista.obs}"></td>
            	<td style="padding: 0;"><button class="btn btn-success" onclick="" style="border-radius: 0;">Salvar</button></td>
            </tr>
+           
+	           <c:set value="${marcelo + lista.marceloValor}" var="marcelo" />
+	           <c:set value="${pedro + lista.pedroValor}" var="pedro" />
+	           <c:set value="${celia + lista.celiaValor}" var="celia" />
+	           <c:set value="${locco + lista.loccoValor}" var="locco" />
+	           <c:set value="${CClocco + lista.ccLoccoValor}" var="CClocco" />
            </c:forEach>
+		    <c:set value="${marcelo + pedro + celia + locco + CClocco} " var="total" />	
+		   <tr><td></td></tr>
+		   <tr>
+		   	<td colspan="3"><b>SubTotal 1</b></td>
+		   	<td><fmt:formatNumber value="${marcelo}" pattern="#,##0.00"/></td>
+		   	<td></td>
+		   	<td></td>
+		   	<td></td>
+		   	<td></td>
+		   	<td><fmt:formatNumber value="${total}" pattern="#,##0.00"/></td>
+		    <td></td>
+		   
+		   </tr>
+				
+			
+
+
+
+
 	      </tbody>
 	     </table>
 		</div>  
