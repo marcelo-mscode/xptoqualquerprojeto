@@ -14,7 +14,7 @@ import br.com.sysloccOficial.financeiro.model.ControleDespesas;
 
 
 @Repository
-@Transactional
+@Transactional 
 public class ControleDespesasRepository {
 
 	
