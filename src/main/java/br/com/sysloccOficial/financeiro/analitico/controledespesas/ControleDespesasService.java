@@ -27,13 +27,13 @@ public class ControleDespesasService {
 	
 	public void salvaNovoControleDespesas(ControleDespesas controleNovo) throws ParseException{
 		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		Date data = new java.sql.Date(format.parse(controleNovo.getDataTransiente()).getTime());
-		
-		controleNovo.setData(data);
 		
 		try {
-			controleRepository.salvaNovoControle(controleNovo);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date data = new java.sql.Date(format.parse(controleNovo.getDataTransiente() + " 00:00:00").getTime());
+		controleNovo.setData(data);
+	
+		controleRepository.salvaNovoControle(controleNovo);
 		} catch (Exception e) {
 			System.out.println("Ocorre um erro ao salvar novo Controle de despesas: " +e);
 		}

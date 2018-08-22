@@ -28,11 +28,18 @@ public class ControleDespesasController {
 	}
 	
 	@RequestMapping("salvaControleDespesas")
-	public String salvaControleDespesas(ControleDespesas controleDespesas){
+	public String salvaControleDespesas(ControleDespesas controleNovo){
 		
 		int idAnalitico = 123;
 		
-		System.out.println(controleDespesas.getDataTransiente());
+		System.out.println(controleNovo.getDataTransiente());
+		
+		try {
+			controleServices.salvaNovoControleDespesas(controleNovo);
+		} catch (Exception e) {
+			System.out.println("");
+		}
+		
 		
 		return "redirect:controleDespesas?idAnalitico="+idAnalitico;
 		
