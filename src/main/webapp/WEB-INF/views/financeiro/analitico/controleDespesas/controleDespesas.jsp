@@ -58,7 +58,7 @@
            	<td class="tiraPaddingData"><input id="dataDespesas" name="celiaTransiente" type="text" class="ajusteInput2 tiraPaddingData"></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" name="loccoTransiente" type="text" class="ajusteInput2 tiraPaddingData"></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" name="ccLoccoTransiente" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" name="obs" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" name="observacao" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
            	<td style="padding: 0;"><button class="btn btn-success" type="submit" style="border-radius: 0;">Salvar</button></td>
            </form>
            
@@ -108,7 +108,7 @@
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${lista.celiaValor}" pattern="#,##0.00"/>"></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${lista.loccoValor}" pattern="#,##0.00"/>"></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData" value="<fmt:formatNumber value="${lista.ccLoccoValor}" pattern="#,##0.00"/>"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px" value="${lista.obs}"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px" value="${lista.observacao}"></td>
            	<td style="padding: 0;"><button class="btn btn-success" onclick="" style="border-radius: 0;">Salvar</button></td>
            </tr>
            

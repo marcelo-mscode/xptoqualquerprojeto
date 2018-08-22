@@ -25,7 +25,7 @@ public class ControleDespesas {
 	private BigDecimal celiaValor;
 	private BigDecimal loccoValor;
 	private BigDecimal ccLoccoValor;
-	private String obs;
+	private String observacao;
 	
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -42,8 +42,20 @@ public class ControleDespesas {
 	
 // --------------------------- //
 
+	
+	
 	public String getDataTransiente() {
 		return dataTransiente;
+	}
+
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 
@@ -179,17 +191,6 @@ public class ControleDespesas {
 	public void setCcLoccoValor(BigDecimal ccLoccoValor) {
 		this.ccLoccoValor = ccLoccoValor;
 	}
-
-
-	public String getObs() {
-		return obs;
-	}
-
-
-	public void setObs(String obs) {
-		this.obs = obs;
-	}
-
 
 	public Date getData() {
 		return data;
