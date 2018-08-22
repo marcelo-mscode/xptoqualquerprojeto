@@ -48,16 +48,21 @@
            	<th style =" width: 40px;">Salvar</th>
            <tr>
        	   <tr>	
-            <td class="tiraPaddingData"><input id="dataDespesas" type="date" class="ajusteInput2 tiraPaddingData ajusteData "></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
-           	<td style="padding: 0;"><button class="btn btn-success" onclick="" style="border-radius: 0;">Salvar</button></td>
+           
+           <form action="salvaControleDespesas" method="post">
+            <td class="tiraPaddingData"><input name="dataTransiente" id="dataDespesas" type="date" class="ajusteInput2 tiraPaddingData ajusteData "></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" name="descricao" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" name="cliente" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" name="marceloTransiente"  type="text" class="ajusteInput2 tiraPaddingData"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" name="pedroTransiente" type="text" class="ajusteInput2 tiraPaddingData"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" name="celiaTransiente" type="text" class="ajusteInput2 tiraPaddingData"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" name="loccoTransiente" type="text" class="ajusteInput2 tiraPaddingData"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" name="ccLoccoTransiente" type="text" class="ajusteInput2 tiraPaddingData"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" name="obs" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
+           	<td style="padding: 0;"><button class="btn btn-success" type="submit" style="border-radius: 0;">Salvar</button></td>
+           </form>
+           
+           
            </tr>
 	      </tbody>
 	     </table>
