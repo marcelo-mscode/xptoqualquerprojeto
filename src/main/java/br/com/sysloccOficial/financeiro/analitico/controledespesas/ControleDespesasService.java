@@ -1,5 +1,6 @@
 package br.com.sysloccOficial.financeiro.analitico.controledespesas;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,9 @@ public class ControleDespesasService {
 	@Autowired ControleDespesasRepository controleRepository;
 	
 	
-	public List<ControleDespesas> listaControleDespesas (){
-		
-		
-		
-		
-		return null;
+	public List<ControleDespesas> listaControleDespesas () throws SQLException{
+		List<ControleDespesas> lista = controleRepository.listaControleDespesas();
+		return lista;
 	}
 	
 	

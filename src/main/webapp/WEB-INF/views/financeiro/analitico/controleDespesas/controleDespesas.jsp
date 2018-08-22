@@ -80,6 +80,8 @@
            	<th class="input-200px">Obs</th>
            	<th style =" width: 40px;">Salvar</th>
            <tr>
+       	   
+       	   <c:forEach items="${lista}" var="listas">
        	   <tr>	
             <td class="tiraPaddingData"><input id="dataDespesas" type="date" class="ajusteInput2 tiraPaddingData ajusteData "></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
@@ -92,6 +94,7 @@
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
            	<td style="padding: 0;"><button class="btn btn-success" onclick="" style="border-radius: 0;">Salvar</button></td>
            </tr>
+           </c:forEach>
 	      </tbody>
 	     </table>
 		</div>  

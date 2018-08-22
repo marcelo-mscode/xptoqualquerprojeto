@@ -20,19 +20,13 @@ public class ControleDespesasRepository {
 	
 	
 	public List<ControleDespesas> listaControleDespesas() throws SQLException {
+		TypedQuery<ControleDespesas> query = manager.createQuery("FROM ControleDespesas",ControleDespesas.class);
 		
-		try {
-			TypedQuery<ControleDespesas> query = manager.createQuery("FROM ControleDespesas",ControleDespesas.class);
-			return query.getResultList();
-		} catch (Exception e) {
-			new 
+		if(query.getResultList().isEmpty() || query.getResultList().equals(null)){
+			throw new SQLException("Erro ao Buscar as Listas de Controle de Despesas.");
 		}
 		
-		
-		
+		return query.getResultList();
 	}
-	
-	
-	
 	
 }
