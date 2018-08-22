@@ -19,13 +19,12 @@ public class ControleDespesasRepository {
 	@PersistenceContext	private EntityManager manager;
 	
 	
-	public List<ControleDespesas> listaControleDespesas() throws SQLException {
+	public List<ControleDespesas> listaControleDespesas() throws NullPointerException {
 		TypedQuery<ControleDespesas> query = manager.createQuery("FROM ControleDespesas",ControleDespesas.class);
 		
 		if(query.getResultList().isEmpty() || query.getResultList().equals(null)){
-			throw new SQLException("Erro ao Buscar as Listas de Controle de Despesas.");
+			throw new NullPointerException("Não existem dados com os parâmetros informados.");
 		}
-		
 		return query.getResultList();
 	}
 	

@@ -81,16 +81,24 @@
            	<th style =" width: 40px;">Salvar</th>
            <tr>
        	   
-       	   <c:forEach items="${lista}" var="listas">
+       	   <c:forEach items="${lista}" var="lista">
        	   <tr>	
-            <td class="tiraPaddingData"><input id="dataDespesas" type="date" class="ajusteInput2 tiraPaddingData ajusteData "></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
+            <td class="tiraPaddingData">
+            <input id="dataDespesas" class="ajusteInput2 tiraPaddingData input-140px" value="<fmt:formatDate value="${lista.data}" pattern="dd/MM/yyyy"/>" type="text"
+                onclick="mudaCampoData('dataPgtoEmprestimo${emprestimosBancos.idEmprestimo}');"
+                onblur=""/>
+            
+            </td>
+           	
+           	
+           	
+           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px" value="${lista.descricao}"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px" value="${lista.cliente}"></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
-           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData"></td>
+           	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData" value="${lista.obs}"></td>
            	<td class="tiraPaddingData"><input id="dataDespesas" type="text" class="ajusteInput2 tiraPaddingData input-200px"></td>
            	<td style="padding: 0;"><button class="btn btn-success" onclick="" style="border-radius: 0;">Salvar</button></td>
            </tr>

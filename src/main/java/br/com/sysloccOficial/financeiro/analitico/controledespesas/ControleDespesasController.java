@@ -26,8 +26,8 @@ public class ControleDespesasController {
 		try {
 			List<ControleDespesas> lista = controleServices.listaControleDespesas();
 			MV.addObject("lista", lista);
-		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Erro ao buscar Listas: " + e.getMessage());
+		} catch (NullPointerException e) {
+			System.out.println("Informação ao buscar Listas: " + e.getMessage());
 		}
 		return MV;
 	}
