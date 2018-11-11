@@ -11,12 +11,22 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import jxl.Workbook;
+import jxl.write.Formula;
 import jxl.write.Label;
 import jxl.write.Number;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,9 +74,14 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 	ModelAndView MV = new ModelAndView();
 	private WritableCellFormat times;
 	
+	final int INICIO_CABECALHO_LINHA = 7;
+	
+	WritableWorkbook workbook;
+	
 //Gera Arquivo Excel
 	@RequestMapping("/exportaExcel")
 	public ModelAndView exportaExcel(Integer idLista){
+		
 		
 		MV.setViewName("producao/geraExcel");
 		
@@ -76,40 +91,25 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 		
 		try {
 			
-			
-			
-			
 			String fileName = "C:/SYSLOC/upload/excel/"+a+".xls";
 			String downloadExcel = "upload/upload/excel/"+a+".xls";
 			
 			MV.addObject("nomeArquivo", downloadExcel);
-			WritableWorkbook workbook = Workbook.createWorkbook(new File(fileName));
+			workbook = Workbook.createWorkbook(new File(fileName));
 			WritableSheet sheet = workbook.createSheet("Planilha 1", 0);
+
+			/**
+			 * Método para setar as larguras das colunas
+			 */
+			setaLarguraDasColunas(sheet); 
 			
-			
-			sheet.setColumnView(0, 30); 
-			sheet.setColumnView(1, 12); 
-			sheet.setColumnView(2, 12); 
-			sheet.setColumnView(3, 12); 
-			sheet.setColumnView(4, 65); 
-			sheet.setColumnView(5, 40); 
-			
-			//Adding A Label
-			Label linha = new Label(0,1,"Linha",formataCabecalho());
-			Label FatLocco = new Label(1,1,"Fat loCCo",formataCabecalho());
-			Label FatDireto = new Label(2,1,"Fat Direto",formataCabecalho());
-			Label Opcional = new Label(3,1,"Opcional",formataCabecalho());
-			Label Info = new Label(4,1,"Informações",formataCabecalho());
-			Label NaoIncluso = new Label(5,1,"Não inclusos no custo",formataCabecalho());
-			sheet.addCell(linha);
-			sheet.addCell(FatLocco);
-			sheet.addCell(FatDireto);
-			sheet.addCell(Opcional);
-			sheet.addCell(Info);
-			sheet.addCell(NaoIncluso);
+			/**
+			 * Método para montar o texto de 'Linha, FAtLocco, FatDireto, Opcional Informacoes e etc'
+			 */
+			montaCabecalhoAntesDasCategorias(sheet);
 
 			
-			int categoria1 = 1;
+			int LINHA_DA_CATEGORIA = INICIO_CABECALHO_LINHA;
 			List<Categoria>categorias = producaoDAO.categoriaPorIdLista(idLista);
 			
 			for(int i = 0; i < categorias.size(); i ++){
@@ -139,100 +139,26 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 					
 				}else{
 				
-					categoria1 = categoria1 + 1;
+					LINHA_DA_CATEGORIA = LINHA_DA_CATEGORIA + 1;
 					// Imprime o nome da categoria no Excel ----------------------------------------------------- //
 					
-					Label categoria = new Label(0,categoria1, categoriaNome,alinhaCentroComTodasBordasFontBold());sheet.addCell(categoria);
-					Label colum1 = new Label(1,categoria1,"",BordaCimaBaixo());sheet.addCell(colum1);
-					Label colum2 = new Label(2,categoria1,"",BordaCimaBaixo());sheet.addCell(colum2);
-					Label colum3 = new Label(3,categoria1,"",BordaCimaBaixo());sheet.addCell(colum3);
-					Label colum4 = new Label(4,categoria1,"",BordaCimaBaixo());sheet.addCell(colum4);
-					Label colum5 = new Label(5,categoria1,"",BordaCimaBaixoDireita());sheet.addCell(colum5);
+					Label categoria = new Label(0,LINHA_DA_CATEGORIA, categoriaNome,alinhaCentroComTodasBordasFontBold());sheet.addCell(categoria);
+					Label colum1 = new Label(1,LINHA_DA_CATEGORIA,"",BordaCimaBaixo());sheet.addCell(colum1);
+					Label colum2 = new Label(2,LINHA_DA_CATEGORIA,"",BordaCimaBaixo());sheet.addCell(colum2);
+					Label colum3 = new Label(3,LINHA_DA_CATEGORIA,"",BordaCimaBaixo());sheet.addCell(colum3);
+					Label colum4 = new Label(4,LINHA_DA_CATEGORIA,"",BordaCimaBaixo());sheet.addCell(colum4);
+					Label colum5 = new Label(5,LINHA_DA_CATEGORIA,"",BordaCimaBaixoDireita());sheet.addCell(colum5);
 					// ------------------------------------------------------------------------------------------ //
 				}
-							
-			for( int j = 0; j < grupo.size(); j++){
-				
-				
-			 	Integer idGrupo1 = grupo.get(j).getIdgrupo();
-				
-				List<ProdutoGrupo> teste = produtoGrupoDAO.listaProdutoGrupoPorGrupo(idGrupo1);
-			    
-				if(teste.isEmpty()){
-					String GrupoNome = grupo.get(j).getGrupo(); // imprime nome categoria
-					Label grupos = new Label(0,categoria1, GrupoNome,alinhaCentroComTodasBordas());sheet.addCell(grupos);
-				}else{
-					categoria1 = categoria1 + 1;
 					
-				String GrupoNome = grupo.get(j).getGrupo(); // imprime nome categoria
-				Label grupos = new Label(0,categoria1, GrupoNome,alinhaCentroComTodasBordas());sheet.addCell(grupos);
-				
-				BigDecimal grupoIncideImpostoValor = grupo.get(j).getGrupoValorIncideImposto();
-				String grupoIncideImpostoValorConvertido = grupoIncideImpostoValor.toString();
-				
-				BigDecimal grupofatDiretoValor = grupo.get(j).getGrupoValorNaoIncideImposto();
-				String grupofatDiretoValorConvertido = grupofatDiretoValor.toString();
-				
-				
-				if(grupo.get(j).isOpcional() == false){ // Imprimi FatLocco da Linha - opcional = 0 
-				  Number grupofatLocco = new Number (1, categoria1,converteStringParaDouble(grupoIncideImpostoValorConvertido), formataNumeroParaReal());
-				  sheet.addCell(grupofatLocco);							
-				}else {
-					Label grupofatLocco = new Label(1,categoria1, " ",alinhaCentroComTodasBordas());
-					sheet.addCell(grupofatLocco);
-				}
-				
-				if(grupo.get(j).isOpcional() == false ){// Imprime FatDireto - opcional = 0
-					Number grupofatDireto = new Number(2,categoria1,converteStringParaDouble(util.formataValores(grupofatDiretoValorConvertido)),formataNumeroParaReal());
-					sheet.addCell(grupofatDireto);
-				}else{
-					 Label grupofatDireto = new Label(2,categoria1," ",alinhaCentroComTodasBordas());
-					 sheet.addCell(grupofatDireto);
-				}
-				
-				if(grupo.get(j).isOpcional() == true ){// Imprime Opcional
-					
-					BigDecimal opcional = (grupofatDiretoValor.add(grupoIncideImpostoValor));
-				    String opcionalz = util.ConverteDolarParaReal(opcional.toString());
-					
-					
-					Number grupoOpcional = new Number(3,categoria1,converteStringParaDouble(util.formataValores(opcionalz)),formataNumeroParaReal());
-					sheet.addCell(grupoOpcional);
-					
-					
-							
-				}else{
-					Label grupoOpcional = new Label(3,categoria1,"",alinhaCentroComTodasBordas());
-					sheet.addCell(grupoOpcional);
-				}
-				
-		
-				Label grupoInformacao = new Label(4,categoria1,grupo.get(j).getInformacoes(),alinhaCentroComTodasBordas());
-				Label grupoNaoIncluidos = new Label(5,categoria1,grupo.get(j).getNecessidades(),alinhaCentroComTodasBordas());
-				sheet.addCell(grupoInformacao);
-				sheet.addCell(grupoNaoIncluidos);
-				}
-		}
-
-					
+					//Método que monta as categorias no Excel
+					LINHA_DA_CATEGORIA = montaLinhasDeCadaCategoria(sheet, LINHA_DA_CATEGORIA, grupo);
 					
 					if(grupo.isEmpty()){
 						
 					}else{
-						categoria1 = categoria1+1;	
-					/*Imprimi subTotal de Cada Categoria */
-					Label categoriaNomeTotals = new Label(0,categoria1, categoriaNome+": "+subTotalz,alinhaCentroComTodasBordasFontBold());
-					/*Imprimi Total FatLocco da Categori */
-					Number TotalsFatLocco = new Number (1, categoria1,converteStringParaDouble(util.formataValores(GrupoFatLocco)), formataNumeroParaRealComBold());
-					/*Imprimi Total FatDireto da Categor */
-					Number TotalFatDireto = new Number (2, categoria1,converteStringParaDouble(util.formataValores(GrupoFatDireto)), formataNumeroParaRealComBold());
-						   Label column3 = new Label(3,categoria1,"",BordaCimaBaixo());sheet.addCell(column3);					
-						   Label column4 = new Label(4,categoria1,"",BordaCimaBaixo());sheet.addCell(column4);					
-						   Label column5 = new Label(5,categoria1,"",BordaCimaBaixoDireita());sheet.addCell(column5);					
-					sheet.addCell(categoriaNomeTotals);
-					sheet.addCell(TotalsFatLocco);
-					sheet.addCell(TotalFatDireto);
-					/*sheet.addCell(OpcionalImprime);*/
+						LINHA_DA_CATEGORIA = montaSubTotaisDeCadaCategoria(sheet, LINHA_DA_CATEGORIA, GrupoFatLocco,
+								GrupoFatDireto, subTotalz, categoriaNome, grupo.size());
 					}
 			}
 			
@@ -253,16 +179,16 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			BigDecimal novo = (subTotalGeralFatLocco.add(subTotalGeralFatDireto));
 			String subTotaly = util.ConverteDolarParaReal(novo.toString());
 			
-			Label linhaVazia = new Label (5,categoria1+1, "",BordaCimaBaixoDireita());sheet.addCell(linhaVazia);
+			Label linhaVazia = new Label (5,LINHA_DA_CATEGORIA+1, "",BordaCimaBaixoDireita());sheet.addCell(linhaVazia);
 
 			
-			Label subTotal = new Label(0,categoria1+2, "Sub Total: "+ subTotaly,formataSubTotal());
+			Label subTotal = new Label(0,LINHA_DA_CATEGORIA+2, "Sub Total: "+ subTotaly,formataSubTotal());
 			
-			Number subTotalFatLocco = new Number (1,categoria1+2, converteStringParaDouble(util.formataValores(subTotalGeralFatLoccoConv)),formataSubTotal());
-			Number subTotalFatDireto = new Number (2,categoria1+2, converteStringParaDouble(util.formataValores(subTotalGeralDiretoConv)),formataSubTotal());
-			Label vazio3 = new Label (3,categoria1+2, "",BordaCimaBaixo());
-			Label vazio4 = new Label (4,categoria1+2, "",BordaCimaBaixo());
-			Label vazio5 = new Label (5,categoria1+2, "",BordaCimaBaixoDireita());
+			Number subTotalFatLocco = new Number (1,LINHA_DA_CATEGORIA+2, converteStringParaDouble(util.formataValores(subTotalGeralFatLoccoConv)),formataSubTotal());
+			Number subTotalFatDireto = new Number (2,LINHA_DA_CATEGORIA+2, converteStringParaDouble(util.formataValores(subTotalGeralDiretoConv)),formataSubTotal());
+			Label vazio3 = new Label (3,LINHA_DA_CATEGORIA+2, "",BordaCimaBaixo());
+			Label vazio4 = new Label (4,LINHA_DA_CATEGORIA+2, "",BordaCimaBaixo());
+			Label vazio5 = new Label (5,LINHA_DA_CATEGORIA+2, "",BordaCimaBaixoDireita());
 			
 			
 			sheet.addCell(subTotal);
@@ -281,6 +207,144 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			//	JOptionPane.showMessageDialog(null, "Deu um erro ao gerar a Lista. Alguma linha está com o valor vazio."+e);
 		}
 		return MV;	
+	}
+
+	private void montaCabecalhoAntesDasCategorias(WritableSheet sheet)
+			throws WriteException, RowsExceededException {
+		//Adding A Label
+		Label linha = new Label(0,INICIO_CABECALHO_LINHA,"Linha",formataCabecalho());
+		Label FatLocco = new Label(1,INICIO_CABECALHO_LINHA,"Fat loCCo",formataCabecalho());
+		Label FatDireto = new Label(2,INICIO_CABECALHO_LINHA,"Fat Direto/Nota de Debito",formataCabecalho());
+		Label Opcional = new Label(3,INICIO_CABECALHO_LINHA,"Opcional",formataCabecalho());
+		Label Info = new Label(4,INICIO_CABECALHO_LINHA,"Informações",formataCabecalho());
+		Label NaoIncluso = new Label(5,INICIO_CABECALHO_LINHA,"Não inclusos no custo",formataCabecalho());
+		sheet.addCell(linha);
+		sheet.addCell(FatLocco);
+		sheet.addCell(FatDireto);
+		sheet.addCell(Opcional);
+		sheet.addCell(Info);
+		sheet.addCell(NaoIncluso);
+	}
+
+	private void setaLarguraDasColunas(WritableSheet sheet) {
+		//Largura de cada Coluna
+		sheet.setColumnView(0, 30); 
+		sheet.setColumnView(1, 12); 
+		sheet.setColumnView(2, 12); 
+		sheet.setColumnView(3, 12); 
+		sheet.setColumnView(4, 65); 
+		sheet.setColumnView(5, 40);
+	}
+
+	private int montaSubTotaisDeCadaCategoria(WritableSheet sheet, int LINHA_DA_CATEGORIA, String GrupoFatLocco,
+											  String GrupoFatDireto, String subTotalz, String categoriaNome,
+											  int tamanhoCategoria)throws WriteException, RowsExceededException {
+		int ULTIMA_LINHA_CATEGORIA = LINHA_DA_CATEGORIA;
+		
+		System.out.println(ULTIMA_LINHA_CATEGORIA);
+		
+		LINHA_DA_CATEGORIA = LINHA_DA_CATEGORIA + 1;	
+		/*Imprimi subTotal de Cada Categoria */
+		Label categoriaNomeTotals = new Label(0,LINHA_DA_CATEGORIA, categoriaNome+": "+subTotalz,alinhaCentroComTodasBordasFontBold());
+		/*Imprimi Total FatLocco da Categori */
+		Number TotalsFatLocco = new Number (1, LINHA_DA_CATEGORIA,converteStringParaDouble(util.formataValores(GrupoFatLocco)), formataNumeroParaRealComBold());
+		/*Imprimi Total FatDireto da Categor */
+		Number TotalFatDireto = new Number (2, LINHA_DA_CATEGORIA,converteStringParaDouble(util.formataValores(GrupoFatDireto)), formataNumeroParaRealComBold());
+		
+		Label column3 = new Label(3,LINHA_DA_CATEGORIA,"",BordaCimaBaixo());
+		sheet.addCell(column3);					
+		  
+		Label column4 = new Label(4,LINHA_DA_CATEGORIA,"",BordaCimaBaixo());
+		sheet.addCell(column4);					
+		Label column5 = new Label(5,LINHA_DA_CATEGORIA,"",BordaCimaBaixoDireita());sheet.addCell(column5);					
+		sheet.addCell(categoriaNomeTotals);
+		
+		
+		
+		//Pegar primeira linha da categoria
+		//Pegar última linha da categorira
+		//Fazer formula de soma
+		//sheet.addCell(TotalsFatLocco);
+		
+		int tamanhoCat = LINHA_DA_CATEGORIA - tamanhoCategoria;
+		
+		// Coluna x linha 
+		Formula formulaCellFatLocco = new Formula(1, LINHA_DA_CATEGORIA, "SUM(b"+(tamanhoCat+1)+":b"+(LINHA_DA_CATEGORIA)+")");
+	    sheet.addCell(formulaCellFatLocco);
+	    
+	    Formula formulaCellFatDireto = new Formula(2, LINHA_DA_CATEGORIA, "SUM(c"+(tamanhoCat+1)+":c"+(LINHA_DA_CATEGORIA)+")");
+	    sheet.addCell(formulaCellFatDireto);
+		
+		
+		//sheet.addCell(TotalFatDireto);
+		/*sheet.addCell(OpcionalImprime);*/
+		return LINHA_DA_CATEGORIA;
+	}
+	
+	private int montaLinhasDeCadaCategoria(WritableSheet sheet, int LINHA_DA_CATEGORIA, List<Grupo> grupo) throws WriteException, RowsExceededException {
+	    
+		for( int j = 0; j < grupo.size(); j++){
+			
+		 	Integer idGrupo1 = grupo.get(j).getIdgrupo();
+			
+			List<ProdutoGrupo> teste = produtoGrupoDAO.listaProdutoGrupoPorGrupo(idGrupo1);
+		    
+			if(teste.isEmpty()){
+				String GrupoNome = grupo.get(j).getGrupo(); // imprime nome categoria
+				Label grupos = new Label(0,LINHA_DA_CATEGORIA, GrupoNome,alinhaCentroComTodasBordas());sheet.addCell(grupos);
+			}else{
+				LINHA_DA_CATEGORIA = LINHA_DA_CATEGORIA + 1;
+				
+			String GrupoNome = grupo.get(j).getGrupo(); // imprime nome categoria
+			Label grupos = new Label(0,LINHA_DA_CATEGORIA, GrupoNome,alinhaCentroComTodasBordas());sheet.addCell(grupos);
+			
+			BigDecimal grupoIncideImpostoValor = grupo.get(j).getGrupoValorIncideImposto();
+			String grupoIncideImpostoValorConvertido = grupoIncideImpostoValor.toString();
+			
+			BigDecimal grupofatDiretoValor = grupo.get(j).getGrupoValorNaoIncideImposto();
+			String grupofatDiretoValorConvertido = grupofatDiretoValor.toString();
+			
+			
+			if(grupo.get(j).isOpcional() == false){ // Imprimi FatLocco da Linha - opcional = 0 
+			  Number grupofatLocco = new Number (1, LINHA_DA_CATEGORIA,converteStringParaDouble(grupoIncideImpostoValorConvertido), formataNumeroParaReal());
+			  sheet.addCell(grupofatLocco);							
+			}else {
+				Label grupofatLocco = new Label(1,LINHA_DA_CATEGORIA, " ",alinhaCentroComTodasBordas());
+				sheet.addCell(grupofatLocco);
+			}
+			
+			if(grupo.get(j).isOpcional() == false ){// Imprime FatDireto - opcional = 0
+				Number grupofatDireto = new Number(2,LINHA_DA_CATEGORIA,converteStringParaDouble(util.formataValores(grupofatDiretoValorConvertido)),formataNumeroParaReal());
+				sheet.addCell(grupofatDireto);
+			}else{
+				 Label grupofatDireto = new Label(2,LINHA_DA_CATEGORIA," ",alinhaCentroComTodasBordas());
+				 sheet.addCell(grupofatDireto);
+			}
+			
+			if(grupo.get(j).isOpcional() == true ){// Imprime Opcional
+				
+				BigDecimal opcional = (grupofatDiretoValor.add(grupoIncideImpostoValor));
+			    String opcionalz = util.ConverteDolarParaReal(opcional.toString());
+				
+				
+				Number grupoOpcional = new Number(3,LINHA_DA_CATEGORIA,converteStringParaDouble(util.formataValores(opcionalz)),formataNumeroParaReal());
+				sheet.addCell(grupoOpcional);
+				
+				
+						
+			}else{
+				Label grupoOpcional = new Label(3,LINHA_DA_CATEGORIA,"",alinhaCentroComTodasBordas());
+				sheet.addCell(grupoOpcional);
+			}
+			
+
+			Label grupoInformacao = new Label(4,LINHA_DA_CATEGORIA,grupo.get(j).getInformacoes(),alinhaCentroComTodasBordas());
+			Label grupoNaoIncluidos = new Label(5,LINHA_DA_CATEGORIA,grupo.get(j).getNecessidades(),alinhaCentroComTodasBordas());
+			sheet.addCell(grupoInformacao);
+			sheet.addCell(grupoNaoIncluidos);
+			}
+         }
+		return LINHA_DA_CATEGORIA;
 	}
 	
 	public Double converteStringParaDouble(String valor){

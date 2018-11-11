@@ -7,8 +7,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import org.springframework.transaction.annotation.Transactional;
+import javax.swing.JOptionPane;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,22 +44,12 @@ public class ControleDespesasController {
 		
 		int idAnalitico = 123;
 		
-		System.out.println(controleNovo.getDataTransiente());
-		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date data = new java.sql.Date(format.parse(controleNovo.getDataTransiente() + " 00:00:00").getTime());
-		controleNovo.setData(data);
-		
-		manager.merge(controleNovo);
-		
-		
-		
-/*		try {
+		try {
 			controleServices.salvaNovoControleDespesas(controleNovo);
 		} catch (Exception e) {
 			System.out.println("");
 		}
-*/		
+		
 		
 		return "redirect:controleDespesas?idAnalitico="+idAnalitico;
 		

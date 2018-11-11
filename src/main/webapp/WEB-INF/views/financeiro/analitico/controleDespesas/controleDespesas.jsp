@@ -27,7 +27,7 @@
    <div style="padding: 0px 0 55px 0px;box-shadow: 0px 0px 30px 5px #ccc;" class="col-md-12">
       <div class="row">
 	      <div class="col-md-12" style="text-align: center">
-		      <h4 class="">CONTROLE DE DESPESAS</h4>
+		      <h4 class="">CONTROLE DE DESPESAS ANALÍTICO</h4>
 		      <h5 class="">MÊS DE JULHO DE XXXX</h5>
 	      </div>
       </div>
