@@ -252,7 +252,7 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 	private void rodapeFee(WritableSheet sheet, int LINHA_DA_CATEGORIA) throws RowsExceededException, WriteException{
 		int linha = LINHA_DA_CATEGORIA +4;
 		// Coluna x linha 
-		Formula formulaFee = new Formula(1,linha, "SUM(B81+c81)*0.14");
+		Formula formulaFee = new Formula(1,linha, "SUM(B"+(LINHA_DA_CATEGORIA+4)+"+C"+(LINHA_DA_CATEGORIA+4)+")*0.15");
 		sheet.addCell(formulaFee);
 		
 		Label fee = new Label(0,linha, "Fee");
@@ -261,16 +261,15 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 	
 	private void rodapeSubtotalLocco(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
 		int linha = LINHA_DA_CATEGORIA +5;
-		
-		Formula formulaFee = new Formula(1, linha, "SUM(b2:b3)");
+		Formula formulaFee = new Formula(1, linha, "SUM(B"+(LINHA_DA_CATEGORIA+4)+":B"+(LINHA_DA_CATEGORIA+5)+")");
 		sheet.addCell(formulaFee);
-		
 		Label subTotalLocco = new Label(0,linha, "Subtotal Locco:");
 		sheet.addCell(subTotalLocco);
 	}
 	private void rodapeImposto(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
 		int linha = LINHA_DA_CATEGORIA +6;
-		Formula formulaFee = new Formula(1, linha, "SUM(b2:b3)");
+		int SubtotalLocco = LINHA_DA_CATEGORIA +5;
+		Formula formulaFee = new Formula(1, linha, "=("+((SubtotalLocco/0.771)-SubtotalLocco)+")");
 		sheet.addCell(formulaFee);
 		Label imposto = new Label(0,linha, "Imposto:");
 		sheet.addCell(imposto);
