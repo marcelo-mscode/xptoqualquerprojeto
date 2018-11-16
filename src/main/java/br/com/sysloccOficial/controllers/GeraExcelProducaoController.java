@@ -188,15 +188,14 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			Label linhaVazia = new Label (5,LINHA_DA_CATEGORIA+1, "",BordaCimaBaixoDireita());sheet.addCell(linhaVazia);
 
 			
-			Label subTotal = new Label(0,LINHA_DA_CATEGORIA+2, "Sub Total: "+ subTotaly,formataSubTotal());
+			//Label subTotal = new Label(0,LINHA_DA_CATEGORIA+2, "Sub Total: "+ subTotaly,formataSubTotal());
+			Label subTotal = new Label(0,LINHA_DA_CATEGORIA+2, "Sub Total");
 			
 			
 			// Pegar as linhas dos suibtotais de cada categoria
 			//Number subTotalFatLocco = new Number (1,LINHA_DA_CATEGORIA+2, converteStringParaDouble(util.formataValores(subTotalGeralFatLoccoConv)),formataSubTotal());
 			
 			List<String> montaFormulaSubTotalFatLocco = new ArrayList<String>();
-			List<String> montaFormulaSubTotalFatDireto = new ArrayList<String>();
-			
 			String montaSomaSubTotalFatoLocco = "";
 			for (int i = 0; i < linhasDecadaSubTotalCategoria.size(); i++) {
 				montaFormulaSubTotalFatLocco.add("b"+linhasDecadaSubTotalCategoria.get(i).toString());
@@ -205,23 +204,29 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			for (String string : montaFormulaSubTotalFatLocco) {
 				montaSomaSubTotalFatoLocco = montaSomaSubTotalFatoLocco + string + "+";
 			}
+			String modificadaMontaSomaSubTotalFatoLocco = montaSomaSubTotalFatoLocco.substring(0, montaSomaSubTotalFatoLocco.length() - 1);
+
 			
+			
+			List<String> montaFormulaSubTotalFatDireto = new ArrayList<String>();
 			String montaSomaSubTotalFatDireto = "";
 			for (int i = 0; i < linhasDecadaSubTotalCategoria.size(); i++) {
 				montaFormulaSubTotalFatDireto.add("c"+linhasDecadaSubTotalCategoria.get(i).toString());
 			}
 			
-			for (String string : montaFormulaSubTotalFatLocco) {
-				montaSomaSubTotalFatDireto = montaSomaSubTotalFatoLocco + string + "+";
+			for (String string : montaFormulaSubTotalFatDireto) {
+				montaSomaSubTotalFatDireto = montaSomaSubTotalFatDireto + string + "+";
 			}
-			String modificadaMontaSomaSubTotalFatoLocco = montaSomaSubTotalFatoLocco.substring(0, montaSomaSubTotalFatoLocco.length() - 1);
 			String modificadaMontaSomaSubTotalFatDireto = montaSomaSubTotalFatDireto.substring(0, montaSomaSubTotalFatoLocco.length() - 1);
 			
 			// Coluna x linha 
-			Formula formulaSubTotalFatLocco = new Formula(1, LINHA_DA_CATEGORIA+2, "SUM("+modificadaMontaSomaSubTotalFatoLocco+")");
+			Formula subTotalFatLoccoDireto = new Formula(0, LINHA_DA_CATEGORIA+3, "SUM(b"+(LINHA_DA_CATEGORIA+4)+":c"+(LINHA_DA_CATEGORIA+4));
 			
 			// Coluna x linha 
-			Formula formulaSubTotalFatDireto = new Formula(1, LINHA_DA_CATEGORIA+2, "SUM("+modificadaMontaSomaSubTotalFatDireto+")");
+			Formula formulaSubTotalFatLocco = new Formula(1, LINHA_DA_CATEGORIA+3, "SUM("+modificadaMontaSomaSubTotalFatoLocco+")");
+			
+			// Coluna x linha 
+			Formula formulaSubTotalFatDireto = new Formula(2, LINHA_DA_CATEGORIA+3, "SUM("+modificadaMontaSomaSubTotalFatDireto+")");
 			
 //			Number subTotalFatDireto = new Number (2,LINHA_DA_CATEGORIA+2, converteStringParaDouble(util.formataValores(subTotalGeralDiretoConv)),formataSubTotal());
 			
@@ -231,6 +236,7 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			
 			
 			sheet.addCell(subTotal);
+			sheet.addCell(subTotalFatLoccoDireto);
 			sheet.addCell(formulaSubTotalFatLocco);
 			//sheet.addCell(subTotalFatLocco);
 			sheet.addCell(formulaSubTotalFatDireto);
