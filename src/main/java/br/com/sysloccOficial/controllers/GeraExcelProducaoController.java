@@ -195,29 +195,10 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			// Pegar as linhas dos suibtotais de cada categoria
 			//Number subTotalFatLocco = new Number (1,LINHA_DA_CATEGORIA+2, converteStringParaDouble(util.formataValores(subTotalGeralFatLoccoConv)),formataSubTotal());
 			
-			List<String> montaFormulaSubTotalFatLocco = new ArrayList<String>();
-			String montaSomaSubTotalFatoLocco = "";
-			for (int i = 0; i < linhasDecadaSubTotalCategoria.size(); i++) {
-				montaFormulaSubTotalFatLocco.add("b"+linhasDecadaSubTotalCategoria.get(i).toString());
-			}
-			
-			for (String string : montaFormulaSubTotalFatLocco) {
-				montaSomaSubTotalFatoLocco = montaSomaSubTotalFatoLocco + string + "+";
-			}
-			String modificadaMontaSomaSubTotalFatoLocco = montaSomaSubTotalFatoLocco.substring(0, montaSomaSubTotalFatoLocco.length() - 1);
-
+			String modificadaMontaSomaSubTotalFatoLocco = montaFormulaSubTotalfatLocco(linhasDecadaSubTotalCategoria);
 			
 			
-			List<String> montaFormulaSubTotalFatDireto = new ArrayList<String>();
-			String montaSomaSubTotalFatDireto = "";
-			for (int i = 0; i < linhasDecadaSubTotalCategoria.size(); i++) {
-				montaFormulaSubTotalFatDireto.add("c"+linhasDecadaSubTotalCategoria.get(i).toString());
-			}
-			
-			for (String string : montaFormulaSubTotalFatDireto) {
-				montaSomaSubTotalFatDireto = montaSomaSubTotalFatDireto + string + "+";
-			}
-			String modificadaMontaSomaSubTotalFatDireto = montaSomaSubTotalFatDireto.substring(0, montaSomaSubTotalFatoLocco.length() - 1);
+			String modificadaMontaSomaSubTotalFatDireto = montaFormulaSubTotalFatDireto(linhasDecadaSubTotalCategoria);
 			
 			// Coluna x linha 
 			Formula subTotalFatLoccoDireto = new Formula(0, LINHA_DA_CATEGORIA+3, "SUM(b"+(LINHA_DA_CATEGORIA+4)+":c"+(LINHA_DA_CATEGORIA+4));
@@ -254,6 +235,37 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			//	JOptionPane.showMessageDialog(null, "Deu um erro ao gerar a Lista. Alguma linha está com o valor vazio."+e);
 		}
 		return MV;	
+	}
+
+	private String montaFormulaSubTotalFatDireto(
+			List<Integer> linhasDecadaSubTotalCategoria) {
+		List<String> montaFormulaSubTotalFatDireto = new ArrayList<String>();
+		String montaSomaSubTotalFatDireto = "";
+		for (int i = 0; i < linhasDecadaSubTotalCategoria.size(); i++) {
+			montaFormulaSubTotalFatDireto.add("c"+linhasDecadaSubTotalCategoria.get(i).toString());
+		}
+		
+		for (String string : montaFormulaSubTotalFatDireto) {
+			montaSomaSubTotalFatDireto = montaSomaSubTotalFatDireto + string + "+";
+		}
+		String modificadaMontaSomaSubTotalFatDireto = montaSomaSubTotalFatDireto.substring(0, montaSomaSubTotalFatDireto.length() - 1);
+		return modificadaMontaSomaSubTotalFatDireto;
+	}
+
+	private String montaFormulaSubTotalfatLocco(
+			List<Integer> linhasDecadaSubTotalCategoria) {
+		List<String> montaFormulaSubTotalFatLocco = new ArrayList<String>();
+		String montaSomaSubTotalFatoLocco = "";
+		for (int i = 0; i < linhasDecadaSubTotalCategoria.size(); i++) {
+			montaFormulaSubTotalFatLocco.add("b"+linhasDecadaSubTotalCategoria.get(i).toString());
+		}
+		
+		for (String string : montaFormulaSubTotalFatLocco) {
+			montaSomaSubTotalFatoLocco = montaSomaSubTotalFatoLocco + string + "+";
+		}
+		
+		String modificadaMontaSomaSubTotalFatoLocco = montaSomaSubTotalFatoLocco.substring(0, montaSomaSubTotalFatoLocco.length() - 1);
+		return modificadaMontaSomaSubTotalFatoLocco;
 	}
 
 	private void montaCabecalhoAntesDasCategorias(WritableSheet sheet)
