@@ -216,15 +216,13 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			Label vazio5 = new Label (5,LINHA_DA_CATEGORIA+2, "",BordaCimaBaixoDireita());
 			
 			
-			sheet.addCell(subTotal);
 			sheet.addCell(subTotalFatLoccoDireto);
 			sheet.addCell(formulaSubTotalFatLocco);
-			//sheet.addCell(subTotalFatLocco);
 			sheet.addCell(formulaSubTotalFatDireto);
-			//sheet.addCell(subTotalFatDireto);
 			sheet.addCell(vazio3);
 			sheet.addCell(vazio4);
 			sheet.addCell(vazio5);
+			sheet.addCell(subTotal);
 			
 			workbook.write();
 			workbook.close();
@@ -236,7 +234,13 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 		}
 		return MV;	
 	}
-
+	
+	private void rodapeFee(WritableSheet sheet, int LINHA_DA_CATEGORIA) throws RowsExceededException, WriteException{
+		Label fee = new Label(0,LINHA_DA_CATEGORIA+4, "Fee");
+		sheet.addCell(fee);
+	}
+	
+	
 	private String montaFormulaSubTotalFatDireto(
 			List<Integer> linhasDecadaSubTotalCategoria) {
 		List<String> montaFormulaSubTotalFatDireto = new ArrayList<String>();
@@ -306,9 +310,9 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 		/*Imprimi subTotal de Cada Categoria */
 		Label categoriaNomeTotals = new Label(0,LINHA_DA_CATEGORIA, categoriaNome+": "+subTotalz,alinhaCentroComTodasBordasFontBold());
 		/*Imprimi Total FatLocco da Categori */
-		Number TotalsFatLocco = new Number (1, LINHA_DA_CATEGORIA,converteStringParaDouble(util.formataValores(GrupoFatLocco)), formataNumeroParaRealComBold());
+//		Number TotalsFatLocco = new Number (1, LINHA_DA_CATEGORIA,converteStringParaDouble(util.formataValores(GrupoFatLocco)), formataNumeroParaRealComBold());
 		/*Imprimi Total FatDireto da Categor */
-		Number TotalFatDireto = new Number (2, LINHA_DA_CATEGORIA,converteStringParaDouble(util.formataValores(GrupoFatDireto)), formataNumeroParaRealComBold());
+//		Number TotalFatDireto = new Number (2, LINHA_DA_CATEGORIA,converteStringParaDouble(util.formataValores(GrupoFatDireto)), formataNumeroParaRealComBold());
 		
 		Label column3 = new Label(3,LINHA_DA_CATEGORIA,"",BordaCimaBaixo());
 		sheet.addCell(column3);					
