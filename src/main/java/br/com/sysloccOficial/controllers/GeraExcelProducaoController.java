@@ -3,6 +3,7 @@ package br.com.sysloccOficial.controllers;
 import java.io.File;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -91,7 +92,7 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 		
 		try {
 			
-			String fileName = "C:/SYSLOC/upload/excel/"+a+".xls";
+			String fileName = "K:/SYSLOC/upload/excel/"+a+".xls";
 			String downloadExcel = "upload/upload/excel/"+a+".xls";
 			
 			MV.addObject("nomeArquivo", downloadExcel);
@@ -111,6 +112,8 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			
 			int LINHA_DA_CATEGORIA = INICIO_CABECALHO_LINHA;
 			List<Categoria>categorias = producaoDAO.categoriaPorIdLista(idLista);
+			
+			List<Integer> linhasDecadaSubTotalCategoria = new ArrayList<Integer>();
 			
 			for(int i = 0; i < categorias.size(); i ++){
 				String GrupoFatLocco = "";
@@ -160,6 +163,9 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 						LINHA_DA_CATEGORIA = montaSubTotaisDeCadaCategoria(sheet, LINHA_DA_CATEGORIA, GrupoFatLocco,
 								GrupoFatDireto, subTotalz, categoriaNome, grupo.size());
 					}
+					
+					linhasDecadaSubTotalCategoria.add(LINHA_DA_CATEGORIA);
+					
 			}
 			
 			BigDecimal subTotalGeralFatLocco = new BigDecimal("0");
@@ -184,8 +190,16 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			
 			Label subTotal = new Label(0,LINHA_DA_CATEGORIA+2, "Sub Total: "+ subTotaly,formataSubTotal());
 			
+			
+			// Pegar as linhas dos suibtotais de cada categoria
 			Number subTotalFatLocco = new Number (1,LINHA_DA_CATEGORIA+2, converteStringParaDouble(util.formataValores(subTotalGeralFatLoccoConv)),formataSubTotal());
+			
+			// Coluna x linha 
+/*			Formula formulaCellFatLocco = new Formula(1, LINHA_DA_CATEGORIA+2, "SUM(b14+b18+b21+b26")");
+		    sheet.addCell(formulaCellFatLocco);
+*/			
 			Number subTotalFatDireto = new Number (2,LINHA_DA_CATEGORIA+2, converteStringParaDouble(util.formataValores(subTotalGeralDiretoConv)),formataSubTotal());
+			
 			Label vazio3 = new Label (3,LINHA_DA_CATEGORIA+2, "",BordaCimaBaixo());
 			Label vazio4 = new Label (4,LINHA_DA_CATEGORIA+2, "",BordaCimaBaixo());
 			Label vazio5 = new Label (5,LINHA_DA_CATEGORIA+2, "",BordaCimaBaixoDireita());
