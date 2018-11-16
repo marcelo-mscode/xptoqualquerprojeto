@@ -224,6 +224,13 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			sheet.addCell(vazio5);
 			sheet.addCell(subTotal);
 			
+			rodapeFee(sheet, LINHA_DA_CATEGORIA);
+			rodapeSubtotalLocco(sheet, LINHA_DA_CATEGORIA);
+			rodapeImposto(sheet, LINHA_DA_CATEGORIA);
+			rodapeTotalGeral(sheet, LINHA_DA_CATEGORIA);
+			rodapeFaturamentoLocco(sheet, LINHA_DA_CATEGORIA);
+			rodapeFaturamentoDireto(sheet, LINHA_DA_CATEGORIA);
+			
 			workbook.write();
 			workbook.close();
 			
@@ -236,10 +243,37 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 	}
 	
 	private void rodapeFee(WritableSheet sheet, int LINHA_DA_CATEGORIA) throws RowsExceededException, WriteException{
+		
+		// Coluna x linha 
+		Formula formulaFee = new Formula(1, LINHA_DA_CATEGORIA+4, "SUM(b2:b3)");
+		sheet.addCell(formulaFee);
+		
 		Label fee = new Label(0,LINHA_DA_CATEGORIA+4, "Fee");
 		sheet.addCell(fee);
 	}
 	
+	private void rodapeSubtotalLocco(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
+		Label subTotalLocco = new Label(0,LINHA_DA_CATEGORIA+5, "Subtotal Locco:");
+		sheet.addCell(subTotalLocco);
+	}
+	private void rodapeImposto(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
+		Label imposto = new Label(0,LINHA_DA_CATEGORIA+6, "Imposto:");
+		sheet.addCell(imposto);
+	}
+	private void rodapeTotalGeral(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
+		Label totalGeral = new Label(0,LINHA_DA_CATEGORIA+7, "Total Geral:");
+		sheet.addCell(totalGeral);
+	}
+
+	private void rodapeFaturamentoLocco(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
+		Label faturamentoLocco = new Label(0,LINHA_DA_CATEGORIA+9, "Faturamento Locco (NF):");
+		sheet.addCell(faturamentoLocco);
+	}
+
+	private void rodapeFaturamentoDireto(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
+		Label faturamentoDireto = new Label(0,LINHA_DA_CATEGORIA+10, "Faturamento Direto (ND):");
+		sheet.addCell(faturamentoDireto);
+	}
 	
 	private String montaFormulaSubTotalFatDireto(
 			List<Integer> linhasDecadaSubTotalCategoria) {
