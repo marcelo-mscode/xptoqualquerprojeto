@@ -267,16 +267,26 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 		sheet.addCell(subTotalLocco);
 	}
 	private void rodapeImposto(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
-		int linha = LINHA_DA_CATEGORIA +6;
-		int SubtotalLocco = LINHA_DA_CATEGORIA +5;
-		Formula formulaFee = new Formula(1, linha, "=("+((SubtotalLocco/0.771)-SubtotalLocco)+")");
-		sheet.addCell(formulaFee);
-		Label imposto = new Label(0,linha, "Imposto:");
-		sheet.addCell(imposto);
+		try {
+			int linha = LINHA_DA_CATEGORIA +6;
+			int SubtotalLocco = LINHA_DA_CATEGORIA +5;
+			int linhaSubTotalLocco = SubtotalLocco + 1 ;
+			Formula formulaFee = new Formula(1, linha, "SUM((B"+linhaSubTotalLocco+"/0.771)- B"+linhaSubTotalLocco+")");
+			sheet.addCell(formulaFee);
+			Label imposto = new Label(0,linha, "Imposto:");
+			sheet.addCell(imposto);
+		} catch (WriteException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	private void rodapeTotalGeral(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
 		int linha = LINHA_DA_CATEGORIA +7;
-		Formula formulaFee = new Formula(1, linha, "SUM(b2:b3)");
+		
+		int linhaTotalFatLoccoDireto = linha - 3;
+		int linhaFee = linha - 2;
+		int linhaImposto = linha ;
+		
+		Formula formulaFee = new Formula(1, linha, "SUM(B"+linhaTotalFatLoccoDireto+"+C"+linhaTotalFatLoccoDireto+"+B"+linhaFee+"+B"+linhaImposto+")");
 		sheet.addCell(formulaFee);
 		Label totalGeral = new Label(0,linha, "Total Geral:");
 		sheet.addCell(totalGeral);
@@ -284,7 +294,10 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 
 	private void rodapeFaturamentoLocco(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
 		int linha = LINHA_DA_CATEGORIA +9;
-		Formula formulaFee = new Formula(1, linha, "SUM(b2:b3)");
+		int linhaTotalFatLoccoDireto = linha - 5;
+		int linhaFee = linha - 4;
+		int linhaImposto = linha -2 ;
+		Formula formulaFee = new Formula(1, linha, "SUM(B"+linhaTotalFatLoccoDireto+"+B"+linhaFee+"+B"+linhaImposto+")");
 		sheet.addCell(formulaFee);
 		Label faturamentoLocco = new Label(0,linha, "Faturamento Locco (NF):");
 		sheet.addCell(faturamentoLocco);
@@ -292,7 +305,8 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 
 	private void rodapeFaturamentoDireto(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
 		int linha = LINHA_DA_CATEGORIA +10;
-		Formula formulaFee = new Formula(1, linha, "SUM(b2:b3)");
+		int linhaTotalFatLoccoDireto = linha - 6;
+		Formula formulaFee = new Formula(1, linha, "SUM(C"+linhaTotalFatLoccoDireto+")");
 		sheet.addCell(formulaFee);
 		Label faturamentoDireto = new Label(0,linha, "Faturamento Direto (ND):");
 		sheet.addCell(faturamentoDireto);
