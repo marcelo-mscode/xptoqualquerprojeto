@@ -11,16 +11,22 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import jxl.CellFormat;
 import jxl.Workbook;
 import jxl.write.Formula;
 import jxl.write.Label;
 import jxl.write.Number;
+import jxl.write.NumberFormat;
+import jxl.write.NumberFormats;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
+import org.apache.poi.hssf.usermodel.HSSFDataFormatter;
+import org.apache.poi.ss.format.CellDateFormatter;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -76,6 +82,7 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 	private WritableCellFormat times;
 	
 	final int INICIO_CABECALHO_LINHA = 7;
+	BigDecimal feeDaLista;
 	
 	WritableWorkbook workbook;
 	
@@ -90,6 +97,8 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 		SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy-HH-mm-ss"); 
 		String a = s.format(c.getTime());
 		
+		
+		
 		try {
 			
 			String fileName = "K:/SYSLOC/upload/excel/"+a+".xls";
@@ -99,6 +108,9 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			workbook = Workbook.createWorkbook(new File(fileName));
 			WritableSheet sheet = workbook.createSheet("Planilha 1", 0);
 
+			
+					
+					
 			/**
 			 * Método para setar as larguras das colunas
 			 */
@@ -112,6 +124,8 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			
 			int LINHA_DA_CATEGORIA = INICIO_CABECALHO_LINHA;
 			List<Categoria>categorias = producaoDAO.categoriaPorIdLista(idLista);
+			
+			feeDaLista = categorias.get(0).getIdLista().getAdministracao().divide(new BigDecimal("100")) ;
 			
 			List<Integer> linhasDecadaSubTotalCategoria = new ArrayList<Integer>();
 			
@@ -138,6 +152,9 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 				List<Grupo> grupo = producaoDAO.listaGrupoPorIdCategoria(idCategoria);
 				String categoriaNome = categorias.get(i).getCategoria(); 
 			
+				
+				
+				
 				if(grupo.isEmpty()){
 					
 				}else{
@@ -241,8 +258,6 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			workbook.write();
 			workbook.close();
 			
-			
-			
 			} catch (Exception e) {
 			//	JOptionPane.showMessageDialog(null, "Deu um erro ao gerar a Lista. Alguma linha está com o valor vazio."+e);
 		}
@@ -250,11 +265,10 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 	}
 	
 	private void rodapeFee(WritableSheet sheet, int LINHA_DA_CATEGORIA) throws RowsExceededException, WriteException{
-		int linha = LINHA_DA_CATEGORIA +4;
+		int linha = LINHA_DA_CATEGORIA + 4;
 		// Coluna x linha 
-		Formula formulaFee = new Formula(1,linha, "SUM(B"+(LINHA_DA_CATEGORIA+4)+"+C"+(LINHA_DA_CATEGORIA+4)+")*0.15");
+		Formula formulaFee = new Formula(1,linha, "SUM(B"+(LINHA_DA_CATEGORIA+4)+"+C"+(LINHA_DA_CATEGORIA+4)+")*"+feeDaLista);
 		sheet.addCell(formulaFee);
-		
 		Label fee = new Label(0,linha, "Fee");
 		sheet.addCell(fee);
 	}
@@ -262,9 +276,13 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 	private void rodapeSubtotalLocco(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
 		int linha = LINHA_DA_CATEGORIA +5;
 		Formula formulaFee = new Formula(1, linha, "SUM(B"+(LINHA_DA_CATEGORIA+4)+":B"+(LINHA_DA_CATEGORIA+5)+")");
+		
+		
+		
 		sheet.addCell(formulaFee);
 		Label subTotalLocco = new Label(0,linha, "Subtotal Locco:");
 		sheet.addCell(subTotalLocco);
+		
 	}
 	private void rodapeImposto(WritableSheet sheet, int LINHA_DA_CATEGORIA)throws RowsExceededException, WriteException{
 		try {
@@ -307,7 +325,14 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 		int linha = LINHA_DA_CATEGORIA +10;
 		int linhaTotalFatLoccoDireto = linha - 6;
 		Formula formulaFee = new Formula(1, linha, "SUM(C"+linhaTotalFatLoccoDireto+")");
-		sheet.addCell(formulaFee);
+//		sheet.addCell(formulaFee);
+		
+		
+		Number n = new Number(1,0,3.1415926535);
+		WritableCellFormat cf2 = new WritableCellFormat(NumberFormats.FLOAT);
+	    n = new Number(1,2,3.1415926535,cf2);
+   		sheet.addCell(n);
+		
 		Label faturamentoDireto = new Label(0,linha, "Faturamento Direto (ND):");
 		sheet.addCell(faturamentoDireto);
 	}
