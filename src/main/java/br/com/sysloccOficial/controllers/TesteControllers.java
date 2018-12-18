@@ -133,6 +133,15 @@ public class TesteControllers {
 		return MV;
 	}
 	
+	@RequestMapping("/apontamentos")
+	public ModelAndView apontamentos(){
+		MV.setViewName("testes/apontamentos");
+		
+		System.out.println("Aqui ");
+		
+		return MV;
+	}
+	
 	
 	
 	

@@ -1,6 +1,9 @@
 package br.com.sysloccOficial.controllers;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,12 +14,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import jxl.CellFormat;
 import jxl.Workbook;
 import jxl.write.Formula;
 import jxl.write.Label;
 import jxl.write.Number;
-import jxl.write.NumberFormat;
 import jxl.write.NumberFormats;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableSheet;
@@ -24,15 +25,11 @@ import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFDataFormat;
-import org.apache.poi.hssf.usermodel.HSSFDataFormatter;
-import org.apache.poi.ss.format.CellDateFormatter;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,9 +49,6 @@ import br.com.sysloccOficial.daos.ProdutoGrupoDAO;
 import br.com.sysloccOficial.model.Categoria;
 import br.com.sysloccOficial.model.Grupo;
 import br.com.sysloccOficial.model.ProdutoGrupo;
-
-
-
 
 @Controller
 @Transactional
@@ -81,14 +75,20 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 	ModelAndView MV = new ModelAndView();
 	private WritableCellFormat times;
 	
+	private HSSFCellStyle cs;
+	private HSSFDataFormat df;
 	final int INICIO_CABECALHO_LINHA = 7;
 	BigDecimal feeDaLista;
 	
+//	WritableWorkbook workbook;
 	WritableWorkbook workbook;
+	XSSFWorkbook workbook2;
+	
 	
 //Gera Arquivo Excel
 	@RequestMapping("/exportaExcel")
 	public ModelAndView exportaExcel(Integer idLista){
+		
 		
 		
 		MV.setViewName("producao/geraExcel");
@@ -106,8 +106,30 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			
 			MV.addObject("nomeArquivo", downloadExcel);
 			workbook = Workbook.createWorkbook(new File(fileName));
+			
+			try {
+		           FileOutputStream outputStream = new FileOutputStream(fileName);
+		           workbook2.write(outputStream);
+		       } catch (FileNotFoundException e) {
+		           e.printStackTrace();
+		       } catch (IOException e) {
+		           e.printStackTrace();
+		    }
+			
 			WritableSheet sheet = workbook.createSheet("Planilha 1", 0);
-
+			XSSFSheet sheet2 = workbook2.createSheet("Planilha 1");
+			
+			
+			/*WritableCellFeatures ff = workbook. 
+			
+			
+			CellFormat cf = new CellDateFormatter("###");
+			
+			WritableCellFormat ft =  new WritableCellFormat(format)
+			
+			cs = workbook.  createCellStyle();
+			df = workbook.createDataFormat();
+			cs.setDataFormat(df.getFormat("R$ #.###,##"));*/
 			
 					
 					
@@ -115,11 +137,13 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			 * Método para setar as larguras das colunas
 			 */
 			setaLarguraDasColunas(sheet); 
+//			setaLarguraDasColunas(sheet2); 
 			
 			/**
 			 * Método para montar o texto de 'Linha, FAtLocco, FatDireto, Opcional Informacoes e etc'
 			 */
-			montaCabecalhoAntesDasCategorias(sheet);
+//			montaCabecalhoAntesDasCategorias(sheet);
+			montaCabecalhoAntesDasCategorias(sheet2);
 
 			
 			int LINHA_DA_CATEGORIA = INICIO_CABECALHO_LINHA;
@@ -259,6 +283,7 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 			workbook.close();
 			
 			} catch (Exception e) {
+			System.out.println(e);	
 			//	JOptionPane.showMessageDialog(null, "Deu um erro ao gerar a Lista. Alguma linha está com o valor vazio."+e);
 		}
 		return MV;	
@@ -385,6 +410,31 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 		sheet.addCell(NaoIncluso);
 	}
 
+	private void montaCabecalhoAntesDasCategorias(XSSFSheet sheet2)
+			throws WriteException, RowsExceededException {
+		//Adding A Label
+		Label linha = new Label(0,INICIO_CABECALHO_LINHA,"Linha",formataCabecalho());
+		Label FatLocco = new Label(1,INICIO_CABECALHO_LINHA,"Fat loCCo",formataCabecalho());
+		Label FatDireto = new Label(2,INICIO_CABECALHO_LINHA,"Fat Direto/Nota de Debito",formataCabecalho());
+		Label Opcional = new Label(3,INICIO_CABECALHO_LINHA,"Opcional",formataCabecalho());
+		Label Info = new Label(4,INICIO_CABECALHO_LINHA,"Informações",formataCabecalho());
+		Label NaoIncluso = new Label(5,INICIO_CABECALHO_LINHA,"Não inclusos no custo",formataCabecalho());
+		
+		
+		Row row = sheet2.createRow(INICIO_CABECALHO_LINHA);
+        Cell cell = row.createCell(0);
+	    cell.setCellValue("Essa linha Foi escrita apenas para teste do XSSF");
+		
+		
+		
+	/*	sheet2.addCell(linha);
+		sheet2.addCell(FatLocco);
+		sheet2.addCell(FatDireto);
+		sheet2.addCell(Opcional);
+		sheet2.addCell(Info);
+		sheet2.addCell(NaoIncluso);*/
+	}
+
 	private void setaLarguraDasColunas(WritableSheet sheet) {
 		//Largura de cada Coluna
 		sheet.setColumnView(0, 30); 
@@ -393,6 +443,16 @@ public class GeraExcelProducaoController extends GeraAuxiliarExcel {
 		sheet.setColumnView(3, 12); 
 		sheet.setColumnView(4, 65); 
 		sheet.setColumnView(5, 40);
+	}
+
+	private void setaLarguraDasColunas(XSSFSheet sheet2) {
+		//Largura de cada Coluna
+		sheet2.setColumnWidth(0, 30); 
+		sheet2.setColumnWidth(1, 12); 
+		sheet2.setColumnWidth(2, 12); 
+		sheet2.setColumnWidth(3, 12); 
+		sheet2.setColumnWidth(4, 65); 
+		sheet2.setColumnWidth(5, 40);
 	}
 
 	private int montaSubTotaisDeCadaCategoria(WritableSheet sheet, int LINHA_DA_CATEGORIA, String GrupoFatLocco,

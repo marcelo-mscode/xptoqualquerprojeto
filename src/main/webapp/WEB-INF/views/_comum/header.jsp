@@ -218,8 +218,8 @@
 							<li class="disab"><a
 								href="<c:url value="/testesLayout" />">Layout</a></li>
 							<li class="disab"><a href="<c:url value="/tabelas" />">Tabelas</a></li>
-							<li class="disab"><a href="<c:url value="/novoMenu" />">Novo
-									Menu</a></li>
+							<li class="disab"><a href="<c:url value="/novoMenu" />">Novo Menu</a></li>
+							<li class="disab"><a href="<c:url value="/apontamentos" />">Apontamentos</a></li>
 						
   		    </security:authorize>
 
