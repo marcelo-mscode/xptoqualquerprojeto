@@ -250,8 +250,8 @@ public class GeraExcelProducaoController2 extends GeraAuxiliarExcel {
                     Number grupofatLocco = new Number(1, LINHA_DA_CATEGORIA,
                     converteStringParaDouble(grupoIncideImpostoValorConvertido), formataNumeroParaReal());
                     // sheet.addCell(grupofatLocco);
-                    Row row0 = sheet.createRow(grupofatLocco);
-                    Cell cell0 = row0.createCell(1);
+ //                   Row row0 = sheet.createRow(grupofatLocco);
+ //                   Cell cell0 = row0.createCell(1);
                     
                     Row row1 = sheet.createRow(LINHA_DA_CATEGORIA);
                     Cell cell1 = row1.createCell(1);

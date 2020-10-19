@@ -17,7 +17,7 @@ package br.com.sysloccOficial.model;
 
 import java.util.List;
 
-import javax.annotation.Generated;
+//import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

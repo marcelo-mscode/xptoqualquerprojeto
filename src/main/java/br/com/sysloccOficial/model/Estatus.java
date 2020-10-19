@@ -3,7 +3,7 @@ package br.com.sysloccOficial.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javafx.print.PrinterJob.JobStatus;
+//import javafx.print.PrinterJob.JobStatus;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
